@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Button from "../shared/Button";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -50,7 +50,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="relative z-10">
           <h1 className="text-2xl font-display font-semibold text-foreground">
-            <span className="text-primary">Golden</span>Triangle
+            <span className="text-primary">Guide</span>India Tours
           </h1>
         </Link>
 
@@ -74,8 +74,8 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="hidden md:block">
-          <Button size="sm" as={Link} to="/contact">
-            Plan Your Trip
+          <Button size="sm" asChild>
+            <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </div>
 
@@ -115,8 +115,8 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-          <Button as={Link} to="/contact">
-            Plan Your Trip
+          <Button asChild>
+            <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </div>
       </div>

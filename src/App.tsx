@@ -19,7 +19,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <MotionConfig reducedMotion="user">
-        <Helmet titleTemplate="%s | Golden Triangle Tours" defaultTitle="Golden Triangle Tours | Delhi, Agra, Jaipur">
+        <Helmet titleTemplate="%s | Guide India Tours" defaultTitle="Guide India Tours | Delhi, Agra, Jaipur">
           <meta name="description" content="Experience the magic of India's Golden Triangle with our premium travel services. Explore Delhi, Agra, and Jaipur with customized tours, luxury accommodations, and expert guides." />
         </Helmet>
         

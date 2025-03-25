@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-display font-medium mb-6">
-              <span className="text-primary">Golden</span>Triangle
+              <span className="text-primary">Guide</span>India Tours
             </h3>
             <p className="text-muted-foreground max-w-xs">
               Discover the magic of India's Golden Triangle with our curated travel experiences, luxury accommodations, and personalized services.
@@ -95,8 +95,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="flex-shrink-0 text-primary" />
-                <a href="mailto:info@goldentriangle.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  info@goldentriangle.com
+                <a href="mailto:info@guideindia.tours" className="text-muted-foreground hover:text-primary transition-colors">
+                  info@guideindia.tours
                 </a>
               </li>
             </ul>
@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Golden Triangle Tours. All rights reserved.
+              &copy; {currentYear} Guide India Tours. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">

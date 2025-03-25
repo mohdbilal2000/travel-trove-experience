@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../shared/Button";
+import { Button } from "@/components/ui/button";
 
 const backgrounds = [
   {
@@ -69,11 +69,11 @@ const Hero = () => {
             Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Delhi, Agra, and Jaipur with our curated travel experiences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button size="lg" as={Link} to="/plans">
-              View Our Plans
+            <Button size="lg" asChild>
+              <Link to="/plans">View Our Plans</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" as={Link} to="/contact">
-              Custom Itinerary
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+              <Link to="/contact">Custom Itinerary</Link>
             </Button>
           </div>
         </div>

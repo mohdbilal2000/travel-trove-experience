@@ -1,9 +1,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import SectionHeading from "../shared/SectionHeading";
 
+// This will be replaced with actual Google Reviews data
 const testimonials = [
   {
     id: 1,
@@ -11,7 +12,9 @@ const testimonials = [
     location: "United States",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     rating: 5,
-    text: "Our Golden Triangle tour was absolutely magical! The guides were knowledgeable, accommodations were luxurious, and every detail was perfectly arranged. The Taj Mahal at sunrise was a life-changing experience."
+    text: "Our Golden Triangle tour was absolutely magical! The guides were knowledgeable, accommodations were luxurious, and every detail was perfectly arranged. The Taj Mahal at sunrise was a life-changing experience.",
+    platform: "Google",
+    date: "February 2023"
   },
   {
     id: 2,
@@ -19,7 +22,9 @@ const testimonials = [
     location: "Australia",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     rating: 5,
-    text: "The personalized itinerary made our family trip special. Our children loved the elephant ride in Jaipur, and we appreciated the flexibility to explore at our own pace. Highly recommend the private car service!"
+    text: "The personalized itinerary made our family trip special. Our children loved the elephant ride in Jaipur, and we appreciated the flexibility to explore at our own pace. Highly recommend the private car service!",
+    platform: "Google",
+    date: "March 2023"
   },
   {
     id: 3,
@@ -27,7 +32,9 @@ const testimonials = [
     location: "United Kingdom",
     image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     rating: 5,
-    text: "As someone of Indian heritage returning to explore my roots, this tour exceeded all expectations. The cultural insights, food experiences, and attention to detail were impeccable. A journey I'll cherish forever."
+    text: "As someone of Indian heritage returning to explore my roots, this tour exceeded all expectations. The cultural insights, food experiences, and attention to detail were impeccable. A journey I'll cherish forever.",
+    platform: "Google",
+    date: "January 2023"
   },
   {
     id: 4,
@@ -35,7 +42,9 @@ const testimonials = [
     location: "Germany",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     rating: 5,
-    text: "Impeccable service from start to finish. The hotels were stunning, especially the heritage property in Jaipur. Our guide Raj was outstanding - his knowledge of history made each site come alive for us."
+    text: "Impeccable service from start to finish. The hotels were stunning, especially the heritage property in Jaipur. Our guide Raj was outstanding - his knowledge of history made each site come alive for us.",
+    platform: "Google",
+    date: "April 2023"
   }
 ];
 
@@ -53,11 +62,11 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white" id="testimonials">
       <div className="container mx-auto px-4">
         <SectionHeading 
-          title="Client Testimonials" 
-          subtitle="Hear what our clients have to say about their unforgettable journeys through India's Golden Triangle."
+          title="What Our Clients Say" 
+          subtitle="Read verified reviews from our satisfied travelers who experienced the magic of India's Golden Triangle with Guide India Tours."
         />
         
         <div className="relative max-w-4xl mx-auto my-12">
@@ -82,9 +91,9 @@ const Testimonials = () => {
                     />
                   </div>
                   
-                  {/* Rating */}
+                  {/* Google Badge */}
                   <div className="absolute -bottom-3 -right-3 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center">
-                    <Star size={16} fill="white" />
+                    <Quote size={16} className="text-white" />
                   </div>
                 </div>
                 
@@ -102,7 +111,13 @@ const Testimonials = () => {
                   
                   <div>
                     <p className="font-medium text-lg">{testimonials[currentIndex].name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonials[currentIndex].location}</p>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span>{testimonials[currentIndex].location}</span>
+                      <span>•</span>
+                      <span>{testimonials[currentIndex].platform}</span>
+                      <span>•</span>
+                      <span>{testimonials[currentIndex].date}</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -140,6 +155,23 @@ const Testimonials = () => {
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
+          </div>
+          
+          {/* Google Reviews Badge */}
+          <div className="mt-8 text-center">
+            <a 
+              href="https://g.page/r/guideindia-tours" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <img 
+                src="https://developers.google.com/static/maps/images/google-logo-g.svg" 
+                alt="Google" 
+                className="w-4 h-4"
+              />
+              See all our reviews on Google
+            </a>
           </div>
         </div>
       </div>

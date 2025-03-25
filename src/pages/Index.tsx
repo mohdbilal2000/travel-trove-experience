@@ -7,15 +7,17 @@ import FeaturedDestinations from "@/components/home/FeaturedDestinations";
 import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
 import { motion } from "framer-motion";
-import Button from "@/components/shared/Button";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Golden Triangle Tours | Delhi, Agra, Jaipur Travel Expert</title>
+        <title>Guide India Tours | Delhi, Agra, Jaipur Travel Expert</title>
         <meta name="description" content="Experience the magic of India's Golden Triangle with our premium travel services. Explore Delhi, Agra, and Jaipur with customized tours, luxury accommodations, and expert guides." />
+        <meta name="keywords" content="Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours" />
+        <link rel="canonical" href="https://guideindia.tours" />
       </Helmet>
       
       <Navbar />
@@ -42,11 +44,11 @@ const Index = () => {
                   Let us help you plan the perfect journey through Delhi, Agra, and Jaipur. Our expert team will craft an unforgettable experience tailored to your preferences.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <Button size="lg" as={Link} to="/plans">
-                    View Our Plans
+                  <Button size="lg" asChild>
+                    <Link to="/plans">View Our Plans</Link>
                   </Button>
-                  <Button size="lg" variant="outline" as={Link} to="/contact">
-                    Contact Us
+                  <Button size="lg" variant="outline" asChild>
+                    <Link to="/contact">Contact Us</Link>
                   </Button>
                 </div>
               </motion.div>
