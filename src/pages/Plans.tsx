@@ -256,8 +256,8 @@ const PlanCard = ({ plan }) => {
           </ul>
         </div>
         
-        <Button as={Link} to="/contact" className="w-full justify-center">
-          Inquire Now
+        <Button asChild className="w-full justify-center">
+          <Link to="/contact">Inquire Now</Link>
         </Button>
       </div>
     </motion.div>
@@ -288,7 +288,7 @@ const Plans = () => {
   return (
     <>
       <Helmet>
-        <title>Travel Plans | Golden Triangle Tours</title>
+        <title>Travel Plans | Guide India Tours</title>
         <meta name="description" content="Explore our curated Golden Triangle travel plans with options for every budget and preference. From essential packages to luxury experiences, find your perfect India journey." />
       </Helmet>
       
@@ -397,8 +397,8 @@ const Plans = () => {
                 </div>
                 
                 <div className="text-center">
-                  <Button size="lg" as={Link} to="/contact">
-                    Request Custom Itinerary
+                  <Button size="lg" asChild>
+                    <Link to="/contact">Request Custom Itinerary</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -500,11 +500,11 @@ const Plans = () => {
                 Contact us today to book your preferred plan or discuss a custom itinerary tailored to your needs.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" as={Link} to="/contact">
-                  Book Now
+                <Button size="lg" asChild>
+                  <Link to="/contact">Book Now</Link>
                 </Button>
-                <Button size="lg" variant="outline" as="a" href="tel:+911234567890">
-                  Call Us
+                <Button size="lg" variant="outline" asChild>
+                  <a href="tel:+911234567890">Call Us</a>
                 </Button>
               </div>
             </div>

@@ -119,8 +119,10 @@ const FeaturedDestinations = () => {
               </div>
 
               <div className="pt-4">
-                <Button as={Link} to={activeDestination.link}>
-                  Explore {activeDestination.name}
+                <Button asChild>
+                  <Link to={activeDestination.link}>
+                    Explore {activeDestination.name}
+                  </Link>
                 </Button>
               </div>
             </motion.div>

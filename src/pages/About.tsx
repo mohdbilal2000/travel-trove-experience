@@ -68,8 +68,8 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Golden Triangle Tours</title>
-        <meta name="description" content="Learn about Golden Triangle Tours, our story, mission, and the passionate team dedicated to creating unforgettable travel experiences in Delhi, Agra, and Jaipur." />
+        <title>About Us | Guide India Tours</title>
+        <meta name="description" content="Learn about Guide India Tours, our story, mission, and the passionate team dedicated to creating unforgettable travel experiences in Delhi, Agra, and Jaipur." />
       </Helmet>
       
       <Navbar />
@@ -101,7 +101,7 @@ const About = () => {
               >
                 <img 
                   src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071&auto=format&fit=crop" 
-                  alt="Golden Triangle Tours team" 
+                  alt="Guide India Tours team" 
                   className="rounded-xl shadow-lg w-full h-[500px] object-cover"
                 />
               </motion.div>
@@ -115,7 +115,7 @@ const About = () => {
                 <h2 className="text-3xl font-display font-medium mb-6">Our Story</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Founded in 2010, Golden Triangle Tours began with a simple mission: to share the authentic beauty, rich history, and vibrant culture of India's iconic Golden Triangle with travelers from around the world.
+                    Founded in 2010, Guide India Tours began with a simple mission: to share the authentic beauty, rich history, and vibrant culture of India's iconic Golden Triangle with travelers from around the world.
                   </p>
                   <p>
                     What started as a small family business has grown into a respected travel company, but our core values remain unchanged. We believe that travel should be transformative, educational, and deeply personal.
@@ -129,11 +129,11 @@ const About = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                  <Button as={Link} to="/services">
-                    Our Services
+                  <Button asChild>
+                    <Link to="/services">Our Services</Link>
                   </Button>
-                  <Button variant="outline" as={Link} to="/contact">
-                    Contact Us
+                  <Button variant="outline" asChild>
+                    <Link to="/contact">Contact Us</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -217,7 +217,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="order-2 lg:order-1"
               >
-                <h2 className="text-3xl font-display font-medium mb-6">Why Choose Golden Triangle Tours?</h2>
+                <h2 className="text-3xl font-display font-medium mb-6">Why Choose Guide India Tours?</h2>
                 <div className="space-y-4">
                   <div className="flex">
                     <div className="flex-shrink-0 mr-4">
@@ -271,8 +271,8 @@ const About = () => {
                 </div>
                 
                 <div className="mt-8">
-                  <Button as={Link} to="/plans">
-                    Explore Our Plans
+                  <Button asChild>
+                    <Link to="/plans">Explore Our Plans</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -314,11 +314,11 @@ const About = () => {
                 Let us help you create unforgettable memories in India's Golden Triangle. Contact our team today to begin planning your journey.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" as={Link} to="/contact">
-                  Get in Touch
+                <Button size="lg" asChild>
+                  <Link to="/contact">Get in Touch</Link>
                 </Button>
-                <Button size="lg" variant="outline" as={Link} to="/plans">
-                  View Travel Plans
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/plans">View Travel Plans</Link>
                 </Button>
               </div>
             </div>
