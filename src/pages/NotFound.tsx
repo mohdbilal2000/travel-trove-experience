@@ -38,13 +38,17 @@ const NotFound = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button as={Link} to="/" className="flex items-center justify-center">
-                <Home className="mr-2 h-4 w-4" />
-                Return to Homepage
+              <Button asChild className="flex items-center justify-center">
+                <Link to="/">
+                  <Home className="mr-2 h-4 w-4" />
+                  Return to Homepage
+                </Link>
               </Button>
-              <Button as={Link} to="/contact" variant="outline" className="flex items-center justify-center">
-                <Phone className="mr-2 h-4 w-4" />
-                Contact Support
+              <Button asChild variant="outline" className="flex items-center justify-center">
+                <Link to="/contact">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Contact Support
+                </Link>
               </Button>
             </div>
           </motion.div>

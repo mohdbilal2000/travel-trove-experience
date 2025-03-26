@@ -7,11 +7,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "link";
   size?: "sm" | "md" | "lg";
   asChild?: boolean;
+  as?: ElementType;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, variant = "primary", size = "md", asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, children, variant = "primary", size = "md", asChild = false, as, ...props }, ref) => {
+    // If asChild is true, use Slot, if as is provided use that, otherwise use "button"
+    const Comp = asChild ? Slot : as || "button";
     
     return (
       <Comp

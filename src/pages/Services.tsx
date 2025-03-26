@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -309,11 +308,11 @@ const Services = () => {
                 Contact us to discuss your travel needs and let us create a personalized itinerary for your perfect Indian adventure.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" as={Link} to="/plans">
-                  View Our Plans
+                <Button size="lg" asChild>
+                  <Link to="/plans">View Our Plans</Link>
                 </Button>
-                <Button size="lg" variant="outline" as={Link} to="/contact">
-                  Contact Us
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/contact">Contact Us</Link>
                 </Button>
               </div>
             </div>
