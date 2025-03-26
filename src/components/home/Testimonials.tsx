@@ -157,7 +157,7 @@ const Testimonials = () => {
             ))}
           </div>
           
-          {/* Google Reviews Badge */}
+          {/* Google Reviews Badge - Fixed the duplicated Google text */}
           <div className="mt-8 text-center">
             <a 
               href="https://g.page/r/guideindia-tours" 
@@ -165,11 +165,6 @@ const Testimonials = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
             >
-              <img 
-                src="https://developers.google.com/static/maps/images/google-logo-g.svg" 
-                alt="Google" 
-                className="w-4 h-4"
-              />
               See all our reviews on Google
             </a>
           </div>
