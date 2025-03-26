@@ -48,7 +48,7 @@ const Index = () => {
                     <Link to="/plans">View Our Plans</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/contact">Custom Itinerary</Link>
                   </Button>
                 </div>
               </motion.div>

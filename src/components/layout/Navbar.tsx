@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   // Handle scroll effect
   useEffect(() => {
@@ -64,7 +66,7 @@ const Navbar = () => {
                 "text-sm font-medium transition-colors hover:text-primary relative",
                 location.pathname === item.path
                   ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
-                  : "text-foreground/80"
+                  : isScrolled ? "text-foreground/80" : "text-white"
               )}
             >
               {item.label}
@@ -81,7 +83,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden relative z-10 p-2"
+          className="md:hidden relative z-10 p-2 text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -98,30 +100,34 @@ const Navbar = () => {
             "fixed inset-0 bg-background/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
-          style={{ top: 0, zIndex: 5, paddingTop: isScrolled ? "3.5rem" : "5rem" }}
+          style={{ top: 0, zIndex: 5 }}
         >
-          <nav className="flex flex-col items-center space-y-8 mb-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={cn(
-                  "text-lg font-medium hover:text-primary transition-colors",
-                  location.pathname === item.path
-                    ? "text-primary"
-                    : "text-foreground/80"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <Button asChild>
-            <Link to="/contact">Plan Your Trip</Link>
-          </Button>
-          <Button variant="outline" className="mt-4" asChild>
-            <Link to="/contact">Custom Itinerary</Link>
-          </Button>
+          <div className="container px-4 pt-16 flex flex-col items-center">
+            <nav className="flex flex-col items-center space-y-8 mb-8 w-full">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={cn(
+                    "text-lg font-medium hover:text-primary transition-colors w-full text-center py-2",
+                    location.pathname === item.path
+                      ? "text-primary"
+                      : "text-foreground/80"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex flex-col gap-4 w-full">
+              <Button asChild className="w-full">
+                <Link to="/contact">Plan Your Trip</Link>
+              </Button>
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/contact">Custom Itinerary</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
