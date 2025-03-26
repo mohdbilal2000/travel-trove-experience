@@ -2,170 +2,254 @@
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import SeoHead from "@/components/shared/SeoHead";
+import { 
+  Form, 
+  FormControl, 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormMessage 
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+// Form validation schema
+const contactFormSchema = z.object({
+  name: z.string()
+    .min(2, { message: "Name must be at least 2 characters" })
+    .max(50, { message: "Name must be less than 50 characters" }),
+  email: z.string()
+    .email({ message: "Please enter a valid email address" }),
+  phone: z.string()
+    .optional()
+    .refine(val => !val || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(val), {
+      message: "Please enter a valid phone number",
+    }),
+  subject: z.string({
+    required_error: "Please select a subject",
+  }),
+  message: z.string()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(1000, { message: "Message must be less than 1000 characters" }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "General Inquiry",
-    message: "",
-  });
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      subject: "General Inquiry",
+      message: "",
+    },
+  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = async (values: ContactFormValues) => {
     setLoading(true);
     
     // Simulate form submission
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      // This would be replaced with your actual form submission logic
+      console.log("Form values:", values);
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setSubmitted(true);
       toast({
         title: "Message Sent",
         description: "Thank you for your message. We'll respond shortly!",
       });
       
       // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "General Inquiry",
-        message: "",
+      form.reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
       });
-    }, 1500);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">
-            Full Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-            placeholder="Your name"
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-            placeholder="your.email@example.com"
-          />
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium mb-2">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-            placeholder="Your phone number (optional)"
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium mb-2">
-            Subject *
-          </label>
-          <select
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-          >
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Booking Question">Booking Question</option>
-            <option value="Custom Tour Request">Custom Tour Request</option>
-            <option value="Pricing Information">Pricing Information</option>
-            <option value="Feedback">Feedback</option>
-          </select>
-        </div>
-      </div>
-      
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
-          Your Message *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          rows={6}
-          className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
-          placeholder="Please share details about your travel plans, questions, or feedback..."
-        ></textarea>
-      </div>
-      
-      <button
-        type="submit"
-        disabled={loading}
-        className="flex items-center justify-center w-full md:w-auto px-8 py-3 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-70"
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="bg-card rounded-xl shadow-sm border border-border p-8 text-center"
       >
-        {loading ? (
-          <span className="flex items-center">
-            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Sending...
-          </span>
-        ) : (
-          <span className="flex items-center">
-            <Send className="mr-2 h-4 w-4" />
-            Send Message
-          </span>
-        )}
-      </button>
-    </form>
+        <div className="flex flex-col items-center justify-center">
+          <CheckCircle className="h-16 w-16 text-primary mb-4" />
+          <h3 className="text-2xl font-display font-medium mb-3">Thank You!</h3>
+          <p className="text-muted-foreground mb-6">
+            Your message has been successfully sent. We appreciate your interest and will get back to you as soon as possible.
+          </p>
+          <Button onClick={() => setSubmitted(false)}>Send Another Message</Button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name *</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="Your name" 
+                    {...field} 
+                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address *</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="your.email@example.com" 
+                    type="email"
+                    {...field} 
+                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="Your phone number (optional)" 
+                    type="tel"
+                    {...field} 
+                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Subject *</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                      <SelectValue placeholder="Select a subject" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                    <SelectItem value="Booking Question">Booking Question</SelectItem>
+                    <SelectItem value="Custom Tour Request">Custom Tour Request</SelectItem>
+                    <SelectItem value="Pricing Information">Pricing Information</SelectItem>
+                    <SelectItem value="Feedback">Feedback</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your Message *</FormLabel>
+              <FormControl>
+                <Textarea 
+                  placeholder="Please share details about your travel plans, questions, or feedback..." 
+                  rows={6}
+                  {...field} 
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
+        <Button
+          type="submit"
+          disabled={loading}
+          className="flex items-center justify-center w-full md:w-auto px-8 py-3 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-70"
+        >
+          {loading ? (
+            <span className="flex items-center">
+              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending...
+            </span>
+          ) : (
+            <span className="flex items-center">
+              <Send className="mr-2 h-4 w-4" />
+              Send Message
+            </span>
+          )}
+        </Button>
+      </form>
+    </Form>
   );
 };
 
 const Contact = () => {
   return (
     <>
-      <Helmet>
-        <title>Contact Us | Golden Triangle Tours</title>
-        <meta name="description" content="Get in touch with our travel experts to plan your perfect Golden Triangle journey. We're here to answer your questions and help create your ideal India experience." />
-      </Helmet>
+      <SeoHead
+        title="Contact Us | Golden Triangle Tours"
+        description="Get in touch with our travel experts to plan your perfect Golden Triangle journey. We're here to answer your questions and help create your ideal India experience."
+        keywords="India travel contact, Golden Triangle tour inquiry, Delhi Agra Jaipur tour booking, India travel planning"
+        canonicalUrl="https://guideindia.tours/contact"
+      />
       
       <Navbar />
       

@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet";
+import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -296,10 +296,37 @@ const FeatureCard = ({ feature }) => {
 const Plans = () => {
   return (
     <>
-      <Helmet>
-        <title>Travel Plans | Guide India Tours</title>
-        <meta name="description" content="Explore our curated Golden Triangle travel plans with options for every budget and preference. From essential packages to luxury experiences, find your perfect India journey." />
-      </Helmet>
+      <SeoHead
+        title="Travel Plans | Guide India Tours"
+        description="Explore our curated Golden Triangle travel plans with options for every budget and preference. From essential packages to luxury experiences, find your perfect India journey."
+        keywords="Golden Triangle packages, India tour packages, Delhi Agra Jaipur tours, Taj Mahal tours, India travel plans, luxury India tours"
+        canonicalUrl="https://guideindia.tours/plans"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": travelPlans.map((plan, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "TouristTrip",
+              "name": plan.title,
+              "description": plan.description,
+              "image": plan.image,
+              "offers": {
+                "@type": "Offer",
+                "price": plan.price.replace(/[^0-9]/g, ''),
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": plan.rating,
+                "reviewCount": plan.reviews
+              }
+            }
+          }))
+        }}
+      />
       
       <Navbar />
       

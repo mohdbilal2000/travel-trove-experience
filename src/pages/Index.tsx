@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet";
+import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
@@ -13,12 +13,31 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <>
-      <Helmet>
-        <title>Guide India Tours | Delhi, Agra, Jaipur Travel Expert</title>
-        <meta name="description" content="Experience the magic of India's Golden Triangle with our premium travel services. Explore Delhi, Agra, and Jaipur with customized tours, luxury accommodations, and expert guides." />
-        <meta name="keywords" content="Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours" />
-        <link rel="canonical" href="https://guideindia.tours" />
-      </Helmet>
+      <SeoHead
+        title="Guide India Tours | Delhi, Agra, Jaipur Travel Expert"
+        description="Experience the magic of India's Golden Triangle with our premium travel services. Explore Delhi, Agra, and Jaipur with customized tours, luxury accommodations, and expert guides."
+        keywords="Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours"
+        canonicalUrl="https://guideindia.tours"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "Guide India Tours",
+          "description": "Premium travel services for India's Golden Triangle: Delhi, Agra, and Jaipur",
+          "url": "https://guideindia.tours",
+          "logo": "https://guideindia.tours/logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Travel Street",
+            "addressLocality": "New Delhi",
+            "postalCode": "110001",
+            "addressCountry": "IN"
+          },
+          "telephone": "+91-123-456-7890",
+          "email": "info@guideindia.tours",
+          "areaServed": ["Delhi", "Agra", "Jaipur"],
+          "priceRange": "$$$"
+        }}
+      />
       
       <Navbar />
       
