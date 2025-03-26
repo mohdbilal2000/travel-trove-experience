@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -591,189 +590,201 @@ const additionalDestinations = [
         meals: "Breakfast"
       }
     ]
+  },
+  {
+    id: 9,
+    title: "Rajasthan Royal Heritage",
+    duration: "10 Days / 9 Nights",
+    price: "From $1,449 per person",
+    description: "Experience the royal heritage of Rajasthan with stays in palace hotels and visits to magnificent forts, colorful markets, and traditional villages.",
+    highlights: [
+      "Golden Triangle highlights",
+      "Jodhpur's blue city exploration",
+      "Udaipur's lake palaces",
+      "Village safari in rural Rajasthan",
+      "Heritage hotel stays",
+      "Cultural performances and folk art"
+    ],
+    inclusions: [
+      "9 nights in heritage hotels",
+      "Daily breakfast and select meals",
+      "Luxury transportation",
+      "Expert local guides",
+      "All entrance fees",
+      "Cultural activities",
+      "Airport transfers"
+    ],
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2066&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 75,
+    popular: true,
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Delhi",
+        description: "Arrive in Delhi and transfer to a heritage hotel. Welcome dinner with cultural briefing.",
+        accommodation: "Heritage hotel in Delhi",
+        meals: "Welcome dinner"
+      },
+      {
+        day: 2,
+        title: "Delhi Exploration",
+        description: "Full day tour of Old and New Delhi's highlights.",
+        accommodation: "Heritage hotel in Delhi",
+        meals: "Breakfast"
+      },
+      {
+        day: 3,
+        title: "Delhi to Agra",
+        description: "Morning drive to Agra. Afternoon visit to Agra Fort and Itimad-ud-Daulah.",
+        accommodation: "Heritage hotel in Agra",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 4,
+        title: "Agra to Jaipur",
+        description: "Sunrise Taj Mahal visit. Drive to Jaipur via Fatehpur Sikri.",
+        accommodation: "Heritage palace hotel in Jaipur",
+        meals: "Breakfast"
+      },
+      {
+        day: 5,
+        title: "Jaipur Exploration",
+        description: "Full day tour of Amber Fort, City Palace, and other attractions. Evening cultural performance.",
+        accommodation: "Heritage palace hotel in Jaipur",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 6,
+        title: "Jaipur to Jodhpur",
+        description: "Drive to Jodhpur. Evening walk in the old blue city.",
+        accommodation: "Heritage hotel in Jodhpur",
+        meals: "Breakfast"
+      },
+      {
+        day: 7,
+        title: "Jodhpur Exploration",
+        description: "Visit to Mehrangarh Fort, Jaswant Thada, and local markets. Afternoon village safari.",
+        accommodation: "Heritage hotel in Jodhpur",
+        meals: "Breakfast, Lunch"
+      },
+      {
+        day: 8,
+        title: "Jodhpur to Udaipur",
+        description: "Scenic drive to Udaipur visiting Ranakpur Jain Temples en route.",
+        accommodation: "Lake view hotel in Udaipur",
+        meals: "Breakfast"
+      },
+      {
+        day: 9,
+        title: "Udaipur Exploration",
+        description: "City Palace complex tour, boat ride on Lake Pichola, and local arts exploration.",
+        accommodation: "Lake view hotel in Udaipur",
+        meals: "Breakfast, Farewell dinner"
+      },
+      {
+        day: 10,
+        title: "Udaipur Departure",
+        description: "Morning at leisure. Transfer to airport for departure.",
+        accommodation: "None",
+        meals: "Breakfast"
+      }
+    ]
+  },
+  {
+    id: 10,
+    title: "Himalayan Expedition",
+    duration: "9 Days / 8 Nights",
+    price: "From $1,299 per person",
+    description: "Experience the majesty of the Himalayas with visits to Shimla, Dharamshala, and other mountain destinations with stunning views and cultural experiences.",
+    highlights: [
+      "Delhi to Shimla hill train journey",
+      "Himalayan panoramic views",
+      "Buddhist monasteries",
+      "McLeod Ganj and Dalai Lama complex",
+      "Nature walks and soft treks",
+      "Mountain cultures and cuisine"
+    ],
+    inclusions: [
+      "8 nights mountain accommodation",
+      "Daily breakfast and dinners",
+      "Transportation including heritage train",
+      "Expert mountain guides",
+      "All activities and entrance fees",
+      "Airport transfers",
+      "Guided meditation session"
+    ],
+    image: "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?q=80&w=2034&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 56,
+    popular: false,
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Delhi",
+        description: "Arrive in Delhi and transfer to hotel. Evening briefing about the Himalayan journey ahead.",
+        accommodation: "4-star hotel in Delhi",
+        meals: "None"
+      },
+      {
+        day: 2,
+        title: "Delhi to Shimla",
+        description: "Morning train to Kalka followed by the famous toy train journey to Shimla. Evening walk on the Mall Road.",
+        accommodation: "Heritage hotel in Shimla",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 3,
+        title: "Shimla Exploration",
+        description: "Visit to Viceregal Lodge, Christ Church, and Jakhu Temple. Afternoon nature walk.",
+        accommodation: "Heritage hotel in Shimla",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 4,
+        title: "Shimla to Dharamshala",
+        description: "Scenic drive through the Himalayan foothills to Dharamshala. Evening at leisure in McLeod Ganj.",
+        accommodation: "Mountain resort in Dharamshala",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 5,
+        title: "Dharamshala Exploration",
+        description: "Visit to Dalai Lama complex, Namgyal Monastery, and Norbulingka Institute. Afternoon meditation session.",
+        accommodation: "Mountain resort in Dharamshala",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 6,
+        title: "Dharamshala to Dalhousie",
+        description: "Drive to the colonial hill station of Dalhousie. Evening walk through pine forests.",
+        accommodation: "Heritage hotel in Dalhousie",
+        meals: "Breakfast, Dinner"
+      },
+      {
+        day: 7,
+        title: "Dalhousie and Khajjiar",
+        description: "Day trip to Khajjiar, known as 'Mini Switzerland'. Picnic lunch and nature activities.",
+        accommodation: "Heritage hotel in Dalhousie",
+        meals: "Breakfast, Lunch, Dinner"
+      },
+      {
+        day: 8,
+        title: "Dalhousie to Amritsar",
+        description: "Descend from the mountains to Amritsar. Evening visit to Golden Temple for the Palki ceremony.",
+        accommodation: "4-star hotel in Amritsar",
+        meals: "Breakfast"
+      },
+      {
+        day: 9,
+        title: "Amritsar Departure",
+        description: "Morning visit to Jallianwala Bagh and Wagah Border ceremony (time permitting). Transfer to airport for departure.",
+        accommodation: "None",
+        meals: "Breakfast"
+      }
+    ]
   }
 ];
 
 // Combine all plans
-const allPlans = [...travelPlans, ...additionalDestinations];
-
-const PlanDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [plan, setPlan] = useState(null);
-
-  useEffect(() => {
-    // Find the plan by ID
-    const selectedPlan = allPlans.find(p => p.id === parseInt(id));
-    
-    if (selectedPlan) {
-      setPlan(selectedPlan);
-    } else {
-      // If plan not found, redirect to plans page
-      navigate("/plans");
-    }
-  }, [id, navigate]);
-
-  if (!plan) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  // Create structured data for this tour package
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    "name": plan.title,
-    "description": plan.description,
-    "touristType": ["Couples", "Solo traveler", "Family", "Group"],
-    "image": plan.image,
-    "offers": {
-      "@type": "Offer",
-      "price": plan.price.replace("From $", "").replace(" per person", ""),
-      "priceCurrency": "USD",
-      "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
-      "availability": "https://schema.org/InStock"
-    },
-    "itinerary": {
-      "@type": "ItemList",
-      "itemListElement": plan.itinerary.map((day, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": day.title,
-        "description": day.description
-      }))
-    },
-    "provider": {
-      "@type": "Organization",
-      "name": "Guide India Tours",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Delhi",
-        "addressRegion": "Delhi",
-        "addressCountry": "India"
-      }
-    }
-  };
-
-  return (
-    <>
-      <SeoHead 
-        title={`${plan.title} | Guide India Tours`}
-        description={`Experience ${plan.title} with Guide India Tours. ${plan.description}`}
-        keywords={`India tour, ${plan.title}, Golden Triangle, travel packages, ${plan.duration}`}
-        ogImage={plan.image}
-        ogType="article"
-        structuredData={structuredData}
-      />
-
-      <Navbar />
-
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="relative h-[60vh] overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${plan.image})` }}
-          >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
-          </div>
-
-          <div className="relative h-full flex flex-col justify-end text-white z-10 px-4 pb-12">
-            <div className="container mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  asChild
-                  className="mb-6 text-white border-white/30 hover:bg-white/10"
-                >
-                  <Link to="/plans">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to All Plans
-                  </Link>
-                </Button>
-
-                <div className="flex items-center text-sm text-white/90 mb-3 space-x-4">
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-1.5" />
-                    {plan.duration}
-                  </div>
-                  <div className="flex items-center">
-                    <Star className="h-4 w-4 text-primary fill-current mr-1.5" />
-                    <span>{plan.rating}</span>
-                    <span className="ml-1 text-white/80">({plan.reviews} reviews)</span>
-                  </div>
-                </div>
-
-                <h1 className="text-3xl md:text-5xl font-display font-semibold mb-3">
-                  {plan.title}
-                </h1>
-                <p className="text-xl font-medium text-primary">{plan.price}</p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Overview Section */}
-        <section className="py-12 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="lg:col-span-2"
-              >
-                <h2 className="text-2xl font-display font-medium mb-4">Overview</h2>
-                <p className="text-muted-foreground mb-6">{plan.description}</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-white p-6 rounded-xl border border-border">
-                    <h3 className="text-lg font-medium mb-4">Highlights</h3>
-                    <ul className="space-y-2">
-                      {plan.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-start">
-                          <Star className="h-4 w-4 text-primary mt-1 mr-2 flex-shrink-0" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-xl border border-border">
-                    <h3 className="text-lg font-medium mb-4">Inclusions</h3>
-                    <ul className="space-y-2">
-                      {plan.inclusions.map((inclusion, index) => (
-                        <li key={index} className="flex items-start">
-                          <Star className="h-4 w-4 text-primary mt-1 mr-2 flex-shrink-0" />
-                          <span>{inclusion}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-white p-6 rounded-xl border border-border sticky top-24">
-                  <h3 className="text-xl font-medium mb-4">Interested in this tour?</h3>
-                  <p className="text-muted-foreground mb-6">Contact us to book this tour or customize it to your specific requirements.</p>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center">
-                      <PhoneCall className="h-5 w-5 text-primary mr-3" />
-                      <div>
-                        <p className="text-sm text-muted-foreground">Call us</
+const allPlans = [...travelPlans, ...additionalDestinations
