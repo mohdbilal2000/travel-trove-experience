@@ -69,10 +69,10 @@ const Hero = () => {
             Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Delhi, Agra, and Jaipur with our curated travel experiences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-white">
               <Link to="/plans">View Our Plans</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10 visible">
               <Link to="/contact">Custom Itinerary</Link>
             </Button>
           </div>

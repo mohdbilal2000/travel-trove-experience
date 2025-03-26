@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { motion } from "framer-motion";
-import Button from "@/components/shared/Button";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Car, Bed, Users, Coffee, Check, ChevronRight, Star, Clock } from "lucide-react";
 
@@ -211,25 +211,27 @@ const PlanCard = ({ plan }) => {
       viewport={{ once: true }}
       className="bg-white rounded-xl overflow-hidden shadow-sm border border-border group hover:shadow-md transition-all"
     >
-      <div className="relative h-56 overflow-hidden">
-        <img 
-          src={plan.image} 
-          alt={plan.title} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        {plan.popular && (
-          <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-3 rounded-full">
-            Popular Choice
-          </div>
-        )}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent py-4 px-6">
-          <div className="flex items-center text-white space-x-1.5">
-            <Star className="h-4 w-4 text-primary fill-current" />
-            <span className="font-medium">{plan.rating}</span>
-            <span className="text-xs text-white/80">({plan.reviews} reviews)</span>
+      <Link to={`/plans/${plan.id}`} className="block">
+        <div className="relative h-56 overflow-hidden">
+          <img 
+            src={plan.image} 
+            alt={plan.title} 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          {plan.popular && (
+            <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-3 rounded-full">
+              Popular Choice
+            </div>
+          )}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent py-4 px-6">
+            <div className="flex items-center text-white space-x-1.5">
+              <Star className="h-4 w-4 text-primary fill-current" />
+              <span className="font-medium">{plan.rating}</span>
+              <span className="text-xs text-white/80">({plan.reviews} reviews)</span>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
       
       <div className="p-6">
         <div className="flex items-center text-sm text-muted-foreground mb-2">
@@ -237,7 +239,9 @@ const PlanCard = ({ plan }) => {
           {plan.duration}
         </div>
         
-        <h3 className="text-xl font-display font-medium mb-2">{plan.title}</h3>
+        <Link to={`/plans/${plan.id}`} className="block">
+          <h3 className="text-xl font-display font-medium mb-2 hover:text-primary transition-colors">{plan.title}</h3>
+        </Link>
         <p className="text-primary font-medium mb-3">{plan.price}</p>
         <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
         
@@ -256,9 +260,14 @@ const PlanCard = ({ plan }) => {
           </ul>
         </div>
         
-        <Button asChild className="w-full justify-center">
-          <Link to="/contact">Inquire Now</Link>
-        </Button>
+        <div className="flex space-x-2">
+          <Button asChild className="flex-1 justify-center">
+            <Link to={`/plans/${plan.id}`}>View Details</Link>
+          </Button>
+          <Button asChild variant="outline" className="flex-1 justify-center">
+            <Link to="/contact">Inquire</Link>
+          </Button>
+        </div>
       </div>
     </motion.div>
   );

@@ -98,6 +98,7 @@ const Navbar = () => {
             "fixed inset-0 bg-background/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
+          style={{ top: 0, zIndex: 5 }}
         >
           <nav className="flex flex-col items-center space-y-8 mb-8">
             {navItems.map((item) => (
