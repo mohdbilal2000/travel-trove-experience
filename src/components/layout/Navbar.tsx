@@ -44,7 +44,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         isScrolled 
-          ? "py-2 bg-background/95 backdrop-blur-md shadow-sm" 
+          ? "py-2 bg-ivory-300/95 backdrop-blur-md shadow-sm" 
           : "py-5 bg-transparent"
       )}
     >
@@ -52,7 +52,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="relative z-10">
           <h1 className="text-2xl font-display font-semibold text-foreground">
-            <span className="text-primary">Guide</span>India Tours
+            <span className="text-maroon-600">Guide</span>India Tours
           </h1>
         </Link>
 
@@ -63,10 +63,10 @@ const Navbar = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative",
+                "text-sm font-medium transition-colors hover:text-maroon-600 relative",
                 location.pathname === item.path
-                  ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
-                  : isScrolled ? "text-foreground/80" : "text-white"
+                  ? "text-maroon-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-maroon-600"
+                  : isScrolled ? "text-charcoal-500" : "text-white"
               )}
             >
               {item.label}
@@ -76,7 +76,7 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="hidden md:block">
-          <Button size="sm" asChild>
+          <Button size="sm" variant="accent" asChild>
             <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
+            "fixed inset-0 bg-ivory-300/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
           style={{ top: 0, zIndex: 5 }}
@@ -109,10 +109,10 @@ const Navbar = () => {
                   key={item.path}
                   to={item.path}
                   className={cn(
-                    "text-lg font-medium hover:text-primary transition-colors w-full text-center py-2",
+                    "text-lg font-medium hover:text-maroon-600 transition-colors w-full text-center py-2",
                     location.pathname === item.path
-                      ? "text-primary"
-                      : "text-foreground/80"
+                      ? "text-maroon-600"
+                      : "text-charcoal-500"
                   )}
                 >
                   {item.label}
@@ -120,7 +120,7 @@ const Navbar = () => {
               ))}
             </nav>
             <div className="flex flex-col gap-4 w-full">
-              <Button asChild className="w-full">
+              <Button asChild variant="default" className="w-full">
                 <Link to="/contact">Plan Your Trip</Link>
               </Button>
               <Button variant="outline" className="w-full" asChild>

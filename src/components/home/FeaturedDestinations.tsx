@@ -85,7 +85,7 @@ const DestinationCard = ({ destination, variant = "additional" }) => {
             <p className="text-white/80 text-sm mb-4">{destination.description}</p>
             
             {variant === "additional" && (
-              <Button size="sm" variant="outline" className="bg-black/30 text-white border-white/30 hover:bg-white/20 group-hover:bg-primary group-hover:text-white group-hover:border-primary">
+              <Button size="sm" variant="outline" className="bg-black/30 text-white border-white/30 hover:bg-white/20 group-hover:bg-amber-900 group-hover:text-white group-hover:border-amber-900">
                 Explore <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             )}
@@ -98,7 +98,7 @@ const DestinationCard = ({ destination, variant = "additional" }) => {
 
 const FeaturedDestinations = () => {
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="Discover Iconic Destinations" 
@@ -117,8 +117,8 @@ const FeaturedDestinations = () => {
         </div>
         
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-display font-medium mb-3">Beyond the Golden Triangle</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <h2 className="text-2xl md:text-3xl font-display font-medium mb-3 text-maroon-600">Beyond the Golden Triangle</h2>
+          <p className="text-charcoal-500/80 max-w-2xl mx-auto mb-12">
             Enhance your Golden Triangle experience with these extraordinary destinations that showcase India's diversity
           </p>
         </div>

@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, forwardRef, ElementType } from "react";
 import { Slot } from "@radix-ui/react-slot";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "link";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "link" | "accent";
   size?: "sm" | "md" | "lg";
   asChild?: boolean;
   as?: ElementType;
@@ -22,19 +22,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           
           // Variants
           variant === "primary" && 
-            "bg-primary text-primary-foreground hover:bg-primary/90 active:translate-y-0.5",
+            "bg-maroon-600 text-white hover:bg-maroon-700 active:bg-maroon-800 active:translate-y-0.5",
           
           variant === "secondary" && 
-            "bg-secondary text-secondary-foreground hover:bg-secondary/90 active:translate-y-0.5",
+            "bg-amber-500 text-charcoal-600 hover:bg-amber-600 hover:text-charcoal-700 active:bg-amber-700 active:translate-y-0.5",
           
           variant === "outline" && 
-            "border border-input bg-background hover:bg-muted hover:text-accent-foreground active:translate-y-0.5",
+            "border border-input bg-background hover:bg-muted hover:text-maroon-600 active:translate-y-0.5",
           
           variant === "ghost" && 
-            "hover:bg-muted hover:text-accent-foreground active:translate-y-0.5",
+            "hover:bg-muted hover:text-maroon-600 active:translate-y-0.5",
           
           variant === "link" && 
-            "text-primary underline-offset-4 hover:underline",
+            "text-maroon-600 underline-offset-4 hover:underline",
+
+          variant === "accent" && 
+            "bg-amber-900 text-white hover:bg-amber-800 active:bg-amber-950 active:translate-y-0.5",
           
           // Sizes
           size === "sm" && "h-9 rounded-md px-3 text-xs",

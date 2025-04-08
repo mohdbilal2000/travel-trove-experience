@@ -62,7 +62,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="section-padding bg-white" id="testimonials">
+    <section className="section-padding bg-ivory-300" id="testimonials">
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="What Our Clients Say" 
@@ -71,7 +71,7 @@ const Testimonials = () => {
         
         <div className="relative max-w-4xl mx-auto my-12">
           {/* Testimonial Slider */}
-          <div className="overflow-hidden rounded-xl bg-background p-6 md:p-10 relative">
+          <div className="overflow-hidden rounded-xl bg-white p-6 md:p-10 relative shadow-sm border border-border">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -92,7 +92,7 @@ const Testimonials = () => {
                   </div>
                   
                   {/* Google Badge */}
-                  <div className="absolute -bottom-3 -right-3 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center">
+                  <div className="absolute -bottom-3 -right-3 bg-maroon-600 text-white rounded-full w-8 h-8 flex items-center justify-center">
                     <Quote size={16} className="text-white" />
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const Testimonials = () => {
                 <div className="flex-1 text-center md:text-left">
                   <div className="flex items-center justify-center md:justify-start mb-2">
                     {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <Star key={i} size={16} className="text-primary" fill="currentColor" />
+                      <Star key={i} size={16} className="text-amber-500" fill="currentColor" />
                     ))}
                   </div>
                   
@@ -111,7 +111,7 @@ const Testimonials = () => {
                   
                   <div>
                     <p className="font-medium text-lg">{testimonials[currentIndex].name}</p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-charcoal-500/70">
                       <span>{testimonials[currentIndex].location}</span>
                       <span>•</span>
                       <span>{testimonials[currentIndex].platform}</span>
@@ -127,18 +127,18 @@ const Testimonials = () => {
             <div className="absolute inset-0 flex items-center justify-between pointer-events-none">
               <button 
                 onClick={prevTestimonial}
-                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center transform -translate-x-1/2 pointer-events-auto focus:outline-none hover:bg-primary/10 transition-colors"
+                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center transform -translate-x-1/2 pointer-events-auto focus:outline-none hover:bg-maroon-600/10 transition-colors"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={20} className="text-maroon-600" />
               </button>
               
               <button 
                 onClick={nextTestimonial}
-                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center transform translate-x-1/2 pointer-events-auto focus:outline-none hover:bg-primary/10 transition-colors"
+                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center transform translate-x-1/2 pointer-events-auto focus:outline-none hover:bg-maroon-600/10 transition-colors"
                 aria-label="Next testimonial"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={20} className="text-maroon-600" />
               </button>
             </div>
           </div>
@@ -150,20 +150,20 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-primary" : "bg-muted"
+                  index === currentIndex ? "bg-maroon-600" : "bg-charcoal-500/30"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
           
-          {/* Google Reviews Badge - Fixed the duplicated Google text */}
+          {/* Google Reviews Badge */}
           <div className="mt-8 text-center">
             <a 
               href="https://g.page/r/guideindia-tours" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              className="inline-flex items-center gap-2 text-sm font-medium text-maroon-600 hover:underline"
             >
               See all our reviews on Google
             </a>

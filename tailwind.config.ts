@@ -99,6 +99,67 @@ export default {
 					800: '#334D41',
 					900: '#1A2620',
 				},
+				// New color scheme
+				maroon: {
+					50: '#f9e6e6',
+					100: '#f3cccc',
+					200: '#e79999',
+					300: '#db6666',
+					400: '#d03333',
+					500: '#b71c1c',
+					600: '#8B0000', // Royal Maroon (primary)
+					700: '#6b0000',
+					800: '#4a0000',
+					900: '#2a0000',
+				},
+				amber: {
+					50: '#fff8e1',
+					100: '#ffecb3',
+					200: '#ffe082',
+					300: '#ffd54f',
+					400: '#ffca28',
+					500: '#FFC107', // Amber Yellow (secondary)
+					600: '#ffb300',
+					700: '#ffa000',
+					800: '#ff8f00',
+					900: '#ff6f00', // Saffron Orange (accent)
+				},
+				ivory: {
+					50: '#ffffff',
+					100: '#fefefc',
+					200: '#fcfcf9',
+					300: '#F9F9F6', // Ivory / Off-white (background)
+					400: '#f7f7f3',
+					500: '#f5f5f0',
+					600: '#e0e0db',
+					700: '#cbcbc6',
+					800: '#b6b6b1',
+					900: '#a1a19d',
+				},
+				charcoal: {
+					50: '#e6e6e6',
+					100: '#cccccc',
+					200: '#999999',
+					300: '#666666',
+					400: '#4d4d4d',
+					500: '#333333', // Charcoal Gray (text)
+					600: '#2e2e2e',
+					700: '#292929',
+					800: '#242424',
+					900: '#1f1f1f',
+				},
+				turquoise: {
+					50: '#e6fbf9',
+					100: '#ccf7f3',
+					200: '#99efe8',
+					300: '#66e7dc',
+					400: '#40E0D0', // Turquoise / Light Teal (optional highlight)
+					500: '#1ad6c3',
+					600: '#13aea0',
+					700: '#0d857a',
+					800: '#095c54',
+					900: '#04332f',
+				},
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

@@ -63,13 +63,13 @@ const Hero = () => {
       <div className="relative h-full flex flex-col justify-center items-center text-white text-center z-10 px-4">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 text-white leading-tight">
-            Discover The Magic Of <span className="text-primary">India's Golden Triangle</span>
+            Discover The Magic Of <span className="text-amber-500">India's Golden Triangle</span>
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white/90">
             Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Delhi, Agra, and Jaipur with our curated travel experiences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-white">
+            <Button size="lg" asChild className="bg-maroon-600 hover:bg-maroon-700 text-white">
               <Link to="/plans">View Our Plans</Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10 bg-white/10">
@@ -88,11 +88,11 @@ const Hero = () => {
             >
               <span className={cn(
                 "block w-20 h-1 mb-2 mx-auto transition-all duration-300",
-                index === activeIndex ? "bg-primary" : "bg-white/40 group-hover:bg-white/60"
+                index === activeIndex ? "bg-amber-500" : "bg-white/40 group-hover:bg-white/60"
               )} />
               <span className={cn(
                 "text-sm uppercase tracking-wider font-medium transition-colors",
-                index === activeIndex ? "text-primary" : "text-white/80 group-hover:text-white"
+                index === activeIndex ? "text-amber-500" : "text-white/80 group-hover:text-white"
               )}>
                 {bg.name}
               </span>
