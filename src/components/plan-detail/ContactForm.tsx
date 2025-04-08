@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
@@ -31,8 +32,7 @@ const bookingFormSchema = z.object({
       message: "Please enter a valid phone number",
     }),
   travelers: z.string()
-    .transform((val) => parseInt(val, 10))
-    .refine((val) => !isNaN(val) && val > 0 && val <= 50, {
+    .refine((val) => !isNaN(parseInt(val, 10)) && parseInt(val, 10) > 0 && parseInt(val, 10) <= 50, {
       message: "Please enter a valid number of travelers (1-50)",
     }),
   date: z.string()
@@ -199,7 +199,7 @@ const ContactForm = ({ plan }) => {
                     </SelectTrigger>
                     <SelectContent>
                       {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
-                        <SelectItem key={num} value={num.toString()}>
+                        <SelectItem key={num} value={String(num)}>
                           {num}
                         </SelectItem>
                       ))}
