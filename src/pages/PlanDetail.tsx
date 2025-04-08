@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -51,13 +51,92 @@ const PlanDetail = () => {
     return null;
   }
 
+  // Create structured data for the tour package
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": plan.title,
+    "description": plan.description,
+    "touristType": ["Sightseeing", "Cultural", "Historical"],
+    "tourOperator": {
+      "@type": "TravelAgency",
+      "name": "Guide India Tours",
+      "url": "https://guideindia.tours"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": plan.title,
+      "price": plan.price.substring(1), // Remove currency symbol
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": new Date().toISOString().split('T')[0]
+    },
+    "itinerary": {
+      "@type": "ItemList",
+      "itemListElement": plan.itinerary.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.title,
+        "description": item.description
+      }))
+    }
+  };
+  
+  // Add FAQ structured data if plan has FAQs
+  const faqSchema = plan.faqs ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": plan.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+  
+  // Breadcrumbs structured data
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://guideindia.tours/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Plans",
+        "item": "https://guideindia.tours/plans"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": plan.title,
+        "item": `https://guideindia.tours/plans/${plan.id}`
+      }
+    ]
+  };
+  
+  // Create an array of structured data objects
+  const structuredData = faqSchema ? 
+    [tourSchema, faqSchema, breadcrumbSchema] : 
+    [tourSchema, breadcrumbSchema];
+
   return (
     <>
       <SeoHead
         title={`${plan.title} | Guide India Tours`}
         description={plan.description}
-        keywords={`${plan.title}, Golden Triangle tour, India travel, ${plan.highlights.join(', ')}`}
+        keywords={`${plan.title}, Golden Triangle tour, India travel, ${plan.highlights.join(', ')}, ${plan.destinations.join(', ')}`}
         ogImage={plan.image}
+        canonicalUrl={`https://guideindia.tours/plans/${plan.id}`}
+        ogType="product"
+        structuredData={structuredData}
       />
       
       <Navbar />
@@ -84,17 +163,9 @@ const PlanDetail = () => {
 
         {/* Hero Section */}
         <PlanHeader plan={plan} />
-        
-        {/* Features Section */}
         <PlanFeatures plan={plan} />
-        
-        {/* Itinerary Section */}
         <Itinerary plan={plan} />
-        
-        {/* Contact Form Section */}
         <ContactForm plan={plan} />
-        
-        {/* Related Plans */}
         <RelatedPlans currentPlanId={plan.id} />
       </main>
       

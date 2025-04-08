@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -242,19 +241,86 @@ const ContactForm = () => {
 };
 
 const Contact = () => {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "@id": "https://guideindia.tours/#organization",
+    "name": "Guide India Tours",
+    "url": "https://guideindia.tours",
+    "logo": "https://guideindia.tours/logo.png",
+    "image": "https://images.unsplash.com/photo-1548013146-72479768bada",
+    "description": "Premium travel services specializing in Golden Triangle tours of Delhi, Agra, and Jaipur.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Travel Street",
+      "addressLocality": "New Delhi",
+      "addressRegion": "Delhi",
+      "postalCode": "110001",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-123-456-7890",
+    "email": "info@guideindia.tours",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Saturday"
+        ],
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://guideindia.tours/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://guideindia.tours/contact"
+      }
+    ]
+  };
+
   return (
     <>
       <SeoHead
         title="Contact Us | Golden Triangle Tours"
         description="Get in touch with our travel experts to plan your perfect Golden Triangle journey. We're here to answer your questions and help create your ideal India experience."
-        keywords="India travel contact, Golden Triangle tour inquiry, Delhi Agra Jaipur tour booking, India travel planning"
+        keywords="India travel contact, Golden Triangle tour inquiry, Delhi Agra Jaipur tour booking, India travel planning, custom India itinerary"
         canonicalUrl="https://guideindia.tours/contact"
+        structuredData={[localBusinessSchema, breadcrumbSchema]}
       />
       
       <Navbar />
       
       <main>
-        {/* Hero Section */}
         <section className="pt-32 pb-16 bg-gradient-to-b from-muted to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -268,7 +334,6 @@ const Contact = () => {
           </div>
         </section>
         
-        {/* Contact Information */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
@@ -338,7 +403,6 @@ const Contact = () => {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-              {/* Contact Form */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -350,7 +414,6 @@ const Contact = () => {
                 <ContactForm />
               </motion.div>
               
-              {/* Business Hours */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -403,7 +466,6 @@ const Contact = () => {
           </div>
         </section>
         
-        {/* Map Section */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-display font-medium mb-8 text-center">Find Us</h2>

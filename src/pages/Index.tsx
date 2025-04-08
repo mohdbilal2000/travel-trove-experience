@@ -1,4 +1,3 @@
-
 import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,32 +10,81 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Index = () => {
+  // Structured data for the travel agency
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "@id": "https://guideindia.tours/#organization",
+    "name": "Guide India Tours",
+    "description": "Premium travel services for India's Golden Triangle: Delhi, Agra, and Jaipur",
+    "url": "https://guideindia.tours",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://guideindia.tours/logo.png",
+      "width": "180",
+      "height": "60"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Travel Street",
+      "addressLocality": "New Delhi",
+      "postalCode": "110001",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-123-456-7890",
+      "contactType": "customer service",
+      "email": "info@guideindia.tours",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/guideindia",
+      "https://www.instagram.com/guideindia",
+      "https://twitter.com/guideindia"
+    ],
+    "areaServed": ["Delhi", "Agra", "Jaipur"],
+    "priceRange": "$$$"
+  };
+  
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://guideindia.tours/#website",
+    "url": "https://guideindia.tours",
+    "name": "Guide India Tours",
+    "description": "Premium travel services for Golden Triangle: Delhi, Agra, and Jaipur",
+    "publisher": {
+      "@id": "https://guideindia.tours/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://guideindia.tours/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+  
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://guideindia.tours/"
+      }
+    ]
+  };
+
   return (
     <>
       <SeoHead
         title="Guide India Tours | Delhi, Agra, Jaipur Travel Expert"
         description="Experience the magic of India's Golden Triangle with our premium travel services. Explore Delhi, Agra, and Jaipur with customized tours, luxury accommodations, and expert guides."
-        keywords="Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours"
+        keywords="Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing"
         canonicalUrl="https://guideindia.tours"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "TravelAgency",
-          "name": "Guide India Tours",
-          "description": "Premium travel services for India's Golden Triangle: Delhi, Agra, and Jaipur",
-          "url": "https://guideindia.tours",
-          "logo": "https://guideindia.tours/logo.png",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "123 Travel Street",
-            "addressLocality": "New Delhi",
-            "postalCode": "110001",
-            "addressCountry": "IN"
-          },
-          "telephone": "+91-123-456-7890",
-          "email": "info@guideindia.tours",
-          "areaServed": ["Delhi", "Agra", "Jaipur"],
-          "priceRange": "$$$"
-        }}
+        structuredData={[organizationSchema, websiteSchema, breadcrumbSchema]}
       />
       
       <Navbar />
