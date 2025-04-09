@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import SeoHead from "@/components/shared/SeoHead";
-import { getPlanById } from "@/data/travelPlans";
+import { getPlanById } from "@/data/travelPlans"; // We've now properly exported this
 import PlanHeader from "@/components/plan-detail/PlanHeader";
 import PlanFeatures from "@/components/plan-detail/PlanFeatures";
 import Itinerary from "@/components/plan-detail/Itinerary";

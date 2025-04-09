@@ -1,8 +1,8 @@
 
 import { TravelPlan } from "../types/travelPlanTypes";
 
-// New tour plans data
-export const newTourPlans: TravelPlan[] = [
+// New tour plans data - renamed the export to avoid conflict with the main export
+export const tourPlans: TravelPlan[] = [
   {
     id: 11,
     title: "Express Golden Triangle Tour",
