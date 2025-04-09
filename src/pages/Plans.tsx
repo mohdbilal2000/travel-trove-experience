@@ -1,4 +1,3 @@
-
 import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,177 +6,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Car, Bed, Users, Coffee, Check, ChevronRight, Star, Clock } from "lucide-react";
+import { allPlans } from "@/data/travelPlans";
 
-const travelPlans = [
-  {
-    id: 1,
-    title: "Golden Triangle Essential",
-    duration: "4 Days / 3 Nights",
-    price: "From $599 per person",
-    description: "A perfect introduction to India's classic circuit, visiting Delhi, Agra, and Jaipur with comfortable accommodations and guided sightseeing.",
-    highlights: [
-      "Old & New Delhi city tour",
-      "Sunrise visit to Taj Mahal",
-      "Agra Fort exploration",
-      "Amber Fort in Jaipur",
-      "City Palace & Hawa Mahal tour"
-    ],
-    inclusions: [
-      "3 nights accommodation in 4-star hotels",
-      "Daily breakfast and select meals",
-      "Private air-conditioned vehicle",
-      "English-speaking guide",
-      "Monument entrance fees",
-      "Airport transfers"
-    ],
-    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 124,
-    popular: true
-  },
-  {
-    id: 2,
-    title: "Golden Triangle Luxury",
-    duration: "5 Days / 4 Nights",
-    price: "From $999 per person",
-    description: "Experience the Golden Triangle in style with luxury accommodations, personalized service, and exclusive experiences in Delhi, Agra, and Jaipur.",
-    highlights: [
-      "Comprehensive Delhi heritage tour",
-      "Private sunrise Taj Mahal experience",
-      "Fatehpur Sikri excursion",
-      "Elephant ride at Amber Fort",
-      "Luxury dining experiences",
-      "Cultural performances"
-    ],
-    inclusions: [
-      "4 nights in 5-star luxury hotels",
-      "All meals included",
-      "Premium air-conditioned SUV",
-      "Expert guide throughout",
-      "All entrance fees and activities",
-      "VIP airport transfers",
-      "Complimentary spa treatment"
-    ],
-    image: "https://images.unsplash.com/photo-1602642977157-b7c8b8003afd?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 86,
-    popular: false
-  },
-  {
-    id: 3,
-    title: "Golden Triangle with Varanasi",
-    duration: "7 Days / 6 Nights",
-    price: "From $899 per person",
-    description: "Extend your Golden Triangle journey to include the spiritual city of Varanasi, witnessing the sacred Ganges River rituals and ancient temples.",
-    highlights: [
-      "Delhi's top attractions",
-      "Taj Mahal and Agra Fort",
-      "Pink City of Jaipur exploration",
-      "Domestic flight to Varanasi",
-      "Evening Ganga Aarti ceremony",
-      "Sunrise boat ride on the Ganges",
-      "Buddhist site of Sarnath"
-    ],
-    inclusions: [
-      "6 nights accommodation in 4-star hotels",
-      "Daily breakfast and select meals",
-      "Transportation including domestic flight",
-      "Expert guides in each city",
-      "All entrance fees",
-      "All transfers",
-      "Boat ride in Varanasi"
-    ],
-    image: "https://images.unsplash.com/photo-1591804966755-f424e16fed2c?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 92,
-    popular: true
-  },
-  {
-    id: 4,
-    title: "Family Golden Triangle Adventure",
-    duration: "6 Days / 5 Nights",
-    price: "From $749 per person",
-    description: "A family-friendly exploration of the Golden Triangle with activities and experiences designed to engage travelers of all ages.",
-    highlights: [
-      "Interactive historical tours",
-      "Elephant ride & painting activity",
-      "Pottery workshop in Jaipur",
-      "Wildlife safari in Ranthambore",
-      "Cooking class with local family",
-      "Bollywood movie experience"
-    ],
-    inclusions: [
-      "5 nights in family-friendly hotels",
-      "All breakfasts and select meals",
-      "Comfortable family van with WiFi",
-      "Kid-friendly guides",
-      "All activities and entrance fees",
-      "Airport transfers",
-      "Welcome gifts for children"
-    ],
-    image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 68,
-    popular: false
-  },
-  {
-    id: 5,
-    title: "Golden Triangle & Udaipur",
-    duration: "8 Days / 7 Nights",
-    price: "From $1,099 per person",
-    description: "Combine the classic Golden Triangle with the romantic lake city of Udaipur for a comprehensive North India experience.",
-    highlights: [
-      "Delhi's historical monuments",
-      "Sunrise Taj Mahal visit",
-      "Jaipur's majestic palaces",
-      "Scenic drive to Udaipur",
-      "Lake Pichola boat cruise",
-      "City Palace complex tour",
-      "Vintage car museum"
-    ],
-    inclusions: [
-      "7 nights in 4-5 star hotels",
-      "Daily breakfast and select dinners",
-      "Private air-conditioned vehicle",
-      "Professional English-speaking guides",
-      "All entrance fees",
-      "Airport & hotel transfers",
-      "Lake cruise in Udaipur"
-    ],
-    image: "https://images.unsplash.com/photo-1590080554240-485e651e5ac3?q=80&w=2069&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 54,
-    popular: true
-  },
-  {
-    id: 6,
-    title: "Customized Golden Triangle",
-    duration: "Flexible",
-    price: "Custom quote",
-    description: "Design your perfect Golden Triangle experience with our expert planners. Customize every aspect from accommodations to activities based on your interests and preferences.",
-    highlights: [
-      "Personalized itinerary planning",
-      "Choice of accommodation categories",
-      "Flexible pace and schedule",
-      "Special interest focus options",
-      "Unique experiences and activities",
-      "Dining preferences accommodated"
-    ],
-    inclusions: [
-      "Accommodations of your choice",
-      "Meals as per your preference",
-      "Transportation options",
-      "Specialized guides as needed",
-      "Customized activities",
-      "Personalized service throughout",
-      "24/7 concierge support"
-    ],
-    image: "https://images.unsplash.com/photo-1567157577697-31de07e43f9b?q=80&w=2070&auto=format&fit=crop",
-    rating: 5.0,
-    reviews: 42,
-    popular: false
-  }
-];
+const travelPlans = allPlans.slice(0, 12);
 
 const planFeatures = [
   {
@@ -441,7 +272,6 @@ const Plans = () => {
             </div>
           </div>
           
-          {/* Decorative Elements */}
           <div className="absolute top-1/3 left-0 w-40 h-40 rounded-full bg-primary/10 transform -translate-x-1/2" />
           <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-primary/5 transform translate-y-1/3 translate-x-1/3" />
         </section>
