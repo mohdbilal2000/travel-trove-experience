@@ -1,4 +1,3 @@
-
 import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,9 +6,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Car, Bed, Users, Coffee, Check, ChevronRight, Star, Clock } from "lucide-react";
-import { newTourPlans } from "@/data/travelPlans";
+import { allPlans } from "@/data/travelPlans";
 
-const travelPlans = newTourPlans;
+const travelPlans = allPlans;
 
 const planFeatures = [
   {
@@ -163,7 +162,6 @@ const Plans = () => {
       <Navbar />
       
       <main>
-        {/* Hero Section */}
         <section className="pt-32 pb-16 bg-gradient-to-b from-muted to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -177,7 +175,6 @@ const Plans = () => {
           </div>
         </section>
         
-        {/* Plan Features */}
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -188,7 +185,6 @@ const Plans = () => {
           </div>
         </section>
         
-        {/* Travel Plans */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeading 
@@ -204,7 +200,6 @@ const Plans = () => {
           </div>
         </section>
         
-        {/* Custom Tours */}
         <section className="py-20 bg-primary/5 relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
@@ -277,7 +272,6 @@ const Plans = () => {
           <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-primary/5 transform translate-y-1/3 translate-x-1/3" />
         </section>
         
-        {/* FAQ Section */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeading 
@@ -356,7 +350,6 @@ const Plans = () => {
           </div>
         </section>
         
-        {/* CTA Section */}
         <section className="py-20 bg-card">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -381,99 +374,6 @@ const Plans = () => {
       
       <Footer />
     </>
-  );
-};
-
-// PlanCard component
-const PlanCard = ({ plan }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="bg-white rounded-xl overflow-hidden shadow-sm border border-border group hover:shadow-md transition-all"
-    >
-      <Link to={`/plans/${plan.id}`} className="block">
-        <div className="relative h-56 overflow-hidden">
-          <img 
-            src={plan.image} 
-            alt={plan.title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {plan.popular && (
-            <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-3 rounded-full">
-              Popular Choice
-            </div>
-          )}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent py-4 px-6">
-            <div className="flex items-center text-white space-x-1.5">
-              <Star className="h-4 w-4 text-primary fill-current" />
-              <span className="font-medium">{plan.rating}</span>
-              <span className="text-xs text-white/80">({plan.reviews} reviews)</span>
-            </div>
-          </div>
-        </div>
-      </Link>
-      
-      <div className="p-6">
-        <div className="flex items-center text-sm text-muted-foreground mb-2">
-          <Clock className="h-4 w-4 mr-1.5" />
-          {plan.duration}
-        </div>
-        
-        <Link to={`/plans/${plan.id}`} className="block">
-          <h3 className="text-xl font-display font-medium mb-2 hover:text-primary transition-colors">{plan.title}</h3>
-        </Link>
-        <p className="text-primary font-medium mb-3">{plan.price}</p>
-        <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
-        
-        <div className="mb-4">
-          <h4 className="font-medium mb-2">Highlights:</h4>
-          <ul className="space-y-1.5">
-            {plan.highlights.slice(0, 3).map((highlight, index) => (
-              <li key={index} className="flex text-sm">
-                <ChevronRight className="h-4 w-4 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                <span>{highlight}</span>
-              </li>
-            ))}
-            {plan.highlights.length > 3 && (
-              <li className="text-sm text-primary">+ {plan.highlights.length - 3} more highlights</li>
-            )}
-          </ul>
-        </div>
-        
-        <div className="flex space-x-2">
-          <Button asChild className="flex-1 justify-center">
-            <Link to={`/plans/${plan.id}`}>View Details</Link>
-          </Button>
-          <Button asChild variant="outline" className="flex-1 justify-center">
-            <Link to="/contact">Inquire</Link>
-          </Button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-// FeatureCard component
-const FeatureCard = ({ feature }) => {
-  const Icon = feature.icon;
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="bg-white p-6 rounded-xl border border-border"
-    >
-      <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-4 text-primary">
-        <Icon size={24} />
-      </div>
-      <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-      <p className="text-sm text-muted-foreground">{feature.description}</p>
-    </motion.div>
   );
 };
 
