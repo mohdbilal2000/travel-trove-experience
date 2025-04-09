@@ -51,6 +51,9 @@ const PlanDetail = () => {
     return null;
   }
 
+  // Default destinations if they don't exist in the plan data
+  const planDestinations = plan.destinations || ["Delhi", "Agra", "Jaipur"];
+
   // Create structured data for the tour package
   const tourSchema = {
     "@context": "https://schema.org",
@@ -79,7 +82,11 @@ const PlanDetail = () => {
         "name": item.title,
         "description": item.description
       }))
-    }
+    },
+    "touristDestination": planDestinations.map(destination => ({
+      "@type": "TouristDestination",
+      "name": destination
+    }))
   };
   
   // Add FAQ structured data if plan has FAQs
@@ -132,7 +139,7 @@ const PlanDetail = () => {
       <SeoHead
         title={`${plan.title} | Guide India Tours`}
         description={plan.description}
-        keywords={`${plan.title}, Golden Triangle tour, India travel, ${plan.highlights.join(', ')}, ${plan.destinations.join(', ')}`}
+        keywords={`${plan.title}, Golden Triangle tour, India travel, ${plan.highlights.join(', ')}, ${planDestinations.join(', ')}`}
         ogImage={plan.image}
         canonicalUrl={`https://guideindia.tours/plans/${plan.id}`}
         ogType="product"
