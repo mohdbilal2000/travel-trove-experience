@@ -205,7 +205,7 @@ export const travelPlans: TravelPlan[] = [
       },
       {
         day: 5,
-6 title: "Jaipur Exploration",
+        title: "Jaipur Exploration",
         description: "Full day tour of Jaipur including Amber Fort, City Palace, Jantar Mantar and a photo stop at Hawa Mahal.",
         accommodation: "4-star hotel in Jaipur",
         meals: "Breakfast"
