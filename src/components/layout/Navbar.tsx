@@ -45,14 +45,15 @@ const Navbar = () => {
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         isScrolled 
           ? "py-2 bg-ivory-300/95 backdrop-blur-md shadow-sm" 
-          : "py-5 bg-transparent"
+          : "py-5 bg-black/20 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="relative z-10">
           <h1 className="text-2xl font-display font-semibold text-foreground">
-            <span className="text-maroon-600">Guide</span>India Tours
+            <span className="text-maroon-600">{isScrolled ? "Guide" : "Guide"}</span>
+            <span className={isScrolled ? "text-royal-800" : "text-white"}>India Tours</span>
           </h1>
         </Link>
 
@@ -66,7 +67,7 @@ const Navbar = () => {
                 "text-sm font-medium transition-colors hover:text-maroon-600 relative",
                 location.pathname === item.path
                   ? "text-maroon-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-maroon-600"
-                  : isScrolled ? "text-charcoal-500" : "text-white"
+                  : isScrolled ? "text-royal-800" : "text-white"
               )}
             >
               {item.label}
@@ -76,7 +77,7 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="hidden md:block">
-          <Button size="sm" variant="accent" asChild>
+          <Button size="sm" variant={isScrolled ? "accent" : "outline"} asChild className={isScrolled ? "" : "border-white text-white"}>
             <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </div>
@@ -90,7 +91,7 @@ const Navbar = () => {
           {mobileMenuOpen ? (
             <X className="h-5 w-5" />
           ) : (
-            <Menu className="h-5 w-5" />
+            <Menu className={`h-5 w-5 ${isScrolled ? "text-royal-800" : "text-white"}`} />
           )}
         </button>
 
@@ -109,10 +110,10 @@ const Navbar = () => {
                   key={item.path}
                   to={item.path}
                   className={cn(
-                    "text-lg font-medium hover:text-maroon-600 transition-colors w-full text-center py-2",
+                    "text-lg font-medium hover:text-maroon-700 transition-colors w-full text-center py-2",
                     location.pathname === item.path
-                      ? "text-maroon-600"
-                      : "text-charcoal-500"
+                      ? "text-maroon-700"
+                      : "text-royal-800"
                   )}
                 >
                   {item.label}
@@ -123,7 +124,7 @@ const Navbar = () => {
               <Button asChild variant="default" className="w-full">
                 <Link to="/contact">Plan Your Trip</Link>
               </Button>
-              <Button variant="outline" className="w-full" asChild>
+              <Button variant="outline" className="w-full text-royal-800" asChild>
                 <Link to="/contact">Custom Itinerary</Link>
               </Button>
             </div>

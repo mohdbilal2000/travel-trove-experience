@@ -23,7 +23,7 @@
     --secondary-foreground: 210 29% 24%;
 
     --muted: 43 30% 93%;
-    --muted-foreground: 210 29% 45%;
+    --muted-foreground: 210 29% 35%;
 
     --accent: 210 29% 24%; /* Royal Blue (#2C3E50) */
     --accent-foreground: 0 0% 100%;
@@ -88,7 +88,11 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-medium tracking-tight;
+    @apply font-display font-medium tracking-tight text-royal-800;
+  }
+
+  p {
+    @apply text-royal-800;
   }
 
   .scroll-smooth {
@@ -143,9 +147,9 @@
     @apply opacity-0 transition-opacity duration-300;
   }
 
-  /* Updated utility classes for color scheme */
+  /* Updated utility classes for color scheme with better contrast */
   .bg-theme-primary {
-    @apply bg-maroon-600;
+    @apply bg-maroon-700;
   }
 
   .bg-theme-secondary {
@@ -153,27 +157,44 @@
   }
 
   .bg-theme-accent {
-    @apply bg-royal-600;
+    @apply bg-royal-700;
   }
 
   .text-theme-primary {
-    @apply text-maroon-600;
+    @apply text-maroon-700;
   }
   
   .text-theme-secondary {
-    @apply text-amber-500;
+    @apply text-amber-600;
   }
   
   .text-theme-accent {
-    @apply text-royal-600;
+    @apply text-royal-700;
   }
 
   .border-theme-primary {
-    @apply border-maroon-600;
+    @apply border-maroon-700;
   }
 
   .hover-theme-primary:hover {
-    @apply bg-maroon-600 text-white;
+    @apply bg-maroon-700 text-white;
+  }
+  
+  /* New high-contrast utility classes */
+  .text-on-light {
+    @apply text-royal-800;
+  }
+  
+  .text-on-dark {
+    @apply text-white;
+  }
+  
+  .text-on-primary {
+    @apply text-white;
+  }
+  
+  .text-on-secondary {
+    @apply text-royal-900;
   }
 }
 
