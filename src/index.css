@@ -7,37 +7,37 @@
 
 @layer base {
   :root {
-    --background: 60 33% 97%; /* ivory/off-white */
-    --foreground: 0 0% 20%; /* charcoal gray */
+    --background: 43 67% 95%; /* warm ivory */
+    --foreground: 210 29% 24%; /* royal blue */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 210 29% 24%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 210 29% 24%;
 
-    --primary: 0 100% 27%; /* Royal Maroon */
+    --primary: 0 100% 27%; /* Deep Maroon (#8B0000) */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 100% 52%; /* Amber Yellow */
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 45 100% 52%; /* Amber Yellow (#FFC107) */
+    --secondary-foreground: 210 29% 24%;
 
-    --muted: 60 9% 93%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 43 30% 93%;
+    --muted-foreground: 210 29% 45%;
 
-    --accent: 30 100% 50%; /* Saffron Orange */
+    --accent: 210 29% 24%; /* Royal Blue (#2C3E50) */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 85%;
-    --input: 0 0% 88%;
+    --border: 43 13% 85%;
+    --input: 43 10% 88%;
     --ring: 0 100% 27%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 43 67% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -49,24 +49,24 @@
 
   .dark {
     --background: 0 0% 10%;
-    --foreground: 60 33% 97%;
+    --foreground: 43 67% 95%;
 
     --card: 0 0% 15%;
-    --card-foreground: 60 33% 97%;
+    --card-foreground: 43 67% 95%;
 
     --popover: 0 0% 15%;
-    --popover-foreground: 60 33% 97%;
+    --popover-foreground: 43 67% 95%;
 
-    --primary: 0 100% 35%; /* Darker Royal Maroon */
+    --primary: 0 100% 35%; /* Darker Deep Maroon */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 45 95% 45%; /* Darker Amber Yellow */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 20%;
-    --muted-foreground: 60 33% 80%;
+    --muted-foreground: 43 67% 80%;
 
-    --accent: 30 95% 45%; /* Darker Saffron Orange */
+    --accent: 210 29% 35%; /* Darker Royal Blue */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -143,7 +143,7 @@
     @apply opacity-0 transition-opacity duration-300;
   }
 
-  /* New utility classes for color scheme */
+  /* Updated utility classes for color scheme */
   .bg-theme-primary {
     @apply bg-maroon-600;
   }
@@ -153,7 +153,7 @@
   }
 
   .bg-theme-accent {
-    @apply bg-amber-900;
+    @apply bg-royal-600;
   }
 
   .text-theme-primary {
@@ -165,7 +165,7 @@
   }
   
   .text-theme-accent {
-    @apply text-amber-900;
+    @apply text-royal-600;
   }
 
   .border-theme-primary {

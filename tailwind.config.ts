@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -122,13 +121,13 @@ export default {
 					600: '#ffb300',
 					700: '#ffa000',
 					800: '#ff8f00',
-					900: '#ff6f00', // Saffron Orange (accent)
+					900: '#ff6f00',
 				},
 				ivory: {
 					50: '#ffffff',
 					100: '#fefefc',
 					200: '#fcfcf9',
-					300: '#F9F9F6', // Ivory / Off-white (background)
+					300: '#FAF4E1', // Warm Ivory (neutral base)
 					400: '#f7f7f3',
 					500: '#f5f5f0',
 					600: '#e0e0db',
@@ -136,29 +135,17 @@ export default {
 					800: '#b6b6b1',
 					900: '#a1a19d',
 				},
-				charcoal: {
-					50: '#e6e6e6',
-					100: '#cccccc',
-					200: '#999999',
-					300: '#666666',
-					400: '#4d4d4d',
-					500: '#333333', // Charcoal Gray (text)
-					600: '#2e2e2e',
-					700: '#292929',
-					800: '#242424',
-					900: '#1f1f1f',
-				},
-				turquoise: {
-					50: '#e6fbf9',
-					100: '#ccf7f3',
-					200: '#99efe8',
-					300: '#66e7dc',
-					400: '#40E0D0', // Turquoise / Light Teal (optional highlight)
-					500: '#1ad6c3',
-					600: '#13aea0',
-					700: '#0d857a',
-					800: '#095c54',
-					900: '#04332f',
+				royal: {
+					50: '#e3e8ed',
+					100: '#c7d1db',
+					200: '#a2b5c7',
+					300: '#7d98b2',
+					400: '#587c9e',
+					500: '#3d5d79',
+					600: '#2C3E50', // Royal Blue (accent)
+					700: '#23303d',
+					800: '#19222a',
+					900: '#0f1318',
 				},
 			},
 			fontFamily: {

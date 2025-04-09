@@ -16,13 +16,13 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background hover:bg-muted hover:text-maroon-700",
         secondary:
-          "bg-amber-500 text-charcoal-600 hover:bg-amber-600 hover:text-charcoal-700 active:bg-amber-700",
+          "bg-amber-500 text-royal-700 hover:bg-amber-600 hover:text-royal-800 active:bg-amber-700",
         ghost: "hover:bg-muted hover:text-maroon-600",
         link: "text-maroon-600 underline-offset-4 hover:underline",
-        accent: "bg-amber-900 text-white hover:bg-amber-800 active:bg-amber-950",
+        accent: "bg-royal-600 text-white hover:bg-royal-700 active:bg-royal-800",
         // Add new variants as needed
-        saffron: "bg-[#FF6F00] text-white hover:bg-[#FF8F00] active:bg-[#FF5722]",
-        turquoise: "bg-[#40E0D0] text-charcoal-700 hover:bg-[#30D0C0] active:bg-[#20C0B0]"
+        saffron: "bg-amber-900 text-white hover:bg-amber-800 active:bg-amber-950",
+        turquoise: "bg-[#40E0D0] text-royal-700 hover:bg-[#30D0C0] active:bg-[#20C0B0]"
       },
       size: {
         default: "h-10 px-4 py-2",
