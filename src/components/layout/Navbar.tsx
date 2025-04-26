@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -20,7 +19,6 @@ const Navbar = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -34,7 +32,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when location changes
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
@@ -49,11 +46,10 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="relative z-10">
           <h1 className="text-2xl font-display font-semibold">
             <span className={cn(
-              "text-red-600",
+              "text-red-600 mr-2",
               !isScrolled && "text-red-500"
             )}>Guide</span>
             <span className={cn(
@@ -63,7 +59,6 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
@@ -81,18 +76,14 @@ const Navbar = () => {
           ))}
           <Button 
             size="sm"
-            variant={isScrolled ? "default" : "outline"}
+            variant="saffron"
             asChild
-            className={cn(
-              "ml-4",
-              !isScrolled && "border-white text-white hover:bg-white/10"
-            )}
+            className="ml-4 px-6"
           >
             <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden relative z-10 p-2 text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -105,7 +96,6 @@ const Navbar = () => {
           )}
         </button>
 
-        {/* Mobile Menu - Improved styling */}
         <div
           className={cn(
             "fixed inset-0 bg-ivory-300/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
