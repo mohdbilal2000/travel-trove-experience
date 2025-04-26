@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button";
 const backgrounds = [
   {
     id: 1,
-    name: "Delhi",
-    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop",
-    description: "Explore the historical monuments and vibrant culture of India's capital"
-  },
-  {
-    id: 2,
     name: "Agra",
     image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
     description: "Experience the majestic Taj Mahal and Mughal architectural wonders"
+  },
+  {
+    id: 2,
+    name: "Delhi",
+    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop",
+    description: "Explore the historical monuments and vibrant culture of India's capital"
   },
   {
     id: 3,
@@ -55,18 +55,18 @@ const Hero = () => {
           )}
           style={{ backgroundImage: `url(${bg.image})` }}
         >
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
       ))}
 
       {/* Content */}
       <div className="relative h-full flex flex-col justify-center items-center text-white text-center z-10 px-4">
         <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 text-white leading-tight">
-            Discover The Magic Of <span className="text-amber-500">India's Golden Triangle</span>
+          <h1 className="hero-text text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 text-white leading-tight">
+            Discover The Magic Of <span className="text-amber-400">India's Golden Triangle</span>
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Delhi, Agra, and Jaipur with our curated travel experiences.
+          <p className="hero-text text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white">
+            Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Agra, Delhi, and Jaipur with our curated travel experiences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button size="lg" asChild className="bg-maroon-600 hover:bg-maroon-700 text-white">

@@ -1,8 +1,40 @@
-
 import { TravelPlan } from "../types/travelPlanTypes";
 
 // New tour plans data - renamed the export to avoid conflict with the main export
 export const tourPlans: TravelPlan[] = [
+  {
+    id: 23,
+    title: "Same Day Agra Tour",
+    duration: "1 Day",
+    price: "Starting from $150 per person",
+    description: "Perfect for travelers with limited time who want to experience the magic of the Taj Mahal in a single day.",
+    highlights: [
+      "Early morning pick-up from Delhi",
+      "Taj Mahal visit with expert guide",
+      "Agra Fort exploration",
+      "Local cuisine experience",
+      "Evening return to Delhi"
+    ],
+    inclusions: [
+      "Round-trip transportation from Delhi",
+      "Professional guide (male/female as per preference)",
+      "Monument entrance fees",
+      "Breakfast and lunch"
+    ],
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 92,
+    popular: true,
+    itinerary: [
+      {
+        day: 1,
+        title: "Delhi - Agra - Delhi",
+        description: "Early morning departure from Delhi, Taj Mahal visit at sunrise, Agra Fort tour, local shopping, and evening return to Delhi.",
+        accommodation: "None",
+        meals: "Breakfast, Lunch"
+      }
+    ]
+  },
   {
     id: 11,
     title: "Express Golden Triangle Tour",
@@ -85,7 +117,7 @@ export const tourPlans: TravelPlan[] = [
       },
       {
         day: 3,
-        title: "Agra to Jaipur",
+ title: "Agra to Jaipur",
         description: "Drive to Jaipur via Fatehpur Sikri. Evening arrival in Jaipur.",
         accommodation: "3-star hotel in Jaipur",
         meals: "Breakfast, Dinner"
@@ -484,7 +516,7 @@ export const tourPlans: TravelPlan[] = [
       "Daily breakfast",
       "Rain gear (umbrellas, ponchos)"
     ],
-    image: "https://images.unsplash.com/photo-1441484295955-db07de1fdbad?q=80&w=1974&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1441497895121-1334fc14d8c9?q=80&w=1974&auto=format&fit=crop",
     rating: 4.6,
     reviews: 42,
     popular: false,

@@ -10,30 +10,30 @@ import { Link } from "react-router-dom";
 const services = [
   {
     id: 1,
+    title: "Expert Local Guides",
+    description: "Male and female guides available to provide cultural and historical insights based on your preference.",
+    icon: Users,
+    link: "/services"
+  },
+  {
+    id: 2,
     title: "Luxury Transportation",
     description: "Travel in comfort with our fleet of premium vehicles and professional drivers.",
     icon: Car,
     link: "/services"
   },
   {
-    id: 2,
+    id: 3,
     title: "Hotel Bookings",
     description: "Stay at handpicked luxury hotels and heritage properties across all destinations.",
     icon: Bed,
     link: "/services"
   },
   {
-    id: 3,
+    id: 4,
     title: "Custom Itineraries",
     description: "Personalized travel plans tailored to your preferences, time, and budget.",
     icon: CalendarRange,
-    link: "/services"
-  },
-  {
-    id: 4,
-    title: "Expert Guides",
-    description: "Knowledgeable local guides to provide cultural and historical insights.",
-    icon: Users,
     link: "/services"
   },
   {
@@ -45,8 +45,8 @@ const services = [
   },
   {
     id: 6,
-    title: "Culinary Experiences",
-    description: "Authentic food tours and dining recommendations to savor local flavors.",
+    title: "Authentic Culinary Experiences",
+    description: "Traditional food tours and dining recommendations to savor local flavors.",
     icon: Coffee,
     link: "/services"
   },

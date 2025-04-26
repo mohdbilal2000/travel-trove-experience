@@ -45,47 +45,52 @@ const Navbar = () => {
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         isScrolled 
           ? "py-2 bg-ivory-300/95 backdrop-blur-md shadow-sm" 
-          : "py-5 bg-black/20 backdrop-blur-sm"
+          : "py-3 bg-black/20 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="relative z-10">
-          <h1 className="text-2xl font-display font-semibold text-foreground">
-            <span className="text-maroon-600">{isScrolled ? "Guide" : "Guide"}</span>
-            <span className={isScrolled ? "text-royal-800" : "text-white"}>India Tours</span>
+          <h1 className="text-2xl font-display font-semibold">
+            <span className={cn(
+              "text-red-600",
+              !isScrolled && "text-red-500"
+            )}>Guide</span>
+            <span className={cn(
+              "text-royal-800",
+              !isScrolled && "text-white"
+            )}>India Tours</span>
           </h1>
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-maroon-600 relative",
+                "text-sm font-medium transition-colors hover:text-red-600 relative py-1",
                 location.pathname === item.path
-                  ? "text-maroon-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-maroon-600"
+                  ? "text-red-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-600"
                   : isScrolled ? "text-royal-800" : "text-white"
               )}
             >
               {item.label}
             </Link>
           ))}
-        </nav>
-
-        {/* Contact Button - Fixed visibility issue */}
-        <div className="hidden md:block">
           <Button 
-            size="sm" 
-            variant={isScrolled ? "accent" : "outline"} 
-            asChild 
-            className={isScrolled ? "" : "border-white text-white hover:text-white"}
+            size="sm"
+            variant={isScrolled ? "default" : "outline"}
+            asChild
+            className={cn(
+              "ml-4",
+              !isScrolled && "border-white text-white hover:bg-white/10"
+            )}
           >
             <Link to="/contact">Plan Your Trip</Link>
           </Button>
-        </div>
+        </nav>
 
         {/* Mobile Menu Button */}
         <button
