@@ -95,10 +95,9 @@ const ContactForm = ({ plan }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-card rounded-xl shadow-sm border border-border p-8 text-center"
+        className="bg-ivory-50 rounded-xl shadow-sm border border-border p-8 text-center"
       >
         <div className="flex flex-col items-center justify-center">
-          {/* You can replace CheckCircle with a more appropriate icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -109,16 +108,18 @@ const ContactForm = ({ plan }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="h-16 w-16 text-primary mb-4"
+            className="h-16 w-16 text-maroon-600 mb-4"
           >
             <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
             <path d="M7 13l3 3 7-7" />
           </svg>
-          <h3 className="text-2xl font-display font-medium mb-3">Thank You!</h3>
-          <p className="text-muted-foreground mb-6">
+          <h3 className="text-2xl font-display font-medium mb-3 text-royal-800">Thank You!</h3>
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
             Your booking request has been successfully sent. We appreciate your interest and will get back to you as soon as possible.
           </p>
-          <Button onClick={() => setSubmitted(false)}>Send Another Request</Button>
+          <Button onClick={() => setSubmitted(false)} variant="outline" className="font-medium">
+            Send Another Request
+          </Button>
         </div>
       </motion.div>
     );
@@ -126,19 +127,19 @@ const ContactForm = ({ plan }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-ivory-50/50 rounded-xl p-6 md:p-8 backdrop-blur-sm border border-ivory-200">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name *</FormLabel>
+                <FormLabel className="font-medium text-royal-800">Full Name *</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Your name"
                     {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
                   />
                 </FormControl>
                 <FormMessage />
@@ -151,13 +152,13 @@ const ContactForm = ({ plan }) => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address *</FormLabel>
+                <FormLabel className="font-medium text-royal-800">Email Address *</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="your.email@example.com"
                     type="email"
                     {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
                   />
                 </FormControl>
                 <FormMessage />
@@ -172,13 +173,13 @@ const ContactForm = ({ plan }) => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel className="font-medium text-royal-800">Phone Number</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Your phone number (optional)"
                     type="tel"
                     {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
                   />
                 </FormControl>
                 <FormMessage />
@@ -191,15 +192,15 @@ const ContactForm = ({ plan }) => {
             name="travelers"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Number of Travelers *</FormLabel>
+                <FormLabel className="font-medium text-royal-800">Number of Travelers *</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                    <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors">
                       <SelectValue placeholder="Select number of travelers" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
-                        <SelectItem key={num} value={String(num)}>
+                        <SelectItem key={num} value={String(num)} className="cursor-pointer hover:bg-ivory-100">
                           {num}
                         </SelectItem>
                       ))}
@@ -217,12 +218,12 @@ const ContactForm = ({ plan }) => {
           name="date"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Preferred Travel Date *</FormLabel>
+              <FormLabel className="font-medium text-royal-800">Preferred Travel Date *</FormLabel>
               <FormControl>
                 <Input
                   type="date"
                   {...field}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
                 />
               </FormControl>
               <FormMessage />
@@ -235,13 +236,13 @@ const ContactForm = ({ plan }) => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your Message *</FormLabel>
+              <FormLabel className="font-medium text-royal-800">Your Message *</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Please share any specific requirements or preferences for your trip..."
                   rows={6}
                   {...field}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors resize-none"
                 />
               </FormControl>
               <FormMessage />
@@ -252,7 +253,7 @@ const ContactForm = ({ plan }) => {
         <Button
           type="submit"
           disabled={loading}
-          className="flex items-center justify-center w-full md:w-auto px-8 py-3 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-70"
+          className="flex items-center justify-center w-full md:w-auto px-8 py-3 bg-maroon-700 text-white font-medium rounded-md hover:bg-maroon-800 transition-colors disabled:opacity-70"
         >
           {loading ? (
             <span className="flex items-center">
