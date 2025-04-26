@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -36,25 +37,31 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   }, [location]);
 
+  // Check if we're on the plan detail page (URL pattern: /plans/[number])
+  const isPlanDetail = /^\/plans\/\d+$/.test(location.pathname);
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-        isScrolled 
+        // Apply different styling for plan detail pages to fix the blurry effect
+        isPlanDetail
           ? "py-2 bg-ivory-300/95 backdrop-blur-md shadow-sm" 
-          : "py-3 bg-black/20 backdrop-blur-sm"
+          : isScrolled 
+            ? "py-2 bg-ivory-300/95 backdrop-blur-md shadow-sm" 
+            : "py-3 bg-black/20 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="relative z-10">
           <h1 className="text-2xl font-display font-semibold">
             <span className={cn(
-              "text-red-600 mr-2",
-              !isScrolled && "text-red-500"
+              "text-maroon-600 mr-2", // Use maroon-600 consistently for the "Guide" text
+              !isScrolled && !isPlanDetail && "text-maroon-500"
             )}>Guide</span>
             <span className={cn(
               "text-royal-800",
-              !isScrolled && "text-white"
+              !isScrolled && !isPlanDetail && "text-white"
             )}>India Tours</span>
           </h1>
         </Link>
@@ -65,10 +72,10 @@ const Navbar = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-red-600 relative py-1",
+                "text-sm font-medium transition-colors hover:text-maroon-600 relative py-1",
                 location.pathname === item.path
-                  ? "text-red-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-600"
-                  : isScrolled ? "text-royal-800" : "text-white"
+                  ? "text-maroon-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-maroon-600"
+                  : isScrolled || isPlanDetail ? "text-royal-800" : "text-white"
               )}
             >
               {item.label}
@@ -76,7 +83,7 @@ const Navbar = () => {
           ))}
           <Button 
             size="sm"
-            variant="saffron"
+            variant="turquoise"
             asChild
             className="ml-4 px-6"
           >
@@ -92,7 +99,7 @@ const Navbar = () => {
           {mobileMenuOpen ? (
             <X className="h-5 w-5" />
           ) : (
-            <Menu className={`h-5 w-5 ${isScrolled ? "text-royal-800" : "text-white"}`} />
+            <Menu className={`h-5 w-5 ${isScrolled || isPlanDetail ? "text-royal-800" : "text-white"}`} />
           )}
         </button>
 

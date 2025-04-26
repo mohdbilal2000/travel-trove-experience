@@ -95,7 +95,7 @@ const ContactForm = ({ plan }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-ivory-50 rounded-xl shadow-sm border border-border p-8 text-center"
+        className="bg-ivory-50 rounded-xl shadow-lg border border-ivory-300 p-8 text-center max-w-4xl mx-auto"
       >
         <div className="flex flex-col items-center justify-center">
           <svg
@@ -126,152 +126,173 @@ const ContactForm = ({ plan }) => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-ivory-50/50 rounded-xl p-6 md:p-8 backdrop-blur-sm border border-ivory-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-medium text-royal-800">Full Name *</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Your name"
-                    {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-medium text-royal-800">Email Address *</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="your.email@example.com"
-                    type="email"
-                    {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-medium text-royal-800">Phone Number</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Your phone number (optional)"
-                    type="tel"
-                    {...field}
-                    className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="travelers"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-medium text-royal-800">Number of Travelers *</FormLabel>
-                <FormControl>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors">
-                      <SelectValue placeholder="Select number of travelers" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white">
-                      {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
-                        <SelectItem key={num} value={String(num)} className="cursor-pointer hover:bg-ivory-100">
-                          {num}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-medium text-royal-800">Preferred Travel Date *</FormLabel>
-              <FormControl>
-                <Input
-                  type="date"
-                  {...field}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-medium text-royal-800">Your Message *</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Please share any specific requirements or preferences for your trip..."
-                  rows={6}
-                  {...field}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors resize-none"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button
-          type="submit"
-          disabled={loading}
-          className="flex items-center justify-center w-full md:w-auto px-8 py-3 bg-maroon-700 text-white font-medium rounded-md hover:bg-maroon-800 transition-colors disabled:opacity-70"
+    <div className="py-12 bg-ivory-50/50 backdrop-blur-sm">
+      <div className="container max-w-6xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
         >
-          {loading ? (
-            <span className="flex items-center">
-              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Sending...
-            </span>
-          ) : (
-            <span className="flex items-center">
-              <Send className="mr-2 h-4 w-4" />
-              Send Request
-            </span>
-          )}
-        </Button>
-      </form>
-    </Form>
+          <h2 className="text-3xl md:text-4xl font-display font-semibold mb-3 text-royal-800">Book This Tour</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Fill in the form below to inquire about this tour. Our team will get back to you within 24 hours.
+          </p>
+        </motion.div>
+        
+        <div className="max-w-4xl mx-auto">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white rounded-xl p-6 md:p-8 shadow-lg border border-ivory-200">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-medium text-royal-800">Full Name *</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Your name"
+                          {...field}
+                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-medium text-royal-800">Email Address *</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="your.email@example.com"
+                          type="email"
+                          {...field}
+                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-medium text-royal-800">Phone Number</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Your phone number (optional)"
+                          type="tel"
+                          {...field}
+                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="travelers"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-medium text-royal-800">Number of Travelers *</FormLabel>
+                      <FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors">
+                            <SelectValue placeholder="Select number of travelers" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white">
+                            {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
+                              <SelectItem key={num} value={String(num)} className="cursor-pointer hover:bg-ivory-100">
+                                {num}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="date"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-medium text-royal-800">Preferred Travel Date *</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="date"
+                        {...field}
+                        className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-medium text-royal-800">Your Message *</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Please share any specific requirements or preferences for your trip..."
+                        rows={6}
+                        {...field}
+                        className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors resize-none"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full md:w-auto px-8 py-3 bg-maroon-600 text-white font-medium rounded-md hover:bg-maroon-700 transition-colors disabled:opacity-70"
+                >
+                  {loading ? (
+                    <span className="flex items-center">
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    <span className="flex items-center">
+                      <Send className="mr-2 h-4 w-4" />
+                      Send Request
+                    </span>
+                  )}
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </div>
+      </div>
+    </div>
   );
 };
 

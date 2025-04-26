@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -7,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import SeoHead from "@/components/shared/SeoHead";
-import { getPlanById } from "@/data/travelPlans"; // We've now properly exported this
+import { getPlanById } from "@/data/travelPlans";
 import PlanHeader from "@/components/plan-detail/PlanHeader";
 import PlanFeatures from "@/components/plan-detail/PlanFeatures";
 import Itinerary from "@/components/plan-detail/Itinerary";
@@ -21,7 +20,6 @@ const PlanDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
     
     if (id) {
@@ -31,7 +29,6 @@ const PlanDetail = () => {
       if (foundPlan) {
         setPlan(foundPlan);
       } else {
-        // Plan not found, redirect to plans page
         navigate('/plans');
       }
     }
@@ -42,7 +39,7 @@ const PlanDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-xl">Loading...</div>
+        <div className="animate-pulse text-xl text-royal-800">Loading...</div>
       </div>
     );
   }
@@ -51,10 +48,8 @@ const PlanDetail = () => {
     return null;
   }
 
-  // Default destinations if they don't exist in the plan data
   const planDestinations = plan.destinations || ["Delhi", "Agra", "Jaipur"];
 
-  // Create structured data for the tour package
   const tourSchema = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
@@ -69,7 +64,7 @@ const PlanDetail = () => {
     "offers": {
       "@type": "Offer",
       "name": plan.title,
-      "price": plan.price.substring(1), // Remove currency symbol
+      "price": plan.price.substring(1),
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "validFrom": new Date().toISOString().split('T')[0]
@@ -88,8 +83,7 @@ const PlanDetail = () => {
       "name": destination
     }))
   };
-  
-  // Add FAQ structured data if plan has FAQs
+
   const faqSchema = plan.faqs ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -102,8 +96,7 @@ const PlanDetail = () => {
       }
     }))
   } : null;
-  
-  // Breadcrumbs structured data
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -128,14 +121,13 @@ const PlanDetail = () => {
       }
     ]
   };
-  
-  // Create an array of structured data objects
+
   const structuredData = faqSchema ? 
     [tourSchema, faqSchema, breadcrumbSchema] : 
     [tourSchema, breadcrumbSchema];
 
   return (
-    <>
+    <div className="bg-ivory-50">
       <SeoHead
         title={`${plan.title} | Guide India Tours`}
         description={plan.description}
@@ -149,8 +141,7 @@ const PlanDetail = () => {
       <Navbar />
       
       <main>
-        {/* Back Button */}
-        <div className="container max-w-6xl mx-auto px-4 py-4">
+        <div className="container max-w-6xl mx-auto px-4 pt-24 pb-4">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
@@ -159,7 +150,7 @@ const PlanDetail = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="flex items-center text-muted-foreground hover:text-foreground"
+              className="flex items-center text-royal-700 hover:text-maroon-600"
               onClick={() => navigate(-1)}
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -168,16 +159,17 @@ const PlanDetail = () => {
           </motion.div>
         </div>
 
-        {/* Hero Section */}
         <PlanHeader plan={plan} />
-        <PlanFeatures plan={plan} />
+        <div className="bg-pattern-light">
+          <PlanFeatures plan={plan} />
+        </div>
         <Itinerary plan={plan} />
         <ContactForm plan={plan} />
         <RelatedPlans currentPlanId={plan.id} />
       </main>
       
       <Footer />
-    </>
+    </div>
   );
 };
 
