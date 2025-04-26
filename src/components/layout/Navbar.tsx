@@ -75,9 +75,14 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Contact Button */}
+        {/* Contact Button - Fixed visibility issue */}
         <div className="hidden md:block">
-          <Button size="sm" variant={isScrolled ? "accent" : "outline"} asChild className={isScrolled ? "" : "border-white text-white"}>
+          <Button 
+            size="sm" 
+            variant={isScrolled ? "accent" : "outline"} 
+            asChild 
+            className={isScrolled ? "" : "border-white text-white hover:text-white"}
+          >
             <Link to="/contact">Plan Your Trip</Link>
           </Button>
         </div>
@@ -95,7 +100,7 @@ const Navbar = () => {
           )}
         </button>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Improved styling */}
         <div
           className={cn(
             "fixed inset-0 bg-ivory-300/95 backdrop-blur-md transition-transform duration-300 md:hidden flex flex-col items-center justify-center",
@@ -104,15 +109,15 @@ const Navbar = () => {
           style={{ top: 0, zIndex: 5 }}
         >
           <div className="container px-4 pt-16 flex flex-col items-center">
-            <nav className="flex flex-col items-center space-y-8 mb-8 w-full">
+            <nav className="flex flex-col items-center space-y-6 mb-8 w-full">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   className={cn(
-                    "text-lg font-medium hover:text-maroon-700 transition-colors w-full text-center py-2",
+                    "text-xl font-display font-medium hover:text-maroon-700 transition-colors w-full text-center py-2",
                     location.pathname === item.path
-                      ? "text-maroon-700"
+                      ? "text-maroon-700 border-b-2 border-maroon-700"
                       : "text-royal-800"
                   )}
                 >
@@ -121,10 +126,10 @@ const Navbar = () => {
               ))}
             </nav>
             <div className="flex flex-col gap-4 w-full">
-              <Button asChild variant="default" className="w-full">
+              <Button asChild variant="default" className="w-full text-lg py-6">
                 <Link to="/contact">Plan Your Trip</Link>
               </Button>
-              <Button variant="outline" className="w-full text-royal-800" asChild>
+              <Button variant="outline" className="w-full text-lg py-6 text-royal-800" asChild>
                 <Link to="/contact">Custom Itinerary</Link>
               </Button>
             </div>

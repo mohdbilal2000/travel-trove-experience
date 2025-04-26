@@ -98,7 +98,6 @@ export default {
 					800: '#334D41',
 					900: '#1A2620',
 				},
-				// New color scheme
 				maroon: {
 					50: '#f9e6e6',
 					100: '#f3cccc',
@@ -106,7 +105,7 @@ export default {
 					300: '#db6666',
 					400: '#d03333',
 					500: '#b71c1c',
-					600: '#8B0000', // Royal Maroon (primary)
+					600: '#8B0000',
 					700: '#6b0000',
 					800: '#4a0000',
 					900: '#2a0000',
@@ -117,7 +116,7 @@ export default {
 					200: '#ffe082',
 					300: '#ffd54f',
 					400: '#ffca28',
-					500: '#FFC107', // Amber Yellow (secondary)
+					500: '#FFC107',
 					600: '#ffb300',
 					700: '#ffa000',
 					800: '#ff8f00',
@@ -127,7 +126,7 @@ export default {
 					50: '#ffffff',
 					100: '#fefefc',
 					200: '#fcfcf9',
-					300: '#FAF4E1', // Warm Ivory (neutral base)
+					300: '#FAF4E1',
 					400: '#f7f7f3',
 					500: '#f5f5f0',
 					600: '#e0e0db',
@@ -142,7 +141,7 @@ export default {
 					300: '#7d98b2',
 					400: '#587c9e',
 					500: '#3d5d79',
-					600: '#2C3E50', // Royal Blue (accent)
+					600: '#2C3E50',
 					700: '#23303d',
 					800: '#19222a',
 					900: '#0f1318',
