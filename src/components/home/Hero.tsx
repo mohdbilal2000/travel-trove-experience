@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,25 +8,29 @@ const backgrounds = [
     id: 1,
     name: "Agra",
     image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
-    description: "Experience the majestic Taj Mahal and Mughal architectural wonders"
+    description: "Experience the majestic Taj Mahal and Mughal architectural wonders",
+    thumbnail: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=400&auto=format&fit=crop"
   },
   {
     id: 2,
     name: "Delhi",
     image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop",
-    description: "Explore the historical monuments and vibrant culture of India's capital"
+    description: "Explore the historical monuments and vibrant culture of India's capital",
+    thumbnail: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=400&auto=format&fit=crop"
   },
   {
     id: 3,
     name: "Jaipur",
     image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2066&auto=format&fit=crop",
-    description: "Discover the pink city with its royal palaces and rich Rajasthani heritage"
+    description: "Discover the pink city with its royal palaces and rich Rajasthani heritage",
+    thumbnail: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=400&auto=format&fit=crop"
   }
 ];
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [hoveredCity, setHoveredCity] = useState<number | null>(null);
 
   useEffect(() => {
     if (isHovered) return;
@@ -78,13 +81,15 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* City Indicators */}
+        {/* City Indicators with Preview */}
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8">
           {backgrounds.map((bg, index) => (
             <button
               key={bg.id}
               onClick={() => setActiveIndex(index)}
-              className="text-center focus:outline-none group"
+              className="text-center focus:outline-none group relative"
+              onMouseEnter={() => setHoveredCity(index)}
+              onMouseLeave={() => setHoveredCity(null)}
             >
               <span className={cn(
                 "block w-20 h-1 mb-2 mx-auto transition-all duration-300",
@@ -96,6 +101,20 @@ const Hero = () => {
               )}>
                 {bg.name}
               </span>
+              
+              {/* Preview Image */}
+              {hoveredCity === index && (
+                <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2">
+                  <div className="relative">
+                    <img 
+                      src={bg.thumbnail} 
+                      alt={bg.name}
+                      className="w-32 h-24 object-cover rounded-lg shadow-lg border-2 border-white/20"
+                    />
+                    <div className="absolute inset-0 bg-black/20 rounded-lg" />
+                  </div>
+                </div>
+              )}
             </button>
           ))}
         </div>
