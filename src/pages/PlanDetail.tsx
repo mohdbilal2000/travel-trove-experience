@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingContactButton from "@/components/shared/FloatingContactButton";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -18,6 +19,7 @@ const PlanDetail = () => {
   const navigate = useNavigate();
   const [plan, setPlan] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -126,6 +128,22 @@ const PlanDetail = () => {
     [tourSchema, faqSchema, breadcrumbSchema] : 
     [tourSchema, breadcrumbSchema];
 
+  const tabs = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'itinerary', label: 'Itinerary' },
+    { id: 'reviews', label: 'Reviews' },
+    { id: 'hotels', label: 'Hotels' },
+    { id: 'faq', label: 'FAQ' }
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveTab(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="bg-ivory-50">
       <SeoHead
@@ -160,15 +178,47 @@ const PlanDetail = () => {
         </div>
 
         <PlanHeader plan={plan} />
-        <div className="bg-pattern-light">
+        
+        {/* Navigation Tabs */}
+        <div className="sticky top-20 z-40 bg-white border-b border-ivory-200 shadow-sm">
+          <div className="container max-w-6xl mx-auto px-4">
+            <div className="flex space-x-8 overflow-x-auto">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => scrollToSection(tab.id)}
+                  className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
+                    activeTab === tab.id
+                      ? 'border-maroon-600 text-maroon-600'
+                      : 'border-transparent text-royal-600 hover:text-maroon-600 hover:border-maroon-300'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div id="overview" className="bg-pattern-light">
           <PlanFeatures plan={plan} />
         </div>
-        <Itinerary plan={plan} />
-        <ContactForm plan={plan} />
-        <RelatedPlans currentPlanId={plan.id} />
+        
+        <div id="itinerary">
+          <Itinerary plan={plan} />
+        </div>
+        
+        <div id="reviews">
+          <ContactForm plan={plan} />
+        </div>
+        
+        <div id="hotels">
+          <RelatedPlans currentPlanId={plan.id} />
+        </div>
       </main>
       
       <Footer />
+      <FloatingContactButton />
     </div>
   );
 };

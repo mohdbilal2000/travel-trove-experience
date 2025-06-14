@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 29% 24%;
 
-    --primary: 0 100% 27%; /* Deep Maroon (#8B0000) */
+    --primary: 0 100% 25%; /* #800000 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 45 100% 52%; /* Amber Yellow (#FFC107) */
@@ -32,7 +32,7 @@
 
     --border: 43 13% 85%;
     --input: 43 10% 88%;
-    --ring: 0 100% 27%;
+    --ring: 0 100% 25%;
 
     --radius: 0.5rem;
 
@@ -56,7 +56,7 @@
     --popover: 0 0% 15%;
     --popover-foreground: 43 67% 95%;
 
-    --primary: 0 100% 35%; /* Darker Deep Maroon */
+    --primary: 0 100% 30%; /* Darker #800000 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 45 95% 45%; /* Darker Amber Yellow */
@@ -73,7 +73,7 @@
 
     --border: 0 0% 25%;
     --input: 0 0% 22%;
-    --ring: 0 100% 35%;
+    --ring: 0 100% 30%;
   }
 }
 
