@@ -6,6 +6,7 @@ import Hero from "@/components/home/Hero";
 import FeaturedDestinations from "@/components/home/FeaturedDestinations";
 import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
+import FloatingContactButton from "@/components/shared/FloatingContactButton";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -219,6 +220,7 @@ const Index = () => {
       </main>
       
       <Footer />
+      <FloatingContactButton />
     </>
   );
 };
