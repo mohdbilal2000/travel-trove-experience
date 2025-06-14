@@ -1,6 +1,8 @@
+
 import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingContactButton from "@/components/shared/FloatingContactButton";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -395,6 +397,7 @@ const Plans = () => {
       </main>
       
       <Footer />
+      <FloatingContactButton />
     </>
   );
 };
