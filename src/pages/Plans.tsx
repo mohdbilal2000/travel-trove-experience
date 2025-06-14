@@ -1,4 +1,3 @@
-
 import SeoHead from "@/components/shared/SeoHead";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -9,7 +8,9 @@ import { Link } from "react-router-dom";
 import { Car, Bed, Users, Coffee, Check, ChevronRight, Star, Clock } from "lucide-react";
 import { allPlans } from "@/data/travelPlans";
 
-const travelPlans = allPlans;
+// Filter and order the plans according to user requirements
+const selectedPlanIds = [5, 7, 8, 9, 10, 16, 23, 24, 25]; // IDs in the exact order requested
+const travelPlans = selectedPlanIds.map(id => allPlans.find(plan => plan.id === id)).filter(Boolean);
 
 const planFeatures = [
   {
