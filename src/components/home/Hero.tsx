@@ -31,7 +31,6 @@ const backgrounds = [
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [hoveredCity, setHoveredCity] = useState<number | null>(null);
 
   useEffect(() => {
     if (isHovered) return;
@@ -80,7 +79,7 @@ const Hero = () => {
           </p>
           
           {/* Action Buttons - Enhanced styling */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-20">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
             <Button 
               size="lg" 
               className="bg-[#800000] hover:bg-[#600000] text-white px-12 py-4 text-lg font-medium rounded-none border-none shadow-lg hover:shadow-xl transition-all duration-300"
@@ -96,51 +95,6 @@ const Hero = () => {
             >
               <Link to="/contact">Learn More</Link>
             </Button>
-          </div>
-        </div>
-
-        {/* City Navigation - Positioned at bottom */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-          <div className="flex space-x-16">
-            {backgrounds.map((bg, index) => (
-              <button
-                key={bg.id}
-                onClick={() => setActiveIndex(index)}
-                className="text-center focus:outline-none group relative"
-                onMouseEnter={() => setHoveredCity(index)}
-                onMouseLeave={() => setHoveredCity(null)}
-              >
-                <div className="flex flex-col items-center">
-                  <span className={cn(
-                    "block w-20 h-0.5 mb-4 mx-auto transition-all duration-500",
-                    index === activeIndex ? "bg-amber-400" : "bg-white/40 group-hover:bg-white/70"
-                  )} />
-                  <span className={cn(
-                    "text-base uppercase tracking-[0.25em] font-medium transition-all duration-300",
-                    index === activeIndex ? "text-amber-400" : "text-white/80 group-hover:text-white"
-                  )}>
-                    {bg.name}
-                  </span>
-                </div>
-                
-                {/* Preview Image */}
-                {hoveredCity === index && index !== activeIndex && (
-                  <div className="absolute bottom-full mb-6 left-1/2 transform -translate-x-1/2">
-                    <div className="relative">
-                      <img 
-                        src={bg.thumbnail} 
-                        alt={bg.name}
-                        className="w-48 h-32 object-cover rounded-lg shadow-2xl border-2 border-white/30"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg" />
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <p className="text-white text-sm font-medium">{bg.name}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </button>
-            ))}
           </div>
         </div>
       </div>
