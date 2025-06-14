@@ -4,7 +4,6 @@ import {
   Car, Bed, CalendarRange, Users, MapPin, Coffee, 
   Plane, Camera, ShieldCheck 
 } from "lucide-react";
-import SectionHeading from "../shared/SectionHeading";
 import { Link } from "react-router-dom";
 
 const services = [
@@ -84,7 +83,7 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: (0), y: 20 },
+  hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
@@ -95,13 +94,13 @@ const ServiceCard = ({ service }) => {
     <motion.div variants={item} className="group">
       <Link 
         to={service.link}
-        className="h-full block p-6 bg-white rounded-xl shadow-sm border border-border transition-all duration-300 hover:shadow-md hover:border-maroon-600/20 hover:translate-y-[-5px]"
+        className="h-full block p-8 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-lg hover:border-maroon-100 hover:translate-y-[-2px]"
       >
-        <div className="w-12 h-12 rounded-md bg-maroon-600/10 flex items-center justify-center mb-4 text-maroon-600 transition-all duration-300 group-hover:bg-maroon-600 group-hover:text-white">
+        <div className="w-14 h-14 rounded-full bg-maroon-50 flex items-center justify-center mb-6 text-maroon-600 transition-all duration-300 group-hover:bg-maroon-600 group-hover:text-white">
           <Icon size={24} />
         </div>
-        <h3 className="text-xl font-display font-medium mb-2">{service.title}</h3>
-        <p className="text-sm text-charcoal-500/80">{service.description}</p>
+        <h3 className="text-xl font-display font-medium mb-3 text-royal-800">{service.title}</h3>
+        <p className="text-royal-700/70 leading-relaxed">{service.description}</p>
       </Link>
     </motion.div>
   );
@@ -109,19 +108,31 @@ const ServiceCard = ({ service }) => {
 
 const Services = () => {
   return (
-    <section className="section-padding bg-ivory-300">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <SectionHeading 
-          title="Our Premium Services" 
-          subtitle="Enjoy a seamless travel experience with our comprehensive range of premium services designed to make your journey comfortable and memorable."
-        />
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-light mb-4 text-royal-800">
+              Our Premium Services
+            </h2>
+            <p className="text-lg text-royal-700/80 max-w-2xl mx-auto leading-relaxed">
+              Enjoy a seamless travel experience with our comprehensive range of premium services designed to make your journey comfortable and memorable.
+            </p>
+          </motion.div>
+        </div>
         
         <motion.div 
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.map(service => (
             <ServiceCard key={service.id} service={service} />

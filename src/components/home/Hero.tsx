@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -42,6 +43,8 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [isHovered]);
 
+  const currentBg = backgrounds[activeIndex];
+
   return (
     <section 
       className="relative h-screen overflow-hidden"
@@ -58,65 +61,86 @@ const Hero = () => {
           )}
           style={{ backgroundImage: `url(${bg.image})` }}
         >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
         </div>
       ))}
 
       {/* Content */}
       <div className="relative h-full flex flex-col justify-center items-center text-white text-center z-10 px-4">
-        <div className="max-w-3xl animate-fade-in">
-          <h1 className="hero-text text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 text-white leading-tight">
-            Discover The Magic Of <span className="text-amber-400">India's Golden Triangle</span>
+        <div className="max-w-4xl animate-fade-in">
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light mb-6 text-white leading-tight tracking-wide">
+            {currentBg.name}
           </h1>
-          <p className="hero-text text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white">
-            Immerse yourself in the rich culture, stunning architecture, and vibrant energy of Agra, Delhi, and Jaipur with our curated travel experiences.
+          
+          {/* Description */}
+          <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 font-light leading-relaxed">
+            {currentBg.description}
           </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button size="lg" asChild className="bg-maroon-600 hover:bg-maroon-700 text-white">
-              <Link to="/plans">View Our Plans</Link>
+          
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+            <Button 
+              size="lg" 
+              className="bg-maroon-600 hover:bg-maroon-700 text-white px-8 py-3 text-base font-medium"
+              asChild
+            >
+              <Link to="/plans">Start Planning</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10 bg-white/10">
-              <Link to="/contact">Custom Itinerary</Link>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-8 py-3 text-base font-medium bg-transparent"
+              asChild
+            >
+              <Link to="/contact">Learn More</Link>
             </Button>
           </div>
         </div>
 
-        {/* City Indicators with Preview */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8">
-          {backgrounds.map((bg, index) => (
-            <button
-              key={bg.id}
-              onClick={() => setActiveIndex(index)}
-              className="text-center focus:outline-none group relative"
-              onMouseEnter={() => setHoveredCity(index)}
-              onMouseLeave={() => setHoveredCity(null)}
-            >
-              <span className={cn(
-                "block w-20 h-1 mb-2 mx-auto transition-all duration-300",
-                index === activeIndex ? "bg-amber-500" : "bg-white/40 group-hover:bg-white/60"
-              )} />
-              <span className={cn(
-                "text-sm uppercase tracking-wider font-medium transition-colors",
-                index === activeIndex ? "text-amber-500" : "text-white/80 group-hover:text-white"
-              )}>
-                {bg.name}
-              </span>
-              
-              {/* Preview Image */}
-              {hoveredCity === index && (
-                <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2">
-                  <div className="relative">
-                    <img 
-                      src={bg.thumbnail} 
-                      alt={bg.name}
-                      className="w-32 h-24 object-cover rounded-lg shadow-lg border-2 border-white/20"
-                    />
-                    <div className="absolute inset-0 bg-black/20 rounded-lg" />
-                  </div>
+        {/* City Navigation */}
+        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+          <div className="flex space-x-12">
+            {backgrounds.map((bg, index) => (
+              <button
+                key={bg.id}
+                onClick={() => setActiveIndex(index)}
+                className="text-center focus:outline-none group relative"
+                onMouseEnter={() => setHoveredCity(index)}
+                onMouseLeave={() => setHoveredCity(null)}
+              >
+                <div className="flex flex-col items-center">
+                  <span className={cn(
+                    "block w-24 h-0.5 mb-3 mx-auto transition-all duration-500",
+                    index === activeIndex ? "bg-amber-400" : "bg-white/30 group-hover:bg-white/60"
+                  )} />
+                  <span className={cn(
+                    "text-sm uppercase tracking-[0.2em] font-medium transition-all duration-300",
+                    index === activeIndex ? "text-amber-400" : "text-white/70 group-hover:text-white"
+                  )}>
+                    {bg.name}
+                  </span>
                 </div>
-              )}
-            </button>
-          ))}
+                
+                {/* Preview Image */}
+                {hoveredCity === index && index !== activeIndex && (
+                  <div className="absolute bottom-full mb-4 left-1/2 transform -translate-x-1/2">
+                    <div className="relative">
+                      <img 
+                        src={bg.thumbnail} 
+                        alt={bg.name}
+                        className="w-40 h-28 object-cover rounded-lg shadow-2xl border-2 border-white/30"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg" />
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <p className="text-white text-xs font-medium">{bg.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
