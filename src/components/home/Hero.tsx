@@ -47,7 +47,7 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative h-screen overflow-hidden"
+      className="relative min-h-screen overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -61,28 +61,29 @@ const Hero = () => {
           )}
           style={{ backgroundImage: `url(${bg.image})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
+          {/* Enhanced gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
         </div>
       ))}
 
       {/* Content */}
-      <div className="relative h-full flex flex-col justify-center items-center text-white text-center z-10 px-4">
-        <div className="max-w-4xl animate-fade-in">
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light mb-6 text-white leading-tight tracking-wide">
+      <div className="relative min-h-screen flex flex-col justify-center items-center text-white text-center z-10 px-4 pt-20">
+        <div className="max-w-5xl animate-fade-in">
+          {/* Main Heading - Larger and more prominent */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-8 text-white leading-tight tracking-wide">
             {currentBg.name}
           </h1>
           
           {/* Description */}
-          <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl lg:text-3xl mb-16 max-w-4xl mx-auto text-white/95 font-light leading-relaxed">
             {currentBg.description}
           </p>
           
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+          {/* Action Buttons - Enhanced styling */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-20">
             <Button 
               size="lg" 
-              className="bg-maroon-600 hover:bg-maroon-700 text-white px-8 py-3 text-base font-medium"
+              className="bg-[#800000] hover:bg-[#600000] text-white px-12 py-4 text-lg font-medium rounded-none border-none shadow-lg hover:shadow-xl transition-all duration-300"
               asChild
             >
               <Link to="/plans">Start Planning</Link>
@@ -90,7 +91,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-8 py-3 text-base font-medium bg-transparent"
+              className="border-2 border-white text-white hover:bg-white hover:text-[#800000] px-12 py-4 text-lg font-medium rounded-none bg-transparent shadow-lg hover:shadow-xl transition-all duration-300"
               asChild
             >
               <Link to="/contact">Learn More</Link>
@@ -98,9 +99,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* City Navigation */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
-          <div className="flex space-x-12">
+        {/* City Navigation - Positioned at bottom */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <div className="flex space-x-16">
             {backgrounds.map((bg, index) => (
               <button
                 key={bg.id}
@@ -111,12 +112,12 @@ const Hero = () => {
               >
                 <div className="flex flex-col items-center">
                   <span className={cn(
-                    "block w-24 h-0.5 mb-3 mx-auto transition-all duration-500",
-                    index === activeIndex ? "bg-amber-400" : "bg-white/30 group-hover:bg-white/60"
+                    "block w-20 h-0.5 mb-4 mx-auto transition-all duration-500",
+                    index === activeIndex ? "bg-amber-400" : "bg-white/40 group-hover:bg-white/70"
                   )} />
                   <span className={cn(
-                    "text-sm uppercase tracking-[0.2em] font-medium transition-all duration-300",
-                    index === activeIndex ? "text-amber-400" : "text-white/70 group-hover:text-white"
+                    "text-base uppercase tracking-[0.25em] font-medium transition-all duration-300",
+                    index === activeIndex ? "text-amber-400" : "text-white/80 group-hover:text-white"
                   )}>
                     {bg.name}
                   </span>
@@ -124,16 +125,16 @@ const Hero = () => {
                 
                 {/* Preview Image */}
                 {hoveredCity === index && index !== activeIndex && (
-                  <div className="absolute bottom-full mb-4 left-1/2 transform -translate-x-1/2">
+                  <div className="absolute bottom-full mb-6 left-1/2 transform -translate-x-1/2">
                     <div className="relative">
                       <img 
                         src={bg.thumbnail} 
                         alt={bg.name}
-                        className="w-40 h-28 object-cover rounded-lg shadow-2xl border-2 border-white/30"
+                        className="w-48 h-32 object-cover rounded-lg shadow-2xl border-2 border-white/30"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg" />
-                      <div className="absolute bottom-2 left-2 right-2">
-                        <p className="text-white text-xs font-medium">{bg.name}</p>
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <p className="text-white text-sm font-medium">{bg.name}</p>
                       </div>
                     </div>
                   </div>
