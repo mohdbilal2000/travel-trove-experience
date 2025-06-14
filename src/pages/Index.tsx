@@ -103,10 +103,10 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-light mb-4 text-royal-800">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-normal mb-4 text-royal-800">
                   Beyond the Golden Triangle
                 </h2>
-                <p className="text-lg text-royal-700/80 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-lg text-royal-700/80 max-w-4xl mx-auto leading-relaxed">
                   Enhance your Golden Triangle experience with these extraordinary destinations that showcase India's diversity
                 </p>
               </motion.div>
@@ -144,7 +144,7 @@ const Index = () => {
                   className="group cursor-pointer"
                 >
                   <Link to="/plans" className="block">
-                    <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500">
                       <div className="relative h-48 overflow-hidden">
                         <img
                           src={destination.image}
@@ -172,27 +172,36 @@ const Index = () => {
         <FeaturedDestinations />
         <Services />
         
-        {/* CTA Section */}
-        <section className="py-20 bg-royal-800 text-white relative overflow-hidden">
+        {/* Updated CTA Section to match reference design */}
+        <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50 relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-5xl mx-auto text-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-light mb-6 text-white">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-normal mb-6 text-[#800000]">
                   Ready to Experience the Magic of Golden Triangle?
                 </h2>
-                <p className="text-lg md:text-xl mb-10 text-white/90 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl mb-12 text-royal-800/80 leading-relaxed max-w-4xl mx-auto">
                   Let us help you plan the perfect journey through Delhi, Agra, and Jaipur. Our expert team will craft an unforgettable experience tailored to your preferences.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
-                  <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-royal-800 px-8 py-3" asChild>
+                  <Button 
+                    size="lg" 
+                    className="bg-[#800000] hover:bg-[#600000] text-white px-12 py-4 text-lg font-medium rounded-lg border-none shadow-lg hover:shadow-xl transition-all duration-300"
+                    asChild
+                  >
                     <Link to="/plans">View Our Plans</Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-royal-800 px-8 py-3" asChild>
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-2 border-royal-800 text-royal-800 hover:bg-royal-800 hover:text-white px-12 py-4 text-lg font-medium rounded-lg bg-transparent shadow-lg hover:shadow-xl transition-all duration-300"
+                    asChild
+                  >
                     <Link to="/contact">Custom Itinerary</Link>
                   </Button>
                 </div>
@@ -201,8 +210,9 @@ const Index = () => {
           </div>
           
           {/* Decorative Elements */}
-          <div className="absolute top-1/2 left-0 w-40 h-40 rounded-full bg-amber-500/20 transform -translate-y-1/2 -translate-x-1/2" />
-          <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-amber-500/10 transform translate-y-1/3 translate-x-1/3" />
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-amber-300/20 blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-orange-300/20 blur-3xl" />
+          <div className="absolute top-1/2 right-0 w-32 h-32 rounded-full bg-[#800000]/10 transform translate-x-1/2 -translate-y-1/2" />
         </section>
         
         <Testimonials />
