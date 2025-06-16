@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FAQ from "@/components/shared/FAQ";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -258,7 +259,7 @@ const Contact = () => {
       "postalCode": "110001",
       "addressCountry": "IN"
     },
-    "telephone": "+91-123-456-7890",
+    "telephone": "+91-89097-41833",
     "email": "info@guideindia.tours",
     "openingHoursSpecification": [
       {
@@ -349,8 +350,8 @@ const Contact = () => {
                 </div>
                 <h3 className="text-xl font-display font-medium mb-3">Visit Us</h3>
                 <address className="not-italic text-muted-foreground">
-                  123 Travel Street<br />
-                  New Delhi, 110001<br />
+                  Flate No: 31/84A, Rajpur Jangjeet Nagar<br />
+                  Shamsabad Road, Agra 282001<br />
                   India
                 </address>
               </motion.div>
@@ -367,13 +368,8 @@ const Contact = () => {
                 </div>
                 <h3 className="text-xl font-display font-medium mb-3">Call Us</h3>
                 <p className="text-muted-foreground mb-2">
-                  <a href="tel:+911234567890" className="hover:text-primary transition-colors">
-                    +91 123 456 7890
-                  </a>
-                </p>
-                <p className="text-muted-foreground">
-                  <a href="tel:+911234567891" className="hover:text-primary transition-colors">
-                    +91 123 456 7891
+                  <a href="tel:+918909741833" className="hover:text-primary transition-colors">
+                    +91 89097 41833
                   </a>
                 </p>
               </motion.div>
@@ -388,16 +384,14 @@ const Contact = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Mail className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-display font-medium mb-3">Email Us</h3>
+                <h3 className="text-xl font-display font-medium mb-3">Email & Tax Info</h3>
                 <p className="text-muted-foreground mb-2">
-                  <a href="mailto:info@goldentriangle.com" className="hover:text-primary transition-colors">
-                    info@goldentriangle.com
+                  <a href="mailto:bilalmohd3160@gmail.com" className="hover:text-primary transition-colors">
+                    bilalmohd3160@gmail.com
                   </a>
                 </p>
-                <p className="text-muted-foreground">
-                  <a href="mailto:bookings@goldentriangle.com" className="hover:text-primary transition-colors">
-                    bookings@goldentriangle.com
-                  </a>
+                <p className="text-muted-foreground text-sm">
+                  Tax No: 09ABCFG5043N1ZA
                 </p>
               </motion.div>
             </div>
@@ -456,8 +450,8 @@ const Contact = () => {
                   </p>
                   <div className="flex items-center gap-2 text-primary">
                     <Phone className="h-5 w-5" />
-                    <a href="tel:+911234567890" className="font-medium">
-                      +91 123 456 7890
+                    <a href="tel:+918909741833" className="font-medium">
+                      +91 89097 41833
                     </a>
                   </div>
                 </div>
@@ -466,12 +460,14 @@ const Contact = () => {
           </div>
         </section>
         
+        <FAQ />
+        
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-display font-medium mb-8 text-center">Find Us</h2>
             <div className="rounded-xl overflow-hidden h-[400px] shadow-md">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56042.54547983919!2d77.17674169630874!3d28.5963359246851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1654321456789!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7100.762713147737!2d78.045512!3d27.144289!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747141cbf49441%3A0xd109848d7060ef7c!2sAgra%20Tour%20Guide%20Taj%2C%20Avneesh%20Dixit!5e0!3m2!1sen!2sin!4v1750061153782!5m2!1sen!2sin"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
