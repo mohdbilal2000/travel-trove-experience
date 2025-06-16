@@ -198,5 +198,48 @@ export const specializedPlans: TravelPlan[] = [
         meals: "Flexible meal plans based on your preferences"
       }
     ]
+  },
+  {
+    id: 26,
+    title: "VIP Luxury Golden Triangle Experience",
+    duration: "Flexible (5-15 Days)",
+    price: "From $3,500 per person",
+    description: "The ultimate luxury experience combining the Golden Triangle with any destination of your choice. Enjoy exclusive VIP services, heritage palace hotels, private jet transfers, and bespoke experiences crafted just for you.",
+    highlights: [
+      "Private jet or helicopter transfers available",
+      "Exclusive stays in palace hotels and luxury resorts",
+      "Personal butler and concierge services",
+      "Private guided tours with renowned historians",
+      "Michelin-starred dining experiences",
+      "Exclusive access to monuments after hours",
+      "Custom spa and wellness treatments",
+      "Luxury shopping with personal stylists",
+      "Private cultural performances"
+    ],
+    inclusions: [
+      "Luxury palace hotels and heritage properties",
+      "All meals at finest restaurants",
+      "Private luxury vehicles with chauffeur",
+      "Personal guide and butler services",
+      "Private jet/helicopter transfers (optional)",
+      "Exclusive experiences and access",
+      "24/7 VIP concierge support",
+      "Custom itinerary planning",
+      "Premium spa treatments",
+      "Luxury shopping assistance"
+    ],
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop",
+    rating: 5.0,
+    reviews: 28,
+    popular: true,
+    itinerary: [
+      {
+        day: null,
+        title: "Bespoke Luxury Experience",
+        description: "This exclusive VIP experience is completely tailored to your desires. Whether you want to explore the Golden Triangle with private monument access, add destinations like Kashmir, Goa, Kerala, or international locations, our luxury travel specialists will create an unforgettable journey with the finest accommodations, transport, and experiences money can buy.",
+        accommodation: "Heritage palaces, luxury resorts, or exclusive private villas",
+        meals: "World-class cuisine with personal chefs and exclusive dining venues"
+      }
+    ]
   }
 ]

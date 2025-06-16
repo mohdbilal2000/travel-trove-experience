@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -200,12 +201,82 @@ const PlanDetail = () => {
           </div>
         </div>
 
+        {/* Visual Separator with Image */}
+        <div className="relative h-32 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=2070&auto=format&fit=crop"
+            alt="India Heritage"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-maroon-900/60 to-royal-800/60"></div>
+        </div>
+
         <div id="overview" className="bg-pattern-light">
           <PlanFeatures plan={plan} />
         </div>
         
+        {/* Cultural Experience Section with Image */}
+        <div className="relative py-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=2834&auto=format&fit=crop"
+              alt="Indian Architecture"
+              className="w-full h-full object-cover opacity-20"
+            />
+          </div>
+          <div className="relative z-10 container max-w-6xl mx-auto px-4 text-center">
+            <h2 className="text-3xl font-display font-semibold mb-4 text-royal-800">
+              Immerse in Rich Cultural Heritage
+            </h2>
+            <p className="text-lg text-royal-600 max-w-2xl mx-auto">
+              Experience the timeless beauty and cultural richness of India's Golden Triangle, 
+              where every monument tells a story of grandeur and legacy.
+            </p>
+          </div>
+        </div>
+        
         <div id="itinerary">
           <Itinerary plan={plan} />
+        </div>
+        
+        {/* Nature & Landscape Section with Image */}
+        <div className="relative py-16 bg-gradient-to-b from-ivory-100 to-ivory-50">
+          <div className="container max-w-6xl mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-display font-semibold mb-6 text-royal-800">
+                  Discover Breathtaking Landscapes
+                </h2>
+                <p className="text-lg text-royal-600 mb-6">
+                  From the majestic Himalayas to serene backwaters, from royal palaces 
+                  to ancient forts, experience India's diverse landscapes and architectural marvels.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-32 rounded-lg overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=3506&auto=format&fit=crop"
+                      alt="Mountain Landscape"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative h-32 rounded-lg overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000&auto=format&fit=crop"
+                      alt="Waterfall"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2600&auto=format&fit=crop"
+                  alt="Scenic View"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         
         <div id="reviews">

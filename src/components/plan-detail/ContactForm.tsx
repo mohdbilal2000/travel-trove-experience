@@ -63,12 +63,51 @@ const ContactForm = ({ plan }) => {
     },
   });
 
-  // This fixes the build error - removed "disableFormSubmit" prop
+  const sendEmailNotification = async (formData: BookingFormValues) => {
+    try {
+      // Create email content
+      const emailContent = `
+        New Booking Request for ${plan.title}
+        
+        Customer Details:
+        Name: ${formData.name}
+        Email: ${formData.email}
+        Phone: ${formData.phone || 'Not provided'}
+        Number of Travelers: ${formData.travelers}
+        Preferred Date: ${formData.date}
+        
+        Message:
+        ${formData.message}
+        
+        Plan Details:
+        Tour: ${plan.title}
+        Duration: ${plan.duration}
+        Price: ${plan.price}
+      `;
+
+      // For now, we'll log this. In a real implementation, you'd use an email service
+      console.log("Email would be sent to: bilalmohd3160@gmail.com");
+      console.log("Email content:", emailContent);
+      
+      // You would typically use a service like EmailJS, Supabase, or a backend API here
+      // For demonstration, we'll simulate the email send
+      return Promise.resolve();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      throw error;
+    }
+  };
+
   const onSubmit = async (values: BookingFormValues) => {
     setLoading(true);
     
     try {
       console.log("Form values:", values, "Plan:", plan.title);
+      
+      // Send email notification
+      await sendEmailNotification(values);
+      
+      // Simulate form processing
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       setSubmitted(true);
@@ -125,8 +164,11 @@ const ContactForm = ({ plan }) => {
     );
   }
 
+  // Special styling for VIP Luxury tour
+  const isLuxuryTour = plan.id === 26;
+
   return (
-    <div className="py-12 bg-ivory-50/50 backdrop-blur-sm">
+    <div className={`py-12 ${isLuxuryTour ? 'bg-gradient-to-b from-amber-50 to-ivory-50' : 'bg-ivory-50/50'} backdrop-blur-sm`}>
       <div className="container max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -135,15 +177,28 @@ const ContactForm = ({ plan }) => {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-semibold mb-3 text-royal-800">Book This Tour</h2>
+          <h2 className={`text-3xl md:text-4xl font-display font-semibold mb-3 ${isLuxuryTour ? 'text-amber-900' : 'text-royal-800'}`}>
+            {isLuxuryTour ? 'Request VIP Consultation' : 'Book This Tour'}
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Fill in the form below to inquire about this tour. Our team will get back to you within 24 hours.
+            {isLuxuryTour 
+              ? 'Connect with our luxury travel specialists to design your bespoke experience. All inquiries receive priority attention within 2 hours.'
+              : 'Fill in the form below to inquire about this tour. Our team will get back to you within 24 hours.'
+            }
           </p>
         </motion.div>
         
         <div className="max-w-4xl mx-auto">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white rounded-xl p-6 md:p-8 shadow-lg border border-ivory-200">
+            <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-6 ${isLuxuryTour ? 'bg-white/90 backdrop-blur border-amber-200' : 'bg-white border-ivory-200'} rounded-xl p-6 md:p-8 shadow-lg border`}>
+              {isLuxuryTour && (
+                <div className="bg-gradient-to-r from-amber-100 to-orange-100 p-4 rounded-lg mb-6">
+                  <p className="text-amber-800 text-sm font-medium text-center">
+                    🥇 VIP Priority Service - Dedicated luxury travel consultant assigned
+                  </p>
+                </div>
+              )}
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
@@ -155,7 +210,7 @@ const ContactForm = ({ plan }) => {
                         <Input
                           placeholder="Your name"
                           {...field}
-                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                          className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors`}
                         />
                       </FormControl>
                       <FormMessage />
@@ -174,7 +229,7 @@ const ContactForm = ({ plan }) => {
                           placeholder="your.email@example.com"
                           type="email"
                           {...field}
-                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                          className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors`}
                         />
                       </FormControl>
                       <FormMessage />
@@ -195,7 +250,7 @@ const ContactForm = ({ plan }) => {
                           placeholder="Your phone number (optional)"
                           type="tel"
                           {...field}
-                          className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                          className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors`}
                         />
                       </FormControl>
                       <FormMessage />
@@ -211,7 +266,7 @@ const ContactForm = ({ plan }) => {
                       <FormLabel className="font-medium text-royal-800">Number of Travelers *</FormLabel>
                       <FormControl>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <SelectTrigger className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors">
+                          <SelectTrigger className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors`}>
                             <SelectValue placeholder="Select number of travelers" />
                           </SelectTrigger>
                           <SelectContent className="bg-white">
@@ -239,7 +294,7 @@ const ContactForm = ({ plan }) => {
                       <Input
                         type="date"
                         {...field}
-                        className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors"
+                        className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors`}
                       />
                     </FormControl>
                     <FormMessage />
@@ -252,13 +307,18 @@ const ContactForm = ({ plan }) => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-medium text-royal-800">Your Message *</FormLabel>
+                    <FormLabel className="font-medium text-royal-800">
+                      {isLuxuryTour ? 'Your Vision & Preferences *' : 'Your Message *'}
+                    </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Please share any specific requirements or preferences for your trip..."
+                        placeholder={isLuxuryTour 
+                          ? "Describe your dream experience, preferred destinations, accommodation style, special occasions, dietary requirements, and any other preferences..."
+                          : "Please share any specific requirements or preferences for your trip..."
+                        }
                         rows={6}
                         {...field}
-                        className="w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:border-transparent transition-colors resize-none"
+                        className={`w-full px-4 py-3 rounded-md border border-input bg-white focus:outline-none focus:ring-2 ${isLuxuryTour ? 'focus:ring-amber-500' : 'focus:ring-maroon-600'} focus:border-transparent transition-colors resize-none`}
                       />
                     </FormControl>
                     <FormMessage />
@@ -270,7 +330,7 @@ const ContactForm = ({ plan }) => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full md:w-auto px-8 py-3 bg-maroon-600 text-white font-medium rounded-md hover:bg-maroon-700 transition-colors disabled:opacity-70"
+                  className={`w-full md:w-auto px-8 py-3 ${isLuxuryTour ? 'bg-amber-600 hover:bg-amber-700' : 'bg-maroon-600 hover:bg-maroon-700'} text-white font-medium rounded-md transition-colors disabled:opacity-70`}
                 >
                   {loading ? (
                     <span className="flex items-center">
@@ -283,7 +343,7 @@ const ContactForm = ({ plan }) => {
                   ) : (
                     <span className="flex items-center">
                       <Send className="mr-2 h-4 w-4" />
-                      Send Request
+                      {isLuxuryTour ? 'Request VIP Consultation' : 'Send Request'}
                     </span>
                   )}
                 </Button>
