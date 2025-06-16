@@ -54,7 +54,7 @@ const PlanCard = ({ plan }) => {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           {plan.popular && (
-            <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-medium py-2 px-3 rounded-full">
+            <div className="absolute top-4 right-4 bg-[#800000] text-white text-xs font-medium py-2 px-3 rounded-full">
               Popular Choice
             </div>
           )}
@@ -74,11 +74,11 @@ const PlanCard = ({ plan }) => {
             <Clock className="h-4 w-4 mr-1.5" />
             {plan.duration}
           </div>
-          <div className="text-red-600 font-semibold text-lg">{plan.price}</div>
+          <div className="text-[#800000] font-semibold text-lg">{plan.price}</div>
         </div>
         
         <Link to={`/plans/${plan.id}`} className="block">
-          <h3 className="text-xl font-semibold mb-3 text-gray-900 hover:text-red-600 transition-colors line-clamp-2">{plan.title}</h3>
+          <h3 className="text-xl font-semibold mb-3 text-gray-900 hover:text-[#800000] transition-colors line-clamp-2">{plan.title}</h3>
         </Link>
         
         <p className="text-gray-600 text-sm mb-4 line-clamp-3">{plan.description}</p>
@@ -88,21 +88,21 @@ const PlanCard = ({ plan }) => {
           <ul className="space-y-2">
             {plan.highlights.slice(0, 3).map((highlight, index) => (
               <li key={index} className="flex text-sm text-gray-600">
-                <Check className="h-4 w-4 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#800000] mr-2 flex-shrink-0 mt-0.5" />
                 <span>{highlight}</span>
               </li>
             ))}
             {plan.highlights.length > 3 && (
-              <li className="text-sm text-red-600 font-medium">+ {plan.highlights.length - 3} more highlights</li>
+              <li className="text-sm text-[#800000] font-medium">+ {plan.highlights.length - 3} more highlights</li>
             )}
           </ul>
         </div>
         
         <div className="flex space-x-3">
-          <Button asChild className="flex-1 bg-red-600 hover:bg-red-700 text-white">
+          <Button asChild className="flex-1 bg-[#800000] hover:bg-[#600000] text-white">
             <Link to={`/plans/${plan.id}`}>View Details</Link>
           </Button>
-          <Button asChild variant="outline" className="flex-1 border-red-600 text-red-600 hover:bg-red-50">
+          <Button asChild variant="outline" className="flex-1 border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white">
             <Link to="/contact">Inquire</Link>
           </Button>
         </div>
@@ -122,7 +122,7 @@ const FeatureCard = ({ feature }) => {
       viewport={{ once: true }}
       className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
     >
-      <div className="w-16 h-16 rounded-xl bg-red-50 flex items-center justify-center mb-6 text-red-600">
+      <div className="w-16 h-16 rounded-xl bg-[#800000]/10 flex items-center justify-center mb-6 text-[#800000]">
         <Icon size={28} />
       </div>
       <h3 className="text-lg font-semibold mb-3 text-gray-900">{feature.title}</h3>
@@ -254,7 +254,7 @@ const Plans = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Check className="h-5 w-5 text-red-600" />
+                      <Check className="h-5 w-5 text-[#800000]" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-2 text-gray-900">Flexible Duration</h3>
@@ -264,7 +264,7 @@ const Plans = () => {
                   
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Check className="h-5 w-5 text-red-600" />
+                      <Check className="h-5 w-5 text-[#800000]" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-2 text-gray-900">Accommodation Choice</h3>
@@ -274,7 +274,7 @@ const Plans = () => {
                   
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Check className="h-5 w-5 text-red-600" />
+                      <Check className="h-5 w-5 text-[#800000]" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-2 text-gray-900">Special Interests</h3>
@@ -284,7 +284,7 @@ const Plans = () => {
                   
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Check className="h-5 w-5 text-red-600" />
+                      <Check className="h-5 w-5 text-[#800000]" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-2 text-gray-900">Extensions Available</h3>
@@ -294,7 +294,7 @@ const Plans = () => {
                 </div>
                 
                 <div className="text-center">
-                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3" asChild>
+                  <Button size="lg" className="bg-[#800000] hover:bg-[#600000] text-white px-8 py-3" asChild>
                     <Link to="/contact">Request Custom Itinerary</Link>
                   </Button>
                 </div>
@@ -378,13 +378,13 @@ const Plans = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-light mb-6">
-                Ready to Experience the Golden Triangle?
+                Ready to Experience the Magic of Golden Triangle?
               </h2>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
                 Contact us today to book your preferred plan or discuss a custom itinerary tailored to your needs.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-3" asChild>
+                <Button size="lg" className="bg-[#800000] hover:bg-[#600000] text-white px-8 py-3" asChild>
                   <Link to="/contact">Book Now</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3" asChild>
