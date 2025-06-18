@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -130,11 +129,11 @@ const PlanDetail = () => {
     [tourSchema, breadcrumbSchema];
 
   const tabs = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'itinerary', label: 'Itinerary' },
-    { id: 'reviews', label: 'Reviews' },
-    { id: 'hotels', label: 'Hotels' },
-    { id: 'faq', label: 'FAQ' }
+    { id: 'overview', label: 'Overview', icon: '📋' },
+    { id: 'itinerary', label: 'Itinerary', icon: '🗺️' },
+    { id: 'reviews', label: 'Reviews', icon: '⭐' },
+    { id: 'hotels', label: 'Hotels', icon: '🏨' },
+    { id: 'faq', label: 'FAQ', icon: '❓' }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -180,23 +179,34 @@ const PlanDetail = () => {
 
         <PlanHeader plan={plan} />
         
-        {/* Navigation Tabs */}
-        <div className="sticky top-20 z-40 bg-white border-b border-ivory-200 shadow-sm">
+        {/* Enhanced Navigation Tabs */}
+        <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-ivory-200 shadow-lg">
           <div className="container max-w-6xl mx-auto px-4">
-            <div className="flex space-x-8 overflow-x-auto">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => scrollToSection(tab.id)}
-                  className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
-                    activeTab === tab.id
-                      ? 'border-maroon-600 text-maroon-600'
-                      : 'border-transparent text-royal-600 hover:text-maroon-600 hover:border-maroon-300'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            <div className="flex justify-center">
+              <div className="flex bg-ivory-100 rounded-full p-2 my-4 shadow-inner">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => scrollToSection(tab.id)}
+                    className={`relative px-6 py-3 mx-1 rounded-full font-medium text-sm transition-all duration-300 whitespace-nowrap flex items-center space-x-2 ${
+                      activeTab === tab.id
+                        ? 'bg-maroon-600 text-white shadow-lg transform scale-105'
+                        : 'text-royal-700 hover:text-maroon-600 hover:bg-white hover:shadow-md'
+                    }`}
+                  >
+                    <span className="text-base">{tab.icon}</span>
+                    <span>{tab.label}</span>
+                    {activeTab === tab.id && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-maroon-600 rounded-full -z-10"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
