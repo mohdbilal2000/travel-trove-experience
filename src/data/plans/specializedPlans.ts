@@ -241,5 +241,69 @@ export const specializedPlans: TravelPlan[] = [
         meals: "World-class cuisine with personal chefs and exclusive dining venues"
       }
     ]
+  },
+  {
+    id: 27,
+    title: "Premium Luxury Tour, Travel & Guide Services",
+    duration: "Flexible (3-21 Days)",
+    price: "From $2,500 per person",
+    description: "Experience the ultimate in luxury travel with our exclusive tour, transport, and guide services. Designed for discerning travelers who demand nothing but the finest experiences in the Golden Triangle and beyond.",
+    highlights: [
+      "Luxury vehicles: Mercedes, BMW, Audi sedans & SUVs",
+      "Expert multilingual guides (English, French, Spanish, German)",
+      "Fast-track monument entry where available",
+      "5-star hotel and restaurant reservations",
+      "Private sunrise Taj Mahal tours",
+      "Personal photographer services",
+      "Curated shopping tours with personal stylists",
+      "Sunset views and private boat rides",
+      "Professional chauffeurs with WiFi-enabled vehicles"
+    ],
+    inclusions: [
+      "Luxury transport with professional chauffeurs",
+      "Licensed expert guides in multiple languages",
+      "Fast-track entries and VIP access",
+      "5-star dining reservations",
+      "Personal photography assistance",
+      "Premium refreshments and WiFi",
+      "Customized itinerary planning",
+      "24/7 concierge support",
+      "Special experience arrangements",
+      "Airport transfers in luxury vehicles"
+    ],
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
+    rating: 5.0,
+    reviews: 35,
+    popular: true,
+    itinerary: [
+      {
+        day: 1,
+        title: "Luxury Arrival & Delhi Exploration",
+        description: "Arrive in style with luxury airport transfer in Mercedes/BMW. Check into 5-star hotel with VIP treatment. Private guided tour of Delhi's monuments including Red Fort, Humayun's Tomb, and India Gate with fast-track entries. Evening cultural performance at luxury venue.",
+        accommodation: "5-star luxury hotel in Delhi (Oberoi/Taj Palace)",
+        meals: "Welcome lunch at 5-star restaurant, Dinner with cultural show"
+      },
+      {
+        day: 2,
+        title: "Agra - Private Taj Mahal Experience",
+        description: "Early departure to Agra in luxury Toyota Fortuner/Land Cruiser. Private sunrise tour of Taj Mahal with expert historian guide. Visit Agra Fort with VIP access. Lunch at ITC Mughal or Oberoi Amarvilas. Evening visit to Mehtab Bagh for sunset views with personal photographer.",
+        accommodation: "5-star heritage hotel in Agra",
+        meals: "Breakfast, Luxury lunch, Dinner at palace restaurant"
+      },
+      {
+        day: 3,
+        title: "Jaipur - Royal Palace Experience",
+        description: "Scenic drive to Jaipur via Fatehpur Sikri in luxury vehicle. Private tour of Amber Fort with elephant ride experience. Visit City Palace with curator-led tour and Hawa Mahal photo session. Evening shopping tour with personal stylist at best local boutiques.",
+        accommodation: "Heritage palace hotel in Jaipur (Rambagh Palace/Taj Jai Mahal)",
+        meals: "Breakfast, Royal lunch at palace, Traditional Rajasthani dinner"
+      },
+      {
+        day: null,
+        title: "Customizable Extension",
+        description: "Extend your luxury experience to any destination of your choice - Udaipur's lakes, Kerala's backwaters, Goa's beaches, Kashmir's valleys, or even international destinations. Our luxury travel specialists will craft the perfect continuation of your journey with the same level of premium service and attention to detail.",
+        accommodation: "Luxury resorts, heritage properties, or premium hotels",
+        meals: "Fine dining experiences curated to your preferences"
+      }
+    ]
   }
 ]
