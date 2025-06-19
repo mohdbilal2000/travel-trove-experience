@@ -10,10 +10,10 @@ const FloatingContactButton = () => {
     <>
       <button
         onClick={() => setIsPopupOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-[#800000] hover:bg-[#600000] text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl animate-pulse"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 bg-[#800000] hover:bg-[#600000] text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl animate-pulse active:scale-95"
         aria-label="Contact us"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={20} className="sm:w-6 sm:h-6" />
       </button>
       
       <ContactPopup 

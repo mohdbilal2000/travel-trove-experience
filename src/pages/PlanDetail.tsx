@@ -179,23 +179,23 @@ const PlanDetail = () => {
 
         <PlanHeader plan={plan} />
         
-        {/* Enhanced Navigation Tabs */}
+        {/* Enhanced Navigation Tabs - Mobile Responsive */}
         <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-ivory-200 shadow-lg">
-          <div className="container max-w-6xl mx-auto px-4">
+          <div className="container max-w-6xl mx-auto px-2 sm:px-4">
             <div className="flex justify-center">
-              <div className="flex bg-ivory-100 rounded-full p-2 my-4 shadow-inner">
+              <div className="flex bg-ivory-100 rounded-full p-1.5 sm:p-2 my-3 sm:my-4 shadow-inner w-full max-w-4xl overflow-x-auto scrollbar-hide">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => scrollToSection(tab.id)}
-                    className={`relative px-6 py-3 mx-1 rounded-full font-medium text-sm transition-all duration-300 whitespace-nowrap flex items-center space-x-2 ${
+                    className={`relative px-3 sm:px-6 py-2 sm:py-3 mx-0.5 sm:mx-1 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 whitespace-nowrap flex items-center space-x-1 sm:space-x-2 flex-shrink-0 ${
                       activeTab === tab.id
                         ? 'bg-maroon-600 text-white shadow-lg transform scale-105'
                         : 'text-royal-700 hover:text-maroon-600 hover:bg-white hover:shadow-md'
                     }`}
                   >
-                    <span className="text-base">{tab.icon}</span>
-                    <span>{tab.label}</span>
+                    <span className="text-sm sm:text-base">{tab.icon}</span>
+                    <span className="hidden xs:inline sm:inline">{tab.label}</span>
                     {activeTab === tab.id && (
                       <motion.div
                         layoutId="activeTab"
