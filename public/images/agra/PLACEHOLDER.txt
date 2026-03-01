@@ -1,0 +1,23 @@
+AGRA IMAGES FOLDER
+
+This folder should contain images related to Agra and its attractions.
+
+Suggested images to add:
+- taj-mahal-sunrise.jpg (Taj Mahal at sunrise)
+- taj-mahal-sunset.jpg (Taj Mahal at sunset)
+- agra-fort-exterior.jpg (Agra Fort exterior view)
+- agra-fort-interior.jpg (Agra Fort interior)
+- itimad-ud-daulah.jpg (Baby Taj)
+- mehtab-bagh.jpg (Mehtab Bagh gardens)
+- same-day-agra-tour.jpg (Train or car journey to Agra)
+- golden-triangle-luxury.jpg (Luxury experience in Agra)
+- deluxe-golden-triangle.jpg (Deluxe tour experience)
+- vip-luxury-experience.jpg (VIP luxury experience)
+
+Image requirements:
+- High quality professional travel photography
+- Recommended size: 1200x800 pixels or larger
+- File format: JPG, PNG, or WebP
+- Optimize for web use (under 500KB when possible)
+
+Replace this file with actual images when available. 

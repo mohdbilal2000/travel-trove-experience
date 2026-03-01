@@ -1,0 +1,35 @@
+
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Don't scroll to top if we're returning to Plans page (scroll position will be restored)
+    if (pathname === '/plans' && sessionStorage.getItem('plansScrollPosition')) {
+      return;
+    }
+
+    // Use requestAnimationFrame to ensure the scroll happens after the DOM is updated
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+    };
+
+    // Use a small timeout to ensure the page has fully loaded
+    const timeoutId = setTimeout(scrollToTop, 0);
+    
+    // Also try immediately in case the timeout isn't needed
+    requestAnimationFrame(scrollToTop);
+
+    return () => clearTimeout(timeoutId);
+  }, [pathname]);
+
+  return null;
+};
+
+export default ScrollToTop;

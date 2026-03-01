@@ -1,0 +1,26 @@
+DELHI IMAGES FOLDER
+
+This folder should contain images related to Delhi and its attractions.
+
+Suggested images to add:
+- red-fort-exterior.jpg (Red Fort exterior)
+- red-fort-interior.jpg (Red Fort interior)
+- jama-masjid.jpg (Jama Masjid)
+- humayun-tomb.jpg (Humayun's Tomb)
+- qutub-minar.jpg (Qutub Minar)
+- india-gate.jpg (India Gate)
+- lotus-temple.jpg (Lotus Temple)
+- golden-triangle-essential.jpg (Essential Golden Triangle tour)
+- family-golden-triangle.jpg (Family tour experience)
+- customized-golden-triangle.jpg (Customized tour)
+- express-golden-triangle.jpg (Express tour)
+- classic-golden-triangle.jpg (Classic tour)
+- golden-triangle-kerala.jpg (Golden Triangle with Kerala extension)
+
+Image requirements:
+- High quality professional travel photography
+- Recommended size: 1200x800 pixels or larger
+- File format: JPG, PNG, or WebP
+- Optimize for web use (under 500KB when possible)
+
+Replace this file with actual images when available. 

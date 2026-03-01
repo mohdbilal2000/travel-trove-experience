@@ -1,0 +1,68 @@
+import React, { Suspense, lazy, ComponentType } from 'react';
+import { motion } from 'framer-motion';
+
+interface LazyComponentProps {
+  fallback?: React.ReactNode;
+  delay?: number;
+}
+
+// Loading fallback component
+const LoadingFallback: React.FC = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="flex items-center justify-center p-8"
+  >
+    <div className="w-8 h-8 border-2 border-maroon-600 border-t-transparent rounded-full animate-spin"></div>
+  </motion.div>
+);
+
+// Higher-order component for lazy loading
+export function withLazyLoading<T extends object>(
+  importFunc: () => Promise<{ default: ComponentType<T> }>,
+  fallback?: React.ReactNode
+) {
+  const LazyComponent = lazy(importFunc);
+
+  return function WrappedComponent(props: T & LazyComponentProps) {
+    const { fallback: customFallback, delay = 0, ...restProps } = props;
+
+    return (
+      <Suspense fallback={customFallback || <LoadingFallback />}>
+        <LazyComponent {...(restProps as T)} />
+      </Suspense>
+    );
+  };
+}
+
+// Hook for intersection observer based lazy loading
+export function useLazyLoad(ref: React.RefObject<HTMLElement>, options = {}) {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1,
+        ...options,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [ref, options]);
+
+  return isVisible;
+}
+
+export default LazyComponent;

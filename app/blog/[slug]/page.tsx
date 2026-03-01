@@ -1,0 +1,262 @@
+﻿import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Calendar, User, Tag, ArrowLeft, Check, Clock, Star } from "lucide-react";
+import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts";
+import { allPlans } from "@/data/travelPlans";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
+
+export const revalidate = 86400;
+
+interface PageProps {
+    params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const post = getBlogPostBySlug(slug);
+
+    if (!post) {
+        return {
+            title: 'Post Not Found | Guide India Tours',
+        };
+    }
+
+    const title = `${post.title} | India Travel Blog`;
+    const description = post.excerpt || `${post.content.substring(0, 155)}...`;
+
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: `https://guideindia.tours/blog/${slug}`,
+            languages: {
+                'en-US': `https://guideindia.tours/blog/${slug}`,
+                'en-GB': `https://guideindia.tours/blog/${slug}`,
+                'en-AU': `https://guideindia.tours/blog/${slug}`,
+                'x-default': `https://guideindia.tours/blog/${slug}`,
+            },
+        },
+        openGraph: {
+            title,
+            description,
+            url: `https://guideindia.tours/blog/${slug}`,
+            images: [
+                {
+                    url: post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+            type: 'article',
+            publishedTime: post.publishedDate,
+            authors: [post.author || 'Guide India Tours'],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`],
+        },
+    };
+}
+
+export default async function BlogDetailPage({ params }: PageProps) {
+    const { slug } = await params;
+    const post = getBlogPostBySlug(slug);
+
+    if (!post) {
+        notFound();
+    }
+
+    const relatedPlans = allPlans.filter(plan => post.relatedPlans?.includes(plan.id)).slice(0, 3);
+
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "image": post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`,
+        "datePublished": post.publishedDate,
+        "author": {
+            "@type": "Person",
+            "name": post.author || "Guide India Tours",
+            "url": "https://guideindia.tours/about"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Guide India Tours",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://guideindia.tours/favicon.svg"
+            }
+        },
+        "description": post.excerpt || post.content.substring(0, 160)
+    };
+
+    const renderContent = (content: string) => {
+        if (!content) return null;
+        const sections = content.split(/\n\n+/);
+        return (
+            <div className="space-y-8">
+                {sections.map((section, idx) => {
+                    if (section.startsWith('## ')) {
+                        return <h2 key={idx} className="text-3xl font-display font-bold mt-12 mb-6 text-gray-900">{section.replace('## ', '')}</h2>;
+                    }
+                    if (section.startsWith('### ')) {
+                        return <h3 key={idx} className="text-xl font-bold mt-8 mb-4 text-gray-900">{section.replace('### ', '')}</h3>;
+                    }
+                    if (section.includes('\n- ')) {
+                        const lines = section.split('\n');
+                        return (
+                            <ul key={idx} className="space-y-4 my-8">
+                                {lines.map((line, i) => line.trim().startsWith('- ') ? (
+                                    <li key={i} className="flex gap-4 items-start">
+                                        <div className="mt-1.5 w-5 h-5 rounded-full bg-maroon-600/10 flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-maroon-600" />
+                                        </div>
+                                        <span className="text-gray-700 leading-relaxed font-medium">{line.replace('- ', '')}</span>
+                                    </li>
+                                ) : null)}
+                            </ul>
+                        );
+                    }
+                    return <p key={idx} className="leading-[1.8] text-gray-600 font-light text-lg">{section}</p>;
+                })}
+            </div>
+        );
+    };
+
+    return (
+        <main className="bg-ivory-100 min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+
+            <section className="pt-44 pb-24">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <Breadcrumbs
+                        items={[{ label: 'Blog', href: '/blog' }, { label: post.title }]}
+                        className="mb-12"
+                    />
+
+                    <div className="space-y-8 mb-16">
+                        <div className="flex items-center gap-6">
+                            <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-4 py-1.5 uppercase tracking-widest text-[10px] font-black">
+                                {post.category || "Travel Guide"}
+                            </Badge>
+                            <div className="flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+                                <Calendar className="w-4 h-4" />
+                                <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            </div>
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.1] tracking-tighter">
+                            {post.title}
+                        </h1>
+
+                        <div className="flex items-center gap-4 py-6 border-y border-gray-100">
+                            <div className="w-12 h-12 rounded-full bg-gray-100 overflow-hidden relative border border-gray-200">
+                                <User className="w-full h-full p-2 text-gray-400" />
+                            </div>
+                            <div>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Written By</p>
+                                <p className="font-bold text-gray-900">{post.author || "Guide India Tours Expert"}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden shadow-2xl mb-20 group">
+                        <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                            priority
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                        />
+                    </div>
+
+                    <div className="bg-white p-12 md:p-20 rounded-3xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.05)] border border-gray-50 relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-50">
+                            <Clock className="text-maroon-600" size={32} />
+                        </div>
+                        <article className="prose prose-xl max-w-none">
+                            {renderContent(post.content)}
+                        </article>
+
+                        <div className="mt-20 pt-12 border-t border-gray-100">
+                            <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-10 rounded-3xl">
+                                <div className="w-24 h-24 rounded-full bg-maroon-600 text-white flex items-center justify-center font-display text-4xl font-bold shrink-0">
+                                    GT
+                                </div>
+                                <div className="text-center md:text-left">
+                                    <h4 className="text-2xl font-bold text-gray-900 mb-2">About Guide India Tours</h4>
+                                    <p className="text-gray-500 font-light leading-relaxed">
+                                        With over 12 years of experience leading premium tours across India Golden Triangle, our team specializes in providing deep cultural insights and luxury logistics for international travelers.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {relatedPlans.length > 0 && (
+                <section className="py-32 bg-[#F8F5F2]">
+                    <div className="container mx-auto px-4 max-w-7xl text-center">
+                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-6 px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-black">
+                            Experience the Magic
+                        </Badge>
+                        <h2 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-20">Recommended <span className="text-maroon-600">Tour Packages</span></h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            {relatedPlans.map(plan => (
+                                <Card key={plan.id} className="overflow-hidden group rounded-3xl border-none shadow-sm hover:shadow-2xl transition-all duration-500 bg-white">
+                                    <Link href={`/plans/${plan.id}`}>
+                                        <div className="relative aspect-[4/3] overflow-hidden">
+                                            <Image
+                                                src={plan.image}
+                                                alt={plan.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        </div>
+                                        <CardContent className="p-10 text-left">
+                                            <div className="flex justify-between items-center mb-4">
+                                                <Badge variant="outline" className="border-maroon-600/20 text-maroon-600 rounded-lg">
+                                                    {plan.duration}
+                                                </Badge>
+                                                <div className="flex items-center gap-1">
+                                                    <Star className="w-3 h-3 text-gold-500 fill-current" />
+                                                    <span className="text-[10px] font-bold text-gray-400">{plan.rating}</span>
+                                                </div>
+                                            </div>
+                                            <h3 className="text-xl font-bold mb-6 group-hover:text-maroon-600 transition-colors line-clamp-2 min-h-[3.5rem] leading-tight">{plan.title}</h3>
+                                            <div className="flex justify-between items-center pt-6 border-t border-gray-50">
+                                                <span className="text-2xl font-black text-maroon-600">{plan.price}</span>
+                                                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-maroon-600 group-hover:text-white transition-all">
+                                                    <ArrowLeft className="rotate-180 w-5 h-5" />
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Link>
+                                </Card>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+        </main>
+    );
+}
+
+export async function generateStaticParams() {
+    return blogPosts.map((post) => ({
+        slug: post.slug,
+    }));
+}

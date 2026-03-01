@@ -1,0 +1,23 @@
+JAIPUR IMAGES FOLDER
+
+This folder should contain images related to Jaipur and its attractions.
+
+Suggested images to add:
+- amber-fort-exterior.jpg (Amber Fort exterior)
+- amber-fort-interior.jpg (Amber Fort interior)
+- amber-fort-elephant.jpg (Elephant ride at Amber Fort)
+- city-palace.jpg (City Palace)
+- hawa-mahal.jpg (Hawa Mahal - Palace of Winds)
+- jantar-mantar.jpg (Jantar Mantar observatory)
+- golden-triangle-varanasi.jpg (Golden Triangle with Varanasi)
+- golden-triangle-udaipur.jpg (Golden Triangle with Udaipur)
+- golden-triangle-ranthambore.jpg (Golden Triangle with Ranthambore)
+- premium-luxury-tour.jpg (Premium luxury tour experience)
+
+Image requirements:
+- High quality professional travel photography
+- Recommended size: 1200x800 pixels or larger
+- File format: JPG, PNG, or WebP
+- Optimize for web use (under 500KB when possible)
+
+Replace this file with actual images when available. 
