@@ -26,7 +26,7 @@ export const specializedPlans: TravelPlan[] = [
       "Welcome gifts for children"
     ],
     image: "/images/delhi/ashim-d-silva-KF7pv-8OiyY-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 68,
     popular: false,
     itinerary: [

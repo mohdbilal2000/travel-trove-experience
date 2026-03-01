@@ -86,7 +86,7 @@ export const agraPlans: TravelPlan[] = [
       "Early morning departure for sunrise"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 198,
     popular: false,
     destinations: ["Agra"],
@@ -247,7 +247,7 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 167,
     popular: false,
     destinations: ["Agra"],
@@ -486,7 +486,7 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/akshat-jhingran-_YRfF6YOhx0-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 145,
     popular: false,
     destinations: ["Agra", "Mathura", "Vrindavan"],
@@ -590,7 +590,7 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/ritu-dahiya-9Ni10c7a428-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 167,
     popular: false,
     destinations: ["Agra", "Fatehpur Sikri", "Bharatpur"],

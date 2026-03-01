@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: "Guide India Tours | #1 Specialist for Golden Triangle Tours Delhi, Agra, Jaipur",
-    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.8/5 Rated by 1500+ travelers. Book your premium private tour today.",
+    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 360+ travelers on Google. Book your premium private tour today.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
         canonical: 'https://guideindia.tours',
@@ -55,8 +55,8 @@ export default function Home() {
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "156"
+            "ratingValue": "4.9",
+            "reviewCount": "364"
         }
     };
 

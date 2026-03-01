@@ -234,7 +234,7 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 89,
     popular: true,
     destinations: ["Jaipur"],

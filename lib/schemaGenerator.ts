@@ -412,8 +412,8 @@ export const generateConnectedGraphSchema = () => {
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "156",
+          "ratingValue": "4.9",
+          "reviewCount": "364",
           "bestRating": "5"
         },
         "areaServed": {

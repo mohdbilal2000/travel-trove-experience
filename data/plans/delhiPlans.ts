@@ -24,7 +24,7 @@ export const delhiPlans: TravelPlan[] = [
       "Hotel pickup and drop-off"
     ],
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 156,
     popular: true,
     destinations: ["Delhi"],
@@ -307,7 +307,7 @@ export const delhiPlans: TravelPlan[] = [
       "Bottled water"
     ],
     image: "/images/delhi/ashim-d-silva-KF7pv-8OiyY-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 178,
     popular: true,
     destinations: ["Delhi", "Agra"],

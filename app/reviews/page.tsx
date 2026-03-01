@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'Guest Reviews | What Travelers Say About Guide India Tours',
-    description: 'Read 156+ verified guest reviews from travelers worldwide. Rated 4.8/5 on Google, TripAdvisor & Trustpilot. Discover why 98% of guests recommend our Golden Triangle tours.',
+    description: 'Read 364+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
     alternates: {
         canonical: 'https://guideindia.tours/reviews',
         languages: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.8/5 by 156+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: 'Rated 4.9/5 by 364+ verified travelers. Read real reviews from guests who explored India with us.',
         url: 'https://guideindia.tours/reviews',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.8/5 by 156+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: 'Rated 4.9/5 by 364+ verified travelers. Read real reviews from guests who explored India with us.',
     },
 };
 
@@ -88,8 +88,8 @@ export default function ReviewsPage() {
         url: 'https://guideindia.tours',
         aggregateRating: {
             '@type': 'AggregateRating',
-            ratingValue: '4.8',
-            reviewCount: '156',
+            ratingValue: '4.9',
+            reviewCount: '364',
             bestRating: '5',
             worstRating: '1',
         },
@@ -146,14 +146,14 @@ export default function ReviewsPage() {
                                     <Star key={i} className="w-5 h-5 text-gold-500 fill-gold-500" />
                                 ))}
                             </div>
-                            <p className="text-4xl font-display font-bold text-gray-900">4.8</p>
+                            <p className="text-4xl font-display font-bold text-gray-900">4.9</p>
                             <p className="text-sm text-gray-500 mt-1">out of 5 stars</p>
                         </div>
                         <div className="bg-ivory-100 rounded-3xl p-8 text-center">
                             <div className="flex items-center justify-center mb-3">
                                 <Users className="w-6 h-6 text-maroon-600" />
                             </div>
-                            <p className="text-4xl font-display font-bold text-gray-900">156</p>
+                            <p className="text-4xl font-display font-bold text-gray-900">364</p>
                             <p className="text-sm text-gray-500 mt-1">verified reviews</p>
                         </div>
                         <div className="bg-ivory-100 rounded-3xl p-8 text-center">

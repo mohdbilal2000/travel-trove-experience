@@ -211,7 +211,7 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-JdFQZLcfXRg-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 134,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Jodhpur"],
@@ -583,7 +583,7 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/satyam-bhardwaj-qnO1zuuRN7Q-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 145,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Jaisalmer"],
@@ -783,7 +783,7 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/ranthambore/kartik-iyer-VzErgGzTkPU-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 167,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Ranthambore"],
@@ -1175,7 +1175,7 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/agra/ritu-dahiya-9Ni10c7a428-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 156,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Chittorgarh"],
@@ -1370,7 +1370,7 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/satyam-bhardwaj-qnO1zuuRN7Q-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 112,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Mount Abu"],

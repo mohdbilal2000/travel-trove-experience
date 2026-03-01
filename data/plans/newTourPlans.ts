@@ -282,7 +282,7 @@ export const tourPlans: TravelPlan[] = [
       "Cultural activities and workshops"
     ],
     image: "/images/agra/akshat-jhingran-_YRfF6YOhx0-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 94,
     popular: false,
     itinerary: [
@@ -421,7 +421,7 @@ export const tourPlans: TravelPlan[] = [
       "Daily breakfast"
     ],
     image: "/images/delhi/getty-images-7sJAG2dJVJo-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 103,
     popular: true,
     itinerary: [
@@ -532,7 +532,7 @@ export const tourPlans: TravelPlan[] = [
       "Food tours and cooking classes"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 74,
     popular: false,
     itinerary: [
@@ -716,7 +716,7 @@ export const tourPlans: TravelPlan[] = [
       "Photography guide and workshops"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 56,
     popular: false,
     itinerary: [

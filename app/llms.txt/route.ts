@@ -32,7 +32,7 @@ export async function GET() {
 
 ## Key Differentiators
 - Licensed & Government-approved guides
-- 4.8/5 average rating from 156+ verified travelers
+- 4.9/5 average rating from 364 verified Google reviews
 - 100% customizable itineraries
 - No hidden fees — transparent pricing
 - 24/7 on-trip WhatsApp support

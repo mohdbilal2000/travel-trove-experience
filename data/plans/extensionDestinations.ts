@@ -227,7 +227,7 @@ export const extensionDestinations: TravelPlan[] = [
       "Guided meditation session"
     ],
     image: "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?q=80&w=2034&auto=format&fit=crop",
-    rating: 4.8,
+    rating: 4.9,
     reviews: 56,
     popular: false,
     itinerary: [
