@@ -16,6 +16,10 @@ dist-ssr
 .env.local
 .env.production.local
 
+# Large deployment archives
+*.zip
+hostinger-deploy/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

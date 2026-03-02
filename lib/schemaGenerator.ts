@@ -296,10 +296,10 @@ export const generateTouristDestinationSchema = (destination: {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
-    "@id": `https://guideindia.tours/${destination.url}#destination`,
+    "@id": `https://guideindiatours.com/${destination.url}#destination`,
     "name": destination.name,
     "description": destination.description,
-    "url": `https://guideindia.tours/${destination.url}`,
+    "url": `https://guideindiatours.com/${destination.url}`,
     "touristType": ["Cultural tourism", "Heritage tourism", "Historical tourism"],
   };
 
@@ -352,11 +352,11 @@ export const generateArticleSchema = (article: {
     },
     "publisher": {
       "@type": "Organization",
-      "@id": "https://guideindia.tours/#organization",
+      "@id": "https://guideindiatours.com/#organization",
       "name": "Guide India Tours",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://guideindia.tours/logo.png"
+        "url": "https://guideindiatours.com/logo.png"
       }
     },
     ...(article.category && { "articleSection": article.category }),
@@ -376,18 +376,18 @@ export const generateConnectedGraphSchema = () => {
     "@graph": [
       {
         "@type": "TravelAgency",
-        "@id": "https://guideindia.tours/#organization",
+        "@id": "https://guideindiatours.com/#organization",
         "name": "Guide India Tours",
         "alternateName": "Golden Triangle Tours Specialist",
-        "url": "https://guideindia.tours",
+        "url": "https://guideindiatours.com",
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://guideindia.tours/#logo",
-          "url": "https://guideindia.tours/logo.png",
-          "contentUrl": "https://guideindia.tours/logo.png",
+          "@id": "https://guideindiatours.com/#logo",
+          "url": "https://guideindiatours.com/logo.png",
+          "contentUrl": "https://guideindiatours.com/logo.png",
           "caption": "Guide India Tours Logo"
         },
-        "image": "https://guideindia.tours/images/og-default.jpg",
+        "image": "https://guideindiatours.com/images/og-default.jpg",
         "description": "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur.",
         "priceRange": "$$$",
         "address": {
@@ -430,15 +430,15 @@ export const generateConnectedGraphSchema = () => {
       },
       {
         "@type": "WebSite",
-        "@id": "https://guideindia.tours/#website",
-        "url": "https://guideindia.tours",
+        "@id": "https://guideindiatours.com/#website",
+        "url": "https://guideindiatours.com",
         "name": "Guide India Tours",
-        "publisher": { "@id": "https://guideindia.tours/#organization" },
+        "publisher": { "@id": "https://guideindiatours.com/#organization" },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://guideindia.tours/plans?city={search_term_string}"
+            "urlTemplate": "https://guideindiatours.com/plans?city={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }

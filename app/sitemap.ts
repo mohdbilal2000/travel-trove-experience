@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 
-const BASE_URL = 'https://guideindia.tours';
+const BASE_URL = 'https://guideindiatours.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date().toISOString();

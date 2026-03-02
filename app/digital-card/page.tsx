@@ -43,7 +43,7 @@ export default function DigitalCardPage() {
             pdf.setTextColor(31, 41, 55);
             pdf.text('Call: +91 8979810991', pageWidth / 2, 90, { align: 'center' });
             pdf.text('Email: info@guideindiatours.com', pageWidth / 2, 100, { align: 'center' });
-            pdf.text('Visit: guideindia.tours', pageWidth / 2, 110, { align: 'center' });
+            pdf.text('Visit: guideindiatours.com', pageWidth / 2, 110, { align: 'center' });
 
             pdf.save('GuideIndiaTours-DigitalCard.pdf');
         } catch (error) {
@@ -111,7 +111,7 @@ export default function DigitalCardPage() {
                         </div>
 
                         <div className="p-6 bg-white border-2 border-dashed border-gray-200 rounded-2xl inline-block mb-10">
-                            <QRCode value="https://guideindia.tours" size={150} />
+                            <QRCode value="https://guideindiatours.com" size={150} />
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4">

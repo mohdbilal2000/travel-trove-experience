@@ -32,21 +32,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title,
         description,
         alternates: {
-            canonical: `https://guideindia.tours/blog/${slug}`,
+            canonical: `https://guideindiatours.com/blog/${slug}`,
             languages: {
-                'en-US': `https://guideindia.tours/blog/${slug}`,
-                'en-GB': `https://guideindia.tours/blog/${slug}`,
-                'en-AU': `https://guideindia.tours/blog/${slug}`,
-                'x-default': `https://guideindia.tours/blog/${slug}`,
+                'en-US': `https://guideindiatours.com/blog/${slug}`,
+                'en-GB': `https://guideindiatours.com/blog/${slug}`,
+                'en-AU': `https://guideindiatours.com/blog/${slug}`,
+                'x-default': `https://guideindiatours.com/blog/${slug}`,
             },
         },
         openGraph: {
             title,
             description,
-            url: `https://guideindia.tours/blog/${slug}`,
+            url: `https://guideindiatours.com/blog/${slug}`,
             images: [
                 {
-                    url: post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`,
+                    url: post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
                     width: 1200,
                     height: 630,
                     alt: post.title,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             card: 'summary_large_image',
             title,
             description,
-            images: [post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`],
+            images: [post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`],
         },
     };
 }
@@ -79,19 +79,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": post.title,
-        "image": post.image.startsWith('http') ? post.image : `https://guideindia.tours${post.image}`,
+        "image": post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
         "datePublished": post.publishedDate,
         "author": {
             "@type": "Person",
             "name": post.author || "Guide India Tours",
-            "url": "https://guideindia.tours/about"
+            "url": "https://guideindiatours.com/about"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Guide India Tours",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://guideindia.tours/favicon.svg"
+                "url": "https://guideindiatours.com/favicon.svg"
             }
         },
         "description": post.excerpt || post.content.substring(0, 160)

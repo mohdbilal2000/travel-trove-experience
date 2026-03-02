@@ -38,18 +38,18 @@ export const metadata: Metadata = {
     title: 'Golden Triangle Tours | Delhi Agra Jaipur Private Tour Packages | Guide India Tours',
     description: 'Book premium Golden Triangle tours covering Delhi, Agra & Jaipur. 4-10 day private packages with Taj Mahal, Amber Fort & Red Fort. From $150/person. 4.9/5 rated by 364+ travelers. Book now!',
     alternates: {
-        canonical: 'https://guideindia.tours/golden-triangle-tours',
+        canonical: 'https://guideindiatours.com/golden-triangle-tours',
         languages: {
-            'en-US': 'https://guideindia.tours/golden-triangle-tours',
-            'en-GB': 'https://guideindia.tours/golden-triangle-tours',
-            'x-default': 'https://guideindia.tours/golden-triangle-tours',
+            'en-US': 'https://guideindiatours.com/golden-triangle-tours',
+            'en-GB': 'https://guideindiatours.com/golden-triangle-tours',
+            'x-default': 'https://guideindiatours.com/golden-triangle-tours',
         },
     },
     openGraph: {
         title: 'Golden Triangle Tours India | Delhi Agra Jaipur Private Packages',
         description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 364+ travelers.',
-        url: 'https://guideindia.tours/golden-triangle-tours',
-        images: [{ url: 'https://guideindia.tours/images/og-default.jpg' }],
+        url: 'https://guideindiatours.com/golden-triangle-tours',
+        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg' }],
     },
 };
 
@@ -64,14 +64,14 @@ export default function GoldenTriangleToursPage() {
         name: 'Golden Triangle India',
         description: 'The Golden Triangle is India\'s most popular tourist circuit connecting Delhi, Agra, and Jaipur — covering the Taj Mahal, Red Fort, Amber Fort, and more.',
         url: 'golden-triangle-tours',
-        image: 'https://guideindia.tours/images/og-default.jpg',
+        image: 'https://guideindiatours.com/images/og-default.jpg',
         containedInPlace: 'India',
     });
 
     const faqSchema = generateFAQSchema(goldenTriangleFaqs);
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindia.tours' },
-        { name: 'Golden Triangle Tours', url: 'https://guideindia.tours/golden-triangle-tours' },
+        { name: 'Home', url: 'https://guideindiatours.com' },
+        { name: 'Golden Triangle Tours', url: 'https://guideindiatours.com/golden-triangle-tours' },
     ]);
 
     const goldenTriangleHighlights = [

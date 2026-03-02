@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     title: 'Agra Tours | Taj Mahal Private Guided Visits & Day Trips | Guide India Tours',
     description: 'Visit the Taj Mahal with expert private guides. Same-day Agra tours, sunrise Taj Mahal visits, Agra Fort & Fatehpur Sikri. Tours from $30/person. Book your Agra tour now!',
     alternates: {
-        canonical: 'https://guideindia.tours/agra-tours',
+        canonical: 'https://guideindiatours.com/agra-tours',
         languages: {
-            'en-US': 'https://guideindia.tours/agra-tours',
-            'en-GB': 'https://guideindia.tours/agra-tours',
-            'x-default': 'https://guideindia.tours/agra-tours',
+            'en-US': 'https://guideindiatours.com/agra-tours',
+            'en-GB': 'https://guideindiatours.com/agra-tours',
+            'x-default': 'https://guideindiatours.com/agra-tours',
         },
     },
     openGraph: {
         title: 'Agra Tours | Taj Mahal Private Guided Tours',
         description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 364+ travelers.',
-        url: 'https://guideindia.tours/agra-tours',
-        images: [{ url: 'https://guideindia.tours/images/agra/getty-images-x83xvTdlITo-unsplash.jpg' }],
+        url: 'https://guideindiatours.com/agra-tours',
+        images: [{ url: 'https://guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg' }],
     },
 };
 
@@ -47,15 +47,15 @@ export default function AgraToursPage() {
         name: 'Agra',
         description: 'Visit Agra, home of the Taj Mahal, with private guided tours covering Mughal heritage sites including Agra Fort and Fatehpur Sikri.',
         url: 'agra-tours',
-        image: 'https://guideindia.tours/images/agra/getty-images-x83xvTdlITo-unsplash.jpg',
+        image: 'https://guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg',
         containedInPlace: 'India',
         geo: { lat: '27.1767', long: '78.0081' },
     });
 
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindia.tours' },
-        { name: 'Agra Tours', url: 'https://guideindia.tours/agra-tours' },
+        { name: 'Home', url: 'https://guideindiatours.com' },
+        { name: 'Agra Tours', url: 'https://guideindiatours.com/agra-tours' },
     ]);
 
     return (

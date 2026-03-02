@@ -8,7 +8,7 @@ const allPlans = require('../src/data/travelPlans').allPlans;
 const blogPosts = require('../src/data/blogPosts').blogPosts;
 const destinations = require('../src/data/destinations').destinations;
 
-const baseUrl = 'https://guideindia.tours';
+const baseUrl = 'https://guideindiatours.com';
 const currentDate = new Date().toISOString().split('T')[0];
 
 // Static routes

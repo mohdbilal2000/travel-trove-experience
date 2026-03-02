@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     title: 'FAQ | Essential Travel Guide for Golden Triangle Tours',
     description: 'Find answers to common questions about booking, safety, payments, and travel tips for your India tour. Start your Golden Triangle adventure well-informed.',
     alternates: {
-        canonical: 'https://guideindia.tours/faq',
+        canonical: 'https://guideindiatours.com/faq',
         languages: {
-            'en-US': 'https://guideindia.tours/faq',
-            'en-GB': 'https://guideindia.tours/faq',
-            'en-AU': 'https://guideindia.tours/faq',
-            'x-default': 'https://guideindia.tours/faq',
+            'en-US': 'https://guideindiatours.com/faq',
+            'en-GB': 'https://guideindiatours.com/faq',
+            'en-AU': 'https://guideindiatours.com/faq',
+            'x-default': 'https://guideindiatours.com/faq',
         },
     },
 };

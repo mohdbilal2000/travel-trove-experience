@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     title: 'Jaipur Tours | Pink City Private Guided Tours & Rajasthan Trips | Guide India Tours',
     description: 'Explore Jaipur with expert guides. Visit Amber Fort, City Palace, Hawa Mahal & Jantar Mantar. Private Rajasthan tours from $35/person. Book your Jaipur tour today!',
     alternates: {
-        canonical: 'https://guideindia.tours/jaipur-tours',
+        canonical: 'https://guideindiatours.com/jaipur-tours',
         languages: {
-            'en-US': 'https://guideindia.tours/jaipur-tours',
-            'en-GB': 'https://guideindia.tours/jaipur-tours',
-            'x-default': 'https://guideindia.tours/jaipur-tours',
+            'en-US': 'https://guideindiatours.com/jaipur-tours',
+            'en-GB': 'https://guideindiatours.com/jaipur-tours',
+            'x-default': 'https://guideindiatours.com/jaipur-tours',
         },
     },
     openGraph: {
         title: 'Jaipur Tours | Pink City Private Guided Tours',
         description: 'Private Jaipur tours visiting Amber Fort, City Palace, Hawa Mahal. Expert guides, luxury transport. 4.9/5 rated by 364+ travelers.',
-        url: 'https://guideindia.tours/jaipur-tours',
-        images: [{ url: 'https://guideindia.tours/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg' }],
+        url: 'https://guideindiatours.com/jaipur-tours',
+        images: [{ url: 'https://guideindiatours.com/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg' }],
     },
 };
 
@@ -47,15 +47,15 @@ export default function JaipurToursPage() {
         name: 'Jaipur',
         description: 'Explore Jaipur, the Pink City of Rajasthan, with private guided tours of royal palaces, ancient forts, and vibrant bazaars.',
         url: 'jaipur-tours',
-        image: 'https://guideindia.tours/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg',
+        image: 'https://guideindiatours.com/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg',
         containedInPlace: 'India',
         geo: { lat: '26.9124', long: '75.7873' },
     });
 
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindia.tours' },
-        { name: 'Jaipur Tours', url: 'https://guideindia.tours/jaipur-tours' },
+        { name: 'Home', url: 'https://guideindiatours.com' },
+        { name: 'Jaipur Tours', url: 'https://guideindiatours.com/jaipur-tours' },
     ]);
 
     return (

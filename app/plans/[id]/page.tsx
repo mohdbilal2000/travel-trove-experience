@@ -41,20 +41,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title,
         description,
         alternates: {
-            canonical: `https://guideindia.tours/plans/${id}`,
+            canonical: `https://guideindiatours.com/plans/${id}`,
             languages: {
-                'en-US': `https://guideindia.tours/plans/${id}`,
-                'en-GB': `https://guideindia.tours/plans/${id}`,
-                'x-default': `https://guideindia.tours/plans/${id}`,
+                'en-US': `https://guideindiatours.com/plans/${id}`,
+                'en-GB': `https://guideindiatours.com/plans/${id}`,
+                'x-default': `https://guideindiatours.com/plans/${id}`,
             },
         },
         openGraph: {
             title,
             description,
-            url: `https://guideindia.tours/plans/${id}`,
+            url: `https://guideindiatours.com/plans/${id}`,
             images: [
                 {
-                    url: plan.image.startsWith('http') ? plan.image : `https://guideindia.tours${plan.image}`,
+                    url: plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`,
                     width: 1200,
                     height: 630,
                     alt: plan.title,
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             card: 'summary_large_image',
             title,
             description,
-            images: [plan.image.startsWith('http') ? plan.image : `https://guideindia.tours${plan.image}`],
+            images: [plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`],
         },
     };
 }
@@ -84,13 +84,13 @@ export default async function PlanDetailPage({ params }: PageProps) {
         name: plan.title,
         description: plan.description,
         price: plan.price,
-        image: plan.image.startsWith('http') ? plan.image : `https://guideindia.tours${plan.image}`,
+        image: plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`,
         duration: plan.duration,
         itinerary: plan.itinerary,
         destinations: plan.destinations
     }, {
         name: "Guide India Tours",
-        url: "https://guideindia.tours"
+        url: "https://guideindiatours.com"
     });
 
     const faqSchema = plan.faqs ? generateFAQSchema(plan.faqs) : null;

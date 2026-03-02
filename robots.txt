@@ -73,7 +73,7 @@ User-agent: Googlebot-Mobile
 Allow: /
 
 # Sitemap
-Sitemap: https://guideindia.tours/sitemap.xml
+Sitemap: https://guideindiatours.com/sitemap.xml
 
 # Host (optional, mainly for Yandex)
-Host: https://guideindia.tours
+Host: https://guideindiatours.com

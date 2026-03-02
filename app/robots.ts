@@ -28,8 +28,24 @@ export default function robots(): MetadataRoute.Robots {
                 userAgent: 'anthropic-ai',
                 allow: ['/', '/llms.txt'],
             },
+            {
+                userAgent: 'PerplexityBot',
+                allow: ['/', '/llms.txt'],
+            },
+            {
+                userAgent: 'Google-Extended',
+                allow: '/',
+            },
+            {
+                userAgent: 'Bytespider',
+                allow: '/',
+            },
+            {
+                userAgent: 'cohere-ai',
+                allow: ['/', '/llms.txt'],
+            },
         ],
-        sitemap: 'https://guideindia.tours/sitemap.xml',
-        host: 'https://guideindia.tours',
+        sitemap: 'https://guideindiatours.com/sitemap.xml',
+        host: 'https://guideindiatours.com',
     };
 }

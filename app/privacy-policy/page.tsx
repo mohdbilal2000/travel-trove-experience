@@ -6,12 +6,12 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | Guide India Tours',
     description: 'Learn how Guide India Tours collects, uses, and protects your personal information. Our privacy policy covers data handling for tour bookings, communications, and website usage.',
     alternates: {
-        canonical: 'https://guideindia.tours/privacy-policy',
+        canonical: 'https://guideindiatours.com/privacy-policy',
         languages: {
-            'en-US': 'https://guideindia.tours/privacy-policy',
-            'en-GB': 'https://guideindia.tours/privacy-policy',
-            'en-AU': 'https://guideindia.tours/privacy-policy',
-            'x-default': 'https://guideindia.tours/privacy-policy',
+            'en-US': 'https://guideindiatours.com/privacy-policy',
+            'en-GB': 'https://guideindiatours.com/privacy-policy',
+            'en-AU': 'https://guideindiatours.com/privacy-policy',
+            'x-default': 'https://guideindiatours.com/privacy-policy',
         },
     },
 };

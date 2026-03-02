@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     title: 'Delhi Tours | Private Guided Sightseeing & Day Trips | Guide India Tours',
     description: 'Explore Delhi with expert private guides. Visit Red Fort, India Gate, Qutub Minar, Lotus Temple & Chandni Chowk. Customized Old Delhi & New Delhi tours from $25/person. Book now!',
     alternates: {
-        canonical: 'https://guideindia.tours/delhi-tours',
+        canonical: 'https://guideindiatours.com/delhi-tours',
         languages: {
-            'en-US': 'https://guideindia.tours/delhi-tours',
-            'en-GB': 'https://guideindia.tours/delhi-tours',
-            'x-default': 'https://guideindia.tours/delhi-tours',
+            'en-US': 'https://guideindiatours.com/delhi-tours',
+            'en-GB': 'https://guideindiatours.com/delhi-tours',
+            'x-default': 'https://guideindiatours.com/delhi-tours',
         },
     },
     openGraph: {
         title: 'Delhi Tours | Private Guided Tours with Expert Guides',
         description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 364+ travelers.',
-        url: 'https://guideindia.tours/delhi-tours',
-        images: [{ url: 'https://guideindia.tours/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg' }],
+        url: 'https://guideindiatours.com/delhi-tours',
+        images: [{ url: 'https://guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg' }],
     },
 };
 
@@ -47,7 +47,7 @@ export default function DelhiToursPage() {
         name: 'Delhi',
         description: 'Explore Delhi, India\'s capital, with private guided tours covering historic monuments, vibrant markets, and modern landmarks.',
         url: 'delhi-tours',
-        image: 'https://guideindia.tours/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg',
+        image: 'https://guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg',
         containedInPlace: 'India',
         geo: { lat: '28.6139', long: '77.2090' },
     });
@@ -55,8 +55,8 @@ export default function DelhiToursPage() {
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;
 
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindia.tours' },
-        { name: 'Delhi Tours', url: 'https://guideindia.tours/delhi-tours' },
+        { name: 'Home', url: 'https://guideindiatours.com' },
+        { name: 'Delhi Tours', url: 'https://guideindiatours.com/delhi-tours' },
     ]);
 
     return (

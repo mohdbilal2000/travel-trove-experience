@@ -6,12 +6,12 @@ export const metadata: Metadata = {
     title: 'Terms of Service | Guide India Tours',
     description: 'Read the terms and conditions for booking tours with Guide India Tours. Covers booking policies, cancellation terms, payment conditions, liability, and governing law.',
     alternates: {
-        canonical: 'https://guideindia.tours/terms-of-service',
+        canonical: 'https://guideindiatours.com/terms-of-service',
         languages: {
-            'en-US': 'https://guideindia.tours/terms-of-service',
-            'en-GB': 'https://guideindia.tours/terms-of-service',
-            'en-AU': 'https://guideindia.tours/terms-of-service',
-            'x-default': 'https://guideindia.tours/terms-of-service',
+            'en-US': 'https://guideindiatours.com/terms-of-service',
+            'en-GB': 'https://guideindiatours.com/terms-of-service',
+            'en-AU': 'https://guideindiatours.com/terms-of-service',
+            'x-default': 'https://guideindiatours.com/terms-of-service',
         },
     },
 };
@@ -24,7 +24,7 @@ const sections = [
         content: [
             {
                 subtitle: "Agreement to Terms",
-                text: "By accessing, browsing, or using the Guide India Tours website (guideindia.tours) or booking any of our tour services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services."
+                text: "By accessing, browsing, or using the Guide India Tours website (guideindiatours.com) or booking any of our tour services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services."
             },
             {
                 subtitle: "Eligibility",

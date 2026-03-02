@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: 'Guide India Tours | Premium Golden Triangle Tours Delhi, Agra, Jaipur',
     description: 'Experience India\'s Golden Triangle with expert guides. Customized Delhi, Agra & Jaipur tours with luxury hotels, private transportation & 24/7 support. Book your dream India tour today!',
     keywords: 'Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, Ranthambore tiger safari, Udaipur lake palace, Varanasi Ganges, Shimla hill station, honeymoon tours India, corporate tours India',
-    metadataBase: new URL('https://guideindia.tours'),
+    metadataBase: new URL('https://guideindiatours.com'),
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://guideindia.tours',
+        url: 'https://guideindiatours.com',
         siteName: 'Guide India Tours',
         images: [
             {

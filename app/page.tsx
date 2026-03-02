@@ -10,20 +10,20 @@ export const metadata: Metadata = {
     description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 360+ travelers on Google. Book your premium private tour today.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
-        canonical: 'https://guideindia.tours',
+        canonical: 'https://guideindiatours.com',
         languages: {
-            'en-US': 'https://guideindia.tours',
-            'en-GB': 'https://guideindia.tours',
-            'en-AU': 'https://guideindia.tours',
-            'x-default': 'https://guideindia.tours',
+            'en-US': 'https://guideindiatours.com',
+            'en-GB': 'https://guideindiatours.com',
+            'en-AU': 'https://guideindiatours.com',
+            'x-default': 'https://guideindiatours.com',
         },
     },
     openGraph: {
         title: "Guide India Tours | Premium Golden Triangle Specialist",
         description: "Official Guide India Tours - India's #1 Private Tour Specialist for Delhi, Agra & Jaipur.",
-        url: 'https://guideindia.tours',
+        url: 'https://guideindiatours.com',
         siteName: 'Guide India Tours',
-        images: [{ url: 'https://guideindia.tours/images/og-default.jpg' }],
+        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg' }],
         type: 'website',
     }
 };
@@ -32,12 +32,12 @@ export default function Home() {
     const organizationSchema = {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "@id": "https://guideindia.tours/#organization",
+        "@id": "https://guideindiatours.com/#organization",
         "name": "Guide India Tours",
         "alternateName": "Golden Triangle Tours Specialist",
-        "url": "https://guideindia.tours",
-        "logo": "https://guideindia.tours/logo.png",
-        "image": "https://guideindia.tours/images/og-default.jpg",
+        "url": "https://guideindiatours.com",
+        "logo": "https://guideindiatours.com/logo.png",
+        "image": "https://guideindiatours.com/images/og-default.jpg",
         "priceRange": "$$$",
         "address": {
             "@type": "PostalAddress",
@@ -63,13 +63,13 @@ export default function Home() {
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": "https://guideindia.tours/#website",
-        "url": "https://guideindia.tours",
+        "@id": "https://guideindiatours.com/#website",
+        "url": "https://guideindiatours.com",
         "name": "Guide India Tours",
-        "publisher": { "@id": "https://guideindia.tours/#organization" },
+        "publisher": { "@id": "https://guideindiatours.com/#organization" },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://guideindia.tours/plans?city={search_term_string}",
+            "target": "https://guideindiatours.com/plans?city={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     };

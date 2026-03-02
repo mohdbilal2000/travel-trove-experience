@@ -14,23 +14,23 @@ export const metadata: Metadata = {
     title: 'Guest Reviews | What Travelers Say About Guide India Tours',
     description: 'Read 364+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
     alternates: {
-        canonical: 'https://guideindia.tours/reviews',
+        canonical: 'https://guideindiatours.com/reviews',
         languages: {
-            'en-US': 'https://guideindia.tours/reviews',
-            'en-GB': 'https://guideindia.tours/reviews',
-            'en-AU': 'https://guideindia.tours/reviews',
-            'x-default': 'https://guideindia.tours/reviews',
+            'en-US': 'https://guideindiatours.com/reviews',
+            'en-GB': 'https://guideindiatours.com/reviews',
+            'en-AU': 'https://guideindiatours.com/reviews',
+            'x-default': 'https://guideindiatours.com/reviews',
         },
     },
     openGraph: {
         title: 'Guest Reviews | Guide India Tours',
         description: 'Rated 4.9/5 by 364+ verified travelers. Read real reviews from guests who explored India with us.',
-        url: 'https://guideindia.tours/reviews',
+        url: 'https://guideindiatours.com/reviews',
         siteName: 'Guide India Tours',
         type: 'website',
         images: [
             {
-                url: 'https://guideindia.tours/images/og-default.jpg',
+                url: 'https://guideindiatours.com/images/og-default.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Guide India Tours Guest Reviews',
@@ -85,7 +85,7 @@ export default function ReviewsPage() {
         '@context': 'https://schema.org',
         '@type': 'TravelAgency',
         name: 'Guide India Tours',
-        url: 'https://guideindia.tours',
+        url: 'https://guideindiatours.com',
         aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: '4.9',
@@ -105,8 +105,8 @@ export default function ReviewsPage() {
     };
 
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindia.tours' },
-        { name: 'Reviews', url: 'https://guideindia.tours/reviews' },
+        { name: 'Home', url: 'https://guideindiatours.com' },
+        { name: 'Reviews', url: 'https://guideindiatours.com/reviews' },
     ]);
 
     return (

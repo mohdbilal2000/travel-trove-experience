@@ -9,7 +9,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'guideindia.tours',
+                hostname: 'guideindiatours.com',
             }
         ],
     },
