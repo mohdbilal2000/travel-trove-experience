@@ -42,9 +42,7 @@ export const metadata: Metadata = {
         creator: '@guideindia',
         images: ['/images/og-default.jpg'],
     },
-    verification: {
-        google: 'verification_token',
-    },
+    verification: {},
     robots: {
         index: true,
         follow: true,

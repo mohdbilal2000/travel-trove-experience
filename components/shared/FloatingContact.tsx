@@ -1,84 +1,99 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, MessageCircle, Share2 } from "lucide-react";
+import { Phone, Share2, Check, Mail, Link2 } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { usePathname } from "next/navigation";
 
 const FloatingContact = () => {
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const pathname = usePathname();
+
+  // Hide on plan detail pages where StickyBookingBar is shown
+  const isPlanDetail = /^\/plans\/\d+$/.test(pathname);
 
   // WhatsApp with pre-filled message
   const whatsappUrl = "https://wa.me/918979810991?text=" + encodeURIComponent("Hello, I am interested in a Golden Triangle tour.");
 
-  const shareOptions = [
-    {
-      label: "Email",
-      href: "mailto:info@guideindiatours.com?subject=Golden Triangle Tour Inquiry",
-      icon: "✉️"
-    },
-    {
-      label: "Copy Link",
-      action: () => {
-        navigator.clipboard.writeText(window.location.href);
-        setShareMenuOpen(false);
-      },
-      icon: "🔗"
+  const handleShare = useCallback(async () => {
+    // Try native Web Share API first (available on most mobile browsers)
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: "Guide India Tours",
+          text: "Check out these amazing India tours!",
+          url: window.location.href,
+        });
+        return;
+      } catch {
+        // User cancelled or API failed — fall back to dropdown
+      }
     }
-  ];
+    // Fallback: show dropdown menu
+    setShareMenuOpen(!shareMenuOpen);
+  }, [shareMenuOpen]);
+
+  const handleCopyLink = useCallback(() => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+      setShareMenuOpen(false);
+    }, 1500);
+  }, []);
+
+  if (isPlanDetail) return null;
 
   return (
     <>
-      {/* Global style for mobile padding */}
-      <style>{`
-        @media (max-width: 767px) {
-          body {
-            padding-bottom: 90px;
-          }
-        }
-      `}</style>
+      {/* Spacer for mobile bottom bar */}
+      <div className="h-20 md:hidden" aria-hidden="true" />
 
-      {/* Mobile Floating Bar - Premium Asymmetrical Design */}
-      <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 safe-area-inset-bottom">
+      {/* Mobile Floating Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 px-3 pb-3 pt-1 safe-area-inset-bottom">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex items-center gap-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+          className="flex items-stretch bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden"
         >
-          {/* WhatsApp Button - 60% width */}
+          {/* WhatsApp Button — primary CTA */}
           <motion.a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[0.6] bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-4 flex items-center justify-center gap-2 active:scale-95 transition-all duration-200 touch-manipulation"
-            whileTap={{ scale: 0.98 }}
+            className="flex-1 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0fa873] text-white px-4 py-3.5 flex items-center justify-center gap-2.5 active:scale-[0.97] transition-all duration-200 touch-manipulation rounded-l-2xl"
+            whileTap={{ scale: 0.97 }}
           >
-            <MessageCircle className="w-5 h-5 flex-shrink-0" />
+            <WhatsAppIcon className="w-5 h-5 flex-shrink-0" />
             <span className="text-sm font-semibold whitespace-nowrap">Chat on WhatsApp</span>
           </motion.a>
 
-          {/* Call Button - 20% width (icon only) */}
+          {/* Call Button */}
           <motion.a
             href="tel:+918979810991"
-            className="flex-[0.2] bg-maroon-600 hover:bg-maroon-700 text-white p-4 flex items-center justify-center active:scale-95 transition-all duration-200 touch-manipulation"
-            whileTap={{ scale: 0.98 }}
+            className="w-14 bg-maroon-600 hover:bg-maroon-700 text-white flex items-center justify-center active:scale-[0.95] transition-all duration-200 touch-manipulation"
+            whileTap={{ scale: 0.95 }}
             aria-label="Call us"
           >
-            <Phone className="w-6 h-6" />
+            <Phone className="w-5 h-5" />
           </motion.a>
 
-          {/* Share/Menu Button - 20% width (icon only) */}
-          <div className="flex-[0.2] relative">
+          {/* Share Button */}
+          <div className="relative">
             <motion.button
-              onClick={() => setShareMenuOpen(!shareMenuOpen)}
-              className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 p-4 flex items-center justify-center active:scale-95 transition-all duration-200 touch-manipulation"
-              whileTap={{ scale: 0.98 }}
-              aria-label="Share options"
+              onClick={handleShare}
+              className="w-14 h-full bg-gray-50 hover:bg-gray-100 text-gray-600 flex items-center justify-center active:scale-[0.95] transition-all duration-200 touch-manipulation rounded-r-2xl"
+              whileTap={{ scale: 0.95 }}
+              aria-label="Share this page"
+              aria-expanded={shareMenuOpen}
             >
-              <Share2 className="w-6 h-6" />
+              <Share2 className="w-5 h-5" />
             </motion.button>
 
-            {/* Share Menu Dropdown */}
+            {/* Share Menu Dropdown (fallback when Web Share API unavailable) */}
             <AnimatePresence>
               {shareMenuOpen && (
                 <>
@@ -89,42 +104,41 @@ const FloatingContact = () => {
                     exit={{ opacity: 0 }}
                     onClick={() => setShareMenuOpen(false)}
                     className="fixed inset-0 bg-black/20 z-40"
-                    style={{ top: 0, left: 0, right: 0, bottom: 0 }}
                   />
                   {/* Menu */}
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute bottom-full right-0 mb-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden min-w-[160px] z-50"
+                    className="absolute bottom-full right-0 mb-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden min-w-[180px] z-50"
                   >
-                    {shareOptions.map((option, index) => (
-                      option.href ? (
-                        <motion.a
-                          key={option.label}
-                          href={option.href}
-                          onClick={() => setShareMenuOpen(false)}
-                          className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm text-gray-700"
-                        >
-                          <span className="text-lg">{option.icon}</span>
-                          <span>{option.label}</span>
-                        </motion.a>
+                    {/* Email option */}
+                    <a
+                      href="mailto:info@guideindiatours.com?subject=Golden Triangle Tour Inquiry"
+                      onClick={() => setShareMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm text-gray-700"
+                    >
+                      <Mail className="w-4 h-4 text-gray-500" />
+                      <span>Send via Email</span>
+                    </a>
+                    {/* Copy Link option */}
+                    <button
+                      onClick={handleCopyLink}
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm text-gray-700 text-left"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4 text-green-600" />
+                          <span className="text-green-600 font-medium">Copied!</span>
+                        </>
                       ) : (
-                        <motion.button
-                          key={option.label}
-                          onClick={() => {
-                            if (option.action) {
-                              option.action();
-                            }
-                          }}
-                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm text-gray-700 text-left"
-                        >
-                          <span className="text-lg">{option.icon}</span>
-                          <span>{option.label}</span>
-                        </motion.button>
-                      )
-                    ))}
+                        <>
+                          <Link2 className="w-4 h-4 text-gray-500" />
+                          <span>Copy Link</span>
+                        </>
+                      )}
+                    </button>
                   </motion.div>
                 </>
               )}
@@ -132,7 +146,6 @@ const FloatingContact = () => {
           </div>
         </motion.div>
       </div>
-
     </>
   );
 };

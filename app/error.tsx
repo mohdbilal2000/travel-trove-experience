@@ -36,7 +36,7 @@ export default function Error({
 
                 {/* Error details (subtle) */}
                 {error?.message && (
-                    <p className="text-sm text-gray-400 bg-white rounded-2xl px-6 py-3 inline-block mb-10 border border-gray-100">
+                    <p className="text-sm text-gray-400 bg-white rounded-2xl px-6 py-3 inline-block mb-10 border border-gray-100 max-w-full break-words">
                         {error.message}
                     </p>
                 )}

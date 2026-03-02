@@ -70,7 +70,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                         <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
                             Our Journal
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
                             Narratives of <br /><span className="text-maroon-600">History.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed">
@@ -84,7 +84,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             {!category && !q && featuredPost && (
                 <section className="pb-32">
                     <div className="container mx-auto px-4">
-                        <Link href={`/blog/${featuredPost.slug}`} className="group block relative rounded-3xl overflow-hidden shadow-2xl h-[600px] border border-gray-100">
+                        <Link href={`/blog/${featuredPost.slug}`} className="group block relative rounded-3xl overflow-hidden shadow-2xl h-[350px] sm:h-[450px] md:h-[600px] border border-gray-100">
                             <div className="absolute inset-0">
                                 <OptimizedImage
                                     src={featuredPost.image}
@@ -96,7 +96,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                             <div className="absolute bottom-12 left-12 right-12 z-10 max-w-3xl">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase text-[10px] tracking-widest">Featured Story</Badge>
+                                    <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase text-xs tracking-widest">Featured Story</Badge>
                                     <span className="text-white/60 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                                         <Clock className="w-4 h-4" /> {Math.max(1, Math.ceil(featuredPost.content.split(/\s+/).length / 200))} Min Read
                                     </span>
@@ -160,7 +160,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <div className="flex items-center gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                                        <div className="flex items-center gap-4 text-xs font-black text-gray-500 uppercase tracking-widest">
                                             <span>{post.publishedDate}</span>
                                             <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
                                             <span>By {post.author}</span>
@@ -181,7 +181,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </section>
 
             {/* Luxury Newsletter */}
-            <section className="py-40 bg-black text-white relative overflow-hidden">
+            <section className="py-16 md:py-24 lg:py-40 bg-black text-white relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-full bg-maroon-600 opacity-10 blur-[200px]" />
                 <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
                     <TrendingUp className="w-12 h-12 text-gold-500 mx-auto mb-8" />

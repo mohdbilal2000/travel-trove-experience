@@ -114,7 +114,7 @@ const Navbar = () => {
             <Button
               size="sm"
               className={cn(
-                "ml-6 px-8 py-2 text-sm font-medium transition-all duration-300 rounded-none",
+                "ml-6 px-8 py-2 text-sm font-medium transition-all duration-300 rounded-xl",
                 "bg-maroon-600 hover:bg-maroon-700 text-white border-none shadow-lg hover:shadow-xl"
               )}
               asChild

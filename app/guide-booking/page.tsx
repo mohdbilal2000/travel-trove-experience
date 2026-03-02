@@ -264,7 +264,7 @@ Please provide availability and pricing details.`;
                                         <div className="text-gold-500">{item.icon}</div>
                                         <div>
                                             <div className="text-xs font-bold leading-none">{item.title}</div>
-                                            <div className="text-[10px] opacity-60">{item.desc}</div>
+                                            <div className="text-xs opacity-60">{item.desc}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -284,7 +284,7 @@ Please provide availability and pricing details.`;
             </section>
 
             {/* Progress Sticky */}
-            <div className="sticky top-[72px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-3 shadow-sm">
+            <div className="sticky top-16 md:top-[72px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-3 shadow-sm">
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-black uppercase tracking-tighter text-maroon-600">Reservation Progress</span>
@@ -296,11 +296,11 @@ Please provide availability and pricing details.`;
                                     className="h-full bg-maroon-600"
                                 />
                             </div>
-                            <span className="text-[10px] font-bold text-gray-400">{Math.round(progress)}%</span>
+                            <span className="text-xs font-bold text-gray-500">{Math.round(progress)}%</span>
                         </div>
                         <div className="flex items-center gap-2 group cursor-help">
                             <Shield className="w-4 h-4 text-green-500" />
-                            <span className="text-[10px] font-bold text-gray-500 uppercase">Secure Booking</span>
+                            <span className="text-xs font-bold text-gray-500 uppercase">Secure Booking</span>
                         </div>
                     </div>
                 </div>
@@ -311,7 +311,7 @@ Please provide availability and pricing details.`;
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                         {/* Left: Form Steps */}
-                        <div className="lg:col-span-8 space-y-24">
+                        <div className="lg:col-span-8 space-y-12 md:space-y-24">
 
                             {/* Step 1: Date */}
                             <motion.div
@@ -384,7 +384,7 @@ Please provide availability and pricing details.`;
                                             )}
                                         >
                                             {pkg.popular && (
-                                                <div className="absolute top-0 right-10 bg-maroon-600 text-white px-6 py-2 rounded-b-2xl font-black text-[10px] uppercase tracking-tighter shadow-lg">
+                                                <div className="absolute top-0 right-10 bg-maroon-600 text-white px-6 py-2 rounded-b-2xl font-black text-xs uppercase tracking-tighter shadow-lg">
                                                     Best Choice
                                                 </div>
                                             )}
@@ -484,17 +484,17 @@ Please provide availability and pricing details.`;
                         <div className="lg:col-span-4">
                             <div className="sticky top-32">
                                 <Card className="bg-white border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-3xl overflow-hidden">
-                                    <div className="p-10">
+                                    <div className="p-6 md:p-10">
                                         <h3 className="text-3xl font-display font-bold text-gray-900 mb-8 border-b border-gray-100 pb-6">Reservation Summary</h3>
 
                                         <div className="space-y-8 mb-10">
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Base Destination</span>
+                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Base Destination</span>
                                                 <span className="text-lg font-bold text-maroon-600">{currentCityData.city}</span>
                                             </div>
 
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Planned Date</span>
+                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Planned Date</span>
                                                 <div className="flex items-center gap-3">
                                                     <span className={cn("text-lg font-bold", selectedDate ? "text-gray-900" : "text-gray-200")}>
                                                         {selectedDate || "Not Selected"}
@@ -504,7 +504,7 @@ Please provide availability and pricing details.`;
                                             </div>
 
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Service Level</span>
+                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Service Level</span>
                                                 <div className="flex items-center justify-between">
                                                     <span className={cn("text-lg font-bold", selectedPackage ? "text-gray-900" : "text-gray-200")}>
                                                         {currentPackageData?.name || "Not Selected"}
@@ -519,7 +519,7 @@ Please provide availability and pricing details.`;
                                             </div>
 
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Monuments ({selectedMonuments.length})</span>
+                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Monuments ({selectedMonuments.length})</span>
                                                 <div className="flex flex-wrap gap-2 mt-2">
                                                     {selectedMonuments.map(m => (
                                                         <Badge key={m} className="bg-gray-100 text-gray-600 hover:bg-gray-200 border-none px-3 py-1 font-bold text-[9px] uppercase">
@@ -546,9 +546,9 @@ Please provide availability and pricing details.`;
                                         <div className="mt-8 flex flex-col items-center gap-4 text-center">
                                             <div className="flex -space-x-4 mb-2">
                                                 {[1, 2, 3, 4].map(i => <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-gray-200" />)}
-                                                <div className="w-10 h-10 rounded-full border-4 border-white bg-gold-500 flex items-center justify-center text-[10px] font-bold text-white">+500</div>
+                                                <div className="w-10 h-10 rounded-full border-4 border-white bg-gold-500 flex items-center justify-center text-xs font-bold text-white">+500</div>
                                             </div>
-                                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Rest easy. 15,000+ Travelers Guided Since 2012.</p>
+                                            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Rest easy. 15,000+ Travelers Guided Since 2012.</p>
                                         </div>
                                     </div>
                                 </Card>

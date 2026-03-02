@@ -53,9 +53,10 @@ export default function NewsletterForm() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-transparent px-8 py-5 outline-none font-bold text-white placeholder:text-white/20"
+                className="flex-1 bg-transparent px-8 py-5 outline-none font-bold text-white placeholder:text-white/30 focus:ring-2 focus:ring-white/30 rounded-2xl transition-all"
                 placeholder="Email Address"
                 required
+                aria-label="Email address for newsletter"
             />
             <Button
                 type="submit"

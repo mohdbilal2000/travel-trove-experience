@@ -27,7 +27,7 @@ export default function RelatedPages({
                         <Link
                             key={page.href}
                             href={page.href}
-                            className="group bg-white rounded-3xl border border-gray-100 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                            className="group bg-white rounded-3xl border border-gray-100 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gray-200"
                         >
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1">

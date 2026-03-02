@@ -13,26 +13,26 @@ const Footer = () => {
   return (
     <footer className="bg-ivory-300 text-gray-800 pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-display font-medium mb-6 text-maroon-700">
               Guide India Tours
             </h3>
-            <p className="text-gray-600 max-w-xs leading-relaxed">
+            <p className="text-gray-600 max-w-sm leading-relaxed">
               Discover the magic of India's Golden Triangle with our curated travel experiences, luxury accommodations, and personalized services.
             </p>
             <div className="flex space-x-4 pt-2">
-              <a href="#" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Facebook">
+              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Twitter">
+              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Twitter / X">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Instagram">
+              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Youtube">
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="YouTube">
                 <Youtube size={18} />
               </a>
             </div>

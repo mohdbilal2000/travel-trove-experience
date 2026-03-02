@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 interface StickyBookingBarProps {
     planTitle: string;
@@ -38,14 +39,14 @@ export default function StickyBookingBar({ planTitle, planPrice }: StickyBooking
                 >
                     <div className="flex items-center justify-between gap-3">
                         <div className="flex-shrink-0">
-                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">From</p>
+                            <p className="text-xs font-black uppercase tracking-widest text-gray-500">From</p>
                             <p className="text-xl font-black text-gray-900">{planPrice}</p>
-                            <p className="text-[10px] text-gray-400">per person</p>
+                            <p className="text-xs text-gray-500">per person</p>
                         </div>
                         <div className="flex gap-2">
                             <a
                                 href="tel:+918979810991"
-                                className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-3 rounded-xl font-bold text-sm"
+                                className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 active:scale-95 text-gray-700 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200"
                             >
                                 <Phone className="w-4 h-4" />
                                 Call
@@ -54,9 +55,9 @@ export default function StickyBookingBar({ planTitle, planPrice }: StickyBooking
                                 href={`https://wa.me/918979810991?text=${whatsappMessage}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 bg-maroon-600 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg"
+                                className="flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg transition-all duration-200"
                             >
-                                <MessageCircle className="w-4 h-4" />
+                                <WhatsAppIcon className="w-4 h-4" />
                                 Book Now
                             </a>
                         </div>

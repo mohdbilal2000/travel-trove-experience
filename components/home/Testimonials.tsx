@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeading from "../shared/SectionHeading";
-import OptimizedImage from "../shared/OptimizedImage";
 import { useState, useEffect } from "react";
+
+/** Returns initials from a full name (e.g. "Rohit Kumar" → "RK") */
+const getInitials = (name: string) =>
+  name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
 
 const GOOGLE_BUSINESS_URL = "https://maps.app.goo.gl/mmEUqtavTN3kToXC8";
 
@@ -225,14 +228,8 @@ const Testimonials = () => {
                         {/* Header with Image and Rating */}
                         <div className="flex items-start gap-4 mb-4">
                           <div className="relative flex-shrink-0">
-                            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                              <OptimizedImage
-                                src={testimonial.image}
-                                alt={testimonial.name}
-                                className="w-full h-full object-cover-optimized"
-                                priority={false}
-                                sizes="48px"
-                              />
+                            <div className="w-12 h-12 rounded-full bg-maroon-600 flex items-center justify-center border-2 border-white shadow-md">
+                              <span className="text-white text-sm font-bold leading-none">{getInitials(testimonial.name)}</span>
                             </div>
 
                             {/* Google Badge */}
@@ -253,7 +250,7 @@ const Testimonials = () => {
                         </div>
 
                         {/* Review Text */}
-                        <blockquote className="text-sm text-gray-700 italic mb-4 flex-1">
+                        <blockquote className="text-sm text-gray-700 mb-4 flex-1">
                           "{testimonial.text}"
                         </blockquote>
 
@@ -281,6 +278,7 @@ const Testimonials = () => {
                     : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                 aria-label={`Go to slide ${index + 1}`}
+                aria-pressed={index === currentIndex}
               />
             ))}
           </div>

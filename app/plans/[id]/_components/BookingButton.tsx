@@ -2,6 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 interface BookingButtonProps {
     planTitle: string;
@@ -23,6 +24,7 @@ export default function BookingButton({ planTitle, planId, planDuration, planPri
             className={className}
             onClick={handleBook}
         >
+            <WhatsAppIcon className="w-4 h-4 mr-2" />
             Book This Tour
         </Button>
     );

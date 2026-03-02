@@ -107,7 +107,7 @@ export default function GoldenTriangleToursPage() {
                     <div className="container mx-auto px-4 pb-16 md:pb-24">
                         <div className="max-w-4xl">
                             <Breadcrumbs items={[{ label: 'Golden Triangle Tours' }]} className="mb-6 text-white/80" />
-                            <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-[10px] mb-6">
+                            <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-xs mb-6">
                                 <Globe className="w-3 h-3 mr-1.5" /> India&apos;s #1 Tour Circuit
                             </Badge>
                             <h1 className="text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-[0.85] tracking-tighter">

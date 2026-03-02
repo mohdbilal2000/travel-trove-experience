@@ -93,12 +93,12 @@ const HeroFallback = () => {
           </div>
 
           {/* Heading — h2 because the real h1 is in page.tsx sr-only */}
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-8 text-white leading-tight tracking-wide">
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-light mb-8 text-white leading-tight tracking-wide">
             {currentBg.title}
           </h2>
 
           {/* Description */}
-          <p className="text-xl md:text-2xl lg:text-3xl mb-16 max-w-4xl mx-auto text-white/95 font-light leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl mb-10 md:mb-16 max-w-4xl mx-auto text-white/95 font-light leading-relaxed">
             {currentBg.description}
           </p>
 
@@ -106,7 +106,7 @@ const HeroFallback = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
             <Button
               size="lg"
-              className="bg-maroon-600 hover:bg-maroon-700 text-white px-12 py-4 text-lg font-medium rounded-none border-none shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-maroon-600 hover:bg-maroon-700 text-white px-12 py-4 text-lg font-medium rounded-xl border-none shadow-lg hover:shadow-xl transition-all duration-300"
               asChild
             >
               <Link href="/plans">Start Planning</Link>
@@ -114,7 +114,7 @@ const HeroFallback = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-12 py-4 text-lg font-medium rounded-none bg-transparent shadow-lg hover:shadow-xl transition-all duration-300"
+              className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-12 py-4 text-lg font-medium rounded-xl bg-transparent shadow-lg hover:shadow-xl transition-all duration-300"
               asChild
             >
               <Link href="/contact">Learn More</Link>

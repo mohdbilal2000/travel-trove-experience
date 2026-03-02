@@ -681,7 +681,7 @@ const HomeClient = () => {
                                     className="w-full h-auto"
                                 />
                             </div>
-                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#bf9b30]/20 rounded-full blur-3xl" />
+                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-gold-500/20 rounded-full blur-3xl" />
                             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-maroon-600/30 rounded-full blur-3xl" />
                         </motion.div>
                     </div>
@@ -710,7 +710,7 @@ const HomeClient = () => {
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Button
                                 size="lg"
-                                className="bg-maroon-600 hover:bg-maroon-700 text-white px-10 py-6 text-xl rounded-none border-none shadow-xl hover:shadow-2xl transition-all duration-300"
+                                className="bg-maroon-600 hover:bg-maroon-700 text-white px-10 py-6 text-xl rounded-xl border-none shadow-xl hover:shadow-2xl transition-all duration-300"
                                 asChild
                             >
                                 <Link href="/contact">Book Now</Link>
@@ -718,7 +718,7 @@ const HomeClient = () => {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-10 py-6 text-xl rounded-none bg-transparent"
+                                className="border-2 border-white text-white hover:bg-white hover:text-maroon-600 px-10 py-6 text-xl rounded-xl bg-transparent"
                                 asChild
                             >
                                 <Link href="/plans">View All Plans</Link>

@@ -74,7 +74,7 @@ export default function ContactPage() {
                         <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
                             Concierge Access
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
                             Let's Talk <span className="text-maroon-600">Adventure.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
@@ -90,7 +90,7 @@ export default function ContactPage() {
 
                         {/* Info Column */}
                         <div className="lg:col-span-5 space-y-12">
-                            <div className="p-12 bg-white rounded-3xl shadow-sm border border-gray-100 relative group overflow-hidden">
+                            <div className="p-6 sm:p-8 lg:p-12 bg-white rounded-3xl shadow-sm border border-gray-100 relative group overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-maroon-600/5 rounded-bl-[5rem] translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
                                 <div className="relative z-10">
                                     <div className="flex items-center gap-6 mb-10">
@@ -99,23 +99,23 @@ export default function ContactPage() {
                                         </div>
                                         <div>
                                             <h3 className="text-2xl font-bold text-gray-900">Immediate Help</h3>
-                                            <p className="text-xs text-gray-400 uppercase tracking-widest font-black">Global Support</p>
+                                            <p className="text-xs text-gray-500 uppercase tracking-widest font-black">Global Support</p>
                                         </div>
                                     </div>
                                     <div className="space-y-6">
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">WhatsApp / Calling</span>
+                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">WhatsApp / Calling</span>
                                             <a href="tel:+918979810991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 89798 10991</a>
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Email Concierge</span>
+                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Email Concierge</span>
                                             <a href="mailto:info@guideindiatours.com" className="text-xl font-bold text-gray-900 hover:text-maroon-600 transition-colors">info@guideindiatours.com</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="p-12 bg-black rounded-3xl shadow-2xl relative overflow-hidden group">
+                            <div className="p-6 sm:p-8 lg:p-12 bg-black rounded-3xl shadow-2xl relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-gradient-to-br from-maroon-600/30 to-transparent" />
                                 <div className="relative z-10 text-white">
                                     <div className="flex items-center gap-6 mb-10">
@@ -146,18 +146,18 @@ export default function ContactPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="p-8 bg-gray-50 rounded-3xl flex flex-col items-center text-center">
                                     <ShieldCheck className="w-8 h-8 text-maroon-600 mb-4" />
-                                    <span className="text-[10px] font-black uppercase text-gray-400">100% Secure</span>
+                                    <span className="text-xs font-black uppercase text-gray-500">100% Secure</span>
                                 </div>
                                 <div className="p-8 bg-gray-50 rounded-3xl flex flex-col items-center text-center">
                                     <Headphones className="w-8 h-8 text-maroon-600 mb-4" />
-                                    <span className="text-[10px] font-black uppercase text-gray-400">Expert Support</span>
+                                    <span className="text-xs font-black uppercase text-gray-500">Expert Support</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Form Column */}
                         <div className="lg:col-span-7">
-                            <div className="bg-white p-12 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
+                            <div className="bg-white p-6 sm:p-8 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
                                 <div className="mb-12">
                                     <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Inquiry Form</h2>
                                     <p className="text-lg text-gray-400 font-light">Complete the details below and an agent will reach out within 2 hours.</p>
@@ -168,18 +168,18 @@ export default function ContactPage() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                             <FormField control={form.control} name="name" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Full Name</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Full Name</FormLabel>
                                                     <FormControl>
-                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold" placeholder="John Doe" {...field} />
+                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold" placeholder="John Doe" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )} />
                                             <FormField control={form.control} name="email" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Address</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Email Address</FormLabel>
                                                     <FormControl>
-                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold" placeholder="john@example.com" {...field} />
+                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold" placeholder="john@example.com" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -189,19 +189,19 @@ export default function ContactPage() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                             <FormField control={form.control} name="phone" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Phone / WhatsApp</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Phone / WhatsApp</FormLabel>
                                                     <FormControl>
-                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold" placeholder="+91 000 000 0000" {...field} />
+                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold" placeholder="+91 000 000 0000" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )} />
                                             <FormField control={form.control} name="subject" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Inquiry Type</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Inquiry Type</FormLabel>
                                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                         <FormControl>
-                                                            <SelectTrigger className="border-none border-b-2 border-gray-100 rounded-none px-0 py-8 focus:ring-0 focus:border-maroon-600 h-auto text-lg font-bold">
+                                                            <SelectTrigger className="border-none border-b-2 border-gray-100 rounded-none px-0 py-8 focus:ring-2 focus:ring-maroon-600/30 focus:border-maroon-600 h-auto text-lg font-bold">
                                                                 <SelectValue placeholder="Select type" />
                                                             </SelectTrigger>
                                                         </FormControl>
@@ -220,18 +220,18 @@ export default function ContactPage() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                             <FormField control={form.control} name="city" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">City</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">City</FormLabel>
                                                     <FormControl>
-                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold" placeholder="London" {...field} />
+                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold" placeholder="London" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )} />
                                             <FormField control={form.control} name="country" render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Country</FormLabel>
+                                                    <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Country</FormLabel>
                                                     <FormControl>
-                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold" placeholder="United Kingdom" {...field} />
+                                                        <input className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold" placeholder="United Kingdom" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -240,10 +240,10 @@ export default function ContactPage() {
 
                                         <FormField control={form.control} name="message" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[10px] font-black uppercase tracking-widest text-gray-400">Message / Request</FormLabel>
+                                                <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Message / Request</FormLabel>
                                                 <FormControl>
                                                     <textarea
-                                                        className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 outline-none transition-all text-lg font-bold min-h-[150px] resize-none"
+                                                        className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all text-lg font-bold min-h-[150px] resize-none"
                                                         placeholder="Tell us about your passions and preferred pace..."
                                                         {...field}
                                                     />

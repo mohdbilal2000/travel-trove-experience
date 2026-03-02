@@ -96,10 +96,10 @@ export default function FAQPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <Breadcrumbs items={[{ label: 'FAQ' }]} className="mb-12" />
                     <div className="max-w-3xl">
-                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-black mb-8">
+                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-6 py-2 uppercase tracking-[0.3em] text-xs font-black mb-8">
                             Knowledge Base
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
                             Your Questions, <span className="text-maroon-600">Answered.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed">
@@ -124,7 +124,7 @@ export default function FAQPage() {
                                             value={`${category.id}-${i}`}
                                             className="bg-white px-8 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-all"
                                         >
-                                            <AccordionTrigger className="text-left font-bold text-lg py-8 hover:no-underline text-gray-900">
+                                            <AccordionTrigger className="text-left font-bold text-lg py-8 hover:no-underline text-gray-900 focus-visible:bg-gray-50 focus-visible:ring-2 focus-visible:ring-maroon-600/30 focus-visible:outline-none rounded-lg px-2 -mx-2">
                                                 {faq.question}
                                             </AccordionTrigger>
                                             <AccordionContent className="text-gray-500 font-light text-lg leading-relaxed pb-8">

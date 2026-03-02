@@ -55,7 +55,7 @@ export default function AboutPage() {
                             <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
                                 Since 2012
                             </Badge>
-                            <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-[0.9] tracking-tighter">
+                            <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-[0.9] tracking-tighter">
                                 Heritage. <br />Trust. <br /><span className="text-maroon-600">Excellence.</span>
                             </h1>
                             <p className="text-xl text-gray-500 font-light leading-relaxed max-w-lg">
@@ -78,7 +78,7 @@ export default function AboutPage() {
                             </div>
                             <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-gold-500 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center p-6 text-white -rotate-6">
                                 <span className="text-4xl font-black mb-1">12+</span>
-                                <span className="text-[10px] font-bold uppercase tracking-widest leading-none">Years of <br />Guiding</span>
+                                <span className="text-xs font-bold uppercase tracking-widest leading-none">Years of <br />Guiding</span>
                             </div>
                         </motion.div>
                     </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
             </section>
 
             {/* Core Narrative */}
-            <section className="py-40">
+            <section className="py-16 md:py-24 lg:py-40">
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
                         <div className="lg:col-span-5">
@@ -108,13 +108,13 @@ export default function AboutPage() {
                                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-maroon-600">
                                         <History size={24} />
                                     </div>
-                                    <span className="text-xs font-black uppercase tracking-widest text-gray-400">Authentic Lineage</span>
+                                    <span className="text-xs font-black uppercase tracking-widest text-gray-500">Authentic Lineage</span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-maroon-600">
                                         <Heart size={24} />
                                     </div>
-                                    <span className="text-xs font-black uppercase tracking-widest text-gray-400">Passion Driven</span>
+                                    <span className="text-xs font-black uppercase tracking-widest text-gray-500">Passion Driven</span>
                                 </div>
                             </div>
                         </div>
@@ -123,10 +123,10 @@ export default function AboutPage() {
             </section>
 
             {/* Guide Network Grid */}
-            <section className="py-40 bg-gray-50">
+            <section className="py-16 md:py-24 lg:py-40 bg-gray-50">
                 <div className="container mx-auto px-4 text-center mb-24">
                     <h2 className="text-5xl font-display font-bold text-gray-900 mb-6">Built on Expertise.</h2>
-                    <p className="text-gray-400 uppercase tracking-[0.2em] text-[10px] font-black">Our intellectual capital</p>
+                    <p className="text-gray-500 uppercase tracking-[0.2em] text-xs font-black">Our intellectual capital</p>
                 </div>
 
                 <div className="container mx-auto px-4 max-w-7xl">
@@ -152,7 +152,7 @@ export default function AboutPage() {
             </section>
 
             {/* Multi-Image Aesthetic Block */}
-            <section className="py-40">
+            <section className="py-16 md:py-24 lg:py-40">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[700px]">
                         <div className="md:col-span-8 rounded-3xl overflow-hidden shadow-2xl relative order-2 md:order-1">
@@ -190,7 +190,7 @@ export default function AboutPage() {
             </section>
 
             {/* Final Luxury CTA */}
-            <section className="py-40 bg-black text-white relative overflow-hidden">
+            <section className="py-16 md:py-24 lg:py-40 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <h2 className="text-6xl md:text-8xl font-display font-bold mb-12">Experience the <br /><span className="text-gold-500">True India.</span></h2>

@@ -83,10 +83,10 @@ export default async function PlansPage({ searchParams }: PageProps) {
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <div className="max-w-4xl mx-auto">
-                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-8 px-6 py-2 uppercase tracking-[0.2em] text-[10px] font-black">
+                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-8 px-6 py-2 uppercase tracking-[0.2em] text-xs font-black">
                             Curated Travel Experiences
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-white mb-8 leading-[0.9] tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-white mb-8 leading-[0.9] tracking-tighter">
                             Our Signature <br /><span className="text-gold-500">Tour Plans</span>
                         </h1>
                         <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mx-auto">
@@ -145,7 +145,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                     </div>
                                 </Link>
 
-                                <div className="p-10">
+                                <div className="p-6 md:p-10">
                                     <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-tight mb-4 min-h-[3.5rem] line-clamp-2">
                                         {plan.title}
                                     </h3>
@@ -155,7 +155,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
 
                                     <div className="flex items-center justify-between py-6 border-t border-gray-50">
                                         <div>
-                                            <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest block mb-1">Starting From</span>
+                                            <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Starting From</span>
                                             <span className="text-3xl font-black text-maroon-600">{plan.price}</span>
                                         </div>
                                         <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black w-14 h-14 p-0 shadow-xl shadow-maroon-600/20 transition-all duration-300">

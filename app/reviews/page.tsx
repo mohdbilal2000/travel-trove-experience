@@ -127,10 +127,10 @@ export default function ReviewsPage() {
                     <Breadcrumbs items={[{ label: 'Reviews' }]} className="mb-12" />
 
                     <div className="max-w-3xl">
-                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-black mb-8">
+                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-6 py-2 uppercase tracking-[0.3em] text-xs font-black mb-8">
                             Verified Reviews
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
                             Guest <span className="text-maroon-600">Reviews</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed max-w-2xl">
@@ -273,7 +273,7 @@ export default function ReviewsPage() {
                                 {/* Rating & Tour */}
                                 <div className="flex items-center justify-between mb-4">
                                     <StarRating rating={review.rating} />
-                                    <Badge className="bg-gold-500/10 text-gold-700 border-none text-[10px] font-bold px-2.5 py-0.5">
+                                    <Badge className="bg-gold-500/10 text-gold-700 border-none text-xs font-bold px-2.5 py-0.5">
                                         {review.tourType}
                                     </Badge>
                                 </div>
@@ -285,13 +285,13 @@ export default function ReviewsPage() {
 
                                 {/* Footer */}
                                 <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-                                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                                    <div className="flex items-center gap-1.5 text-xs text-gray-500">
                                         <Calendar className="w-3.5 h-3.5" />
                                         <span>{formatDate(review.date)}</span>
                                     </div>
                                     <Badge
                                         variant="outline"
-                                        className="text-[10px] font-bold border-maroon-600/20 text-maroon-600"
+                                        className="text-xs font-bold border-maroon-600/20 text-maroon-600"
                                     >
                                         {review.platform}
                                     </Badge>
@@ -305,7 +305,7 @@ export default function ReviewsPage() {
             {/* CTA Section */}
             <section className="py-24 bg-maroon-600 text-white">
                 <div className="container mx-auto px-4 text-center max-w-3xl">
-                    <Badge className="bg-white/10 text-white border-none px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-black mb-8">
+                    <Badge className="bg-white/10 text-white border-none px-6 py-2 uppercase tracking-[0.3em] text-xs font-black mb-8">
                         Join Our Happy Travelers
                     </Badge>
                     <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight tracking-tight">
