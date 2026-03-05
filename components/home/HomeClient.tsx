@@ -9,16 +9,33 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import { allPlans } from "@/data/travelPlans";
-import { Star, Clock, Users, MapPin, MessageCircle, Search, X, ChevronDown, ShieldCheck } from "lucide-react";
-import { useState } from "react";
+import { Star, Clock, Users, MapPin, MessageCircle, Search, X, ChevronDown, ShieldCheck, Minus, Plus } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
 const HomeClient = () => {
     const [selectedCities, setSelectedCities] = useState<string[]>([]);
-    const [numberOfAdults, setNumberOfAdults] = useState<number>(2);
+    const [adults, setAdults] = useState<number>(1);
+    const [children, setChildren] = useState<number>(0);
+    const [infants, setInfants] = useState<number>(0);
     const [showResults, setShowResults] = useState<boolean>(false);
     const [isCityDropdownOpen, setIsCityDropdownOpen] = useState<boolean>(false);
+    const [isPeopleDropdownOpen, setIsPeopleDropdownOpen] = useState<boolean>(false);
+    const peopleDropdownRef = useRef<HTMLDivElement>(null);
+
+    const totalTravelers = adults + children + infants;
+
+    // Close people dropdown on outside click
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (peopleDropdownRef.current && !peopleDropdownRef.current.contains(e.target as Node)) {
+                setIsPeopleDropdownOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     // Available cities from plans (excluding "all" and "Golden Triangle" for multi-select)
     const availableCities = [
@@ -192,7 +209,7 @@ const HomeClient = () => {
                                     <div className="relative">
                                         <button
                                             type="button"
-                                            onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
+                                            onClick={() => { setIsCityDropdownOpen(!isCityDropdownOpen); setIsPeopleDropdownOpen(false); }}
                                             className="w-full h-12 px-3 py-2 text-left text-sm sm:text-base bg-background border border-input rounded-md flex items-center justify-between hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                                         >
                                             <span className="text-muted-foreground truncate pr-2">
@@ -266,24 +283,109 @@ const HomeClient = () => {
                                     )}
                                 </div>
 
-                                {/* Number of Adults and Search Button - Side by Side on md+ */}
+                                {/* Travelers and Search Button - Side by Side on md+ */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    {/* Number of Adults */}
-                                    <div className="space-y-2">
-                                        <label htmlFor="adults-input" className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                    {/* Travelers Selector */}
+                                    <div className="space-y-2 relative" ref={peopleDropdownRef}>
+                                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
                                             <Users className="w-4 h-4 text-royal-600" />
-                                            Number of Adults
+                                            Travelers
                                         </label>
-                                        <Input
-                                            id="adults-input"
-                                            type="number"
-                                            min="1"
-                                            max="20"
-                                            value={numberOfAdults}
-                                            onChange={(e) => setNumberOfAdults(parseInt(e.target.value) || 1)}
-                                            className="h-12 text-sm sm:text-base"
-                                            placeholder="2"
-                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => { setIsPeopleDropdownOpen(!isPeopleDropdownOpen); setIsCityDropdownOpen(false); }}
+                                            className="w-full h-12 px-4 flex items-center justify-between border border-gray-200 rounded-lg bg-white text-sm sm:text-base text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-600/20"
+                                        >
+                                            <span>
+                                                {totalTravelers} {totalTravelers === 1 ? 'Traveler' : 'Travelers'}
+                                            </span>
+                                            <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isPeopleDropdownOpen ? 'rotate-180' : ''}`} />
+                                        </button>
+
+                                        {isPeopleDropdownOpen && (
+                                            <div className="absolute z-30 top-full mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg p-4 space-y-3">
+                                                {/* Adults */}
+                                                <div className="flex items-center justify-between">
+                                                    <div>
+                                                        <p className="text-sm font-medium text-gray-800">Adults</p>
+                                                        <p className="text-xs text-gray-500">15-99 years</p>
+                                                    </div>
+                                                    <div className="flex items-center gap-3">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setAdults(Math.max(1, adults - 1))}
+                                                            disabled={adults <= 1}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Minus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{adults}</span>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setAdults(Math.min(20, adults + 1))}
+                                                            disabled={adults >= 20}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Plus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                {/* Children */}
+                                                <div className="flex items-center justify-between border-t border-gray-100 pt-3">
+                                                    <div>
+                                                        <p className="text-sm font-medium text-gray-800">Children</p>
+                                                        <p className="text-xs text-gray-500">6-14 years</p>
+                                                    </div>
+                                                    <div className="flex items-center gap-3">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setChildren(Math.max(0, children - 1))}
+                                                            disabled={children <= 0}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Minus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{children}</span>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setChildren(Math.min(10, children + 1))}
+                                                            disabled={children >= 10}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Plus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                {/* Infants */}
+                                                <div className="flex items-center justify-between border-t border-gray-100 pt-3">
+                                                    <div>
+                                                        <p className="text-sm font-medium text-gray-800">Infants</p>
+                                                        <p className="text-xs text-gray-500">0-5 years</p>
+                                                    </div>
+                                                    <div className="flex items-center gap-3">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setInfants(Math.max(0, infants - 1))}
+                                                            disabled={infants <= 0}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Minus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{infants}</span>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setInfants(Math.min(5, infants + 1))}
+                                                            disabled={infants >= 5}
+                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                        >
+                                                            <Plus className="w-3.5 h-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Search Button */}
@@ -293,7 +395,7 @@ const HomeClient = () => {
                                                 if (selectedCities.length > 0) {
                                                     setShowResults(true);
                                                     setIsCityDropdownOpen(false);
-                                                    // Scroll to results after a short delay
+                                                    setIsPeopleDropdownOpen(false);
                                                     setTimeout(() => {
                                                         const resultsSection = document.getElementById("search-results");
                                                         if (resultsSection) {
@@ -323,9 +425,13 @@ const HomeClient = () => {
                                     viewport={{ once: true }}
                                 >
                                     <h3 className="text-2xl font-display font-semibold text-royal-800 mb-6">
-                                        {selectedCities.length === 1
-                                            ? `Best Plans for ${availableCities.find(c => c.value === selectedCities[0])?.label || selectedCities[0]} (${numberOfAdults} ${numberOfAdults === 1 ? 'Adult' : 'Adults'})`
-                                            : `Best Plans for ${selectedCities.map(c => availableCities.find(ac => ac.value === c)?.label || c).join(', ')} (${numberOfAdults} ${numberOfAdults === 1 ? 'Adult' : 'Adults'})`}
+                                        {`Best Plans for ${selectedCities.length === 1
+                                            ? (availableCities.find(c => c.value === selectedCities[0])?.label || selectedCities[0])
+                                            : selectedCities.map(c => availableCities.find(ac => ac.value === c)?.label || c).join(', ')} (${[
+                                            adults > 0 ? `${adults} ${adults === 1 ? 'Adult' : 'Adults'}` : '',
+                                            children > 0 ? `${children} ${children === 1 ? 'Child' : 'Children'}` : '',
+                                            infants > 0 ? `${infants} ${infants === 1 ? 'Infant' : 'Infants'}` : '',
+                                        ].filter(Boolean).join(', ')})`}
                                     </h3>
 
                                     {filteredPlans.length > 0 ? (

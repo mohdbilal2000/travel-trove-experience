@@ -150,9 +150,21 @@ export default function GuideBookingPage() {
     const [selectedMonuments, setSelectedMonuments] = useState<string[]>([]);
     const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
     const [selectedDate, setSelectedDate] = useState<string>("");
+    const [selectedLanguage, setSelectedLanguage] = useState<string>("english");
     const [selectedDuration, setSelectedDuration] = useState<{ [packageId: number]: 'halfDay' | 'fullDay' | null }>({});
 
     const currentCityData = guideServices[selectedCity];
+
+    const availableLanguages = [
+        { value: "english", label: "English", flag: "🇬🇧" },
+        { value: "french", label: "French", flag: "🇫🇷" },
+        { value: "german", label: "German", flag: "🇩🇪" },
+        { value: "spanish", label: "Spanish", flag: "🇪🇸" },
+        { value: "japanese", label: "Japanese", flag: "🇯🇵" },
+        { value: "russian", label: "Russian", flag: "🇷🇺" },
+        { value: "italian", label: "Italian", flag: "🇮🇹" },
+        { value: "hindi", label: "Hindi", flag: "🇮🇳" },
+    ];
 
     // Derived states
     const isFriday = useMemo(() => selectedDate ? new Date(selectedDate).getDay() === 5 : false, [selectedDate]);
@@ -160,11 +172,12 @@ export default function GuideBookingPage() {
 
     const progress = useMemo(() => {
         let p = 0;
-        if (selectedDate) p += 33.3;
-        if (selectedPackage) p += 33.3;
-        if (selectedMonuments.length > 0) p += 33.4;
+        if (selectedDate) p += 25;
+        if (selectedLanguage) p += 25;
+        if (selectedPackage) p += 25;
+        if (selectedMonuments.length > 0) p += 25;
         return Math.min(p, 100);
-    }, [selectedDate, selectedPackage, selectedMonuments]);
+    }, [selectedDate, selectedLanguage, selectedPackage, selectedMonuments]);
 
     const toggleMonument = (monument: string) => {
         setSelectedMonuments(prev =>
@@ -194,8 +207,10 @@ export default function GuideBookingPage() {
     const handleBookNow = () => {
         const pkgName = currentPackageData?.name;
         const durationText = selectedDuration[selectedPackage!] ? ` (${selectedDuration[selectedPackage!]})` : '';
+        const langLabel = availableLanguages.find(l => l.value === selectedLanguage)?.label || 'English';
         const message = `Hi GuideIndia Tours! I'd like to book a ${pkgName} tour in ${currentCityData.city}${durationText}.
 Date: ${selectedDate}
+Language: ${langLabel}
 Monuments: ${selectedMonuments.join(', ')}
 Please provide availability and pricing details.`;
 
@@ -357,14 +372,47 @@ Please provide availability and pricing details.`;
                                 </div>
                             </motion.div>
 
-                            {/* Step 2: Package */}
+                            {/* Step 2: Language */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="flex items-center gap-6 mb-10">
+                                    <div className="w-16 h-16 rounded-2xl bg-gold-500 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-gold-500/30 transform rotate-3">2</div>
+                                    <div>
+                                        <h2 className="text-4xl font-display font-bold text-gray-900">Guide Language</h2>
+                                        <p className="text-gray-500">Choose your preferred language for the guided tour</p>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    {availableLanguages.map((lang) => (
+                                        <button
+                                            key={lang.value}
+                                            onClick={() => setSelectedLanguage(lang.value)}
+                                            className={cn(
+                                                "flex items-center gap-3 p-4 rounded-2xl border-2 transition-all duration-300 cursor-pointer text-left",
+                                                selectedLanguage === lang.value
+                                                    ? "border-maroon-600 bg-maroon-600 text-white shadow-lg scale-[1.02]"
+                                                    : "border-gray-100 bg-white hover:border-gray-300 hover:shadow-md"
+                                            )}
+                                        >
+                                            <span className="text-2xl">{lang.flag}</span>
+                                            <span className="text-sm font-bold">{lang.label}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </motion.div>
+
+                            {/* Step 3: Package */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                             >
                                 <div className="flex items-center gap-6 mb-12">
-                                    <div className="w-16 h-16 rounded-2xl bg-gold-500 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-gold-500/30 transform rotate-3">2</div>
+                                    <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-black/30 transform -rotate-3">3</div>
                                     <div>
                                         <h2 className="text-4xl font-display font-bold text-gray-900">Choose Package</h2>
                                         <p className="text-gray-500">Pick a service level that fits your needs</p>
@@ -375,7 +423,7 @@ Please provide availability and pricing details.`;
                                     {tourPackages.map((pkg) => (
                                         <div
                                             key={pkg.id}
-                                            onClick={() => setSelectedPackage(pkg.id)}
+                                            onClick={() => setSelectedPackage(prev => prev === pkg.id ? null : pkg.id)}
                                             className={cn(
                                                 "group relative bg-white border-2 rounded-3xl p-8 transition-all duration-500 cursor-pointer overflow-hidden",
                                                 selectedPackage === pkg.id
@@ -439,14 +487,14 @@ Please provide availability and pricing details.`;
                                 </div>
                             </motion.div>
 
-                            {/* Step 3: Monuments */}
+                            {/* Step 4: Monuments */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                             >
                                 <div className="flex items-center gap-6 mb-12">
-                                    <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-black/30 transform -rotate-3">3</div>
+                                    <div className="w-16 h-16 rounded-2xl bg-maroon-600/80 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-maroon-600/20 transform rotate-2">4</div>
                                     <div>
                                         <h2 className="text-4xl font-display font-bold text-gray-900">Select Monuments</h2>
                                         <p className="text-gray-500">Tell us where you want to go</p>
@@ -500,6 +548,15 @@ Please provide availability and pricing details.`;
                                                         {selectedDate || "Not Selected"}
                                                     </span>
                                                     {selectedDate && <CheckCircle className="w-5 h-5 text-green-500" />}
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col gap-1">
+                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Guide Language</span>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-lg">{availableLanguages.find(l => l.value === selectedLanguage)?.flag}</span>
+                                                    <span className="text-lg font-bold text-gray-900">{availableLanguages.find(l => l.value === selectedLanguage)?.label}</span>
+                                                    <CheckCircle className="w-5 h-5 text-green-500" />
                                                 </div>
                                             </div>
 
@@ -584,21 +641,21 @@ Please provide availability and pricing details.`;
                                 <Shield className="w-10 h-10" />
                             </div>
                             <h3 className="text-xl font-bold mb-4">Verified Credentials</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed uppercase tracking-tighter font-black">Every single guide is government-authorized with a verified heritage license from the Ministry of Tourism.</p>
+                            <p className="text-sm text-gray-500 leading-relaxed">Every single guide is government-authorized with a verified heritage license from the Ministry of Tourism.</p>
                         </div>
                         <div className="text-center">
                             <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 text-maroon-600">
                                 <Languages className="w-10 h-10" />
                             </div>
                             <h3 className="text-xl font-bold mb-4">Multilingual Fluency</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed uppercase tracking-tighter font-black">Beyond English, we provide specialists in French, German, Spanish, Japanese, and Russian for a native experience.</p>
+                            <p className="text-sm text-gray-500 leading-relaxed">Beyond English, we provide specialists in French, German, Spanish, Japanese, and Russian for a native experience.</p>
                         </div>
                         <div className="text-center">
                             <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 text-maroon-600">
                                 <Star className="w-10 h-10" />
                             </div>
                             <h3 className="text-xl font-bold mb-4">5-Star Standards</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed uppercase tracking-tighter font-black">Consistently recognized on Google and TripAdvisor for our commitment to historical accuracy and hospitality.</p>
+                            <p className="text-sm text-gray-500 leading-relaxed">Consistently recognized on Google and TripAdvisor for our commitment to historical accuracy and hospitality.</p>
                         </div>
                     </div>
                 </div>
