@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'Guest Reviews | What Travelers Say About Guide India Tours',
-    description: 'Read 364+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
+    description: 'Read 366+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
     alternates: {
         canonical: 'https://guideindiatours.com/reviews',
         languages: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.9/5 by 364+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: 'Rated 4.9/5 by 366+ verified travelers. Read real reviews from guests who explored India with us.',
         url: 'https://guideindiatours.com/reviews',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.9/5 by 364+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: 'Rated 4.9/5 by 366+ verified travelers. Read real reviews from guests who explored India with us.',
     },
 };
 
@@ -89,7 +89,7 @@ export default function ReviewsPage() {
         aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: '4.9',
-            reviewCount: '364',
+            reviewCount: '366',
             bestRating: '5',
             worstRating: '1',
         },
@@ -153,7 +153,7 @@ export default function ReviewsPage() {
                             <div className="flex items-center justify-center mb-3">
                                 <Users className="w-6 h-6 text-maroon-600" />
                             </div>
-                            <p className="text-4xl font-display font-bold text-gray-900">364</p>
+                            <p className="text-4xl font-display font-bold text-gray-900">366</p>
                             <p className="text-sm text-gray-500 mt-1">verified reviews</p>
                         </div>
                         <div className="bg-ivory-100 rounded-3xl p-8 text-center">

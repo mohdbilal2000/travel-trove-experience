@@ -604,7 +604,7 @@ Please provide availability and pricing details.`;
                                                 {[1, 2, 3, 4].map(i => <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-gray-200" />)}
                                                 <div className="w-10 h-10 rounded-full border-4 border-white bg-gold-500 flex items-center justify-center text-xs font-bold text-white">+500</div>
                                             </div>
-                                            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Rest easy. 15,000+ Travelers Guided Since 2012.</p>
+                                            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Rest easy. 15,000+ Travelers Guided Since 2004.</p>
                                         </div>
                                     </div>
                                 </Card>

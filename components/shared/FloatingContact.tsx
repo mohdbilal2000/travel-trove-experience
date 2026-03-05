@@ -73,7 +73,7 @@ const FloatingContact = () => {
 
           {/* Call Button */}
           <motion.a
-            href="tel:+918979810991"
+            href="tel:+919410000991"
             className="w-14 bg-maroon-600 hover:bg-maroon-700 text-white flex items-center justify-center active:scale-[0.95] transition-all duration-200 touch-manipulation"
             whileTap={{ scale: 0.95 }}
             aria-label="Call us"

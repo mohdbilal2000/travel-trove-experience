@@ -388,11 +388,23 @@ export const generateConnectedGraphSchema = () => {
           "caption": "Guide India Tours Logo"
         },
         "image": "https://guideindiatours.com/images/og-default.jpg",
-        "description": "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur.",
+        "description": "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Government-approved licensed guides, luxury hotels, and 24/7 support.",
+        "foundingDate": "2004",
         "priceRange": "$$$",
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "minValue": 10,
+          "maxValue": 25
+        },
+        "sameAs": [
+          "https://www.google.com/maps/place/Guide+India+Tours/"
+        ],
+        "slogan": "Experience India's Golden Triangle with Expert Guides",
+        "currenciesAccepted": "USD, EUR, GBP, INR",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Flate No: 31/84A, Rajpur Jangjeet Nagar, Shamsabad Road",
+          "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
           "addressLocality": "Agra",
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282001",
@@ -400,25 +412,53 @@ export const generateConnectedGraphSchema = () => {
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+918979810991",
+          "telephone": "+919410000991",
           "contactType": "customer service",
           "email": "info@guideindiatours.com",
-          "availableLanguage": ["English", "Hindi", "French", "Spanish", "German"]
+          "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
         },
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": "27.1767",
           "longitude": "78.0081"
         },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "364",
+          "reviewCount": "366",
           "bestRating": "5"
         },
-        "areaServed": {
-          "@type": "Country",
-          "name": "India"
+        "areaServed": [
+          { "@type": "City", "name": "Agra", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+          { "@type": "City", "name": "Delhi" },
+          { "@type": "City", "name": "Jaipur", "containedInPlace": { "@type": "State", "name": "Rajasthan" } },
+          { "@type": "City", "name": "Udaipur", "containedInPlace": { "@type": "State", "name": "Rajasthan" } },
+          { "@type": "City", "name": "Jaisalmer", "containedInPlace": { "@type": "State", "name": "Rajasthan" } },
+          { "@type": "Place", "name": "Tajganj, Agra" },
+          { "@type": "Place", "name": "Fatehpur Sikri" },
+          { "@type": "Place", "name": "Sikandra, Agra" },
+          { "@type": "Place", "name": "Etmadpur" },
+          { "@type": "State", "name": "Uttar Pradesh" },
+          { "@type": "State", "name": "Rajasthan" },
+          { "@type": "Country", "name": "India" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "India Tour Packages",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Golden Triangle Tours" } },
+            { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Same Day Agra Tours" } },
+            { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Delhi Sightseeing Tours" } },
+            { "@type": "Offer", "itemOffered": { "@type": "TouristTrip", "name": "Jaipur Heritage Tours" } }
+          ]
         },
         "knowsAbout": [
           "Golden Triangle Tours",

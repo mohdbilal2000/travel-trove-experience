@@ -41,7 +41,7 @@ export default function DigitalCardPage() {
 
             pdf.setFontSize(11);
             pdf.setTextColor(31, 41, 55);
-            pdf.text('Call: +91 8979810991', pageWidth / 2, 90, { align: 'center' });
+            pdf.text('Call: +91 9410000991', pageWidth / 2, 90, { align: 'center' });
             pdf.text('Email: info@guideindiatours.com', pageWidth / 2, 100, { align: 'center' });
             pdf.text('Visit: guideindiatours.com', pageWidth / 2, 110, { align: 'center' });
 
@@ -95,7 +95,7 @@ export default function DigitalCardPage() {
                                     <Phone size={20} />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-sm font-bold">+91 8979810991</div>
+                                    <div className="text-sm font-bold">+91 9410000991</div>
                                     <div className="text-xs text-gray-500">Call / WhatsApp</div>
                                 </div>
                             </div>

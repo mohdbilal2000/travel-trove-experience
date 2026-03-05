@@ -89,7 +89,7 @@ const HeroFallback = () => {
                 <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
               ))}
             </div>
-            <span className="text-white/90 text-sm font-medium">4.9/5 from 360+ travelers</span>
+            <span className="text-white/90 text-sm font-medium">4.9/5 from 366+ travelers</span>
           </div>
 
           {/* Heading — h2 because the real h1 is in page.tsx sr-only */}

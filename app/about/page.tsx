@@ -53,7 +53,7 @@ export default function AboutPage() {
                             transition={{ duration: 0.8 }}
                         >
                             <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
-                                Since 2012
+                                Since 2004
                             </Badge>
                             <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-[0.9] tracking-tighter">
                                 Heritage. <br />Trust. <br /><span className="text-maroon-600">Excellence.</span>

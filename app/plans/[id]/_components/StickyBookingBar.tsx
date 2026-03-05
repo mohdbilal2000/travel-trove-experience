@@ -45,7 +45,7 @@ export default function StickyBookingBar({ planTitle, planPrice }: StickyBooking
                         </div>
                         <div className="flex gap-2">
                             <a
-                                href="tel:+918979810991"
+                                href="tel:+919410000991"
                                 className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 active:scale-95 text-gray-700 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200"
                             >
                                 <Phone className="w-4 h-4" />

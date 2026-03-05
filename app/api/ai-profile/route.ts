@@ -18,13 +18,13 @@ export async function GET() {
         url: "https://guideindiatours.com",
         logo: "https://guideindiatours.com/logo.png",
         description: "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Premium private tours with licensed guides, luxury hotels, and fully customizable itineraries.",
-        foundingDate: "2015",
+        foundingDate: "2004",
         priceRange: "$$$",
         slogan: "Experience India's Golden Triangle with Expert Guides",
 
         address: {
             "@type": "PostalAddress",
-            streetAddress: "Flate No: 31/84A, Rajpur Jangjeet Nagar, Shamsabad Road",
+            streetAddress: "31/84A, Jangjeet Nagar, Shamsabad Road",
             addressLocality: "Agra",
             addressRegion: "Uttar Pradesh",
             postalCode: "282001",
@@ -33,11 +33,11 @@ export async function GET() {
 
         contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+918979810991",
+            telephone: "+919410000991",
             contactType: "customer service",
             email: "info@guideindiatours.com",
-            availableLanguage: ["English", "Hindi", "French", "Spanish", "German"],
-            areaServed: "Worldwide",
+            availableLanguage: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
+            areaServed: ["Agra", "Delhi", "Jaipur", "Udaipur", "Jaisalmer", "Tajganj", "Fatehpur Sikri", "Sikandra", "Etmadpur", "Uttar Pradesh", "Rajasthan", "India"],
         },
 
         geo: {
@@ -46,10 +46,17 @@ export async function GET() {
             longitude: "78.0081",
         },
 
+        openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            opens: "00:00",
+            closes: "23:59",
+        }],
+
         aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "364",
+            reviewCount: "366",
             bestRating: "5",
             worstRating: "1",
         },
@@ -65,9 +72,9 @@ export async function GET() {
                 max: Math.max(...priceValues),
                 currency: "USD",
             },
-            languages: ["English", "Hindi", "French", "Spanish", "German"],
+            languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
             averageRating: 4.9,
-            totalReviews: 364,
+            totalReviews: 366,
         },
 
         // Tour catalog summary

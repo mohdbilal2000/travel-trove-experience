@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: "Guide India Tours | #1 Specialist for Golden Triangle Tours Delhi, Agra, Jaipur",
-    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 360+ travelers on Google. Book your premium private tour today.",
+    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 366+ travelers on Google. Book your premium private tour today.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
         canonical: 'https://guideindiatours.com',
@@ -41,7 +41,7 @@ export default function Home() {
         "priceRange": "$$$",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Flate No: 31/84A, Rajpur Jangjeet Nagar, Shamsabad Road",
+            "streetAddress": "31A/110, Jangjeet Nagar, Shamsabad Road",
             "addressLocality": "Agra",
             "addressRegion": "Uttar Pradesh",
             "postalCode": "282001",
@@ -49,14 +49,25 @@ export default function Home() {
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+918979810991",
+            "telephone": "+919410000991",
             "contactType": "customer service",
             "email": "info@guideindiatours.com"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "27.1767",
+            "longitude": "78.0081"
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+        }],
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
-            "reviewCount": "364"
+            "reviewCount": "366"
         }
     };
 

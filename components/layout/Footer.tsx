@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, Star } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -107,19 +107,30 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-maroon-600" />
                 <span className="text-gray-600 text-sm">
-                  Flate No: 31/84A, Rajpur Jangjeet Nagar, Shamsabad Road, Agra 282001
+                  31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0 text-maroon-600" />
-                <a href="tel:+918979810991" className="text-gray-600 hover:text-maroon-700 transition-colors">
-                  +91 8979810991
+                <a href="tel:+919410000991" className="text-gray-600 hover:text-maroon-700 transition-colors">
+                  +91 9410000991
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="flex-shrink-0 text-maroon-600" />
                 <a href="mailto:info@guideindiatours.com" className="text-gray-600 hover:text-maroon-700 transition-colors">
                   info@guideindiatours.com
+                </a>
+              </li>
+              <li className="flex items-center space-x-3 pt-2">
+                <Star size={18} className="flex-shrink-0 text-gold-500" />
+                <a
+                  href="https://www.google.com/maps/place/Guide+India+Tours/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-maroon-700 transition-colors text-sm font-medium"
+                >
+                  4.9 ★ on Google (366+ reviews)
                 </a>
               </li>
             </ul>
@@ -129,7 +140,7 @@ const Footer = () => {
         <div className="border-t border-gray-300 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">
-              &copy; 2012–{currentYear} Guide India Tours. All rights reserved.
+              &copy; 2004–{currentYear} Guide India Tours. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-maroon-700 transition-colors">

@@ -105,7 +105,7 @@ export default function ContactPage() {
                                     <div className="space-y-6">
                                         <div className="flex flex-col">
                                             <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">WhatsApp / Calling</span>
-                                            <a href="tel:+918979810991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 89798 10991</a>
+                                            <a href="tel:+919410000991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 94100 00991</a>
                                         </div>
                                         <div className="flex flex-col">
                                             <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Email Concierge</span>
@@ -128,11 +128,11 @@ export default function ContactPage() {
                                         </div>
                                     </div>
                                     <address className="not-italic text-lg text-white/70 leading-relaxed font-light mb-8">
-                                        Flate No: 31/84A, Rajpur Jangjeet Nagar,<br />
-                                        Shamsabad Road, Agra 282001, India
+                                        31/84A, Jangjeet Nagar,<br />
+                                        Shamsabad Road, Agra 282001, Uttar Pradesh, India
                                     </address>
                                     <a
-                                        href="https://maps.google.com/?q=Flate+No+31/84A+Rajpur+Jangjeet+Nagar+Shamsabad+Road+Agra+282001+India"
+                                        href="https://maps.google.com/?q=Guide+India+Tours+Agra"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 text-sm font-bold text-gold-500 hover:text-white transition-colors uppercase tracking-widest"

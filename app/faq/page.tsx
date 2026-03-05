@@ -34,7 +34,7 @@ const faqCategories = [
         questions: [
             {
                 question: "How do I book a tour with Guide India Tours?",
-                answer: "You can book directly via our website by selecting a plan and clicking 'Book This Tour', which opens a WhatsApp chat with our agents. Alternatively, use our contact form for a custom quote or call us at +91 8979810991."
+                answer: "You can book directly via our website by selecting a plan and clicking 'Book This Tour', which opens a WhatsApp chat with our agents. Alternatively, use our contact form for a custom quote or call us at +91 9410000991."
             },
             {
                 question: "How far in advance should I book my India tour?",
@@ -153,7 +153,7 @@ export default function FAQPage() {
                                     </Link>
                                 </Button>
                                 <Button variant="outline" size="lg" asChild className="h-20 px-12 rounded-3xl border-white/20 text-white hover:bg-white/10 text-xl font-bold">
-                                    <a href="tel:+918979810991" className="flex items-center gap-3">
+                                    <a href="tel:+919410000991" className="flex items-center gap-3">
                                         <Phone size={24} /> Call Concierge
                                     </a>
                                 </Button>

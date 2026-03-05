@@ -212,8 +212,8 @@ export default function RefundPolicyPage() {
                                 </div>
                                 <div className="space-y-3">
                                     <p className="font-medium text-gray-900">Customer Support</p>
-                                    <p className="font-light">Phone: +91 8979810991</p>
-                                    <p className="font-light">Available 7 days a week, 9 AM - 9 PM IST</p>
+                                    <p className="font-light">Phone: +91 9410000991</p>
+                                    <p className="font-light">Available 24 hours, 7 days a week</p>
                                 </div>
                             </div>
                         </div>

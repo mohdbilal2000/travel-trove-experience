@@ -36,7 +36,7 @@ const goldenTriangleFaqs = [
 
 export const metadata: Metadata = {
     title: 'Golden Triangle Tours | Delhi Agra Jaipur Private Tour Packages | Guide India Tours',
-    description: 'Book premium Golden Triangle tours covering Delhi, Agra & Jaipur. 4-10 day private packages with Taj Mahal, Amber Fort & Red Fort. From $150/person. 4.9/5 rated by 364+ travelers. Book now!',
+    description: 'Book premium Golden Triangle tours covering Delhi, Agra & Jaipur. 4-10 day private packages with Taj Mahal, Amber Fort & Red Fort. From $150/person. 4.9/5 rated by 366+ travelers. Book now!',
     alternates: {
         canonical: 'https://guideindiatours.com/golden-triangle-tours',
         languages: {
@@ -47,9 +47,16 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Golden Triangle Tours India | Delhi Agra Jaipur Private Packages',
-        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 364+ travelers.',
+        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 366+ travelers.',
         url: 'https://guideindiatours.com/golden-triangle-tours',
-        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg' }],
+        siteName: 'Guide India Tours',
+        type: 'website',
+        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Golden Triangle Tours India | Delhi Agra Jaipur Packages',
+        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 366+ travelers.',
     },
 };
 
@@ -118,7 +125,7 @@ export default function GoldenTriangleToursPage() {
                             </p>
                             <div className="flex flex-wrap items-center gap-6 text-white/70 text-sm">
                                 <span className="flex items-center gap-2"><Star className="w-4 h-4 text-gold-500 fill-current" /> 4.9/5 Rating</span>
-                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 364+ Happy Travelers</span>
+                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 366+ Happy Travelers</span>
                                 <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Best: Oct-Mar</span>
                                 <span className="flex items-center gap-2"><Shield className="w-4 h-4" /> No Hidden Fees</span>
                             </div>
@@ -131,7 +138,7 @@ export default function GoldenTriangleToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). Packages start from <strong>$150 per person</strong> with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 364+ verified Google reviewers.
+                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). Packages start from <strong>$150 per person</strong> with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 366+ verified Google reviewers.
                     </p>
                 </div>
             </section>
