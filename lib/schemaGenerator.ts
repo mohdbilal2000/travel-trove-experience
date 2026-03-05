@@ -397,7 +397,8 @@ export const generateConnectedGraphSchema = () => {
           "maxValue": 25
         },
         "sameAs": [
-          "https://www.google.com/maps/place/Guide+India+Tours/"
+          "https://www.google.com/maps/place/Guide+India+Tours/",
+          "https://www.asiabylocals.com/india/agra"
         ],
         "slogan": "Experience India's Golden Triangle with Expert Guides",
         "currenciesAccepted": "USD, EUR, GBP, INR",

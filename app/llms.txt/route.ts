@@ -66,6 +66,9 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) — ${p.price}/pe
 - Book via website: https://guideindiatours.com/guide-booking
 - Email: info@guideindiatours.com
 
+## Official Booking Partners
+- International Booking Partner: https://www.asiabylocals.com/india/agra (Asiabylocals – Agra Tours)
+
 ## Machine-Readable Data
 - Structured data (JSON-LD): Available on every page
 - API endpoint: https://guideindiatours.com/api/ai-profile

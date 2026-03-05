@@ -21,6 +21,10 @@ export async function GET() {
         foundingDate: "2004",
         priceRange: "$$$",
         slogan: "Experience India's Golden Triangle with Expert Guides",
+        sameAs: [
+            "https://www.google.com/maps/place/Guide+India+Tours/",
+            "https://www.asiabylocals.com/india/agra",
+        ],
 
         address: {
             "@type": "PostalAddress",
