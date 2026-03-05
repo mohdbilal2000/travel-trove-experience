@@ -8,7 +8,7 @@ import {
     Plane, Camera, ShieldCheck, Globe, CreditCard, PhoneCall,
     Clock, Award, Umbrella, ArrowRight, Check, Sparkles
 } from "lucide-react";
-import OptimizedImage from "@/components/shared/OptimizedImage";
+import Image from "next/image";
 import RelatedPages from "@/components/shared/RelatedPages";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -127,11 +127,14 @@ export default function ServicesPage() {
                                     viewport={{ once: true }}
                                     className={cn("relative group", index % 2 === 1 ? "lg:order-2" : "")}
                                 >
-                                    <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative translate-z-0">
-                                        <OptimizedImage
+                                    <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
+                                        <Image
                                             src={service.image}
-                                            alt={service.title}
-                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                            alt={`${service.title} - Guide India Tours`}
+                                            fill
+                                            className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                            quality={85}
                                         />
                                         <div className="absolute inset-0 bg-black/20" />
                                     </div>
@@ -217,8 +220,10 @@ export default function ServicesPage() {
                                 <Button asChild size="lg" className="bg-white text-black hover:bg-maroon-600 hover:text-white py-10 px-16 rounded-2xl text-2xl font-bold shadow-2xl transition-all h-auto">
                                     <Link href="/contact">Book Inquiry</Link>
                                 </Button>
-                                <Button asChild variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 py-10 px-16 rounded-2xl text-2xl font-bold h-auto transition-all">
-                                    <Link href="tel:+918979810991">Call Agent</Link>
+                                <Button asChild variant="outline" size="lg" className="bg-transparent border-2 border-white/50 text-white hover:bg-white hover:text-black py-10 px-16 rounded-2xl text-2xl font-bold h-auto transition-all">
+                                    <Link href="tel:+919410000991" className="flex items-center gap-3">
+                                        <PhoneCall className="w-6 h-6" /> Call Agent
+                                    </Link>
                                 </Button>
                             </div>
                         </div>
