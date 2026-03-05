@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import { allPlans } from "@/data/travelPlans";
-import { Star, Clock, Users, MapPin, MessageCircle, Search, X, ChevronDown, ShieldCheck, Minus, Plus } from "lucide-react";
+import { Star, Clock, Users, MapPin, MessageCircle, Search, X, ChevronDown, ShieldCheck, Minus, Plus, Hotel, Check } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -22,15 +22,28 @@ const HomeClient = () => {
     const [showResults, setShowResults] = useState<boolean>(false);
     const [isCityDropdownOpen, setIsCityDropdownOpen] = useState<boolean>(false);
     const [isPeopleDropdownOpen, setIsPeopleDropdownOpen] = useState<boolean>(false);
+    const [hotelPreference, setHotelPreference] = useState<string>("");
+    const [isHotelDropdownOpen, setIsHotelDropdownOpen] = useState<boolean>(false);
     const peopleDropdownRef = useRef<HTMLDivElement>(null);
+    const hotelDropdownRef = useRef<HTMLDivElement>(null);
+
+    const hotelOptions = [
+        { value: "5star", label: "5 Star", desc: "Luxury & Premium" },
+        { value: "4star", label: "4 Star", desc: "Superior Comfort" },
+        { value: "3star", label: "3 Star", desc: "Quality & Value" },
+        { value: "budget", label: "Budget", desc: "Affordable Stay" },
+    ];
 
     const totalTravelers = adults + children + infants;
 
-    // Close people dropdown on outside click
+    // Close dropdowns on outside click
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (peopleDropdownRef.current && !peopleDropdownRef.current.contains(e.target as Node)) {
                 setIsPeopleDropdownOpen(false);
+            }
+            if (hotelDropdownRef.current && !hotelDropdownRef.current.contains(e.target as Node)) {
+                setIsHotelDropdownOpen(false);
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
@@ -209,7 +222,7 @@ const HomeClient = () => {
                                     <div className="relative">
                                         <button
                                             type="button"
-                                            onClick={() => { setIsCityDropdownOpen(!isCityDropdownOpen); setIsPeopleDropdownOpen(false); }}
+                                            onClick={() => { setIsCityDropdownOpen(!isCityDropdownOpen); setIsPeopleDropdownOpen(false); setIsHotelDropdownOpen(false); }}
                                             className="w-full h-12 px-3 py-2 text-left text-sm sm:text-base bg-background border border-input rounded-md flex items-center justify-between hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                                         >
                                             <span className="text-muted-foreground truncate pr-2">
@@ -283,8 +296,8 @@ const HomeClient = () => {
                                     )}
                                 </div>
 
-                                {/* Travelers and Search Button - Side by Side on md+ */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {/* Travelers, Hotel Preference, and Search Button */}
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                     {/* Travelers Selector */}
                                     <div className="space-y-2 relative" ref={peopleDropdownRef}>
                                         <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
@@ -293,7 +306,7 @@ const HomeClient = () => {
                                         </label>
                                         <button
                                             type="button"
-                                            onClick={() => { setIsPeopleDropdownOpen(!isPeopleDropdownOpen); setIsCityDropdownOpen(false); }}
+                                            onClick={() => { setIsPeopleDropdownOpen(!isPeopleDropdownOpen); setIsCityDropdownOpen(false); setIsHotelDropdownOpen(false); }}
                                             className="w-full h-12 px-4 flex items-center justify-between border border-gray-200 rounded-lg bg-white text-sm sm:text-base text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-600/20"
                                         >
                                             <span>
@@ -388,6 +401,54 @@ const HomeClient = () => {
                                         )}
                                     </div>
 
+                                    {/* Hotel Preference */}
+                                    <div className="space-y-2 relative" ref={hotelDropdownRef}>
+                                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                            <Hotel className="w-4 h-4 text-royal-600" />
+                                            Hotel Preference
+                                        </label>
+                                        <button
+                                            type="button"
+                                            onClick={() => { setIsHotelDropdownOpen(!isHotelDropdownOpen); setIsCityDropdownOpen(false); setIsPeopleDropdownOpen(false); }}
+                                            className="w-full h-12 px-4 flex items-center justify-between border border-gray-200 rounded-lg bg-white text-sm sm:text-base text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-600/20"
+                                        >
+                                            <span className={hotelPreference ? "text-gray-700" : "text-gray-400"}>
+                                                {hotelPreference ? hotelOptions.find(h => h.value === hotelPreference)?.label : "Any"}
+                                            </span>
+                                            <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isHotelDropdownOpen ? 'rotate-180' : ''}`} />
+                                        </button>
+
+                                        {isHotelDropdownOpen && (
+                                            <div className="absolute z-30 top-full mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg py-1">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => { setHotelPreference(""); setIsHotelDropdownOpen(false); }}
+                                                    className={`w-full px-4 py-3 text-left text-sm hover:bg-gray-50 transition-colors flex items-center justify-between ${!hotelPreference ? "text-royal-600 font-semibold bg-royal-50" : "text-gray-700"}`}
+                                                >
+                                                    <div>
+                                                        <p className="font-medium">Any</p>
+                                                        <p className="text-xs text-gray-400">No preference</p>
+                                                    </div>
+                                                    {!hotelPreference && <Check className="w-4 h-4 text-royal-600" />}
+                                                </button>
+                                                {hotelOptions.map((option) => (
+                                                    <button
+                                                        key={option.value}
+                                                        type="button"
+                                                        onClick={() => { setHotelPreference(option.value); setIsHotelDropdownOpen(false); }}
+                                                        className={`w-full px-4 py-3 text-left text-sm hover:bg-gray-50 transition-colors flex items-center justify-between ${hotelPreference === option.value ? "text-royal-600 font-semibold bg-royal-50" : "text-gray-700"}`}
+                                                    >
+                                                        <div>
+                                                            <p className="font-medium">{option.label}</p>
+                                                            <p className="text-xs text-gray-400">{option.desc}</p>
+                                                        </div>
+                                                        {hotelPreference === option.value && <Check className="w-4 h-4 text-royal-600" />}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
                                     {/* Search Button */}
                                     <div className="flex items-end">
                                         <Button
@@ -396,6 +457,7 @@ const HomeClient = () => {
                                                     setShowResults(true);
                                                     setIsCityDropdownOpen(false);
                                                     setIsPeopleDropdownOpen(false);
+                                                    setIsHotelDropdownOpen(false);
                                                     setTimeout(() => {
                                                         const resultsSection = document.getElementById("search-results");
                                                         if (resultsSection) {

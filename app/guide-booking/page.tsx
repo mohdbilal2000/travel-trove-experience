@@ -163,7 +163,6 @@ export default function GuideBookingPage() {
         { value: "japanese", label: "Japanese", flag: "🇯🇵" },
         { value: "russian", label: "Russian", flag: "🇷🇺" },
         { value: "italian", label: "Italian", flag: "🇮🇹" },
-        { value: "hindi", label: "Hindi", flag: "🇮🇳" },
     ];
 
     // Derived states
