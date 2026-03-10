@@ -23,9 +23,15 @@ export const metadata: Metadata = {
         description: "Official Guide India Tours - India's #1 Private Tour Specialist for Delhi, Agra & Jaipur.",
         url: 'https://guideindiatours.com',
         siteName: 'Guide India Tours',
-        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg' }],
+        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Guide India Tours - Golden Triangle Private Tours' }],
         type: 'website',
-    }
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Guide India Tours | #1 Golden Triangle Specialist',
+        description: 'Private Agra, Delhi & Jaipur tours with government-approved guides. Rated 4.9/5 by 366+ travelers. Book your Golden Triangle tour today.',
+        images: ['https://guideindiatours.com/images/og-default.jpg'],
+    },
 };
 
 export default function Home() {
@@ -38,10 +44,14 @@ export default function Home() {
         "url": "https://guideindiatours.com",
         "logo": "https://guideindiatours.com/logo.png",
         "image": "https://guideindiatours.com/images/og-default.jpg",
+        "foundingDate": "2004",
         "priceRange": "$$$",
+        "slogan": "Experience India's Golden Triangle with Expert Guides",
+        "currenciesAccepted": "USD, EUR, GBP, INR",
+        "paymentAccepted": "Cash, Credit Card, Debit Card, Bank Transfer, UPI",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "31A/110, Jangjeet Nagar, Shamsabad Road",
+            "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
             "addressLocality": "Agra",
             "addressRegion": "Uttar Pradesh",
             "postalCode": "282001",
@@ -51,7 +61,8 @@ export default function Home() {
             "@type": "ContactPoint",
             "telephone": "+919410000991",
             "contactType": "customer service",
-            "email": "info@guideindiatours.com"
+            "email": "info@guideindiatours.com",
+            "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
         },
         "geo": {
             "@type": "GeoCoordinates",
@@ -67,8 +78,16 @@ export default function Home() {
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
-            "reviewCount": "366"
-        }
+            "reviewCount": "366",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "sameAs": [
+            "https://www.google.com/maps/place/Guide+India+Tours/",
+            "https://www.asiabylocals.com/india/agra",
+            "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
+            "https://www.trustpilot.com/review/guideindiatours.com"
+        ]
     };
 
     const websiteSchema = {

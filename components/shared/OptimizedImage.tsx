@@ -41,7 +41,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     <div className={cn("relative overflow-hidden", !fill && "w-full", className)}>
       <Image
         src={src}
-        alt={alt || "India Tour Image"}
+        alt={alt || src.split('/').pop()?.replace(/[-_]/g, ' ').replace(/\.[^.]+$/, '') || "Guide India Tours"}
         quality={quality}
         priority={priority}
         className={cn(

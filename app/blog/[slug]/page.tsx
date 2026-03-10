@@ -78,23 +78,54 @@ export default async function BlogDetailPage({ params }: PageProps) {
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
+        "@id": `https://guideindiatours.com/blog/${slug}#article`,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://guideindiatours.com/blog/${slug}`
+        },
         "headline": post.title,
-        "image": post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
+        "name": post.title,
+        "url": `https://guideindiatours.com/blog/${slug}`,
+        "image": {
+            "@type": "ImageObject",
+            "url": post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
+            "width": 1200,
+            "height": 630
+        },
         "datePublished": post.publishedDate,
+        "dateModified": post.publishedDate,
+        "wordCount": post.content.split(/\s+/).length,
+        "inLanguage": "en-US",
         "author": {
-            "@type": "Person",
+            "@type": "Organization",
+            "@id": "https://guideindiatours.com/#organization",
             "name": post.author || "Guide India Tours",
             "url": "https://guideindiatours.com/about"
         },
         "publisher": {
             "@type": "Organization",
+            "@id": "https://guideindiatours.com/#organization",
             "name": "Guide India Tours",
+            "url": "https://guideindiatours.com",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://guideindiatours.com/favicon.svg"
+                "url": "https://guideindiatours.com/logo.png",
+                "width": 200,
+                "height": 60
             }
         },
-        "description": post.excerpt || post.content.substring(0, 160)
+        "description": post.excerpt || post.content.substring(0, 160),
+        "keywords": post.tags?.join(", ") || "India tours, Golden Triangle, travel guide",
+        "articleSection": post.category || "Travel Guide",
+        "about": {
+            "@type": "TouristDestination",
+            "name": "Golden Triangle, India"
+        },
+        "isPartOf": {
+            "@type": "Blog",
+            "@id": "https://guideindiatours.com/blog",
+            "name": "Guide India Tours Travel Blog"
+        }
     };
 
     const renderContent = (content: string) => {

@@ -93,7 +93,7 @@ export default function ReviewsPage() {
             bestRating: '5',
             worstRating: '1',
         },
-        review: reviews.slice(0, 5).map((r) =>
+        review: reviews.map((r) =>
             generateReviewSchema({
                 author: r.name,
                 rating: r.rating,
