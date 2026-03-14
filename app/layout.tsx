@@ -42,7 +42,15 @@ export const metadata: Metadata = {
         creator: '@guideindia',
         images: ['/images/og-default.jpg'],
     },
-    verification: {},
+    verification: {
+        // IMPORTANT: Replace these with your actual verification codes
+        // Get from: https://search.google.com/search-console (HTML tag method)
+        google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+        // Get from: https://www.bing.com/webmasters (HTML meta tag method)
+        other: {
+            'msvalidate.01': 'YOUR_BING_VERIFICATION_CODE',
+        },
+    },
     robots: {
         index: true,
         follow: true,
