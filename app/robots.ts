@@ -6,8 +6,9 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: ['/api/', '/digital-card'],
+                disallow: ['/api/', '/digital-card', '/admin/', '/private/', '/checkout/'],
             },
+            // OpenAI crawlers
             {
                 userAgent: 'GPTBot',
                 allow: ['/', '/llms.txt'],
@@ -17,23 +18,38 @@ export default function robots(): MetadataRoute.Robots {
                 allow: ['/', '/llms.txt'],
             },
             {
-                userAgent: 'Claude-Web',
+                userAgent: 'OAI-SearchBot',
                 allow: ['/', '/llms.txt'],
             },
+            // Anthropic crawlers
             {
-                userAgent: 'Amazonbot',
-                allow: '/',
+                userAgent: 'Claude-Web',
+                allow: ['/', '/llms.txt'],
             },
             {
                 userAgent: 'anthropic-ai',
                 allow: ['/', '/llms.txt'],
             },
             {
+                userAgent: 'ClaudeBot',
+                allow: ['/', '/llms.txt'],
+            },
+            // Google AI
+            {
+                userAgent: 'Google-Extended',
+                allow: '/',
+            },
+            {
+                userAgent: 'Googlebot',
+                allow: '/',
+            },
+            // Other AI crawlers
+            {
                 userAgent: 'PerplexityBot',
                 allow: ['/', '/llms.txt'],
             },
             {
-                userAgent: 'Google-Extended',
+                userAgent: 'Amazonbot',
                 allow: '/',
             },
             {
@@ -43,6 +59,32 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: 'cohere-ai',
                 allow: ['/', '/llms.txt'],
+            },
+            // Bing & search engines
+            {
+                userAgent: 'Bingbot',
+                allow: '/',
+            },
+            {
+                userAgent: 'DuckDuckBot',
+                allow: '/',
+            },
+            {
+                userAgent: 'YandexBot',
+                allow: '/',
+            },
+            // Social media crawlers
+            {
+                userAgent: 'facebookexternalhit',
+                allow: '/',
+            },
+            {
+                userAgent: 'Twitterbot',
+                allow: '/',
+            },
+            {
+                userAgent: 'LinkedInBot',
+                allow: '/',
             },
         ],
         sitemap: 'https://guideindiatours.com/sitemap.xml',

@@ -39,6 +39,41 @@ const faqCategories = [
             {
                 question: "How far in advance should I book my India tour?",
                 answer: "For the best experience and availability of 5-star hotels, we recommend booking 2-4 months in advance, especially for the peak season from October to March."
+            },
+            {
+                question: "What is the cancellation and refund policy?",
+                answer: "We offer free cancellation up to 7 days before the tour start date for a full refund. Cancellations within 3-7 days receive a 50% refund. Within 3 days, no refund is available. In case of emergencies, we work with you to reschedule at no extra charge."
+            },
+            {
+                question: "What payment methods do you accept?",
+                answer: "We accept credit cards, debit cards, bank transfers, UPI, and cash payments. We accept USD, EUR, GBP, and INR. A 20% advance is required to confirm your booking, with the balance payable before the tour starts."
+            }
+        ]
+    },
+    {
+        id: "tours",
+        title: "Tour Details & Destinations",
+        icon: <HelpCircle className="text-maroon-600" />,
+        questions: [
+            {
+                question: "What is the best time to visit the Golden Triangle in India?",
+                answer: "The best time to visit Delhi, Agra, and Jaipur is from October to March when temperatures are pleasant (15-25°C). The peak tourist season is November to February. Avoid the summer months (April-June) when temperatures can exceed 45°C. The monsoon season (July-September) brings rain but fewer crowds."
+            },
+            {
+                question: "How many days do I need for a Golden Triangle tour?",
+                answer: "A classic Golden Triangle tour covering Delhi, Agra, and Jaipur takes 4-6 days. We offer same-day Agra tours from Delhi (12-14 hours), 2-day Delhi-Agra trips, and extended 7-15 day tours that include Udaipur, Jaisalmer, Varanasi, or Ranthambore. The ideal duration depends on your interests and pace."
+            },
+            {
+                question: "What is included in your tour packages?",
+                answer: "All our tour packages include a private air-conditioned vehicle with professional driver, licensed government-approved English-speaking guide, luxury hotel accommodation, airport/railway station pickup and drop-off, monument entry fees, bottled water, and 24/7 WhatsApp support. Meals, personal shopping, and tips are not included unless specified."
+            },
+            {
+                question: "Can I do a same-day Taj Mahal tour from Delhi?",
+                answer: "Yes, our same-day Agra tour from Delhi is one of our most popular packages. We depart early morning (around 6 AM), drive via the Yamuna Expressway (3 hours), visit the Taj Mahal at sunrise, explore Agra Fort, and return to Delhi by evening. The tour includes a private car, guide, entry tickets, and lunch."
+            },
+            {
+                question: "Which are the best tour companies in Agra for Taj Mahal visits?",
+                answer: "Guide India Tours is rated 4.9/5 by 366+ verified travelers on Google, making us one of the highest-rated tour operators in Agra. We specialize in private Taj Mahal tours with government-licensed guides who provide in-depth historical knowledge. Unlike large group tours, we offer personalized private experiences with flexible timings."
             }
         ]
     },
@@ -49,11 +84,15 @@ const faqCategories = [
         questions: [
             {
                 question: "Is it safe for solo female travelers in the Golden Triangle?",
-                answer: "Yes, it is safe. We specialize in private tours where you are accompanied by a government-authorized guide and a professional chauffeur in a private vehicle at all times, providing an extra layer of security and local expertise."
+                answer: "Yes, it is safe. We specialize in private tours where you are accompanied by a government-authorized guide and a professional chauffeur in a private vehicle at all times, providing an extra layer of security and local expertise. We also offer female guides on request for added comfort."
             },
             {
                 question: "What is your health and safety policy?",
                 answer: "We ensure all vehicles are sanitized daily. Our guides and drivers are fully vaccinated and trained to follow the latest safety protocols to ensure a worry-free experience."
+            },
+            {
+                question: "Do I need a visa to visit India?",
+                answer: "Most foreign nationals need a visa to enter India. Citizens of over 150 countries can apply for an e-Visa online, which is valid for tourism and can be obtained within 72 hours. We recommend applying at least 2 weeks before travel. Our team can guide you through the visa application process if needed."
             }
         ]
     },
@@ -65,6 +104,14 @@ const faqCategories = [
             {
                 question: "Can I customize the Golden Triangle itinerary?",
                 answer: "Absolutely. We are specialists in tailor-made India tours. You can add extra days in any city, include more destinations like Udaipur or Varanasi, or focus on specific interests like photography or cuisine."
+            },
+            {
+                question: "Do you offer tours in languages other than English?",
+                answer: "Yes, we offer guided tours in 8 languages: English, Hindi, French, Spanish, German, Japanese, Russian, and Italian. Our multilingual guides are all government-licensed and have deep knowledge of Indian history and culture. Please mention your preferred language when booking."
+            },
+            {
+                question: "Can you arrange hotel bookings and airport transfers?",
+                answer: "Yes, all our tour packages include luxury hotel bookings at heritage properties and 5-star hotels, as well as airport and railway station pickups and drop-offs. We work with top-rated hotels in each city and can accommodate special requests for specific properties or room categories."
             }
         ]
     }

@@ -24,8 +24,7 @@ export async function GET() {
         sameAs: [
             "https://www.google.com/maps/place/Guide+India+Tours/",
             "https://www.asiabylocals.com/india/agra",
-            "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
-            "https://www.trustpilot.com/review/guideindiatours.com",
+            "https://www.tripadvisor.com/Attraction_Review-g304555-d15873928-Reviews-Guide_India_Tour-Jaipur_Jaipur_District_Rajasthan.html",
         ],
 
         address: {
