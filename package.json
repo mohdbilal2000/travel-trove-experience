@@ -10,8 +10,7 @@
     "lint": "next lint",
     "check-images": "node scripts/check-optimized-images.js",
     "optimize-images": "node scripts/optimize-images.js",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "deploy:prepare": "node deploy-to-hostinger.cjs"
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

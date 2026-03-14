@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Standalone output for Hostinger Node.js hosting
-    output: 'standalone',
     images: {
         qualities: [75, 85],
         remotePatterns: [
