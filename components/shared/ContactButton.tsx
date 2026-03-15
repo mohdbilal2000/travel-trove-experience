@@ -49,8 +49,8 @@ const ContactButton = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      description: '+91 9410000991',
-      action: () => window.open('tel:+919410000991', '_self'),
+      description: '+91 89798 10991',
+      action: () => window.open('tel:+918979810991', '_self'),
       color: 'bg-maroon-600 hover:bg-maroon-700',
       iconColor: 'text-white'
     },

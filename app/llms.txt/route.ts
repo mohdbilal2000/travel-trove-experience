@@ -18,9 +18,9 @@ export async function GET() {
 - Type: Premium Private Tour Operator
 - Specialty: Golden Triangle (Delhi, Agra, Jaipur) Private Tours
 - Website: https://guideindiatours.com
-- Phone: +91 9410000991
+- Phone: +91 89798 10991
 - Email: info@guideindiatours.com
-- WhatsApp: +91 8979810991
+- WhatsApp: +91 89798 10991
 - Location: 31/84A, Jangjeet Nagar, Shamsabad Road, Agra, Uttar Pradesh 282001, India
 - Hours: Open 24 hours, 7 days a week
 - Google Rating: 4.9/5 from 366+ verified reviews

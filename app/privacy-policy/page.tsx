@@ -201,7 +201,7 @@ export default function PrivacyPolicyPage() {
                                 <div className="space-y-3">
                                     <p className="font-medium text-gray-900">Contact Details</p>
                                     <p className="font-light">Email: info@guideindiatours.com</p>
-                                    <p className="font-light">Phone: +91 9410000991</p>
+                                    <p className="font-light">Phone: +91 89798 10991</p>
                                 </div>
                             </div>
                         </div>

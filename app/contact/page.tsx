@@ -105,7 +105,7 @@ export default function ContactPage() {
                                     <div className="space-y-6">
                                         <div className="flex flex-col">
                                             <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">WhatsApp / Calling</span>
-                                            <a href="tel:+919410000991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 94100 00991</a>
+                                            <a href="tel:+918979810991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 89798 10991</a>
                                         </div>
                                         <div className="flex flex-col">
                                             <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Email Concierge</span>

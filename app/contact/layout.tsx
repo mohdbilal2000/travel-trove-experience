@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Contact Guide India Tours | Get a Free Quote for Your India Tour',
-    description: 'Get in touch with Guide India Tours. Call +91 9410000991, WhatsApp us, or fill out the form for a free custom tour quote. Available 24/7. Based in Agra, Uttar Pradesh.',
+    description: 'Get in touch with Guide India Tours. Call +91 89798 10991, WhatsApp us, or fill out the form for a free custom tour quote. Available 24/7. Based in Agra, Uttar Pradesh.',
     alternates: {
         canonical: 'https://guideindiatours.com/contact',
         languages: {

@@ -212,7 +212,7 @@ export default function RefundPolicyPage() {
                                 </div>
                                 <div className="space-y-3">
                                     <p className="font-medium text-gray-900">Customer Support</p>
-                                    <p className="font-light">Phone: +91 9410000991</p>
+                                    <p className="font-light">Phone: +91 89798 10991</p>
                                     <p className="font-light">Available 24 hours, 7 days a week</p>
                                 </div>
                             </div>
