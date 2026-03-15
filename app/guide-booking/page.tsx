@@ -188,17 +188,27 @@ export default function GuideBookingPage() {
         tourPackages.find(p => p.id === selectedPackage), [selectedPackage]
     );
 
+    const languageSurcharge = selectedLanguage !== 'english' ? 20 : 0;
+
+    const addSurcharge = (price: number) => price + languageSurcharge;
+
     const getPriceDisplay = (pkg: any) => {
         const duration = selectedDuration[pkg.id];
         if (pkg.id === 2) {
-            if (duration === 'halfDay') return '$28.99';
-            if (duration === 'fullDay') return '$38.99';
-            return '$28.99 - $38.99';
+            if (duration === 'halfDay') return `$${addSurcharge(28.99).toFixed(2)}`;
+            if (duration === 'fullDay') return `$${addSurcharge(38.99).toFixed(2)}`;
+            return `$${addSurcharge(28.99).toFixed(2)} - $${addSurcharge(38.99).toFixed(2)}`;
         }
         if (pkg.id === 3) {
-            if (duration === 'halfDay') return '$55.99';
-            if (duration === 'fullDay') return '$111.99';
-            return '$55.99 - $111.99';
+            if (duration === 'halfDay') return `$${addSurcharge(55.99).toFixed(2)}`;
+            if (duration === 'fullDay') return `$${addSurcharge(111.99).toFixed(2)}`;
+            return `$${addSurcharge(55.99).toFixed(2)} - $${addSurcharge(111.99).toFixed(2)}`;
+        }
+        if (pkg.id === 1) {
+            return `$${addSurcharge(11.99).toFixed(2)}`;
+        }
+        if (pkg.id === 16) {
+            return `$${addSurcharge(299).toFixed(2)}`;
         }
         return pkg.price;
     };
@@ -220,7 +230,7 @@ Please provide availability and pricing details.`;
     return (
         <main className="min-h-screen bg-ivory-100">
             {/* Premium Hero */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[85vh] md:h-[60vh] flex items-center overflow-hidden">
                 <div className="absolute inset-0">
                     <OptimizedImage
                         src={currentCityData.image}
@@ -231,29 +241,29 @@ Please provide availability and pricing details.`;
                     <div className="absolute inset-0 bg-gradient-to-r from-maroon-600/90 to-black/40" />
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="container mx-auto px-4 relative z-10 pt-28 pb-28 md:pt-0 md:pb-0">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-3xl"
                     >
-                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-6 px-4 py-1.5 uppercase tracking-widest text-xs">
+                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-4 md:mb-6 px-4 py-1.5 uppercase tracking-widest text-[10px] md:text-xs">
                             Personalized Guiding Services
                         </Badge>
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                            Book India's Best <br /><span className="text-gold-500">Local Experts</span>
+                        <h1 className="text-3xl sm:text-4xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight">
+                            Book India&apos;s Best <span className="text-gold-500">Local Experts</span>
                         </h1>
-                        <p className="text-xl text-white/80 mb-10 leading-relaxed font-light">
+                        <p className="text-base md:text-xl text-white/80 mb-6 md:mb-10 leading-relaxed font-light">
                             Explore {currentCityData.city} with government-authorized storytellers who bring history to life. Same-day bookings available.
                         </p>
 
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-2 md:gap-3">
                             {Object.keys(guideServices).map((city) => (
                                 <button
                                     key={city}
                                     onClick={() => setSelectedCity(city)}
                                     className={cn(
-                                        "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 border-2",
+                                        "px-5 md:px-8 py-2.5 md:py-3 rounded-full text-sm font-bold transition-all duration-300 border-2",
                                         selectedCity === city
                                             ? "bg-white text-maroon-600 border-white shadow-xl scale-105"
                                             : "bg-transparent text-white border-white/30 hover:bg-white/10"
@@ -268,7 +278,7 @@ Please provide availability and pricing details.`;
 
                 {/* Floating Inclusions */}
                 <div className="absolute bottom-0 right-0 left-0 bg-white/5 backdrop-blur-xl border-t border-white/10">
-                    <div className="container mx-auto px-4 py-4 md:py-6">
+                    <div className="container mx-auto px-4 py-3 md:py-6">
                         {/* Desktop layout */}
                         <div className="hidden md:flex justify-between items-center text-white/90">
                             <span className="text-sm font-bold uppercase tracking-widest opacity-60">All Bookings Include:</span>
@@ -285,7 +295,7 @@ Please provide availability and pricing details.`;
                             </div>
                         </div>
                         {/* Mobile layout */}
-                        <div className="grid grid-cols-2 gap-3 md:hidden text-white/90">
+                        <div className="grid grid-cols-2 gap-2 md:hidden text-white/90">
                             {freeInclusions.map((item, i) => (
                                 <div key={i} className="flex items-center gap-2 text-xs">
                                     <div className="text-gold-500">{item.icon}</div>
@@ -402,6 +412,20 @@ Please provide availability and pricing details.`;
                                         </button>
                                     ))}
                                 </div>
+                                {selectedLanguage !== 'english' && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="mt-4 p-4 bg-amber-50 border-l-4 border-amber-400 rounded-r-xl"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Info className="w-5 h-5 text-amber-500 shrink-0" />
+                                            <p className="text-sm text-amber-800 font-medium">
+                                                A $20 specialist language surcharge applies for non-English guides.
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                )}
                             </motion.div>
 
                             {/* Step 3: Package */}
@@ -445,7 +469,7 @@ Please provide availability and pricing details.`;
                                                 </div>
                                                 <div className="text-right">
                                                     <div className="text-gray-400 text-xs font-bold uppercase tracking-widest leading-none mb-1">Starting At</div>
-                                                    <div className="text-3xl font-black text-maroon-600">{pkg.price}</div>
+                                                    <div className="text-3xl font-black text-maroon-600">{getPriceDisplay(pkg)}</div>
                                                 </div>
                                             </div>
 
@@ -573,6 +597,13 @@ Please provide availability and pricing details.`;
                                                     </span>
                                                 </div>
                                             </div>
+
+                                            {selectedLanguage !== 'english' && (
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Language Surcharge</span>
+                                                    <span className="text-lg font-bold text-amber-600">+$20.00</span>
+                                                </div>
+                                            )}
 
                                             <div className="flex flex-col gap-1">
                                                 <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Monuments ({selectedMonuments.length})</span>
