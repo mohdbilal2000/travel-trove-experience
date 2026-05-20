@@ -36,6 +36,15 @@ export type TourPackage = {
     description: string;
   }>;
   destinations?: string[];
+  url?: string;
+  rating?: number;
+  reviewCount?: number;
+  reviews?: Array<{
+    author: string;
+    rating: number;
+    reviewBody: string;
+    datePublished: string;
+  }>;
 };
 
 export type FAQ = {
@@ -167,8 +176,37 @@ export const generateTourPackageSchema = (
     }
   };
 
+  if (tour.url) {
+    schema["url"] = tour.url;
+  }
+
   if (tour.image) {
     schema["image"] = tour.image;
+  }
+
+  if (tour.rating && tour.reviewCount) {
+    schema["aggregateRating"] = {
+      "@type": "AggregateRating",
+      "ratingValue": tour.rating.toString(),
+      "reviewCount": tour.reviewCount.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
+    };
+  }
+
+  if (tour.reviews && tour.reviews.length > 0) {
+    schema["review"] = tour.reviews.map(r => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": r.author },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": r.rating.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "reviewBody": r.reviewBody,
+      "datePublished": r.datePublished
+    }));
   }
 
   if (tour.itinerary && tour.itinerary.length > 0) {
@@ -296,10 +334,10 @@ export const generateTouristDestinationSchema = (destination: {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
-    "@id": `https://guideindiatours.com/${destination.url}#destination`,
+    "@id": `https://www.guideindiatours.com/${destination.url}#destination`,
     "name": destination.name,
     "description": destination.description,
-    "url": `https://guideindiatours.com/${destination.url}`,
+    "url": `https://www.guideindiatours.com/${destination.url}`,
     "touristType": ["Cultural tourism", "Heritage tourism", "Historical tourism"],
   };
 
@@ -352,11 +390,11 @@ export const generateArticleSchema = (article: {
     },
     "publisher": {
       "@type": "Organization",
-      "@id": "https://guideindiatours.com/#organization",
+      "@id": "https://www.guideindiatours.com/#organization",
       "name": "Guide India Tours",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://guideindiatours.com/logo.png"
+        "url": "https://www.guideindiatours.com/logo.png"
       }
     },
     ...(article.category && { "articleSection": article.category }),
@@ -376,18 +414,18 @@ export const generateConnectedGraphSchema = () => {
     "@graph": [
       {
         "@type": "TravelAgency",
-        "@id": "https://guideindiatours.com/#organization",
+        "@id": "https://www.guideindiatours.com/#organization",
         "name": "Guide India Tours",
         "alternateName": "Golden Triangle Tours Specialist",
-        "url": "https://guideindiatours.com",
+        "url": "https://www.guideindiatours.com",
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://guideindiatours.com/#logo",
-          "url": "https://guideindiatours.com/logo.png",
-          "contentUrl": "https://guideindiatours.com/logo.png",
+          "@id": "https://www.guideindiatours.com/#logo",
+          "url": "https://www.guideindiatours.com/logo.png",
+          "contentUrl": "https://www.guideindiatours.com/logo.png",
           "caption": "Guide India Tours Logo"
         },
-        "image": "https://guideindiatours.com/images/og-default.jpg",
+        "image": "https://www.guideindiatours.com/images/og-default.jpg",
         "description": "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Government-approved licensed guides, luxury hotels, and 24/7 support.",
         "foundingDate": "2004",
         "priceRange": "$$$",
@@ -473,15 +511,15 @@ export const generateConnectedGraphSchema = () => {
       },
       {
         "@type": "WebSite",
-        "@id": "https://guideindiatours.com/#website",
-        "url": "https://guideindiatours.com",
+        "@id": "https://www.guideindiatours.com/#website",
+        "url": "https://www.guideindiatours.com",
         "name": "Guide India Tours",
-        "publisher": { "@id": "https://guideindiatours.com/#organization" },
+        "publisher": { "@id": "https://www.guideindiatours.com/#organization" },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://guideindiatours.com/plans?city={search_term_string}"
+            "urlTemplate": "https://www.guideindiatours.com/plans?city={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }

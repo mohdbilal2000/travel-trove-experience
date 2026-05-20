@@ -111,7 +111,7 @@ export default function DigitalCardPage() {
                         </div>
 
                         <div className="p-6 bg-white border-2 border-dashed border-gray-200 rounded-2xl inline-block mb-10">
-                            <QRCode value="https://guideindiatours.com" size={150} />
+                            <QRCode value="https://www.guideindiatours.com" size={150} />
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4">

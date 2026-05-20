@@ -11,6 +11,36 @@ export interface ReviewData {
     avatar?: string;
 }
 
+// Select reviews most relevant to a given tour, padded with top-rated reviews
+// so every plan page has at least a few Review entries for schema + display.
+export const getReviewsForTour = (
+    title: string,
+    destinations: string[] = [],
+    limit = 5
+): ReviewData[] => {
+    const haystack = `${title} ${destinations.join(' ')}`.toLowerCase();
+    const keywords = haystack.split(/[^a-z]+/).filter((w) => w.length > 3);
+
+    const relevant = reviews.filter((r) => {
+        const tt = r.tourType.toLowerCase();
+        return keywords.some((k) => tt.includes(k));
+    });
+
+    const topRated = [...reviews]
+        .filter((r) => r.rating >= 5)
+        .sort((a, b) => +new Date(b.date) - +new Date(a.date));
+
+    const seen = new Set<number>();
+    const result: ReviewData[] = [];
+    for (const r of [...relevant, ...topRated]) {
+        if (seen.has(r.id)) continue;
+        seen.add(r.id);
+        result.push(r);
+        if (result.length >= limit) break;
+    }
+    return result;
+};
+
 export const reviews: ReviewData[] = [
     {
         id: 1,

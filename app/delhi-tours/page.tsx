@@ -16,20 +16,20 @@ export const metadata: Metadata = {
     title: 'Delhi Tours | Private Guided Sightseeing & Day Trips | Guide India Tours',
     description: 'Explore Delhi with expert private guides. Visit Red Fort, India Gate, Qutub Minar, Lotus Temple & Chandni Chowk. Customized Old Delhi & New Delhi tours from $25/person. Book now!',
     alternates: {
-        canonical: 'https://guideindiatours.com/delhi-tours',
+        canonical: 'https://www.guideindiatours.com/delhi-tours',
         languages: {
-            'en-US': 'https://guideindiatours.com/delhi-tours',
-            'en-GB': 'https://guideindiatours.com/delhi-tours',
-            'x-default': 'https://guideindiatours.com/delhi-tours',
+            'en-US': 'https://www.guideindiatours.com/delhi-tours',
+            'en-GB': 'https://www.guideindiatours.com/delhi-tours',
+            'x-default': 'https://www.guideindiatours.com/delhi-tours',
         },
     },
     openGraph: {
         title: 'Delhi Tours | Private Guided Tours with Expert Guides',
         description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 366+ travelers.',
-        url: 'https://guideindiatours.com/delhi-tours',
+        url: 'https://www.guideindiatours.com/delhi-tours',
         siteName: 'Guide India Tours',
         type: 'website',
-        images: [{ url: 'https://guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg', width: 1200, height: 630 }],
+        images: [{ url: 'https://www.guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg', width: 1200, height: 630 }],
     },
     twitter: {
         card: 'summary_large_image',
@@ -54,7 +54,7 @@ export default function DelhiToursPage() {
         name: 'Delhi',
         description: 'Explore Delhi, India\'s capital, with private guided tours covering historic monuments, vibrant markets, and modern landmarks.',
         url: 'delhi-tours',
-        image: 'https://guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg',
+        image: 'https://www.guideindiatours.com/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg',
         containedInPlace: 'India',
         geo: { lat: '28.6139', long: '77.2090' },
     });
@@ -62,8 +62,8 @@ export default function DelhiToursPage() {
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;
 
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindiatours.com' },
-        { name: 'Delhi Tours', url: 'https://guideindiatours.com/delhi-tours' },
+        { name: 'Home', url: 'https://www.guideindiatours.com' },
+        { name: 'Delhi Tours', url: 'https://www.guideindiatours.com/delhi-tours' },
     ]);
 
     return (

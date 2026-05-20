@@ -22,13 +22,13 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://guideindiatours.com"
+                "item": "https://www.guideindiatours.com"
             },
             ...items.map((item, index) => ({
                 "@type": "ListItem",
                 "position": index + 2,
                 "name": item.label,
-                "item": item.href ? `https://guideindiatours.com${item.href}` : undefined
+                "item": item.href ? `https://www.guideindiatours.com${item.href}` : undefined
             }))
         ]
     };

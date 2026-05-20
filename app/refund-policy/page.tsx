@@ -6,12 +6,12 @@ export const metadata: Metadata = {
     title: 'Refund Policy | Guide India Tours',
     description: 'Understand our cancellation and refund policy for tour bookings. Covers timeline-based refund percentages, modification terms, force majeure provisions, and how to request a refund.',
     alternates: {
-        canonical: 'https://guideindiatours.com/refund-policy',
+        canonical: 'https://www.guideindiatours.com/refund-policy',
         languages: {
-            'en-US': 'https://guideindiatours.com/refund-policy',
-            'en-GB': 'https://guideindiatours.com/refund-policy',
-            'en-AU': 'https://guideindiatours.com/refund-policy',
-            'x-default': 'https://guideindiatours.com/refund-policy',
+            'en-US': 'https://www.guideindiatours.com/refund-policy',
+            'en-GB': 'https://www.guideindiatours.com/refund-policy',
+            'en-AU': 'https://www.guideindiatours.com/refund-policy',
+            'x-default': 'https://www.guideindiatours.com/refund-policy',
         },
     },
 };

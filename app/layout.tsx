@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import ContactButton from "@/components/shared/ContactButton"
 import FloatingContact from "@/components/shared/FloatingContact"
+import Analytics from "@/components/shared/Analytics"
 import { generateConnectedGraphSchema } from "@/lib/schemaGenerator"
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -21,11 +22,22 @@ export const metadata: Metadata = {
     title: 'Guide India Tours | Premium Golden Triangle Tours Delhi, Agra, Jaipur',
     description: 'Experience India\'s Golden Triangle with expert guides. Customized Delhi, Agra & Jaipur tours with luxury hotels, private transportation & 24/7 support. Book your dream India tour today!',
     keywords: 'Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, Ranthambore tiger safari, Udaipur lake palace, Varanasi Ganges, Shimla hill station, honeymoon tours India, corporate tours India',
-    metadataBase: new URL('https://guideindiatours.com'),
+    metadataBase: new URL('https://www.guideindiatours.com'),
+    alternates: {
+        canonical: '/',
+        languages: {
+            'en': '/',
+            'en-US': '/',
+            'en-GB': '/',
+            'en-IN': '/',
+            'en-AU': '/',
+            'x-default': '/',
+        },
+    },
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://guideindiatours.com',
+        url: 'https://www.guideindiatours.com',
         siteName: 'Guide India Tours',
         images: [
             {
@@ -79,6 +91,7 @@ export default function RootLayout({
                 <FloatingContact />
                 <Toaster />
                 <Sonner />
+                <Analytics />
             </body>
         </html>
     )

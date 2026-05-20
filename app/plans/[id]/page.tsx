@@ -9,6 +9,8 @@ import {
     ChevronRight, Info, HelpCircle
 } from "lucide-react";
 import { getPlanById, allPlans } from "@/data/travelPlans";
+import { getReviewsForTour } from "@/data/reviews";
+import { getTourFaqs } from "@/lib/tourFaqs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -41,20 +43,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title,
         description,
         alternates: {
-            canonical: `https://guideindiatours.com/plans/${id}`,
+            canonical: `https://www.guideindiatours.com/plans/${id}`,
             languages: {
-                'en-US': `https://guideindiatours.com/plans/${id}`,
-                'en-GB': `https://guideindiatours.com/plans/${id}`,
-                'x-default': `https://guideindiatours.com/plans/${id}`,
+                'en-US': `https://www.guideindiatours.com/plans/${id}`,
+                'en-GB': `https://www.guideindiatours.com/plans/${id}`,
+                'x-default': `https://www.guideindiatours.com/plans/${id}`,
             },
         },
         openGraph: {
             title,
             description,
-            url: `https://guideindiatours.com/plans/${id}`,
+            url: `https://www.guideindiatours.com/plans/${id}`,
             images: [
                 {
-                    url: plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`,
+                    url: plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
                     width: 1200,
                     height: 630,
                     alt: plan.title,
@@ -66,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             card: 'summary_large_image',
             title,
             description,
-            images: [plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`],
+            images: [plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`],
         },
     };
 }
@@ -79,21 +81,34 @@ export default async function PlanDetailPage({ params }: PageProps) {
         notFound();
     }
 
+    // Per-tour reviews (relevant subset of the global review pool)
+    const tourReviews = getReviewsForTour(plan.title, plan.destinations || []);
+
     // Prepare Schema
     const tourSchema = generateTourPackageSchema({
         name: plan.title,
         description: plan.description,
         price: plan.price,
-        image: plan.image.startsWith('http') ? plan.image : `https://guideindiatours.com${plan.image}`,
+        image: plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
         duration: plan.duration,
         itinerary: plan.itinerary,
-        destinations: plan.destinations
+        destinations: plan.destinations,
+        url: `https://www.guideindiatours.com/plans/${plan.id}`,
+        rating: plan.rating,
+        reviewCount: plan.reviews,
+        reviews: tourReviews.map((r) => ({
+            author: r.name,
+            rating: r.rating,
+            reviewBody: r.reviewText,
+            datePublished: r.date,
+        })),
     }, {
         name: "Guide India Tours",
-        url: "https://guideindiatours.com"
+        url: "https://www.guideindiatours.com"
     });
 
-    const faqSchema = plan.faqs ? generateFAQSchema(plan.faqs) : null;
+    const tourFaqs = getTourFaqs(plan);
+    const faqSchema = tourFaqs.length > 0 ? generateFAQSchema(tourFaqs) : null;
 
     return (
         <main className="bg-ivory-100 min-h-screen">
@@ -258,17 +273,52 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             </div>
 
                             {/* FAQ Section - AI Search Optimization */}
-                            {plan.faqs && plan.faqs.length > 0 && (
+                            {tourFaqs.length > 0 && (
                                 <section id="faqs">
                                     <div className="flex items-center gap-4 mb-12">
                                         <div className="w-12 h-1 bg-maroon-600"></div>
                                         <h2 className="text-4xl font-display font-bold text-gray-900">Common <span className="text-maroon-600">Questions</span></h2>
                                     </div>
                                     <div className="space-y-6">
-                                        {plan.faqs.map((faq, i) => (
+                                        {tourFaqs.map((faq, i) => (
                                             <div key={i} className="bg-white p-8 rounded-2xl border border-gray-100">
                                                 <h4 className="text-xl font-bold text-gray-900 mb-4">{faq.question}</h4>
                                                 <p className="text-gray-500 font-light leading-relaxed">{faq.answer}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+                            )}
+
+                            {/* Traveler Reviews - backs the Review schema with visible content */}
+                            {tourReviews.length > 0 && (
+                                <section id="reviews">
+                                    <div className="flex items-center gap-4 mb-12">
+                                        <div className="w-12 h-1 bg-maroon-600"></div>
+                                        <h2 className="text-4xl font-display font-bold text-gray-900">Traveler <span className="text-maroon-600">Reviews</span></h2>
+                                    </div>
+                                    <div className="flex items-center gap-3 mb-8">
+                                        <span className="text-3xl font-black text-gray-900">{plan.rating.toFixed(1)}</span>
+                                        <span className="flex text-gold-500">
+                                            {Array.from({ length: 5 }).map((_, i) => (
+                                                <Star key={i} className="w-5 h-5 fill-gold-500" />
+                                            ))}
+                                        </span>
+                                        <span className="text-gray-500 font-light">Based on {plan.reviews}+ verified reviews</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {tourReviews.map((review) => (
+                                            <div key={review.id} className="bg-white p-8 rounded-2xl border border-gray-100">
+                                                <div className="flex items-center gap-1 text-gold-500 mb-3">
+                                                    {Array.from({ length: review.rating }).map((_, i) => (
+                                                        <Star key={i} className="w-4 h-4 fill-gold-500" />
+                                                    ))}
+                                                </div>
+                                                <p className="text-gray-600 font-light leading-relaxed mb-4">&ldquo;{review.reviewText}&rdquo;</p>
+                                                <div className="flex items-center justify-between text-sm">
+                                                    <span className="font-bold text-gray-900">{review.name}</span>
+                                                    <span className="text-gray-400">{review.location}</span>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>

@@ -24,19 +24,19 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
         title,
         description,
         alternates: {
-            canonical: city && city !== 'All' ? `https://guideindiatours.com/plans?city=${city}` : 'https://guideindiatours.com/plans',
+            canonical: city && city !== 'All' ? `https://www.guideindiatours.com/plans?city=${city}` : 'https://www.guideindiatours.com/plans',
             languages: {
-                'en-US': 'https://guideindiatours.com/plans',
-                'en-GB': 'https://guideindiatours.com/plans',
-                'en-AU': 'https://guideindiatours.com/plans',
-                'x-default': 'https://guideindiatours.com/plans',
+                'en-US': 'https://www.guideindiatours.com/plans',
+                'en-GB': 'https://www.guideindiatours.com/plans',
+                'en-AU': 'https://www.guideindiatours.com/plans',
+                'x-default': 'https://www.guideindiatours.com/plans',
             },
         },
         openGraph: {
             title,
             description,
-            url: 'https://guideindiatours.com/plans',
-            images: [{ url: 'https://guideindiatours.com/images/og-plans.jpg' }],
+            url: 'https://www.guideindiatours.com/plans',
+            images: [{ url: 'https://www.guideindiatours.com/images/og-plans.jpg' }],
         },
         twitter: {
             card: 'summary_large_image',

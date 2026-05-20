@@ -81,8 +81,8 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link href="/" className="relative z-10">
-            <h1 className="text-2xl font-display font-semibold">
+          <Link href="/" className="relative z-10" aria-label="Guide India Tours - Home">
+            <span className="text-2xl font-display font-semibold">
               <span className={cn(
                 "text-maroon-600 mr-2",
                 isHomePage && !isScrolled && "text-maroon-600"
@@ -92,7 +92,7 @@ const Navbar = () => {
                 isHomePage && !isScrolled ? "text-white" :
                   !isScrolled && !isPlanDetail && "text-white"
               )}>India Tours</span>
-            </h1>
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">

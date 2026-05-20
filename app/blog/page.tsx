@@ -23,19 +23,19 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
         title,
         description: 'Explore our collection of expert travel guides, cultural narratives, and insider tips for visiting Delhi, Agra, and Jaipur. Start your journey with Guide India Tours.',
         alternates: {
-            canonical: 'https://guideindiatours.com/blog',
+            canonical: 'https://www.guideindiatours.com/blog',
             languages: {
-                'en-US': 'https://guideindiatours.com/blog',
-                'en-GB': 'https://guideindiatours.com/blog',
-                'en-AU': 'https://guideindiatours.com/blog',
-                'x-default': 'https://guideindiatours.com/blog',
+                'en-US': 'https://www.guideindiatours.com/blog',
+                'en-GB': 'https://www.guideindiatours.com/blog',
+                'en-AU': 'https://www.guideindiatours.com/blog',
+                'x-default': 'https://www.guideindiatours.com/blog',
             },
         },
         openGraph: {
             title,
             description: 'Expert travel guides and cultural narratives for India\'s Golden Triangle.',
-            url: 'https://guideindiatours.com/blog',
-            images: [{ url: 'https://guideindiatours.com/images/og-blog.jpg' }],
+            url: 'https://www.guideindiatours.com/blog',
+            images: [{ url: 'https://www.guideindiatours.com/images/og-blog.jpg' }],
         }
     };
 }

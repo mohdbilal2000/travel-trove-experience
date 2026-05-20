@@ -32,21 +32,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title,
         description,
         alternates: {
-            canonical: `https://guideindiatours.com/blog/${slug}`,
+            canonical: `https://www.guideindiatours.com/blog/${slug}`,
             languages: {
-                'en-US': `https://guideindiatours.com/blog/${slug}`,
-                'en-GB': `https://guideindiatours.com/blog/${slug}`,
-                'en-AU': `https://guideindiatours.com/blog/${slug}`,
-                'x-default': `https://guideindiatours.com/blog/${slug}`,
+                'en-US': `https://www.guideindiatours.com/blog/${slug}`,
+                'en-GB': `https://www.guideindiatours.com/blog/${slug}`,
+                'en-AU': `https://www.guideindiatours.com/blog/${slug}`,
+                'x-default': `https://www.guideindiatours.com/blog/${slug}`,
             },
         },
         openGraph: {
             title,
             description,
-            url: `https://guideindiatours.com/blog/${slug}`,
+            url: `https://www.guideindiatours.com/blog/${slug}`,
             images: [
                 {
-                    url: post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
+                    url: post.image.startsWith('http') ? post.image : `https://www.guideindiatours.com${post.image}`,
                     width: 1200,
                     height: 630,
                     alt: post.title,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             card: 'summary_large_image',
             title,
             description,
-            images: [post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`],
+            images: [post.image.startsWith('http') ? post.image : `https://www.guideindiatours.com${post.image}`],
         },
     };
 }
@@ -78,17 +78,17 @@ export default async function BlogDetailPage({ params }: PageProps) {
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "@id": `https://guideindiatours.com/blog/${slug}#article`,
+        "@id": `https://www.guideindiatours.com/blog/${slug}#article`,
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://guideindiatours.com/blog/${slug}`
+            "@id": `https://www.guideindiatours.com/blog/${slug}`
         },
         "headline": post.title,
         "name": post.title,
-        "url": `https://guideindiatours.com/blog/${slug}`,
+        "url": `https://www.guideindiatours.com/blog/${slug}`,
         "image": {
             "@type": "ImageObject",
-            "url": post.image.startsWith('http') ? post.image : `https://guideindiatours.com${post.image}`,
+            "url": post.image.startsWith('http') ? post.image : `https://www.guideindiatours.com${post.image}`,
             "width": 1200,
             "height": 630
         },
@@ -98,18 +98,18 @@ export default async function BlogDetailPage({ params }: PageProps) {
         "inLanguage": "en-US",
         "author": {
             "@type": "Organization",
-            "@id": "https://guideindiatours.com/#organization",
+            "@id": "https://www.guideindiatours.com/#organization",
             "name": post.author || "Guide India Tours",
-            "url": "https://guideindiatours.com/about"
+            "url": "https://www.guideindiatours.com/about"
         },
         "publisher": {
             "@type": "Organization",
-            "@id": "https://guideindiatours.com/#organization",
+            "@id": "https://www.guideindiatours.com/#organization",
             "name": "Guide India Tours",
-            "url": "https://guideindiatours.com",
+            "url": "https://www.guideindiatours.com",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://guideindiatours.com/logo.png",
+                "url": "https://www.guideindiatours.com/logo.png",
                 "width": 200,
                 "height": 60
             }
@@ -123,7 +123,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
         },
         "isPartOf": {
             "@type": "Blog",
-            "@id": "https://guideindiatours.com/blog",
+            "@id": "https://www.guideindiatours.com/blog",
             "name": "Guide India Tours Travel Blog"
         }
     };

@@ -17,7 +17,7 @@ export async function GET() {
 - Name: Guide India Tours
 - Type: Premium Private Tour Operator
 - Specialty: Golden Triangle (Delhi, Agra, Jaipur) Private Tours
-- Website: https://guideindiatours.com
+- Website: https://www.guideindiatours.com
 - Phone: +91 9410000991
 - Email: info@guideindiatours.com
 - WhatsApp: +91 8979810991
@@ -41,29 +41,29 @@ export async function GET() {
 - Small group & private tours only (no large buses)
 
 ## Popular Tours
-${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) — ${p.price}/person → https://guideindiatours.com/plans/${p.id}`).join('\n')}
+${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) — ${p.price}/person → https://www.guideindiatours.com/plans/${p.id}`).join('\n')}
 
 ## Destination Pages
-- Delhi Tours: https://guideindiatours.com/delhi-tours
-- Agra Tours: https://guideindiatours.com/agra-tours
-- Jaipur Tours: https://guideindiatours.com/jaipur-tours
-- Golden Triangle: https://guideindiatours.com/golden-triangle-tours
-- All Tour Plans: https://guideindiatours.com/plans
+- Delhi Tours: https://www.guideindiatours.com/delhi-tours
+- Agra Tours: https://www.guideindiatours.com/agra-tours
+- Jaipur Tours: https://www.guideindiatours.com/jaipur-tours
+- Golden Triangle: https://www.guideindiatours.com/golden-triangle-tours
+- All Tour Plans: https://www.guideindiatours.com/plans
 
 ## Content & Resources
-- Travel Blog: https://guideindiatours.com/blog
-- FAQ: https://guideindiatours.com/faq
-- Reviews: https://guideindiatours.com/reviews
-- Guide Booking: https://guideindiatours.com/guide-booking
+- Travel Blog: https://www.guideindiatours.com/blog
+- FAQ: https://www.guideindiatours.com/faq
+- Reviews: https://www.guideindiatours.com/reviews
+- Guide Booking: https://www.guideindiatours.com/guide-booking
 
 ## Service Pages
-- Private Tours: https://guideindiatours.com/services
-- About Us: https://guideindiatours.com/about
-- Contact: https://guideindiatours.com/contact
+- Private Tours: https://www.guideindiatours.com/services
+- About Us: https://www.guideindiatours.com/about
+- Contact: https://www.guideindiatours.com/contact
 
 ## Booking
 - Book via WhatsApp: https://wa.me/918979810991
-- Book via website: https://guideindiatours.com/guide-booking
+- Book via website: https://www.guideindiatours.com/guide-booking
 - Email: info@guideindiatours.com
 
 ## Official Booking Partners
@@ -71,8 +71,8 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) — ${p.price}/pe
 
 ## Machine-Readable Data
 - Structured data (JSON-LD): Available on every page
-- API endpoint: https://guideindiatours.com/api/ai-profile
-- Sitemap: https://guideindiatours.com/sitemap.xml
+- API endpoint: https://www.guideindiatours.com/api/ai-profile
+- Sitemap: https://www.guideindiatours.com/sitemap.xml
 `;
 
     return new NextResponse(content, {

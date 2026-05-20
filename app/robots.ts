@@ -1,51 +1,39 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+    const aiCrawlers = [
+        'GPTBot',
+        'ChatGPT-User',
+        'OAI-SearchBot',
+        'ClaudeBot',
+        'anthropic-ai',
+        'Claude-Web',
+        'PerplexityBot',
+        'Perplexity-User',
+        'Google-Extended',
+        'Applebot',
+        'Applebot-Extended',
+        'CCBot',
+        'cohere-ai',
+        'Diffbot',
+        'FacebookBot',
+        'Meta-ExternalAgent',
+        'Amazonbot',
+        'Bytespider',
+    ];
+
     return {
         rules: [
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: ['/api/', '/digital-card'],
+                disallow: ['/api/'],
             },
-            {
-                userAgent: 'GPTBot',
+            ...aiCrawlers.map((userAgent) => ({
+                userAgent,
                 allow: ['/', '/llms.txt'],
-            },
-            {
-                userAgent: 'ChatGPT-User',
-                allow: ['/', '/llms.txt'],
-            },
-            {
-                userAgent: 'Claude-Web',
-                allow: ['/', '/llms.txt'],
-            },
-            {
-                userAgent: 'Amazonbot',
-                allow: '/',
-            },
-            {
-                userAgent: 'anthropic-ai',
-                allow: ['/', '/llms.txt'],
-            },
-            {
-                userAgent: 'PerplexityBot',
-                allow: ['/', '/llms.txt'],
-            },
-            {
-                userAgent: 'Google-Extended',
-                allow: '/',
-            },
-            {
-                userAgent: 'Bytespider',
-                allow: '/',
-            },
-            {
-                userAgent: 'cohere-ai',
-                allow: ['/', '/llms.txt'],
-            },
+            })),
         ],
-        sitemap: 'https://guideindiatours.com/sitemap.xml',
-        host: 'https://guideindiatours.com',
+        sitemap: 'https://www.guideindiatours.com/sitemap.xml',
     };
 }

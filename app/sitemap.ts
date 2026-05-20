@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 
-const BASE_URL = 'https://guideindiatours.com';
+const BASE_URL = 'https://www.guideindiatours.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date().toISOString();
@@ -34,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
+            url: `${BASE_URL}/about/avneesh-dixit`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.6,
+        },
+        {
             url: `${BASE_URL}/contact`,
             lastModified: now,
             changeFrequency: 'monthly',
@@ -62,12 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: now,
             changeFrequency: 'monthly',
             priority: 0.6,
-        },
-        {
-            url: `${BASE_URL}/digital-card`,
-            lastModified: now,
-            changeFrequency: 'yearly',
-            priority: 0.3,
         },
         // City cluster pages
         {
@@ -126,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog post pages
     const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
         url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: now,
+        lastModified: post.publishedDate ? new Date(post.publishedDate).toISOString() : now,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
     }));

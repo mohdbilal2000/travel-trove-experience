@@ -6,31 +6,33 @@ import { allPlans } from "@/data/travelPlans";
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-    title: "Guide India Tours | #1 Specialist for Golden Triangle Tours Delhi, Agra, Jaipur",
+    title: "Golden Triangle Tours Specialist | Guide India Tours",
     description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 366+ travelers on Google. Book your premium private tour today.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
-        canonical: 'https://guideindiatours.com',
+        canonical: 'https://www.guideindiatours.com',
         languages: {
-            'en-US': 'https://guideindiatours.com',
-            'en-GB': 'https://guideindiatours.com',
-            'en-AU': 'https://guideindiatours.com',
-            'x-default': 'https://guideindiatours.com',
+            'en': 'https://www.guideindiatours.com',
+            'en-US': 'https://www.guideindiatours.com',
+            'en-GB': 'https://www.guideindiatours.com',
+            'en-IN': 'https://www.guideindiatours.com',
+            'en-AU': 'https://www.guideindiatours.com',
+            'x-default': 'https://www.guideindiatours.com',
         },
     },
     openGraph: {
         title: "Guide India Tours | Premium Golden Triangle Specialist",
         description: "Official Guide India Tours - India's #1 Private Tour Specialist for Delhi, Agra & Jaipur.",
-        url: 'https://guideindiatours.com',
+        url: 'https://www.guideindiatours.com',
         siteName: 'Guide India Tours',
-        images: [{ url: 'https://guideindiatours.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Guide India Tours - Golden Triangle Private Tours' }],
+        images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Guide India Tours - Golden Triangle Private Tours' }],
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Guide India Tours | #1 Golden Triangle Specialist',
         description: 'Private Agra, Delhi & Jaipur tours with government-approved guides. Rated 4.9/5 by 366+ travelers. Book your Golden Triangle tour today.',
-        images: ['https://guideindiatours.com/images/og-default.jpg'],
+        images: ['https://www.guideindiatours.com/images/og-default.jpg'],
     },
 };
 
@@ -38,12 +40,12 @@ export default function Home() {
     const organizationSchema = {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "@id": "https://guideindiatours.com/#organization",
+        "@id": "https://www.guideindiatours.com/#organization",
         "name": "Guide India Tours",
         "alternateName": "Golden Triangle Tours Specialist",
-        "url": "https://guideindiatours.com",
-        "logo": "https://guideindiatours.com/logo.png",
-        "image": "https://guideindiatours.com/images/og-default.jpg",
+        "url": "https://www.guideindiatours.com",
+        "logo": "https://www.guideindiatours.com/logo.png",
+        "image": "https://www.guideindiatours.com/images/og-default.jpg",
         "foundingDate": "2004",
         "priceRange": "$$$",
         "slogan": "Experience India's Golden Triangle with Expert Guides",
@@ -93,13 +95,13 @@ export default function Home() {
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": "https://guideindiatours.com/#website",
-        "url": "https://guideindiatours.com",
+        "@id": "https://www.guideindiatours.com/#website",
+        "url": "https://www.guideindiatours.com",
         "name": "Guide India Tours",
-        "publisher": { "@id": "https://guideindiatours.com/#organization" },
+        "publisher": { "@id": "https://www.guideindiatours.com/#organization" },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://guideindiatours.com/plans?city={search_term_string}",
+            "target": "https://www.guideindiatours.com/plans?city={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     };
@@ -111,9 +113,9 @@ export default function Home() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema]) }}
             />
 
-            {/* Semantic SEO content for initial HTML payload */}
+            {/* Semantic SEO content for initial HTML payload (visible H1 is in HomeClient hero) */}
             <div className="sr-only">
-                <h1>Guide India Tours - Premium Golden Triangle Specialist</h1>
+                <h2>Guide India Tours - Premium Golden Triangle Specialist</h2>
                 <h2>Your Authority for Delhi, Agra, and Jaipur Private Tours</h2>
                 <p>
                     Explore the magic of India's Golden Triangle with our curated luxury tour plans.

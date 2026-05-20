@@ -16,20 +16,20 @@ export const metadata: Metadata = {
     title: 'Agra Tours | Taj Mahal Private Guided Visits & Day Trips | Guide India Tours',
     description: 'Visit the Taj Mahal with expert private guides. Same-day Agra tours, sunrise Taj Mahal visits, Agra Fort & Fatehpur Sikri. Tours from $30/person. Book your Agra tour now!',
     alternates: {
-        canonical: 'https://guideindiatours.com/agra-tours',
+        canonical: 'https://www.guideindiatours.com/agra-tours',
         languages: {
-            'en-US': 'https://guideindiatours.com/agra-tours',
-            'en-GB': 'https://guideindiatours.com/agra-tours',
-            'x-default': 'https://guideindiatours.com/agra-tours',
+            'en-US': 'https://www.guideindiatours.com/agra-tours',
+            'en-GB': 'https://www.guideindiatours.com/agra-tours',
+            'x-default': 'https://www.guideindiatours.com/agra-tours',
         },
     },
     openGraph: {
         title: 'Agra Tours | Taj Mahal Private Guided Tours',
         description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 366+ travelers.',
-        url: 'https://guideindiatours.com/agra-tours',
+        url: 'https://www.guideindiatours.com/agra-tours',
         siteName: 'Guide India Tours',
         type: 'website',
-        images: [{ url: 'https://guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg', width: 1200, height: 630 }],
+        images: [{ url: 'https://www.guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg', width: 1200, height: 630 }],
     },
     twitter: {
         card: 'summary_large_image',
@@ -54,15 +54,15 @@ export default function AgraToursPage() {
         name: 'Agra',
         description: 'Visit Agra, home of the Taj Mahal, with private guided tours covering Mughal heritage sites including Agra Fort and Fatehpur Sikri.',
         url: 'agra-tours',
-        image: 'https://guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg',
+        image: 'https://www.guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg',
         containedInPlace: 'India',
         geo: { lat: '27.1767', long: '78.0081' },
     });
 
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://guideindiatours.com' },
-        { name: 'Agra Tours', url: 'https://guideindiatours.com/agra-tours' },
+        { name: 'Home', url: 'https://www.guideindiatours.com' },
+        { name: 'Agra Tours', url: 'https://www.guideindiatours.com/agra-tours' },
     ]);
 
     return (

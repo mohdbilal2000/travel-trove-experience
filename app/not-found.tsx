@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: '404 - Page Not Found | Guide India Tours',
     description: 'The page you are looking for could not be found. Explore our luxury Golden Triangle tours or return to the homepage.',
     alternates: {
-        canonical: 'https://guideindiatours.com/404',
+        canonical: 'https://www.guideindiatours.com/404',
     },
 };
 
