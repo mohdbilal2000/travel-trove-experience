@@ -26,6 +26,52 @@ export const metadata: Metadata = {
     },
 };
 
+const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "url": "https://www.guideindiatours.com/contact",
+    "name": "Contact Guide India Tours",
+    "mainEntity": {
+        "@type": "TravelAgency",
+        "@id": "https://www.guideindiatours.com/#organization",
+        "name": "Guide India Tours",
+        "url": "https://www.guideindiatours.com",
+        "email": "info@guideindiatours.com",
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+91-9410000991",
+                "contactType": "customer service",
+                "availableLanguage": ["English", "Hindi"],
+                "areaServed": "IN"
+            },
+            {
+                "@type": "ContactPoint",
+                "telephone": "+91-8979810991",
+                "contactType": "reservations",
+                "contactOption": "TollFree",
+                "availableLanguage": ["English", "Hindi"]
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
+            "addressLocality": "Agra",
+            "addressRegion": "Uttar Pradesh",
+            "postalCode": "282001",
+            "addressCountry": "IN"
+        }
+    }
+};
+
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-    return children;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+            />
+            {children}
+        </>
+    );
 }

@@ -39,6 +39,48 @@ const faqCategories = [
             {
                 question: "How far in advance should I book my India tour?",
                 answer: "For the best experience and availability of 5-star hotels, we recommend booking 2-4 months in advance, especially for the peak season from October to March."
+            },
+            {
+                question: "How much deposit is required to confirm a booking?",
+                answer: "A 25% deposit confirms your booking, with the remaining balance due 30 days before your tour start date. For last-minute bookings within 30 days, full payment is required at the time of booking."
+            },
+            {
+                question: "How is booking direct different from Viator or GetYourGuide?",
+                answer: "Booking directly with us means no third-party markup, direct WhatsApp contact with the team that actually runs your tour, and a fully customizable private itinerary instead of a fixed package."
+            }
+        ]
+    },
+    {
+        id: "pricing",
+        title: "Pricing & Payments",
+        icon: <HelpCircle className="text-maroon-600" />,
+        questions: [
+            {
+                question: "How much does a Golden Triangle tour cost?",
+                answer: "Pricing depends on the number of days, hotel category, group size, and season. All tours are private and all-inclusive with no hidden fees. See each plan on our Tour Plans page for transparent, per-person starting prices."
+            },
+            {
+                question: "What payment methods and currencies do you accept?",
+                answer: "We accept USD, EUR, GBP, and INR, paid by credit or debit card, bank transfer, or UPI. Your quote confirms the currency and accepted methods before you pay."
+            },
+            {
+                question: "What is your cancellation and refund policy?",
+                answer: "Cancellation terms and refund windows are set out in full on our Refund Policy page. Deposits and refunds depend on how far ahead of departure you cancel — contact us and we'll walk you through it."
+            }
+        ]
+    },
+    {
+        id: "guides",
+        title: "Guides & Languages",
+        icon: <HelpCircle className="text-maroon-600" />,
+        questions: [
+            {
+                question: "Are your guides government-approved and licensed?",
+                answer: "Yes. We work only with government-approved, licensed guides, including our lead guide Avneesh Dixit, so you receive accurate history and a safe, professional experience."
+            },
+            {
+                question: "What languages do your guides speak?",
+                answer: "Our guides speak English and Hindi as standard, with German, French, Italian, and Spanish-speaking guides available on request, plus other languages by prior arrangement."
             }
         ]
     },
@@ -53,7 +95,11 @@ const faqCategories = [
             },
             {
                 question: "What is your health and safety policy?",
-                answer: "We ensure all vehicles are sanitized daily. Our guides and drivers are fully vaccinated and trained to follow the latest safety protocols to ensure a worry-free experience."
+                answer: "We ensure all vehicles are sanitized daily. Our guides and drivers are trained to follow the latest safety protocols to ensure a worry-free experience."
+            },
+            {
+                question: "Can you accommodate travelers with mobility needs?",
+                answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles and adjust the itinerary and pace. Please share your requirements when you enquire so we can plan accordingly."
             }
         ]
     },
@@ -65,6 +111,14 @@ const faqCategories = [
             {
                 question: "Can I customize the Golden Triangle itinerary?",
                 answer: "Absolutely. We are specialists in tailor-made India tours. You can add extra days in any city, include more destinations like Udaipur or Varanasi, or focus on specific interests like photography or cuisine."
+            },
+            {
+                question: "Do you provide airport and hotel pickup?",
+                answer: "Yes. Every tour includes private pickup and drop-off in an air-conditioned vehicle, available 24/7, including Delhi airport transfers and hotel pickups."
+            },
+            {
+                question: "When is the best time to visit Agra and the Taj Mahal?",
+                answer: "October to March offers the most pleasant weather. Visiting the Taj Mahal at sunrise gives the softest light and the smallest crowds. Tours run year-round."
             }
         ]
     }

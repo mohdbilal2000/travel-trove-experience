@@ -97,10 +97,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
         "wordCount": post.content.split(/\s+/).length,
         "inLanguage": "en-US",
         "author": {
-            "@type": "Organization",
-            "@id": "https://www.guideindiatours.com/#organization",
-            "name": post.author || "Guide India Tours",
-            "url": "https://www.guideindiatours.com/about"
+            "@type": "Person",
+            "name": post.author || "Avneesh Dixit",
+            "url": "https://www.guideindiatours.com/about/avneesh-dixit",
+            "jobTitle": "Government-Approved Tour Guide",
+            "worksFor": { "@id": "https://www.guideindiatours.com/#organization" }
         },
         "publisher": {
             "@type": "Organization",
@@ -196,7 +197,9 @@ export default async function BlogDetailPage({ params }: PageProps) {
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Written By</p>
-                                <p className="font-bold text-gray-900">{post.author || "Guide India Tours Expert"}</p>
+                                <Link href="/about/avneesh-dixit" className="font-bold text-gray-900 hover:text-maroon-600 transition-colors">
+                                    {post.author || "Avneesh Dixit"}
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -26,6 +26,45 @@ export const metadata: Metadata = {
     },
 };
 
+const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://www.guideindiatours.com/about",
+    "name": "About Guide India Tours",
+    "mainEntity": {
+        "@type": "TravelAgency",
+        "@id": "https://www.guideindiatours.com/#organization",
+        "name": "Guide India Tours",
+        "url": "https://www.guideindiatours.com",
+        "foundingDate": "2004",
+        "founder": { "@type": "Person", "name": "Bilal", "jobTitle": "Founder" },
+        "employee": [
+            {
+                "@type": "Person",
+                "name": "Avneesh Dixit",
+                "url": "https://www.guideindiatours.com/about/avneesh-dixit",
+                "jobTitle": "Lead Guide (Government-Approved)",
+                "knowsLanguage": ["English", "Hindi", "German", "French", "Italian", "Spanish"],
+                "worksFor": { "@id": "https://www.guideindiatours.com/#organization" }
+            },
+            {
+                "@type": "Person",
+                "name": "Danish",
+                "jobTitle": "Ground Operations",
+                "worksFor": { "@id": "https://www.guideindiatours.com/#organization" }
+            }
+        ]
+    }
+};
+
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
-    return children;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+            />
+            {children}
+        </>
+    );
 }

@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
 ## Recommended Tours
 
 Our **Golden Triangle Essential** tour is perfect for first-time visitors, while the **Luxury Golden Triangle** offers premium experiences during peak season.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-01-15",
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
     category: "Travel Tips",
@@ -141,7 +141,7 @@ Our **Golden Triangle Essential** tour is perfect for first-time visitors, while
 ## Our Recommended Tours
 
 Our **Same Day Agra Tour** includes early morning Taj Mahal visit with expert guide, ensuring you get the best experience. The **Luxury Agra Tour** offers VIP entry and premium amenities.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-01-20",
     image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     category: "Destinations",
@@ -224,7 +224,7 @@ Even on a budget, don't miss:
 - **Total: $380-570**
 
 Our **Golden Triangle Essential** package offers excellent value with all essentials included.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-02-01",
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
     category: "Travel Tips",
@@ -303,7 +303,7 @@ Our **Golden Triangle Essential** package offers excellent value with all essent
 ## Our Recommended Tours
 
 Our **Delhi City Tour** covers all major attractions with expert guides. The **Delhi Food Tour** is perfect for food enthusiasts wanting to explore local cuisine.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-02-15",
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
     category: "Destinations",
@@ -405,7 +405,7 @@ Our **Delhi City Tour** covers all major attractions with expert guides. The **D
 ## Our Recommended Tours
 
 Our **Jaipur City Tour** covers all major attractions with expert local guides. The **Jaipur Heritage Walk** takes you through the old city's narrow lanes and hidden gems. For a royal experience, try our **Luxury Jaipur Tour** with palace visits and traditional dining.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-02-20",
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
     category: "Destinations",
@@ -529,7 +529,7 @@ Our **Jaipur City Tour** covers all major attractions with expert local guides. 
 ## Our Recommended Tours
 
 Our **Agra City Tour** covers Taj Mahal, Agra Fort, and local markets. The **Agra Heritage Walk** explores hidden gems and local culture. For a complete experience, try our **Agra Food Tour** to taste authentic local cuisine.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-03-01",
     image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     category: "Destinations",
@@ -703,7 +703,7 @@ Our **Agra City Tour** covers Taj Mahal, Agra Fort, and local markets. The **Agr
 ## Our Recommended Tours
 
 Our **Cultural Immersion Tours** include etiquette guidance and local experiences. All our guides are trained to help you navigate cultural differences respectfully.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-03-10",
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
     category: "Travel Tips",
@@ -901,7 +901,7 @@ Our **Cultural Immersion Tours** include etiquette guidance and local experience
 ## Our Photography Tours
 
 Our **Photography-Focused Tours** are led by professional photographers who know the best spots and times. We provide guidance on equipment, techniques, and getting the perfect shot while respecting local customs.`,
-    author: "Guide India Tours",
+    author: "Avneesh Dixit",
     publishedDate: "2024-03-15",
     image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     category: "Travel Tips",

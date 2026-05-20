@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import HomeClient from "@/components/home/HomeClient";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import { allPlans } from "@/data/travelPlans";
+import { homeFaqs } from "@/data/homeFaqs";
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -106,11 +107,21 @@ export default function Home() {
         }
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": homeFaqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+        }))
+    };
+
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema, faqSchema]) }}
             />
 
             {/* Semantic SEO content for initial HTML payload (visible H1 is in HomeClient hero) */}
@@ -146,6 +157,45 @@ export default function Home() {
             </div>
 
             <HomeClient />
+
+            {/* Homepage FAQ - visible content backing the FAQPage schema */}
+            <section className="py-20 md:py-28 bg-ivory-100" aria-labelledby="home-faq-heading">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <div className="text-center mb-14">
+                        <h2 id="home-faq-heading" className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                            Frequently Asked Questions
+                        </h2>
+                        <p className="text-gray-500 font-light max-w-2xl mx-auto">
+                            Everything you need to know about planning a private Golden Triangle tour with Guide India Tours.
+                        </p>
+                    </div>
+                    <div className="space-y-4">
+                        {homeFaqs.map((faq, i) => (
+                            <details
+                                key={i}
+                                className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
+                            >
+                                <summary className="cursor-pointer list-none px-8 py-6 flex items-center justify-between gap-4 text-lg font-bold text-gray-900">
+                                    <span>{faq.question}</span>
+                                    <span className="text-maroon-600 transition-transform group-open:rotate-45 text-2xl leading-none flex-shrink-0">+</span>
+                                </summary>
+                                <div className="px-8 pb-8 -mt-2 text-gray-500 font-light leading-relaxed">
+                                    {faq.answer}
+                                </div>
+                            </details>
+                        ))}
+                    </div>
+                    <div className="text-center mt-12">
+                        <p className="text-gray-500 font-light mb-4">Still have questions?</p>
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 font-bold text-maroon-600 hover:text-maroon-700 transition-colors"
+                        >
+                            Contact our team
+                        </Link>
+                    </div>
+                </div>
+            </section>
         </>
     );
 }

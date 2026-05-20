@@ -356,6 +356,12 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                             <div className="flex items-center gap-3 text-sm font-bold text-gray-400 uppercase tracking-tighter justify-center">
                                                 <Shield className="w-4 h-4 text-green-500" /> No Hidden Fees
                                             </div>
+                                            <Link
+                                                href="/about/avneesh-dixit"
+                                                className="flex items-center justify-center gap-2 text-sm font-medium text-maroon-600 hover:text-maroon-700 transition-colors"
+                                            >
+                                                <Award className="w-4 h-4" /> Led by government-approved guides
+                                            </Link>
                                         </div>
                                     </div>
                                 </Card>
