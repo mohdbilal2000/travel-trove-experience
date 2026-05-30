@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 const getInitials = (name: string) =>
   name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
 
-const GOOGLE_BUSINESS_URL = "https://maps.app.goo.gl/mmEUqtavTN3kToXC8";
+const GOOGLE_BUSINESS_URL = "https://www.google.com/maps?cid=15062716171727990652";
 
 // Real Google reviews
 const testimonials = [

@@ -132,7 +132,7 @@ export default function ContactPage() {
                                         Shamsabad Road, Agra 282001, Uttar Pradesh, India
                                     </address>
                                     <a
-                                        href="https://maps.google.com/?q=Guide+India+Tours+Agra"
+                                        href="https://www.google.com/maps?cid=15062716171727990652"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 text-sm font-bold text-gold-500 hover:text-white transition-colors uppercase tracking-widest"

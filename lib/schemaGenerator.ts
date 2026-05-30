@@ -435,7 +435,7 @@ export const generateConnectedGraphSchema = () => {
           "maxValue": 25
         },
         "sameAs": [
-          "https://www.google.com/maps/place/Guide+India+Tours/",
+          "https://www.google.com/maps?cid=15062716171727990652",
           "https://www.asiabylocals.com/india/agra",
           "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
           "https://www.trustpilot.com/review/guideindiatours.com"

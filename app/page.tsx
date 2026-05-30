@@ -38,75 +38,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-    const organizationSchema = {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "@id": "https://www.guideindiatours.com/#organization",
-        "name": "Guide India Tours",
-        "alternateName": "Golden Triangle Tours Specialist",
-        "url": "https://www.guideindiatours.com",
-        "logo": "https://www.guideindiatours.com/logo.png",
-        "image": "https://www.guideindiatours.com/images/og-default.jpg",
-        "foundingDate": "2004",
-        "priceRange": "$$$",
-        "slogan": "Experience India's Golden Triangle with Expert Guides",
-        "currenciesAccepted": "USD, EUR, GBP, INR",
-        "paymentAccepted": "Cash, Credit Card, Debit Card, Bank Transfer, UPI",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
-            "addressLocality": "Agra",
-            "addressRegion": "Uttar Pradesh",
-            "postalCode": "282001",
-            "addressCountry": "IN"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+919410000991",
-            "contactType": "customer service",
-            "email": "info@guideindiatours.com",
-            "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "27.145548",
-            "longitude": "78.0398333"
-        },
-        "openingHoursSpecification": [{
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
-        }],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "366",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "sameAs": [
-            "https://www.google.com/maps/place/Guide+India+Tours/",
-            "https://www.asiabylocals.com/india/agra",
-            "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
-            "https://www.trustpilot.com/review/guideindiatours.com"
-        ]
-    };
-
-    const websiteSchema = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://www.guideindiatours.com/#website",
-        "url": "https://www.guideindiatours.com",
-        "name": "Guide India Tours",
-        "publisher": { "@id": "https://www.guideindiatours.com/#organization" },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://www.guideindiatours.com/plans?city={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    };
-
+    // Organization (TravelAgency) and WebSite nodes are defined once in the
+    // global connected-graph schema injected by app/layout.tsx. Only the
+    // page-specific FAQPage is emitted here to avoid duplicate @id nodes.
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -121,7 +55,7 @@ export default function Home() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema, faqSchema]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             {/* Semantic SEO content for initial HTML payload (visible H1 is in HomeClient hero) */}

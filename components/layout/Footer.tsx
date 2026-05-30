@@ -125,7 +125,7 @@ const Footer = () => {
               <li className="flex items-center space-x-3 pt-2">
                 <Star size={18} className="flex-shrink-0 text-gold-500" />
                 <a
-                  href="https://www.google.com/maps/place/Guide+India+Tours/"
+                  href="https://www.google.com/maps?cid=15062716171727990652"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-maroon-700 transition-colors text-sm font-medium"
