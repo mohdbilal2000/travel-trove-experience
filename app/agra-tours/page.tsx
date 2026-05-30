@@ -56,7 +56,7 @@ export default function AgraToursPage() {
         url: 'agra-tours',
         image: 'https://www.guideindiatours.com/images/agra/getty-images-x83xvTdlITo-unsplash.jpg',
         containedInPlace: 'India',
-        geo: { lat: '27.1767', long: '78.0081' },
+        geo: { lat: '27.145548', long: '78.0398333' },
     });
 
     const faqSchema = destination?.faqs ? generateFAQSchema(destination.faqs) : null;

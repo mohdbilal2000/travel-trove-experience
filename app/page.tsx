@@ -69,8 +69,8 @@ export default function Home() {
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "27.1767",
-            "longitude": "78.0081"
+            "latitude": "27.145548",
+            "longitude": "78.0398333"
         },
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
