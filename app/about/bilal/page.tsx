@@ -4,6 +4,7 @@ import { ArrowRight, MapPin, Award, Heart, Compass } from 'lucide-react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Bilal | Founder of Guide India Tours | Our Story Since 2004',
@@ -48,20 +49,18 @@ export default function BilalPage() {
         <main className="min-h-screen bg-white">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
 
-            <section className="relative pt-44 pb-28 bg-gradient-to-br from-royal-900 via-maroon-700 to-black text-white">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <Breadcrumbs items={[{ label: 'About', href: '/about' }, { label: 'Bilal' }]} className="mb-8 text-white/70" />
-                    <Badge className="bg-gold-500 text-black border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">Founder &middot; Since 2004</Badge>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-[0.95] tracking-tighter">Bilal</h1>
-                    <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl leading-relaxed">
-                        The Agra-born founder of Guide India Tours and the person behind India&apos;s most-trusted Golden Triangle specialist.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-6 mt-10 text-white/70 text-sm font-medium">
-                        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-gold-500" /> Based in Agra, India</span>
-                        <span className="flex items-center gap-2"><Award className="w-4 h-4 text-gold-500" /> Operating since 2004</span>
-                    </div>
-                </div>
-            </section>
+            <PageHero
+                breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Bilal' }]}
+                badge="Founder · Since 2004"
+                title="Bilal"
+                subtitle="The Agra-born founder of Guide India Tours and the person behind India's most-trusted Golden Triangle specialist."
+                meta={
+                    <>
+                        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-maroon-600" /> Based in Agra, India</span>
+                        <span className="flex items-center gap-2"><Award className="w-4 h-4 text-maroon-600" /> Operating since 2004</span>
+                    </>
+                }
+            />
 
             <section className="py-20 md:py-28">
                 <div className="container mx-auto px-4 max-w-3xl space-y-6 text-lg text-gray-600 font-light leading-relaxed">

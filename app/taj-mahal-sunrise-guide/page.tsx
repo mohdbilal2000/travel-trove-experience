@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Taj Mahal Sunrise Guide 2026: When to Arrive, Which Gate, What to Bring',
@@ -60,14 +61,12 @@ export default function SunriseGuide() {
         <main className="bg-white min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
-            <section className="relative pt-44 pb-20 bg-gradient-to-br from-royal-900 via-maroon-700 to-black text-white">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <Breadcrumbs items={[{ label: 'Taj Mahal Guide', href: '/taj-mahal-guide' }, { label: 'Sunrise' }]} className="mb-8 text-white/70" />
-                    <Badge className="bg-gold-500 text-black border-none mb-6 px-5 py-1.5 uppercase tracking-[0.3em] text-[10px] font-black">The Best Hour</Badge>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter leading-[0.95]">Taj Mahal at Sunrise</h1>
-                    <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl leading-relaxed">Why dawn is the only hour that matters, and exactly how to nail it.</p>
-                </div>
-            </section>
+            <PageHero
+                breadcrumbs={[{ label: 'Taj Mahal Guide', href: '/taj-mahal-guide' }, { label: 'Sunrise' }]}
+                badge="The Best Hour"
+                title="Taj Mahal at Sunrise"
+                subtitle="Why dawn is the only hour that matters, and exactly how to nail it."
+            />
 
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">

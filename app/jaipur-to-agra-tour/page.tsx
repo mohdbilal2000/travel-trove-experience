@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Jaipur to Agra Tour 2026: Route, Time, En-Route Stops',
@@ -64,14 +65,12 @@ export default function JaipurToAgraTour() {
         <main className="bg-white min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([tripSchema, faqSchema]) }} />
 
-            <section className="relative pt-44 pb-20 bg-gradient-to-br from-royal-900 via-maroon-700 to-black text-white">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <Breadcrumbs items={[{ label: 'Jaipur to Agra Tour' }]} className="mb-8 text-white/70" />
-                    <Badge className="bg-gold-500 text-black border-none mb-6 px-5 py-1.5 uppercase tracking-[0.3em] text-[10px] font-black">240 km &middot; 4&ndash;5 hours</Badge>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter leading-[0.95]">Jaipur to Agra Tour</h1>
-                    <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl leading-relaxed">The third leg of the Golden Triangle, done right &mdash; with Fatehpur Sikri en route.</p>
-                </div>
-            </section>
+            <PageHero
+                breadcrumbs={[{ label: 'Jaipur to Agra Tour' }]}
+                badge="240 km · 4–5 hours"
+                title="Jaipur to Agra Tour"
+                subtitle="The third leg of the Golden Triangle, done right — with Fatehpur Sikri en route."
+            />
 
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">

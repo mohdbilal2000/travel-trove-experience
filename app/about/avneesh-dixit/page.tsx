@@ -4,6 +4,7 @@ import { Award, Globe, Landmark, ShieldCheck, ArrowRight, MapPin } from 'lucide-
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
+import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Avneesh Dixit | Government-Approved Tour Guide | Guide India Tours',
@@ -93,29 +94,18 @@ export default function AvneeshDixitPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }}
             />
 
-            {/* Hero */}
-            <section className="relative pt-44 pb-28 bg-gradient-to-br from-royal-900 via-maroon-700 to-black text-white overflow-hidden">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <Breadcrumbs
-                        items={[{ label: 'About', href: '/about' }, { label: 'Avneesh Dixit' }]}
-                        className="mb-8 text-white/70"
-                    />
-                    <Badge className="bg-gold-500 text-black border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
-                        Government-Approved Guide
-                    </Badge>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-[0.95] tracking-tighter">
-                        Avneesh Dixit
-                    </h1>
-                    <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl leading-relaxed">
-                        Lead guide at Guide India Tours — a licensed, multilingual expert in Mughal heritage and
-                        the Golden Triangle of Delhi, Agra, and Jaipur.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-6 mt-10 text-white/70 text-sm font-medium">
-                        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-gold-500" /> Based in Agra, India</span>
-                        <span className="flex items-center gap-2"><Globe className="w-4 h-4 text-gold-500" /> Speaks 6 languages</span>
-                    </div>
-                </div>
-            </section>
+            <PageHero
+                breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Avneesh Dixit' }]}
+                badge="Government-Approved Guide"
+                title="Avneesh Dixit"
+                subtitle="Lead guide at Guide India Tours — a licensed, multilingual expert in Mughal heritage and the Golden Triangle of Delhi, Agra, and Jaipur."
+                meta={
+                    <>
+                        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-maroon-600" /> Based in Agra, India</span>
+                        <span className="flex items-center gap-2"><Globe className="w-4 h-4 text-maroon-600" /> Speaks 6 languages</span>
+                    </>
+                }
+            />
 
             {/* Bio */}
             <section className="py-20 md:py-28">
