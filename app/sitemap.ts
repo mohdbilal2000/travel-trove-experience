@@ -94,6 +94,69 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.9,
         },
+        // Taj Mahal authority hub
+        {
+            url: `${BASE_URL}/taj-mahal-guide`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.95,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-tickets`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-opening-hours`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-sunrise-guide`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-photography-guide`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-dress-code`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/taj-mahal-best-time-to-visit`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        // City-to-Agra pages
+        {
+            url: `${BASE_URL}/delhi-to-agra-tour`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/jaipur-to-agra-tour`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.85,
+        },
+        // Founder authority
+        {
+            url: `${BASE_URL}/about/bilal`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
         // Legal pages
         {
             url: `${BASE_URL}/privacy-policy`,
