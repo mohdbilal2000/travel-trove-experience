@@ -6,22 +6,22 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 
 const destinations = [
   {
-    name: "Delhi",
+     name: "Delhi",
     description: "The heart of India, where ancient monuments meet modern life",
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    link: "/plans"
+    link: "/delhi-tours"
   },
   {
-    name: "Agra",
+     name: "Agra",
     description: "Home to the iconic Taj Mahal, a symbol of eternal love",
     image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
-    link: "/plans"
+    link: "/agra-tours"
   },
   {
-    name: "Jaipur",
+   name: "Jaipur",
     description: "The Pink City with magnificent palaces and vibrant culture",
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    link: "/plans"
+    link: "/jaipur-tours"
   }
 ];
 
