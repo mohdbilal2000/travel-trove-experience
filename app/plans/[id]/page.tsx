@@ -376,7 +376,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
         </main>
     );
 }
-
+export const dynamicParams = false;
 export async function generateStaticParams() {
     return allPlans.map((plan) => ({
         id: plan.id.toString(),
