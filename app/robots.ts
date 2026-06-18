@@ -26,7 +26,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: [
             {
                 userAgent: '*',
-                allow: '/',
+                allow: ['/', '/llms.txt'],
                 disallow: ['/api/'],
             },
             ...aiCrawlers.map((userAgent) => ({
