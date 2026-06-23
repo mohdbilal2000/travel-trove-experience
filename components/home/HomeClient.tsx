@@ -606,7 +606,7 @@ const HomeClient = () => {
             </section>
 
             {/* Choose Your Perfect Tour Package Section */}
-            <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+            <section className="py-12 md:py-20 bg-gradient-to-b from-white via-gray-50 to-white">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -786,7 +786,7 @@ const HomeClient = () => {
             <Services />
 
             {/* Why Choose Us Section */}
-            <section className="py-20 bg-royal-800 text-white">
+            <section className="py-12 md:py-20 bg-royal-800 text-white">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -859,7 +859,7 @@ const HomeClient = () => {
             <Testimonials />
 
             {/* CTA Section */}
-            <section className="py-24 bg-cover bg-center relative" style={{ backgroundImage: 'url("/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg")' }}>
+            <section className="py-16 md:py-24 bg-cover bg-center relative" style={{ backgroundImage: 'url("/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg")' }}>
                 <div className="absolute inset-0 bg-black/60" />
                 <div className="container mx-auto px-4 relative z-10 text-center text-white">
                     <motion.div

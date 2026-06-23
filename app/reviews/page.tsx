@@ -10,6 +10,28 @@ import {
     generateBreadcrumbSchema,
 } from '@/lib/schemaGenerator';
 
+const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.guideindiatours.com/reviews#webpage',
+    'url': 'https://www.guideindiatours.com/reviews',
+    'name': 'Guest Reviews | Guide India Tours',
+    'description': 'Read 366+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google.',
+    'inLanguage': 'en',
+    'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
+    'about': { '@id': 'https://www.guideindiatours.com/#organization' },
+    'primaryImageOfPage': {
+        '@type': 'ImageObject',
+        'url': 'https://www.guideindiatours.com/images/og-default.jpg',
+        'width': 1200,
+        'height': 630
+    },
+    'speakable': {
+        '@type': 'SpeakableSpecification',
+        'cssSelector': ['main h1', 'main h2', 'main blockquote']
+    }
+};
+
 export const metadata: Metadata = {
     title: 'Guest Reviews | What Travelers Say About Guide India Tours',
     description: 'Read 366+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
@@ -113,6 +135,10 @@ export default function ReviewsPage() {
 
     return (
         <main className="bg-ivory-100 min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
