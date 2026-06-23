@@ -9,7 +9,7 @@ export interface HomeFAQ {
 export const homeFaqs: HomeFAQ[] = [
     {
         question: "How do I book a tour with Guide India Tours?",
-        answer: "Choose a tour plan and use the booking button to start a WhatsApp chat with our team, fill out our contact form for a custom quote, or call us at +91 9410000991. A 25% deposit confirms your booking, with the balance due 30 days before your tour begins.",
+        answer: "Choose a tour plan and use the booking button to start a WhatsApp chat with our team, fill out our contact form for a custom quote, or call us at +91 8979810991. A 25% deposit confirms your booking, with the balance due 30 days before your tour begins.",
     },
     {
         question: "What does a Golden Triangle tour cost?",

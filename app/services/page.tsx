@@ -221,7 +221,7 @@ export default function ServicesPage() {
                                     <Link href="/contact">Book Inquiry</Link>
                                 </Button>
                                 <Button asChild variant="outline" size="lg" className="bg-transparent border-2 border-white/50 text-white hover:bg-white hover:text-black py-10 px-16 rounded-2xl text-2xl font-bold h-auto transition-all">
-                                    <Link href="tel:+919410000991" className="flex items-center gap-3">
+                                    <Link href="tel:+918979810991" className="flex items-center gap-3">
                                         <PhoneCall className="w-6 h-6" /> Call Agent
                                     </Link>
                                 </Button>
