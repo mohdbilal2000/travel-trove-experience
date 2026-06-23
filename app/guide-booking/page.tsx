@@ -220,7 +220,7 @@ Please provide availability and pricing details.`;
     return (
         <main className="min-h-screen bg-ivory-100">
             {/* Premium Hero */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[75vh] md:h-[60vh] flex flex-col justify-center overflow-hidden pt-28 md:pt-0 pb-10 md:pb-0">
                 <div className="absolute inset-0">
                     <OptimizedImage
                         src={currentCityData.image}
@@ -228,7 +228,8 @@ Please provide availability and pricing details.`;
                         className="w-full h-full object-cover grayscale-[20%]"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-maroon-600/90 to-black/40" />
+                    {/* Gradient overlay — lighter on mobile so the image stays visible */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-maroon-600/70 via-black/45 to-black/60 md:from-maroon-600/85 md:via-maroon-600/30 md:to-black/40" />
                 </div>
 
                 <div className="container mx-auto px-4 relative z-10">
@@ -237,23 +238,23 @@ Please provide availability and pricing details.`;
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-3xl"
                     >
-                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-6 px-4 py-1.5 uppercase tracking-widest text-xs">
+                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-4 md:mb-6 px-3 md:px-4 py-1 md:py-1.5 uppercase tracking-widest text-[10px] md:text-xs">
                             Personalized Guiding Services
                         </Badge>
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                            Book India's Best <br /><span className="text-gold-500">Local Experts</span>
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-[1.05] md:leading-tight tracking-tight">
+                            Book India&apos;s Best <br /><span className="text-gold-500">Local Experts</span>
                         </h1>
-                        <p className="text-xl text-white/80 mb-10 leading-relaxed font-light">
+                        <p className="text-base sm:text-lg md:text-xl text-white/85 mb-6 md:mb-10 leading-relaxed font-light max-w-2xl">
                             Explore {currentCityData.city} with government-authorized storytellers who bring history to life. Same-day bookings available.
                         </p>
 
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-2 md:gap-3">
                             {Object.keys(guideServices).map((city) => (
                                 <button
                                     key={city}
                                     onClick={() => setSelectedCity(city)}
                                     className={cn(
-                                        "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 border-2",
+                                        "px-5 md:px-8 py-2.5 md:py-3 rounded-full text-sm font-bold transition-all duration-300 border-2",
                                         selectedCity === city
                                             ? "bg-white text-maroon-600 border-white shadow-xl scale-105"
                                             : "bg-transparent text-white border-white/30 hover:bg-white/10"
@@ -266,11 +267,10 @@ Please provide availability and pricing details.`;
                     </motion.div>
                 </div>
 
-                {/* Floating Inclusions */}
-                <div className="absolute bottom-0 right-0 left-0 bg-white/5 backdrop-blur-xl border-t border-white/10">
-                    <div className="container mx-auto px-4 py-4 md:py-6">
-                        {/* Desktop layout */}
-                        <div className="hidden md:flex justify-between items-center text-white/90">
+                {/* Floating Inclusions — desktop only; mobile gets its own strip below */}
+                <div className="hidden md:block absolute bottom-0 right-0 left-0 bg-white/5 backdrop-blur-xl border-t border-white/10">
+                    <div className="container mx-auto px-4 py-6">
+                        <div className="flex justify-between items-center text-white/90">
                             <span className="text-sm font-bold uppercase tracking-widest opacity-60">All Bookings Include:</span>
                             <div className="flex gap-12">
                                 {freeInclusions.map((item, i) => (
@@ -284,25 +284,33 @@ Please provide availability and pricing details.`;
                                 ))}
                             </div>
                         </div>
-                        {/* Mobile layout */}
-                        <div className="grid grid-cols-2 gap-3 md:hidden text-white/90">
-                            {freeInclusions.map((item, i) => (
-                                <div key={i} className="flex items-center gap-2 text-xs">
-                                    <div className="text-gold-500">{item.icon}</div>
-                                    <span className="font-bold">{item.title}</span>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Progress Sticky */}
-            <div className="sticky top-16 md:top-[72px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-3 shadow-sm">
+            {/* Mobile inclusions strip — separate so it never collides with the hero content */}
+            <div className="md:hidden bg-ivory-300 border-b border-gray-200 py-3">
                 <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs font-black uppercase tracking-tighter text-maroon-600">Reservation Progress</span>
-                        <div className="flex items-center gap-4 flex-1 max-w-md mx-8">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-maroon-600 mb-2">Every booking includes</p>
+                    <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-gray-700 text-xs font-medium">
+                        {freeInclusions.map((item, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                                <span className="text-maroon-600 [&_svg]:w-4 [&_svg]:h-4">{item.icon}</span>
+                                <span>{item.title}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Progress Sticky */}
+            <div className="sticky top-14 md:top-[72px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 shadow-sm">
+                <div className="container mx-auto px-4">
+                    <div className="flex items-center gap-3 md:gap-4">
+                        <span className="text-[10px] sm:text-xs font-black uppercase tracking-tighter text-maroon-600 whitespace-nowrap">
+                            <span className="hidden sm:inline">Reservation </span>Progress
+                        </span>
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div className="h-1 bg-gray-100 flex-1 rounded-full overflow-hidden">
                                 <motion.div
                                     initial={{ width: 0 }}
@@ -310,19 +318,19 @@ Please provide availability and pricing details.`;
                                     className="h-full bg-maroon-600"
                                 />
                             </div>
-                            <span className="text-xs font-bold text-gray-500">{Math.round(progress)}%</span>
+                            <span className="text-xs font-bold text-gray-500 tabular-nums whitespace-nowrap">{Math.round(progress)}%</span>
                         </div>
-                        <div className="flex items-center gap-2 group cursor-help">
-                            <Shield className="w-4 h-4 text-green-500" />
-                            <span className="text-xs font-bold text-gray-500 uppercase">Secure Booking</span>
+                        <div className="flex items-center gap-1.5 group cursor-help" title="Secure Booking">
+                            <Shield className="w-4 h-4 text-green-500 flex-shrink-0" />
+                            <span className="hidden md:inline text-xs font-bold text-gray-500 uppercase">Secure</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <section className="py-20">
+            <section className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
                         {/* Left: Form Steps */}
                         <div className="lg:col-span-8 space-y-12 md:space-y-24">
@@ -334,10 +342,10 @@ Please provide availability and pricing details.`;
                                 viewport={{ once: true }}
                                 className="relative"
                             >
-                                <div className="flex items-center gap-6 mb-10">
-                                    <div className="w-16 h-16 rounded-2xl bg-maroon-600 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-maroon-600/30 transform -rotate-3">1</div>
+                                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-maroon-600 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-maroon-600/30 transform -rotate-3">1</div>
                                     <div>
-                                        <h2 className="text-4xl font-display font-bold text-gray-900">Select Date</h2>
+                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Select Date</h2>
                                         <p className="text-gray-500">Choose your preferred tour date</p>
                                     </div>
                                 </div>
@@ -377,10 +385,10 @@ Please provide availability and pricing details.`;
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="flex items-center gap-6 mb-10">
-                                    <div className="w-16 h-16 rounded-2xl bg-gold-500 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-gold-500/30 transform rotate-3">2</div>
+                                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gold-500 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-gold-500/30 transform rotate-3">2</div>
                                     <div>
-                                        <h2 className="text-4xl font-display font-bold text-gray-900">Guide Language</h2>
+                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Guide Language</h2>
                                         <p className="text-gray-500">Choose your preferred language for the guided tour</p>
                                     </div>
                                 </div>
@@ -410,10 +418,10 @@ Please provide availability and pricing details.`;
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="flex items-center gap-6 mb-12">
-                                    <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-black/30 transform -rotate-3">3</div>
+                                <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-black text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-black/30 transform -rotate-3">3</div>
                                     <div>
-                                        <h2 className="text-4xl font-display font-bold text-gray-900">Choose Package</h2>
+                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Choose Package</h2>
                                         <p className="text-gray-500">Pick a service level that fits your needs</p>
                                     </div>
                                 </div>
@@ -492,10 +500,10 @@ Please provide availability and pricing details.`;
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="flex items-center gap-6 mb-12">
-                                    <div className="w-16 h-16 rounded-2xl bg-maroon-600/80 text-white flex items-center justify-center text-3xl font-display shadow-2xl shadow-maroon-600/20 transform rotate-2">4</div>
+                                <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-maroon-600/80 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-maroon-600/20 transform rotate-2">4</div>
                                     <div>
-                                        <h2 className="text-4xl font-display font-bold text-gray-900">Select Monuments</h2>
+                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Select Monuments</h2>
                                         <p className="text-gray-500">Tell us where you want to go</p>
                                     </div>
                                 </div>
@@ -532,7 +540,7 @@ Please provide availability and pricing details.`;
                             <div className="sticky top-32">
                                 <Card className="bg-white border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-3xl overflow-hidden">
                                     <div className="p-6 md:p-10">
-                                        <h3 className="text-3xl font-display font-bold text-gray-900 mb-8 border-b border-gray-100 pb-6">Reservation Summary</h3>
+                                        <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6 md:mb-8 border-b border-gray-100 pb-4 md:pb-6">Reservation Summary</h3>
 
                                         <div className="space-y-8 mb-10">
                                             <div className="flex flex-col gap-1">
@@ -590,7 +598,7 @@ Please provide availability and pricing details.`;
                                         <Button
                                             onClick={handleBookNow}
                                             disabled={!selectedDate || !selectedPackage || selectedMonuments.length === 0}
-                                            className="w-full py-10 rounded-2xl bg-maroon-600 hover:bg-black text-white text-xl font-display font-bold shadow-2xl transition-all duration-500 group overflow-hidden relative"
+                                            className="w-full py-6 md:py-10 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500 group overflow-hidden relative"
                                         >
                                             <span className="relative z-10 flex items-center justify-center gap-3">
                                                 Proceed with Request
@@ -627,7 +635,7 @@ Please provide availability and pricing details.`;
             </section>
 
             {/* Safety & Trust */}
-            <section className="py-32 bg-white border-t border-gray-100">
+            <section className="py-16 md:py-32 bg-white border-t border-gray-100">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center mb-20">
                         <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">Expertise You Can Trust</h2>
