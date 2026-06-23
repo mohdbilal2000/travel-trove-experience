@@ -62,7 +62,7 @@ export default function Home() {
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+919410000991",
+            "telephone": "+918979810991",
             "contactType": "customer service",
             "email": "info@guideindiatours.com",
             "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
