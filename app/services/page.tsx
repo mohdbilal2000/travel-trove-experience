@@ -102,7 +102,7 @@ export default function ServicesPage() {
                         <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
                             Our Portfolio
                         </Badge>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tight md:tracking-tighter">
                             Seamless <span className="text-maroon-600">Excellence.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
@@ -214,7 +214,7 @@ export default function ServicesPage() {
                     <div className="bg-black rounded-3xl p-12 md:p-24 relative overflow-hidden text-center">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-maroon-600/20 blur-[100px]" />
                         <div className="relative z-10 max-w-3xl mx-auto">
-                            <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">Elite Travel <br />Support <span className="text-gold-500">24/7.</span></h2>
+                            <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">Elite Travel <br />Support <span className="text-gold-500">24/7.</span></h2>
                             <p className="text-lg text-white/60 mb-16 font-light">Whether you need a last-minute flight adjustment or a specialized culinary reservation, our elite support team is always standing by.</p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                                 <Button asChild size="lg" className="bg-white text-black hover:bg-maroon-600 hover:text-white py-10 px-16 rounded-2xl text-2xl font-bold shadow-2xl transition-all h-auto">

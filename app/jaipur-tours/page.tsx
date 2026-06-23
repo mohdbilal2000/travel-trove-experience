@@ -72,7 +72,7 @@ export default function JaipurToursPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[75vh] overflow-hidden bg-black">
+            <section className="relative h-[50vh] sm:h-[60vh] md:h-[75vh] overflow-hidden bg-black">
                 <Image
                     src="/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg"
                     alt="Hawa Mahal Palace of Winds - Private Jaipur Tours"
@@ -89,7 +89,7 @@ export default function JaipurToursPage() {
                             <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-xs mb-6">
                                 <MapPin className="w-3 h-3 mr-1.5" /> Jaipur, India
                             </Badge>
-                            <h1 className="text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-[0.85] tracking-tighter">
+                            <h1 className="text-4xl sm:text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-[1.0] md:leading-[0.85] tracking-tight md:tracking-tighter">
                                 Jaipur <span className="text-gold-500">Tours</span>
                             </h1>
                             <p className="text-xl text-white/80 font-light max-w-2xl mb-8">

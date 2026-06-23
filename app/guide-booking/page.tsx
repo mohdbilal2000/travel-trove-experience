@@ -240,7 +240,7 @@ Please provide availability and pricing details.`;
                         <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-6 px-4 py-1.5 uppercase tracking-widest text-xs">
                             Personalized Guiding Services
                         </Badge>
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
                             Book India's Best <br /><span className="text-gold-500">Local Experts</span>
                         </h1>
                         <p className="text-xl text-white/80 mb-10 leading-relaxed font-light">
@@ -468,14 +468,14 @@ Please provide availability and pricing details.`;
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'halfDay' })); }}
                                                         className={cn(
-                                                            "flex-1 py-3 rounded-xl text-xs font-bold transition-all",
+                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
                                                             selectedDuration[pkg.id] === 'halfDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
                                                         )}
                                                     >Half Day</button>
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'fullDay' })); }}
                                                         className={cn(
-                                                            "flex-1 py-3 rounded-xl text-xs font-bold transition-all",
+                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
                                                             selectedDuration[pkg.id] === 'fullDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
                                                         )}
                                                     >Full Day</button>

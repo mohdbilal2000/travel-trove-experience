@@ -157,7 +157,7 @@ export default function TermsOfServicePage() {
                         <span className="inline-block bg-maroon-600/10 text-maroon-600 px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-black rounded-full mb-8">
                             Legal
                         </span>
-                        <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tight md:tracking-tighter">
                             Terms of <span className="text-maroon-600">Service.</span>
                         </h1>
                         <p className="text-xl text-gray-500 font-light leading-relaxed">

@@ -185,7 +185,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-full bg-maroon-600 opacity-10 blur-[200px]" />
                 <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
                     <TrendingUp className="w-12 h-12 text-gold-500 mx-auto mb-8" />
-                    <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Join the <span className="text-gold-500">Heritage Club.</span></h2>
+                    <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-8">Join the <span className="text-gold-500">Heritage Club.</span></h2>
                     <p className="text-xl text-white/60 mb-16 font-light max-w-2xl mx-auto">Get exclusive essays on Indian history, hidden travel gems, and advance notice of our signature tour openings.</p>
                     <NewsletterForm />
                 </div>

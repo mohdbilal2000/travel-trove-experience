@@ -187,7 +187,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                             </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.1] tracking-tighter">
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.15] sm:leading-[1.1] tracking-tight md:tracking-tighter">
                             {post.title}
                         </h1>
 

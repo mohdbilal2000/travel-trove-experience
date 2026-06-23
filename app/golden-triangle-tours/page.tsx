@@ -100,7 +100,7 @@ export default function GoldenTriangleToursPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-black">
+            <section className="relative h-[50vh] sm:h-[60vh] md:h-[80vh] overflow-hidden bg-black">
                 <Image
                     src="/images/og-default.jpg"
                     alt="Golden Triangle India - Delhi, Agra, Jaipur Private Tours"
@@ -117,7 +117,7 @@ export default function GoldenTriangleToursPage() {
                             <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-xs mb-6">
                                 <Globe className="w-3 h-3 mr-1.5" /> India&apos;s #1 Tour Circuit
                             </Badge>
-                            <h1 className="text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-[0.85] tracking-tighter">
+                            <h1 className="text-4xl sm:text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-[1.0] md:leading-[0.85] tracking-tight md:tracking-tighter">
                                 Golden Triangle <span className="text-gold-500">Tours</span>
                             </h1>
                             <p className="text-xl text-white/80 font-light max-w-2xl mb-8">

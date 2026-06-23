@@ -308,7 +308,7 @@ export default function ReviewsPage() {
                     <Badge className="bg-white/10 text-white border-none px-6 py-2 uppercase tracking-[0.3em] text-xs font-black mb-8">
                         Join Our Happy Travelers
                     </Badge>
-                    <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight tracking-tight">
+                    <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold mb-6 leading-tight tracking-tight">
                         Ready to Create Your Own Story?
                     </h2>
                     <p className="text-white/70 text-lg mb-12 font-light leading-relaxed">

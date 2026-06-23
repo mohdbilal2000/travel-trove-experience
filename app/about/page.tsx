@@ -125,7 +125,7 @@ export default function AboutPage() {
             {/* Guide Network Grid */}
             <section className="py-16 md:py-24 lg:py-40 bg-gray-50">
                 <div className="container mx-auto px-4 text-center mb-24">
-                    <h2 className="text-5xl font-display font-bold text-gray-900 mb-6">Built on Expertise.</h2>
+                    <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-6">Built on Expertise.</h2>
                     <p className="text-gray-500 uppercase tracking-[0.2em] text-xs font-black">Our intellectual capital</p>
                 </div>
 
@@ -193,7 +193,7 @@ export default function AboutPage() {
             <section className="py-16 md:py-24 lg:py-40 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <h2 className="text-6xl md:text-8xl font-display font-bold mb-12">Experience the <br /><span className="text-gold-500">True India.</span></h2>
+                    <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold mb-12">Experience the <br /><span className="text-gold-500">True India.</span></h2>
                     <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                         <Link href="/plans" className="text-2xl font-bold hover:text-gold-500 flex items-center gap-4 transition-colors">
                             Explore Signature Plans <ArrowRight className="w-8 h-8" />

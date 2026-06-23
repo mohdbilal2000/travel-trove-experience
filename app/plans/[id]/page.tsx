@@ -111,7 +111,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
     const faqSchema = tourFaqs.length > 0 ? generateFAQSchema(tourFaqs) : null;
 
     return (
-        <main className="bg-ivory-100 min-h-screen">
+        <main className="bg-ivory-100 min-h-screen pb-24 md:pb-0">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
@@ -124,7 +124,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
             )}
 
             {/* Hero Section */}
-            <section className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-black">
+            <section className="relative h-[58vh] sm:h-[65vh] md:h-[80vh] overflow-hidden bg-black">
                 <Image
                     src={plan.image}
                     alt={`${plan.title} - Private India Tour`}
@@ -143,19 +143,19 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                 className="mb-0 text-white/80"
                             />
                             <div className="flex flex-wrap items-center gap-4 mb-6 mt-8">
-                                <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-[10px]">
+                                <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
                                     <Star className="w-3 h-3 mr-1.5 fill-black" /> {plan.rating} ({plan.reviews} Reviews)
                                 </Badge>
-                                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 px-4 py-1.5 font-black uppercase tracking-widest text-[10px]">
+                                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
                                     <Clock className="w-3 h-3 mr-1.5" /> {plan.duration}
                                 </Badge>
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[0.85] tracking-tighter">
+                            <h1 className="text-4xl sm:text-5xl md:text-8xl font-display font-bold text-white mb-6 md:mb-8 leading-[1.0] md:leading-[0.85] tracking-tight md:tracking-tighter">
                                 {plan.title}
                             </h1>
                             <div className="flex items-center gap-8 text-white/90">
                                 <div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest block mb-1 opacity-60">Starting Point</span>
+                                    <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest block mb-1 opacity-60">Starting Point</span>
                                     <span className="text-3xl font-black text-gold-500">{plan.price}</span>
                                     <span className="opacity-60 text-sm ml-2">/ per person</span>
                                 </div>
@@ -166,12 +166,12 @@ export default async function PlanDetailPage({ params }: PageProps) {
             </section>
 
             {/* Content Grid */}
-            <section className="py-24">
+            <section className="py-14 md:py-24">
                 <div className="container mx-auto px-4 max-w-7xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24">
 
                         {/* Left Main Content */}
-                        <div className="lg:col-span-8 space-y-20">
+                        <div className="lg:col-span-8 space-y-12 md:space-y-20">
 
                             {/* At a Glance - AI Priority */}
                             <section id="at-a-glance">
@@ -203,7 +203,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                 </div>
                                 <div className="space-y-4">
                                     {plan.itinerary.map((item, index) => (
-                                        <div key={index} className="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 shadow-sm group hover:shadow-xl transition-all duration-500">
+                                        <div key={index} className="bg-white rounded-2xl p-6 md:p-8 lg:p-12 border border-gray-100 shadow-sm group hover:shadow-xl transition-all duration-500">
                                             <div className="flex flex-col md:flex-row gap-8">
                                                 <div className="flex-shrink-0">
                                                     <div className="w-20 h-20 rounded-3xl bg-maroon-600 text-white flex flex-col items-center justify-center font-display shadow-lg group-hover:rotate-6 transition-transform">
@@ -219,12 +219,12 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                                     {(item.meals || item.accommodation) && (
                                                         <div className="flex flex-wrap gap-4">
                                                             {item.meals && (
-                                                                <Badge variant="outline" className="px-4 py-2 rounded-xl border-gray-100 bg-gray-50 text-gray-600 font-bold text-[10px] uppercase tracking-wider">
+                                                                <Badge variant="outline" className="px-4 py-2 rounded-xl border-gray-100 bg-gray-50 text-gray-600 font-bold text-[11px] sm:text-[10px] uppercase tracking-wider">
                                                                     Meals: {item.meals}
                                                                 </Badge>
                                                             )}
                                                             {item.accommodation && (
-                                                                <Badge variant="outline" className="px-4 py-2 rounded-xl border-gray-100 bg-gray-50 text-gray-600 font-bold text-[10px] uppercase tracking-wider">
+                                                                <Badge variant="outline" className="px-4 py-2 rounded-xl border-gray-100 bg-gray-50 text-gray-600 font-bold text-[11px] sm:text-[10px] uppercase tracking-wider">
                                                                     Stay: {item.accommodation}
                                                                 </Badge>
                                                             )}
@@ -332,8 +332,8 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                 <Card className="rounded-3xl border-none shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                                     <div className="p-10 lg:p-12">
                                         <div className="flex items-center justify-between mb-8">
-                                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-maroon-600">Secure Booking</span>
-                                            <Badge className="bg-green-50 text-green-700 border-none font-black text-[9px] uppercase tracking-widest">Available Now</Badge>
+                                            <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-maroon-600">Secure Booking</span>
+                                            <Badge className="bg-green-50 text-green-700 border-none font-black text-[11px] sm:text-[9px] uppercase tracking-widest">Available Now</Badge>
                                         </div>
 
                                         <div className="mb-10 text-center">
