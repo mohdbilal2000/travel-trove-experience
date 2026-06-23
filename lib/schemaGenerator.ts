@@ -161,6 +161,8 @@ export const generateTourPackageSchema = (
     "@type": "TouristTrip",
     "name": tour.name,
     "description": tour.description,
+    "inLanguage": "en",
+    "provider": { "@id": "https://www.guideindiatours.com/#organization" },
     "tourOperator": {
       "@type": "TravelAgency",
       "name": organization.name,
@@ -343,6 +345,7 @@ export const generateTouristDestinationSchema = (destination: {
     "description": destination.description,
     "url": `https://www.guideindiatours.com/${destination.url}`,
     "touristType": ["Cultural tourism", "Heritage tourism", "Historical tourism"],
+    "inLanguage": "en",
   };
 
   if (destination.image) {
@@ -388,6 +391,7 @@ export const generateArticleSchema = (article: {
     "image": article.image,
     "datePublished": article.datePublished,
     "dateModified": article.datePublished,
+    "inLanguage": "en",
     "author": {
       "@type": "Person",
       "name": article.author
