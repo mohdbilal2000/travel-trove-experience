@@ -66,7 +66,7 @@ const faqs = [
     { q: 'Is the Taj Mahal a UNESCO World Heritage Site?', a: 'Yes. The Taj Mahal was inscribed on the UNESCO World Heritage list in 1983 and is protected and managed by the Archaeological Survey of India (ASI).' },
 ];
 
-const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 
 const cluster = [
     { href: '/taj-mahal-tickets', title: 'Taj Mahal Tickets', desc: 'Prices, where to buy, mausoleum entry, night viewing.', icon: Ticket },

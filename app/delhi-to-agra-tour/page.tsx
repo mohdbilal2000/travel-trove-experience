@@ -55,7 +55,7 @@ const tripSchema = {
     provider: { '@id': 'https://www.guideindiatours.com/#organization' },
 };
 
-const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 
 const options = [
     { mode: 'Private car', icon: Car, time: '3–4 hours', verdict: 'Best for most', note: 'Door-to-door flexibility, lets you stop at Fatehpur Sikri, works for groups.' },

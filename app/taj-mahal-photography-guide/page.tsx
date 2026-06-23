@@ -32,14 +32,14 @@ const faqs = [
 ];
 
 const schema = [
-    { '@context': 'https://schema.org', '@type': 'HowTo', name: 'How to photograph the Taj Mahal', description: 'A step-by-step guide to capturing the best photos of the Taj Mahal, written by licensed Agra guides.', step: [
+    { '@context': 'https://schema.org', '@type': 'HowTo', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main ol li'] }, name: 'How to photograph the Taj Mahal', description: 'A step-by-step guide to capturing the best photos of the Taj Mahal, written by licensed Agra guides.', step: [
         { '@type': 'HowToStep', name: 'Arrive 30 minutes before sunrise', text: 'Enter through the East gate before sunrise for the softest light and smallest crowds.' },
         { '@type': 'HowToStep', name: 'Shoot from the Great Gate frame', text: 'The arch of the Darwaza-i-Rauza naturally frames the Taj as you walk in — get this shot first.' },
         { '@type': 'HowToStep', name: 'Use the central reflection pool', text: 'Walk to the "Diana bench" halfway down the pool for the classic reflection frame.' },
         { '@type': 'HowToStep', name: 'Move to the mosque side', text: 'The red sandstone mosque arches frame the Taj from a less photographed angle.' },
         { '@type': 'HowToStep', name: 'Visit Mehtab Bagh for sunset', text: 'Cross the river to Mehtab Bagh for the iconic river-side view at sunset.' },
     ] },
-    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 
 const spots = [

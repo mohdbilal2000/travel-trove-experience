@@ -31,7 +31,7 @@ const faqs = [
     { q: 'Are there cloakrooms at the gates?', a: 'Yes, free cloakrooms operate just outside each gate for items you cannot bring inside — drones, large bags, food, tripods. Hold on to the token; you collect items on the way out.' },
 ];
 
-const schema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const schema = { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 
 const allowed = ['Phone and small camera', 'Sealed water bottle', 'Small day bag', 'Sunglasses, hat, sunscreen', 'Light jacket in cool months'];
 const banned = ['Food and snacks', 'Tobacco, lighters, matches', 'Tripods, monopods, gimbals', 'Drones (no-fly zone)', 'Large bags / backpacks', 'Knives, sharp objects', 'Pet animals'];

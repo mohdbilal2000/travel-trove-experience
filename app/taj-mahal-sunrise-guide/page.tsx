@@ -31,14 +31,14 @@ const faqs = [
 ];
 
 const schema = [
-    { '@context': 'https://schema.org', '@type': 'HowTo', name: 'How to visit the Taj Mahal at sunrise', step: [
+    { '@context': 'https://schema.org', '@type': 'HowTo', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main ol li'] }, name: 'How to visit the Taj Mahal at sunrise', step: [
         { '@type': 'HowToStep', name: 'Buy your ticket online the night before', text: 'Use asi.payumoney.com so you can skip the cash counter at sunrise.' },
         { '@type': 'HowToStep', name: 'Get into position 30 minutes before sunrise', text: 'Arrive at the East gate well before opening. Carry your passport.' },
         { '@type': 'HowToStep', name: 'Clear security and head straight to the Great Gate', text: 'Walk through the Darwaza-i-Rauza as first light hits the marble.' },
         { '@type': 'HowToStep', name: 'Spend the first 20 minutes at the reflection pool', text: 'This is when you have the iconic frame to yourself.' },
         { '@type': 'HowToStep', name: 'Move onto the main platform', text: 'By 30 minutes after sunrise the platform is the place for detail shots and the changing marble colour.' },
     ] },
-    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 
 const sunriseTimes = [

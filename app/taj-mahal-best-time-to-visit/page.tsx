@@ -32,7 +32,7 @@ const faqs = [
 
 const schema = [
     { '@context': 'https://schema.org', '@type': 'Article', headline: 'Best Time to Visit the Taj Mahal 2026', url: 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit', datePublished: '2026-06-01', dateModified: '2026-06-01', author: { '@type': 'Person', name: 'Avneesh Dixit', url: 'https://www.guideindiatours.com/about/avneesh-dixit' }, publisher: { '@id': 'https://www.guideindiatours.com/#organization' }, about: { '@id': 'https://www.guideindiatours.com/taj-mahal-guide#taj-mahal' } },
-    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['main h2', 'main details'] }, mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 
 const months = [
