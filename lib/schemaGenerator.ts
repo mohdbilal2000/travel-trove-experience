@@ -239,6 +239,10 @@ export const generateFAQSchema = (faqs: FAQ[]) => {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["main h2", "main h3", "main h4", "[role='region']"]
+    },
     "mainEntity": faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,

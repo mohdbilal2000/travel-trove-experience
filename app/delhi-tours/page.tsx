@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/delhi-tours',
         languages: {
+            'en': 'https://www.guideindiatours.com/delhi-tours',
             'en-US': 'https://www.guideindiatours.com/delhi-tours',
             'en-GB': 'https://www.guideindiatours.com/delhi-tours',
+            'en-IN': 'https://www.guideindiatours.com/delhi-tours',
             'x-default': 'https://www.guideindiatours.com/delhi-tours',
         },
     },
@@ -66,14 +68,43 @@ export default function DelhiToursPage() {
         { name: 'Delhi Tours', url: 'https://www.guideindiatours.com/delhi-tours' },
     ]);
 
+    const placeSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Place',
+        '@id': 'https://www.guideindiatours.com/delhi-tours#place',
+        'name': 'Delhi',
+        'description': 'The capital of India, a vast metropolis combining historic Old Delhi with the planned colonial-era New Delhi.',
+        'sameAs': [
+            'https://en.wikipedia.org/wiki/Delhi',
+            'https://www.wikidata.org/wiki/Q1353'
+        ],
+        'geo': { '@type': 'GeoCoordinates', 'latitude': '28.6139', 'longitude': '77.2090' },
+        'containedInPlace': { '@type': 'Country', 'name': 'India', 'sameAs': 'https://en.wikipedia.org/wiki/India' }
+    };
+
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'name': 'Delhi Tour Packages',
+        'numberOfItems': delhiPlans.length,
+        'itemListElement': delhiPlans.map((plan, idx) => ({
+            '@type': 'ListItem',
+            'position': idx + 1,
+            'url': `https://www.guideindiatours.com/plans/${plan.id}`,
+            'name': plan.title
+        }))
+    };
+
     return (
         <main className="bg-ivory-100 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
             {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[75vh] overflow-hidden bg-black">
+            <section className="relative h-[55vh] sm:h-[60vh] md:h-[75vh] overflow-hidden bg-black">
                 <Image
                     src="/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg"
                     alt="Delhi cityscape with historic monuments - Private Delhi Tours"

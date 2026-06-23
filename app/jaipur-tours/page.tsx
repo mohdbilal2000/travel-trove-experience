@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/jaipur-tours',
         languages: {
+            'en': 'https://www.guideindiatours.com/jaipur-tours',
             'en-US': 'https://www.guideindiatours.com/jaipur-tours',
             'en-GB': 'https://www.guideindiatours.com/jaipur-tours',
+            'en-IN': 'https://www.guideindiatours.com/jaipur-tours',
             'x-default': 'https://www.guideindiatours.com/jaipur-tours',
         },
     },
@@ -65,14 +67,43 @@ export default function JaipurToursPage() {
         { name: 'Jaipur Tours', url: 'https://www.guideindiatours.com/jaipur-tours' },
     ]);
 
+    const placeSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Place',
+        '@id': 'https://www.guideindiatours.com/jaipur-tours#place',
+        'name': 'Jaipur',
+        'description': 'The capital of Rajasthan, India — known as the Pink City for its trademark sandstone architecture. UNESCO World Heritage walled old city.',
+        'sameAs': [
+            'https://en.wikipedia.org/wiki/Jaipur',
+            'https://www.wikidata.org/wiki/Q23556'
+        ],
+        'geo': { '@type': 'GeoCoordinates', 'latitude': '26.9124', 'longitude': '75.7873' },
+        'containedInPlace': { '@type': 'AdministrativeArea', 'name': 'Rajasthan', 'sameAs': 'https://en.wikipedia.org/wiki/Rajasthan' }
+    };
+
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'name': 'Jaipur Tour Packages',
+        'numberOfItems': jaipurPlans.length,
+        'itemListElement': jaipurPlans.map((plan, idx) => ({
+            '@type': 'ListItem',
+            'position': idx + 1,
+            'url': `https://www.guideindiatours.com/plans/${plan.id}`,
+            'name': plan.title
+        }))
+    };
+
     return (
         <main className="bg-ivory-100 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
             {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[75vh] overflow-hidden bg-black">
+            <section className="relative h-[55vh] sm:h-[60vh] md:h-[75vh] overflow-hidden bg-black">
                 <Image
                     src="/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg"
                     alt="Hawa Mahal Palace of Winds - Private Jaipur Tours"

@@ -25,8 +25,10 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
         alternates: {
             canonical: 'https://www.guideindiatours.com/blog',
             languages: {
+                'en': 'https://www.guideindiatours.com/blog',
                 'en-US': 'https://www.guideindiatours.com/blog',
                 'en-GB': 'https://www.guideindiatours.com/blog',
+                'en-IN': 'https://www.guideindiatours.com/blog',
                 'en-AU': 'https://www.guideindiatours.com/blog',
                 'x-default': 'https://www.guideindiatours.com/blog',
             },
@@ -61,10 +63,54 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
     const featuredPost = allPosts[0];
 
+    const itemListSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "url": "https://www.guideindiatours.com/blog",
+        "name": "Guide India Tours Travel Blog",
+        "description": "Expert travel guides and cultural narratives for India's Golden Triangle.",
+        "numberOfItems": filteredPosts.length,
+        "itemListElement": filteredPosts.map((post, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "url": `https://www.guideindiatours.com/blog/${post.slug}`,
+            "name": post.title,
+            "item": {
+                "@type": "BlogPosting",
+                "@id": `https://www.guideindiatours.com/blog/${post.slug}#article`,
+                "headline": post.title,
+                "description": post.excerpt,
+                "url": `https://www.guideindiatours.com/blog/${post.slug}`,
+                "image": post.image.startsWith('http') ? post.image : `https://www.guideindiatours.com${post.image}`,
+                "datePublished": post.publishedDate,
+                "dateModified": post.publishedDate,
+                "author": {
+                    "@type": "Person",
+                    "name": post.author || "Avneesh Dixit",
+                    "url": "https://www.guideindiatours.com/about/avneesh-dixit"
+                },
+                "publisher": { "@id": "https://www.guideindiatours.com/#organization" }
+            }
+        }))
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.guideindiatours.com" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.guideindiatours.com/blog" }
+        ]
+    };
+
     return (
         <main className="min-h-screen bg-ivory-100">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema]) }}
+            />
             {/* Editorial Hero */}
-            <section className="relative pt-44 pb-32 overflow-hidden bg-white">
+            <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
@@ -82,7 +128,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
             {/* Featured Story */}
             {!category && !q && featuredPost && (
-                <section className="pb-32">
+                <section className="pb-16 md:pb-32">
                     <div className="container mx-auto px-4">
                         <Link href={`/blog/${featuredPost.slug}`} className="group block relative rounded-3xl overflow-hidden shadow-2xl h-[350px] sm:h-[450px] md:h-[600px] border border-gray-100">
                             <div className="absolute inset-0">

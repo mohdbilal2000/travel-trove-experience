@@ -349,7 +349,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                             planId={plan.id}
                                             planDuration={plan.duration}
                                             planPrice={plan.price}
-                                            className="w-full py-10 rounded-2xl bg-maroon-600 hover:bg-black text-white text-xl font-display font-bold shadow-2xl transition-all duration-500"
+                                            className="w-full py-5 md:py-10 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500"
                                         />
 
                                         <div className="mt-8 space-y-4">

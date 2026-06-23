@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/agra-tours',
         languages: {
+            'en': 'https://www.guideindiatours.com/agra-tours',
             'en-US': 'https://www.guideindiatours.com/agra-tours',
             'en-GB': 'https://www.guideindiatours.com/agra-tours',
+            'en-IN': 'https://www.guideindiatours.com/agra-tours',
             'x-default': 'https://www.guideindiatours.com/agra-tours',
         },
     },
@@ -65,14 +67,43 @@ export default function AgraToursPage() {
         { name: 'Agra Tours', url: 'https://www.guideindiatours.com/agra-tours' },
     ]);
 
+    const placeSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Place',
+        '@id': 'https://www.guideindiatours.com/agra-tours#place',
+        'name': 'Agra',
+        'description': 'A city on the banks of the Yamuna river in the northern state of Uttar Pradesh, India — home to the UNESCO-listed Taj Mahal, Agra Fort, and Fatehpur Sikri.',
+        'sameAs': [
+            'https://en.wikipedia.org/wiki/Agra',
+            'https://www.wikidata.org/wiki/Q42941'
+        ],
+        'geo': { '@type': 'GeoCoordinates', 'latitude': '27.1767', 'longitude': '78.0081' },
+        'containedInPlace': { '@type': 'AdministrativeArea', 'name': 'Uttar Pradesh', 'sameAs': 'https://en.wikipedia.org/wiki/Uttar_Pradesh' }
+    };
+
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'name': 'Agra Tour Packages',
+        'numberOfItems': agraPlans.length,
+        'itemListElement': agraPlans.map((plan, idx) => ({
+            '@type': 'ListItem',
+            'position': idx + 1,
+            'url': `https://www.guideindiatours.com/plans/${plan.id}`,
+            'name': plan.title
+        }))
+    };
+
     return (
         <main className="bg-ivory-100 min-h-screen">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
             {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[75vh] overflow-hidden bg-black">
+            <section className="relative h-[55vh] sm:h-[60vh] md:h-[75vh] overflow-hidden bg-black">
                 <Image
                     src="/images/agra/getty-images-x83xvTdlITo-unsplash.jpg"
                     alt="Taj Mahal at sunrise - Private Agra Tours"

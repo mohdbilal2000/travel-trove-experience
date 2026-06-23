@@ -44,7 +44,7 @@ export default function AboutPage() {
     return (
         <main className="min-h-screen bg-white">
             {/* Visual Narrative Hero */}
-            <section className="relative pt-44 pb-32 overflow-hidden bg-ivory-100">
+            <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-ivory-100">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <motion.div

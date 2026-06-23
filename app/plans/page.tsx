@@ -26,8 +26,10 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
         alternates: {
             canonical: city && city !== 'All' ? `https://www.guideindiatours.com/plans?city=${city}` : 'https://www.guideindiatours.com/plans',
             languages: {
+                'en': 'https://www.guideindiatours.com/plans',
                 'en-US': 'https://www.guideindiatours.com/plans',
                 'en-GB': 'https://www.guideindiatours.com/plans',
+                'en-IN': 'https://www.guideindiatours.com/plans',
                 'en-AU': 'https://www.guideindiatours.com/plans',
                 'x-default': 'https://www.guideindiatours.com/plans',
             },
@@ -68,10 +70,58 @@ export default async function PlansPage({ searchParams }: PageProps) {
             plan.destinations?.some(d => d.toLowerCase() === city.toLowerCase())
         );
 
+    const itemListSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "url": "https://www.guideindiatours.com/plans",
+        "name": "Guide India Tours - Curated Tour Packages",
+        "description": "Private India tour packages covering the Golden Triangle, Rajasthan, and beyond.",
+        "numberOfItems": filteredPlans.length,
+        "itemListElement": filteredPlans.slice(0, 30).map((plan, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "url": `https://www.guideindiatours.com/plans/${plan.id}`,
+            "name": plan.title,
+            "item": {
+                "@type": "TouristTrip",
+                "@id": `https://www.guideindiatours.com/plans/${plan.id}#trip`,
+                "name": plan.title,
+                "description": plan.description.substring(0, 200),
+                "url": `https://www.guideindiatours.com/plans/${plan.id}`,
+                "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
+                "offers": {
+                    "@type": "Offer",
+                    "price": plan.price.replace(/[^0-9.]/g, ''),
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": plan.rating.toString(),
+                    "reviewCount": plan.reviews.toString(),
+                    "bestRating": "5"
+                }
+            }
+        }))
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.guideindiatours.com" },
+            { "@type": "ListItem", "position": 2, "name": "Tour Plans", "item": "https://www.guideindiatours.com/plans" }
+        ]
+    };
+
     return (
         <main className="min-h-screen bg-ivory-100">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema]) }}
+            />
             {/* Hero Section */}
-            <section className="relative pt-44 pb-32 overflow-hidden bg-black">
+            <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-black">
                 <Image
                     src="/images/agra/getty-images-Mfck6jSVcbY-unsplash.jpg"
                     alt="India Tour Plans Hero"

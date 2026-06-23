@@ -16,8 +16,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/reviews',
         languages: {
+            'en': 'https://www.guideindiatours.com/reviews',
             'en-US': 'https://www.guideindiatours.com/reviews',
             'en-GB': 'https://www.guideindiatours.com/reviews',
+            'en-IN': 'https://www.guideindiatours.com/reviews',
             'en-AU': 'https://www.guideindiatours.com/reviews',
             'x-default': 'https://www.guideindiatours.com/reviews',
         },
@@ -121,7 +123,7 @@ export default function ReviewsPage() {
             />
 
             {/* Hero Section */}
-            <section className="relative pt-44 pb-24 bg-white border-b border-gray-100 overflow-hidden">
+            <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-20 md:pb-24 bg-white border-b border-gray-100 overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-maroon-600/5 rounded-bl-full translate-x-1/2 -translate-y-12" />
                 <div className="container mx-auto px-4 relative z-10">
                     <Breadcrumbs items={[{ label: 'Reviews' }]} className="mb-12" />

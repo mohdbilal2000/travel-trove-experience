@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/faq',
         languages: {
+            'en': 'https://www.guideindiatours.com/faq',
             'en-US': 'https://www.guideindiatours.com/faq',
             'en-GB': 'https://www.guideindiatours.com/faq',
+            'en-IN': 'https://www.guideindiatours.com/faq',
             'en-AU': 'https://www.guideindiatours.com/faq',
             'x-default': 'https://www.guideindiatours.com/faq',
         },
@@ -128,6 +130,12 @@ export default function FAQPage() {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "url": "https://www.guideindiatours.com/faq",
+        "name": "Frequently Asked Questions - Guide India Tours",
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["main h1", "main h2", "[data-radix-accordion-content]"]
+        },
         "mainEntity": faqCategories.flatMap(cat => cat.questions).map(faq => ({
             "@type": "Question",
             "name": faq.question,
@@ -138,11 +146,20 @@ export default function FAQPage() {
         }))
     };
 
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.guideindiatours.com" },
+            { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.guideindiatours.com/faq" }
+        ]
+    };
+
     return (
         <main className="bg-ivory-100 min-h-screen">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([faqSchema, breadcrumbSchema]) }}
             />
 
             <section className="relative pt-44 pb-24 bg-white border-b border-gray-100 overflow-hidden">

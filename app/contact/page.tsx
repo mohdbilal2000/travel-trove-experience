@@ -68,7 +68,7 @@ export default function ContactPage() {
     return (
         <main className="min-h-screen bg-ivory-100">
             {/* Minimal High-End Hero */}
-            <section className="relative pt-44 pb-32 overflow-hidden bg-white">
+            <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-white">
                 <div className="container mx-auto px-4 text-center">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                         <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="pb-40">
+            <section className="pb-16 md:pb-40">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
 
@@ -157,7 +157,7 @@ export default function ContactPage() {
 
                         {/* Form Column */}
                         <div className="lg:col-span-7">
-                            <div className="bg-white p-6 sm:p-8 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
+                            <div className="bg-white p-6 sm:p-8 md:p-12 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
                                 <div className="mb-12">
                                     <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Inquiry Form</h2>
                                     <p className="text-lg text-gray-400 font-light">Complete the details below and an agent will reach out within 2 hours.</p>

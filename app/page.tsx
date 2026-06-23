@@ -110,6 +110,11 @@ export default function Home() {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "url": "https://www.guideindiatours.com",
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["main h1", "[aria-labelledby='home-faq-heading']"]
+        },
         "mainEntity": homeFaqs.map((faq) => ({
             "@type": "Question",
             "name": faq.question,

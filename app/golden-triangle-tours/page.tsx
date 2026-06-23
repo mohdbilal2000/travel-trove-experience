@@ -40,8 +40,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/golden-triangle-tours',
         languages: {
+            'en': 'https://www.guideindiatours.com/golden-triangle-tours',
             'en-US': 'https://www.guideindiatours.com/golden-triangle-tours',
             'en-GB': 'https://www.guideindiatours.com/golden-triangle-tours',
+            'en-IN': 'https://www.guideindiatours.com/golden-triangle-tours',
             'x-default': 'https://www.guideindiatours.com/golden-triangle-tours',
         },
     },
@@ -81,6 +83,36 @@ export default function GoldenTriangleToursPage() {
         { name: 'Golden Triangle Tours', url: 'https://www.guideindiatours.com/golden-triangle-tours' },
     ]);
 
+    const placeSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Place',
+        '@id': 'https://www.guideindiatours.com/golden-triangle-tours#place',
+        'name': 'Golden Triangle India',
+        'description': 'A tourist circuit in northern India connecting the national capital Delhi, the Mughal heritage city of Agra (home of the Taj Mahal), and the royal capital of Rajasthan, Jaipur.',
+        'sameAs': [
+            'https://en.wikipedia.org/wiki/Golden_Triangle_(India)',
+            'https://www.wikidata.org/wiki/Q1390081'
+        ],
+        'containsPlace': [
+            { '@type': 'Place', 'name': 'Delhi', 'sameAs': 'https://en.wikipedia.org/wiki/Delhi' },
+            { '@type': 'Place', 'name': 'Agra', 'sameAs': 'https://en.wikipedia.org/wiki/Agra' },
+            { '@type': 'Place', 'name': 'Jaipur', 'sameAs': 'https://en.wikipedia.org/wiki/Jaipur' }
+        ]
+    };
+
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'name': 'Golden Triangle Tour Packages',
+        'numberOfItems': goldenTrianglePlans.length,
+        'itemListElement': goldenTrianglePlans.map((plan, idx) => ({
+            '@type': 'ListItem',
+            'position': idx + 1,
+            'url': `https://www.guideindiatours.com/plans/${plan.id}`,
+            'name': plan.title
+        }))
+    };
+
     const goldenTriangleHighlights = [
         "Taj Mahal — One of the Seven Wonders of the World",
         "Red Fort — UNESCO World Heritage Site in Delhi",
@@ -98,9 +130,11 @@ export default function GoldenTriangleToursPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-black">
+            <section className="relative h-[55vh] sm:h-[60vh] md:h-[80vh] overflow-hidden bg-black">
                 <Image
                     src="/images/og-default.jpg"
                     alt="Golden Triangle India - Delhi, Agra, Jaipur Private Tours"
