@@ -167,9 +167,87 @@ html {
   scroll-behavior: smooth;
 }
 
-*:focus {
+/* Keyboard-only focus ring: a11y for keyboard users without the heavy
+   outline appearing on every mouse/touch interaction. */
+*:focus-visible {
   outline: 2px solid #800000;
   outline-offset: 2px;
+}
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   Mobile-first safety & fluid responsiveness layer.
+   Site-wide and additive, so every current AND future page
+   inherits correct mobile behaviour automatically.
+   ============================================================ */
+@layer base {
+  html {
+    /* Stop iOS/Android from auto-inflating text (the #1 cause of a
+       "zoomed"/inaccurate-looking mobile layout). */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Anchor jumps (#section) clear the fixed navbar instead of hiding under it. */
+    scroll-padding-top: 6rem;
+  }
+
+  /* Never allow horizontal scroll; `clip` does not break position: sticky. */
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  /* No media or table may exceed the viewport width. */
+  img,
+  video,
+  canvas,
+  svg,
+  iframe,
+  table {
+    max-width: 100%;
+  }
+
+  /* Modern automatic wrapping: balanced headings, no widows/orphans in copy. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+  p,
+  li,
+  a {
+    overflow-wrap: break-word;
+  }
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  /* Guarantee >=16px on phones so iOS Safari never auto-zooms a focused field.
+     Element-level selector keeps any explicit Tailwind text-size utility intact. */
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1rem);
+  }
+}
+
+/* Respect reduced-motion preferences (accessibility + battery). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media print {

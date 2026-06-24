@@ -58,11 +58,11 @@ export default function TajMahalTickets() {
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white rounded-3xl border border-gray-100 p-8 md:p-10 shadow-sm overflow-x-auto">
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
+                        <p className="text-[11px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
                         <h2 className="text-2xl font-display font-bold mb-6 text-gray-900">Current ticket prices (ASI, 2026)</h2>
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="border-b border-gray-200 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                                <tr className="border-b border-gray-200 text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-gray-400">
                                     <th className="py-3 pr-4">Category</th>
                                     <th className="py-3 pr-4">Complex entry</th>
                                     <th className="py-3 pr-4">Mausoleum</th>

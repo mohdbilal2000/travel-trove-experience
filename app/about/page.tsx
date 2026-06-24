@@ -46,7 +46,7 @@ export default function AboutPage() {
             {/* Visual Narrative Hero */}
             <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-ivory-100">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -76,7 +76,7 @@ export default function AboutPage() {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-gold-500 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center p-6 text-white -rotate-6">
+                            <div className="hidden sm:flex absolute -bottom-10 -left-10 w-40 h-40 lg:w-48 lg:h-48 bg-gold-500 rounded-3xl shadow-2xl flex-col items-center justify-center text-center p-6 text-white -rotate-6">
                                 <span className="text-4xl font-black mb-1">12+</span>
                                 <span className="text-xs font-bold uppercase tracking-widest leading-none">Years of <br />Guiding</span>
                             </div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
             {/* Core Narrative */}
             <section className="py-16 md:py-24 lg:py-40">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
                         <div className="lg:col-span-5">
                             <h2 className="text-sm font-black uppercase text-maroon-600 tracking-[0.3em] mb-8">Our DNA</h2>
                             <h3 className="text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">
@@ -125,7 +125,7 @@ export default function AboutPage() {
             {/* Guide Network Grid */}
             <section className="py-16 md:py-24 lg:py-40 bg-gray-50">
                 <div className="container mx-auto px-4 text-center mb-24">
-                    <h2 className="text-5xl font-display font-bold text-gray-900 mb-6">Built on Expertise.</h2>
+                    <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-6">Built on Expertise.</h2>
                     <p className="text-gray-500 uppercase tracking-[0.2em] text-xs font-black">Our intellectual capital</p>
                 </div>
 
@@ -193,7 +193,7 @@ export default function AboutPage() {
             <section className="py-16 md:py-24 lg:py-40 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <h2 className="text-6xl md:text-8xl font-display font-bold mb-12">Experience the <br /><span className="text-gold-500">True India.</span></h2>
+                    <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold mb-12">Experience the <br /><span className="text-gold-500">True India.</span></h2>
                     <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                         <Link href="/plans" className="text-2xl font-bold hover:text-gold-500 flex items-center gap-4 transition-colors">
                             Explore Signature Plans <ArrowRight className="w-8 h-8" />

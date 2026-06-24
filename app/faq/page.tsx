@@ -218,7 +218,7 @@ export default function FAQPage() {
                             <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Still Have <span className="text-gold-500">Questions?</span></h2>
                             <p className="text-xl text-white/50 font-light mb-16 max-w-2xl mx-auto">Our travel architects are available 24/7 to provide personalized assistance for your journey.</p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <Button asChild size="lg" className="h-20 px-12 rounded-3xl bg-maroon-600 hover:bg-white hover:text-black text-xl font-bold shadow-2xl transition-all duration-500 group/btn">
+                                <Button asChild size="lg" className="h-16 md:h-20 px-6 md:px-12 rounded-3xl bg-maroon-600 hover:bg-white hover:text-black text-base md:text-xl font-bold shadow-2xl transition-all duration-500 group/btn">
                                     <Link href="/contact" className="flex items-center gap-3">
                                         Inquire Now <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform" />
                                     </Link>

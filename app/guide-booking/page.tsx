@@ -333,7 +333,7 @@ Please provide availability and pricing details.`;
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
                         {/* Left: Form Steps */}
-                        <div className="lg:col-span-8 space-y-12 md:space-y-24">
+                        <div className="lg:col-span-8 space-y-8 md:space-y-16 lg:space-y-24">
 
                             {/* Step 1: Date */}
                             <motion.div
@@ -476,14 +476,14 @@ Please provide availability and pricing details.`;
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'halfDay' })); }}
                                                         className={cn(
-                                                            "flex-1 py-3 rounded-xl text-xs font-bold transition-all",
+                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
                                                             selectedDuration[pkg.id] === 'halfDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
                                                         )}
                                                     >Half Day</button>
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'fullDay' })); }}
                                                         className={cn(
-                                                            "flex-1 py-3 rounded-xl text-xs font-bold transition-all",
+                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
                                                             selectedDuration[pkg.id] === 'fullDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
                                                         )}
                                                     >Full Day</button>

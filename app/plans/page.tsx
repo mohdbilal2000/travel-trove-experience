@@ -136,7 +136,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                         <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-8 px-6 py-2 uppercase tracking-[0.2em] text-xs font-black">
                             Curated Travel Experiences
                         </Badge>
-                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-white mb-8 leading-[0.9] tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-white mb-6 md:mb-8 leading-tight sm:leading-[0.9] tracking-tight md:tracking-tighter">
                             Our Signature <br /><span className="text-gold-500">Tour Plans</span>
                         </h1>
                         <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mx-auto">
@@ -147,7 +147,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
             </section>
 
             {/* Main Content */}
-            <section className="py-24">
+            <section className="py-14 md:py-24">
                 <div className="container mx-auto px-4">
                     <Breadcrumbs items={[{ label: 'Tour Plans' }]} className="mb-12" />
 
@@ -166,7 +166,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                         {filteredPlans.map((plan) => (
                             <div key={plan.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
-                                <Link href={`/plans/${plan.id}`} className="block relative h-72 overflow-hidden">
+                                <Link href={`/plans/${plan.id}`} className="block relative h-56 sm:h-64 md:h-72 overflow-hidden">
                                     <Image
                                         src={plan.image}
                                         alt={`${plan.title} - Tour to ${city || 'India'}`}
@@ -177,7 +177,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
 
                                     {plan.popular && (
-                                        <div className="absolute top-6 right-6 bg-gold-500 text-black text-[9px] font-black py-2 px-5 rounded-full shadow-xl uppercase tracking-widest z-10">
+                                        <div className="absolute top-6 right-6 bg-gold-500 text-black text-[11px] sm:text-[9px] font-black py-2 px-5 rounded-full shadow-xl uppercase tracking-widest z-10">
                                             Popular Choice
                                         </div>
                                     )}
@@ -187,7 +187,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                             <div className="flex gap-0.5">
                                                 {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-gold-500 fill-current" />)}
                                             </div>
-                                            <span className="text-white/80 text-[9px] font-black uppercase tracking-widest">{plan.reviews} Reviews</span>
+                                            <span className="text-white/80 text-[11px] sm:text-[9px] font-black uppercase tracking-widest">{plan.reviews} Reviews</span>
                                         </div>
                                         <p className="text-white text-xs font-bold flex items-center gap-2">
                                             <Clock className="w-3 h-3 text-gold-500" /> {plan.duration}

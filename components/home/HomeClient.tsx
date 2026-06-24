@@ -162,7 +162,7 @@ const HomeClient = () => {
             <Hero />
 
             {/* Main H1 Heading for SEO */}
-            <section className="py-16 bg-gradient-to-br from-royal-50 to-amber-50">
+            <section className="py-12 md:py-16 bg-gradient-to-br from-royal-50 to-amber-50">
                 <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-royal-800 mb-6">
                         Premium Golden Triangle Tours in India
@@ -192,7 +192,7 @@ const HomeClient = () => {
             </section>
 
             {/* Plan Search Section */}
-            <section className="py-16 bg-gradient-to-br from-white via-royal-50/30 to-white">
+            <section className="py-12 md:py-16 bg-gradient-to-br from-white via-royal-50/30 to-white">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -239,7 +239,7 @@ const HomeClient = () => {
                                                     className="fixed inset-0 z-40"
                                                     onClick={() => setIsCityDropdownOpen(false)}
                                                 />
-                                                <div className="absolute z-50 w-full mt-1 bg-white border border-input rounded-md shadow-lg max-h-[60vh] sm:max-h-60 overflow-auto">
+                                                <div className="absolute z-50 w-full mt-1 bg-white border border-input rounded-md shadow-lg max-h-72 sm:max-h-60 overflow-auto">
                                                     <div className="p-2">
                                                         {availableCities.map((city) => (
                                                             <div
@@ -328,7 +328,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setAdults(Math.max(1, adults - 1))}
                                                             disabled={adults <= 1}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Minus className="w-3.5 h-3.5" />
                                                         </button>
@@ -337,7 +337,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setAdults(Math.min(20, adults + 1))}
                                                             disabled={adults >= 20}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Plus className="w-3.5 h-3.5" />
                                                         </button>
@@ -355,7 +355,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setChildren(Math.max(0, children - 1))}
                                                             disabled={children <= 0}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Minus className="w-3.5 h-3.5" />
                                                         </button>
@@ -364,7 +364,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setChildren(Math.min(10, children + 1))}
                                                             disabled={children >= 10}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Plus className="w-3.5 h-3.5" />
                                                         </button>
@@ -382,7 +382,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setInfants(Math.max(0, infants - 1))}
                                                             disabled={infants <= 0}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Minus className="w-3.5 h-3.5" />
                                                         </button>
@@ -391,7 +391,7 @@ const HomeClient = () => {
                                                             type="button"
                                                             onClick={() => setInfants(Math.min(5, infants + 1))}
                                                             disabled={infants >= 5}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                                         >
                                                             <Plus className="w-3.5 h-3.5" />
                                                         </button>

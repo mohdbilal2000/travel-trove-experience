@@ -140,7 +140,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                                 />
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                            <div className="absolute bottom-12 left-12 right-12 z-10 max-w-3xl">
+                            <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 z-10 max-w-3xl">
                                 <div className="flex items-center gap-4 mb-6">
                                     <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase text-xs tracking-widest">Featured Story</Badge>
                                     <span className="text-white/60 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
@@ -190,7 +190,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                         </form>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
                         {filteredPosts.map((post, i) => (
                             <div key={post.id} className="group">
                                 <Link href={`/blog/${post.slug}`} className="block">
@@ -231,7 +231,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-full bg-maroon-600 opacity-10 blur-[200px]" />
                 <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
                     <TrendingUp className="w-12 h-12 text-gold-500 mx-auto mb-8" />
-                    <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Join the <span className="text-gold-500">Heritage Club.</span></h2>
+                    <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-8">Join the <span className="text-gold-500">Heritage Club.</span></h2>
                     <p className="text-xl text-white/60 mb-16 font-light max-w-2xl mx-auto">Get exclusive essays on Indian history, hidden travel gems, and advance notice of our signature tour openings.</p>
                     <NewsletterForm />
                 </div>

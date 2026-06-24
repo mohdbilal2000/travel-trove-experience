@@ -117,7 +117,7 @@ export default function ServicesPage() {
             {/* Alternating Service Blocks */}
             <section className="py-20">
                 <div className="container mx-auto px-4">
-                    <div className="space-y-16 md:space-y-32 lg:space-y-48">
+                    <div className="space-y-12 md:space-y-24 lg:space-y-40">
                         {servicesData.map((service, index) => (
                             <div key={service.id} className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
                                 <motion.div

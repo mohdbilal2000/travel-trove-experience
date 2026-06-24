@@ -33,7 +33,7 @@ export default function PageHero({ breadcrumbs, badge, title, subtitle, meta }: 
                         {badge}
                     </Badge>
                 )}
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold mb-4 md:mb-6 tracking-tighter leading-[0.95] text-gray-900">
+                <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-4 md:mb-6 tracking-tight md:tracking-tighter leading-[1.05] sm:leading-[0.95] text-gray-900">
                     {title}
                 </h1>
                 {subtitle && (

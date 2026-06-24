@@ -187,7 +187,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                             </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.1] tracking-tighter">
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.15] sm:leading-[1.1] tracking-tight md:tracking-tighter">
                             {post.title}
                         </h1>
 
@@ -219,7 +219,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-50">
                             <Clock className="text-maroon-600" size={32} />
                         </div>
-                        <article className="prose prose-xl max-w-none">
+                        <article className="prose md:prose-xl max-w-none">
                             {renderContent(post.content)}
                         </article>
 

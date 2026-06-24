@@ -29,27 +29,27 @@ export default function AtAGlance({
                 <table className="w-full text-left border-collapse">
                     <tbody>
                         <tr className="border-b border-gray-50">
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest w-1/3">Duration</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest w-1/3">Duration</td>
                             <td className="p-4 font-bold text-gray-900">{duration}</td>
                         </tr>
                         <tr className="border-b border-gray-50">
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest">Pickup</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Pickup</td>
                             <td className="p-4 text-gray-700">{pickup}</td>
                         </tr>
                         <tr className="border-b border-gray-50">
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest">Pricing</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Pricing</td>
                             <td className="p-4 font-black text-maroon-600 text-xl">{price}</td>
                         </tr>
                         <tr className="border-b border-gray-50">
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest">Best For</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Best For</td>
                             <td className="p-4 text-gray-700">{bestFor}</td>
                         </tr>
                         <tr className="border-b border-gray-50">
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest">Tour Type</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Tour Type</td>
                             <td className="p-4 text-gray-700">{type}</td>
                         </tr>
                         <tr>
-                            <td className="p-4 font-bold text-gray-400 uppercase text-[10px] tracking-widest">Cancellation</td>
+                            <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Cancellation</td>
                             <td className="p-4 text-green-600 font-bold">{cancellation}</td>
                         </tr>
                     </tbody>

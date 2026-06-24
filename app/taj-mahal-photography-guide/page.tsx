@@ -66,7 +66,7 @@ export default function PhotographyGuide() {
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white rounded-3xl border border-gray-100 p-8 md:p-12 shadow-sm">
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
+                        <p className="text-[11px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
                         <h2 className="text-2xl font-display font-bold mb-6 text-gray-900">In short</h2>
                         <ul className="space-y-3 text-gray-700 font-light">
                             <li><strong className="text-gray-900">Allowed everywhere</strong> in the complex — except inside the mausoleum chamber.</li>

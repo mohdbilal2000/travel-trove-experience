@@ -42,10 +42,10 @@ const item = {
 
 const FeaturedDestinations = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ const FeaturedDestinations = () => {
               <Link href={destination.link} className="block">
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white">
                   {/* Image */}
-                  <div className="relative h-80 overflow-hidden">
+                  <div className="relative h-56 sm:h-72 md:h-80 overflow-hidden">
                     <OptimizedImage
                       src={destination.image}
                       alt={destination.name}
