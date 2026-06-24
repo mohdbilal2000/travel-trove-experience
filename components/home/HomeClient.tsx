@@ -1,169 +1,53 @@
 "use client";
 
-import Hero from "@/components/home/HeroFallback";
 import FeaturedDestinations from "@/components/home/FeaturedDestinations";
 import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
+import PlannerHero from "@/components/home/PlannerHero";
+import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import OptimizedImage from "@/components/shared/OptimizedImage";
-import { allPlans } from "@/data/travelPlans";
-import { Star, Clock, Users, MapPin, MessageCircle, Search, X, ChevronDown, ShieldCheck, Minus, Plus, Hotel, Check } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Star, Clock, Users, ShieldCheck } from "lucide-react";
+import { useState, useCallback } from "react";
+import { type PlannerState, getFilteredPlans, buildWhatsAppMessage, isGoldenTriangle } from "@/lib/planner";
+import { cityLabel } from "@/data/plannerOptions";
 
 const HomeClient = () => {
-    const [selectedCities, setSelectedCities] = useState<string[]>([]);
-    const [adults, setAdults] = useState<number>(1);
-    const [children, setChildren] = useState<number>(0);
-    const [infants, setInfants] = useState<number>(0);
-    const [showResults, setShowResults] = useState<boolean>(false);
-    const [isCityDropdownOpen, setIsCityDropdownOpen] = useState<boolean>(false);
-    const [isPeopleDropdownOpen, setIsPeopleDropdownOpen] = useState<boolean>(false);
-    const [hotelPreference, setHotelPreference] = useState<string>("");
-    const [isHotelDropdownOpen, setIsHotelDropdownOpen] = useState<boolean>(false);
-    const peopleDropdownRef = useRef<HTMLDivElement>(null);
-    const hotelDropdownRef = useRef<HTMLDivElement>(null);
+    const [planner, setPlanner] = useState<PlannerState>({
+        adults: 1,
+        children: 0,
+        days: null,
+        cities: [],
+        transport: "",
+    });
 
-    const hotelOptions = [
-        { value: "5star", label: "5 Star", desc: "Luxury & Premium" },
-        { value: "4star", label: "4 Star", desc: "Superior Comfort" },
-        { value: "3star", label: "3 Star", desc: "Quality & Value" },
-        { value: "budget", label: "Budget", desc: "Affordable Stay" },
-    ];
-
-    const totalTravelers = adults + children + infants;
-
-    // Close dropdowns on outside click
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (peopleDropdownRef.current && !peopleDropdownRef.current.contains(e.target as Node)) {
-                setIsPeopleDropdownOpen(false);
-            }
-            if (hotelDropdownRef.current && !hotelDropdownRef.current.contains(e.target as Node)) {
-                setIsHotelDropdownOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+    const updatePlanner = useCallback((patch: Partial<PlannerState>) => {
+        setPlanner((prev) => ({ ...prev, ...patch }));
     }, []);
 
-    // Available cities from plans (excluding "all" and "Golden Triangle" for multi-select)
-    const availableCities = [
-        { value: "Delhi", label: "Delhi" },
-        { value: "Agra", label: "Agra" },
-        { value: "Jaipur", label: "Jaipur" },
-        { value: "Bikaner", label: "Bikaner" },
-        { value: "Jodhpur", label: "Jodhpur" },
-        { value: "Udaipur", label: "Udaipur" },
-        { value: "Jaisalmer", label: "Jaisalmer" },
-        { value: "Ranthambore", label: "Ranthambore" },
-        { value: "Pushkar", label: "Pushkar" },
-        { value: "Ajmer", label: "Ajmer" },
-        { value: "Chittorgarh", label: "Chittorgarh" },
-        { value: "Mount Abu", label: "Mount Abu" },
-        { value: "Mandawa", label: "Mandawa" },
-    ];
+    const scrollToTours = useCallback(() => {
+        document.getElementById("matching-tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, []);
 
-    // Handle city selection/deselection
-    const handleCityToggle = (cityValue: string) => {
-        setSelectedCities(prev => {
-            if (prev.includes(cityValue)) {
-                return prev.filter(c => c !== cityValue);
-            } else {
-                return [...prev, cityValue];
-            }
-        });
-        setShowResults(false);
-    };
+    const filteredPlans = getFilteredPlans(planner.cities);
+    const hasCities = planner.cities.length > 0;
 
-    // Remove a selected city
-    const removeCity = (cityValue: string) => {
-        setSelectedCities(prev => prev.filter(c => c !== cityValue));
-        setShowResults(false);
-    };
-
-    // Clear all selected cities
-    const clearAllCities = () => {
-        setSelectedCities([]);
-        setShowResults(false);
-    };
-
-    // Filter plans based on selected cities
-    const getFilteredPlans = () => {
-        if (selectedCities.length === 0) {
-            // Return top 6 plans sorted by rating and popularity
-            return allPlans
-                .sort((a, b) => {
-                    if (a.popular && !b.popular) return -1;
-                    if (!a.popular && b.popular) return 1;
-                    return b.rating - a.rating;
-                })
-                .slice(0, 6);
-        }
-
-        // Check if all three Golden Triangle cities are selected
-        const hasDelhi = selectedCities.includes("Delhi");
-        const hasAgra = selectedCities.includes("Agra");
-        const hasJaipur = selectedCities.includes("Jaipur");
-        const isGoldenTriangle = hasDelhi && hasAgra && hasJaipur && selectedCities.length === 3;
-
-        if (isGoldenTriangle) {
-            // Filter for Golden Triangle plans (all three cities)
-            return allPlans
-                .filter(plan => {
-                    const title = plan.title.toLowerCase();
-                    const destinations = plan.destinations || [];
-                    const planHasDelhi = destinations.includes("Delhi") || title.includes("delhi");
-                    const planHasAgra = destinations.includes("Agra") || title.includes("agra");
-                    const planHasJaipur = destinations.includes("Jaipur") || title.includes("jaipur");
-
-                    return (planHasDelhi && planHasAgra && planHasJaipur) || title.includes("golden triangle");
-                })
-                .sort((a, b) => {
-                    if (a.popular && !b.popular) return -1;
-                    if (!a.popular && b.popular) return 1;
-                    return b.rating - a.rating;
-                })
-                .slice(0, 6);
-        }
-
-        // Filter by selected cities (plans that include ANY of the selected cities)
-        return allPlans
-            .filter(plan => {
-                const title = plan.title.toLowerCase();
-                const destinations = plan.destinations || [];
-                const description = plan.description.toLowerCase();
-
-                // Check if plan matches any of the selected cities
-                return selectedCities.some(city => {
-                    const cityLower = city.toLowerCase();
-                    return (
-                        destinations.includes(city) ||
-                        title.includes(cityLower) ||
-                        description.includes(cityLower)
-                    );
-                });
-            })
-            .sort((a, b) => {
-                if (a.popular && !b.popular) return -1;
-                if (!a.popular && b.popular) return 1;
-                return b.rating - a.rating;
-            })
-            .slice(0, 6);
-    };
-
-    const filteredPlans = getFilteredPlans();
+    const resultsHeading = !hasCities
+        ? "Our Most-Loved Tours"
+        : isGoldenTriangle(planner.cities)
+            ? "Golden Triangle Tours For You"
+            : `Matching Tours for ${planner.cities.map(cityLabel).join(", ")}`;
 
     return (
         <main>
-            <Hero />
+            <PlannerHero state={planner} onChange={updatePlanner} onBrowseTours={scrollToTours} />
 
             {/* Main H1 Heading for SEO */}
             <section className="py-12 md:py-16 bg-gradient-to-br from-royal-50 to-amber-50">
                 <div className="container mx-auto px-4 text-center">
+                    <span className="inline-block w-16 h-1 bg-gold-500 rounded-full mb-6" />
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-royal-800 mb-6">
                         Premium Golden Triangle Tours in India
                     </h1>
@@ -174,7 +58,7 @@ const HomeClient = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             size="lg"
-                            className="bg-royal-800 hover:bg-royal-900 text-white px-8 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="bg-maroon-600 hover:bg-maroon-700 text-white px-8 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                             asChild
                         >
                             <Link href="/plans">View All Tour Packages</Link>
@@ -191,417 +75,125 @@ const HomeClient = () => {
                 </div>
             </section>
 
-            {/* Plan Search Section */}
-            <section className="py-12 md:py-16 bg-gradient-to-br from-white via-royal-50/30 to-white">
+            {/* Matching Tours — driven by the hero planner's city selection */}
+            <section id="matching-tours" className="py-12 md:py-16 bg-gradient-to-br from-white via-royal-50/30 to-white scroll-mt-24">
                 <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <div className="text-center mb-8">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-10"
+                        >
                             <h2 className="text-3xl md:text-4xl font-display font-bold text-royal-800 mb-3">
-                                Find Your Perfect Tour
+                                {resultsHeading}
                             </h2>
                             <p className="text-lg text-royal-700/80">
-                                Select your destination and group size to discover the best tour options
+                                {hasCities
+                                    ? "Handpicked packages matching your destinations — tap any to view the full itinerary."
+                                    : "Pick your cities in the planner above to tailor these to your trip."}
                             </p>
-                        </div>
+                        </motion.div>
 
-                        {/* Search Form */}
-                        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-8 border border-gray-200">
-                            <div className="space-y-4">
-                                {/* City Multi-Select - Full Width */}
-                                <div className="space-y-2">
-                                    <label htmlFor="city-select" className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                                        <MapPin className="w-4 h-4 text-royal-600" />
-                                        Select Cities (Multiple)
-                                    </label>
-                                    <div className="relative">
-                                        <button
-                                            type="button"
-                                            onClick={() => { setIsCityDropdownOpen(!isCityDropdownOpen); setIsPeopleDropdownOpen(false); setIsHotelDropdownOpen(false); }}
-                                            className="w-full h-12 px-3 py-2 text-left text-sm sm:text-base bg-background border border-input rounded-md flex items-center justify-between hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                                        >
-                                            <span className="text-muted-foreground truncate pr-2">
-                                                {selectedCities.length === 0
-                                                    ? "Choose one or more destinations"
-                                                    : `${selectedCities.length} city${selectedCities.length > 1 ? 'ies' : ''} selected`}
-                                            </span>
-                                            <ChevronDown className={`h-4 w-4 opacity-50 transition-transform flex-shrink-0 ${isCityDropdownOpen ? 'rotate-180' : ''}`} />
-                                        </button>
+                        {filteredPlans.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {filteredPlans.map((plan, index) => (
+                                    <motion.div
+                                        key={plan.id}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: index * 0.08 }}
+                                        viewport={{ once: true }}
+                                        className="group"
+                                    >
+                                        <Link href={`/plans/${plan.id}`} className="block h-full">
+                                            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-200">
+                                                <div className="relative h-48 overflow-hidden">
+                                                    <OptimizedImage
+                                                        src={plan.image}
+                                                        alt={plan.title}
+                                                        className="w-full h-full object-cover-optimized transition-transform duration-700 group-hover:scale-110 image-no-blur"
+                                                        priority={false}
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                    />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                                    <div className="absolute top-4 right-4">
+                                                        {plan.popular && (
+                                                            <span className="bg-maroon-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                                                Popular
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <div className="absolute bottom-4 left-4 right-4">
+                                                        <h3 className="text-lg font-display font-semibold text-white mb-1 line-clamp-2">
+                                                            {plan.title}
+                                                        </h3>
+                                                        <div className="flex items-center gap-2 text-white/90 text-sm">
+                                                            <Clock size={14} />
+                                                            <span>{plan.duration}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        {isCityDropdownOpen && (
-                                            <>
-                                                <div
-                                                    className="fixed inset-0 z-40"
-                                                    onClick={() => setIsCityDropdownOpen(false)}
-                                                />
-                                                <div className="absolute z-50 w-full mt-1 bg-white border border-input rounded-md shadow-lg max-h-72 sm:max-h-60 overflow-auto">
-                                                    <div className="p-2">
-                                                        {availableCities.map((city) => (
-                                                            <div
-                                                                key={city.value}
-                                                                className="flex items-center space-x-2 p-2 sm:p-2.5 rounded hover:bg-accent cursor-pointer"
-                                                                onClick={() => handleCityToggle(city.value)}
-                                                            >
-                                                                <Checkbox
-                                                                    checked={selectedCities.includes(city.value)}
-                                                                    onCheckedChange={() => handleCityToggle(city.value)}
-                                                                    className="flex-shrink-0"
-                                                                />
-                                                                <label className="text-sm font-medium cursor-pointer flex-1">
-                                                                    {city.label}
-                                                                </label>
+                                                <div className="p-5">
+                                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
+                                                        {plan.description}
+                                                    </p>
+
+                                                    <div className="space-y-2 mb-4">
+                                                        {plan.highlights.slice(0, 2).map((highlight, idx) => (
+                                                            <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                                                                <div className="w-1.5 h-1.5 bg-maroon-600 rounded-full flex-shrink-0" />
+                                                                <span className="line-clamp-1">{highlight}</span>
                                                             </div>
                                                         ))}
                                                     </div>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
 
-                                    {/* Selected Cities Tags */}
-                                    {selectedCities.length > 0 && (
-                                        <div className="flex flex-wrap gap-2 mt-2">
-                                            {selectedCities.map((cityValue) => {
-                                                const city = availableCities.find(c => c.value === cityValue);
-                                                return (
-                                                    <div
-                                                        key={cityValue}
-                                                        className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 bg-royal-100 text-royal-800 rounded-full text-xs sm:text-sm font-medium"
-                                                    >
-                                                        <span className="truncate max-w-[120px] sm:max-w-none">{city?.label || cityValue}</span>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => removeCity(cityValue)}
-                                                            className="hover:bg-royal-200 rounded-full p-0.5 transition-colors flex-shrink-0"
-                                                            aria-label={`Remove ${city?.label || cityValue}`}
-                                                        >
-                                                            <X className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                                                        </button>
-                                                    </div>
-                                                );
-                                            })}
-                                            <button
-                                                type="button"
-                                                onClick={clearAllCities}
-                                                className="text-xs sm:text-sm text-royal-600 hover:text-royal-800 font-medium underline whitespace-nowrap"
-                                            >
-                                                Clear all
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Travelers, Hotel Preference, and Search Button */}
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    {/* Travelers Selector */}
-                                    <div className="space-y-2 relative" ref={peopleDropdownRef}>
-                                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                                            <Users className="w-4 h-4 text-royal-600" />
-                                            Travelers
-                                        </label>
-                                        <button
-                                            type="button"
-                                            onClick={() => { setIsPeopleDropdownOpen(!isPeopleDropdownOpen); setIsCityDropdownOpen(false); setIsHotelDropdownOpen(false); }}
-                                            className="w-full h-12 px-4 flex items-center justify-between border border-gray-200 rounded-lg bg-white text-sm sm:text-base text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-600/20"
-                                        >
-                                            <span>
-                                                {totalTravelers} {totalTravelers === 1 ? 'Traveler' : 'Travelers'}
-                                            </span>
-                                            <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isPeopleDropdownOpen ? 'rotate-180' : ''}`} />
-                                        </button>
-
-                                        {isPeopleDropdownOpen && (
-                                            <div className="absolute z-30 top-full mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg p-4 space-y-3">
-                                                {/* Adults */}
-                                                <div className="flex items-center justify-between">
-                                                    <div>
-                                                        <p className="text-sm font-medium text-gray-800">Adults</p>
-                                                        <p className="text-xs text-gray-500">15-99 years</p>
-                                                    </div>
-                                                    <div className="flex items-center gap-3">
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setAdults(Math.max(1, adults - 1))}
-                                                            disabled={adults <= 1}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Minus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{adults}</span>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setAdults(Math.min(20, adults + 1))}
-                                                            disabled={adults >= 20}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Plus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                {/* Children */}
-                                                <div className="flex items-center justify-between border-t border-gray-100 pt-3">
-                                                    <div>
-                                                        <p className="text-sm font-medium text-gray-800">Children</p>
-                                                        <p className="text-xs text-gray-500">6-14 years</p>
-                                                    </div>
-                                                    <div className="flex items-center gap-3">
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setChildren(Math.max(0, children - 1))}
-                                                            disabled={children <= 0}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Minus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{children}</span>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setChildren(Math.min(10, children + 1))}
-                                                            disabled={children >= 10}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Plus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                {/* Infants */}
-                                                <div className="flex items-center justify-between border-t border-gray-100 pt-3">
-                                                    <div>
-                                                        <p className="text-sm font-medium text-gray-800">Infants</p>
-                                                        <p className="text-xs text-gray-500">0-5 years</p>
-                                                    </div>
-                                                    <div className="flex items-center gap-3">
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setInfants(Math.max(0, infants - 1))}
-                                                            disabled={infants <= 0}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Minus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                        <span className="w-6 text-center text-sm font-semibold text-gray-800">{infants}</span>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setInfants(Math.min(5, infants + 1))}
-                                                            disabled={infants >= 5}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                                                        >
-                                                            <Plus className="w-3.5 h-3.5" />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* Hotel Preference */}
-                                    <div className="space-y-2 relative" ref={hotelDropdownRef}>
-                                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                                            <Hotel className="w-4 h-4 text-royal-600" />
-                                            Hotel Preference
-                                        </label>
-                                        <button
-                                            type="button"
-                                            onClick={() => { setIsHotelDropdownOpen(!isHotelDropdownOpen); setIsCityDropdownOpen(false); setIsPeopleDropdownOpen(false); }}
-                                            className="w-full h-12 px-4 flex items-center justify-between border border-gray-200 rounded-lg bg-white text-sm sm:text-base text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-600/20"
-                                        >
-                                            <span className={hotelPreference ? "text-gray-700" : "text-gray-400"}>
-                                                {hotelPreference ? hotelOptions.find(h => h.value === hotelPreference)?.label : "Any"}
-                                            </span>
-                                            <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isHotelDropdownOpen ? 'rotate-180' : ''}`} />
-                                        </button>
-
-                                        {isHotelDropdownOpen && (
-                                            <div className="absolute z-30 top-full mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg py-1">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => { setHotelPreference(""); setIsHotelDropdownOpen(false); }}
-                                                    className={`w-full px-4 py-3 text-left text-sm hover:bg-gray-50 transition-colors flex items-center justify-between ${!hotelPreference ? "text-royal-600 font-semibold bg-royal-50" : "text-gray-700"}`}
-                                                >
-                                                    <div>
-                                                        <p className="font-medium">Any</p>
-                                                        <p className="text-xs text-gray-400">No preference</p>
-                                                    </div>
-                                                    {!hotelPreference && <Check className="w-4 h-4 text-royal-600" />}
-                                                </button>
-                                                {hotelOptions.map((option) => (
-                                                    <button
-                                                        key={option.value}
-                                                        type="button"
-                                                        onClick={() => { setHotelPreference(option.value); setIsHotelDropdownOpen(false); }}
-                                                        className={`w-full px-4 py-3 text-left text-sm hover:bg-gray-50 transition-colors flex items-center justify-between ${hotelPreference === option.value ? "text-royal-600 font-semibold bg-royal-50" : "text-gray-700"}`}
-                                                    >
-                                                        <div>
-                                                            <p className="font-medium">{option.label}</p>
-                                                            <p className="text-xs text-gray-400">{option.desc}</p>
+                                                    <div className="flex items-center justify-between mb-4">
+                                                        <div className="flex items-center gap-1">
+                                                            <Star size={16} className="text-amber-500" fill="currentColor" />
+                                                            <span className="text-sm font-medium text-gray-900">{plan.rating}</span>
+                                                            <span className="text-sm text-gray-500">({plan.reviews})</span>
                                                         </div>
-                                                        {hotelPreference === option.value && <Check className="w-4 h-4 text-royal-600" />}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
+                                                        <span className="text-lg font-bold text-maroon-600">{plan.price}</span>
+                                                    </div>
 
-                                    {/* Search Button */}
-                                    <div className="flex items-end">
-                                        <Button
-                                            onClick={() => {
-                                                if (selectedCities.length > 0) {
-                                                    setShowResults(true);
-                                                    setIsCityDropdownOpen(false);
-                                                    setIsPeopleDropdownOpen(false);
-                                                    setIsHotelDropdownOpen(false);
-                                                    setTimeout(() => {
-                                                        const resultsSection = document.getElementById("search-results");
-                                                        if (resultsSection) {
-                                                            resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                                                        }
-                                                    }, 100);
-                                                }
-                                            }}
-                                            className="w-full h-12 bg-royal-800 hover:bg-royal-900 text-white font-semibold text-sm sm:text-base"
-                                            disabled={selectedCities.length === 0}
-                                        >
-                                            <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                                            Search Plans
-                                        </Button>
-                                    </div>
-                                </div>
+                                                    <Button
+                                                        className="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-medium py-2.5"
+                                                    >
+                                                        View Details
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </motion.div>
+                                ))}
                             </div>
-                        </div>
-
-                        {/* Search Results */}
-                        {showResults && selectedCities.length > 0 && (
-                            <div id="search-results" className="mt-8">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    viewport={{ once: true }}
-                                >
-                                    <h3 className="text-2xl font-display font-semibold text-royal-800 mb-6">
-                                        {`Best Plans for ${selectedCities.length === 1
-                                            ? (availableCities.find(c => c.value === selectedCities[0])?.label || selectedCities[0])
-                                            : selectedCities.map(c => availableCities.find(ac => ac.value === c)?.label || c).join(', ')} (${[
-                                            adults > 0 ? `${adults} ${adults === 1 ? 'Adult' : 'Adults'}` : '',
-                                            children > 0 ? `${children} ${children === 1 ? 'Child' : 'Children'}` : '',
-                                            infants > 0 ? `${infants} ${infants === 1 ? 'Infant' : 'Infants'}` : '',
-                                        ].filter(Boolean).join(', ')})`}
-                                    </h3>
-
-                                    {filteredPlans.length > 0 ? (
-                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                            {filteredPlans.map((plan, index) => (
-                                                <motion.div
-                                                    key={plan.id}
-                                                    initial={{ opacity: 0, y: 30 }}
-                                                    whileInView={{ opacity: 1, y: 0 }}
-                                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                                    viewport={{ once: true }}
-                                                    className="group"
-                                                >
-                                                    <Link href={`/plans/${plan.id}`} className="block">
-                                                        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-200">
-                                                            <div className="relative h-48 overflow-hidden">
-                                                                <OptimizedImage
-                                                                    src={plan.image}
-                                                                    alt={plan.title}
-                                                                    className="w-full h-full object-cover-optimized transition-transform duration-700 group-hover:scale-110 image-no-blur"
-                                                                    priority={false}
-                                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                                />
-                                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                                                                <div className="absolute top-4 right-4">
-                                                                    {plan.popular && (
-                                                                        <span className="bg-maroon-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                                                                            Popular
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                                <div className="absolute bottom-4 left-4 right-4">
-                                                                    <h4 className="text-lg font-display font-semibold text-white mb-1 line-clamp-2">
-                                                                        {plan.title}
-                                                                    </h4>
-                                                                    <div className="flex items-center gap-2 text-white/90 text-sm">
-                                                                        <Clock size={14} />
-                                                                        <span>{plan.duration}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="p-5">
-                                                                <p className="text-gray-600 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
-                                                                    {plan.description}
-                                                                </p>
-
-                                                                <div className="space-y-2 mb-4">
-                                                                    {plan.highlights.slice(0, 2).map((highlight, idx) => (
-                                                                        <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                                                                            <div className="w-1.5 h-1.5 bg-maroon-600 rounded-full flex-shrink-0" />
-                                                                            <span className="line-clamp-1">{highlight}</span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-
-                                                                <div className="flex items-center justify-between mb-4">
-                                                                    <div className="flex items-center gap-1">
-                                                                        <Star size={16} className="text-amber-500" fill="currentColor" />
-                                                                        <span className="text-sm font-medium text-gray-900">{plan.rating}</span>
-                                                                        <span className="text-sm text-gray-500">({plan.reviews})</span>
-                                                                    </div>
-                                                                    <span className="text-lg font-bold text-maroon-600">{plan.price}</span>
-                                                                </div>
-
-                                                                <Button
-                                                                    className="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-medium py-2.5"
-                                                                >
-                                                                    View Details
-                                                                </Button>
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    ) : (
-                                        <div className="bg-white rounded-2xl shadow-md p-8 text-center border border-gray-200">
-                                            <p className="text-gray-600 mb-4">
-                                                No plans found for the selected criteria. Please try a different city or contact us for a custom itinerary.
-                                            </p>
-                                            <Button
-                                                onClick={() => window.open('https://wa.me/918979810991?text=Hi, I would like to create a custom itinerary. Please help me plan my perfect trip!', '_blank')}
-                                                className="bg-royal-800 hover:bg-royal-900 text-white"
-                                            >
-                                                <MessageCircle className="mr-2" size={18} />
-                                                Request Custom Itinerary
-                                            </Button>
-                                        </div>
-                                    )}
-
-                                    {filteredPlans.length > 0 && (
-                                        <div className="text-center mt-8">
-                                            <Button
-                                                size="lg"
-                                                className="bg-royal-800 hover:bg-royal-900 text-white px-8 py-3"
-                                                asChild
-                                            >
-                                                <Link href="/plans">
-                                                    View All Tour Packages
-                                                </Link>
-                                            </Button>
-                                        </div>
-                                    )}
-                                </motion.div>
+                        ) : (
+                            <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-md p-8 text-center border border-gray-200">
+                                <p className="text-gray-600 mb-5">
+                                    No ready-made package matches that exact combination — but we&apos;ll happily craft a custom itinerary for you.
+                                </p>
+                                <WhatsAppCTA
+                                    variant="button"
+                                    message={buildWhatsAppMessage(planner)}
+                                    buttonLabel="Request a Custom Itinerary"
+                                />
                             </div>
                         )}
-                    </motion.div>
+
+                        <div className="text-center mt-10">
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="border-2 border-maroon-600 text-maroon-600 hover:bg-maroon-600 hover:text-white px-8 py-3"
+                                asChild
+                            >
+                                <Link href="/plans">View All Tour Packages</Link>
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -805,30 +397,30 @@ const HomeClient = () => {
                             <div className="space-y-6">
                                 <div className="flex gap-4">
                                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <Users className="text-[#bf9b30]" size={24} />
+                                        <Users className="text-gold-500" size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-medium mb-2 text-[#bf9b30]">Expert Local Guides</h3>
+                                        <h3 className="text-xl font-medium mb-2 text-gold-500">Expert Local Guides</h3>
                                         <p className="text-white/70">Our government-approved guides are storytellers who bring history to life.</p>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-4">
                                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <ShieldCheck className="text-[#bf9b30]" size={24} />
+                                        <ShieldCheck className="text-gold-500" size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-medium mb-2 text-[#bf9b30]">Safety & Comfort</h3>
+                                        <h3 className="text-xl font-medium mb-2 text-gold-500">Safety & Comfort</h3>
                                         <p className="text-white/70">Background-verified drivers and premium vehicles for a safe, relaxed journey.</p>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-4">
                                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <Star className="text-[#bf9b30]" size={24} />
+                                        <Star className="text-gold-500" size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-medium mb-2 text-[#bf9b30]">Top-Rated Service</h3>
+                                        <h3 className="text-xl font-medium mb-2 text-gold-500">Top-Rated Service</h3>
                                         <p className="text-white/70">Consistent 5-star reviews from travelers worldwide. We treat you like family.</p>
                                     </div>
                                 </div>
@@ -857,6 +449,8 @@ const HomeClient = () => {
             </section>
 
             <Testimonials />
+
+            <WhatsAppCTA />
 
             {/* CTA Section */}
             <section className="py-16 md:py-24 bg-cover bg-center relative" style={{ backgroundImage: 'url("/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg")' }}>
