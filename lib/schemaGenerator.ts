@@ -156,6 +156,22 @@ export const generateTourPackageSchema = (
   tour: TourPackage,
   organization: { name: string; url: string }
 ) => {
+  // Strip currency symbols/words to a bare number. Quote-only tours
+  // ("Custom Quote") have no numeric price — emitting price:"" is INVALID
+  // schema.org and trips Google's Rich Results, so we omit price entirely and
+  // only advertise price/currency when a real number exists.
+  const numericPrice = tour.price.replace(/[^0-9.]/g, '');
+  const offer: any = {
+    "@type": "Offer",
+    "name": tour.name,
+    "availability": "https://schema.org/InStock",
+    "validFrom": new Date().toISOString().split('T')[0]
+  };
+  if (numericPrice) {
+    offer.price = numericPrice;
+    offer.priceCurrency = tour.currency || "USD";
+  }
+
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
@@ -168,14 +184,7 @@ export const generateTourPackageSchema = (
       "name": organization.name,
       "url": organization.url
     },
-    "offers": {
-      "@type": "Offer",
-      "name": tour.name,
-      "price": tour.price.replace(/[^0-9.]/g, ''),
-      "priceCurrency": tour.currency || "USD",
-      "availability": "https://schema.org/InStock",
-      "validFrom": new Date().toISOString().split('T')[0]
-    }
+    "offers": offer
   };
 
   if (tour.url) {
