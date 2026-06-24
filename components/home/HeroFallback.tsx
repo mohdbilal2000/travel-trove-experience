@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 
-const heroSlides = [
+export const heroSlides = [
   {
     id: 1,
     title: "Discover the Golden Triangle",
