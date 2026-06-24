@@ -138,8 +138,26 @@ const testimonials = [
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const itemsPerView = 3; // Show 3 testimonials at a time
+  // Items per view must match the card widths (w-full / md:w-1/2 / lg:w-1/3),
+  // otherwise the transform step is wrong and the mobile carousel misaligns.
+  const [itemsPerView, setItemsPerView] = useState(1);
+
+  useEffect(() => {
+    const computeItemsPerView = () => {
+      const w = window.innerWidth;
+      setItemsPerView(w >= 1024 ? 3 : w >= 768 ? 2 : 1);
+    };
+    computeItemsPerView();
+    window.addEventListener("resize", computeItemsPerView);
+    return () => window.removeEventListener("resize", computeItemsPerView);
+  }, []);
+
   const maxIndex = Math.max(0, testimonials.length - itemsPerView);
+
+  // Clamp the active index if the viewport (and thus maxIndex) shrinks.
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
 
   // Auto-play functionality
   useEffect(() => {
@@ -186,7 +204,7 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300 -ml-4"
+            className="hidden sm:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300 -ml-4"
             aria-label="Previous testimonials"
           >
             <ChevronLeft size={20} className="text-gray-600" />
@@ -194,7 +212,7 @@ const Testimonials = () => {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300 -mr-4"
+            className="hidden sm:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg border border-gray-200 hover:bg-gray-50 transition-all duration-300 -mr-4"
             aria-label="Next testimonials"
           >
             <ChevronRight size={20} className="text-gray-600" />

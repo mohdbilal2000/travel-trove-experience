@@ -184,7 +184,7 @@ export default function ReviewsPage() {
                         <div className="space-y-4">
                             {ratingBreakdown.map((item) => (
                                 <div key={item.stars} className="flex items-center gap-4">
-                                    <div className="flex items-center gap-1 w-20 shrink-0">
+                                    <div className="flex items-center gap-1 w-16 sm:w-20 shrink-0">
                                         <span className="text-sm font-semibold text-gray-700">{item.stars}</span>
                                         <Star className="w-4 h-4 text-gold-500 fill-gold-500" />
                                     </div>

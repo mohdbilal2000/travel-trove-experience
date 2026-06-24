@@ -65,7 +65,7 @@ export default function BestTime() {
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white rounded-3xl border border-gray-100 p-8 md:p-12 shadow-sm">
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
+                        <p className="text-[11px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
                         <h2 className="text-2xl font-display font-bold mb-6 text-gray-900">The headline answer</h2>
                         <p className="text-gray-700 font-light leading-relaxed"><strong className="text-gray-900">November and February</strong> are the best months &mdash; cool, dry, clear and manageable crowds. October and March are close seconds. Avoid <strong className="text-gray-900">May&ndash;June</strong> for heat and watch out for fog in <strong className="text-gray-900">late December and January</strong>. At any time of year, <strong className="text-gray-900">sunrise</strong> is the prime hour.</p>
                     </div>
@@ -80,7 +80,7 @@ export default function BestTime() {
                             <div key={mo.m} className="bg-white border border-gray-100 rounded-2xl p-6">
                                 <div className="flex items-center justify-between mb-3">
                                     <h3 className="text-xl font-display font-bold text-gray-900">{mo.m}</h3>
-                                    <Badge className="bg-maroon-600/10 text-maroon-600 border-none text-[10px] font-black uppercase tracking-widest">{mo.verdict}</Badge>
+                                    <Badge className="bg-maroon-600/10 text-maroon-600 border-none text-[11px] sm:text-[10px] font-black uppercase tracking-widest">{mo.verdict}</Badge>
                                 </div>
                                 <p className="text-gray-500 font-light leading-relaxed">{mo.notes}</p>
                             </div>

@@ -46,7 +46,7 @@ export default function AboutPage() {
             {/* Visual Narrative Hero */}
             <section className="relative pt-44 pb-32 overflow-hidden bg-ivory-100">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -76,7 +76,7 @@ export default function AboutPage() {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-gold-500 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center p-6 text-white -rotate-6">
+                            <div className="hidden sm:flex absolute -bottom-10 -left-10 w-40 h-40 lg:w-48 lg:h-48 bg-gold-500 rounded-3xl shadow-2xl flex-col items-center justify-center text-center p-6 text-white -rotate-6">
                                 <span className="text-4xl font-black mb-1">12+</span>
                                 <span className="text-xs font-bold uppercase tracking-widest leading-none">Years of <br />Guiding</span>
                             </div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
             {/* Core Narrative */}
             <section className="py-16 md:py-24 lg:py-40">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
                         <div className="lg:col-span-5">
                             <h2 className="text-sm font-black uppercase text-maroon-600 tracking-[0.3em] mb-8">Our DNA</h2>
                             <h3 className="text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight">

@@ -220,7 +220,7 @@ Please provide availability and pricing details.`;
     return (
         <main className="min-h-screen bg-ivory-100">
             {/* Premium Hero */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative h-[55vh] sm:h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0">
                     <OptimizedImage
                         src={currentCityData.image}
@@ -325,7 +325,7 @@ Please provide availability and pricing details.`;
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                         {/* Left: Form Steps */}
-                        <div className="lg:col-span-8 space-y-12 md:space-y-24">
+                        <div className="lg:col-span-8 space-y-8 md:space-y-16 lg:space-y-24">
 
                             {/* Step 1: Date */}
                             <motion.div

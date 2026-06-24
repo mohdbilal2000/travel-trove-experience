@@ -71,7 +71,7 @@ export default function ContactPage() {
             <section className="relative pt-44 pb-32 overflow-hidden bg-white">
                 <div className="container mx-auto px-4 text-center">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[9px] font-black">
+                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none mb-8 px-6 py-2 uppercase tracking-[0.3em] text-[11px] sm:text-[9px] font-black">
                             Concierge Access
                         </Badge>
                         <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
@@ -84,9 +84,9 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="pb-40">
+            <section className="pb-20 md:pb-40">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-start">
 
                         {/* Info Column */}
                         <div className="lg:col-span-5 space-y-12">
@@ -165,7 +165,7 @@ export default function ContactPage() {
 
                                 <FormProvider {...form}>
                                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                                             <FormField control={form.control} name="name" render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Full Name</FormLabel>
@@ -186,7 +186,7 @@ export default function ContactPage() {
                                             )} />
                                         </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                                             <FormField control={form.control} name="phone" render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">Phone / WhatsApp</FormLabel>
@@ -217,7 +217,7 @@ export default function ContactPage() {
                                             )} />
                                         </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                                             <FormField control={form.control} name="city" render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-xs font-black uppercase tracking-widest text-gray-500">City</FormLabel>

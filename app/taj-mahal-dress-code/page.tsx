@@ -51,7 +51,7 @@ export default function DressCode() {
             <section className="py-12 bg-ivory-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="bg-white rounded-3xl border border-gray-100 p-8 md:p-12 shadow-sm">
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
+                        <p className="text-[11px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-maroon-600 mb-4">Quick Answer</p>
                         <h2 className="text-2xl font-display font-bold mb-6 text-gray-900">In short</h2>
                         <p className="text-gray-700 font-light leading-relaxed">No strict dress code, but cover shoulders and knees out of respect. Travel like airport security &mdash; only phone, camera, water, ID. Shoe covers are provided for the main marble platform.</p>
                     </div>
