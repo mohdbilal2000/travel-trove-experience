@@ -224,6 +224,14 @@ export default {
 						transform: 'scale(1)'
 					}
 				},
+				'ken-burns': {
+					'0%': {
+						transform: 'scale(1.05)'
+					},
+					'100%': {
+						transform: 'scale(1.18)'
+					}
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -233,6 +241,7 @@ export default {
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
 				'slide-in-left': 'slide-in-left 0.5s ease-out',
 				'zoom-in': 'zoom-in 0.7s ease-out',
+				'ken-burns': 'ken-burns 28s ease-in-out infinite alternate',
 			}
 		}
 	},

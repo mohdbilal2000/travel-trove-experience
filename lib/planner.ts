@@ -3,7 +3,7 @@
 
 import { allPlans } from "@/data/travelPlans";
 import type { TravelPlan } from "@/data/types/travelPlanTypes";
-import { cityLabel, goldenTrianglePreset, transportOptions } from "@/data/plannerOptions";
+import { cityLabel, featuredRoutes, goldenTrianglePreset, transportOptions } from "@/data/plannerOptions";
 
 export interface PlannerState {
   adults: number;
@@ -28,6 +28,14 @@ const byPopularityThenRating = (a: TravelPlan, b: TravelPlan): number => {
 export const isGoldenTriangle = (cities: string[]): boolean =>
   cities.length === goldenTrianglePreset.length &&
   goldenTrianglePreset.every((c) => cities.includes(c));
+
+/** Name of the curated route exactly matching the selection, else null. */
+export const matchRouteName = (cities: string[]): string | null => {
+  if (cities.length === 0) return null;
+  const key = [...cities].sort().join("|");
+  const match = featuredRoutes.find((r) => [...r.cities].sort().join("|") === key);
+  return match ? match.name : null;
+};
 
 /**
  * Filter plans by the planner's selected cities.
@@ -84,15 +92,15 @@ export const buildSummaryLines = (state: PlannerState): string[] => {
   if (state.days) lines.push(`Duration: ${state.days} Days`);
   if (state.cities.length > 0) {
     const cityNames = state.cities.map(cityLabel).join(", ");
-    const prefix = isGoldenTriangle(state.cities) ? "Golden Triangle — " : "";
-    lines.push(`Cities: ${prefix}${cityNames}`);
+    const routeName = matchRouteName(state.cities);
+    lines.push(routeName ? `Route: ${routeName} (${cityNames})` : `Cities: ${cityNames}`);
   }
   if (state.transport) lines.push(`Transport: ${transportLabel(state.transport)}`);
   return lines;
 };
 
 const tripLabel = (cities: string[]): string =>
-  isGoldenTriangle(cities) ? "Golden Triangle" : "custom India";
+  matchRouteName(cities) ?? (isGoldenTriangle(cities) ? "Golden Triangle" : "custom India");
 
 /** Full WhatsApp message body (decoded — caller encodes). */
 export const buildWhatsAppMessage = (state: PlannerState): string => {

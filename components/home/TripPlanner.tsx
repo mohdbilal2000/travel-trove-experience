@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users, Minus, Plus, CalendarDays, MapPin, Car, Truck, Bus,
-  Check, Sparkles, Mail, ArrowRight,
+  Check, Sparkles, Mail, ArrowRight, ChevronLeft, ChevronRight, ShieldCheck,
 } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
@@ -13,13 +14,18 @@ import {
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
-  availableCities, transportOptions, dayPresets, goldenTrianglePreset,
+  availableCities, transportOptions, dayPresets, featuredRoutes, type FeaturedRoute,
 } from "@/data/plannerOptions";
 import {
-  type PlannerState, buildSummaryLines, buildWhatsAppUrl, buildMailto, isGoldenTriangle,
+  type PlannerState, buildSummaryLines, buildWhatsAppUrl, buildMailto, matchRouteName,
 } from "@/lib/planner";
+import OptionCard from "@/components/home/planner/OptionCard";
+import ProgressRail from "@/components/home/planner/ProgressRail";
 
 const transportIcons = { Car, Truck, Bus } as const;
+
+const STEP_LABELS = ["Route", "Days", "Group", "Ride"];
+const SUMMARY_STEP = 4;
 
 interface TripPlannerProps {
   state: PlannerState;
@@ -27,15 +33,14 @@ interface TripPlannerProps {
   onBrowseTours: () => void;
 }
 
-const StepBadge = ({ n, label, icon: Icon }: { n: number; label: string; icon: React.ElementType }) => (
-  <div className="flex items-center gap-2.5 mb-3">
-    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-maroon-600 text-white text-sm font-bold font-sans shadow-sm">
-      {n}
-    </span>
-    <span className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-royal-800">
-      <Icon className="w-4 h-4 text-maroon-600" />
-      {label}
-    </span>
+const StepHeading = ({
+  icon: Icon, title, sub,
+}: { icon: React.ElementType; title: string; sub?: string }) => (
+  <div className="mb-4">
+    <h4 className="flex items-center gap-2 font-display text-xl font-semibold text-royal-800">
+      <Icon className="h-5 w-5 text-maroon-600" /> {title}
+    </h4>
+    {sub && <p className="mt-0.5 text-sm text-gray-500">{sub}</p>}
   </div>
 );
 
@@ -54,28 +59,72 @@ const Counter = ({
         type="button"
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={value <= min}
-        className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-maroon-600/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
+        className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:border-maroon-600/40 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
         aria-label={`Decrease ${label}`}
       >
-        <Minus className="w-3.5 h-3.5" />
+        <Minus className="h-3.5 w-3.5" />
       </button>
-      <span className="w-6 text-center text-base font-bold text-gray-900 tabular-nums" aria-live="polite">{value}</span>
+      <span className="w-6 text-center text-base font-bold tabular-nums text-gray-900">{value}</span>
       <button
         type="button"
         onClick={() => onChange(Math.min(max, value + 1))}
         disabled={value >= max}
-        className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-maroon-600/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
+        className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:border-maroon-600/40 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
         aria-label={`Increase ${label}`}
       >
-        <Plus className="w-3.5 h-3.5" />
+        <Plus className="h-3.5 w-3.5" />
       </button>
     </div>
   </div>
 );
 
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir >= 0 ? 36 : -36, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir >= 0 ? -36 : 36, opacity: 0 }),
+};
+
 const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
   const { toast } = useToast();
+  const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [maxReached, setMaxReached] = useState(0);
+  const [buildYourOwn, setBuildYourOwn] = useState(false);
+
+  useEffect(() => {
+    setMaxReached((m) => Math.max(m, step));
+  }, [step]);
+
   const totalTravelers = state.adults + state.children;
+  const isCustomDays = state.days !== null && state.days > 10;
+  const summaryLines = useMemo(() => buildSummaryLines(state), [state]);
+  const selectedRouteName = matchRouteName(state.cities);
+
+  const selectedTransport = transportOptions.find((t) => t.value === state.transport);
+  const overCapacity = !!selectedTransport && totalTravelers > selectedTransport.capacity;
+
+  const goTo = (next: number) => {
+    setDirection(next >= step ? 1 : -1);
+    setStep(next);
+  };
+  const advanceSoon = (to: number) => {
+    window.setTimeout(() => {
+      setDirection(1);
+      setStep(to);
+    }, 230);
+  };
+
+  const canAdvance = (s: number): boolean => {
+    if (s === 0) return state.cities.length > 0;
+    if (s === 1) return state.days !== null;
+    return true;
+  };
+
+  const pickRoute = (r: FeaturedRoute) => {
+    onChange({ cities: [...r.cities], days: r.suggestedDays });
+    setBuildYourOwn(false);
+    advanceSoon(1);
+  };
 
   const toggleCity = (city: string) => {
     const next = state.cities.includes(city)
@@ -84,254 +133,295 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
     onChange({ cities: next });
   };
 
-  const toggleGoldenTriangle = () => {
-    onChange({ cities: isGoldenTriangle(state.cities) ? [] : [...goldenTrianglePreset] });
+  const pickDays = (d: number, advance = true) => {
+    onChange({ days: d });
+    if (advance) advanceSoon(2);
   };
-
-  const isValid = state.cities.length > 0 && state.days !== null;
-  const summaryLines = useMemo(() => buildSummaryLines(state), [state]);
-
-  // Soft transport-capacity hint (no hard block).
-  const selectedTransport = transportOptions.find((t) => t.value === state.transport);
-  const overCapacity = !!selectedTransport && totalTravelers > selectedTransport.capacity;
 
   const handleWhatsApp = () => {
     window.open(buildWhatsAppUrl(state), "_blank");
     toast({ title: "Opening WhatsApp", description: "Your trip details are pre-filled — just hit send!" });
   };
 
-  return (
-    <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/40 overflow-hidden text-left">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-maroon-600 to-maroon-700 px-5 sm:px-7 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-white">
-          <Sparkles className="w-5 h-5 text-gold-500" />
-          <h3 className="font-display text-xl sm:text-2xl font-semibold">Plan Your Trip</h3>
-        </div>
-        <span className="hidden sm:inline text-white/80 text-xs uppercase tracking-widest">Free · 2-min quote</span>
-      </div>
-
-      <div className="p-5 sm:p-7 space-y-6">
-        {/* 1. Group size */}
-        <section>
-          <StepBadge n={1} label="Group Size" icon={Users} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <Counter label="Adults" sub="15+ years" value={state.adults} min={1} max={20}
-              onChange={(v) => onChange({ adults: v })} />
-            <Counter label="Children" sub="0–14 years" value={state.children} min={0} max={10}
-              onChange={(v) => onChange({ children: v })} />
-          </div>
-        </section>
-
-        {/* 2. Days */}
-        <section>
-          <StepBadge n={2} label="Duration" icon={CalendarDays} />
-          <div className="flex flex-wrap gap-2">
-            {dayPresets.map((d) => {
-              const active = state.days === d;
-              return (
-                <button
-                  key={d}
-                  type="button"
-                  onClick={() => onChange({ days: d })}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all ${
-                    active
-                      ? "bg-maroon-600 text-white border-maroon-600 shadow-md"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-maroon-600/50 hover:bg-maroon-50/40"
-                  }`}
-                  aria-pressed={active}
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return (
+          <div>
+            <StepHeading icon={MapPin} title="Where to?" sub="Tap a popular route, or build your own." />
+            <div className="grid grid-cols-2 gap-2.5">
+              {featuredRoutes.map((r) => (
+                <OptionCard
+                  key={r.id}
+                  selected={selectedRouteName === r.name}
+                  onClick={() => pickRoute(r)}
+                  ariaLabel={r.name}
+                  className="overflow-hidden !p-0"
                 >
-                  {d} Days
-                </button>
-              );
-            })}
-            {/* 10+ custom stepper */}
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all ${
-              state.days !== null && state.days > 10
-                ? "bg-maroon-50/60 border-maroon-600/50"
-                : "bg-white border-gray-200"
-            }`}>
-              <span className="text-sm font-semibold text-gray-700">10+</span>
-              <button
-                type="button"
-                onClick={() => onChange({ days: Math.max(11, (state.days ?? 10) + 1) })}
-                className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-                aria-label="Add a day beyond 10"
-              >
-                <Plus className="w-3 h-3" />
-              </button>
-              {state.days !== null && state.days > 10 && (
-                <>
-                  <span className="text-sm font-bold text-maroon-700 tabular-nums">{state.days}</span>
-                  <button
-                    type="button"
-                    onClick={() => onChange({ days: Math.max(11, (state.days as number) - 1) })}
-                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-                    aria-label="Remove a day"
-                  >
-                    <Minus className="w-3 h-3" />
-                  </button>
-                </>
-              )}
+                  <div className="relative h-[68px] w-full">
+                    <Image src={r.thumbnail} alt="" fill sizes="220px" className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                    <p className="absolute inset-x-2.5 bottom-1.5 text-sm font-bold leading-tight text-white">{r.name}</p>
+                  </div>
+                  <div className="px-2.5 py-2">
+                    <p className="text-[11px] leading-snug text-gray-500">{r.tagline}</p>
+                    <p className="mt-0.5 text-[11px] font-semibold text-maroon-600">~{r.suggestedDays} days</p>
+                  </div>
+                </OptionCard>
+              ))}
             </div>
-          </div>
-        </section>
-
-        {/* 3. Cities */}
-        <section>
-          <StepBadge n={3} label="Destinations" icon={MapPin} />
-          <button
-            type="button"
-            onClick={toggleGoldenTriangle}
-            className={`w-full mb-3 flex items-center justify-between px-4 py-3 rounded-xl border-2 transition-all ${
-              isGoldenTriangle(state.cities)
-                ? "border-gold-500 bg-gradient-to-r from-gold-500/10 to-amber-50"
-                : "border-dashed border-gold-500/50 bg-gold-500/5 hover:bg-gold-500/10"
-            }`}
-            aria-pressed={isGoldenTriangle(state.cities)}
-          >
-            <span className="flex items-center gap-2 text-sm font-bold text-royal-800">
-              <Sparkles className="w-4 h-4 text-gold-500" />
-              Golden Triangle
-              <span className="font-normal text-gray-500">Delhi · Agra · Jaipur</span>
-            </span>
-            {isGoldenTriangle(state.cities) && <Check className="w-5 h-5 text-gold-600" />}
-          </button>
-          <div className="flex flex-wrap gap-2">
-            {availableCities.map((city) => {
-              const active = state.cities.includes(city.value);
-              return (
-                <button
-                  key={city.value}
-                  type="button"
-                  onClick={() => toggleCity(city.value)}
-                  className={`px-3.5 py-2 rounded-full text-sm font-medium border transition-all ${
-                    active
-                      ? "bg-royal-800 text-white border-royal-800 shadow-sm"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-royal-400 hover:bg-royal-50/50"
-                  }`}
-                  aria-pressed={active}
-                >
-                  {city.label}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* 4. Transport */}
-        <section>
-          <StepBadge n={4} label="Transport" icon={Car} />
-          <TooltipProvider delayDuration={150}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {transportOptions.map((t) => {
-                const Icon = transportIcons[t.icon];
-                const active = state.transport === t.value;
-                const tooSmall = totalTravelers > t.capacity;
-                const btn = (
-                  <button
-                    type="button"
-                    onClick={() => onChange({ transport: active ? "" : t.value })}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all ${
-                      active
-                        ? "border-maroon-600 bg-maroon-50/50 shadow-sm"
-                        : "border-gray-200 bg-white hover:border-maroon-600/40"
-                    }`}
-                    aria-pressed={active}
-                  >
-                    <Icon className={`w-5 h-5 flex-shrink-0 ${active ? "text-maroon-600" : "text-gray-500"}`} />
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold text-gray-800">{t.label}</p>
-                      <p className="text-xs text-gray-500 truncate">{t.desc}</p>
-                    </div>
-                    {active && <Check className="w-4 h-4 text-maroon-600 ml-auto flex-shrink-0" />}
-                  </button>
-                );
-                return tooSmall ? (
-                  <Tooltip key={t.value}>
-                    <TooltipTrigger asChild>{btn}</TooltipTrigger>
-                    <TooltipContent>For {totalTravelers} guests a larger vehicle may suit better.</TooltipContent>
-                  </Tooltip>
-                ) : (
-                  <div key={t.value}>{btn}</div>
-                );
-              })}
-            </div>
-          </TooltipProvider>
-          {overCapacity && (
-            <p className="mt-2 text-xs text-amber-700">
-              Heads up: {totalTravelers} guests may need a larger vehicle — we&apos;ll confirm options.
-            </p>
-          )}
-        </section>
-
-        {/* Summary + "boom" CTAs */}
-        <div className="border-t border-gray-100 pt-5">
-          <AnimatePresence>
-            {isValid && (
-              <motion.div
-                initial={{ opacity: 0, y: 12, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 8 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="mb-4 rounded-2xl bg-gradient-to-br from-royal-50 to-amber-50/60 border border-gold-500/20 p-4"
-              >
-                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-maroon-600 mb-2">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-500" /> Your Trip
-                </p>
-                <ul className="space-y-1">
-                  {summaryLines.map((line) => (
-                    <li key={line} className="flex items-start gap-2 text-sm text-royal-800">
-                      <Check className="w-4 h-4 text-jade-600 mt-0.5 flex-shrink-0" />
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {!isValid && (
-            <p className="text-center text-xs text-gray-500 mb-3">
-              Pick at least one destination and a duration to get your instant quote.
-            </p>
-          )}
-
-          <div className="flex flex-col gap-2.5">
-            <Button
-              onClick={handleWhatsApp}
-              disabled={!isValid}
-              className="w-full h-14 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0fa873] text-white font-bold text-base rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+            <button
+              type="button"
+              onClick={() => setBuildYourOwn((v) => !v)}
+              className="mx-auto mt-3 flex items-center gap-1.5 text-xs font-semibold text-royal-600 transition-colors hover:text-maroon-600"
             >
-              <WhatsAppIcon className="w-5 h-5 mr-2" />
-              Send on WhatsApp
-            </Button>
-            <div className="flex gap-2.5">
-              <Button
-                asChild={isValid}
-                disabled={!isValid}
-                variant="outline"
-                className="flex-1 h-11 border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold rounded-xl disabled:opacity-50"
+              <span className="h-px w-6 bg-gray-300" />
+              {buildYourOwn ? "Hide cities" : "or build your own"}
+              <span className="h-px w-6 bg-gray-300" />
+            </button>
+            <AnimatePresence initial={false}>
+              {buildYourOwn && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex flex-wrap gap-2 pt-3">
+                    {availableCities.map((city) => {
+                      const active = state.cities.includes(city.value);
+                      return (
+                        <button
+                          key={city.value}
+                          type="button"
+                          onClick={() => toggleCity(city.value)}
+                          aria-pressed={active}
+                          className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all ${
+                            active
+                              ? "border-royal-800 bg-royal-800 text-white shadow-sm"
+                              : "border-gray-200 bg-white text-gray-700 hover:border-royal-400 hover:bg-royal-50/50"
+                          }`}
+                        >
+                          {city.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+
+      case 1:
+        return (
+          <div>
+            <StepHeading icon={CalendarDays} title="How many days?" sub="A rough idea is fine — we'll tailor it." />
+            <div className="grid grid-cols-3 gap-2.5">
+              {dayPresets.map((d) => (
+                <OptionCard
+                  key={d}
+                  selected={state.days === d}
+                  onClick={() => pickDays(d)}
+                  ariaLabel={`${d} days`}
+                  className="grid place-items-center py-4"
+                >
+                  <span className="text-2xl font-bold leading-none text-royal-800">{d}</span>
+                  <span className="mt-1 text-[11px] font-medium text-gray-500">days</span>
+                </OptionCard>
+              ))}
+              <OptionCard
+                selected={isCustomDays}
+                onClick={() => pickDays(isCustomDays ? (state.days as number) : 12, false)}
+                ariaLabel="More than 10 days"
+                className="grid place-items-center py-4"
               >
-                {isValid ? (
+                <span className="text-2xl font-bold leading-none text-royal-800">{isCustomDays ? state.days : "10+"}</span>
+                <span className="mt-1 text-[11px] font-medium text-gray-500">days</span>
+              </OptionCard>
+            </div>
+            {isCustomDays && (
+              <div className="mt-3 flex items-center justify-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => onChange({ days: Math.max(11, (state.days as number) - 1) })}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50"
+                  aria-label="Remove a day"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span className="text-sm font-bold tabular-nums text-maroon-700">{state.days} days</span>
+                <button
+                  type="button"
+                  onClick={() => onChange({ days: (state.days as number) + 1 })}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50"
+                  aria-label="Add a day"
+                >
+                  <Plus className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+          </div>
+        );
+
+      case 2:
+        return (
+          <div>
+            <StepHeading icon={Users} title="Who's coming?" sub="We'll size everything to your group." />
+            <div className="space-y-3">
+              <Counter label="Adults" sub="15+ years" value={state.adults} min={1} max={20}
+                onChange={(v) => onChange({ adults: v })} />
+              <Counter label="Children" sub="0–14 years" value={state.children} min={0} max={10}
+                onChange={(v) => onChange({ children: v })} />
+            </div>
+            <p className="mt-3 text-center text-xs text-gray-500" aria-live="polite">
+              {totalTravelers} {totalTravelers === 1 ? "traveller" : "travellers"} total
+            </p>
+          </div>
+        );
+
+      case 3:
+        return (
+          <div>
+            <StepHeading icon={Car} title="Your ride" sub="Optional — we'll recommend the best fit." />
+            <TooltipProvider delayDuration={150}>
+              <div className="grid grid-cols-2 gap-2.5">
+                {transportOptions.map((t) => {
+                  const Icon = transportIcons[t.icon];
+                  const active = state.transport === t.value;
+                  const tooSmall = totalTravelers > t.capacity;
+                  const card = (
+                    <OptionCard
+                      selected={active}
+                      onClick={() => onChange({ transport: active ? "" : t.value })}
+                      ariaLabel={t.label}
+                      className="p-3"
+                    >
+                      <Icon className={`mb-1.5 h-5 w-5 ${active ? "text-maroon-600" : "text-gray-500"}`} />
+                      <p className="text-sm font-semibold text-gray-800">{t.label}</p>
+                      <p className="text-[11px] text-gray-500">{t.desc}</p>
+                    </OptionCard>
+                  );
+                  return tooSmall ? (
+                    <Tooltip key={t.value}>
+                      <TooltipTrigger asChild>{card}</TooltipTrigger>
+                      <TooltipContent>For {totalTravelers} guests a larger vehicle may suit better.</TooltipContent>
+                    </Tooltip>
+                  ) : (
+                    <div key={t.value}>{card}</div>
+                  );
+                })}
+              </div>
+            </TooltipProvider>
+            {overCapacity && (
+              <p className="mt-2 text-xs text-amber-700">
+                Heads up: {totalTravelers} guests may need a larger vehicle — we&apos;ll confirm options.
+              </p>
+            )}
+          </div>
+        );
+
+      default:
+        return (
+          <div>
+            <StepHeading icon={Sparkles} title="Your trip" sub="Looks great — send it over for a quick, honest quote." />
+            <div className="rounded-2xl border border-gold-500/20 bg-gradient-to-br from-royal-50 to-amber-50/60 p-4">
+              <ul className="space-y-1.5">
+                {summaryLines.map((line) => (
+                  <li key={line} className="flex items-start gap-2 text-sm text-royal-800">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-jade-600" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="mt-3 flex items-start gap-1.5 text-xs text-gray-500">
+              <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-jade-600" />
+              No fixed prices — we tailor every trip to you. Free, no-obligation quote.
+            </p>
+            <div className="mt-4 flex flex-col gap-2.5">
+              <Button
+                onClick={handleWhatsApp}
+                className="h-14 w-full rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-base font-bold text-white shadow-lg transition-all hover:from-[#20BA5A] hover:to-[#0fa873] hover:shadow-xl"
+              >
+                <WhatsAppIcon className="mr-2 h-5 w-5" />
+                Send on WhatsApp
+              </Button>
+              <div className="flex gap-2.5">
+                <Button asChild variant="outline"
+                  className="h-11 flex-1 rounded-xl border-gray-300 font-semibold text-gray-700 hover:bg-gray-50">
                   <a href={buildMailto(state)}>
-                    <Mail className="w-4 h-4 mr-2" /> Email instead
+                    <Mail className="mr-2 h-4 w-4" /> Email
                   </a>
-                ) : (
-                  <span><Mail className="w-4 h-4 mr-2 inline" /> Email instead</span>
-                )}
-              </Button>
-              <Button
-                onClick={onBrowseTours}
-                variant="ghost"
-                className="flex-1 h-11 text-maroon-600 hover:bg-maroon-50 font-semibold rounded-xl"
-              >
-                Browse tours <ArrowRight className="w-4 h-4 ml-1.5" />
-              </Button>
+                </Button>
+                <Button onClick={onBrowseTours} variant="ghost"
+                  className="h-11 flex-1 rounded-xl font-semibold text-maroon-600 hover:bg-maroon-50">
+                  Browse tours <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
+        );
+    }
+  };
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-white/40 bg-white/95 text-left shadow-2xl ring-1 ring-black/5 backdrop-blur-xl">
+      {/* Header */}
+      <div className="flex items-center justify-between bg-gradient-to-r from-maroon-600 to-maroon-700 px-5 py-3.5 sm:px-6">
+        <div className="flex items-center gap-2 text-white">
+          <Sparkles className="h-5 w-5 text-gold-500" />
+          <h3 className="font-display text-xl font-semibold sm:text-2xl">Plan Your Trip</h3>
         </div>
+        <span className="hidden text-[11px] uppercase tracking-widest text-white/80 sm:inline">Free · 2-min quote</span>
       </div>
+
+      {/* Progress rail */}
+      <div className="px-5 pb-1 pt-4 sm:px-6">
+        <ProgressRail steps={STEP_LABELS} current={step} maxReached={maxReached} onJump={goTo} />
+      </div>
+
+      {/* Step body (height reserved to minimise layout shift) */}
+      <div className="relative min-h-[300px] px-5 py-5 sm:px-6">
+        <AnimatePresence mode="wait" custom={direction} initial={false}>
+          <motion.div
+            key={step}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.28, ease: "easeOut" }}
+          >
+            {renderStep()}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Footer nav (input steps only) */}
+      {step < SUMMARY_STEP && (
+        <div className="flex items-center gap-3 border-t border-gray-100 px-5 py-4 sm:px-6">
+          {step > 0 ? (
+            <Button
+              variant="ghost"
+              onClick={() => goTo(step - 1)}
+              className="h-12 px-4 font-semibold text-gray-600 hover:bg-gray-100"
+            >
+              <ChevronLeft className="mr-1 h-4 w-4" /> Back
+            </Button>
+          ) : (
+            <span className="hidden text-xs text-gray-400 sm:block">No forms · instant WhatsApp quote</span>
+          )}
+          <Button
+            onClick={() => canAdvance(step) && goTo(step + 1)}
+            disabled={!canAdvance(step)}
+            className="ml-auto h-12 flex-1 rounded-xl bg-maroon-600 font-semibold text-white transition-all hover:bg-maroon-700 disabled:opacity-50 sm:flex-none sm:min-w-[176px]"
+          >
+            {step === 3 ? "See my quote" : "Continue"} <ChevronRight className="ml-1.5 h-4 w-4" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
