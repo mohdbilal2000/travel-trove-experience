@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Users, Minus, Plus, CalendarDays, MapPin, Car, Truck, Bus,
+  Users, Minus, Plus, CalendarDays, CalendarOff, MapPin, Car, Truck, Bus,
   Check, Sparkles, Mail, ArrowRight, ChevronLeft, ChevronRight, ShieldCheck,
 } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -114,14 +114,14 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
     }, 230);
   };
 
+  // Only the destination (Route) step blocks; duration is optional (flexible).
   const canAdvance = (s: number): boolean => {
     if (s === 0) return state.cities.length > 0;
-    if (s === 1) return state.days !== null;
     return true;
   };
 
   const pickRoute = (r: FeaturedRoute) => {
-    onChange({ cities: [...r.cities], days: r.suggestedDays });
+    onChange({ cities: [...r.cities], days: r.suggestedDays, flexibleDays: false });
     setBuildYourOwn(false);
     advanceSoon(1);
   };
@@ -134,8 +134,13 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
   };
 
   const pickDays = (d: number, advance = true) => {
-    onChange({ days: d });
+    onChange({ days: d, flexibleDays: false });
     if (advance) advanceSoon(2);
+  };
+
+  const pickFlexibleDays = () => {
+    onChange({ days: null, flexibleDays: true });
+    advanceSoon(2);
   };
 
   const handleWhatsApp = () => {
@@ -233,7 +238,7 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
               ))}
               <OptionCard
                 selected={isCustomDays}
-                onClick={() => pickDays(isCustomDays ? (state.days as number) : 12, false)}
+                onClick={() => pickDays(isCustomDays ? (state.days as number) : 11, false)}
                 ariaLabel="More than 10 days"
                 className="grid place-items-center py-4"
               >
@@ -245,23 +250,39 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
               <div className="mt-3 flex items-center justify-center gap-4">
                 <button
                   type="button"
-                  onClick={() => onChange({ days: Math.max(11, (state.days as number) - 1) })}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50"
+                  onClick={() => onChange({ days: Math.max(11, (state.days as number) - 1), flexibleDays: false })}
+                  disabled={(state.days as number) <= 11}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
                   aria-label="Remove a day"
                 >
                   <Minus className="h-4 w-4" />
                 </button>
-                <span className="text-sm font-bold tabular-nums text-maroon-700">{state.days} days</span>
+                <span className="w-20 text-center text-sm font-bold tabular-nums text-maroon-700">{state.days} days</span>
                 <button
                   type="button"
-                  onClick={() => onChange({ days: (state.days as number) + 1 })}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50"
+                  onClick={() => onChange({ days: Math.min(60, (state.days as number) + 1), flexibleDays: false })}
+                  disabled={(state.days as number) >= 60}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
                   aria-label="Add a day"
                 >
                   <Plus className="h-4 w-4" />
                 </button>
               </div>
             )}
+
+            {/* Flexible — for travellers who don't want to commit to a length */}
+            <OptionCard
+              selected={state.flexibleDays}
+              onClick={pickFlexibleDays}
+              ariaLabel="I'm flexible on duration"
+              className="mt-2.5 flex w-full items-center gap-3 px-4 py-3"
+            >
+              <CalendarOff className={`h-5 w-5 flex-shrink-0 ${state.flexibleDays ? "text-maroon-600" : "text-gray-500"}`} />
+              <div>
+                <p className="text-sm font-semibold text-gray-800">I&apos;m flexible</p>
+                <p className="text-[11px] text-gray-500">Not sure yet — suggest the ideal length</p>
+              </div>
+            </OptionCard>
           </div>
         );
 

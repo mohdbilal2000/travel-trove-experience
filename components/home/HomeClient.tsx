@@ -19,6 +19,7 @@ const HomeClient = () => {
         adults: 1,
         children: 0,
         days: null,
+        flexibleDays: false,
         cities: [],
         transport: "",
     });

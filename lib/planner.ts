@@ -10,6 +10,8 @@ export interface PlannerState {
   children: number;
   /** null until the visitor picks a duration. */
   days: number | null;
+  /** Explicit "no fixed duration" choice (distinct from the untouched null). */
+  flexibleDays: boolean;
   cities: string[];
   /** transport option `value`, or "" if not chosen. */
   transport: string;
@@ -89,7 +91,11 @@ const transportLabel = (value: string): string =>
 /** Human-readable bullet lines summarising the current selection. */
 export const buildSummaryLines = (state: PlannerState): string[] => {
   const lines = [`Travellers: ${travellersLine(state.adults, state.children)}`];
-  if (state.days) lines.push(`Duration: ${state.days} Days`);
+  lines.push(
+    state.flexibleDays || state.days === null
+      ? "Duration: Flexible (open to suggestions)"
+      : `Duration: ${state.days} Days`,
+  );
   if (state.cities.length > 0) {
     const cityNames = state.cities.map(cityLabel).join(", ");
     const routeName = matchRouteName(state.cities);
