@@ -130,7 +130,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-maroon-700 transition-colors text-sm font-medium"
                 >
-                  4.9 ★ on Google (366+ reviews)
+                  4.9 ★ on Google (403+ reviews)
                 </a>
               </li>
             </ul>

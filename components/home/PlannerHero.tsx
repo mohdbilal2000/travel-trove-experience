@@ -61,7 +61,7 @@ const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => {
                   <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
                 ))}
               </div>
-              <span className="text-white/90 text-xs sm:text-sm font-medium">4.9/5 from 366+ travelers</span>
+              <span className="text-white/90 text-xs sm:text-sm font-medium">4.9/5 from 403+ travelers</span>
             </div>
 
             <h2 className="font-display font-light leading-[1.05] tracking-wide text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-5">
