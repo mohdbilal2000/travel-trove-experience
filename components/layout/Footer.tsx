@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, Star } from "lucide-react";
+import { MapPin, Phone, Mail, Youtube, Star } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,18 +23,16 @@ const Footer = () => {
             <p className="text-gray-600 max-w-sm leading-relaxed">
               Discover the magic of India's Golden Triangle with our curated travel experiences, luxury accommodations, and personalized services.
             </p>
+            {/* Only real, verifiable profiles — no dead links to /contact */}
             <div className="flex space-x-4 pt-2">
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Facebook">
-                <Facebook size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Twitter / X">
-                <Twitter size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Instagram">
-                <Instagram size={18} />
-              </a>
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="YouTube">
+              <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="YouTube channel">
                 <Youtube size={18} />
+              </a>
+              <a href={siteConfig.social.googleMaps} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Google Maps profile">
+                <MapPin size={18} />
+              </a>
+              <a href={siteConfig.social.tripadvisor} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="TripAdvisor reviews">
+                <Star size={18} />
               </a>
             </div>
           </div>

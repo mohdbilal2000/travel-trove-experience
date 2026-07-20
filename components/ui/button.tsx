@@ -21,7 +21,8 @@ const buttonVariants = cva(
         link: "text-maroon-600 underline-offset-4 hover:underline",
         accent: "bg-royal-700 text-white hover:bg-royal-800 active:bg-royal-900",
         saffron: "bg-amber-800 text-white hover:bg-amber-900 active:bg-amber-950",
-        turquoise: "bg-[#40E0D0] text-royal-800 hover:bg-[#30D0C0] active:bg-[#20C0B0]"
+        turquoise: "bg-jade-400 text-royal-800 hover:bg-jade-500 active:bg-jade-600",
+        whatsapp: "bg-gradient-to-r from-whatsapp to-whatsapp-dark text-white hover:from-whatsapp-hover hover:to-whatsapp-dark-hover shadow-lg hover:shadow-xl",
       },
       size: {
         default: "h-10 px-4 py-2",

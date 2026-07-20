@@ -43,7 +43,7 @@ const ContactButton = () => {
       title: 'WhatsApp',
       description: 'Quick chat support',
       action: () => window.open('https://wa.me/918979810991?text=Hi, I am interested in your Golden Triangle tour packages', '_blank'),
-      color: 'bg-[#25D366] hover:bg-[#128C7E]',
+      color: 'bg-whatsapp hover:bg-whatsapp-dark',
       iconColor: 'text-white'
     },
     {
@@ -70,7 +70,7 @@ const ContactButton = () => {
       <div className="hidden md:block fixed bottom-6 right-6 z-50">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="group relative bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          className="group relative bg-whatsapp hover:bg-whatsapp-dark text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Contact us"
@@ -80,7 +80,7 @@ const ContactButton = () => {
           />
 
           {/* Subtle pulse animation */}
-          <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
+          <div className="absolute inset-0 rounded-full bg-whatsapp animate-ping opacity-20" />
         </motion.button>
 
         {/* Contact Options Modal */}

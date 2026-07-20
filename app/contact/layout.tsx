@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Contact Guide India Tours | Get a Free Quote for Your India Tour',
-    description: 'Get in touch with Guide India Tours. Call +91 9410000991, WhatsApp us, or fill out the form for a free custom tour quote. Available 24/7. Based in Agra, Uttar Pradesh.',
+    description: 'Get in touch with Guide India Tours. Call +91 89798 10991, WhatsApp us, or fill out the form for a free custom tour quote. Available 24/7. Based in Agra, Uttar Pradesh.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/contact',
         languages: {
@@ -40,17 +40,10 @@ const contactSchema = {
         "contactPoint": [
             {
                 "@type": "ContactPoint",
-                "telephone": "+91-9410000991",
+                "telephone": "+918979810991",
                 "contactType": "customer service",
-                "availableLanguage": ["English", "Hindi"],
+                "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
                 "areaServed": "IN"
-            },
-            {
-                "@type": "ContactPoint",
-                "telephone": "+91-8979810991",
-                "contactType": "reservations",
-                "contactOption": "TollFree",
-                "availableLanguage": ["English", "Hindi"]
             }
         ],
         "address": {

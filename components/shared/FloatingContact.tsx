@@ -85,7 +85,7 @@ const FloatingContact = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white rounded-full shadow-lg px-5 py-3.5 flex items-center justify-center gap-2.5 active:scale-[0.97] transition-transform touch-manipulation"
+                className="flex-1 bg-gradient-to-r from-whatsapp to-whatsapp-dark text-white rounded-full shadow-lg px-5 py-3.5 flex items-center justify-center gap-2.5 active:scale-[0.97] transition-transform touch-manipulation"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 <span className="text-sm font-semibold">Chat on WhatsApp</span>
@@ -114,7 +114,7 @@ const FloatingContact = () => {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-[1.6] bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-3 py-2.5 flex flex-col items-center justify-center gap-0.5 active:scale-[0.97] transition-transform touch-manipulation"
+                  className="flex-[1.6] bg-gradient-to-r from-whatsapp to-whatsapp-dark text-white px-3 py-2.5 flex flex-col items-center justify-center gap-0.5 active:scale-[0.97] transition-transform touch-manipulation"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
                   <span className="text-[11px] font-semibold leading-none">WhatsApp</span>

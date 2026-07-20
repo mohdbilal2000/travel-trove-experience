@@ -45,13 +45,13 @@ const HomeClient = () => {
         <main>
             <PlannerHero state={planner} onChange={updatePlanner} onBrowseTours={scrollToTours} />
 
-            {/* Main H1 Heading for SEO */}
+            {/* Keyword-rich secondary heading (the semantic H1 is the hero headline) */}
             <section className="py-12 md:py-16 bg-gradient-to-br from-royal-50 to-amber-50">
                 <div className="container mx-auto px-4 text-center">
                     <span className="inline-block w-16 h-1 bg-gold-500 rounded-full mb-6" />
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-royal-800 mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-royal-800 mb-6">
                         Premium Golden Triangle Tours in India
-                    </h1>
+                    </h2>
                     <p className="text-xl text-royal-700 max-w-4xl mx-auto leading-relaxed mb-8">
                         Discover <Link href="/plans" className="text-royal-600 hover:text-royal-800 font-semibold underline">Delhi, Agra, and Jaipur tours</Link> with our expert guides. Experience luxury accommodations,
                         private transportation, and 24/7 support for your perfect India tour.

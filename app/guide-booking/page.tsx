@@ -623,7 +623,7 @@ Please provide availability and pricing details.`;
                                         <h4 className="font-bold text-gray-900 text-sm">Need immediate help?</h4>
                                         <p className="text-xs text-gray-500">Live support via WhatsApp</p>
                                     </div>
-                                    <a href="https://wa.me/918979810991" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#25D366] shadow-sm hover:scale-110 transition-transform">
+                                    <a href="https://wa.me/918979810991" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-whatsapp shadow-sm hover:scale-110 transition-transform">
                                         <Phone className="w-6 h-6 fill-current" />
                                     </a>
                                 </div>

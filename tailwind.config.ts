@@ -116,6 +116,12 @@ export default {
 					800: '#400000',
 					900: '#200000',
 				},
+				whatsapp: {
+					DEFAULT: '#25D366',
+					dark: '#128C7E',
+					hover: '#20BA5A',
+					'dark-hover': '#0fa873',
+				},
 				amber: {
 					50: '#fff8e1',
 					100: '#ffecb3',

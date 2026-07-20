@@ -55,7 +55,17 @@ export const metadata: Metadata = {
         creator: '@guideindia',
         images: ['/images/og-default.jpg'],
     },
-    verification: {},
+    icons: {
+        icon: [
+            { url: '/favicon.svg', type: 'image/svg+xml' },
+            { url: '/favicon.ico', sizes: 'any' },
+        ],
+        shortcut: '/favicon.ico',
+    },
+    manifest: '/manifest.json',
+    verification: {
+        google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
     robots: {
         index: true,
         follow: true,
@@ -77,7 +87,6 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable} ${cormorant.variable}`}>
             <head>
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(generateConnectedGraphSchema()) }}

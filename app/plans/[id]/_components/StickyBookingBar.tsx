@@ -55,7 +55,7 @@ export default function StickyBookingBar({ planTitle, planPrice }: StickyBooking
                                 href={`https://wa.me/918979810991?text=${whatsappMessage}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 min-h-[48px] bg-[#25D366] hover:bg-[#128C7E] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg transition-all duration-200"
+                                className="flex items-center gap-2 min-h-[48px] bg-whatsapp hover:bg-whatsapp-dark active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg transition-all duration-200"
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
                                 Book Now

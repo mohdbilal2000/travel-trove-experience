@@ -45,10 +45,10 @@ const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => (
             <span className="text-xs font-medium text-white/90 sm:text-sm">4.9/5 from 366+ travellers</span>
           </div>
 
-          <h2 className="mb-5 font-display text-4xl font-light leading-[1.05] tracking-wide sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="mb-5 font-display text-4xl font-light leading-[1.05] tracking-wide sm:text-5xl lg:text-6xl xl:text-7xl">
             Plan Your Perfect
             <span className="block text-gold-500">India Journey</span>
-          </h2>
+          </h1>
 
           <p className="mx-auto max-w-xl text-base font-light leading-relaxed text-white/90 sm:text-lg lg:mx-0 lg:text-xl">
             No fixed prices — we tailor every journey to you. Build your trip on the right and get an honest,

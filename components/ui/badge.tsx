@@ -15,6 +15,9 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
+        maroon: "border-transparent bg-maroon-600 text-white hover:bg-maroon-700",
+        gold: "border-transparent bg-gold-500 text-royal-900 hover:bg-gold-600",
+        whatsapp: "border-transparent bg-whatsapp text-white hover:bg-whatsapp-dark",
       },
     },
     defaultVariants: {

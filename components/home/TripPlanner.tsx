@@ -364,7 +364,7 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
             <div className="mt-4 flex flex-col gap-2.5">
               <Button
                 onClick={handleWhatsApp}
-                className="h-14 w-full rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-base font-bold text-white shadow-lg transition-all hover:from-[#20BA5A] hover:to-[#0fa873] hover:shadow-xl"
+                className="h-14 w-full rounded-xl bg-gradient-to-r from-whatsapp to-whatsapp-dark text-base font-bold text-white shadow-lg transition-all hover:from-whatsapp-hover hover:to-whatsapp-dark-hover hover:shadow-xl"
               >
                 <WhatsAppIcon className="mr-2 h-5 w-5" />
                 Send on WhatsApp

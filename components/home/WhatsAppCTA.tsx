@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { MessageCircle } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface WhatsAppCTAProps {
   /** Pre-filled WhatsApp text. */
@@ -15,10 +16,8 @@ interface WhatsAppCTAProps {
   className?: string;
 }
 
-const WHATSAPP_NUMBER = "918979810991";
-
 const buildUrl = (message: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  `${siteConfig.whatsappHref}?text=${encodeURIComponent(message)}`;
 
 const WhatsAppCTA = ({
   message = "Hi Guide India Tours! I'd like help planning my trip. Please share the best options.",
@@ -34,7 +33,7 @@ const WhatsAppCTA = ({
         href={buildUrl(message)}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0fa873] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all ${className}`}
+        className={`inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-whatsapp to-whatsapp-dark hover:from-whatsapp-hover hover:to-whatsapp-dark-hover text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all ${className}`}
       >
         <WhatsAppIcon className="w-5 h-5" />
         {buttonLabel}
@@ -43,14 +42,14 @@ const WhatsAppCTA = ({
   }
 
   return (
-    <section className={`py-14 md:py-20 bg-gradient-to-br from-[#25D366]/10 via-white to-jade-50 ${className}`}>
+    <section className={`section-padding bg-gradient-to-br from-whatsapp/10 via-white to-jade-50 ${className}`}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-[#128C7E] to-[#25D366] p-8 md:p-12 shadow-2xl text-white text-center md:text-left"
+          className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-whatsapp-dark to-whatsapp p-8 md:p-12 shadow-2xl text-white text-center md:text-left"
         >
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
             <div className="hidden md:flex w-16 h-16 rounded-2xl bg-white/15 items-center justify-center flex-shrink-0">
@@ -64,7 +63,7 @@ const WhatsAppCTA = ({
               href={buildUrl(message)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-white text-[#128C7E] hover:bg-gray-50 font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all whitespace-nowrap flex-shrink-0"
+              className="inline-flex items-center justify-center gap-2.5 bg-white text-whatsapp-dark hover:bg-gray-50 font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all whitespace-nowrap flex-shrink-0"
             >
               <WhatsAppIcon className="w-5 h-5" />
               {buttonLabel}
