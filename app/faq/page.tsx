@@ -26,6 +26,19 @@ export const metadata: Metadata = {
             'x-default': 'https://www.guideindiatours.com/faq',
         },
     },
+    openGraph: {
+        title: 'FAQ — Golden Triangle Tours | Guide India Tours',
+        description: 'Answers on booking, safety, payments, and travel tips for your India tour.',
+        url: 'https://www.guideindiatours.com/faq',
+        siteName: 'Guide India Tours',
+        type: 'website',
+        images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'FAQ | Guide India Tours',
+        description: 'Answers on booking, safety, payments, and travel tips for your India tour.',
+    },
 };
 
 const faqCategories = [

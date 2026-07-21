@@ -14,6 +14,19 @@ export const metadata: Metadata = {
             'x-default': 'https://www.guideindiatours.com/refund-policy',
         },
     },
+    openGraph: {
+        title: 'Refund Policy | Guide India Tours',
+        description: 'Cancellation and refund terms: timeline-based percentages, modifications and force majeure.',
+        url: 'https://www.guideindiatours.com/refund-policy',
+        siteName: 'Guide India Tours',
+        type: 'website',
+        images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Refund Policy | Guide India Tours',
+        description: 'Cancellation and refund terms: timeline percentages, modifications and force majeure.',
+    },
 };
 
 const cancellationTiers = [

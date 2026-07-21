@@ -14,6 +14,19 @@ export const metadata: Metadata = {
             'x-default': 'https://www.guideindiatours.com/terms-of-service',
         },
     },
+    openGraph: {
+        title: 'Terms of Service | Guide India Tours',
+        description: 'Booking, cancellation, payment, liability and governing-law terms for Guide India Tours.',
+        url: 'https://www.guideindiatours.com/terms-of-service',
+        siteName: 'Guide India Tours',
+        type: 'website',
+        images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Terms of Service | Guide India Tours',
+        description: 'Booking, cancellation, payment, liability and governing-law terms.',
+    },
 };
 
 const sections = [

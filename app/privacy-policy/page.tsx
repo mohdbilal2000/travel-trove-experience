@@ -14,6 +14,19 @@ export const metadata: Metadata = {
             'x-default': 'https://www.guideindiatours.com/privacy-policy',
         },
     },
+    openGraph: {
+        title: 'Privacy Policy | Guide India Tours',
+        description: 'How Guide India Tours collects, uses, and protects your personal information.',
+        url: 'https://www.guideindiatours.com/privacy-policy',
+        siteName: 'Guide India Tours',
+        type: 'website',
+        images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Privacy Policy | Guide India Tours',
+        description: 'How Guide India Tours collects, uses, and protects your personal information.',
+    },
 };
 
 const sections = [
