@@ -31,6 +31,7 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 import RelatedPages from "@/components/shared/RelatedPages";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { monumentsForCity } from "@/data/cityMonuments";
 
 // Tour Packages Data
 const tourPackages = [
@@ -110,27 +111,21 @@ const guideServices: any = {
         image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
         description: "Explore the eternal city of love. Home to the Taj Mahal and a legacy of Mughal grandeur.",
         highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri"],
-        monuments: [
-            "Taj Mahal", "Agra Fort", "Fatehpur Sikri", "Itimad-ud-Daulah", "Mehtab Garden", "Akbar Tomb", "Taj View Point"
-        ]
+        monuments: monumentsForCity("Agra")
     },
     delhi: {
         city: "Delhi",
         image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
         description: "Where ancient heritage meets modern pulse. The vibrant heart of India's capital.",
         highlights: ["Red Fort", "Qutub Minar", "Humayun's Tomb"],
-        monuments: [
-            "Red Fort", "India Gate", "Qutub Minar", "Lotus Temple", "Jama Masjid", "Humayun's Tomb", "Akshardham Temple"
-        ]
+        monuments: monumentsForCity("Delhi")
     },
     jaipur: {
         city: "Jaipur",
         image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
         description: "The Pink City. A realm of royal palaces, desert forts, and vibrant Rajasthani culture.",
         highlights: ["Amber Fort", "City Palace", "Hawa Mahal"],
-        monuments: [
-            "Amber Fort", "City Palace", "Hawa Mahal", "Jantar Mantar", "Nahargarh Fort", "Jal Mahal", "Albert Hall Museum"
-        ]
+        monuments: monumentsForCity("Jaipur")
     }
 };
 
@@ -671,6 +666,11 @@ Please provide availability and pricing details.`;
             <RelatedPages
                 title="Explore More"
                 pages={[
+                    {
+                        href: "/plan-my-tour",
+                        title: "Plan a Full Tour",
+                        description: "Travelling for several days? Tell us your dates and cities for a complete custom itinerary and quote.",
+                    },
                     {
                         href: "/plans",
                         title: "View Tour Packages",

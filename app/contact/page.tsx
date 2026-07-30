@@ -271,6 +271,11 @@ export default function ContactPage() {
                 title="Explore More"
                 pages={[
                     {
+                        href: "/plan-my-tour",
+                        title: "Plan My Tour",
+                        description: "Answer a few questions and get a personalised itinerary with a transparent quote.",
+                    },
+                    {
                         href: "/plans",
                         title: "Browse Tours",
                         description: "Explore our curated tour packages for the Golden Triangle and beyond.",

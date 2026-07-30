@@ -12,6 +12,7 @@ const navItems = [
   { label: "Services", path: "/services" },
   { label: "Plans", path: "/plans" },
   { label: "Blog", path: "/blog" },
+  { label: "Plan My Tour", path: "/plan-my-tour" },
   { label: "Book Guide", path: "/guide-booking" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
@@ -96,7 +97,7 @@ const Navbar = () => {
               className="ml-6 px-8 py-2 text-sm font-medium transition-all duration-300 rounded-xl bg-maroon-600 hover:bg-maroon-700 text-white border-none shadow-lg hover:shadow-xl"
               asChild
             >
-              <Link href="/contact">Plan Your Trip</Link>
+              <Link href="/plan-my-tour">Plan Your Trip</Link>
             </Button>
           </nav>
 
@@ -163,7 +164,7 @@ const Navbar = () => {
               className="w-full text-base py-4 bg-maroon-600 hover:bg-maroon-700 rounded-lg shadow-lg"
               onClick={closeMobileMenu}
             >
-              <Link href="/contact">Plan Your Trip</Link>
+              <Link href="/plan-my-tour">Plan Your Trip</Link>
             </Button>
             <Button
               variant="outline"
@@ -171,7 +172,7 @@ const Navbar = () => {
               asChild
               onClick={closeMobileMenu}
             >
-              <Link href="/contact">Custom Itinerary</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>
