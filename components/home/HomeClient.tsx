@@ -5,6 +5,8 @@ import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
 import PlannerHero from "@/components/home/PlannerHero";
 import WhatsAppCTA from "@/components/home/WhatsAppCTA";
+import HowItWorks from "@/components/shared/HowItWorks";
+import NewsletterForm from "@/components/shared/NewsletterForm";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -448,9 +450,24 @@ const HomeClient = () => {
                 </div>
             </section>
 
+            <HowItWorks />
+
             <Testimonials />
 
             <WhatsAppCTA />
+
+            {/* Newsletter capture */}
+            <section className="py-14 md:py-20 bg-black text-white">
+                <div className="container mx-auto px-4 max-w-3xl text-center">
+                    <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+                        Not Ready to Book <span className="text-gold-500">Yet?</span>
+                    </h2>
+                    <p className="text-lg text-white/60 mb-10 font-light">
+                        Join our newsletter for insider Golden Triangle travel tips, seasonal booking advice, and early access to new tours.
+                    </p>
+                    <NewsletterForm />
+                </div>
+            </section>
 
             {/* CTA Section */}
             <section className="py-16 md:py-24 bg-cover bg-center relative" style={{ backgroundImage: 'url("/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg")' }}>

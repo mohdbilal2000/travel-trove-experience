@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: "Golden Triangle Tours Specialist | Guide India Tours",
-    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 366+ travelers on Google. Book your premium private tour today.",
+    description: "Experience India's Golden Triangle with the most trusted specialist. Private Agra tours, Taj Mahal sunset visits, and luxury Jaipur experiences. 4.9/5 Rated by 403+ travelers on Google. Book your premium private tour today.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
         canonical: 'https://www.guideindiatours.com',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Guide India Tours | #1 Golden Triangle Specialist',
-        description: 'Private Agra, Delhi & Jaipur tours with government-approved guides. Rated 4.9/5 by 366+ travelers. Book your Golden Triangle tour today.',
+        description: 'Private Agra, Delhi & Jaipur tours with government-approved guides. Rated 4.9/5 by 403+ travelers. Book your Golden Triangle tour today.',
         images: ['https://www.guideindiatours.com/images/og-default.jpg'],
     },
 };

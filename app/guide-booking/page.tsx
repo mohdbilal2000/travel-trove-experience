@@ -320,9 +320,9 @@ Please provide availability and pricing details.`;
                             </div>
                             <span className="text-xs font-bold text-gray-500 tabular-nums whitespace-nowrap">{Math.round(progress)}%</span>
                         </div>
-                        <div className="flex items-center gap-1.5 group cursor-help" title="Secure Booking">
+                        <div className="flex items-center gap-1.5 group cursor-help border-l border-gray-200 pl-3" title="Your details are encrypted — no payment is taken on this page">
                             <Shield className="w-4 h-4 text-green-500 flex-shrink-0" />
-                            <span className="hidden md:inline text-xs font-bold text-gray-500 uppercase">Secure</span>
+                            <span className="hidden md:inline text-xs font-bold text-gray-500 uppercase">SSL Secure</span>
                         </div>
                     </div>
                 </div>
@@ -606,6 +606,10 @@ Please provide availability and pricing details.`;
                                             </span>
                                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                         </Button>
+
+                                        <p className="mt-4 text-xs text-gray-500 text-center leading-relaxed">
+                                            No payment is taken now — this sends your request via WhatsApp. We confirm guide availability and final pricing within 2 hours, and your booking is only confirmed once you approve the quote.
+                                        </p>
 
                                         <div className="mt-8 flex flex-col items-center gap-4 text-center">
                                             <div className="flex -space-x-4 mb-2">

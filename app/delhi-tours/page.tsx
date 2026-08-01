@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Delhi Tours | Private Guided Tours with Expert Guides',
-        description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 366+ travelers.',
+        description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 403+ travelers.',
         url: 'https://www.guideindiatours.com/delhi-tours',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Delhi Tours | Private Guided Tours with Expert Guides',
-        description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 366+ travelers.',
+        description: 'Private Delhi sightseeing tours covering Red Fort, India Gate, Qutub Minar & more. 4.9/5 rated by 403+ travelers.',
     },
 };
 
@@ -132,7 +132,7 @@ export default function DelhiToursPage() {
                             </p>
                             <div className="flex items-center gap-6 text-white/70 text-sm">
                                 <span className="flex items-center gap-2"><Star className="w-4 h-4 text-gold-500 fill-current" /> 4.9/5 Rating</span>
-                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 366+ Happy Travelers</span>
+                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 403+ Happy Travelers</span>
                                 <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Best: Oct-Mar</span>
                             </div>
                         </div>
@@ -145,7 +145,7 @@ export default function DelhiToursPage() {
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="prose prose-lg max-w-none">
                         <p className="text-lg text-gray-600 font-light leading-relaxed">
-                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. Tours start from <strong>$25 per person</strong> with private AC transportation, and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 366+ Google reviews.
+                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. Tours start from <strong>$25 per person</strong> with private AC transportation, and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 403+ Google reviews.
                         </p>
                     </div>
                 </div>

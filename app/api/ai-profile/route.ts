@@ -62,7 +62,7 @@ export async function GET() {
         aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "366",
+            reviewCount: "403",
             bestRating: "5",
             worstRating: "1",
         },
@@ -80,7 +80,7 @@ export async function GET() {
             },
             languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
             averageRating: 4.9,
-            totalReviews: 366,
+            totalReviews: 403,
         },
 
         // Tour catalog summary

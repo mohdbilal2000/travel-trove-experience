@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Jaipur Tours | Pink City Private Guided Tours',
-        description: 'Private Jaipur tours visiting Amber Fort, City Palace, Hawa Mahal. Expert guides, luxury transport. 4.9/5 rated by 366+ travelers.',
+        description: 'Private Jaipur tours visiting Amber Fort, City Palace, Hawa Mahal. Expert guides, luxury transport. 4.9/5 rated by 403+ travelers.',
         url: 'https://www.guideindiatours.com/jaipur-tours',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Jaipur Tours | Pink City Private Guided Tours',
-        description: 'Private Jaipur tours visiting Amber Fort, City Palace, Hawa Mahal. Expert guides, luxury transport. 4.9/5 rated by 366+ travelers.',
+        description: 'Private Jaipur tours visiting Amber Fort, City Palace, Hawa Mahal. Expert guides, luxury transport. 4.9/5 rated by 403+ travelers.',
     },
 };
 
@@ -128,7 +128,7 @@ export default function JaipurToursPage() {
                             </p>
                             <div className="flex items-center gap-6 text-white/70 text-sm">
                                 <span className="flex items-center gap-2"><Star className="w-4 h-4 text-gold-500 fill-current" /> 4.9/5 Rating</span>
-                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 366+ Happy Travelers</span>
+                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 403+ Happy Travelers</span>
                                 <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Best: Oct-Mar</span>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ export default function JaipurToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. Tours start from <strong>$35 per person</strong> with {allJaipurPlans.length}+ packages available, all rated 4.9/5 by 366+ verified Google reviewers.
+                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. Tours start from <strong>$35 per person</strong> with {allJaipurPlans.length}+ packages available, all rated 4.9/5 by 403+ verified Google reviewers.
                     </p>
                 </div>
             </section>

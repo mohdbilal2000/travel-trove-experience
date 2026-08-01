@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Agra Tours | Taj Mahal Private Guided Tours',
-        description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 366+ travelers.',
+        description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 403+ travelers.',
         url: 'https://www.guideindiatours.com/agra-tours',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Agra Tours | Taj Mahal Private Guided Tours',
-        description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 366+ travelers.',
+        description: 'Same-day Agra tours with Taj Mahal sunrise visits. Expert guides, private AC cars. 4.9/5 rated by 403+ travelers.',
     },
 };
 
@@ -128,7 +128,7 @@ export default function AgraToursPage() {
                             </p>
                             <div className="flex items-center gap-6 text-white/70 text-sm">
                                 <span className="flex items-center gap-2"><Star className="w-4 h-4 text-gold-500 fill-current" /> 4.9/5 Rating</span>
-                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 366+ Happy Travelers</span>
+                                <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 403+ Happy Travelers</span>
                                 <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Best: Oct-Mar</span>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ export default function AgraToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Agra tours by Guide India Tours</strong> feature private, guided visits to the Taj Mahal and Agra&apos;s Mughal monuments. Our most popular option is the same-day Agra tour from Delhi, which includes a sunrise Taj Mahal visit, Agra Fort exploration, and optional Fatehpur Sikri stop — all with private AC transportation and licensed guides. Tours start from <strong>$30 per person</strong>. The Taj Mahal is closed on Fridays. We offer {allAgraPlans.length}+ Agra-focused packages, all rated 4.9/5 by 366+ verified Google reviewers.
+                        <strong className="text-gray-900">Agra tours by Guide India Tours</strong> feature private, guided visits to the Taj Mahal and Agra&apos;s Mughal monuments. Our most popular option is the same-day Agra tour from Delhi, which includes a sunrise Taj Mahal visit, Agra Fort exploration, and optional Fatehpur Sikri stop — all with private AC transportation and licensed guides. Tours start from <strong>$30 per person</strong>. The Taj Mahal is closed on Fridays. We offer {allAgraPlans.length}+ Agra-focused packages, all rated 4.9/5 by 403+ verified Google reviewers.
                     </p>
                 </div>
             </section>

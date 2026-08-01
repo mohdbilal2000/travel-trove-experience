@@ -55,14 +55,20 @@ const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: brand pitch */}
           <div className="text-center lg:text-left text-white animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6">
+            <a
+              href="https://www.google.com/maps/place/Guide+India+Tours/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read our reviews on Google"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-6 hover:bg-white/20 transition-colors"
+            >
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
                 ))}
               </div>
-              <span className="text-white/90 text-xs sm:text-sm font-medium">4.9/5 from 403+ travelers</span>
-            </div>
+              <span className="text-white/90 text-xs sm:text-sm font-medium">4.9/5 from 403+ travelers on Google</span>
+            </a>
 
             <h2 className="font-display font-light leading-[1.05] tracking-wide text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-5">
               Plan Your Perfect

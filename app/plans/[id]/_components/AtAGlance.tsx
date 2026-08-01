@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import { Clock, MapPin, Check, X, Shield, Users } from 'lucide-react';
 
 interface AtAGlanceProps {
@@ -18,7 +19,7 @@ export default function AtAGlance({
     pickup = "Delhi/Agra/Jaipur (Hotel/Airport)",
     bestFor = "Couples, Families, Solo Travelers",
     type = "Private Guided Tour",
-    cancellation = "Flexible - Up to 24h before"
+    cancellation = "Tiered refunds — up to 85% back"
 }: AtAGlanceProps) {
     return (
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-12">
@@ -50,7 +51,12 @@ export default function AtAGlance({
                         </tr>
                         <tr>
                             <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Cancellation</td>
-                            <td className="p-4 text-green-600 font-bold">{cancellation}</td>
+                            <td className="p-4 text-green-600 font-bold">
+                                {cancellation}{' '}
+                                <Link href="/refund-policy" className="text-gray-500 font-medium underline underline-offset-2 hover:text-maroon-600 whitespace-nowrap text-sm">
+                                    Refund policy
+                                </Link>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
