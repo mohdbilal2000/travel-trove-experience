@@ -288,7 +288,7 @@ export default function ContactPage() {
                             <details key={faq.question} className="group bg-ivory-100 rounded-2xl p-6">
                                 <summary className="cursor-pointer font-bold text-gray-900 text-lg list-none flex justify-between items-center gap-4">
                                     {faq.question}
-                                    <span className="text-maroon-600 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+                                    <span aria-hidden="true" className="text-maroon-600 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
                                 </summary>
                                 <p className="text-gray-600 font-light leading-relaxed mt-4">{faq.answer}</p>
                             </details>

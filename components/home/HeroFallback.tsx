@@ -7,30 +7,31 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 
+// Pre-resized 1920px WebP variants keep the LCP request small (~200-500KB vs 2-8MB source JPGs).
 export const heroSlides = [
   {
     id: 1,
-    title: "Discover the Golden Triangle",
-    subtitle: "Experience the magic of Delhi, Agra & Jaipur",
-    description: "Journey through India's most iconic destinations with our expertly crafted tours",
-    image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    thumbnail: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg"
+    title: "Taj Mahal at sunrise in Agra — private Golden Triangle tour",
+    subtitle: "A symbol of eternal love in Agra",
+    description: "Witness the world's most beautiful monument at sunrise",
+    image: "/images/optimized/agra/getty-images-WQ6WY27_uhQ-unsplash-1920.webp",
+    thumbnail: "/images/optimized/agra/getty-images-WQ6WY27_uhQ-unsplash-600.webp"
   },
   {
     id: 2,
-    title: "The Majestic Taj Mahal",
-    subtitle: "A symbol of eternal love in Agra",
-    description: "Witness the world's most beautiful monument at sunrise",
-    image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
-    thumbnail: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg"
+    title: "Historic monuments of Delhi — private guided sightseeing tour",
+    subtitle: "Experience the magic of Delhi, Agra & Jaipur",
+    description: "Journey through India's most iconic destinations with our expertly crafted tours",
+    image: "/images/optimized/delhi/getty-images-C4Yf3Wbymg8-unsplash-1920.webp",
+    thumbnail: "/images/optimized/delhi/getty-images-C4Yf3Wbymg8-unsplash-600.webp"
   },
   {
     id: 3,
-    title: "The Pink City of Jaipur",
+    title: "Amber Fort and palaces of Jaipur, the Pink City — Rajasthan tour",
     subtitle: "Where royalty meets culture",
     description: "Explore magnificent palaces and vibrant markets",
-    image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    thumbnail: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg"
+    image: "/images/optimized/jaipur/getty-images-zlqHXvaEIiI-unsplash-1920.webp",
+    thumbnail: "/images/optimized/jaipur/getty-images-zlqHXvaEIiI-unsplash-600.webp"
   }
 ];
 

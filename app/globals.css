@@ -172,6 +172,9 @@ html {
 *:focus-visible {
   outline: 2px solid #800000;
   outline-offset: 2px;
+  /* Ivory inner ring fills the offset gap so the indicator stays visible
+     on dark (black / royal-800) sections where maroon alone is ~1.9:1. */
+  box-shadow: 0 0 0 4px #FAF4E1;
 }
 *:focus:not(:focus-visible) {
   outline: none;
