@@ -27,6 +27,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { homeFaqs } from "@/data/homeFaqs";
 
 const contactFormSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -104,8 +106,16 @@ export default function ContactPage() {
                                     </div>
                                     <div className="space-y-6">
                                         <div className="flex flex-col">
-                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">WhatsApp / Calling</span>
-                                            <a href="tel:+918979810991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 94100 00991</a>
+                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Calling</span>
+                                            <a href="tel:+919410000991" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 94100 00991</a>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">WhatsApp</span>
+                                            <a href="https://wa.me/918979810991" target="_blank" rel="noopener noreferrer" className="text-2xl font-bold text-maroon-600 hover:text-black transition-colors">+91 89798 10991</a>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Hours</span>
+                                            <span className="text-lg font-bold text-gray-900">Open 24/7 &middot; India Standard Time (UTC+5:30)</span>
                                         </div>
                                         <div className="flex flex-col">
                                             <span className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">Email Concierge</span>
@@ -160,7 +170,7 @@ export default function ContactPage() {
                             <div className="bg-white p-6 sm:p-8 md:p-12 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
                                 <div className="mb-12">
                                     <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Inquiry Form</h2>
-                                    <p className="text-lg text-gray-400 font-light">Complete the details below and an agent will reach out within 2 hours.</p>
+                                    <p className="text-lg text-gray-400 font-light">Complete the details below and an agent will reach out within 2 hours. Our team is available 24/7 (India Standard Time, UTC+5:30).</p>
                                 </div>
 
                                 <FormProvider {...form}>
@@ -263,6 +273,31 @@ export default function ContactPage() {
                                 </FormProvider>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Preview */}
+            <section className="py-14 md:py-20 bg-white border-t border-gray-100">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-10 text-center">
+                        Quick Answers Before You <span className="text-maroon-600">Write</span>
+                    </h2>
+                    <div className="space-y-4">
+                        {homeFaqs.slice(0, 4).map((faq) => (
+                            <details key={faq.question} className="group bg-ivory-100 rounded-2xl p-6">
+                                <summary className="cursor-pointer font-bold text-gray-900 text-lg list-none flex justify-between items-center gap-4">
+                                    {faq.question}
+                                    <span className="text-maroon-600 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+                                </summary>
+                                <p className="text-gray-600 font-light leading-relaxed mt-4">{faq.answer}</p>
+                            </details>
+                        ))}
+                    </div>
+                    <div className="text-center mt-8">
+                        <Link href="/faq" className="text-sm font-bold text-maroon-600 hover:text-black uppercase tracking-widest">
+                            See all FAQs →
+                        </Link>
                     </div>
                 </div>
             </section>

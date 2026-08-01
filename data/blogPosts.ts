@@ -919,3 +919,9 @@ export const getBlogPostsByCategory = (category: string): BlogPost[] => {
   return blogPosts.filter(post => post.category === category);
 };
 
+
+// Average adult reading speed ~220 wpm
+export const estimateReadTime = (content: string): number => {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
+};

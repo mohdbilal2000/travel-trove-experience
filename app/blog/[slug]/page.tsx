@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, User, Tag, ArrowLeft, Check, Clock, Star } from "lucide-react";
-import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts";
+import { getBlogPostBySlug, blogPosts, estimateReadTime } from "@/data/blogPosts";
 import { allPlans } from "@/data/travelPlans";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -74,6 +74,10 @@ export default async function BlogDetailPage({ params }: PageProps) {
     }
 
     const relatedPlans = allPlans.filter(plan => post.relatedPlans?.includes(plan.id)).slice(0, 3);
+    const relatedPosts = blogPosts
+        .filter(p => p.slug !== post.slug)
+        .sort((a, b) => (a.category === post.category ? -1 : 0) - (b.category === post.category ? -1 : 0))
+        .slice(0, 3);
 
     const articleSchema = {
         "@context": "https://schema.org",
@@ -185,6 +189,10 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                 <Calendar className="w-4 h-4" />
                                 <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                             </div>
+                            <div className="flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+                                <Clock className="w-4 h-4" />
+                                <span>{estimateReadTime(post.content)} min read</span>
+                            </div>
                         </div>
 
                         <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-gray-900 leading-[1.15] sm:leading-[1.1] tracking-tight md:tracking-tighter">
@@ -231,7 +239,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                 <div className="text-center md:text-left">
                                     <h4 className="text-2xl font-bold text-gray-900 mb-2">About Guide India Tours</h4>
                                     <p className="text-gray-500 font-light leading-relaxed">
-                                        With over 12 years of experience leading premium tours across India Golden Triangle, our team specializes in providing deep cultural insights and luxury logistics for international travelers.
+                                        Operating since 2004, with more than two decades of experience leading premium tours across India&apos;s Golden Triangle, our team specializes in providing deep cultural insights and luxury logistics for international travelers.
                                     </p>
                                 </div>
                             </div>
@@ -280,6 +288,33 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                         </CardContent>
                                     </Link>
                                 </Card>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {relatedPosts.length > 0 && (
+                <section className="py-20 bg-white border-t border-gray-100">
+                    <div className="container mx-auto px-4 max-w-7xl">
+                        <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-12 text-center">
+                            Keep <span className="text-maroon-600">Reading</span>
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {relatedPosts.map(p => (
+                                <Link key={p.slug} href={`/blog/${p.slug}`} className="group block bg-ivory-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-500">
+                                    <div className="relative aspect-[16/9] overflow-hidden">
+                                        <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
+                                    </div>
+                                    <div className="p-8">
+                                        <div className="flex items-center gap-3 text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">
+                                            <span>{p.category}</span>
+                                            <span className="w-1 h-1 rounded-full bg-gold-500" />
+                                            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {estimateReadTime(p.content)} min read</span>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-snug line-clamp-2">{p.title}</h3>
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'About Guide India Tours | Our Story, Mission & Expert Team',
-    description: 'Learn about Guide India Tours — India\'s trusted Golden Triangle specialist since 2004. Meet our government-approved guides, discover our mission, and see why 366+ travelers rate us 4.9/5.',
+    description: 'Learn about Guide India Tours — India\'s trusted Golden Triangle specialist since 2004. Meet our government-approved guides, discover our mission, and see why 403+ travelers rate us 4.9/5.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/about',
         languages: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'About Guide India Tours | Expert Golden Triangle Specialists',
-        description: 'India\'s #1 Golden Triangle tour operator. Government-approved guides, 4.9/5 rated by 366+ travelers. Learn about our team and mission.',
+        description: 'India\'s #1 Golden Triangle tour operator. Government-approved guides, 4.9/5 rated by 403+ travelers. Learn about our team and mission.',
         url: 'https://www.guideindiatours.com/about',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'About Guide India Tours | Expert Team & Mission',
-        description: 'India\'s #1 Golden Triangle tour operator with government-approved guides. 4.9/5 rated by 366+ travelers.',
+        description: 'India\'s #1 Golden Triangle tour operator with government-approved guides. 4.9/5 rated by 403+ travelers.',
     },
 };
 

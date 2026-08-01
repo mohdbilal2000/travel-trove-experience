@@ -83,14 +83,20 @@ const HeroFallback = () => {
       <div className="relative min-h-screen flex flex-col justify-center items-center text-white text-center z-10 px-4 pt-20">
         <div className="max-w-5xl animate-fade-in">
           {/* Social proof badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8">
+          <a
+            href="https://www.google.com/maps/place/Guide+India+Tours/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Read our reviews on Google"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hover:bg-white/20 transition-colors"
+          >
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
               ))}
             </div>
-            <span className="text-white/90 text-sm font-medium">4.9/5 from 403+ travelers</span>
-          </div>
+            <span className="text-white/90 text-sm font-medium">4.9/5 from 403+ travelers on Google</span>
+          </a>
 
           {/* Heading — h2 because the real h1 is in page.tsx sr-only */}
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-light mb-8 text-white leading-tight tracking-wide">

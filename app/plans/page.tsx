@@ -56,19 +56,44 @@ const planFeatures = [
 ];
 
 interface PageProps {
-    searchParams: Promise<{ city?: string }>;
+    searchParams: Promise<{ city?: string; sort?: string }>;
 }
 
-export default async function PlansPage({ searchParams }: PageProps) {
-    const { city } = await searchParams;
+const parsePrice = (price: string) => {
+    const n = parseInt(price.replace(/[^0-9]/g, ''), 10);
+    return isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
+};
 
-    const filteredPlans = !city || city === 'All'
+const parseDurationDays = (duration: string) => {
+    const n = parseInt(duration.replace(/[^0-9]/g, ''), 10);
+    return isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
+};
+
+export default async function PlansPage({ searchParams }: PageProps) {
+    const { city, sort } = await searchParams;
+
+    const cityFiltered = !city || city === 'All'
         ? allPlans
         : allPlans.filter(plan =>
             plan.title.toLowerCase().includes(city.toLowerCase()) ||
             plan.description.toLowerCase().includes(city.toLowerCase()) ||
             plan.destinations?.some(d => d.toLowerCase() === city.toLowerCase())
         );
+
+    const filteredPlans = [...cityFiltered].sort((a, b) => {
+        switch (sort) {
+            case 'price-low':
+                return parsePrice(a.price) - parsePrice(b.price);
+            case 'price-high':
+                return parsePrice(b.price) - parsePrice(a.price);
+            case 'duration':
+                return parseDurationDays(a.duration) - parseDurationDays(b.duration);
+            case 'reviews':
+                return b.reviews - a.reviews;
+            default:
+                return (Number(b.popular) - Number(a.popular)) || (b.reviews - a.reviews);
+        }
+    });
 
     const itemListSchema = {
         "@context": "https://schema.org",

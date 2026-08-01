@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 import Link from "next/link";
 import OptimizedImage from "@/components/shared/OptimizedImage";
-import { blogPosts as allPosts } from "@/data/blogPosts";
+import { blogPosts as allPosts, estimateReadTime } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -210,6 +210,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                                             <span>{post.publishedDate}</span>
                                             <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
                                             <span>By {post.author}</span>
+                                            <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+                                            <span>{estimateReadTime(post.content)} min read</span>
                                         </div>
                                         <h2 className="text-2xl font-display font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-tight">
                                             {post.title}
