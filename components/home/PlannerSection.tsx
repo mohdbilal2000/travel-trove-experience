@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PlannerHero from "@/components/home/PlannerHero";
+import TripPlanner from "@/components/home/TripPlanner";
 import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import { type PlannerState, getFilteredPlans, buildWhatsAppMessage, isGoldenTriangle } from "@/lib/planner";
@@ -21,6 +22,7 @@ export default function PlannerSection() {
         days: null,
         cities: [],
         transport: "",
+        startDate: "",
     });
 
     const updatePlanner = useCallback((patch: Partial<PlannerState>) => {
@@ -42,7 +44,16 @@ export default function PlannerSection() {
 
     return (
         <>
-            <PlannerHero state={planner} onChange={updatePlanner} onBrowseTours={scrollToTours} />
+            <PlannerHero />
+
+            {/* Trip planner — its own section directly below the banner */}
+            <section id="trip-planner" aria-label="Trip planner" className="py-10 md:py-14 bg-ivory-100 border-b border-gray-100 scroll-mt-24">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-2xl mx-auto">
+                        <TripPlanner state={planner} onChange={updatePlanner} onBrowseTours={scrollToTours} />
+                    </div>
+                </div>
+            </section>
 
             {/* Matching Tours — driven by the hero planner's city selection */}
             <section id="matching-tours" aria-labelledby="matching-tours-heading" className="py-12 md:py-16 bg-gradient-to-br from-white via-royal-50/30 to-white scroll-mt-24">
@@ -112,7 +123,7 @@ export default function PlannerSection() {
                                                             <span className="text-sm font-medium text-gray-900">{plan.rating}</span>
                                                             <span className="text-sm text-gray-500">({plan.reviews})</span>
                                                         </div>
-                                                        <span className="text-lg font-bold text-maroon-600">{plan.price}</span>
+                                                        <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                                     </div>
 
                                                     <Button className="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-medium py-2.5">

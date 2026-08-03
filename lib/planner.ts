@@ -13,7 +13,22 @@ export interface PlannerState {
   cities: string[];
   /** transport option `value`, or "" if not chosen. */
   transport: string;
+  /** Travel start date as ISO yyyy-mm-dd, or "" if not chosen. */
+  startDate: string;
 }
+
+/** Format an ISO date for humans, e.g. "Fri, 14 Nov 2026". */
+export const formatStartDate = (iso: string): string => {
+  const d = new Date(`${iso}T00:00:00`);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+};
+
+/** The Taj Mahal is closed to visitors on Fridays. */
+export const isFriday = (iso: string): boolean => {
+  const d = new Date(`${iso}T00:00:00`);
+  return !isNaN(d.getTime()) && d.getDay() === 5;
+};
 
 const WHATSAPP_NUMBER = "918979810991";
 const CONTACT_EMAIL = "info@guideindiatours.com";
@@ -81,6 +96,7 @@ const transportLabel = (value: string): string =>
 /** Human-readable bullet lines summarising the current selection. */
 export const buildSummaryLines = (state: PlannerState): string[] => {
   const lines = [`Travellers: ${travellersLine(state.adults, state.children)}`];
+  if (state.startDate) lines.push(`Start date: ${formatStartDate(state.startDate)}`);
   if (state.days) lines.push(`Duration: ${state.days} Days`);
   if (state.cities.length > 0) {
     const cityNames = state.cities.map(cityLabel).join(", ");

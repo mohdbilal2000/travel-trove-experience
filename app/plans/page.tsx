@@ -59,11 +59,6 @@ interface PageProps {
     searchParams: Promise<{ city?: string; sort?: string }>;
 }
 
-const parsePrice = (price: string) => {
-    const n = parseInt(price.replace(/[^0-9]/g, ''), 10);
-    return isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
-};
-
 const parseDurationDays = (duration: string) => {
     const n = parseInt(duration.replace(/[^0-9]/g, ''), 10);
     return isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
@@ -82,10 +77,6 @@ export default async function PlansPage({ searchParams }: PageProps) {
 
     const filteredPlans = [...cityFiltered].sort((a, b) => {
         switch (sort) {
-            case 'price-low':
-                return parsePrice(a.price) - parsePrice(b.price);
-            case 'price-high':
-                return parsePrice(b.price) - parsePrice(a.price);
             case 'duration':
                 return parseDurationDays(a.duration) - parseDurationDays(b.duration);
             case 'reviews':
@@ -114,12 +105,6 @@ export default async function PlansPage({ searchParams }: PageProps) {
                 "description": plan.description.substring(0, 200),
                 "url": `https://www.guideindiatours.com/plans/${plan.id}`,
                 "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
-                "offers": {
-                    "@type": "Offer",
-                    "price": plan.price.replace(/[^0-9.]/g, ''),
-                    "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock"
-                },
                 "aggregateRating": {
                     "@type": "AggregateRating",
                     "ratingValue": plan.rating.toString(),
@@ -230,8 +215,8 @@ export default async function PlansPage({ searchParams }: PageProps) {
 
                                     <div className="flex items-center justify-between py-6 border-t border-gray-50">
                                         <div>
-                                            <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Starting From</span>
-                                            <span className="text-3xl font-black text-maroon-600">{plan.price}</span>
+                                            <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Pricing</span>
+                                            <span className="text-xl font-black text-maroon-600">Custom Quote</span>
                                         </div>
                                         <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black w-14 h-14 p-0 shadow-xl shadow-maroon-600/20 transition-all duration-300">
                                             <Link href={`/plans/${plan.id}`}>

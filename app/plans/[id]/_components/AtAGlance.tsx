@@ -4,7 +4,6 @@ import { Clock, MapPin, Check, X, Shield, Users } from 'lucide-react';
 
 interface AtAGlanceProps {
     duration: string;
-    price: string;
     highlights: string[];
     pickup?: string;
     bestFor?: string;
@@ -14,7 +13,6 @@ interface AtAGlanceProps {
 
 export default function AtAGlance({
     duration,
-    price,
     highlights,
     pickup = "Delhi/Agra/Jaipur (Hotel/Airport)",
     bestFor = "Couples, Families, Solo Travelers",
@@ -39,7 +37,7 @@ export default function AtAGlance({
                         </tr>
                         <tr className="border-b border-gray-50">
                             <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Pricing</td>
-                            <td className="p-4 font-black text-maroon-600 text-xl">{price}</td>
+                            <td className="p-4 font-black text-maroon-600">Custom quote — free within 2 hours</td>
                         </tr>
                         <tr className="border-b border-gray-50">
                             <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Best For</td>

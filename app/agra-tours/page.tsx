@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'Agra Tours | Taj Mahal Private Guided Visits & Day Trips | Guide India Tours',
-    description: 'Visit the Taj Mahal with expert private guides. Same-day Agra tours, sunrise Taj Mahal visits, Agra Fort & Fatehpur Sikri. Tours from $30/person. Book your Agra tour now!',
+    description: 'Visit the Taj Mahal with expert private guides. Same-day Agra tours, sunrise Taj Mahal visits, Agra Fort & Fatehpur Sikri. Book your Agra tour now!',
     alternates: {
         canonical: 'https://www.guideindiatours.com/agra-tours',
         languages: {
@@ -140,7 +140,7 @@ export default function AgraToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Agra tours by Guide India Tours</strong> feature private, guided visits to the Taj Mahal and Agra&apos;s Mughal monuments. Our most popular option is the same-day Agra tour from Delhi, which includes a sunrise Taj Mahal visit, Agra Fort exploration, and optional Fatehpur Sikri stop — all with private AC transportation and licensed guides. Tours start from <strong>$30 per person</strong>. The Taj Mahal is closed on Fridays. We offer {allAgraPlans.length}+ Agra-focused packages, all rated 4.9/5 by 403+ verified Google reviewers.
+                        <strong className="text-gray-900">Agra tours by Guide India Tours</strong> feature private, guided visits to the Taj Mahal and Agra&apos;s Mughal monuments. Our most popular option is the same-day Agra tour from Delhi, which includes a sunrise Taj Mahal visit, Agra Fort exploration, and optional Fatehpur Sikri stop — all with private AC transportation and licensed guides. The Taj Mahal is closed on Fridays. We offer {allAgraPlans.length}+ Agra-focused packages, all rated 4.9/5 by 403+ verified Google reviewers.
                     </p>
                 </div>
             </section>
@@ -199,7 +199,7 @@ export default function AgraToursPage() {
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-2xl font-black text-gray-900">{plan.price}</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>

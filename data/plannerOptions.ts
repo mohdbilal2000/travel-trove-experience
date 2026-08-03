@@ -21,16 +21,6 @@ export const availableCities: PlannerCity[] = [
   { value: "Delhi", label: "Delhi" },
   { value: "Agra", label: "Agra" },
   { value: "Jaipur", label: "Jaipur" },
-  { value: "Bikaner", label: "Bikaner" },
-  { value: "Jodhpur", label: "Jodhpur" },
-  { value: "Udaipur", label: "Udaipur" },
-  { value: "Jaisalmer", label: "Jaisalmer" },
-  { value: "Ranthambore", label: "Ranthambore" },
-  { value: "Pushkar", label: "Pushkar" },
-  { value: "Ajmer", label: "Ajmer" },
-  { value: "Chittorgarh", label: "Chittorgarh" },
-  { value: "Mount Abu", label: "Mount Abu" },
-  { value: "Mandawa", label: "Mandawa" },
 ];
 
 export const transportOptions: TransportOption[] = [

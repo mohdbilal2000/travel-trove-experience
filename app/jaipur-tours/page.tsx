@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'Jaipur Tours | Pink City Private Guided Tours & Rajasthan Trips | Guide India Tours',
-    description: 'Explore Jaipur with expert guides. Visit Amber Fort, City Palace, Hawa Mahal & Jantar Mantar. Private Rajasthan tours from $35/person. Book your Jaipur tour today!',
+    description: 'Explore Jaipur with expert guides. Visit Amber Fort, City Palace, Hawa Mahal & Jantar Mantar. Book your Jaipur tour today!',
     alternates: {
         canonical: 'https://www.guideindiatours.com/jaipur-tours',
         languages: {
@@ -140,7 +140,7 @@ export default function JaipurToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. Tours start from <strong>$35 per person</strong> with {allJaipurPlans.length}+ packages available, all rated 4.9/5 by 403+ verified Google reviewers.
+                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. We offer {allJaipurPlans.length}+ Jaipur packages, all rated 4.9/5 by 403+ verified Google reviewers.
                     </p>
                 </div>
             </section>
@@ -199,7 +199,7 @@ export default function JaipurToursPage() {
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-2xl font-black text-gray-900">{plan.price}</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>

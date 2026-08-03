@@ -9,8 +9,6 @@ const CITIES = ["All", "Delhi", "Agra", "Jaipur", "Varanasi", "Udaipur", "Rantha
 
 const SORT_OPTIONS = [
     { value: 'recommended', label: 'Recommended' },
-    { value: 'price-low', label: 'Price: Low to High' },
-    { value: 'price-high', label: 'Price: High to Low' },
     { value: 'duration', label: 'Duration: Short to Long' },
     { value: 'reviews', label: 'Most Reviewed' },
 ];

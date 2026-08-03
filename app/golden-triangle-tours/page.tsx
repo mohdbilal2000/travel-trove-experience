@@ -26,7 +26,7 @@ const goldenTriangleFaqs = [
     },
     {
         question: "How much does a Golden Triangle tour cost?",
-        answer: "Our Golden Triangle tours start from $150 per person for budget options and go up to $500+ per person for luxury experiences. Prices include private AC car, licensed guides, hotel stays, and breakfast. The cost varies based on hotel category, tour duration, and group size. We offer transparent pricing with no hidden fees."
+        answer: "Every Golden Triangle tour is priced as a custom quote covering your private AC car, licensed guides, hotel stays, and breakfast. The cost depends on hotel category, tour duration, group size, and season. Message us on WhatsApp with your dates for a free, transparent quote with no hidden fees."
     },
     {
         question: "Is the Golden Triangle tour safe for solo travelers?",
@@ -36,7 +36,7 @@ const goldenTriangleFaqs = [
 
 export const metadata: Metadata = {
     title: 'Golden Triangle Tours | Delhi Agra Jaipur Private Tour Packages | Guide India Tours',
-    description: 'Book premium Golden Triangle tours covering Delhi, Agra & Jaipur. 4-10 day private packages with Taj Mahal, Amber Fort & Red Fort. From $150/person. 4.9/5 rated by 403+ travelers. Book now!',
+    description: 'Book premium Golden Triangle tours covering Delhi, Agra & Jaipur. 4-10 day private packages with Taj Mahal, Amber Fort & Red Fort. 4.9/5 rated by 403+ travelers. Book now!',
     alternates: {
         canonical: 'https://www.guideindiatours.com/golden-triangle-tours',
         languages: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Golden Triangle Tours India | Delhi Agra Jaipur Private Packages',
-        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 403+ travelers.',
+        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. 4.9/5 rated by 403+ travelers.',
         url: 'https://www.guideindiatours.com/golden-triangle-tours',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Golden Triangle Tours India | Delhi Agra Jaipur Packages',
-        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. From $150/person. 4.9/5 rated by 403+ travelers.',
+        description: 'Premium private Golden Triangle tours. Delhi, Agra & Jaipur with expert guides. 4.9/5 rated by 403+ travelers.',
     },
 };
 
@@ -172,7 +172,7 @@ export default function GoldenTriangleToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). Packages start from <strong>$150 per person</strong> with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 403+ verified Google reviewers.
+                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 403+ verified Google reviewers.
                     </p>
                 </div>
             </section>
@@ -273,7 +273,7 @@ export default function GoldenTriangleToursPage() {
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-2xl font-black text-gray-900">{plan.price}</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>

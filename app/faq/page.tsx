@@ -59,7 +59,7 @@ const faqCategories = [
         questions: [
             {
                 question: "How much does a Golden Triangle tour cost?",
-                answer: "Pricing depends on the number of days, hotel category, group size, and season. All tours are private and all-inclusive with no hidden fees. See each plan on our Tour Plans page for transparent, per-person starting prices."
+                answer: "Pricing depends on the number of days, hotel category, group size, and season. All tours are private and all-inclusive with no hidden fees. Every tour is priced as a custom quote — message us on WhatsApp with your dates and group size for a free quote within 2 hours."
             },
             {
                 question: "What payment methods and currencies do you accept?",

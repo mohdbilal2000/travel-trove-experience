@@ -280,7 +280,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                             </div>
                                             <h3 className="text-xl font-bold mb-6 group-hover:text-maroon-600 transition-colors line-clamp-2 min-h-[3.5rem] leading-tight">{plan.title}</h3>
                                             <div className="flex justify-between items-center pt-6 border-t border-gray-50">
-                                                <span className="text-2xl font-black text-maroon-600">{plan.price}</span>
+                                                <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                                 <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-maroon-600 group-hover:text-white transition-all">
                                                     <ArrowLeft className="rotate-180 w-5 h-5" />
                                                 </div>

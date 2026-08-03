@@ -88,7 +88,8 @@ export default async function PlanDetailPage({ params }: PageProps) {
     const tourSchema = generateTourPackageSchema({
         name: plan.title,
         description: plan.description,
-        price: plan.price,
+        price: "", // pricing is by custom quote — generator omits the Offer price
+
         image: plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
         duration: plan.duration,
         itinerary: plan.itinerary,
@@ -155,9 +156,9 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             </h1>
                             <div className="flex items-center gap-8 text-white/90">
                                 <div>
-                                    <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest block mb-1 opacity-60">Starting Point</span>
-                                    <span className="text-3xl font-black text-gold-500">{plan.price}</span>
-                                    <span className="opacity-60 text-sm ml-2">/ per person</span>
+                                    <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest block mb-1 opacity-60">Pricing</span>
+                                    <span className="text-3xl font-black text-gold-500">Custom Quote</span>
+                                    <span className="opacity-60 text-sm ml-2">tailored to your trip</span>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +178,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             <section id="at-a-glance">
                                 <AtAGlance
                                     duration={plan.duration}
-                                    price={plan.price}
+
                                     highlights={plan.highlights}
                                 />
                             </section>
@@ -339,16 +340,15 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                         <div className="mb-10 text-center">
                                             <p className="text-gray-400 text-[11px] font-black uppercase tracking-widest mb-1">Transparent Pricing</p>
                                             <div className="flex items-baseline justify-center gap-2">
-                                                <span className="text-5xl font-black text-gray-900">{plan.price}</span>
-                                                <span className="text-gray-400 font-medium">/ person</span>
+                                                <span className="text-3xl font-black text-gray-900">Custom Quote</span>
                                             </div>
+                                            <p className="text-gray-400 text-sm font-light mt-2">Tailored to your dates, hotels &amp; group size — free quote within 2 hours.</p>
                                         </div>
 
                                         <BookingButton
                                             planTitle={plan.title}
                                             planId={plan.id}
                                             planDuration={plan.duration}
-                                            planPrice={plan.price}
                                             className="w-full py-5 md:py-10 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500"
                                         />
 
@@ -372,7 +372,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
             </section>
 
             {/* Mobile Sticky Booking Bar */}
-            <StickyBookingBar planTitle={plan.title} planPrice={plan.price} />
+            <StickyBookingBar planTitle={plan.title} />
         </main>
     );
 }
