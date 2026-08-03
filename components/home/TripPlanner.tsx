@@ -172,34 +172,36 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
                 </button>
               );
             })}
-            {/* 10+ custom stepper */}
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all ${
-              state.days !== null && state.days > 10
-                ? "bg-maroon-50/60 border-maroon-600/50"
-                : "bg-white border-gray-200"
-            }`}>
-              <span className="text-sm font-semibold text-gray-700">10+</span>
+          </div>
+
+          {/* Custom day stepper — add or subtract days freely */}
+          <div className="mt-3 flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <div>
+              <p className="text-sm font-semibold text-gray-800">Custom duration</p>
+              <p className="text-xs text-gray-500">Add or remove days — up to 30</p>
+            </div>
+            <div className="flex items-center gap-3">
               <button
                 type="button"
-                onClick={() => onChange({ days: Math.max(11, (state.days ?? 10) + 1) })}
-                className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-                aria-label="Add a day beyond 10"
+                onClick={() => onChange({ days: Math.max(1, (state.days ?? 2) - 1) })}
+                disabled={state.days === null || state.days <= 1}
+                className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-maroon-600/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
+                aria-label="Remove a day"
               >
-                <Plus className="w-3 h-3" />
+                <Minus className="w-3.5 h-3.5" />
               </button>
-              {state.days !== null && state.days > 10 && (
-                <>
-                  <span className="text-sm font-bold text-maroon-700 tabular-nums">{state.days}</span>
-                  <button
-                    type="button"
-                    onClick={() => onChange({ days: Math.max(11, (state.days as number) - 1) })}
-                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-                    aria-label="Remove a day"
-                  >
-                    <Minus className="w-3 h-3" />
-                  </button>
-                </>
-              )}
+              <span className="w-16 text-center text-base font-bold text-gray-900 tabular-nums" aria-live="polite">
+                {state.days !== null ? `${state.days} ${state.days === 1 ? "Day" : "Days"}` : "— Days"}
+              </span>
+              <button
+                type="button"
+                onClick={() => onChange({ days: Math.min(30, (state.days ?? 0) + 1) })}
+                disabled={state.days !== null && state.days >= 30}
+                className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-maroon-600/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-600/40"
+                aria-label="Add a day"
+              >
+                <Plus className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         </section>
