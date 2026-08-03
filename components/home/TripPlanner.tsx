@@ -16,7 +16,7 @@ import {
   availableCities, transportOptions, dayPresets, goldenTrianglePreset,
 } from "@/data/plannerOptions";
 import {
-  type PlannerState, buildSummaryLines, buildWhatsAppUrl, buildMailto, isGoldenTriangle,
+  type PlannerState, buildSummaryLines, buildWhatsAppUrl, buildMailto, isGoldenTriangle, isFriday,
 } from "@/lib/planner";
 
 const transportIcons = { Car, Truck, Bus } as const;
@@ -123,9 +123,36 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
           </div>
         </section>
 
-        {/* 2. Days */}
+        {/* 2. Travel date */}
         <section>
-          <StepBadge n={2} label="Duration" icon={CalendarDays} />
+          <StepBadge n={2} label="Travel Date" icon={CalendarDays} />
+          <input
+            type="date"
+            value={state.startDate}
+            min={new Date().toISOString().split("T")[0]}
+            onChange={(e) => onChange({ startDate: e.target.value })}
+            aria-label="Travel start date"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/20 outline-none transition-all"
+          />
+          {state.startDate && isFriday(state.startDate) ? (
+            <p className="mt-2 flex items-start gap-2 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-800">
+              <span aria-hidden="true">⚠️</span>
+              <span>
+                Your start date is a <strong>Friday — the Taj Mahal is closed on Fridays</strong>. Agra Fort,
+                Fatehpur Sikri and all Delhi &amp; Jaipur sights stay open, and we can reorder your itinerary
+                so you never miss the Taj.
+              </span>
+            </p>
+          ) : (
+            <p className="mt-2 text-xs text-gray-500">
+              Tip: the Taj Mahal is closed on Fridays — we&apos;ll plan your Agra day around it.
+            </p>
+          )}
+        </section>
+
+        {/* 3. Days */}
+        <section>
+          <StepBadge n={3} label="Duration" icon={CalendarDays} />
           <div className="flex flex-wrap gap-2">
             {dayPresets.map((d) => {
               const active = state.days === d;
@@ -177,9 +204,9 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
           </div>
         </section>
 
-        {/* 3. Cities */}
+        {/* 4. Cities */}
         <section>
-          <StepBadge n={3} label="Destinations" icon={MapPin} />
+          <StepBadge n={4} label="Destinations" icon={MapPin} />
           <button
             type="button"
             onClick={toggleGoldenTriangle}
@@ -219,9 +246,9 @@ const TripPlanner = ({ state, onChange, onBrowseTours }: TripPlannerProps) => {
           </div>
         </section>
 
-        {/* 4. Transport */}
+        {/* 5. Transport */}
         <section>
-          <StepBadge n={4} label="Transport" icon={Car} />
+          <StepBadge n={5} label="Transport" icon={Car} />
           <TooltipProvider delayDuration={150}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {transportOptions.map((t) => {

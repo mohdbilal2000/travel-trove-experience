@@ -60,9 +60,9 @@ export function TrustStats() {
 /* ------------------------------------------------------------------ */
 
 const routeLegs = [
-    { leg: "Delhi → Agra", distance: "~230 km", time: "3–4 hours", route: "Yamuna Expressway", highlights: "Taj Mahal, Agra Fort, Itmad-ud-Daulah" },
-    { leg: "Agra → Jaipur", distance: "~240 km", time: "4–5 hours", route: "Via Fatehpur Sikri", highlights: "Fatehpur Sikri, Amber Fort, City Palace" },
-    { leg: "Jaipur → Delhi", distance: "~280 km", time: "5–6 hours", route: "NH48", highlights: "Hawa Mahal, Jantar Mantar, drive back to Delhi" },
+    { leg: "Delhi → Agra", distance: "~143 miles", time: "3–4 hours", route: "Yamuna Expressway", highlights: "Taj Mahal, Agra Fort, Itmad-ud-Daulah" },
+    { leg: "Agra → Jaipur", distance: "~149 miles", time: "4–5 hours", route: "Via Fatehpur Sikri", highlights: "Fatehpur Sikri, Amber Fort, City Palace" },
+    { leg: "Jaipur → Delhi", distance: "~174 miles", time: "5–6 hours", route: "NH48", highlights: "Hawa Mahal, Jantar Mantar, drive back to Delhi" },
 ];
 
 export function GoldenTriangleExplainer() {
@@ -74,7 +74,7 @@ export function GoldenTriangleExplainer() {
                 </h2>
                 <p id="golden-triangle-definition" className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto text-center mb-12">
                     India&apos;s Golden Triangle is the classic tourist circuit connecting Delhi, Agra and Jaipur —
-                    roughly 750 km of highway linking the Taj Mahal, Agra Fort, Amber Fort and Old Delhi&apos;s Mughal
+                    roughly 465 miles of highway linking the Taj Mahal, Agra Fort, Amber Fort and Old Delhi&apos;s Mughal
                     monuments. Most travelers complete it in 4 to 7 days by private car with a licensed guide,
                     starting and ending in Delhi.
                 </p>
@@ -237,7 +237,7 @@ const cities = [
         anchor: "Delhi sightseeing tours",
         image: "/images/optimized/delhi/getty-images-C4Yf3Wbymg8-unsplash-900.webp",
         alt: "Humayun's Tomb and historic monuments of Delhi",
-        blurb: "India's capital blends Mughal landmarks — the Red Fort, Jama Masjid and Humayun's Tomb — with New Delhi's India Gate, Qutub Minar and Lotus Temple. Tours from $25 per person.",
+        blurb: "India's capital blends Mughal landmarks — the Red Fort, Jama Masjid and Humayun's Tomb — with New Delhi's India Gate, Qutub Minar and Lotus Temple.",
     },
     {
         name: "Agra",
@@ -245,7 +245,7 @@ const cities = [
         anchor: "Agra & Taj Mahal tours",
         image: "/images/optimized/agra/getty-images-x83xvTdlITo-unsplash-900.webp",
         alt: "Taj Mahal reflected in the Yamuna river, Agra",
-        blurb: "Home of the Taj Mahal, Agra Fort and Fatehpur Sikri. Our same-day Agra tour from Delhi includes a sunrise Taj Mahal visit with a licensed guide. Tours from $30 per person.",
+        blurb: "Home of the Taj Mahal, Agra Fort and Fatehpur Sikri. Our same-day Agra tour from Delhi includes a sunrise Taj Mahal visit with a licensed guide.",
     },
     {
         name: "Jaipur",
@@ -253,7 +253,7 @@ const cities = [
         anchor: "Jaipur Pink City tours",
         image: "/images/optimized/jaipur/getty-images-zlqHXvaEIiI-unsplash-900.webp",
         alt: "Amber Fort overlooking Maota Lake, Jaipur",
-        blurb: "Rajasthan's royal capital: Amber Fort, City Palace, Hawa Mahal and the Jantar Mantar observatory, plus artisan bazaars for jewelry and textiles. Tours from $35 per person.",
+        blurb: "Rajasthan's royal capital: Amber Fort, City Palace, Hawa Mahal and the Jantar Mantar observatory, plus artisan bazaars for jewelry and textiles.",
     },
 ];
 
@@ -297,7 +297,7 @@ export function DestinationsGrid() {
                 <p className="text-center mt-10 text-gray-600 font-light">
                     Visiting all three?{" "}
                     <Link href="/golden-triangle-tours" className="text-maroon-600 font-bold underline underline-offset-2 hover:text-black">
-                        Compare our Golden Triangle tour packages from $150 per person
+                        Compare our Golden Triangle tour packages
                     </Link>{" "}
                     — or extend to Udaipur, Ranthambore and Varanasi from the{" "}
                     <Link href="/plans" className="text-maroon-600 font-bold underline underline-offset-2 hover:text-black">
@@ -509,6 +509,20 @@ export function ReviewsWall() {
                     <Button asChild variant="outline" className="border-2 border-maroon-600 text-maroon-600 hover:bg-maroon-600 hover:text-white rounded-xl px-8 py-6 font-bold">
                         <Link href="/reviews">Read All Traveler Reviews</Link>
                     </Button>
+                </div>
+
+                {/* Booking platforms */}
+                <div className="mt-14 pt-10 border-t border-gray-200/70 text-center">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-400 mb-6">Also Find Us On</p>
+                    <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+                        <li className="flex items-center gap-2 text-xl font-black tracking-tight text-gray-800">
+                            <span aria-hidden="true" className="w-6 h-6 rounded-full bg-[#34E0A1] flex items-center justify-center text-black text-xs font-black">T</span>
+                            Tripadvisor
+                        </li>
+                        <li className="text-xl font-black tracking-tight text-[#FF5533]">GetYourGuide</li>
+                        <li className="text-xl font-black tracking-tight text-[#FF5722]">Klook</li>
+                        <li className="text-xl font-black tracking-tight text-[#328E6E]">Viator</li>
+                    </ul>
                 </div>
             </div>
         </section>

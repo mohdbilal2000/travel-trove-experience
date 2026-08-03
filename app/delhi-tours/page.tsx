@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
     title: 'Delhi Tours | Private Guided Sightseeing & Day Trips | Guide India Tours',
-    description: 'Explore Delhi with expert private guides. Visit Red Fort, India Gate, Qutub Minar, Lotus Temple & Chandni Chowk. Customized Old Delhi & New Delhi tours from $25/person. Book now!',
+    description: 'Explore Delhi with expert private guides. Visit Red Fort, India Gate, Qutub Minar, Lotus Temple & Chandni Chowk. Book now!',
     alternates: {
         canonical: 'https://www.guideindiatours.com/delhi-tours',
         languages: {
@@ -145,7 +145,7 @@ export default function DelhiToursPage() {
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="prose prose-lg max-w-none">
                         <p className="text-lg text-gray-600 font-light leading-relaxed">
-                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. Tours start from <strong>$25 per person</strong> with private AC transportation, and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 403+ Google reviews.
+                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. All tours include private AC transportation and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 403+ Google reviews.
                         </p>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ export default function DelhiToursPage() {
                                         </h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-2xl font-black text-gray-900">{plan.price}</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">
                                                 View <ChevronRight className="w-3 h-3" />
                                             </span>

@@ -4,11 +4,6 @@ import { NextResponse } from 'next/server';
 export async function GET() {
     const totalPlans = allPlans.length;
     const destinations = Array.from(new Set(allPlans.flatMap(p => p.destinations || [])));
-    const priceRange = allPlans
-        .map(p => parseInt(p.price.replace(/[^0-9]/g, '')))
-        .filter(p => !isNaN(p));
-    const minPrice = Math.min(...priceRange);
-    const maxPrice = Math.max(...priceRange);
 
     const content = `# Guide India Tours
 > India's #1 Specialist for Golden Triangle Private Tours
@@ -28,7 +23,7 @@ export async function GET() {
 ## What We Offer
 - ${totalPlans} curated private tour packages
 - Destinations: ${destinations.join(', ')}
-- Price range: $${minPrice} - $${maxPrice} per person
+- Pricing: custom quotes tailored to dates, hotels and group size (no fixed list prices)
 - Duration: Same-day tours to 15-day expeditions
 - All tours include: Private AC car, expert licensed guide, luxury hotel stays
 
@@ -41,7 +36,7 @@ export async function GET() {
 - Small group & private tours only (no large buses)
 
 ## Popular Tours
-${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) — ${p.price}/person → https://www.guideindiatours.com/plans/${p.id}`).join('\n')}
+${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) → https://www.guideindiatours.com/plans/${p.id}`).join('\n')}
 
 ## Destination Pages
 - Delhi Tours: https://www.guideindiatours.com/delhi-tours

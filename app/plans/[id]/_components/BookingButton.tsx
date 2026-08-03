@@ -8,13 +8,12 @@ interface BookingButtonProps {
     planTitle: string;
     planId: number;
     planDuration: string;
-    planPrice: string;
     className?: string;
 }
 
-export default function BookingButton({ planTitle, planId, planDuration, planPrice, className }: BookingButtonProps) {
+export default function BookingButton({ planTitle, planId, planDuration, className }: BookingButtonProps) {
     const handleBook = () => {
-        const message = `Hi! I'm interested in the "${planTitle}" tour.\n\nTour ID: ${planId}\nDuration: ${planDuration}\nPrice: ${planPrice}\n\nPlease provide more details.`;
+        const message = `Hi! I'm interested in the "${planTitle}" tour.\n\nTour ID: ${planId}\nDuration: ${planDuration}\n\nPlease share a quote and more details.`;
         const whatsappUrl = `https://wa.me/918979810991?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };

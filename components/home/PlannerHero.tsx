@@ -5,16 +5,8 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { heroSlides } from "@/components/home/HeroFallback";
-import TripPlanner from "@/components/home/TripPlanner";
-import type { PlannerState } from "@/lib/planner";
 
-interface PlannerHeroProps {
-  state: PlannerState;
-  onChange: (patch: Partial<PlannerState>) => void;
-  onBrowseTours: () => void;
-}
-
-const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => {
+const PlannerHero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselReady, setCarouselReady] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -69,10 +61,10 @@ const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/75 md:bg-gradient-to-r md:from-black/80 md:via-black/55 md:to-black/30" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-28 pb-12 md:pt-36 md:pb-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: brand pitch */}
-          <div className="text-center lg:text-left text-white animate-fade-in">
+      <div className="relative z-10 container mx-auto px-4 pt-28 pb-16 md:pt-36 md:pb-24">
+        <div className="max-w-3xl mx-auto">
+          {/* Brand pitch */}
+          <div className="text-center text-white animate-fade-in">
             <a
               href="https://www.google.com/maps/place/Guide+India+Tours/"
               target="_blank"
@@ -93,20 +85,15 @@ const PlannerHero = ({ state, onChange, onBrowseTours }: PlannerHeroProps) => {
               <span className="block text-gold-500">Delhi, Agra &amp; Jaipur</span>
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-white/90 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg lg:text-xl text-white/90 font-light leading-relaxed max-w-xl mx-auto">
               Fully customizable private tours with government-licensed guides, air-conditioned cars and 24/7 support — run from Agra since 2004. Plan your trip below and get a quote on WhatsApp within 2 hours.
             </p>
 
-            <div className="hidden lg:flex items-center gap-6 mt-8 text-white/80 text-sm">
+            <div className="hidden lg:flex items-center justify-center gap-6 mt-8 text-white/80 text-sm">
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-gold-500" /> Government-licensed guides</span>
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-gold-500" /> 24/7 support</span>
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-gold-500" /> No hidden fees</span>
             </div>
-          </div>
-
-          {/* Right: the planner */}
-          <div className="w-full max-w-xl mx-auto lg:mx-0 lg:ml-auto">
-            <TripPlanner state={state} onChange={onChange} onBrowseTours={onBrowseTours} />
           </div>
         </div>
       </div>
