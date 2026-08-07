@@ -12,7 +12,7 @@ Keep the `•` bullets — they render on all devices.
 
 ---
 
-## Template 1 · Greeting message (auto-reply with mini form)
+## Template 1 · Greeting message (auto-reply with form link)
 
 ```
 🙏 *Namaste & welcome to Guide India Tours!*
@@ -21,16 +21,11 @@ Thank you for contacting us — we're delighted to help you plan your India adve
 
 ⭐ 4.9/5 · 403+ Google Reviews · Private Golden Triangle Specialists · Since 2004
 
-A travel expert will reply shortly. To get your *personalised quote faster*, please share these quick details:
+A travel expert will reply shortly. To get your *personalised quote faster*, fill our quick inquiry form:
 
-• *Name:*
-• *Travel dates (or month):*
-• *Number of travellers:* (adults / children)
-• *Cities you'd like to visit:* (Delhi / Agra / Jaipur / other)
-• *Number of days:*
-• *Anything special?* (sunrise Taj, photography, food tour, hotel category…)
+👉 https://www.guideindiatours.com/contact
 
-_Just copy the list above, fill it in, and send it back — we'll do the rest!_
+_It takes 1 minute and sends your details straight back to this chat — we'll do the rest!_
 
 🕐 We're available 24/7 (India Standard Time)
 📞 Call: +91 94100 00991
@@ -47,14 +42,11 @@ _Just copy the list above, fill it in, and send it back — we'll do the rest!_
 
 We've received your message and a travel expert will get back to you *within 2 hours* — usually much sooner.
 
-While you wait, feel free to share:
+While you wait, fill our quick inquiry form so we can prepare your personalised itinerary and quote right away: ✨
 
-• *Name:*
-• *Travel dates:*
-• *Number of travellers:*
-• *Cities & number of days:*
+👉 https://www.guideindiatours.com/contact
 
-This helps us prepare your personalised itinerary and quote right away. ✨
+_It takes 1 minute and sends your details straight back to this chat._
 
 ⚠️ _Tip: The Taj Mahal is closed on Fridays — we'll plan your Agra day around it._
 
