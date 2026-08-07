@@ -29,6 +29,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { homeFaqs } from "@/data/homeFaqs";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { WHATSAPP_NUMBER, CONTACT_EMAIL } from "@/lib/planner";
 
 const contactFormSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -41,6 +43,42 @@ const contactFormSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+/** Human-readable summary lines shared by the WhatsApp and email handoffs. */
+const buildInquiryLines = (values: ContactFormValues): string[] => [
+    `Name: ${values.name}`,
+    `Inquiry: ${values.subject}`,
+    `Phone / WhatsApp: ${values.phone}`,
+    `Email: ${values.email}`,
+    `From: ${values.city}, ${values.country}`,
+];
+
+const buildWhatsAppUrl = (values: ContactFormValues): string => {
+    const message = [
+        `Hi Guide India Tours! I'm ${values.name}.`,
+        "",
+        ...buildInquiryLines(values).map((l) => `• ${l}`),
+        "",
+        `Message: ${values.message}`,
+        "",
+        "Please get back to me with the best options. Thanks!",
+    ].join("\n");
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
+const buildMailtoUrl = (values: ContactFormValues): string => {
+    const subject = `${values.subject} enquiry — ${values.name}`;
+    const body = [
+        "Hi Guide India Tours,",
+        "",
+        ...buildInquiryLines(values).map((l) => `- ${l}`),
+        "",
+        `Message: ${values.message}`,
+        "",
+        "Please get back to me with the best options. Thanks!",
+    ].join("\r\n");
+    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
 
 export default function ContactPage() {
     const { toast } = useToast();
@@ -57,14 +95,18 @@ export default function ContactPage() {
     const onSubmit = async (values: ContactFormValues) => {
         setLoading(true);
         try {
-            const whatsappMessage = `Hi! I'm ${values.name}. Inquiry: ${values.subject}. Message: ${values.message}`;
-            const whatsappUrl = `https://wa.me/918979810991?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappUrl, '_blank');
+            window.open(buildWhatsAppUrl(values), "_blank");
             setSubmitted(true);
-            toast({ title: 'Message Initiated', description: "Check your WhatsApp for the open chat!" });
+            toast({ title: "Opening WhatsApp", description: "Your inquiry is pre-filled — just hit send!" });
         } finally {
             setLoading(false);
         }
+    };
+
+    const onEmailSubmit = (values: ContactFormValues) => {
+        window.location.href = buildMailtoUrl(values);
+        setSubmitted(true);
+        toast({ title: "Opening your email app", description: "Your inquiry is pre-filled — just hit send!" });
     };
 
     return (
@@ -170,7 +212,7 @@ export default function ContactPage() {
                             <div className="bg-white p-6 sm:p-8 md:p-12 lg:p-20 rounded-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
                                 <div className="mb-12">
                                     <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Inquiry Form</h2>
-                                    <p className="text-lg text-gray-400 font-light">Complete the details below and an agent will reach out within 2 hours. Our team is available 24/7 (India Standard Time, UTC+5:30).</p>
+                                    <p className="text-lg text-gray-400 font-light">Fill in the details below and hit send — your inquiry lands straight in our WhatsApp, pre-filled and ready to go. Prefer email? That works too. Our team is available 24/7 (India Standard Time, UTC+5:30).</p>
                                 </div>
 
                                 <FormProvider {...form}>
@@ -262,13 +304,28 @@ export default function ContactPage() {
                                             </FormItem>
                                         )} />
 
-                                        <Button type="submit" className="w-full py-10 rounded-2xl bg-maroon-600 hover:bg-black text-white text-xl font-display font-bold shadow-2xl transition-all duration-500 group overflow-hidden relative" disabled={loading}>
-                                            <span className="relative z-10 flex items-center justify-center gap-3">
-                                                {loading ? "Initializing..." : "Submit Inquiry"}
-                                                <ArrowRight className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" />
-                                            </span>
-                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                        </Button>
+                                        <div className="space-y-4">
+                                            <Button type="submit" className="w-full py-10 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0fa873] text-white text-xl font-display font-bold shadow-2xl transition-all duration-500 group overflow-hidden relative" disabled={loading}>
+                                                <span className="relative z-10 flex items-center justify-center gap-3">
+                                                    <WhatsAppIcon className="w-6 h-6" />
+                                                    {loading ? "Opening WhatsApp..." : "Send on WhatsApp"}
+                                                    <ArrowRight className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" />
+                                                </span>
+                                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                            </Button>
+                                            <Button
+                                                type="button"
+                                                variant="outline"
+                                                onClick={form.handleSubmit(onEmailSubmit)}
+                                                className="w-full py-8 rounded-2xl border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:text-maroon-600 text-lg font-bold transition-all"
+                                            >
+                                                <Mail className="w-5 h-5 mr-3" />
+                                                Prefer email? Send it instead
+                                            </Button>
+                                            <p className="text-center text-xs text-gray-400 font-light">
+                                                WhatsApp is the fastest way to reach us — replies usually within minutes. Email works too; we answer within a few hours.
+                                            </p>
+                                        </div>
                                     </form>
                                 </FormProvider>
                             </div>
