@@ -7,51 +7,24 @@ Set these up in **WhatsApp Business → Settings → Business tools**:
 - **Away message** — sent when a message arrives outside working hours or while
   you're busy. Use Template 2.
 
-Formatting reminders (WhatsApp syntax): `*text*` → **bold**, `_text_` → _italic_.
-Keep the `•` bullets — they render on all devices.
+⚠️ **Greeting and away messages are limited to 200 characters** — both templates
+below fit within that limit (counts noted). Quick Replies (Template 3) have no
+such limit.
 
 ---
 
-## Template 1 · Greeting message (auto-reply with form link)
+## Template 1 · Greeting message (191 characters)
 
 ```
-🙏 *Namaste & welcome to Guide India Tours!*
-
-Thank you for contacting us — we're delighted to help you plan your India adventure. 🇮🇳
-
-⭐ 4.9/5 · 403+ Google Reviews · Private Golden Triangle Specialists · Since 2004
-
-A travel expert will reply shortly. To get your *personalised quote faster*, fill our quick inquiry form:
-
-👉 https://www.guideindiatours.com/contact
-
-_It takes 1 minute and sends your details straight back to this chat — we'll do the rest!_
-
-🕐 We're available 24/7 (India Standard Time)
-📞 Call: +91 94100 00991
-✉️ Email: info@guideindiatours.com
-🌐 www.guideindiatours.com
+🙏 Namaste! Thanks for contacting Guide India Tours. A travel expert will reply shortly. For a faster quote, fill our 1-min form — it lands right back in this chat: guideindiatours.com/contact
 ```
 
 ---
 
-## Template 2 · Away message
+## Template 2 · Away message (187 characters)
 
 ```
-🙏 *Thank you for contacting Guide India Tours!*
-
-We've received your message and a travel expert will get back to you *within 2 hours* — usually much sooner.
-
-While you wait, fill our quick inquiry form so we can prepare your personalised itinerary and quote right away: ✨
-
-👉 https://www.guideindiatours.com/contact
-
-_It takes 1 minute and sends your details straight back to this chat._
-
-⚠️ _Tip: The Taj Mahal is closed on Fridays — we'll plan your Agra day around it._
-
-📞 Urgent? Call us: +91 94100 00991
-🌐 www.guideindiatours.com
+🙏 Thanks for contacting Guide India Tours! We reply within 2 hours, 24/7. Meanwhile, fill our 1-min form for a faster quote — it lands right back in this chat: guideindiatours.com/contact
 ```
 
 ---
