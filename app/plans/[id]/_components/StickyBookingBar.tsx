@@ -7,9 +7,10 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 interface StickyBookingBarProps {
     planTitle: string;
+    priceLabel?: string;
 }
 
-export default function StickyBookingBar({ planTitle }: StickyBookingBarProps) {
+export default function StickyBookingBar({ planTitle, priceLabel = "Custom Quote" }: StickyBookingBarProps) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -39,7 +40,7 @@ export default function StickyBookingBar({ planTitle }: StickyBookingBarProps) {
                     <div className="flex items-center justify-between gap-3">
                         <div className="flex-shrink-0">
                             <p className="text-xs font-black uppercase tracking-widest text-gray-500">Pricing</p>
-                            <p className="text-lg font-black text-gray-900">Custom Quote</p>
+                            <p className="text-lg font-black text-gray-900">{priceLabel}</p>
                             <p className="text-xs text-gray-500">reply within 2 hours</p>
                         </div>
                         <div className="flex gap-2">

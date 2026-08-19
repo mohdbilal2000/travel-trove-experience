@@ -9,6 +9,7 @@ interface AtAGlanceProps {
     bestFor?: string;
     type?: string;
     cancellation?: string;
+    pricingLabel?: string;
 }
 
 export default function AtAGlance({
@@ -17,7 +18,8 @@ export default function AtAGlance({
     pickup = "Delhi/Agra/Jaipur (Hotel/Airport)",
     bestFor = "Couples, Families, Solo Travelers",
     type = "Private Guided Tour",
-    cancellation = "Tiered refunds — up to 85% back"
+    cancellation = "Tiered refunds — up to 85% back",
+    pricingLabel = "Custom quote — free within 2 hours"
 }: AtAGlanceProps) {
     return (
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-12">
@@ -37,7 +39,7 @@ export default function AtAGlance({
                         </tr>
                         <tr className="border-b border-gray-50">
                             <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Pricing</td>
-                            <td className="p-4 font-black text-maroon-600">Custom quote — free within 2 hours</td>
+                            <td className="p-4 font-black text-maroon-600">{pricingLabel}</td>
                         </tr>
                         <tr className="border-b border-gray-50">
                             <td className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Best For</td>

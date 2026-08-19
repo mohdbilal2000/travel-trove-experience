@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- legacy PHP admin API client, currently unused */
 /**
  * API Service Layer
  * Handles all API calls with fallback to static data

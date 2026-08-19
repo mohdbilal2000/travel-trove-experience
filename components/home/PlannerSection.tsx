@@ -9,6 +9,7 @@ import TripPlanner from "@/components/home/TripPlanner";
 import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import { type PlannerState, getFilteredPlans, buildWhatsAppMessage, isGoldenTriangle } from "@/lib/planner";
+import { getPlanPath } from "@/data/travelPlans";
 import { cityLabel } from "@/data/plannerOptions";
 
 /**
@@ -74,7 +75,7 @@ export default function PlannerSection() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredPlans.map((plan) => (
                                     <div key={plan.id} className="group">
-                                        <Link href={`/plans/${plan.id}`} className="block h-full">
+                                        <Link href={`/plans/${getPlanPath(plan)}`} className="block h-full">
                                             <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-200">
                                                 <div className="relative h-48 overflow-hidden">
                                                     <OptimizedImage
@@ -120,10 +121,11 @@ export default function PlannerSection() {
                                                     <div className="flex items-center justify-between mb-4">
                                                         <div className="flex items-center gap-1">
                                                             <Star size={16} className="text-amber-500" fill="currentColor" />
-                                                            <span className="text-sm font-medium text-gray-900">{plan.rating}</span>
-                                                            <span className="text-sm text-gray-500">({plan.reviews})</span>
+                                                            <span className="text-sm font-medium text-gray-900">Private tour</span>
                                                         </div>
-                                                        <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                                        <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">
+                                                            {plan.fromPriceEUR ? `From €${plan.fromPriceEUR} pp` : "Custom Quote"}
+                                                        </span>
                                                     </div>
 
                                                     <Button className="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-medium py-2.5">

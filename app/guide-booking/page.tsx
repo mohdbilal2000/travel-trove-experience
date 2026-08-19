@@ -104,6 +104,7 @@ const tourPackages = [
     }
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- legacy untyped city-data map
 const guideServices: any = {
     agra: {
         city: "Agra",
@@ -188,6 +189,7 @@ export default function GuideBookingPage() {
         tourPackages.find(p => p.id === selectedPackage), [selectedPackage]
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- pkg shape varies per legacy city-data map
     const getPriceDisplay = (pkg: any) => {
         const duration = selectedDuration[pkg.id];
         if (pkg.id === 2) {

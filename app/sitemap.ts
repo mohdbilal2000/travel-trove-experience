@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { allPlans } from '@/data/travelPlans';
+import { allPlans, getPlanPath } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 
 const BASE_URL = 'https://www.guideindiatours.com';
@@ -178,12 +178,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ];
 
-    // Tour plan pages
+    // Tour plan pages (programmes with a published from-price rank higher)
     const planPages: MetadataRoute.Sitemap = allPlans.map((plan) => ({
-        url: `${BASE_URL}/plans/${plan.id}`,
+        url: `${BASE_URL}/plans/${getPlanPath(plan)}`,
         lastModified: now,
         changeFrequency: 'weekly' as const,
-        priority: 0.8,
+        priority: plan.fromPriceEUR ? 0.9 : 0.8,
     }));
 
     // Blog post pages

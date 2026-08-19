@@ -45,7 +45,7 @@ const Navbar = () => {
   const isHomePage = pathname === "/";
   // Dark image hero pages where the navbar should stay on a dark, semi-transparent
   // background with white text. Home (when not scrolled) and plan detail pages.
-  const isPlanDetail = /^\/plans\/\d+$/.test(pathname);
+  const isPlanDetail = /^\/plans\/[^/]+$/.test(pathname);
   const isDarkHero = (isHomePage || isPlanDetail) && !isScrolled;
 
   const headerClass = cn(

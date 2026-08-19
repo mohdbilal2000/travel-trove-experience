@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- validator inspects untyped JSON-LD output */
 /**
  * Automatic structured-data (JSON-LD) validator.
  *
@@ -11,10 +12,10 @@
 import {
     generateConnectedGraphSchema,
     generateTourPackageSchema,
+    generateProductSchema,
     generateFAQSchema,
 } from '../lib/schemaGenerator';
-import { allPlans } from '../data/travelPlans';
-import { getReviewsForTour } from '../data/reviews';
+import { allPlans, getPlanPath } from '../data/travelPlans';
 
 const errors: string[] = [];
 const fail = (ctx: string, msg: string) => errors.push(`✗ ${ctx}: ${msg}`);
@@ -50,28 +51,51 @@ if (agency) {
     if (agency.address && agency.address['@type'] !== 'PostalAddress') fail('graph.TravelAgency', 'address is not a PostalAddress');
 }
 
-// 2) Per-tour TouristTrip + Offer + Review (every plan page) -----------------
+// 2) Per-plan schema, mirroring exactly what /plans/[id] renders -------------
+// Programmes with a published from-price emit Product + Offer (EUR); bespoke
+// plans emit TouristTrip with a price-less Offer (quote-only). Neither carries
+// per-plan review counts — the only aggregateRating on the site is the
+// agency's real Google rating in the @graph.
+let productsChecked = 0;
 let tripsChecked = 0;
 for (const plan of allPlans) {
     const ctx = `plan ${plan.id} "${plan.title}"`;
-    const reviews = getReviewsForTour(plan.title, plan.destinations || []);
+    const url = `https://www.guideindiatours.com/plans/${getPlanPath(plan)}`;
+
+    if (plan.fromPriceEUR && plan.pricing) {
+        const product: any = generateProductSchema({
+            name: plan.title,
+            description: plan.description,
+            url,
+            image: plan.image,
+            fromPriceEUR: plan.fromPriceEUR,
+            sku: plan.slug,
+        });
+        assertSerialisable(ctx, product);
+        if (product['@type'] !== 'Product') fail(ctx, 'not a Product');
+        if (!product.name) fail(ctx, 'missing name');
+        const offer = product.offers;
+        if (!offer || offer['@type'] !== 'Offer') fail(ctx, 'missing Offer');
+        else {
+            if (!/^\d+(\.\d+)?$/.test(String(offer.price)) || Number(offer.price) <= 0)
+                fail(ctx, `Offer.price invalid ("${offer.price}")`);
+            if (offer.priceCurrency !== 'EUR') fail(ctx, `Offer.priceCurrency must be EUR, got "${offer.priceCurrency}"`);
+            if (!offer.availability) fail(ctx, 'Offer missing availability');
+        }
+        if ('aggregateRating' in product) fail(ctx, 'Product must not carry an invented aggregateRating');
+        productsChecked++;
+        continue;
+    }
+
     const schema: any = generateTourPackageSchema(
         {
             name: plan.title,
             description: plan.description,
-            price: plan.price,
+            price: '', // bespoke tours are quote-only — generator omits the Offer price
             duration: plan.duration,
             itinerary: plan.itinerary,
             destinations: plan.destinations,
-            url: `https://www.guideindiatours.com/plans/${plan.id}`,
-            rating: plan.rating,
-            reviewCount: plan.reviews,
-            reviews: reviews.map((r) => ({
-                author: r.name,
-                rating: r.rating,
-                reviewBody: r.reviewText,
-                datePublished: r.date,
-            })),
+            url,
         },
         { name: 'Guide India Tours', url: 'https://www.guideindiatours.com' },
     );
@@ -89,16 +113,8 @@ for (const plan of allPlans) {
             fail(ctx, `Offer.price invalid ("${offer.price}" from "${plan.price}")`);
         if (!offer.priceCurrency) fail(ctx, 'Offer has price but no priceCurrency');
     }
-
-    // Reviews (when present) must be well-formed for rich results.
-    if (Array.isArray(schema.review)) {
-        schema.review.forEach((rv: any, i: number) => {
-            if (!rv.author?.name) fail(ctx, `review[${i}] missing author.name`);
-            const rr = Number(rv.reviewRating?.ratingValue);
-            if (!(rr >= 1 && rr <= 5)) fail(ctx, `review[${i}] ratingValue invalid: ${rv.reviewRating?.ratingValue}`);
-            if (!rv.reviewBody) fail(ctx, `review[${i}] missing reviewBody`);
-        });
-    }
+    if ('aggregateRating' in schema) fail(ctx, 'TouristTrip must not carry an invented aggregateRating');
+    if ('review' in schema) fail(ctx, 'TouristTrip must not carry pool-matched per-trip reviews');
     tripsChecked++;
 }
 
@@ -113,4 +129,4 @@ if (errors.length) {
     console.error(errors.join('\n'));
     process.exit(1);
 }
-console.log(`✓ JSON-LD valid: site @graph + ${tripsChecked} tour Offers/Reviews + FAQ shape.`);
+console.log(`✓ JSON-LD valid: site @graph + ${productsChecked} programme Products + ${tripsChecked} bespoke TouristTrips + FAQ shape.`);

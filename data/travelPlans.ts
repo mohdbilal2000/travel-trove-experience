@@ -8,6 +8,11 @@ import { delhiPlans } from "./plans/delhiPlans";
 import { agraPlans } from "./plans/agraPlans";
 import { jaipurPlans } from "./plans/jaipurPlans";
 import { rajasthanPlans } from "./plans/rajasthanPlans";
+import { programmes } from "./plans/programmes";
+
+// The 11 real programmes with published from-prices (rate-card backed).
+// These are featured first everywhere; everything else is bespoke/custom.
+export { programmes } from "./plans/programmes";
 
 // Original travel plans data (for backwards compatibility)
 export const travelPlans = [...classicPlans, ...specializedPlans, ...extensionDestinations];
@@ -63,7 +68,8 @@ const getCityPriority = (plan: TravelPlan): number => {
 // Combine all plans and sort by city sequence: Delhi → Agra → Jaipur → Rajasthan → Golden Triangle → Others
 const allPlansUnsorted = [...delhiPlans, ...agraPlans, ...jaipurPlans, ...rajasthanPlans, ...classicPlans, ...specializedPlans, ...extensionDestinations, ...tourPlans];
 
-export const allPlans = allPlansUnsorted.sort((a, b) => {
+// Bespoke/custom plans (no published prices — quoted individually).
+export const bespokePlans = allPlansUnsorted.sort((a, b) => {
   const priorityA = getCityPriority(a);
   const priorityB = getCityPriority(b);
   
@@ -88,10 +94,25 @@ export const allPlans = allPlansUnsorted.sort((a, b) => {
   return a.id - b.id;
 });
 
+// Full catalog: real programmes first (in rate-card order), then bespoke plans.
+export const allPlans = [...programmes, ...bespokePlans];
+
 // Helper function to get a plan by ID (adding this as it's used in PlanDetail.tsx)
 export const getPlanById = (id: number): TravelPlan | undefined => {
   return allPlans.find(plan => plan.id === id);
 };
+
+// Resolve a /plans/[id] route param: programme slug first, then numeric id.
+export const getPlanBySlugOrId = (param: string): TravelPlan | undefined => {
+  const bySlug = allPlans.find(plan => plan.slug === param);
+  if (bySlug) return bySlug;
+  const numericId = parseInt(param, 10);
+  if (isNaN(numericId)) return undefined;
+  return getPlanById(numericId);
+};
+
+// Canonical URL path segment for a plan: slug when it has one, otherwise id.
+export const getPlanPath = (plan: TravelPlan): string => plan.slug ?? plan.id.toString();
 
 // Re-export types for easier imports
 export type { TravelPlan, ItineraryDay, FAQItem } from "./types/travelPlanTypes";

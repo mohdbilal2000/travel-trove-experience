@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, User, Tag, ArrowLeft, Check, Clock, Star } from "lucide-react";
 import { getBlogPostBySlug, blogPosts, estimateReadTime } from "@/data/blogPosts";
-import { allPlans } from "@/data/travelPlans";
+import { allPlans, getPlanPath } from "@/data/travelPlans";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
@@ -258,7 +258,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                             {relatedPlans.map(plan => (
                                 <Card key={plan.id} className="overflow-hidden group rounded-3xl border-none shadow-sm hover:shadow-2xl transition-all duration-500 bg-white">
-                                    <Link href={`/plans/${plan.id}`}>
+                                    <Link href={`/plans/${getPlanPath(plan)}`}>
                                         <div className="relative aspect-[4/3] overflow-hidden">
                                             <Image
                                                 src={plan.image}
@@ -275,12 +275,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                                 </Badge>
                                                 <div className="flex items-center gap-1">
                                                     <Star className="w-3 h-3 text-gold-500 fill-current" />
-                                                    <span className="text-[10px] font-bold text-gray-400">{plan.rating}</span>
+                                                    <span className="text-[10px] font-bold text-gray-400">Private tour</span>
                                                 </div>
                                             </div>
                                             <h3 className="text-xl font-bold mb-6 group-hover:text-maroon-600 transition-colors line-clamp-2 min-h-[3.5rem] leading-tight">{plan.title}</h3>
                                             <div className="flex justify-between items-center pt-6 border-t border-gray-50">
-                                                <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                                <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">{plan.fromPriceEUR ? `From €${plan.fromPriceEUR}` : "Custom Quote"}</span>
                                                 <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-maroon-600 group-hover:text-white transition-all">
                                                     <ArrowLeft className="rotate-180 w-5 h-5" />
                                                 </div>

@@ -1,10 +1,10 @@
-import { allPlans } from '@/data/travelPlans';
+import { allPlans, getPlanPath } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
     const destinations = Array.from(new Set(allPlans.flatMap(p => p.destinations || [])));
-    const categories = Array.from(new Set(allPlans.map(p => (p as any).category).filter(Boolean)));
+    const categories = Array.from(new Set(allPlans.map(p => (p as { category?: string }).category).filter(Boolean)));
     const priceValues = allPlans
         .map(p => parseInt(p.price.replace(/[^0-9]/g, '')))
         .filter(p => !isNaN(p));
@@ -83,16 +83,17 @@ export async function GET() {
             totalReviews: 403,
         },
 
-        // Tour catalog summary
+        // Tour catalog summary. Per-plan review counts are intentionally not
+        // published — the 4.9/403+ aggregate above is the agency's real
+        // Google rating.
         tourCatalog: allPlans.map(plan => ({
             id: plan.id,
             name: plan.title,
             duration: plan.duration,
-            price: plan.price,
-            rating: plan.rating,
-            reviews: plan.reviews,
+            price: plan.fromPriceEUR ? `From €${plan.fromPriceEUR} per person` : "Custom quote",
+            fromPriceEUR: plan.fromPriceEUR ?? null,
             destinations: plan.destinations,
-            url: `https://www.guideindiatours.com/plans/${plan.id}`,
+            url: `https://www.guideindiatours.com/plans/${getPlanPath(plan)}`,
         })),
 
         // Content catalog

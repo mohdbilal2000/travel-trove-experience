@@ -56,7 +56,7 @@ export type FAQ = {
  * Generate Organization schema
  */
 export const generateOrganizationSchema = (org: Organization) => {
-  const schema: any = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": org.name,
@@ -104,7 +104,7 @@ export const generateTravelAgencySchema = (
   }>,
   geo?: { lat: string; long: string }
 ) => {
-  const schema: any = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
     "name": org.name,
@@ -161,7 +161,7 @@ export const generateTourPackageSchema = (
   // schema.org and trips Google's Rich Results, so we omit price entirely and
   // only advertise price/currency when a real number exists.
   const numericPrice = tour.price.replace(/[^0-9.]/g, '');
-  const offer: any = {
+  const offer: Record<string, unknown> = {
     "@type": "Offer",
     "name": tour.name,
     "availability": "https://schema.org/InStock",
@@ -172,7 +172,7 @@ export const generateTourPackageSchema = (
     offer.priceCurrency = tour.currency || "USD";
   }
 
-  const schema: any = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
     "name": tour.name,
@@ -238,6 +238,51 @@ export const generateTourPackageSchema = (
       "@type": "TouristDestination",
       "name": destination
     }));
+  }
+
+  return schema;
+};
+
+/**
+ * Generate Product + Offer schema for programmes with a published from-price.
+ * Used for the real rate-card programmes; the from-price is the rounded
+ * display price ("from €X") and the currency is EUR. No aggregateRating is
+ * emitted unless real per-product review data exists.
+ */
+export const generateProductSchema = (product: {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+  fromPriceEUR: number;
+  sku?: string;
+}) => {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "url": product.url,
+    "brand": {
+      "@type": "Brand",
+      "name": "Guide India Tours"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": product.url,
+      "price": product.fromPriceEUR.toString(),
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://www.guideindiatours.com/#organization" }
+    }
+  };
+
+  if (product.image) {
+    schema["image"] = product.image;
+  }
+
+  if (product.sku) {
+    schema["sku"] = product.sku;
   }
 
   return schema;
@@ -346,7 +391,7 @@ export const generateTouristDestinationSchema = (destination: {
   containedInPlace?: string;
   geo?: { lat: string; long: string };
 }) => {
-  const schema: any = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
     "@id": `https://www.guideindiatours.com/${destination.url}#destination`,

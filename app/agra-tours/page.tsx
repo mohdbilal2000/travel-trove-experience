@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { allPlans } from '@/data/travelPlans';
+import { allPlans, getPlanPath } from '@/data/travelPlans';
 import { getDestinationBySlug } from '@/data/destinations';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -89,7 +89,7 @@ export default function AgraToursPage() {
         'itemListElement': agraPlans.map((plan, idx) => ({
             '@type': 'ListItem',
             'position': idx + 1,
-            'url': `https://www.guideindiatours.com/plans/${plan.id}`,
+            'url': `https://www.guideindiatours.com/plans/${getPlanPath(plan)}`,
             'name': plan.title
         }))
     };
@@ -181,7 +181,7 @@ export default function AgraToursPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {agraPlans.map((plan) => (
-                            <Link key={plan.id} href={`/plans/${plan.id}`} className="group">
+                            <Link key={plan.id} href={`/plans/${getPlanPath(plan)}`} className="group">
                                 <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
                                     <div className="relative aspect-[4/3] overflow-hidden">
                                         <Image src={plan.image} alt={plan.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
@@ -194,12 +194,12 @@ export default function AgraToursPage() {
                                     <div className="p-6 space-y-3">
                                         <div className="flex items-center gap-2">
                                             <Star className="w-3.5 h-3.5 text-gold-500 fill-current" />
-                                            <span className="text-xs font-bold text-gray-600">{plan.rating} ({plan.reviews})</span>
+                                            <span className="text-xs font-bold text-gray-600">4.9-rated operator · 403+ Google reviews</span>
                                         </div>
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">{plan.fromPriceEUR ? `From €${plan.fromPriceEUR}` : "Custom Quote"}</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>

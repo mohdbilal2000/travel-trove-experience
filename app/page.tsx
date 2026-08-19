@@ -9,6 +9,7 @@ import {
     BookDirect, EeatGuides, ReviewsWall, ResourcesHub, FinalCta,
 } from "@/components/home/HomeSections";
 import { getFilteredPlans } from "@/lib/planner";
+import { getPlanPath } from "@/data/travelPlans";
 import { homeFaqs } from "@/data/homeFaqs";
 
 export const metadata: Metadata = {
@@ -78,7 +79,7 @@ export default function Home() {
             "@type": "ListItem",
             "position": idx + 1,
             "name": plan.title,
-            "url": `https://www.guideindiatours.com/plans/${plan.id}`
+            "url": `https://www.guideindiatours.com/plans/${getPlanPath(plan)}`
         }))
     };
 

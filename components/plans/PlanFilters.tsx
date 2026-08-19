@@ -10,7 +10,6 @@ const CITIES = ["All", "Delhi", "Agra", "Jaipur", "Varanasi", "Udaipur", "Rantha
 const SORT_OPTIONS = [
     { value: 'recommended', label: 'Recommended' },
     { value: 'duration', label: 'Duration: Short to Long' },
-    { value: 'reviews', label: 'Most Reviewed' },
 ];
 
 export default function PlanFilters() {

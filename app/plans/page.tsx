@@ -3,9 +3,10 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    Car, Bed, Users, Coffee, ArrowRight, Star, Clock
+    ArrowRight, Clock, ReceiptText, Users, Car
 } from "lucide-react";
-import { allPlans } from "@/data/travelPlans";
+import { programmes, bespokePlans, getPlanPath } from "@/data/travelPlans";
+import type { TravelPlan } from "@/data/types/travelPlanTypes";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PlanFilters from "@/components/plans/PlanFilters";
@@ -14,11 +15,11 @@ import Breadcrumbs from "@/components/shared/Breadcrumbs";
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
     const { city } = await searchParams;
     const title = city && city !== 'All'
-        ? `${city} Tour Packages | Premium Golden Triangle Tours India`
-        : 'Tour Packages | Premium Golden Triangle Tours India';
+        ? `${city} Tour Packages | Private Tours with Real Prices | Guide India Tours`
+        : 'Tour Packages with Real Prices | Golden Triangle Tours India';
     const description = city && city !== 'All'
-        ? `Book private ${city} tours with expert guides. Explore the history and beauty of ${city} in luxury. Part of our curated Golden Triangle collection.`
-        : 'Explore our curated tour plans for Delhi, Agra, Jaipur, and beyond. Private guides, luxury vehicles, and handpicked hotels for the ultimate India experience.';
+        ? `Book private ${city} tours with licensed guides and published from-prices. Itemized pricing — transport, guide and monument tickets listed openly.`
+        : 'Private India tours with published from-prices and itemized costs: Taj Mahal day trips from €70, Golden Triangle from €180, plus fully bespoke itineraries.';
 
     return {
         title,
@@ -48,13 +49,6 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     };
 }
 
-const planFeatures = [
-    { icon: Car, title: "Private Transport", description: "Premium AC vehicles." },
-    { icon: Bed, title: "Luxury Stays", description: "5-star hotels." },
-    { icon: Users, title: "Expert Guides", description: "Govt-authorized specialists." },
-    { icon: Coffee, title: "Fine Dining", description: "Authentic cuisines." }
-];
-
 interface PageProps {
     searchParams: Promise<{ city?: string; sort?: string }>;
 }
@@ -64,71 +58,131 @@ const parseDurationDays = (duration: string) => {
     return isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
 };
 
+const matchesCity = (plan: TravelPlan, city?: string) =>
+    !city || city === 'All' ||
+    plan.title.toLowerCase().includes(city.toLowerCase()) ||
+    plan.description.toLowerCase().includes(city.toLowerCase()) ||
+    (plan.destinations?.some(d => d.toLowerCase() === city.toLowerCase()) ?? false);
+
 export default async function PlansPage({ searchParams }: PageProps) {
     const { city, sort } = await searchParams;
 
-    const cityFiltered = !city || city === 'All'
-        ? allPlans
-        : allPlans.filter(plan =>
-            plan.title.toLowerCase().includes(city.toLowerCase()) ||
-            plan.description.toLowerCase().includes(city.toLowerCase()) ||
-            plan.destinations?.some(d => d.toLowerCase() === city.toLowerCase())
-        );
+    // Real programmes keep their rate-card order unless sorting by duration.
+    const filteredProgrammes = programmes.filter(plan => matchesCity(plan, city));
+    const sortedProgrammes = sort === 'duration'
+        ? [...filteredProgrammes].sort((a, b) => parseDurationDays(a.duration) - parseDurationDays(b.duration))
+        : filteredProgrammes;
 
-    const filteredPlans = [...cityFiltered].sort((a, b) => {
-        switch (sort) {
-            case 'duration':
-                return parseDurationDays(a.duration) - parseDurationDays(b.duration);
-            case 'reviews':
-                return b.reviews - a.reviews;
-            default:
-                return (Number(b.popular) - Number(a.popular)) || (b.reviews - a.reviews);
-        }
-    });
+    const filteredBespoke = bespokePlans.filter(plan => matchesCity(plan, city));
+    const sortedBespoke = sort === 'duration'
+        ? [...filteredBespoke].sort((a, b) => parseDurationDays(a.duration) - parseDurationDays(b.duration))
+        : [...filteredBespoke].sort((a, b) => Number(b.popular) - Number(a.popular));
+
+    const totalCount = sortedProgrammes.length + sortedBespoke.length;
 
     const itemListSchema = {
         "@context": "https://schema.org",
         "@type": "ItemList",
         "url": "https://www.guideindiatours.com/plans",
-        "name": "Guide India Tours - Curated Tour Packages",
-        "description": "Private India tour packages covering the Golden Triangle, Rajasthan, and beyond.",
-        "numberOfItems": filteredPlans.length,
-        "itemListElement": filteredPlans.slice(0, 30).map((plan, idx) => ({
-            "@type": "ListItem",
-            "position": idx + 1,
-            "url": `https://www.guideindiatours.com/plans/${plan.id}`,
-            "name": plan.title,
-            "item": {
-                "@type": "TouristTrip",
-                "@id": `https://www.guideindiatours.com/plans/${plan.id}#trip`,
+        "name": "Guide India Tours - Tour Packages",
+        "description": "Private India tour programmes with published from-prices, plus bespoke itineraries covering the Golden Triangle, Rajasthan, and beyond.",
+        "numberOfItems": totalCount,
+        "itemListElement": [...sortedProgrammes, ...sortedBespoke].slice(0, 30).map((plan, idx) => {
+            const url = `https://www.guideindiatours.com/plans/${getPlanPath(plan)}`;
+            const item: Record<string, unknown> = {
+                "@type": plan.fromPriceEUR ? "Product" : "TouristTrip",
+                "@id": `${url}#${plan.fromPriceEUR ? 'product' : 'trip'}`,
                 "name": plan.title,
                 "description": plan.description.substring(0, 200),
-                "url": `https://www.guideindiatours.com/plans/${plan.id}`,
+                "url": url,
                 "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": plan.rating.toString(),
-                    "reviewCount": plan.reviews.toString(),
-                    "bestRating": "5"
-                }
+            };
+            if (plan.fromPriceEUR) {
+                item["offers"] = {
+                    "@type": "Offer",
+                    "price": plan.fromPriceEUR.toString(),
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "url": url,
+                };
             }
-        }))
+            return {
+                "@type": "ListItem",
+                "position": idx + 1,
+                "url": url,
+                "name": plan.title,
+                "item": item,
+            };
+        })
     };
 
-    const breadcrumbSchema = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.guideindiatours.com" },
-            { "@type": "ListItem", "position": 2, "name": "Tour Plans", "item": "https://www.guideindiatours.com/plans" }
-        ]
-    };
+    // BreadcrumbList schema comes from the shared <Breadcrumbs> component below.
+    const renderPlanCard = (plan: TravelPlan) => (
+        <div key={plan.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
+            <Link href={`/plans/${getPlanPath(plan)}`} className="block relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                <Image
+                    src={plan.image}
+                    alt={`${plan.title} - Tour to ${city || 'India'}`}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+
+                {plan.popular && (
+                    <div className="absolute top-6 right-6 bg-gold-500 text-black text-[11px] sm:text-[9px] font-black py-2 px-5 rounded-full shadow-xl uppercase tracking-widest z-10">
+                        Popular Choice
+                    </div>
+                )}
+
+                <div className="absolute bottom-6 left-8 right-8 z-10">
+                    {plan.fromPriceEUR && (
+                        <div className="flex items-center gap-2 mb-2">
+                            <ReceiptText className="w-3 h-3 text-gold-500" />
+                            <span className="text-white/80 text-[11px] sm:text-[9px] font-black uppercase tracking-widest">Itemized pricing published</span>
+                        </div>
+                    )}
+                    <p className="text-white text-xs font-bold flex items-center gap-2">
+                        <Clock className="w-3 h-3 text-gold-500" /> {plan.duration}
+                    </p>
+                </div>
+            </Link>
+
+            <div className="p-6 md:p-10">
+                <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-tight mb-4 min-h-[3.5rem] line-clamp-2">
+                    {plan.title}
+                </h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed mb-8 line-clamp-2">
+                    {plan.description}
+                </p>
+
+                <div className="flex items-center justify-between py-6 border-t border-gray-50">
+                    <div>
+                        <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Pricing</span>
+                        {plan.fromPriceEUR ? (
+                            <>
+                                <span className="text-xl font-black text-maroon-600">From €{plan.fromPriceEUR}</span>
+                                <span className="text-xs text-gray-400 font-light block">per person</span>
+                            </>
+                        ) : (
+                            <span className="text-xl font-black text-maroon-600">Custom Quote</span>
+                        )}
+                    </div>
+                    <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black w-14 h-14 p-0 shadow-xl shadow-maroon-600/20 transition-all duration-300">
+                        <Link href={`/plans/${getPlanPath(plan)}`} aria-label={`View ${plan.title}`}>
+                            <ArrowRight className="w-6 h-6" />
+                        </Link>
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <main className="min-h-screen bg-ivory-100">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
             />
             {/* Hero Section */}
             <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-black">
@@ -144,13 +198,13 @@ export default async function PlansPage({ searchParams }: PageProps) {
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <div className="max-w-4xl mx-auto">
                         <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-8 px-6 py-2 uppercase tracking-[0.2em] text-xs font-black">
-                            Curated Travel Experiences
+                            Real Tours · Real Prices
                         </Badge>
                         <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-white mb-6 md:mb-8 leading-tight sm:leading-[0.9] tracking-tight md:tracking-tighter">
-                            Our Signature <br /><span className="text-gold-500">Tour Plans</span>
+                            Our Tour <br /><span className="text-gold-500">Programmes</span>
                         </h1>
                         <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mx-auto">
-                            Experience the Golden Triangle and beyond in absolute luxury with our meticulously designed itineraries.
+                            Private tours of the Golden Triangle and beyond, with published from-prices and every cost itemized — transport, licensed guide and monument tickets.
                         </p>
                     </div>
                 </div>
@@ -164,77 +218,42 @@ export default async function PlansPage({ searchParams }: PageProps) {
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-gray-100 pb-12">
                         <div className="max-w-xl">
                             <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
-                                Experience <span className="text-maroon-600">Authentic India</span>
+                                Signature <span className="text-maroon-600">Programmes</span>
                             </h2>
                             <p className="text-gray-500 font-light text-lg">
-                                Filter by your preferred city or browse our most popular curated packages.
+                                Our most-booked itineraries with transparent from-prices. Every page lists exactly what the transport, guide and monument tickets cost.
                             </p>
                         </div>
                         <PlanFilters />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-                        {filteredPlans.map((plan) => (
-                            <div key={plan.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
-                                <Link href={`/plans/${plan.id}`} className="block relative h-56 sm:h-64 md:h-72 overflow-hidden">
-                                    <Image
-                                        src={plan.image}
-                                        alt={`${plan.title} - Tour to ${city || 'India'}`}
-                                        fill
-                                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
-
-                                    {plan.popular && (
-                                        <div className="absolute top-6 right-6 bg-gold-500 text-black text-[11px] sm:text-[9px] font-black py-2 px-5 rounded-full shadow-xl uppercase tracking-widest z-10">
-                                            Popular Choice
-                                        </div>
-                                    )}
-
-                                    <div className="absolute bottom-6 left-8 right-8 z-10">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <div className="flex gap-0.5">
-                                                {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-gold-500 fill-current" />)}
-                                            </div>
-                                            <span className="text-white/80 text-[11px] sm:text-[9px] font-black uppercase tracking-widest">{plan.reviews} Reviews</span>
-                                        </div>
-                                        <p className="text-white text-xs font-bold flex items-center gap-2">
-                                            <Clock className="w-3 h-3 text-gold-500" /> {plan.duration}
-                                        </p>
-                                    </div>
-                                </Link>
-
-                                <div className="p-6 md:p-10">
-                                    <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-tight mb-4 min-h-[3.5rem] line-clamp-2">
-                                        {plan.title}
-                                    </h3>
-                                    <p className="text-gray-500 text-sm font-light leading-relaxed mb-8 line-clamp-2">
-                                        {plan.description}
-                                    </p>
-
-                                    <div className="flex items-center justify-between py-6 border-t border-gray-50">
-                                        <div>
-                                            <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Pricing</span>
-                                            <span className="text-xl font-black text-maroon-600">Custom Quote</span>
-                                        </div>
-                                        <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black w-14 h-14 p-0 shadow-xl shadow-maroon-600/20 transition-all duration-300">
-                                            <Link href={`/plans/${plan.id}`}>
-                                                <ArrowRight className="w-6 h-6" />
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                        {sortedProgrammes.map(renderPlanCard)}
                     </div>
 
-                    {filteredPlans.length === 0 && (
+                    {totalCount === 0 && (
                         <div className="text-center py-20">
                             <h3 className="text-2xl font-bold text-gray-400">No tours found matching your selection.</h3>
                             <Button variant="link" asChild className="mt-4 text-maroon-600">
                                 <Link href="/plans">View all tour plans</Link>
                             </Button>
+                        </div>
+                    )}
+
+                    {/* Bespoke & Luxury — custom-quoted itineraries */}
+                    {sortedBespoke.length > 0 && (
+                        <div className="mt-24 md:mt-32">
+                            <div className="max-w-2xl mb-16 border-t border-gray-100 pt-16">
+                                <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
+                                    Bespoke &amp; <span className="text-maroon-600">Luxury</span>
+                                </h2>
+                                <p className="text-gray-500 font-light text-lg">
+                                    Ideas and starting points for fully tailor-made trips — longer routes, luxury hotels and special interests. These itineraries are quoted individually because every detail (hotels, vehicles, pace, season) is built around you.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+                                {sortedBespoke.map(renderPlanCard)}
+                            </div>
                         </div>
                     )}
                 </div>
@@ -248,20 +267,20 @@ export default async function PlansPage({ searchParams }: PageProps) {
                     </h2>
                     <div className="prose prose-lg max-w-none text-gray-600 font-light leading-relaxed">
                         <p className="mb-6">
-                            Our tour packages are more than just itineraries; they are carefully crafted experiences designed to show you the heart and soul of India. From the majestic Taj Mahal in Agra to the colorful streets of Jaipur and the spiritual ghats of Varanasi, we ensure every detail is covered.
+                            Our programmes are more than itineraries — they are carefully run private experiences with pricing you can actually see before you enquire. From the Taj Mahal at sunrise to the colorful streets of Jaipur, we publish what the transport, the licensed guide and each monument ticket cost, so there are no surprises.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
                             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                                <h4 className="font-bold text-gray-900 mb-2">Expert Local Guides</h4>
-                                <p className="text-sm">Licensed by the Ministry of Tourism, our guides provide deep historical context you won't find in guidebooks.</p>
+                                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><Users className="w-4 h-4 text-maroon-600" /> Expert Local Guides</h4>
+                                <p className="text-sm">Licensed by the Ministry of Tourism, our guides provide deep historical context you won't find in guidebooks — in English, Hindi, and five more languages on request.</p>
                             </div>
                             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                                <h4 className="font-bold text-gray-900 mb-2">Bespoke Logistics</h4>
-                                <p className="text-sm">Travel in premium, air-conditioned vehicles with professional chauffeurs who prioritize your safety and comfort.</p>
+                                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><Car className="w-4 h-4 text-maroon-600" /> Transparent Logistics</h4>
+                                <p className="text-sm">Private, air-conditioned vehicles with professional chauffeurs — sedan to 12-seat Urbania — with the price of each tier published on every programme page.</p>
                             </div>
                         </div>
                         <p>
-                            Whether you're visiting for a single day or a multi-week adventure, our commitment to quality remains the same. Explore the Golden Triangle with the authority of Guide India Tours.
+                            Whether you pick a fixed programme or a fully bespoke route, our commitment is the same: private touring, honest pricing, and a free custom quote on WhatsApp within 2 hours.
                         </p>
                     </div>
                 </div>
