@@ -505,9 +505,10 @@ export const generateConnectedGraphSchema = () => {
         "slogan": "Experience India's Golden Triangle with Expert Guides",
         "currenciesAccepted": "USD, EUR, GBP, INR",
         "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
+        "taxID": "09ABCFG5043N1Z4",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
+          "streetAddress": "Jangjeet Nagar, Shamsabad Road",
           "addressLocality": "Agra",
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282001",

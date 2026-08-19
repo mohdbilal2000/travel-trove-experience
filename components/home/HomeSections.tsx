@@ -436,7 +436,7 @@ export function EeatGuides() {
                         <address className="not-italic relative z-10 mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 text-sm text-white/80 leading-relaxed">
                             <span className="flex items-start gap-3 mb-2">
                                 <MapPin className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
-                                <span>Guide India Tours, 31/84A Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India</span>
+                                <span>Guide India Tours, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India</span>
                             </span>
                             <span className="flex items-center gap-3 mb-2">
                                 <Phone className="w-4 h-4 text-gold-500 flex-shrink-0" />

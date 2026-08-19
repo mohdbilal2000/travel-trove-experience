@@ -114,8 +114,8 @@ export default function ContactPage() {
                                         </div>
                                     </div>
                                     <address className="not-italic text-base text-white/75 leading-relaxed font-light mb-5">
-                                        31/84A, Jangjeet Nagar,<br />
-                                        Shamsabad Road, Agra 282001, Uttar Pradesh, India
+                                        Jangjeet Nagar, Shamsabad Road,<br />
+                                        Agra 282001, Uttar Pradesh, India
                                     </address>
                                     <a
                                         href="https://maps.google.com/?q=Guide+India+Tours+Agra"

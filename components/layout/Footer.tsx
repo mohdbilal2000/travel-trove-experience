@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, Star } from "lucide-react";
+import { MapPin, Phone, Mail, Star } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,20 +22,9 @@ const Footer = () => {
             <p className="text-gray-600 max-w-sm leading-relaxed">
               Discover the magic of India's Golden Triangle with our curated travel experiences, luxury accommodations, and personalized services.
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Facebook">
-                <Facebook size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Twitter / X">
-                <Twitter size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Instagram">
-                <Instagram size={18} />
-              </a>
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="YouTube">
-                <Youtube size={18} />
-              </a>
-            </div>
+            <p className="text-gray-500 text-sm">
+              GST-registered · GSTIN 09ABCFG5043N1Z4
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -113,7 +102,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-maroon-600" />
                 <span className="text-gray-600 text-sm">
-                  31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh
+                  Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh
                 </span>
               </li>
               <li className="flex items-center space-x-3">

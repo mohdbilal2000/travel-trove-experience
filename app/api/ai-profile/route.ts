@@ -20,6 +20,7 @@ export async function GET() {
         description: "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Premium private tours with licensed guides, luxury hotels, and fully customizable itineraries.",
         foundingDate: "2004",
         priceRange: "$$$",
+        taxID: "09ABCFG5043N1Z4",
         slogan: "Experience India's Golden Triangle with Expert Guides",
         sameAs: [
             "https://www.google.com/maps/place/Guide+India+Tours/",
@@ -30,7 +31,7 @@ export async function GET() {
 
         address: {
             "@type": "PostalAddress",
-            streetAddress: "31/84A, Jangjeet Nagar, Shamsabad Road",
+            streetAddress: "Jangjeet Nagar, Shamsabad Road",
             addressLocality: "Agra",
             addressRegion: "Uttar Pradesh",
             postalCode: "282001",

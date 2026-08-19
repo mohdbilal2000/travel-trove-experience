@@ -55,7 +55,7 @@ const contactSchema = {
         ],
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
+            "streetAddress": "Jangjeet Nagar, Shamsabad Road",
             "addressLocality": "Agra",
             "addressRegion": "Uttar Pradesh",
             "postalCode": "282001",
