@@ -33,7 +33,7 @@ export const homeFaqs: HomeFAQ[] = [
     },
     {
         question: "Can you accommodate travelers with mobility needs?",
-        answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles and adjust the itinerary and pace. Please share your requirements when you enquire so we can plan accordingly.",
+        answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles, adjust the itinerary and pace, and provide guide assistance. See our dedicated wheelchair-accessible Taj Mahal and Golden Triangle guide at guideindiatours.com/accessible-tours, and share your requirements when you enquire.",
     },
     {
         question: "What is included in a private Taj Mahal tour?",

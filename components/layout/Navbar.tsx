@@ -15,6 +15,7 @@ const navItems = [
     children: [
       { label: "All Services", path: "/services" },
       { label: "Taxi & Car Rental", path: "/taxi" },
+      { label: "Accessible Tours", path: "/accessible-tours" },
     ],
   },
   { label: "Plans", path: "/plans" },

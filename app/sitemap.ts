@@ -34,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         {
+            url: `${BASE_URL}/accessible-tours`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
             url: `${BASE_URL}/about`,
             lastModified: now,
             changeFrequency: 'monthly',

@@ -101,7 +101,8 @@ const faqCategories = [
             },
             {
                 question: "Can you accommodate travelers with mobility needs?",
-                answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles and adjust the itinerary and pace. Please share your requirements when you enquire so we can plan accordingly."
+                answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles (Innova Crysta or Urbania vans with wheelchair space), adjust the itinerary and pace, and provide guide assistance throughout. Please share your requirements when you enquire so we can plan accordingly.",
+                link: { href: "/accessible-tours", label: "Read our wheelchair-accessible Taj Mahal & Golden Triangle guide" }
             }
         ]
     },
@@ -200,6 +201,11 @@ export default function FAQPage() {
                                             </AccordionTrigger>
                                             <AccordionContent className="text-gray-500 font-light text-lg leading-relaxed pb-8">
                                                 {faq.answer}
+                                                {"link" in faq && faq.link && (
+                                                    <Link href={faq.link.href} className="block mt-4 text-maroon-600 font-medium underline underline-offset-4 hover:text-maroon-700">
+                                                        {faq.link.label} <ArrowRight className="w-4 h-4 inline" />
+                                                    </Link>
+                                                )}
                                             </AccordionContent>
                                         </AccordionItem>
                                     ))}
