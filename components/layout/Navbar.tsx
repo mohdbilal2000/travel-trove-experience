@@ -9,7 +9,14 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "Services", path: "/services" },
+  {
+    label: "Services",
+    path: "/services",
+    children: [
+      { label: "All Services", path: "/services" },
+      { label: "Taxi & Car Rental", path: "/taxi" },
+    ],
+  },
   { label: "Plans", path: "/plans" },
   { label: "Blog", path: "/blog" },
   { label: "Book Guide", path: "/guide-booking" },
@@ -86,11 +93,35 @@ const Navbar = () => {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link key={item.path} href={item.path} className={linkClass(pathname === item.path)}>
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.children ? (
+                <div key={item.path} className="relative group">
+                  <Link href={item.path} className={linkClass(pathname === item.path || item.children.some((c) => c.path === pathname))}>
+                    {item.label}
+                  </Link>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
+                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[200px]">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.path}
+                          href={child.path}
+                          className={cn(
+                            "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-ivory-100 hover:text-maroon-600",
+                            pathname === child.path ? "text-maroon-600" : "text-royal-800"
+                          )}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link key={item.path} href={item.path} className={linkClass(pathname === item.path)}>
+                  {item.label}
+                </Link>
+              )
+            )}
             <Button
               size="sm"
               className="ml-6 px-8 py-2 text-sm font-medium transition-all duration-300 rounded-xl bg-maroon-600 hover:bg-maroon-700 text-white border-none shadow-lg hover:shadow-xl"
@@ -139,21 +170,41 @@ const Navbar = () => {
         </button>
 
         <div className="flex flex-col h-full pt-20 pb-8 px-6">
-          <nav className="flex-1 flex flex-col space-y-3">
+          <nav className="flex-1 flex flex-col space-y-3 overflow-y-auto">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={cn(
-                  "text-lg font-display font-medium transition-colors py-3 px-4 rounded-lg",
-                  pathname === item.path
-                    ? "text-maroon-600 bg-white/40 border-l-4 border-maroon-600"
-                    : "text-royal-800 hover:bg-white/20 hover:text-maroon-600"
+              <div key={item.path}>
+                <Link
+                  href={item.path}
+                  className={cn(
+                    "block text-lg font-display font-medium transition-colors py-3 px-4 rounded-lg",
+                    pathname === item.path
+                      ? "text-maroon-600 bg-white/40 border-l-4 border-maroon-600"
+                      : "text-royal-800 hover:bg-white/20 hover:text-maroon-600"
+                  )}
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </Link>
+                {item.children && (
+                  <div className="ml-4 mt-1 space-y-1">
+                    {item.children.slice(1).map((child) => (
+                      <Link
+                        key={child.path}
+                        href={child.path}
+                        className={cn(
+                          "block text-base font-medium transition-colors py-2 px-4 rounded-lg",
+                          pathname === child.path
+                            ? "text-maroon-600 bg-white/40 border-l-4 border-maroon-600"
+                            : "text-royal-800/80 hover:bg-white/20 hover:text-maroon-600"
+                        )}
+                        onClick={closeMobileMenu}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-                onClick={closeMobileMenu}
-              >
-                {item.label}
-              </Link>
+              </div>
             ))}
           </nav>
 
