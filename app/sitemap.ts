@@ -39,6 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.85,
         },
+        // German programme pages
+        {
+            url: `${BASE_URL}/de/delhi-agra-same-day`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.85,
+        },
+        {
+            url: `${BASE_URL}/de/golden-triangle-3-days`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.85,
+        },
         {
             url: `${BASE_URL}/about`,
             lastModified: now,

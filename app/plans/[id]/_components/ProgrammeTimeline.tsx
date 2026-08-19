@@ -3,11 +3,13 @@ import type { TimelineStop } from "@/data/types/travelPlanTypes";
 
 interface ProgrammeTimelineProps {
     timeline: TimelineStop[];
+    dayLabel?: string;
 }
 
 // Hour-by-hour timeline for programmes. Multi-day programmes group stops
 // under "Day N" headings; single-day tours render one continuous rail.
-export default function ProgrammeTimeline({ timeline }: ProgrammeTimelineProps) {
+// Pass `dayLabel` to localize the heading (e.g. "Tag" on /de pages).
+export default function ProgrammeTimeline({ timeline, dayLabel = "Day" }: ProgrammeTimelineProps) {
     const isMultiDay = timeline.some((stop) => stop.day !== undefined);
     const days = isMultiDay
         ? Array.from(new Set(timeline.map((stop) => stop.day)))
@@ -22,7 +24,7 @@ export default function ProgrammeTimeline({ timeline }: ProgrammeTimelineProps) 
                             <span className="w-10 h-10 rounded-2xl bg-maroon-600 text-white flex items-center justify-center text-sm font-black">
                                 {day}
                             </span>
-                            Day {day}
+                            {dayLabel} {day}
                         </h3>
                     )}
                     <ol className="relative border-l-2 border-maroon-600/20 ml-3 space-y-8">

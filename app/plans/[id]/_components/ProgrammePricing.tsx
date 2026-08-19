@@ -3,17 +3,53 @@ import { Car, Users, Ticket, XCircle, Info, BadgeCheck } from "lucide-react";
 import type { ProgrammePricing as ProgrammePricingData } from "@/data/types/travelPlanTypes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
+export interface PricingLabels {
+    transportHeading: string;
+    vehicle: string;
+    groupSize: string;
+    packageTotal: string;
+    quoteOnWhatsApp: string;
+    whatsappMessage: (planTitle: string) => string;
+    guideHeading: string;
+    ticketsHeading: string;
+    monument: string;
+    foreignerPrice: string;
+    optional: string;
+    ticketsPrefix: string;
+    notIncludedHeading: string;
+    plannerLinkLabel: string;
+    plannerHref: string;
+}
+
+const englishLabels: PricingLabels = {
+    transportHeading: "Private AC Transport",
+    vehicle: "Vehicle",
+    groupSize: "Group Size",
+    packageTotal: "Package Total",
+    quoteOnWhatsApp: "Quote on WhatsApp",
+    whatsappMessage: (planTitle) => `Hi! Please quote the "${planTitle}" for my group size and vehicle preference.`,
+    guideHeading: "Licensed Guide",
+    ticketsHeading: "Monument Tickets",
+    monument: "Monument",
+    foreignerPrice: "Foreign Visitor Price",
+    optional: "Optional",
+    ticketsPrefix: "Official ASI rates, paid at actuals — verify current prices.",
+    notIncludedHeading: "Not Included",
+    plannerLinkLabel: "Build your exact trip in the planner",
+    plannerHref: "/contact#trip-planner",
+};
+
 interface ProgrammePricingProps {
     pricing: ProgrammePricingData;
     planTitle: string;
+    labels?: PricingLabels;
 }
 
 // Itemized, transparent pricing table for real programmes — transport tiers,
-// guide, per-monument tickets and honest exclusions.
-export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricingProps) {
-    const whatsappHref = `https://wa.me/918979810991?text=${encodeURIComponent(
-        `Hi! Please quote the "${planTitle}" for my group size and vehicle preference.`
-    )}`;
+// guide, per-monument tickets and honest exclusions. Pass `labels` to render
+// the same table in another language (e.g. the /de pages).
+export default function ProgrammePricing({ pricing, planTitle, labels = englishLabels }: ProgrammePricingProps) {
+    const whatsappHref = `https://wa.me/918979810991?text=${encodeURIComponent(labels.whatsappMessage(planTitle))}`;
 
     return (
         <div className="space-y-8">
@@ -21,15 +57,15 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="bg-maroon-600 p-6 text-white flex items-center gap-3">
                     <Car className="w-5 h-5" />
-                    <h3 className="text-xl font-bold uppercase tracking-wider">Private AC Transport</h3>
+                    <h3 className="text-xl font-bold uppercase tracking-wider">{labels.transportHeading}</h3>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="border-b border-gray-100">
-                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Vehicle</th>
-                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Group Size</th>
-                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Package Total</th>
+                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">{labels.vehicle}</th>
+                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">{labels.groupSize}</th>
+                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">{labels.packageTotal}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +95,7 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center gap-1.5 text-sm font-bold text-[#128C7E] hover:underline"
                                             >
-                                                <WhatsAppIcon className="w-3.5 h-3.5" /> Quote on WhatsApp
+                                                <WhatsAppIcon className="w-3.5 h-3.5" /> {labels.quoteOnWhatsApp}
                                             </a>
                                         )}
                                     </td>
@@ -77,7 +113,7 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
                         <BadgeCheck className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-1">Licensed Guide</h4>
+                        <h4 className="font-bold text-gray-900 mb-1">{labels.guideHeading}</h4>
                         <p className="text-gray-600 font-light">{pricing.guideIncluded}</p>
                         <p className="text-sm text-gray-500 font-light mt-2">{pricing.languageSupplement}</p>
                     </div>
@@ -88,14 +124,14 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="bg-gray-900 p-6 text-white flex items-center gap-3">
                     <Ticket className="w-5 h-5 text-gold-500" />
-                    <h3 className="text-xl font-bold uppercase tracking-wider">Monument Tickets</h3>
+                    <h3 className="text-xl font-bold uppercase tracking-wider">{labels.ticketsHeading}</h3>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="border-b border-gray-100">
-                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Monument</th>
-                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">Foreign Visitor Price</th>
+                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">{labels.monument}</th>
+                                <th className="p-4 font-bold text-gray-400 uppercase text-[11px] sm:text-[10px] tracking-widest">{labels.foreignerPrice}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,7 +140,7 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
                                     <td className="p-4 font-medium text-gray-900">
                                         {ticket.monument}
                                         {ticket.optional && (
-                                            <span className="ml-2 text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-gray-400">Optional</span>
+                                            <span className="ml-2 text-[11px] sm:text-[10px] font-black uppercase tracking-widest text-gray-400">{labels.optional}</span>
                                         )}
                                     </td>
                                     <td className="p-4 text-gray-700">{ticket.foreignerPrice}</td>
@@ -116,7 +152,7 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
                 <div className="px-4 pb-5 pt-1">
                     <p className="text-xs text-gray-500 font-light flex items-start gap-2">
                         <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-gold-500" />
-                        Official ASI rates, paid at actuals — verify current prices. {pricing.ticketsNote}
+                        {labels.ticketsPrefix} {pricing.ticketsNote}
                     </p>
                 </div>
             </div>
@@ -124,7 +160,7 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
             {/* Not included */}
             <div className="bg-gray-50 rounded-3xl border border-gray-100 p-8">
                 <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-gray-400" /> Not Included
+                    <XCircle className="w-4 h-4 text-gray-400" /> {labels.notIncludedHeading}
                 </h4>
                 <ul className="space-y-2">
                     {pricing.notIncluded.map((item) => (
@@ -136,8 +172,8 @@ export default function ProgrammePricing({ pricing, planTitle }: ProgrammePricin
             {/* Basis + disclaimer */}
             <p className="text-sm text-gray-500 font-light leading-relaxed">
                 {pricing.basis}{" "}
-                <Link href="/contact#trip-planner" className="text-maroon-600 font-medium underline underline-offset-2 hover:text-maroon-700">
-                    Build your exact trip in the planner
+                <Link href={labels.plannerHref} className="text-maroon-600 font-medium underline underline-offset-2 hover:text-maroon-700">
+                    {labels.plannerLinkLabel}
                 </Link>
                 .
             </p>
