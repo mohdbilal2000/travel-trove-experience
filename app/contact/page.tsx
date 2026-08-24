@@ -196,6 +196,19 @@ export default function ContactPage() {
                     },
                 ]}
             />
+
+            {/* Staff quote tool — deliberately unlabelled. PIN-gated, excluded from search engines. */}
+            <div className="bg-gray-50 pb-6 text-center">
+                <a
+                    href="/tools/gt-quote-engine.html"
+                    rel="nofollow noindex"
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="text-white/0 hover:text-white/0 select-none text-[10px]"
+                >
+                    .
+                </a>
+            </div>
         </main>
     );
 }

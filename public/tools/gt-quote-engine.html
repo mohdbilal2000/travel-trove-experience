@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Golden Triangle Quote Engine</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:,">
+<style>
+#gate{position:fixed;inset:0;z-index:9999;background:#800000;color:#fff;display:flex;align-items:center;justify-content:center}
+#gate .box{text-align:center;padding:32px}
+#gate h1{font:600 22px/1.2 Georgia,serif;margin-bottom:6px}
+#gate p{font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;opacity:.6;margin-bottom:22px}
+#gate input{font:600 22px/1 ui-monospace,monospace;letter-spacing:10px;text-align:center;width:190px;padding:12px;border:0;border-radius:8px;background:rgba(255,255,255,.12);color:#fff}
+#gate input::placeholder{letter-spacing:4px;font-size:14px;opacity:.4}
+#gate .err{color:#FFC107;font-size:13px;height:18px;margin-top:12px;letter-spacing:0;text-transform:none;opacity:1}
+body.locked{overflow:hidden}
+</style>
+</head>
+<body class="locked">
+<div id="gate"><div class="box">
+  <h1>Guide India Tours</h1>
+  <p>Staff access</p>
+  <input id="pin" type="password" inputmode="numeric" maxlength="8" placeholder="PIN" autocomplete="off">
+  <div class="err" id="gerr"></div>
+</div></div>
+<script>
+/* Change this PIN to whatever you like. */
+var STAFF_PIN = "0991";
+(function(){
+  var g=document.getElementById('gate'), i=document.getElementById('pin'), e=document.getElementById('gerr');
+  function open_(){ g.remove(); document.body.classList.remove('locked'); }
+  try{ if(sessionStorage.getItem('git-staff')==='1'){ open_(); return; } }catch(_){}
+  i.focus();
+  i.addEventListener('input',function(){
+    if(i.value===STAFF_PIN){ try{sessionStorage.setItem('git-staff','1')}catch(_){} open_(); }
+    else if(i.value.length>=STAFF_PIN.length){ e.textContent='Incorrect PIN'; i.value=''; setTimeout(function(){e.textContent=''},1600); }
+  });
+})();
+</script>
+<style>
+:root{
+  --ground:#F7F4EC; --surface:#FFFFFF; --surface-2:#FBF8F0; --line:#E4DCC9; --line-soft:#EFE8D8;
+  --ink:#26221C; --ink-2:#5C5546; --ink-3:#8A8271;
+  --brand:#800000; --brand-ink:#FFFFFF; --brand-soft:#F6E7E7;
+  --gold:#B8952F; --gold-soft:#F6EFD9;
+  --good:#3F7A56; --good-soft:#E8F2EC;
+  --bad:#B0342C; --bad-soft:#FBE9E7;
+  --panel:#2C3E50; --panel-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(38,34,28,.06),0 8px 24px -12px rgba(38,34,28,.18);
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#151310; --surface:#1F1C18; --surface-2:#262119; --line:#3A342B; --line-soft:#2E2922;
+  --ink:#F2EDE3; --ink-2:#B9B0A0; --ink-3:#8A8271;
+  --brand:#C86A6A; --brand-ink:#1A1512; --brand-soft:#33211F;
+  --gold:#D6B641; --gold-soft:#332C18;
+  --good:#7FBF9A; --good-soft:#1D2C24;
+  --bad:#E08078; --bad-soft:#31201E;
+  --panel:#2F3D4A; --panel-ink:#EAF1F7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --ground:#151310; --surface:#1F1C18; --surface-2:#262119; --line:#3A342B; --line-soft:#2E2922;
+  --ink:#F2EDE3; --ink-2:#B9B0A0; --ink-3:#8A8271;
+  --brand:#C86A6A; --brand-ink:#1A1512; --brand-soft:#33211F;
+  --gold:#D6B641; --gold-soft:#332C18;
+  --good:#7FBF9A; --good-soft:#1D2C24;
+  --bad:#E08078; --bad-soft:#31201E;
+  --panel:#2F3D4A; --panel-ink:#EAF1F7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* header */
+header{background:var(--brand);color:var(--brand-ink);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--gold)}
+.brand{font:700 20px/1 'Playfair Display',Georgia,serif;letter-spacing:.2px}
+.brand span{opacity:.72;font-weight:600}
+.hsub{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;opacity:.75;margin-top:5px}
+.tabs{display:flex;gap:4px;background:rgba(0,0,0,.16);padding:4px;border-radius:var(--r)}
+.tab{background:none;border:0;padding:7px 15px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;color:inherit;opacity:.72}
+.tab[aria-selected="true"]{background:var(--brand-ink);color:var(--brand);opacity:1}
+
+/* layout */
+.wrap{max-width:1280px;margin:0 auto;padding:22px 24px 80px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:22px;align-items:start}
+@media(max-width:1000px){.cols{grid-template-columns:1fr}}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+.card>h2{font:600 12px/1 Inter,sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-3);padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--surface-2);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card>h2 .hint{font-size:10.5px;letter-spacing:.2px;text-transform:none;font-weight:400;color:var(--ink-3)}
+.pad{padding:18px}
+
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+label.f{display:flex;flex-direction:column;gap:6px}
+label.f>span{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-3)}
+input[type=text],input[type=number],input[type=date],select{background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:9px 11px;width:100%}
+input[type=number]{font-variant-numeric:tabular-nums}
+
+/* vehicle picker */
+.veh{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.veh button{background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:11px 12px;text-align:left;cursor:pointer}
+.veh button[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-soft);box-shadow:inset 0 0 0 1px var(--brand)}
+.veh .vn{font-weight:600;font-size:14px}
+.veh .vc{font-size:11.5px;color:var(--ink-3);margin-top:3px}
+
+/* monument checkboxes */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.mcity h3{font:600 11px/1 Inter,sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:var(--brand);margin-bottom:9px}
+.mon{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:13.5px;border-bottom:1px dotted var(--line-soft)}
+.mon:last-child{border-bottom:0}
+.mon input{accent-color:var(--brand);width:15px;height:15px;flex:none}
+.mon .mn{flex:1;min-width:0}
+.mon .mp{color:var(--ink-3);font-size:12.5px}
+.mon.free .mp{color:var(--good)}
+
+/* results */
+.res{position:sticky;top:18px}
+.big{background:var(--panel);color:var(--panel-ink);padding:20px}
+.big .lbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;opacity:.72}
+.big .fx{font:700 34px/1.05 'Playfair Display',Georgia,serif;margin-top:7px}
+.big .pp{font-size:13px;opacity:.8;margin-top:6px}
+.big .inr{font-size:12px;opacity:.62;margin-top:3px}
+
+table.br{width:100%;border-collapse:collapse;font-size:13.5px}
+table.br td{padding:7px 18px;border-bottom:1px solid var(--line-soft)}
+table.br td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.br tr.sum td{font-weight:700;background:var(--surface-2);border-top:1px solid var(--line)}
+table.br tr.profit td{background:var(--good-soft);color:var(--good);font-weight:700;font-size:15px}
+table.br tr.profit.neg td{background:var(--bad-soft);color:var(--bad)}
+table.br td .sm{display:block;font-size:11.5px;font-weight:400;color:var(--ink-3);margin-top:2px}
+
+.chips{display:flex;gap:7px;padding:12px 18px;flex-wrap:wrap;border-bottom:1px solid var(--line-soft)}
+.chip{font-size:11px;font-weight:600;letter-spacing:.5px;padding:4px 9px;border-radius:99px;background:var(--gold-soft);color:var(--gold)}
+.chip.warn{background:var(--bad-soft);color:var(--bad)}
+.chip.ok{background:var(--good-soft);color:var(--good)}
+
+/* message */
+textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:13px;font:400 13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+.btn{background:var(--brand);color:var(--brand-ink);border:0;border-radius:7px;padding:10px 17px;font-weight:600;font-size:13.5px;cursor:pointer}
+.btn.sec{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+
+/* rates tab */
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt th,.rt td{padding:8px 10px;border-bottom:1px solid var(--line-soft);text-align:left}
+.rt th{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.rt td:not(:first-child){text-align:right}
+.rt input{width:88px;text-align:right;padding:5px 8px}
+.wrapx{overflow-x:auto}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.6px;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:1px}
+.badge.v{background:var(--good-soft);color:var(--good)}
+.badge.e{background:var(--bad-soft);color:var(--bad)}
+.note{background:var(--gold-soft);border-left:3px solid var(--gold);padding:13px 15px;border-radius:0 7px 7px 0;font-size:13px;line-height:1.6;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.gap{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13.5px;align-items:flex-start}
+.gap:last-child{border-bottom:0}
+.gap .n{flex:none;width:22px;height:22px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.gap .t b{display:block;margin-bottom:2px}
+.gap .t span{color:var(--ink-2);font-size:12.5px}
+.hide{display:none}
+</style>
+
+<header>
+  <div>
+    <div class="brand">Guide India Tours <span>· Quote Engine</span></div>
+    <div class="hsub">Internal pricing tool — never share this page with a client</div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-tab="calc">Calculator</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="rates">Rate Card</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="gaps">Missing Rates</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ CALCULATOR ============ -->
+<div id="calc">
+<div class="cols">
+  <div>
+
+    <div class="card">
+      <h2>Enquiry</h2>
+      <div class="pad">
+        <div class="row">
+          <label class="f"><span>Client name</span><input type="text" id="cname" value="Dani"></label>
+          <label class="f"><span>Currency</span><select id="ccur"></select></label>
+          <label class="f"><span>Adults</span><input type="number" id="cpax" value="7" min="1"></label>
+          <label class="f"><span>Start date</span><input type="date" id="cdate" value="2026-11-29"></label>
+          <label class="f"><span>Days</span><input type="number" id="cdays" value="6" min="1" max="15"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Vehicle <span class="hint">rates from Avnish card + confirmed quotes</span></h2>
+      <div class="pad">
+        <div class="veh" id="vehpick"></div>
+        <div class="row" style="margin-top:14px">
+          <label class="f"><span>Transport cost (₹)</span><input type="number" id="vcost"></label>
+          <label class="f"><span>Override</span><select id="vmode">
+            <option value="auto">Auto from rate card</option>
+            <option value="manual">Manual — I'll type it</option>
+          </select></label>
+        </div>
+        <div id="vwarn" style="margin-top:11px"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Guides</h2>
+      <div class="pad">
+        <div class="row">
+          <label class="f"><span>Full days</span><input type="number" id="gfull" value="4" min="0"></label>
+          <label class="f"><span>Half days</span><input type="number" id="ghalf" value="0" min="0"></label>
+          <label class="f"><span>Language</span><select id="glang">
+            <option value="0">English (₹3,000/day)</option>
+            <option value="2000">Other language (₹5,000/day)</option>
+          </select></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Monuments <span class="hint">per person · foreigner rates 2026</span></h2>
+      <div class="pad">
+        <div class="mgrid" id="mons"></div>
+        <div class="note" style="margin-top:16px">
+          <b>Agra ADA toll ₹500 per person</b> is added automatically whenever any Agra monument is ticked. It is charged once per day and shared across all Agra sites — this is the line most operators forget.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- results -->
+  <div class="res">
+    <div class="card">
+      <h2>Quote</h2>
+      <div class="big">
+        <div class="lbl">Quote the client</div>
+        <div class="fx num" id="rFx">—</div>
+        <div class="pp num" id="rPp">—</div>
+        <div class="inr num" id="rInr">—</div>
+      </div>
+      <div class="chips" id="rChips"></div>
+      <table class="br">
+        <tbody id="rBody"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Pricing controls</h2>
+      <div class="pad">
+        <div class="row">
+          <label class="f"><span>Margin %</span><input type="number" id="pmargin" value="30" min="0" max="200"></label>
+          <label class="f"><span>FX buffer %</span><input type="number" id="pbuf" value="4" min="0" max="20"></label>
+          <label class="f"><span>Rate ₹ per unit</span><input type="number" id="pfx" step="0.01"></label>
+          <label class="f"><span>Round up to</span><select id="pround">
+            <option value="50">Nearest 50</option>
+            <option value="25">Nearest 25</option>
+            <option value="100">Nearest 100</option>
+            <option value="1">No rounding</option>
+          </select></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>WhatsApp message <span class="hint">tone matches the client's country</span></h2>
+  <div class="pad">
+    <textarea id="msg" spellcheck="false"></textarea>
+    <div class="btns">
+      <button class="btn" id="copy">Copy message</button>
+      <button class="btn sec" id="preset1">Load Dani (7 pax / 6 days)</button>
+      <button class="btn sec" id="preset2">Load Brazino (2 pax / 5 days)</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ RATE CARD ============ -->
+<div id="rates" class="hide">
+  <div class="card">
+    <h2>Golden Triangle transport <span class="hint">₹ total for the whole tour · edit any cell</span></h2>
+    <div class="pad wrapx">
+      <table class="rt" id="gtTable"></table>
+      <div class="note" style="margin-top:16px">
+        <b>Green = confirmed.</b> The 3-day column comes from Avnish's printed card; Sedan&nbsp;5-day (₹16,000) and Urbania&nbsp;6-day (₹45,000) are rates he quoted you directly.
+        <b>Red = my estimate</b>, interpolated between those points. Get the red cells confirmed before quoting them — that is the single biggest source of error in this tool.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Short tours &amp; transfers <span class="hint">from Avnish's printed card</span></h2>
+    <div class="pad wrapx"><table class="rt" id="pkgTable"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>Guides &amp; monuments</h2>
+    <div class="pad">
+      <div class="row">
+        <label class="f"><span>Guide full day (₹)</span><input type="number" id="rgFull" value="3000"></label>
+        <label class="f"><span>Language surcharge (₹/day)</span><input type="number" id="rgLang" value="2000"></label>
+        <label class="f"><span>Half day</span><input type="text" value="Half of full-day rate" disabled></label>
+      </div>
+      <div class="wrapx" style="margin-top:18px"><table class="rt" id="monTable"></table></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Exchange rates <span class="hint">check before every quote</span></h2>
+    <div class="pad wrapx"><table class="rt" id="fxTable"></table></div>
+  </div>
+</div>
+
+<!-- ============ GAPS ============ -->
+<div id="gaps" class="hide">
+  <div class="card">
+    <h2>What Avnish still needs to send you</h2>
+    <div class="pad">
+      <p style="color:var(--ink-2);margin-bottom:16px;max-width:62ch">His card covers Agra day-trips and one 3-day Golden Triangle. Everything longer is guesswork right now. Ask for these nine numbers once and the tool stops guessing permanently.</p>
+      <div id="gapList"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Message to send Avnish</h2>
+    <div class="pad">
+      <textarea id="avmsg" spellcheck="false" style="min-height:340px"></textarea>
+      <div class="btns"><button class="btn" id="copyav">Copy message</button></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const money=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+
+/* ---------- data ---------- */
+const VEH=[
+  {k:'sedan',  n:'Sedan',   cap:'up to 3 guests', max:3},
+  {k:'suv',    n:'SUV',     cap:'up to 4 guests', max:4},
+  {k:'crysta', n:'Crysta',  cap:'up to 6 guests', max:6},
+  {k:'urbania',n:'Urbania', cap:'7–16 guests',    max:16},
+];
+// GT totals. v = confirmed, e = estimate
+const GT={
+  3:{sedan:[12000,'v'],suv:[14000,'v'],crysta:[18000,'v'],urbania:[32000,'v']},
+  4:{sedan:[14000,'e'],suv:[16500,'e'],crysta:[21000,'e'],urbania:[37000,'e']},
+  5:{sedan:[16000,'v'],suv:[19000,'e'],crysta:[24000,'e'],urbania:[41000,'e']},
+  6:{sedan:[18500,'e'],suv:[22000,'e'],crysta:[27500,'e'],urbania:[45000,'v']},
+  7:{sedan:[21000,'e'],suv:[25000,'e'],crysta:[31000,'e'],urbania:[52000,'e']},
+};
+const PKG=[
+  ['Agra local sightseeing',1500,2000,2500,5500],
+  ['Agra local + Fatehpur Sikri',2500,3000,3500,7000],
+  ['Agra local + Mathura Vrindavan',3500,4000,4800,9000],
+  ['2 days Agra local',3000,4000,5000,10500],
+  ['Delhi local sightseeing',2000,2500,3000,6500],
+  ['Delhi → Agra same day',5500,6000,8000,14000],
+  ['Delhi → Agra overnight',7000,8000,10500,18500],
+  ['Delhi → Agra same day + Mathura',6500,7000,9000,16000],
+  ['3 days Golden Triangle',12000,14000,18000,32000],
+  ['10 days Delhi–Agra–Ranthambhore–Jaipur–Pushkar–Udaipur',35500,38500,46500,84000],
+  ['Agra → Mathura Vrindavan',2800,3500,4500,8000],
+];
+const MON={
+  Delhi:[['Red Fort',550,1],['Humayun’s Tomb',550,1],['Qutub Minar',550,1],['India Gate',0,1],['Lotus Temple',0,1],['Akshardham',0,0]],
+  Agra:[['Taj Mahal',1100,1],['Taj main mausoleum',200,1],['Agra Fort',650,1],['Fatehpur Sikri',610,1],['Itimad-ud-Daulah',250,1],['Akbar’s Tomb, Sikandra',310,0],['Mehtab Bagh',300,0]],
+  Jaipur:[['Amber Fort',500,1],['City Palace — basic',700,1],['City Palace — Royal Grandeur',3500,0],['Jantar Mantar',200,1],['Hawa Mahal',50,1],['Nahargarh Fort',200,0],['Albert Hall',300,0]],
+};
+const ADA=500;
+const CUR={
+  AUD:{r:68.60,n:'Australian Dollar',greet:'G’day'},
+  CAD:{r:69.20,n:'Canadian Dollar',greet:'Hey'},
+  USD:{r:95.80,n:'US Dollar',greet:'Hi'},
+  EUR:{r:111.70,n:'Euro',greet:'Hello'},
+  GBP:{r:128.00,n:'British Pound',greet:'Hello'},
+  INR:{r:1,n:'Indian Rupee',greet:'Namaste'},
+};
+
+/* ---------- persistence ---------- */
+const SK='git-quote-engine-v1';
+function save(){try{localStorage.setItem(SK,JSON.stringify({GT,CUR,g:{f:+$('#rgFull').value,l:+$('#rgLang').value}}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;
+  if(d.GT)for(const k in d.GT)if(GT[k])for(const v in d.GT[k])GT[k][v]=d.GT[k][v];
+  if(d.CUR)for(const c in d.CUR)if(CUR[c])CUR[c].r=d.CUR[c].r;
+  if(d.g){$('#rgFull').value=d.g.f;$('#rgLang').value=d.g.l;}
+}catch(e){}}
+
+/* ---------- build UI ---------- */
+let veh='urbania';
+$('#vehpick').innerHTML=VEH.map(v=>
+  `<button type="button" data-v="${v.k}" aria-pressed="${v.k===veh}"><div class="vn">${v.n}</div><div class="vc">${v.cap}</div></button>`).join('');
+$('#vehpick').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  veh=b.dataset.v;$$('#vehpick button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===veh));calc();};
+
+$('#ccur').innerHTML=Object.keys(CUR).map(c=>`<option value="${c}"${c==='AUD'?' selected':''}>${c} — ${CUR[c].n}</option>`).join('');
+
+$('#mons').innerHTML=Object.entries(MON).map(([city,list])=>
+  `<div class="mcity"><h3>${city}</h3>`+list.map(([n,p],i)=>
+    `<label class="mon${p===0?' free':''}"><input type="checkbox" data-c="${city}" data-i="${i}"${p===0||[1,2].includes(1)&&list[i][2]?' checked':''}>
+     <span class="mn">${n}</span><span class="mp">${p===0?'free':'₹'+p}</span></label>`).join('')+`</div>`).join('');
+// apply default checked flags properly
+$$('#mons input').forEach(cb=>{cb.checked=!!MON[cb.dataset.c][+cb.dataset.i][2];cb.onchange=calc;});
+
+/* ---------- calculation ---------- */
+function ticketsPP(){
+  let t=0,agra=false;
+  $$('#mons input:checked').forEach(cb=>{
+    const m=MON[cb.dataset.c][+cb.dataset.i];
+    t+=m[1]; if(cb.dataset.c==='Agra'&&m[1]>0)agra=true;
+  });
+  if(agra)t+=ADA;
+  return {t,agra};
+}
+function gtCost(days,v){
+  const d=Math.min(Math.max(days,3),7);
+  const row=GT[d]; if(!row)return null;
+  return row[v];
+}
+function calc(){
+  const pax=Math.max(1,+$('#cpax').value||1), days=+$('#cdays').value||1;
+  const cur=$('#ccur').value, C=CUR[cur];
+  $('#pfx').value=C.r;
+
+  // transport
+  const auto=$('#vmode').value==='auto';
+  let tCost=0,tFlag='';
+  if(auto){
+    const g=gtCost(days,veh);
+    if(g){tCost=g[0];tFlag=g[1];}
+    $('#vcost').value=tCost; $('#vcost').disabled=true;
+  }else{$('#vcost').disabled=false;tCost=+$('#vcost').value||0;tFlag='';}
+
+  const vm=VEH.find(v=>v.k===veh);
+  let warn='';
+  if(pax>vm.max)warn+=`<div class="note" style="border-left-color:var(--bad)"><b>${vm.n} seats ${vm.max}.</b> You have ${pax} guests — pick a larger vehicle.</div>`;
+  else if(tFlag==='e'&&auto)warn+=`<div class="note"><b>This rate is my estimate, not Avnish's.</b> ${vm.n} for ${days} days is not on his card. Confirm before you send this quote.</div>`;
+  $('#vwarn').innerHTML=warn;
+
+  // guides
+  const gf=+$('#gfull').value||0, gh=+$('#ghalf').value||0;
+  const gBase=+$('#rgFull').value||3000, gLang=+$('#glang').value||0;
+  const gRate=gBase+gLang;
+  const gCost=gf*gRate+gh*gRate/2;
+
+  // tickets
+  const {t:tpp,agra}=ticketsPP();
+  const tkCost=tpp*pax;
+
+  const cost=tCost+gCost+tkCost;
+  const margin=(+$('#pmargin').value||0)/100;
+  const sellInr=cost*(1+margin);
+
+  const buf=(+$('#pbuf').value||0)/100;
+  const rate=C.r*(1-buf);
+  const step=+$('#pround').value;
+  let fxTot=cur==='INR'?sellInr:sellInr/rate;
+  fxTot=Math.ceil(fxTot/step)*step;
+  const realInr=cur==='INR'?fxTot:fxTot*C.r;
+  const profit=realInr-cost;
+  const net=profit-realInr*0.03;
+
+  const sym=cur==='INR'?'₹':cur+' ';
+  const fmt=n=>cur==='INR'?money(n):sym+Math.round(n).toLocaleString('en-US');
+  $('#rFx').textContent=fmt(fxTot);
+  $('#rPp').textContent=fmt(fxTot/pax)+' per person · '+pax+' guests';
+  $('#rInr').textContent=cur==='INR'?'':'you receive about '+money(realInr);
+
+  $('#rChips').innerHTML=
+    `<span class="chip ${profit>0?'ok':'warn'}">${Math.round(profit/cost*100)}% on cost</span>`+
+    `<span class="chip">${days} days</span>`+
+    (tFlag==='e'&&auto?`<span class="chip warn">estimated transport</span>`:'')+
+    (agra?`<span class="chip">ADA toll included</span>`:'');
+
+  $('#rBody').innerHTML=`
+    <tr><td>Transport — ${vm.n}<span class="sm">${days} days${auto?'':' · manual'}</span></td><td>${money(tCost)}</td></tr>
+    <tr><td>Guides<span class="sm">${gf} full${gh?' + '+gh+' half':''} × ${money(gRate)}</span></td><td>${money(gCost)}</td></tr>
+    <tr><td>Monument tickets<span class="sm">${money(tpp)} × ${pax} guests${agra?' (incl. ADA toll)':''}</span></td><td>${money(tkCost)}</td></tr>
+    <tr class="sum"><td>Your cost</td><td>${money(cost)}</td></tr>
+    <tr><td>Selling price<span class="sm">${Math.round(margin*100)}% margin · quoted at ₹${rate.toFixed(2)}</span></td><td>${money(realInr)}</td></tr>
+    <tr class="profit${profit<=0?' neg':''}"><td>Profit</td><td>${money(profit)}</td></tr>
+    <tr><td>After ~3% bank &amp; FX cost<span class="sm">realistic take-home</span></td><td>${money(net)}</td></tr>`;
+
+  buildMsg({name:$('#cname').value||'there',cur,fxTot,pax,days,vm,fmt,agra,date:$('#cdate').value});
+  save();
+}
+
+function buildMsg({name,cur,fxTot,pax,days,vm,fmt,date}){
+  const C=CUR[cur];
+  const d=date?new Date(date+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
+  const dec=date&&[11,0].includes(new Date(date+'T00:00:00').getMonth());
+  const vehTxt=vm.k==='sedan'?'private AC sedan with your own driver'
+    :vm.k==='urbania'?'your own AC Urbania coach'
+    :`your own AC ${vm.n}`;
+  $('#msg').value=
+`${C.greet} ${name}!
+
+Sorry for the wait — wanted to check the 2026 monument
+rates and lock in a vehicle for your dates before giving
+you a real number.
+
+Quote attached 📎
+
+${days} Days Golden Triangle · Delhi–Agra–Jaipur–Delhi
+${pax} guests · ${d}
+
+💰 ${fmt(fxTot)} (${fmt(fxTot/pax)} each)
+
+That's everything on the ground sorted — ${vehTxt} for
+all ${days} days, fuel and tolls, every monument ticket for
+the group (Taj main mausoleum included), and our
+government-approved guides in all three cities.
+
+No hotels or meals in there, so you're free to sort
+your own stay.
+${dec?`\nHeads up — this is peak season here and vehicles go\nearly. Happy to hold your dates once you're set.\n`:''}
+25% to hold the dates, rest when you land. Bank details
+on page 2.
+
+Want the day-by-day plan?
+
+— Guide India Tours, Agra | Since 2007`;
+}
+
+/* ---------- rate card tab ---------- */
+function buildRates(){
+  let h='<tr><th>Days</th>'+VEH.map(v=>`<th>${v.n}</th>`).join('')+'</tr>';
+  for(const d of Object.keys(GT)){
+    h+=`<tr><td><b>${d} days</b></td>`+VEH.map(v=>{
+      const [val,fl]=GT[d][v.k];
+      return `<td><input type="number" data-d="${d}" data-v="${v.k}" value="${val}"><span class="badge ${fl}">${fl==='v'?'OK':'EST'}</span></td>`;
+    }).join('')+'</tr>';
+  }
+  $('#gtTable').innerHTML=h;
+  $('#gtTable').oninput=e=>{const i=e.target;if(i.dataset.d){GT[i.dataset.d][i.dataset.v]=[+i.value,'v'];
+    i.nextElementSibling.className='badge v';i.nextElementSibling.textContent='OK';save();calc();}};
+
+  $('#pkgTable').innerHTML='<tr><th>Programme</th>'+VEH.map(v=>`<th>${v.n}</th>`).join('')+'</tr>'+
+    PKG.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td class="num">${money(x)}</td>`).join('')}</tr>`).join('');
+
+  $('#monTable').innerHTML='<tr><th>Monument</th><th>City</th><th>Per person</th></tr>'+
+    Object.entries(MON).flatMap(([c,l])=>l.map(m=>
+      `<tr><td>${m[0]}</td><td>${c}</td><td class="num">${m[1]?money(m[1]):'free'}</td></tr>`)).join('')+
+    `<tr><td><b>Agra ADA toll</b></td><td>Agra</td><td class="num"><b>${money(ADA)}</b></td></tr>`;
+
+  $('#fxTable').innerHTML='<tr><th>Currency</th><th>₹ per unit</th></tr>'+
+    Object.entries(CUR).filter(([c])=>c!=='INR').map(([c,o])=>
+      `<tr><td>${c} — ${o.n}</td><td><input type="number" step="0.01" data-c="${c}" value="${o.r}"></td></tr>`).join('');
+  $('#fxTable').oninput=e=>{if(e.target.dataset.c){CUR[e.target.dataset.c].r=+e.target.value;save();calc();}};
+}
+
+/* ---------- gaps ---------- */
+const GAPS=[
+  ['4, 5, 6 and 7-day Golden Triangle rates','For all four vehicles. His card stops at 3 days, so every longer tour you quote is currently my interpolation.'],
+  ['Extra-day rate per vehicle','A flat "each additional day costs ₹X" makes any duration calculable without a new table.'],
+  ['Delhi airport transfer, one way','Arrival and departure pickups get quoted constantly and are not on the card.'],
+  ['Is Rajasthan state tax included?','Crossing into Rajasthan carries a permit charge. If it is extra, it must be a separate line or it silently eats margin on every Jaipur tour.'],
+  ['Driver night allowance','Included in these totals, or extra per night?'],
+  ['Peak season surcharge','Do December–January rates differ? Brazino travels 20 December.'],
+  ['Confirm his Delhi ticket figure','He said ₹4,200 per person. Red Fort, Humayun and Qutub total ₹1,650. Ask which monuments the rest covers.'],
+  ['Confirm his Jaipur ticket figure','He said ₹5,300 per person. That only works with the ₹3,500 City Palace Royal Grandeur ticket. Ask if that is what he meant.'],
+  ['Amber Fort jeep or elephant ride','Guests ask for this constantly and it is not costed anywhere.'],
+];
+$('#gapList').innerHTML=GAPS.map((g,i)=>
+  `<div class="gap"><div class="n">${i+1}</div><div class="t"><b>${g[0]}</b><span>${g[1]}</span></div></div>`).join('');
+
+$('#avmsg').value=`Avnish bhai, rate card mil gaya — thank you 🙏
+
+Ab ek baar ye 9 cheezein confirm kar do, phir mujhe
+baar baar poochna nahi padega:
+
+1. Golden Triangle 4, 5, 6 aur 7 din ka rate — Sedan,
+   SUV, Crysta aur Urbania sab ka
+2. Har vehicle ka "extra day" rate kya hai
+3. Delhi airport transfer one-way rate
+4. Rajasthan state tax rate mein included hai ya extra
+5. Driver ka night allowance included hai ya alag
+6. December–January mein rate badhta hai kya
+7. Delhi tickets ₹4,200 per person aapne bola tha —
+   Red Fort, Humayun, Qutub to ₹1,650 hai. Baaki
+   ₹2,550 kis monument ka hai
+8. Jaipur ₹5,300 per person — isme City Palace ka
+   Royal Grandeur ticket (₹3,500) count kiya hai kya
+9. Amber Fort jeep aur elephant ride ka rate
+
+Ek hi message mein likh ke bhej dena, photo mat
+bhejna — mujhe system mein daalna hai.`;
+
+/* ---------- tabs ---------- */
+$$('.tab').forEach(t=>t.onclick=()=>{
+  $$('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  ['calc','rates','gaps'].forEach(id=>$('#'+id).classList.toggle('hide',id!==t.dataset.tab));
+});
+
+/* ---------- copy ---------- */
+function copyFrom(sel,btn){
+  const el=$(sel);el.select();
+  try{document.execCommand('copy');const o=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=o,1400);}catch(e){}
+}
+$('#copy').onclick=e=>copyFrom('#msg',e.target);
+$('#copyav').onclick=e=>copyFrom('#avmsg',e.target);
+
+/* ---------- presets ---------- */
+function preset(o){
+  $('#cname').value=o.n;$('#ccur').value=o.c;$('#cpax').value=o.p;
+  $('#cdate').value=o.d;$('#cdays').value=o.y;$('#gfull').value=o.g;
+  veh=o.v;$$('#vehpick button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===veh));
+  calc();
+}
+$('#preset1').onclick=()=>preset({n:'Dani',c:'AUD',p:7,d:'2026-11-29',y:6,g:4,v:'urbania'});
+$('#preset2').onclick=()=>preset({n:'Brazino',c:'CAD',p:2,d:'2026-12-20',y:5,g:3,v:'sedan'});
+
+/* ---------- init ---------- */
+load();
+buildRates();
+$$('input,select').forEach(el=>{if(!el.dataset.d&&!el.dataset.c&&el.type!=='checkbox')el.addEventListener('input',calc);});
+calc();
+</script>
+
+</body>
+</html>
