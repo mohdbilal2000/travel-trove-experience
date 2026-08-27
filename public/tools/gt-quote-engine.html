@@ -378,6 +378,7 @@ const PKG=[
   ['3 days Golden Triangle',12000,14000,18000,32000],
   ['10 days Delhi–Agra–Ranthambhore–Jaipur–Pushkar–Udaipur',35500,38500,46500,84000],
   ['Agra → Mathura Vrindavan',2800,3500,4500,8000],
+  ['Jaipur → Agra, one way',5500,null,9500,null],
 ];
 const MON={
   Delhi:[['Red Fort',550,1],['Humayun’s Tomb',550,1],['Qutub Minar',550,1],['India Gate',0,1],['Lotus Temple',0,1],['Akshardham',0,0]],
@@ -553,7 +554,7 @@ function buildRates(){
     i.nextElementSibling.className='badge v';i.nextElementSibling.textContent='OK';save();calc();}};
 
   $('#pkgTable').innerHTML='<tr><th>Programme</th>'+VEH.map(v=>`<th>${v.n}</th>`).join('')+'</tr>'+
-    PKG.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td class="num">${money(x)}</td>`).join('')}</tr>`).join('');
+    PKG.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td class="num">${x==null?'<span style="color:var(--ink-3)">ask</span>':money(x)}</td>`).join('')}</tr>`).join('');
 
   $('#monTable').innerHTML='<tr><th>Monument</th><th>City</th><th>Per person</th></tr>'+
     Object.entries(MON).flatMap(([c,l])=>l.map(m=>
