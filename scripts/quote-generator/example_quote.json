@@ -1,0 +1,91 @@
+{
+  "quote_ref": "GIT-2026-0828-MV",
+  "date_issued": "28 Aug 2026",
+  "valid_until": "15 Sep 2026",
+  "guest_name": "Maila Varraso",
+  "pax": "2 Adults",
+  "travel_dates": "23–26 October 2026",
+  "route": "Jaipur → Agra → Delhi",
+  "duration": "4 Days / 3 Nights",
+  "note": "Your enquiry mentioned 3 days — based on pickup 23 Oct through drop-off 26 Oct, this works out to 4 taxi days.",
+  "pricing_tiers": [
+    {
+      "tier_name": "Taxi Only",
+      "sub": "4 days, vehicle and chauffeur only",
+      "options": [
+        {
+          "vehicle": "Sedan",
+          "price": 17800
+        },
+        {
+          "vehicle": "SUV",
+          "price": 20200
+        },
+        {
+          "vehicle": "Toyota Innova Crysta",
+          "price": 25100
+        }
+      ]
+    },
+    {
+      "tier_name": "Taxi + Guide + Monument Tickets",
+      "sub": "4 days, all-inclusive for 2 adults",
+      "options": [
+        {
+          "vehicle": "Sedan",
+          "price": 33700
+        },
+        {
+          "vehicle": "SUV",
+          "price": 36100
+        },
+        {
+          "vehicle": "Toyota Innova Crysta",
+          "price": 41000
+        }
+      ]
+    }
+  ],
+  "itinerary": [
+    {
+      "day": "23 October",
+      "title": "Arrival Jaipur",
+      "details": "Jaipur Airport pickup at 4:00 PM → Hotel transfer → Overnight Jaipur"
+    },
+    {
+      "day": "24 October",
+      "title": "Jaipur Sightseeing → Agra",
+      "details": "Amber Fort, City Palace, Jantar Mantar, Hawa Mahal → Drive to Agra → Hotel check-in"
+    },
+    {
+      "day": "25 October",
+      "title": "Taj Mahal & Agra → Delhi",
+      "details": "Early morning Taj Mahal visit with English-speaking Government-Approved Guide → Agra Fort → Baby Taj (time permitting) → Drive to Delhi → Hotel transfer"
+    },
+    {
+      "day": "26 October",
+      "title": "Departure",
+      "details": "Early morning private transfer to Delhi Airport for 6:00 AM departure"
+    }
+  ],
+  "inclusions": [
+    "Private AC taxi with professional chauffeur",
+    "Professional English-speaking guide",
+    "Monument entrance tickets for 2 adults",
+    "Airport transfers",
+    "Sightseeing assistance",
+    "WhatsApp support throughout"
+  ],
+  "exclusions": [
+    "Hotel accommodation (guest booking independently)",
+    "Meals",
+    "Personal expenses",
+    "Tips/gratuities"
+  ],
+  "contact": {
+    "phone": "+91 8979810991",
+    "whatsapp": "+91 8979810991",
+    "email": "info@guideindiatours.com",
+    "website": "guideindiatours.com"
+  }
+}
