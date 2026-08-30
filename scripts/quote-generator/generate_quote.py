@@ -65,7 +65,7 @@ COMPANY = {
     "phone": "+91 8979810991",
     "whatsapp": "+91 8979810991",
     "email": "info@guideindiatours.com",
-    "website": "guideindiatours.com",
+    "website": "www.guideindiatours.com",
     "socials": "Facebook · Instagram · X · YouTube",
 }
 
@@ -479,7 +479,7 @@ quote_data = {
         "phone": "+91 8979810991",
         "whatsapp": "+91 8979810991",
         "email": "info@guideindiatours.com",
-        "website": "guideindiatours.com",
+        "website": "www.guideindiatours.com",
     },
 }
 
