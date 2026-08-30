@@ -362,8 +362,8 @@ const VEH=[
 const GT={
   3:{sedan:[12000,'v'],suv:[14000,'v'],crysta:[18000,'v'],urbania:[32000,'v']},
   4:{sedan:[14000,'e'],suv:[16500,'e'],crysta:[21000,'e'],urbania:[37000,'e']},
-  5:{sedan:[16000,'v'],suv:[19000,'e'],crysta:[24000,'e'],urbania:[41000,'e']},
-  6:{sedan:[18500,'e'],suv:[22000,'e'],crysta:[27500,'e'],urbania:[45000,'v']},
+  5:{sedan:[16000,'v'],suv:[19000,'e'],crysta:[23000,'v'],urbania:[41000,'e']},
+  6:{sedan:[18500,'e'],suv:[21000,'v'],crysta:[26000,'e'],urbania:[50000,'v']},
   7:{sedan:[21000,'e'],suv:[25000,'e'],crysta:[31000,'e'],urbania:[52000,'e']},
 };
 const PKG=[
@@ -396,7 +396,7 @@ const CUR={
 };
 
 /* ---------- persistence ---------- */
-const SK='git-quote-engine-v1';
+const SK='git-quote-engine-v2';
 function save(){try{localStorage.setItem(SK,JSON.stringify({GT,CUR,g:{f:+$('#rgFull').value,l:+$('#rgLang').value}}))}catch(e){}}
 function load(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;
   if(d.GT)for(const k in d.GT)if(GT[k])for(const v in d.GT[k])GT[k][v]=d.GT[k][v];
