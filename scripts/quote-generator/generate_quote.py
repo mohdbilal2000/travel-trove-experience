@@ -312,6 +312,18 @@ def build_html(q: dict) -> str:
     )
 
     # --- pricing table ---------------------------------------------------
+    why_html = ""
+    if q.get("show_why_us", True):
+        why_html = """<div class="sec px">
+    <h2><span class="n">05</span>Why Guide India Tours</h2>
+    <div class="why">
+      <div class="item"><b>Government-approved guides only.</b> Every guide is licensed, English-speaking and briefed on your plan in advance.</div>
+      <div class="item"><b>No forced shopping, ever.</b> No commission stops, no showroom detours &mdash; the day is yours.</div>
+      <div class="item"><b>One point of contact throughout.</b> Direct WhatsApp access to us for the whole trip, not a call centre.</div>
+      <div class="item"><b>Serving guests since 2007.</b> Family-run, Agra-based, and it shows in the detail.</div>
+    </div>
+  </div>"""
+
     tiers = q.get("pricing_tiers") or []
     vehicles = []
     for tier in tiers:
@@ -421,18 +433,9 @@ def build_html(q: dict) -> str:
     </tr></table>
   </div>
 
+  {why_html}
   <div class="sec px">
-    <h2><span class="n">05</span>Why Guide India Tours</h2>
-    <div class="why">
-      <div class="item"><b>Government-approved guides only.</b> Every guide is licensed, English-speaking and briefed on your plan in advance.</div>
-      <div class="item"><b>No forced shopping, ever.</b> No commission stops, no showroom detours &mdash; the day is yours.</div>
-      <div class="item"><b>One point of contact throughout.</b> Direct WhatsApp access to us for the whole trip, not a call centre.</div>
-      <div class="item"><b>Serving guests since 2007.</b> Family-run, Agra-based, and it shows in the detail.</div>
-    </div>
-  </div>
-
-  <div class="sec px">
-    <h2><span class="n">06</span>How to Confirm Your Booking</h2>
+    <h2><span class="n">{"05" if not q.get("show_why_us", True) else "06"}</span>How to Confirm Your Booking</h2>
     <div class="bankwrap">
       <div>
         <ol class="steps">
