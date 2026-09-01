@@ -70,6 +70,16 @@ COMPANY = {
 }
 
 
+BANK = {
+    "account_name": "MOHD BILAL",
+    "account_no": "922010008916354",
+    "bank": "Axis Bank Limited",
+    "branch": "Tajlink Road, Agra 282001",
+    "ifsc": "UTIB0000643",
+    "swift": "AXISINBBXXX",
+}
+
+
 def esc(value) -> str:
     return (
         str(value)
@@ -247,6 +257,27 @@ table.ie > tbody > tr > td {{ width: 50%; vertical-align: top; border: 1pt solid
 .iebody .tick {{ color: {b['jade_700']}; font-weight: 700; }}
 .iebody .cross {{ color: #B0342C; font-weight: 700; }}
 
+
+/* ---------- why us ---------- */
+.why {{ display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 8mm; }}
+.why .item {{ padding-left: 5mm; position: relative; font-size: 8.8pt; line-height: 1.55; color: {b['ink_2']}; }}
+.why .item::before {{ content: '✦'; position: absolute; left: 0; top: 0; color: {b['gold_500']}; font-size: 8pt; }}
+.why .item b {{ color: {b['ink']}; }}
+
+/* ---------- bank ---------- */
+.bankwrap {{ display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }}
+.bank {{ border: 1pt solid {b['gold_500']}; background: {b['ivory_50']}; }}
+.bankhd {{ background: {b['maroon_600']}; color: #fff; padding: 2.6mm 4mm; font-size: 7.4pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; }}
+table.bt {{ width: 100%; border-collapse: collapse; }}
+table.bt td {{ padding: 2mm 4mm; border-bottom: 1pt dotted {b['line']}; font-size: 8.6pt; }}
+table.bt tr:last-child td {{ border-bottom: none; }}
+table.bt td:first-child {{ color: {b['sandalwood_600']}; font-size: 6.8pt; letter-spacing: .7pt; text-transform: uppercase; width: 34mm; }}
+table.bt td:last-child {{ font-weight: 600; color: {b['ink']}; }}
+.steps {{ counter-reset: st; }}
+.steps li {{ list-style: none; counter-increment: st; position: relative; padding-left: 8mm; font-size: 8.8pt; line-height: 1.6; color: {b['ink_2']}; margin-bottom: 2.6mm; }}
+.steps li::before {{ content: counter(st); position: absolute; left: 0; top: 0; width: 5mm; height: 5mm; background: {b['maroon_600']}; color: #fff; border-radius: 50%; font-size: 7pt; font-weight: 700; text-align: center; line-height: 5mm; }}
+.steps li b {{ color: {b['ink']}; }}
+
 /* ---------- confirm ---------- */
 .confirm {{ background: {b['royal_600']}; color: #fff; padding: 5mm 6mm; }}
 .confirm .h {{ font-family: '{b['font_serif']}', serif; font-size: 11.5pt; margin-bottom: 2mm; }}
@@ -391,11 +422,44 @@ def build_html(q: dict) -> str:
   </div>
 
   <div class="sec px">
+    <h2><span class="n">05</span>Why Guide India Tours</h2>
+    <div class="why">
+      <div class="item"><b>Government-approved guides only.</b> Every guide is licensed, English-speaking and briefed on your plan in advance.</div>
+      <div class="item"><b>No forced shopping, ever.</b> No commission stops, no showroom detours &mdash; the day is yours.</div>
+      <div class="item"><b>One point of contact throughout.</b> Direct WhatsApp access to us for the whole trip, not a call centre.</div>
+      <div class="item"><b>Serving guests since 2007.</b> Family-run, Agra-based, and it shows in the detail.</div>
+    </div>
+  </div>
+
+  <div class="sec px">
+    <h2><span class="n">06</span>How to Confirm Your Booking</h2>
+    <div class="bankwrap">
+      <div>
+        <ol class="steps">
+          <li>Reply to <b>approve this itinerary</b> and your travel dates</li>
+          <li>Transfer a <b>25% advance</b> to the account shown to secure your vehicle and guide</li>
+          <li>Send the transfer confirmation &mdash; we issue your <b>written booking confirmation</b></li>
+          <li>Pay the <b>balance on arrival</b> in India</li>
+        </ol>
+      </div>
+      <div class="bank">
+        <div class="bankhd">Bank Transfer Details</div>
+        <table class="bt">
+          <tr><td>Account Name</td><td>{esc(BANK['account_name'])}</td></tr>
+          <tr><td>Account No.</td><td>{esc(BANK['account_no'])}</td></tr>
+          <tr><td>Bank</td><td>{esc(BANK['bank'])}</td></tr>
+          <tr><td>Branch</td><td>{esc(BANK['branch'])}</td></tr>
+          <tr><td>IFSC</td><td>{esc(BANK['ifsc'])}</td></tr>
+          <tr><td>SWIFT / BIC</td><td>{esc(BANK['swift'])}</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec px">
     <div class="confirm">
       <div class="h">Ready to confirm?</div>
       <div class="p">
-        Reply to approve this itinerary, and a <b>25% advance</b> secures your vehicle and guides
-        &mdash; the balance is paid on arrival in India. We accept international wire transfer.<br>
         <b>WhatsApp {esc(contact['whatsapp'])}</b> &nbsp;·&nbsp; <b>{esc(contact['email'])}</b>
         &nbsp;·&nbsp; <b>{esc(contact['website'])}</b>
       </div>
