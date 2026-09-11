@@ -544,9 +544,9 @@ const tajResources = [
 ];
 
 const featuredSlugs = [
-    "best-time-to-visit-golden-triangle",
-    "taj-mahal-visiting-guide",
-    "golden-triangle-on-budget",
+    "how-many-days-for-the-golden-triangle",
+    "delhi-to-agra-distance-and-travel-time",
+    "is-the-golden-triangle-safe-for-tourists",
 ];
 
 export function ResourcesHub() {
@@ -580,6 +580,12 @@ export function ResourcesHub() {
                                 </li>
                             ))}
                         </ul>
+                        <Link
+                            href="/faq"
+                            className="mt-6 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-800 hover:border-maroon-600 hover:text-maroon-600 transition-colors"
+                        >
+                            Visas, tipping, cash, safety — all FAQs <ArrowRight className="w-4 h-4" />
+                        </Link>
                     </div>
 
                     <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">

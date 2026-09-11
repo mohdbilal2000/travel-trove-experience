@@ -179,7 +179,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                 <Link href={`/plans/${plan.id}`} className="block relative h-56 sm:h-64 md:h-72 overflow-hidden">
                                     <Image
                                         src={plan.image}
-                                        alt={`${plan.title} - Tour to ${city || 'India'}`}
+                                        alt={`${plan.title} — private tour in ${plan.destinations?.join(', ') || 'India'}`}
                                         fill
                                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -209,9 +209,19 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                     <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-maroon-600 transition-colors leading-tight mb-4 min-h-[3.5rem] line-clamp-2">
                                         {plan.title}
                                     </h3>
-                                    <p className="text-gray-500 text-sm font-light leading-relaxed mb-8 line-clamp-2">
+                                    <p className="text-gray-500 text-sm font-light leading-relaxed mb-6 line-clamp-2">
                                         {plan.description}
                                     </p>
+
+                                    {plan.destinations && plan.destinations.length > 0 && (
+                                        <ul className="flex flex-wrap gap-2 mb-6" aria-label="Destinations">
+                                            {plan.destinations.slice(0, 4).map((d) => (
+                                                <li key={d} className="px-3 py-1 rounded-full bg-ivory-100 border border-gray-100 text-[11px] font-bold uppercase tracking-wider text-gray-600">
+                                                    {d}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
 
                                     <div className="flex items-center justify-between py-6 border-t border-gray-50">
                                         <div>

@@ -1,14 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, Star } from "lucide-react";
+import { MapPin, Phone, Mail, Star, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  // Next.js Link automatically handles scrolling to top, but if we want explicit behavior:
-  // We can't use window in Server Components, but this is a client component now.
-  // Actually, standard Next.js Link behavior is fine, we don't need the onClick handler.
 
   return (
     <footer className="bg-ivory-300 text-gray-800 pt-16 pb-8">
@@ -20,22 +16,16 @@ const Footer = () => {
               Guide India Tours
             </h3>
             <p className="text-gray-600 max-w-sm leading-relaxed">
-              Discover the magic of India's Golden Triangle with our curated travel experiences, luxury accommodations, and personalized services.
+              Private Golden Triangle tours run from Agra since 2004 — government-licensed guides, your own air-conditioned car, and a team on WhatsApp around the clock.
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Facebook">
-                <Facebook size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Twitter / X">
-                <Twitter size={18} />
-              </a>
-              <a href="/contact" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="Instagram">
-                <Instagram size={18} />
-              </a>
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-maroon-700 transition-colors" aria-label="YouTube">
-                <Youtube size={18} />
-              </a>
-            </div>
+            <a
+              href="https://wa.me/918979810991?text=Hi%20Guide%20India%20Tours!%20I%27d%20like%20help%20planning%20my%20trip."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-xl bg-maroon-600 text-white text-sm font-bold hover:bg-maroon-700 transition-colors"
+            >
+              <MessageCircle size={16} /> Chat on WhatsApp
+            </a>
           </div>
 
           {/* Quick Links */}

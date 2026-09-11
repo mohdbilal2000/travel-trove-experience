@@ -1,147 +1,62 @@
-
 import { Metadata } from 'next';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { HelpCircle, MessageCircle, Phone, ArrowRight } from "lucide-react";
-import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { MessageCircle, Phone, ArrowRight, BookOpen, Search } from "lucide-react";
+import PageHero from "@/components/shared/PageHero";
+import { faqCategories, allFaqs, FAQ_LAST_UPDATED } from "@/data/faqs";
+
+const BASE_URL = 'https://www.guideindiatours.com';
+const PAGE_URL = `${BASE_URL}/faq`;
 
 export const metadata: Metadata = {
-    title: 'FAQ | Essential Travel Guide for Golden Triangle Tours',
-    description: 'Find answers to common questions about booking, safety, payments, and travel tips for your India tour. Start your Golden Triangle adventure well-informed.',
+    title: 'India Travel FAQ: Golden Triangle Questions Answered | Guide India Tours',
+    description: 'Direct answers to the questions travelers search before visiting Delhi, Agra and Jaipur — distances, visas, safety, tipping, cash vs cards, Taj Mahal rules, booking and refunds.',
     alternates: {
-        canonical: 'https://www.guideindiatours.com/faq',
+        canonical: PAGE_URL,
         languages: {
-            'en': 'https://www.guideindiatours.com/faq',
-            'en-US': 'https://www.guideindiatours.com/faq',
-            'en-GB': 'https://www.guideindiatours.com/faq',
-            'en-IN': 'https://www.guideindiatours.com/faq',
-            'en-AU': 'https://www.guideindiatours.com/faq',
-            'x-default': 'https://www.guideindiatours.com/faq',
+            'en': PAGE_URL,
+            'en-US': PAGE_URL,
+            'en-GB': PAGE_URL,
+            'en-IN': PAGE_URL,
+            'en-AU': PAGE_URL,
+            'x-default': PAGE_URL,
         },
+    },
+    openGraph: {
+        title: 'India Travel FAQ — Golden Triangle Questions Answered',
+        description: 'Distances, visas, safety, tipping, cash vs cards, Taj Mahal rules, booking and refunds — answered by licensed Agra guides.',
+        url: PAGE_URL,
+        type: 'website',
+        images: [{ url: `${BASE_URL}/images/og-default.jpg`, width: 1200, height: 630, alt: 'Guide India Tours FAQ' }],
     },
 };
 
-const faqCategories = [
-    {
-        id: "booking",
-        title: "Booking & Reservations",
-        icon: <HelpCircle className="text-maroon-600" />,
-        questions: [
-            {
-                question: "How do I book a tour with Guide India Tours?",
-                answer: "You can book directly via our website by selecting a plan and clicking 'Book This Tour', which opens a WhatsApp chat with our agents. Alternatively, use our contact form for a custom quote or call us at +91 8979810991."
-            },
-            {
-                question: "How far in advance should I book my India tour?",
-                answer: "For the best experience and availability of 5-star hotels, we recommend booking 2-4 months in advance, especially for the peak season from October to March."
-            },
-            {
-                question: "How much deposit is required to confirm a booking?",
-                answer: "A 25% deposit confirms your booking, with the remaining balance due 30 days before your tour start date. For last-minute bookings within 30 days, full payment is required at the time of booking."
-            },
-            {
-                question: "How is booking direct different from Viator or GetYourGuide?",
-                answer: "Booking directly with us means no third-party markup, direct WhatsApp contact with the team that actually runs your tour, and a fully customizable private itinerary instead of a fixed package."
-            }
-        ]
-    },
-    {
-        id: "pricing",
-        title: "Pricing & Payments",
-        icon: <HelpCircle className="text-maroon-600" />,
-        questions: [
-            {
-                question: "How much does a Golden Triangle tour cost?",
-                answer: "Pricing depends on the number of days, hotel category, group size, and season. All tours are private and all-inclusive with no hidden fees. Every tour is priced as a custom quote — message us on WhatsApp with your dates and group size for a free quote within 2 hours."
-            },
-            {
-                question: "What payment methods and currencies do you accept?",
-                answer: "We accept USD, EUR, GBP, and INR, paid by credit or debit card, bank transfer, or UPI. Your quote confirms the currency and accepted methods before you pay."
-            },
-            {
-                question: "What is your cancellation and refund policy?",
-                answer: "Cancellation terms and refund windows are set out in full on our Refund Policy page. Deposits and refunds depend on how far ahead of departure you cancel — contact us and we'll walk you through it."
-            }
-        ]
-    },
-    {
-        id: "guides",
-        title: "Guides & Languages",
-        icon: <HelpCircle className="text-maroon-600" />,
-        questions: [
-            {
-                question: "Are your guides government-approved and licensed?",
-                answer: "Yes. We work only with government-approved, licensed guides, including our lead guide Avneesh Dixit, so you receive accurate history and a safe, professional experience."
-            },
-            {
-                question: "What languages do your guides speak?",
-                answer: "Our guides speak English and Hindi as standard, with German, French, Italian, and Spanish-speaking guides available on request, plus other languages by prior arrangement."
-            }
-        ]
-    },
-    {
-        id: "safety",
-        title: "Safety & Travel Protocols",
-        icon: <HelpCircle className="text-maroon-600" />,
-        questions: [
-            {
-                question: "Is it safe for solo female travelers in the Golden Triangle?",
-                answer: "Yes, it is safe. We specialize in private tours where you are accompanied by a government-authorized guide and a professional chauffeur in a private vehicle at all times, providing an extra layer of security and local expertise."
-            },
-            {
-                question: "What is your health and safety policy?",
-                answer: "We ensure all vehicles are sanitized daily. Our guides and drivers are trained to follow the latest safety protocols to ensure a worry-free experience."
-            },
-            {
-                question: "Can you accommodate travelers with mobility needs?",
-                answer: "Yes. As all tours are private and fully customizable, we can arrange suitable vehicles and adjust the itinerary and pace. Please share your requirements when you enquire so we can plan accordingly."
-            }
-        ]
-    },
-    {
-        id: "itinerary",
-        title: "Tour Customization",
-        icon: <HelpCircle className="text-maroon-600" />,
-        questions: [
-            {
-                question: "Can I customize the Golden Triangle itinerary?",
-                answer: "Absolutely. We are specialists in tailor-made India tours. You can add extra days in any city, include more destinations like Udaipur or Varanasi, or focus on specific interests like photography or cuisine."
-            },
-            {
-                question: "Do you provide airport and hotel pickup?",
-                answer: "Yes. Every tour includes private pickup and drop-off in an air-conditioned vehicle, available 24/7, including Delhi airport transfers and hotel pickups."
-            },
-            {
-                question: "When is the best time to visit Agra and the Taj Mahal?",
-                answer: "October to March offers the most pleasant weather. Visiting the Taj Mahal at sunrise gives the softest light and the smallest crowds. Tours run year-round."
-            }
-        ]
-    }
-];
+const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
 export default function FAQPage() {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "url": "https://www.guideindiatours.com/faq",
-        "name": "Frequently Asked Questions - Guide India Tours",
+        "@id": `${PAGE_URL}#faq`,
+        "url": PAGE_URL,
+        "name": "India Travel FAQ — Guide India Tours",
+        "dateModified": FAQ_LAST_UPDATED,
+        "inLanguage": "en",
+        "isPartOf": { "@id": `${BASE_URL}/#website` },
+        "publisher": { "@id": `${BASE_URL}/#organization` },
         "speakable": {
             "@type": "SpeakableSpecification",
-            "cssSelector": ["main h1", "main h2", "[data-radix-accordion-content]"]
+            "cssSelector": ["main h1", "[data-faq-answer]"]
         },
-        "mainEntity": faqCategories.flatMap(cat => cat.questions).map(faq => ({
+        "mainEntity": allFaqs.map(faq => ({
             "@type": "Question",
+            "@id": `${PAGE_URL}#${faq.id}`,
             "name": faq.question,
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": faq.answer
+                "text": faq.answer,
+                ...(faq.guide && { "url": faq.guide.href.startsWith('http') ? faq.guide.href : `${BASE_URL}${faq.guide.href}` }),
             }
         }))
     };
@@ -150,8 +65,8 @@ export default function FAQPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.guideindiatours.com" },
-            { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.guideindiatours.com/faq" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+            { "@type": "ListItem", "position": 2, "name": "FAQ", "item": PAGE_URL }
         ]
     };
 
@@ -162,73 +77,101 @@ export default function FAQPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify([faqSchema, breadcrumbSchema]) }}
             />
 
-            <section className="relative pt-44 pb-24 bg-white border-b border-gray-100 overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-maroon-600/5 rounded-bl-full translate-x-1/2 -translate-y-12" />
-                <div className="container mx-auto px-4 relative z-10">
-                    <Breadcrumbs items={[{ label: 'FAQ' }]} className="mb-12" />
-                    <div className="max-w-3xl">
-                        <Badge className="bg-maroon-600/10 text-maroon-600 border-none px-6 py-2 uppercase tracking-[0.3em] text-xs font-black mb-8">
-                            Knowledge Base
-                        </Badge>
-                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight tracking-tighter">
-                            Your Questions, <span className="text-maroon-600">Answered.</span>
-                        </h1>
-                        <p className="text-xl text-gray-500 font-light leading-relaxed">
-                            Everything you need to know about planning your luxury Golden Triangle experience with India's most trusted guides.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <PageHero
+                breadcrumbs={[{ label: 'FAQ' }]}
+                badge="Knowledge base"
+                title={<>India Travel Questions, <span className="text-maroon-600">Answered.</span></>}
+                subtitle="Everything travelers ask before a Golden Triangle trip — distances, visas, safety, money, Taj Mahal rules, booking and refunds — answered by the licensed guides who run the tours."
+                meta={
+                    <>
+                        <span className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-maroon-600" /> {allFaqs.length} answers · {faqCategories.length} topics</span>
+                        <span className="text-gray-400">Updated {formatDate(FAQ_LAST_UPDATED)}</span>
+                    </>
+                }
+            />
 
-            <section className="py-24">
+            {/* Topic jump links */}
+            <nav aria-label="FAQ topics" className="sticky top-12 z-30 bg-ivory-100/95 backdrop-blur-md border-b border-gray-200/70">
                 <div className="container mx-auto px-4 max-w-5xl">
-                    <div className="space-y-16">
-                        {faqCategories.map((category) => (
-                            <div key={category.id}>
-                                <div className="flex items-center gap-4 mb-10 border-b border-gray-100 pb-6">
-                                    <h2 className="text-3xl font-display font-bold text-gray-900">{category.title}</h2>
-                                </div>
-                                <Accordion type="single" collapsible className="w-full space-y-4">
-                                    {category.questions.map((faq, i) => (
-                                        <AccordionItem
-                                            key={i}
-                                            value={`${category.id}-${i}`}
-                                            className="bg-white px-8 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-all"
-                                        >
-                                            <AccordionTrigger className="text-left font-bold text-lg py-8 hover:no-underline text-gray-900 focus-visible:bg-gray-50 focus-visible:ring-2 focus-visible:ring-maroon-600/30 focus-visible:outline-none rounded-lg px-2 -mx-2">
-                                                {faq.question}
-                                            </AccordionTrigger>
-                                            <AccordionContent className="text-gray-500 font-light text-lg leading-relaxed pb-8">
-                                                {faq.answer}
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </div>
+                    <ul className="flex gap-2 overflow-x-auto py-3 scrollbar-hide">
+                        {faqCategories.map((cat) => (
+                            <li key={cat.id} className="flex-shrink-0">
+                                <a
+                                    href={`#${cat.id}`}
+                                    className="inline-block px-4 py-2 rounded-full bg-white border border-gray-200 text-xs font-bold text-gray-700 hover:border-maroon-600 hover:text-maroon-600 transition-colors whitespace-nowrap"
+                                >
+                                    {cat.title}
+                                </a>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
+                </div>
+            </nav>
+
+            <section className="py-14 md:py-20">
+                <div className="container mx-auto px-4 max-w-5xl space-y-16 md:space-y-24">
+                    {faqCategories.map((category, ci) => (
+                        <div key={category.id} id={category.id} className="scroll-mt-32">
+                            <div className="mb-8 md:mb-10">
+                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gold-600 mb-2">
+                                    {String(ci + 1).padStart(2, '0')} {ci === 0 && <Search className="inline w-3.5 h-3.5 ml-1 -mt-0.5" />}
+                                </p>
+                                <h2 className="text-2xl md:text-4xl font-display font-bold text-gray-900 mb-3">{category.title}</h2>
+                                <p className="text-gray-500 font-light max-w-2xl">{category.blurb}</p>
+                            </div>
+
+                            <div className="space-y-4">
+                                {category.entries.map((faq) => (
+                                    <details
+                                        key={faq.id}
+                                        id={faq.id}
+                                        className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow scroll-mt-36 open:border-gold-200"
+                                    >
+                                        <summary className="cursor-pointer list-none px-6 md:px-8 py-5 md:py-6 flex items-start justify-between gap-4">
+                                            <h3 className="text-base md:text-lg font-bold text-gray-900 leading-snug">{faq.question}</h3>
+                                            <span aria-hidden="true" className="text-maroon-600 transition-transform group-open:rotate-45 text-2xl leading-none flex-shrink-0 mt-0.5">+</span>
+                                        </summary>
+                                        <div className="px-6 md:px-8 pb-6 md:pb-8">
+                                            <p data-faq-answer className="text-gray-600 font-light leading-relaxed text-base md:text-lg">{faq.answer}</p>
+                                            {faq.guide && (
+                                                <Link
+                                                    href={faq.guide.href}
+                                                    className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-maroon-600 hover:text-black transition-colors"
+                                                >
+                                                    {faq.guide.label} <ArrowRight className="w-4 h-4" />
+                                                </Link>
+                                            )}
+                                        </div>
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
 
-            <section className="py-32">
-                <div className="container mx-auto px-4 text-center">
-                    <div className="max-w-4xl mx-auto bg-black p-16 md:p-24 rounded-3xl text-white relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-maroon-600/40 to-transparent" />
+            <section className="pb-20 md:pb-28">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto bg-gray-900 p-10 md:p-20 rounded-3xl text-white relative overflow-hidden text-center">
+                        <div className="absolute inset-0 bg-gradient-to-br from-maroon-600/40 to-transparent pointer-events-none" />
                         <div className="relative z-10">
-                            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Still Have <span className="text-gold-500">Questions?</span></h2>
-                            <p className="text-xl text-white/50 font-light mb-16 max-w-2xl mx-auto">Our travel architects are available 24/7 to provide personalized assistance for your journey.</p>
-                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <Button asChild size="lg" className="h-16 md:h-20 px-6 md:px-12 rounded-3xl bg-maroon-600 hover:bg-white hover:text-black text-base md:text-xl font-bold shadow-2xl transition-all duration-500 group/btn">
-                                    <Link href="/contact" className="flex items-center gap-3">
-                                        Inquire Now <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform" />
-                                    </Link>
+                            <h2 className="text-3xl md:text-5xl font-display font-bold mb-5">Still have a <span className="text-gold-500">question?</span></h2>
+                            <p className="text-lg text-white/60 font-light mb-10 max-w-2xl mx-auto">A guide answers WhatsApp messages around the clock — usually within minutes, always within 2 hours for a quote.</p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Button asChild size="lg" className="h-14 px-8 rounded-2xl bg-maroon-600 hover:bg-white hover:text-black text-base font-bold shadow-2xl transition-all">
+                                    <a href="https://wa.me/918979810991?text=Hi%20Guide%20India%20Tours!%20I%20have%20a%20question%20about%20planning%20my%20trip." target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                                        <MessageCircle className="w-5 h-5" /> Ask on WhatsApp
+                                    </a>
                                 </Button>
-                                <Button variant="outline" size="lg" asChild className="h-20 px-12 rounded-3xl border-white/20 text-white hover:bg-white/10 text-xl font-bold">
+                                <Button variant="outline" size="lg" asChild className="h-14 px-8 rounded-2xl border-white/30 text-white hover:bg-white/10 text-base font-bold bg-transparent">
                                     <a href="tel:+918979810991" className="flex items-center gap-3">
-                                        <Phone size={24} /> Call Concierge
+                                        <Phone className="w-5 h-5" /> +91 89798 10991
                                     </a>
                                 </Button>
                             </div>
+                            <p className="mt-8 text-sm text-white/50">
+                                Or read our guides in depth on the <Link href="/blog" className="text-gold-500 hover:text-white underline underline-offset-2">travel blog</Link>.
+                            </p>
                         </div>
                     </div>
                 </div>

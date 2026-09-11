@@ -53,15 +53,22 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
     const selectedCategory = category || "All";
 
-    const filteredPosts = allPosts.filter(post => {
+    const sortedPosts = [...allPosts].sort(
+        (a, b) => new Date(b.updatedDate || b.publishedDate).getTime() - new Date(a.updatedDate || a.publishedDate).getTime()
+    );
+
+    const filteredPosts = sortedPosts.filter(post => {
         const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-        const matchesSearch = !q ||
-            post.title.toLowerCase().includes(q.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(q.toLowerCase());
+        const needle = q?.toLowerCase();
+        const matchesSearch = !needle ||
+            post.title.toLowerCase().includes(needle) ||
+            post.excerpt.toLowerCase().includes(needle) ||
+            post.tags.some(t => t.toLowerCase().includes(needle)) ||
+            (post.faqQuestion?.toLowerCase().includes(needle) ?? false);
         return matchesCategory && matchesSearch;
     });
 
-    const featuredPost = allPosts[0];
+    const featuredPost = sortedPosts[0];
 
     const itemListSchema = {
         "@context": "https://schema.org",
@@ -206,8 +213,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <div className="flex items-center gap-4 text-xs font-black text-gray-500 uppercase tracking-widest">
-                                            <span>{post.publishedDate}</span>
+                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-black text-gray-500 uppercase tracking-widest">
+                                            <span>{new Date(post.updatedDate || post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                             <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
                                             <span>By {post.author}</span>
                                             <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />

@@ -12,6 +12,7 @@ const navItems = [
   { label: "Services", path: "/services" },
   { label: "Plans", path: "/plans" },
   { label: "Blog", path: "/blog" },
+  { label: "FAQ", path: "/faq" },
   { label: "Book Guide", path: "/guide-booking" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
@@ -85,15 +86,20 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Main">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path} className={linkClass(pathname === item.path)}>
+              <Link
+                key={item.path}
+                href={item.path}
+                className={linkClass(pathname === item.path || (item.path !== "/" && pathname.startsWith(`${item.path}/`)))}
+                aria-current={pathname === item.path ? "page" : undefined}
+              >
                 {item.label}
               </Link>
             ))}
             <Button
               size="sm"
-              className="ml-6 px-8 py-2 text-sm font-medium transition-all duration-300 rounded-xl bg-maroon-600 hover:bg-maroon-700 text-white border-none shadow-lg hover:shadow-xl"
+              className="ml-4 px-6 py-2 text-sm font-medium transition-all duration-300 rounded-xl bg-maroon-600 hover:bg-maroon-700 text-white border-none shadow-lg hover:shadow-xl"
               asChild
             >
               <Link href="/contact">Plan Your Trip</Link>
@@ -101,7 +107,7 @@ const Navbar = () => {
           </nav>
 
           <button
-            className="md:hidden relative z-10 p-2 rounded-md hover:bg-black/5 transition-colors"
+            className="lg:hidden relative z-10 p-2 rounded-md hover:bg-black/5 transition-colors"
             onClick={toggleMobileMenu}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
@@ -118,7 +124,7 @@ const Navbar = () => {
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
           onClick={closeMobileMenu}
         />
       )}
@@ -126,7 +132,7 @@ const Navbar = () => {
       {/* Mobile menu drawer */}
       <div
         className={cn(
-          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-ivory-300/95 backdrop-blur-md z-50 md:hidden transform transition-transform duration-300 ease-in-out",
+          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-ivory-300/95 backdrop-blur-md z-50 lg:hidden transform transition-transform duration-300 ease-in-out",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >

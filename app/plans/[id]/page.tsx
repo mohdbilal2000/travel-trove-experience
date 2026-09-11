@@ -26,6 +26,12 @@ interface PageProps {
     params: Promise<{ id: string }>;
 }
 
+const truncateAtWord = (text: string, max: number) => {
+    if (text.length <= max) return text;
+    const cut = text.slice(0, max);
+    return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:]$/, '')}…`;
+};
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { id } = await params;
     const plan = getPlanById(parseInt(id));
@@ -36,18 +42,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    const title = `${plan.title} | Premium India Tour Packages`;
-    const description = `${plan.description.substring(0, 155)}... Book your dream ${plan.duration} tour to ${plan.destinations?.join(', ') || 'India'} with expert guides.`;
+    const url = `https://www.guideindiatours.com/plans/${id}`;
+    const title = `${plan.title} — Private ${plan.duration} Tour | Guide India Tours`;
+    const description = truncateAtWord(
+        `${plan.description} Private AC car, government-licensed guide, ${plan.destinations?.join(', ') || 'India'}. Custom quote within 2 hours.`,
+        158
+    );
 
     return {
         title,
         description,
         alternates: {
-            canonical: `https://www.guideindiatours.com/plans/${id}`,
+            canonical: url,
             languages: {
-                'en-US': `https://www.guideindiatours.com/plans/${id}`,
-                'en-GB': `https://www.guideindiatours.com/plans/${id}`,
-                'x-default': `https://www.guideindiatours.com/plans/${id}`,
+                'en': url,
+                'en-US': url,
+                'en-GB': url,
+                'en-IN': url,
+                'en-AU': url,
+                'x-default': url,
             },
         },
         openGraph: {
@@ -178,8 +191,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             <section id="at-a-glance">
                                 <AtAGlance
                                     duration={plan.duration}
-
-                                    highlights={plan.highlights}
+                                    destinations={plan.destinations}
                                 />
                             </section>
 
@@ -282,12 +294,18 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                     </div>
                                     <div className="space-y-6">
                                         {tourFaqs.map((faq, i) => (
-                                            <div key={i} className="bg-white p-8 rounded-2xl border border-gray-100">
-                                                <h4 className="text-xl font-bold text-gray-900 mb-4">{faq.question}</h4>
-                                                <p className="text-gray-500 font-light leading-relaxed">{faq.answer}</p>
+                                            <div key={i} className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100">
+                                                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">{faq.question}</h3>
+                                                <p className="text-gray-600 font-light leading-relaxed">{faq.answer}</p>
                                             </div>
                                         ))}
                                     </div>
+                                    <p className="mt-8 text-gray-600 font-light">
+                                        Questions about visas, tipping, cash, safety or Taj Mahal rules?{' '}
+                                        <Link href="/faq" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">
+                                            Read the full India travel FAQ
+                                        </Link>.
+                                    </p>
                                 </section>
                             )}
 

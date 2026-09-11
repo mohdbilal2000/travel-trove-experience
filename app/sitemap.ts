@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
+import { FAQ_LAST_UPDATED } from '@/data/faqs';
 
 const BASE_URL = 'https://www.guideindiatours.com';
 
@@ -65,9 +66,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${BASE_URL}/faq`,
-            lastModified: now,
-            changeFrequency: 'monthly',
-            priority: 0.6,
+            lastModified: new Date(FAQ_LAST_UPDATED).toISOString(),
+            changeFrequency: 'weekly',
+            priority: 0.85,
         },
         // City cluster pages
         {
@@ -189,9 +190,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog post pages
     const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
         url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: post.publishedDate ? new Date(post.publishedDate).toISOString() : now,
+        lastModified: new Date(post.updatedDate || post.publishedDate).toISOString(),
         changeFrequency: 'monthly' as const,
-        priority: 0.7,
+        priority: post.quickAnswer ? 0.8 : 0.7,
     }));
 
     return [...staticPages, ...planPages, ...blogPages];
