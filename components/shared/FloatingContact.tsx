@@ -122,7 +122,7 @@ const FloatingContact = () => {
 
                 {/* Call */}
                 <a
-                  href="tel:+918979810991"
+                  href="tel:+919410000991"
                   className="flex-1 bg-white text-maroon-600 px-3 py-2.5 flex flex-col items-center justify-center gap-0.5 border-l border-gray-100 active:scale-[0.97] transition-transform touch-manipulation"
                   aria-label="Call us"
                 >

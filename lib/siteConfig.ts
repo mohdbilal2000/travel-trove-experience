@@ -2,7 +2,11 @@
  * Single source of truth for the business's identity (NAP), URLs and social
  * profiles. Import this everywhere instead of re-typing literals — it prevents
  * the phone/address/rating drift that fragments SEO and confuses AI answer
- * engines. Phone is intentionally ONE number sitewide.
+ * engines.
+ *
+ * The business has TWO distinct public numbers (matching its Google Business
+ * Profile) — a voice number and a WhatsApp number. They are intentionally
+ * different; do NOT merge them.
  */
 
 export const siteConfig = {
@@ -20,10 +24,15 @@ export const siteConfig = {
   logo: "https://www.guideindiatours.com/logo.png",
 
   // ── Contact ──────────────────────────────────────────────────────────────
-  // ONE phone number sitewide. Do not reintroduce a second number.
-  phoneE164: "+918979810991",
-  phoneDisplay: "+91 89798 10991",
-  telHref: "tel:+918979810991",
+  // CALL (voice) number — used for tel: links and "Call" CTAs. This is the
+  // number Google Business Profile lists for calls.
+  phoneE164: "+919410000991",
+  phoneDisplay: "+91 94100 00991",
+  telHref: "tel:+919410000991",
+  // WhatsApp (chat / booking) number — used for wa.me links only. This is the
+  // number the website promotes for WhatsApp booking.
+  whatsappE164: "+918979810991",
+  whatsappDisplay: "+91 89798 10991",
   whatsapp: "918979810991",
   whatsappHref: "https://wa.me/918979810991",
   email: "info@guideindiatours.com",
@@ -40,7 +49,8 @@ export const siteConfig = {
   geo: { latitude: "27.1767", longitude: "78.0081" },
 
   // ── Reputation ───────────────────────────────────────────────────────────
-  rating: { value: "4.9", count: "366", best: "5" },
+  // Keep in sync with the Google Business Profile review count.
+  rating: { value: "4.9", count: "425", best: "5" },
 
   languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
 

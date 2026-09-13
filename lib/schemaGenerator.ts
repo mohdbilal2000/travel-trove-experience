@@ -470,7 +470,7 @@ export const generateConnectedGraphSchema = () => {
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+918979810991",
+          "telephone": "+919410000991",
           "contactType": "customer service",
           "email": "info@guideindiatours.com",
           "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
@@ -491,7 +491,7 @@ export const generateConnectedGraphSchema = () => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "366",
+          "reviewCount": "425",
           "bestRating": "5"
         },
         "areaServed": [
