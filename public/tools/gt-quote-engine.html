@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Golden Triangle Quote Engine</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <meta name="googlebot" content="noindex,nofollow">
@@ -14,8 +14,8 @@
 #gate .box{text-align:center;padding:32px}
 #gate h1{font:600 22px/1.2 Georgia,serif;margin-bottom:6px}
 #gate p{font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;opacity:.6;margin-bottom:22px}
-#gate input{font:600 22px/1 ui-monospace,monospace;letter-spacing:10px;text-align:center;width:190px;padding:12px;border:0;border-radius:8px;background:rgba(255,255,255,.12);color:#fff}
-#gate input::placeholder{letter-spacing:4px;font-size:14px;opacity:.4}
+#gate input{font:600 18px/1 ui-monospace,monospace;letter-spacing:4px;text-align:center;width:230px;padding:12px;border:0;border-radius:8px;background:rgba(255,255,255,.12);color:#fff}
+#gate input::placeholder{letter-spacing:1px;font-size:14px;opacity:.4}
 #gate .err{color:#FFC107;font-size:13px;height:18px;margin-top:12px;letter-spacing:0;text-transform:none;opacity:1}
 body.locked{overflow:hidden}
 </style>
@@ -24,20 +24,24 @@ body.locked{overflow:hidden}
 <div id="gate"><div class="box">
   <h1>Guide India Tours</h1>
   <p>Staff access</p>
-  <input id="pin" type="password" inputmode="numeric" maxlength="8" placeholder="PIN" autocomplete="off">
+  <input id="pin" type="password" maxlength="32" placeholder="Password" autocomplete="off" autocapitalize="off" spellcheck="false">
   <div class="err" id="gerr"></div>
 </div></div>
 <script>
-/* Change this PIN to whatever you like. */
-var STAFF_PIN = "0991";
+/* Change this password to whatever you like. */
+var STAFF_PIN = "admin123";
 (function(){
   var g=document.getElementById('gate'), i=document.getElementById('pin'), e=document.getElementById('gerr');
   function open_(){ g.remove(); document.body.classList.remove('locked'); }
+  function wrong(){ e.textContent='Incorrect password'; i.value=''; setTimeout(function(){e.textContent=''},1600); }
   try{ if(sessionStorage.getItem('git-staff')==='1'){ open_(); return; } }catch(_){}
   i.focus();
   i.addEventListener('input',function(){
     if(i.value===STAFF_PIN){ try{sessionStorage.setItem('git-staff','1')}catch(_){} open_(); }
-    else if(i.value.length>=STAFF_PIN.length){ e.textContent='Incorrect PIN'; i.value=''; setTimeout(function(){e.textContent=''},1600); }
+  });
+  i.addEventListener('keydown',function(ev){
+    if(ev.key!=='Enter') return;
+    if(i.value===STAFF_PIN){ try{sessionStorage.setItem('git-staff','1')}catch(_){} open_(); } else wrong();
   });
 })();
 </script>
@@ -167,6 +171,73 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
 .gap .t b{display:block;margin-bottom:2px}
 .gap .t span{color:var(--ink-2);font-size:12.5px}
 .hide{display:none}
+
+/* ====================================================================
+   Client-facing quote document — screen-hidden, print only.
+   Colours are hard-coded (not var()) so a staff member on dark mode
+   still gets a light, on-brand PDF. Contains NO cost/margin/profit.
+   ==================================================================== */
+#doc{display:none}
+@media print{
+  @page{size:A4;margin:0}
+  html,body{background:#fff !important;color:#2C3E50 !important}
+  header,.wrap,#gate{display:none !important}
+  #doc{display:block !important}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+}
+#doc{font:400 10pt/1.55 Inter,system-ui,sans-serif;color:#2C3E50}
+#doc .d-head{background:#800000;color:#fff;padding:11mm 14mm 9mm;border-bottom:2.5pt solid #D6B641;display:flex;justify-content:space-between;align-items:flex-start;gap:10mm}
+#doc .d-wm{font:600 21pt/1 'Cormorant Garamond',Georgia,serif}
+#doc .d-wm i{color:#F6EFD9;font-style:normal}
+#doc .d-tag{font-size:6.6pt;letter-spacing:1.6pt;text-transform:uppercase;color:#EEE1B3;margin-top:2.5mm}
+#doc .d-meta{text-align:right;font-size:6.8pt;letter-spacing:.5pt;color:#F6EFD9;line-height:1.7;white-space:nowrap}
+#doc .d-band{background:#FAF4E1;border-bottom:1pt solid #EBDBC3;padding:7mm 14mm}
+#doc .d-qt{font-size:6.8pt;letter-spacing:2pt;text-transform:uppercase;color:#A38454}
+#doc .d-band h1{font:600 19pt/1.15 'Playfair Display',Georgia,serif;color:#800000;margin:2.5mm 0 1.5mm}
+#doc .d-route{font:600 12.5pt/1.3 'Cormorant Garamond',Georgia,serif;color:#2C3E50;letter-spacing:.3pt}
+#doc .d-facts{display:flex;gap:3.5mm;margin-top:6mm;flex-wrap:wrap}
+#doc .d-facts>div{flex:1 1 0;min-width:28mm;background:#fff;border:1pt solid #EBDBC3;border-left:2.5pt solid #D6B641;padding:2.6mm 3.5mm}
+#doc .d-facts .k{font-size:6.2pt;letter-spacing:1pt;text-transform:uppercase;color:#A38454}
+#doc .d-facts .v{font-size:10pt;font-weight:600;margin-top:.8mm}
+#doc .d-body{padding:8mm 14mm 0}
+#doc .d-sec{margin-bottom:6.5mm}
+#doc .d-sec h2{font:600 11.5pt/1 'Playfair Display',Georgia,serif;color:#800000;margin:0 0 3.5mm;padding-bottom:1.8mm;border-bottom:1pt solid #EBDBC3;page-break-after:avoid}
+#doc .d-ie,#doc .d-bank,#doc .d-tix{page-break-inside:avoid}
+#doc .d-sec h2 span{font:700 7pt/1 Inter,sans-serif;color:#D6B641;letter-spacing:1pt;margin-right:2.5mm}
+#doc .d-sec p{font-size:9.4pt;line-height:1.7;color:#4a5761}
+#doc .d-price{background:#2C3E50;color:#fff;padding:6mm 8mm;display:flex;justify-content:space-between;align-items:center;gap:8mm;page-break-inside:avoid}
+#doc .d-price .l{font-size:7pt;letter-spacing:1.6pt;text-transform:uppercase;color:#D6B641}
+#doc .d-price .a{font:600 25pt/1.1 'Playfair Display',Georgia,serif;margin-top:1.5mm}
+#doc .d-price .s{font-size:8.4pt;color:#c7d1db;margin-top:1.5mm}
+#doc .d-price .r{text-align:right;font-size:8pt;color:#c7d1db;line-height:1.7;border-left:1pt solid #4a5f75;padding-left:7mm}
+#doc .d-price .r b{display:block;color:#fff;font-size:11pt;margin-bottom:1mm}
+#doc .d-ie{display:flex;gap:6mm}
+#doc .d-ie .box{flex:1;border:1pt solid #EBDBC3}
+#doc .d-ie .bh{padding:2.6mm 4mm;font-size:7pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
+#doc .d-ie .inc .bh{background:#F2F9F6;color:#4D7361;border-bottom:1pt solid #CCE6DA}
+#doc .d-ie .exc .bh{background:#f9e6e6;color:#800000;border-bottom:1pt solid #f3cccc}
+#doc .d-ie ul{list-style:none;padding:3.5mm 4mm}
+#doc .d-ie li{font-size:8.4pt;line-height:1.6;color:#4a5761;padding-left:4.5mm;position:relative;margin-bottom:1mm}
+#doc .d-ie .inc li:before{content:'✓';position:absolute;left:0;color:#669982;font-weight:700}
+#doc .d-ie .exc li:before{content:'✕';position:absolute;left:0;color:#d03333;font-weight:700}
+#doc .d-tix{width:100%;border-collapse:collapse;font-size:8.6pt}
+#doc .d-tix td{padding:1.8mm 0;border-bottom:1pt dotted #EBDBC3;color:#4a5761;vertical-align:top}
+#doc .d-tix td.c{width:26mm;font-weight:700;color:#800000;font-size:7.4pt;letter-spacing:.8pt;text-transform:uppercase;padding-top:2.2mm}
+#doc .d-confirm{display:flex;gap:6mm;page-break-inside:avoid}
+#doc .d-confirm .half{flex:1}
+#doc .d-steps{counter-reset:s;list-style:none}
+#doc .d-steps li{counter-increment:s;position:relative;padding-left:7mm;font-size:8.8pt;line-height:1.6;color:#4a5761;margin-bottom:2.6mm}
+#doc .d-steps li:before{content:counter(s);position:absolute;left:0;top:0;width:4.6mm;height:4.6mm;background:#800000;color:#fff;border-radius:50%;font-size:6.6pt;font-weight:700;display:flex;align-items:center;justify-content:center}
+#doc .d-bank{border:1pt solid #D6B641;background:#FBF8F0}
+#doc .d-bank .bh{background:#800000;color:#fff;padding:2.6mm 4mm;font-size:7pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
+#doc .d-bank table{width:100%;border-collapse:collapse;padding:0}
+#doc .d-bank td{padding:1.7mm 4mm;border-bottom:1pt dotted #EBDBC3;font-size:8.8pt;font-weight:600}
+#doc .d-bank td.k{width:30mm;font-size:6.8pt;letter-spacing:.8pt;text-transform:uppercase;color:#A38454;font-weight:400}
+#doc .d-bank tr:last-child td{border-bottom:0}
+#doc .d-note{font-size:7.6pt;color:#7A633F;line-height:1.6;margin-top:3mm}
+#doc .d-foot{margin-top:8mm;background:#FAF4E1;border-top:2pt solid #D6B641;padding:4mm 14mm;display:flex;justify-content:space-between;font-size:6.8pt;color:#7A633F;line-height:1.6}
+#doc .d-foot b{color:#800000}
+#doc .d-foot .r{text-align:right}
 </style>
 
 <header>
@@ -283,8 +354,12 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
     <textarea id="msg" spellcheck="false"></textarea>
     <div class="btns">
       <button class="btn" id="copy">Copy message</button>
+      <button class="btn" id="pdf">Download client PDF</button>
       <button class="btn sec" id="preset1">Load Dani (7 pax / 6 days)</button>
       <button class="btn sec" id="preset2">Load Brazino (2 pax / 5 days)</button>
+    </div>
+    <div class="note" style="margin-top:12px">
+      <b>Download client PDF</b> opens your browser's print dialog — choose <b>Save as PDF</b>. The document is client-safe: it shows the selling price only, never your cost, margin or profit.
     </div>
   </div>
 </div>
@@ -345,6 +420,9 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
 </div>
 
 </div>
+
+<!-- ============ CLIENT PDF (print only) ============ -->
+<div id="doc" aria-hidden="true"></div>
 
 <script>
 "use strict";
@@ -499,7 +577,9 @@ function calc(){
     <tr class="profit${profit<=0?' neg':''}"><td>Profit</td><td>${money(profit)}</td></tr>
     <tr><td>After ~3% bank &amp; FX cost<span class="sm">realistic take-home</span></td><td>${money(net)}</td></tr>`;
 
-  buildMsg({name:$('#cname').value||'there',cur,fxTot,pax,days,vm,fmt,agra,date:$('#cdate').value});
+  const ctx={name:$('#cname').value||'there',cur,fxTot,pax,days,vm,fmt,agra,date:$('#cdate').value};
+  buildMsg(ctx);
+  LAST=Object.assign({},ctx,{gf,gh,gLang,tpp});
   save();
 }
 
@@ -539,6 +619,145 @@ Want the day-by-day plan?
 
 — Guide India Tours, Agra | Since 2007`;
 }
+
+/* ---------- client-facing PDF ----------
+   Everything here is safe to hand a client: selling price only.
+   Cost, margin and profit deliberately never reach this document. */
+let LAST=null;
+const BANK=[['Account name','MOHD BILAL'],['Account no.','922010008916354'],['Bank','Axis Bank Limited'],
+  ['Branch','Tajlink Road, Agra 282001'],['IFSC','UTIB0000643'],['SWIFT / BIC','AXISINBBXXX']];
+
+function longDate(iso){
+  if(!iso) return '';
+  return new Date(iso+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+}
+function shortDate(iso){
+  if(!iso) return '';
+  return new Date(iso+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function docRef(name,iso){
+  const d=iso?new Date(iso+'T00:00:00'):new Date();
+  const mm=String(d.getMonth()+1).padStart(2,'0'), dd=String(d.getDate()).padStart(2,'0');
+  const parts=(name||'').trim().split(/\s+/).filter(Boolean);
+  const ini=(parts.length>1 ? parts.map(w=>w[0]).join('') : (parts[0]||'')).slice(0,2).toUpperCase()||'GT';
+  return `GIT-${d.getFullYear()}-${mm}${dd}-${ini}`;
+}
+function selectedMons(){
+  const out={};
+  $$('#mons input:checked').forEach(cb=>{
+    const m=MON[cb.dataset.c][+cb.dataset.i];
+    (out[cb.dataset.c]=out[cb.dataset.c]||[]).push(m[0]);
+  });
+  return out;
+}
+
+function buildDoc(){
+  if(!LAST) calc();
+  const L=LAST, mons=selectedMons(), cities=Object.keys(mons);
+  const hasTix=cities.length>0;
+  const route=cities.length? cities.join(' → ') : 'Delhi → Agra → Jaipur';
+  const today=new Date();
+  const guideTxt=L.gf+(L.gh?` full and ${L.gh} half`:'')+` day${L.gf+L.gh===1?'':'s'}`;
+  const lang=L.gLang>0?'':'English-speaking ';
+
+  const inc=[
+    `Private ${L.vm.n} with a professional chauffeur for all ${L.days} days`,
+    'Fuel, tolls, parking, interstate taxes and permits',
+    "Driver's accommodation and allowance",
+    `Government-approved licensed ${lang}guide — ${guideTxt} of guiding`,
+    hasTix?`Monument entrance tickets for ${L.pax} guest${L.pax===1?'':'s'}`:null,
+    L.agra?'Agra ADA toll':null,
+    'Airport pickup and drop-off',
+    'Bottled drinking water in the vehicle',
+    '24/7 WhatsApp support throughout your trip',
+  ].filter(Boolean);
+
+  const exc=['Hotels and meals','Flights, visa and travel insurance',
+    hasTix?null:'Monument entrance tickets','Shopping, tips and gratuities',
+    'Anything not listed as included'].filter(Boolean);
+
+  $('#doc').innerHTML=`
+  <div class="d-head">
+    <div>
+      <div class="d-wm"><i>Guide</i> India Tours</div>
+      <div class="d-tag">Government-Approved Tourist Guides · Private Travel Services</div>
+    </div>
+    <div class="d-meta">Quotation ${docRef(L.name,L.date)}<br>Issued ${longDate(today.toISOString().slice(0,10))}</div>
+  </div>
+
+  <div class="d-band">
+    <div class="d-qt">Quotation · Established 2007</div>
+    <h1>${L.days} Days Private Tour</h1>
+    <div class="d-route">${route}</div>
+    <div class="d-facts">
+      <div><div class="k">Guest</div><div class="v">${esc(L.name)}</div></div>
+      <div><div class="k">Travellers</div><div class="v">${L.pax} Adult${L.pax===1?'':'s'}</div></div>
+      ${L.date?`<div><div class="k">Travel from</div><div class="v">${shortDate(L.date)}</div></div>`:''}
+      <div><div class="k">Duration</div><div class="v">${L.days} Days</div></div>
+      <div><div class="k">Vehicle</div><div class="v">${L.vm.n}</div></div>
+    </div>
+  </div>
+
+  <div class="d-body">
+    <div class="d-sec">
+      <h2><span>01</span>Your Trip</h2>
+      <p>A fully private tour for ${L.pax} guest${L.pax===1?'':'s'} covering ${route}${L.date?`, travelling from ${longDate(L.date)}`:''} over ${L.days} days. Your vehicle and chauffeur are yours alone throughout — never shared and never on a fixed departure — with government-approved licensed local guides at every monument.</p>
+    </div>
+
+    <div class="d-price">
+      <div>
+        <div class="l">Total price</div>
+        <div class="a">${L.fmt(L.fxTot)}</div>
+        <div class="s">${L.pax} guest${L.pax===1?'':'s'} · all inclusions listed below</div>
+      </div>
+      <div class="r"><b>${L.fmt(L.fxTot/L.pax)}</b>per person<br>${L.days} days</div>
+    </div>
+    <p class="d-note">A single fixed price for the complete arrangement — no per-kilometre charges, no daily-hour supplements and no fuel surcharge on arrival. The figure above is the figure you pay.</p>
+
+    <div class="d-sec" style="margin-top:6mm">
+      <h2><span>02</span>Inclusions &amp; Exclusions</h2>
+      <div class="d-ie">
+        <div class="box inc"><div class="bh">What is included</div><ul>${inc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+        <div class="box exc"><div class="bh">Not included</div><ul>${exc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+      </div>
+    </div>
+
+    ${hasTix?`<div class="d-sec">
+      <h2><span>03</span>Monument Tickets Included</h2>
+      <table class="d-tix">${cities.map(c=>`<tr><td class="c">${c}</td><td>${mons[c].join(' · ')}</td></tr>`).join('')}</table>
+      ${L.agra?`<p class="d-note">Includes the Agra ADA development toll, charged once per day across all Agra monuments.</p>`:''}
+    </div>`:''}
+
+    <div class="d-sec">
+      <h2><span>0${hasTix?4:3}</span>How to Confirm Your Booking</h2>
+      <div class="d-confirm">
+        <div class="half">
+          <ol class="d-steps">
+            <li>Reply to approve this itinerary and your travel dates</li>
+            <li>Transfer a <b>25% advance</b> to the account shown to secure your vehicle and guides</li>
+            <li>Send the transfer confirmation — we issue your written booking confirmation</li>
+            <li>Pay the balance on arrival in India</li>
+          </ol>
+          <p class="d-note">Quotation valid until <b>${longDate(addDays(today,15).toISOString().slice(0,10))}</b>. Monument fees are set by the ASI and may be revised before travel; any change is passed on transparently.</p>
+        </div>
+        <div class="half">
+          <div class="d-bank">
+            <div class="bh">Bank transfer details</div>
+            <table>${BANK.map(([k,v])=>`<tr><td class="k">${k}</td><td>${v}</td></tr>`).join('')}</table>
+          </div>
+          <p class="d-note">For international transfers please quote <b>both</b> the SWIFT code and the IFSC — Indian banks require both to route your payment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-foot">
+    <div><b>Guide India Tours</b><br>31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India</div>
+    <div class="r">+91 8979810991 · WhatsApp +91 8979810991 · info@guideindiatours.com<br>www.guideindiatours.com · Serving guests since 2007</div>
+  </div>`;
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 /* ---------- rate card tab ---------- */
 function buildRates(){
@@ -617,6 +836,9 @@ function copyFrom(sel,btn){
 }
 $('#copy').onclick=e=>copyFrom('#msg',e.target);
 $('#copyav').onclick=e=>copyFrom('#avmsg',e.target);
+
+/* ---------- client PDF ---------- */
+$('#pdf').onclick=()=>{ buildDoc(); window.print(); };
 
 /* ---------- presets ---------- */
 function preset(o){
