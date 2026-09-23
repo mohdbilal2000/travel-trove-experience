@@ -31,7 +31,7 @@ COVER / QUOTATION HEADER
 01  Client & Trip Overview
 02  Your Journey
 03  Highlights & Experiences
-04  Premium Guest Experience
+04  Services Provided
 05  Inclusions & Exclusions
 06  Package Price
     Important Information      (only when relevant)
@@ -61,14 +61,13 @@ wildlife, beach, Kerala, Andaman, cultural tours too). Pull the major highlights
 are *actually in this client's itinerary*. Each: name, city, one short factual line.
 Concise, not an encyclopedia.
 
-**04 Premium Guest Experience** (section title on the page: "Premium Guest
-Experience") — this is standard company copy and is used **verbatim** on every
-quotation. Layout: heading, the subtitle line, the intro line, then a **two-column card
+**04 Services Provided** (section title on the page: "Services Provided") — this is
+standard company copy and is used **verbatim** on every quotation. Layout: heading, the subtitle line, the intro line, then a **two-column card
 grid** (one card per item, bold maroon title, short line under it, gold top rule),
 closing with the gold "Your Comfort Is Our Priority" band. Do not reword, shorten or
 re-order the items.
 
-> **PREMIUM GUEST EXPERIENCE**
+> **SERVICES PROVIDED**
 > Quality &middot; Comfort &middot; Safety &middot; Personal Care
 >
 > With Guide India Tours, your journey is more than sightseeing. We take care of the
