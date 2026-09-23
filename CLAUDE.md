@@ -61,9 +61,12 @@ wildlife, beach, Kerala, Andaman, cultural tours too). Pull the major highlights
 are *actually in this client's itinerary*. Each: name, city, one short factual line.
 Concise, not an encyclopedia.
 
-**04 Our Services** — short premium intro line, then only the services actually
-included in this quotation. Communicates value before the price appears. No
-unsupported promises.
+**04 Our Services** — short premium intro line, then a **two-column card grid**: one
+card per service, each with a bold maroon title and one short line explaining what it
+actually means for the guest (e.g. "Private AC Taxi — an air-conditioned vehicle
+reserved for you alone throughout, never shared"). Cards carry a gold top rule. A plain
+bullet list is not enough; this section has to *sell* before the price appears.
+Only services actually included in this quotation. No unsupported promises.
 
 **05 Inclusions & Exclusions** — existing two-column Included / Not Included layout.
 Concise, scannable. Invent nothing on either side.
