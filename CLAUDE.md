@@ -31,7 +31,7 @@ COVER / QUOTATION HEADER
 01  Client & Trip Overview
 02  Your Journey
 03  Highlights & Experiences
-04  Our Services
+04  Premium Guest Experience
 05  Inclusions & Exclusions
 06  Package Price
     Important Information      (only when relevant)
@@ -61,12 +61,51 @@ wildlife, beach, Kerala, Andaman, cultural tours too). Pull the major highlights
 are *actually in this client's itinerary*. Each: name, city, one short factual line.
 Concise, not an encyclopedia.
 
-**04 Our Services** — short premium intro line, then a **two-column card grid**: one
-card per service, each with a bold maroon title and one short line explaining what it
-actually means for the guest (e.g. "Private AC Taxi — an air-conditioned vehicle
-reserved for you alone throughout, never shared"). Cards carry a gold top rule. A plain
-bullet list is not enough; this section has to *sell* before the price appears.
-Only services actually included in this quotation. No unsupported promises.
+**04 Premium Guest Experience** (section title on the page: "Premium Guest
+Experience") — this is standard company copy and is used **verbatim** on every
+quotation. Layout: heading, the subtitle line, the intro line, then a **two-column card
+grid** (one card per item, bold maroon title, short line under it, gold top rule),
+closing with the gold "Your Comfort Is Our Priority" band. Do not reword, shorten or
+re-order the items.
+
+> **PREMIUM GUEST EXPERIENCE**
+> Quality &middot; Comfort &middot; Safety &middot; Personal Care
+>
+> With Guide India Tours, your journey is more than sightseeing. We take care of the
+> details so you can relax, explore and enjoy India with complete peace of mind.
+>
+> - **Government-Approved Professional Tourist Guide** — Experienced, knowledgeable and
+>   dedicated to making every monument meaningful, interesting and enjoyable.
+> - **Private Sanitized AC Transportation** — Clean, comfortable and well-maintained
+>   private vehicle with a professional and courteous chauffeur.
+> - **Personal Assistance Throughout Your Journey** — From arrival to departure, our team
+>   is available to assist you with travel arrangements and practical needs.
+> - **Smooth & Convenient Sightseeing** — Assistance with monument visits and
+>   skip-the-line options wherever officially available.
+> - **Complimentary Drinking Water** — Fresh bottled drinking water provided during
+>   sightseeing and travel.
+> - **Shoe Covers & Battery Shuttle Assistance** — Provided where applicable for added
+>   comfort and convenience at selected monuments.
+> - **Photography Assistance** — We help you discover beautiful viewpoints and memorable
+>   photo locations and are happy to assist with taking your photographs.
+> - **Authentic Local Experiences** — Discover India's history, culture, local art,
+>   traditional handicrafts and live demonstrations where included in your itinerary.
+> - **Flexible & Personalized Service** — We respect your interests, preferred pace and
+>   comfort, adapting the experience whenever practical.
+> - **Clear & Transparent Service** — Straightforward pricing with no hidden charges and
+>   no unnecessary stops.
+> - **Your Comfort Comes First** — If you have any special requirement, personal
+>   preference, concern or difficulty at any time during your journey, please feel free to
+>   tell us. We are here to listen, assist and do our best to make your experience
+>   comfortable, smooth and worry-free.
+>
+> **YOUR COMFORT IS OUR PRIORITY**
+> Professional Service &middot; Local Knowledge &middot; Personal Attention &middot;
+> Genuine Hospitality &middot; Peace of Mind
+
+The emoji in the source copy are for WhatsApp only — the PDF uses the card styling
+instead. This section is company-wide service standard, not client-specific, so it does
+not count as carrying content over from another client's quotation.
 
 **05 Inclusions & Exclusions** — existing two-column Included / Not Included layout.
 Concise, scannable. Invent nothing on either side.
