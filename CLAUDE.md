@@ -130,14 +130,32 @@ monument closure days, seasonal operating periods, wildlife sightings not guaran
 government fee changes, timing constraints. No generic filler.
 
 **07 Booking Process & Terms** — Part A the numbered booking steps; Part B the company
-terms actually supplied (advance, balance, cancellation, amendment, monument/government
-fee changes, vehicle and hotel conditions). Never invent a policy to fill space.
+terms actually supplied. Then the two standard policy tables, side by side, each under a
+gold-ruled small-caps heading, the percentage in bold maroon on the left:
+
+| Payment policy | |
+|---|---|
+| 40% | At the time of confirmation |
+| 40% | One month before the tour date |
+| 20% | 15 days before the tour date |
+
+| Cancellation policy | |
+|---|---|
+| 15% | Cancellation charge, 60 days or more before the tour |
+| 50% | Of the travel cost, 59–40 days before the tour |
+| 65% | Of the travel cost, 39–20 days before the tour |
+| No refund | Less than 10 days before the tour |
+
+These are company policy and go on every quotation. Never invent any other policy to
+fill space.
 
 **08 Payment Details** — existing bank-transfer card. Only the banking information
 supplied, exactly as supplied. Never guess, complete or modify banking data.
 
-**Closing** — short, human, personalised. Then contact person, designation, company,
-phone/WhatsApp, email, website, office address. Keep the existing footer.
+**Closing** — short, human, personalised. Keep the existing footer, which carries:
+Guide India Tours · India Office; 31/84A, Jangjeet Nagar, Shamshabad Road, Agra, Uttar
+Pradesh – 282001, India; **GSTIN 09ABCFG5043N1Z4**; WhatsApp +91 8979810991;
+info@guideindiatours.com; guideindiatours.com.
 
 ## Content rules
 
