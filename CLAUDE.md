@@ -77,7 +77,7 @@ Concise, not an encyclopedia.
 standard company copy and is used **verbatim** on every quotation. Layout: heading, the
 subtitle line, the intro line, then a **numbered two-column list** &mdash; gold Playfair
 numeral (01, 02 &hellip;) in a narrow left column, bold maroon title, short line under it,
-hairline rule between items, the last item running full width. It closes with the
+hairline rule between items. Ten items in total. It closes with the
 **maroon "Your Comfort Is Our Priority" band** (gold top rule, white serif heading, gold
 letter-spaced subtitle). Not boxed cards &mdash; the boxed-card version looked repetitive
 and was replaced. Do not reword, shorten or re-order the items.
@@ -108,10 +108,6 @@ and was replaced. Do not reword, shorten or re-order the items.
 >   comfort, adapting the experience whenever practical.
 > - **Clear & Transparent Service** — Straightforward pricing with no hidden charges and
 >   no unnecessary stops.
-> - **Your Comfort Comes First** — If you have any special requirement, personal
->   preference, concern or difficulty at any time during your journey, please feel free to
->   tell us. We are here to listen, assist and do our best to make your experience
->   comfortable, smooth and worry-free.
 >
 > **YOUR COMFORT IS OUR PRIORITY**
 > Professional Service &middot; Local Knowledge &middot; Personal Attention &middot;
