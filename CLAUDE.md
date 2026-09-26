@@ -74,10 +74,13 @@ are *actually in this client's itinerary*. Each: name, city, one short factual l
 Concise, not an encyclopedia.
 
 **04 Services Provided** (section title on the page: "Services Provided") — this is
-standard company copy and is used **verbatim** on every quotation. Layout: heading, the subtitle line, the intro line, then a **two-column card
-grid** (one card per item, bold maroon title, short line under it, gold top rule),
-closing with the gold "Your Comfort Is Our Priority" band. Do not reword, shorten or
-re-order the items.
+standard company copy and is used **verbatim** on every quotation. Layout: heading, the
+subtitle line, the intro line, then a **numbered two-column list** &mdash; gold Playfair
+numeral (01, 02 &hellip;) in a narrow left column, bold maroon title, short line under it,
+hairline rule between items, the last item running full width. It closes with the
+**maroon "Your Comfort Is Our Priority" band** (gold top rule, white serif heading, gold
+letter-spaced subtitle). Not boxed cards &mdash; the boxed-card version looked repetitive
+and was replaced. Do not reword, shorten or re-order the items.
 
 > **SERVICES PROVIDED**
 > Quality &middot; Comfort &middot; Safety &middot; Personal Care
