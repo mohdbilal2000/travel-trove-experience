@@ -24,6 +24,18 @@ The existing quotation look is the design system. Keep it exactly:
 Never turn it into a generic corporate quote, a Word document, an invoice, or a
 colourful flyer.
 
+## Logo and platform badges
+
+- The **company logo mark** (`public/favicon.svg` — maroon rounded square, gold Mughal
+  motif) sits in the masthead to the left of the wordmark, on an ivory plate so it reads
+  against the maroon band.
+- The **last page**, between the closing and the footer, carries an "Also find us on"
+  strip: Tripadvisor (with the green `#34E0A1` circle), GetYourGuide `#FF5533`,
+  Klook `#FF5722`, Viator `#328E6E` — set as wordmarks in the platforms' own colours,
+  exactly as `components/home/HomeSections.tsx` does on the website. Do not draw
+  imitation versions of those companies' logos.
+- Only list platforms Guide India Tours is genuinely on.
+
 ## Section order — do not change
 
 ```
