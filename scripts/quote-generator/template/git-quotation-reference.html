@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Guide India Tours &mdash; Caro &mdash; Golden Triangle</title>
+<style>@font-face{font-family:'Cormorant';font-weight:600;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/CormorantGaramond-SemiBold.ttf')}
+@font-face{font-family:'Playfair';font-weight:600;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/PlayfairDisplay-SemiBold.ttf')}
+@font-face{font-family:'Playfair';font-weight:700;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/PlayfairDisplay-Bold.ttf')}
+@font-face{font-family:'Inter';font-weight:400;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/Inter-Regular.ttf')}
+@font-face{font-family:'Inter';font-weight:500;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/Inter-Medium.ttf')}
+@font-face{font-family:'Inter';font-weight:600;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/Inter-SemiBold.ttf')}
+@font-face{font-family:'Inter';font-weight:700;src:url('file:///home/user/travel-trove-experience/scripts/quote-generator/fonts/Inter-Bold.ttf')}
+
+:root{
+  --maroon:#800000; --maroon-dk:#6E1B1B; --maroon-tint:#f9e6e6;
+  --gold:#D6B641; --gold-200:#EEE1B3; --gold-50:#FBF8F0;
+  --ivory:#FAF4E1; --royal:#2C3E50; --sand:#A38454; --sand-200:#EBDBC3;
+  --jade:#669982; --jade-200:#CCE6DA; --jade-50:#F2F9F6;
+  --ink:#2C3E50; --body:#4a5761; --muted:#7A633F; --line:#EFE8D8; --line2:#EBDBC3;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font:400 9.5pt/1.65 Inter,sans-serif;color:var(--body);background:#fff}
+b,strong{font-weight:600;color:var(--ink)}
+
+.sheet{page-break-after:always}
+.sheet:last-of-type{page-break-after:auto;min-height:297mm;display:flex;flex-direction:column}
+.sheet:last-of-type .foot{margin-top:auto}
+.body{padding:0 16mm}
+
+.head{background:var(--maroon);color:#fff;padding:10mm 16mm 8mm;border-bottom:2.5pt solid var(--gold);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12mm}
+.brand .wm{font:600 21pt/1.05 Cormorant,Georgia,serif;letter-spacing:.2pt;color:#fff}
+.brand .wm em{font-style:normal;color:#F3E7C4}
+.brand .tg{font-size:6pt;letter-spacing:2.2pt;text-transform:uppercase;color:#E0C9A5;margin-top:3mm}
+.head .meta{text-align:right;font-size:6.8pt;line-height:2;color:#F0E2BE;white-space:nowrap}
+.head .meta b{color:#fff;font-weight:600}
+
+.hero{background:var(--ivory);border-bottom:1pt solid var(--sand-200);padding:7mm 16mm 6.5mm}
+.pill{display:inline-block;background:var(--maroon);color:#fff;padding:1.8mm 5mm;border-radius:20mm;
+  font:700 6pt/1 Inter,sans-serif;letter-spacing:2.4pt;text-transform:uppercase}
+.hero h1{font:600 24pt/1.14 Playfair,Georgia,serif;color:var(--maroon);margin:4mm 0 2.5mm}
+.hero .sub{font:600 11.5pt/1.45 Cormorant,Georgia,serif;color:var(--royal);letter-spacing:.3pt}
+.facts{display:flex;gap:3.5mm;margin-top:6.5mm}
+.facts>div{flex:1 1 0;background:#fff;border:1pt solid var(--sand-200);
+  border-left:2.5pt solid var(--gold);padding:3mm 4mm}
+.facts .k{font-size:5.8pt;letter-spacing:1.4pt;text-transform:uppercase;color:var(--sand)}
+.facts .v{font:600 9.8pt/1.3 Inter,sans-serif;color:var(--ink);margin-top:1.6mm;white-space:nowrap}
+
+.sec{padding-top:7mm}
+.sec>.lbl{display:block;font:700 6pt/1 Inter,sans-serif;letter-spacing:2.4pt;
+  text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm}
+.sec>h2{font:600 14pt/1.2 Playfair,Georgia,serif;color:var(--maroon);
+  margin:0 0 4.5mm;padding-bottom:2.5mm;border-bottom:1pt solid var(--sand-200);page-break-after:avoid}
+.sec p{font-size:9.4pt;line-height:1.72}
+.sec p+p{margin-top:3mm}
+.lede{font-size:9.4pt;line-height:1.72}
+.fine{font-size:7.6pt;line-height:1.65;color:var(--muted);margin-top:3mm}
+
+.price{border:1.5pt solid var(--gold);background:var(--gold-50);padding:7mm 8mm;
+  display:flex;gap:9mm;align-items:center;page-break-inside:avoid}
+.price .l{flex:0 0 58mm}
+.price .k{font-size:6pt;letter-spacing:2.2pt;text-transform:uppercase;color:var(--sand)}
+.price .amt{font:600 30pt/1 Playfair,Georgia,serif;color:var(--maroon);margin-top:3mm}
+.price .sm2{font-size:8pt;color:var(--muted);margin-top:3mm;line-height:1.5}
+.price .r{flex:1;border-left:1pt solid var(--sand-200);padding-left:9mm}
+.price .r .t{font:700 6pt/1 Inter,sans-serif;letter-spacing:1.8pt;text-transform:uppercase;
+  color:var(--sand);margin-bottom:3.5mm}
+.price .r ul{list-style:none}
+.price .r li{font-size:8.8pt;line-height:1.55;color:var(--body);padding-left:5mm;
+  position:relative;margin-bottom:2mm}
+.price .r li:last-child{margin-bottom:0}
+.price .r li:before{content:'';position:absolute;left:0;top:1.8mm;width:1.8mm;height:1.8mm;
+  border-radius:50%;background:var(--gold)}
+
+.note{margin-top:5mm;background:var(--ivory);border-left:3pt solid var(--gold);
+  padding:4.5mm 5.5mm;font-size:8.6pt;line-height:1.68;color:var(--muted);page-break-inside:avoid}
+.note b{color:var(--maroon);font-weight:600}
+
+.day{display:flex;gap:5.5mm;border:1pt solid var(--line);border-left:2.5pt solid var(--gold);
+  background:#FDFBF5;padding:4.2mm 5.5mm;margin-bottom:3.2mm;page-break-inside:avoid}
+.day:last-child{margin-bottom:0}
+.day .n{flex:none;width:8.5mm;height:8.5mm;border-radius:50%;background:var(--maroon);
+  color:#fff;font:700 8.2pt/8.5mm Inter,sans-serif;text-align:center}
+.day .c{flex:1}
+.day .dt{font-size:6.2pt;letter-spacing:1.5pt;text-transform:uppercase;color:var(--sand);margin-bottom:1.6mm}
+.day .dh{font:600 11.5pt/1.3 Playfair,Georgia,serif;color:var(--maroon);margin-bottom:2mm}
+.day .db{font-size:8.7pt;line-height:1.68;color:var(--body)}
+.day .db b{color:var(--maroon);font-weight:600}
+
+.ie{display:flex;gap:6mm;align-items:flex-start;page-break-inside:avoid}
+.ie .box{flex:1;border:1pt solid var(--sand-200)}
+.ie .bh{padding:3mm 5.5mm;font:700 6.2pt/1 Inter,sans-serif;letter-spacing:2pt;text-transform:uppercase}
+.ie .inc .bh{background:var(--jade-50);color:#4D7361;border-bottom:1pt solid var(--jade-200)}
+.ie .exc .bh{background:var(--maroon-tint);color:var(--maroon);border-bottom:1pt solid #f3cccc}
+.ie ul{list-style:none;padding:4.5mm 5.5mm}
+.ie li{font-size:8.4pt;line-height:1.6;color:var(--body);padding-left:5mm;position:relative;margin-bottom:2.4mm}
+.ie li:last-child{margin-bottom:0}
+.ie .inc li:before{content:'\2713';position:absolute;left:0;top:0;color:var(--jade);font-weight:700;font-size:7.6pt}
+.ie .exc li:before{content:'\2715';position:absolute;left:0;top:0;color:#c04040;font-weight:700;font-size:7.2pt}
+.ie li b{color:var(--ink);font-weight:600}
+
+.know{list-style:none}
+.know li{border:1pt solid var(--line);border-left:2.5pt solid var(--gold);background:#FDFBF5;
+  padding:3.5mm 5.5mm 3.5mm 10mm;position:relative;font-size:8.7pt;line-height:1.68;
+  color:var(--body);margin-bottom:2.6mm;page-break-inside:avoid}
+.know li:last-child{margin-bottom:0}
+.know li:before{content:'';position:absolute;left:5mm;top:5.2mm;width:2.2mm;height:2.2mm;
+  border-radius:50%;background:var(--gold)}
+.know li b{color:var(--maroon);font-weight:600}
+
+.confirm{display:flex;gap:7mm;align-items:flex-start;page-break-inside:avoid}
+.confirm .half{flex:1}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-left:8mm;font-size:8.8pt;
+  line-height:1.62;color:var(--body);margin-bottom:3.2mm}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:5mm;height:5mm;
+  background:var(--maroon);color:#fff;border-radius:50%;
+  font:700 6.6pt/5mm Inter,sans-serif;text-align:center}
+.bank{border:1pt solid var(--gold);background:var(--gold-50)}
+.bank .bh{background:var(--maroon);color:#fff;padding:3mm 5.5mm;
+  font:700 6.2pt/1 Inter,sans-serif;letter-spacing:2pt;text-transform:uppercase}
+.bank table{width:100%;border-collapse:collapse}
+.bank td{padding:2.2mm 5.5mm;border-bottom:1pt dotted var(--line2);
+  font:600 8.8pt/1.4 Inter,sans-serif;color:var(--ink)}
+.bank td.k{width:30mm;font:400 6pt/1.4 Inter,sans-serif;letter-spacing:1.2pt;
+  text-transform:uppercase;color:var(--sand)}
+.bank tr:last-child td{border-bottom:0}
+
+.signoff{margin-top:7mm;padding-top:5mm;border-top:1pt solid var(--sand-200);
+  font-size:9pt;line-height:1.72;color:var(--body);page-break-inside:avoid}
+.signoff .nm{font:600 15pt/1.2 Cormorant,Georgia,serif;color:var(--maroon);margin-top:3.5mm}
+.signoff .rl{font-size:6.4pt;letter-spacing:1.8pt;text-transform:uppercase;color:var(--sand);margin-top:1.5mm}
+
+.foot{margin-top:9mm;background:var(--ivory);border-top:2pt solid var(--gold);
+  padding:4.5mm 16mm 5mm;display:flex;justify-content:space-between;gap:10mm;
+  font-size:6.4pt;line-height:1.8;color:var(--muted);page-break-inside:avoid}
+.foot b{color:var(--maroon);font-weight:600}
+.foot .r{text-align:right}
+
+/* framework additions */
+.sec>.lbl{display:block;font:700 6pt/1 Inter,sans-serif;letter-spacing:2.4pt;
+  text-transform:uppercase;color:var(--gold);margin-bottom:2.5mm}
+.ov{display:flex;flex-wrap:wrap;border-top:1pt solid var(--line2);border-left:1pt solid var(--line2)}
+.ov>div{width:33.333%;border-right:1pt solid var(--line2);border-bottom:1pt solid var(--line2);
+  padding:3.2mm 4.5mm;background:#fff}
+.ov .k{font-size:5.7pt;letter-spacing:1.4pt;text-transform:uppercase;color:var(--sand)}
+.ov .v{font:600 9.4pt/1.35 Inter,sans-serif;color:var(--ink);margin-top:1.6mm}
+.hl{display:flex;flex-wrap:wrap;gap:3.4mm}
+.hl>div{width:calc(50% - 1.7mm);border:1pt solid var(--line);border-left:2.5pt solid var(--gold);
+  background:#FDFBF5;padding:3.1mm 5mm;page-break-inside:avoid}
+.hl .n{font:600 10.4pt/1.25 Playfair,Georgia,serif;color:var(--maroon)}
+.hl .c{font-size:5.9pt;letter-spacing:1.5pt;text-transform:uppercase;color:var(--sand);margin:1.4mm 0 2mm}
+.hl .d{font-size:8.3pt;line-height:1.6;color:var(--body)}
+.svc{display:flex;flex-wrap:wrap;gap:3.4mm}
+.svc>div{width:calc(50% - 1.7mm);border:1pt solid var(--line);border-top:2.5pt solid var(--gold);
+  background:#fff;padding:3.4mm 5mm;page-break-inside:avoid}
+.svc .t{font:600 9.2pt/1.3 Inter,sans-serif;color:var(--maroon);letter-spacing:.1pt}
+.promise{margin-top:6mm;border:1pt solid var(--gold);background:var(--gold-50);
+  padding:5mm 8mm;text-align:center;page-break-inside:avoid}
+.promise .t{font:600 13pt/1.3 Playfair,Georgia,serif;color:var(--maroon)}
+.promise .w{font-size:7.6pt;letter-spacing:1.8pt;text-transform:uppercase;color:var(--sand);margin-top:2.5mm}
+.subttl{font:600 10.5pt/1.4 Cormorant,Georgia,serif;font-size:12pt;color:var(--sand);
+  letter-spacing:1.6pt;text-transform:uppercase;margin:-2mm 0 4mm}
+.svc .d{font-size:8.2pt;line-height:1.6;color:var(--body);margin-top:1.8mm}
+table.pr{width:100%;border-collapse:collapse;page-break-inside:avoid;border:1.5pt solid var(--gold)}
+table.pr th{background:var(--maroon-dk);color:#fff;padding:3mm 5mm;text-align:left;
+  font:700 6pt/1.3 Inter,sans-serif;letter-spacing:1.4pt;text-transform:uppercase}
+table.pr th.c,table.pr td.c{text-align:center}
+table.pr td{padding:4mm 5mm;border-bottom:1pt solid var(--line);background:#fff;vertical-align:middle}
+table.pr tbody tr:nth-child(even) td{background:#FBF3E2}
+table.pr tr:last-child td{border-bottom:0}
+table.pr td.v{font:600 10.2pt/1.25 Inter,sans-serif;color:var(--ink)}
+table.pr td.v i{display:block;font:400 8pt/1.4 Inter,sans-serif;color:#7d8993;font-style:normal;margin-top:.8mm}
+table.pr tr.prem td{background:#FDF6F6!important;border-top:1.5pt solid var(--gold);border-bottom:1.5pt solid var(--gold)}
+table.pr tr.prem td.v{color:var(--maroon)}
+.badge{display:inline-block;background:var(--maroon);color:#fff;border-radius:20mm;
+  padding:1mm 3mm;font:700 5.4pt/1 Inter,sans-serif;letter-spacing:1.4pt;
+  text-transform:uppercase;vertical-align:middle;margin-left:3mm}
+table.pr td.p{text-align:center;font:600 15pt/1 Playfair,Georgia,serif;color:var(--maroon);white-space:nowrap}
+
+.logoplate{width:15mm;height:15mm;flex:none;background:var(--ivory);border-radius:4mm;padding:1.3mm;display:flex}
+.logoplate svg{width:100%;height:100%;display:block}
+.brandrow{display:flex;align-items:center;gap:5mm}
+.plat{margin-top:7mm;border-top:1pt solid var(--line);padding-top:6mm;text-align:center;page-break-inside:avoid}
+.plat .ph{font-size:6pt;letter-spacing:3pt;text-transform:uppercase;color:var(--sand);margin-bottom:4mm}
+.plat ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4mm 9mm}
+.plat li{font:700 12pt/1 Inter,sans-serif;letter-spacing:-.3pt;display:flex;align-items:center;gap:2mm}
+.plat .ta{width:5mm;height:5mm;border-radius:50%;background:#34E0A1;color:#000;
+  font:700 6.4pt/5mm Inter,sans-serif;text-align:center}
+
+.svc2{display:flex;flex-wrap:wrap;column-gap:10mm;border-top:1pt solid var(--line2)}
+.svc2>div{width:calc(50% - 5mm);display:flex;gap:4.4mm;padding:4mm 0;
+  border-bottom:1pt solid var(--line);page-break-inside:avoid}
+.svc2>div.wide{width:100%}
+.svc2 .i{flex:none;width:7.5mm;font:600 12pt/1 Playfair,Georgia,serif;color:var(--gold);padding-top:.4mm}
+.svc2 .t{font:600 9.4pt/1.35 Inter,sans-serif;color:var(--maroon);letter-spacing:.1pt}
+.svc2 .d{font-size:8.3pt;line-height:1.62;color:var(--body);margin-top:1.5mm}
+.promise2{margin-top:8mm;background:var(--maroon);padding:6mm 10mm;text-align:center;
+  border-top:2.5pt solid var(--gold);page-break-inside:avoid}
+.promise2 .t{font:600 14pt/1.25 Playfair,Georgia,serif;color:#fff}
+.promise2 .w{font-size:7.2pt;letter-spacing:2pt;text-transform:uppercase;color:var(--gold-200);margin-top:3mm}
+
+table.pol{width:100%;border-collapse:collapse;font-size:8.5pt;margin-top:3.5mm}
+table.pol td{padding:2.6mm 0;border-bottom:1pt solid var(--line);vertical-align:top;line-height:1.5}
+table.pol tr:last-child td{border-bottom:0}
+table.pol td.pc{width:20mm;font:700 9.4pt/1.4 Inter,sans-serif;color:var(--maroon);white-space:nowrap}
+.polh{font-size:6pt;letter-spacing:2.6pt;text-transform:uppercase;color:var(--sand);
+  border-bottom:1.5pt solid var(--gold);padding-bottom:2mm;margin-bottom:1mm}
+</style></head>
+<body>
+<div class="sheet">
+<div class="head">
+  <div class="brand brandrow">
+    <div class="logoplate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="100%" style="stop-color:#B8860B"/></linearGradient></defs><rect width="512" height="512" rx="128" fill="#800000"/><path d="M256 120c-40 0-72 32-72 72s32 72 72 72 72-32 72-72-32-72-72-72zm0 120c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z" fill="url(#gg)"/><path d="M256 80c-61.9 0-112 50.1-112 112v48h224v-48c0-61.9-50.1-112-112-112zm80 144H176v-32c0-44.1 35.9-80 80-80s80 35.9 80 80v32z" fill="url(#gg)"/><path d="M120 400h272v-40H120v40zm272-120H120v24h272v-24zm-272 56h272v-24H120v24z" fill="url(#gg)"/><path d="M256 150l-150 200h300L256 150z" opacity="0.1" fill="#000"/></svg></div>
+    <div>
+      <div class="wm"><em>Guide</em> India Tours</div>
+      <div class="tg">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2007</div>
+    </div>
+  </div>
+  <div class="meta">Quotation <b>GIT-2027-0225-CA</b><br>Issued 26 September 2026<br>Valid until 10 October 2026</div>
+</div>
+
+<div class="hero">
+  <span class="pill">Private Golden Triangle Quotation</span>
+  <h1>Delhi &middot; Agra &middot; Jaipur</h1>
+  <div class="sub">5 Days / 4 Nights &middot; Private &middot; VIP Premium Service</div>
+</div>
+
+<div class="body">
+  <div class="sec" style="padding-top:8mm">
+    <span class="lbl">01 &mdash; Overview</span>
+    <h2>Client &amp; Trip Overview</h2>
+    <div class="ov">
+      <div><div class="k">Prepared for</div><div class="v">Caro</div></div>
+      <div><div class="k">Travellers</div><div class="v">4 Adults</div></div>
+      <div><div class="k">Travel dates</div><div class="v">25 Feb &ndash; 1 Mar 2027</div></div>
+      <div><div class="k">Duration</div><div class="v">5 Days / 4 Nights</div></div>
+      <div><div class="k">Route</div><div class="v">Delhi &rarr; Agra &rarr; Fatehpur Sikri &rarr; Jaipur</div></div>
+      <div><div class="k">Pickup</div><div class="v">Delhi Airport</div></div>
+      <div><div class="k">Final drop</div><div class="v">Jaipur or Delhi</div></div>
+      <div><div class="k">Guide</div><div class="v">Government-approved</div></div>
+      <div><div class="k">Vehicle</div><div class="v">Your choice &mdash; 2 options</div></div>
+    </div>
+    <p class="lede" style="margin-top:6mm">Warm greetings from Guide India Tours. We are delighted to present a private
+    five-day Golden Triangle journey for four guests &mdash; Delhi, Agra and Jaipur, with a private air-conditioned
+    vehicle and professional chauffeur, a government-approved tourist guide, <b>all monument entrance tickets</b> and
+    the <b>elephant ride at Amber Fort</b> included.</p>
+  </div>
+
+  <div class="sec">
+    <span class="lbl">02 &mdash; Itinerary</span>
+    <h2>Your Journey</h2>
+
+    <div class="day"><div class="n">1</div><div class="c">
+      <div class="dt">Day One &middot; Thu 25 Feb &middot; Arrival Delhi</div>
+      <div class="dh">Arrival and light Delhi sightseeing</div>
+      <div class="db">You are met by your Guide India Tours representative at Delhi Airport and transferred privately to your hotel &mdash; approximately 15&ndash;30 km, 45&ndash;90 minutes depending on hotel location and traffic. Depending on your arrival time, light sightseeing across the capital: <b>India Gate</b> and the Parliament area, <b>Humayun&rsquo;s Tomb</b> and <b>Qutub Minar</b>.<br><br>Overnight in Delhi.</div>
+    </div></div>
+
+  </div>
+</div>
+</div>
+
+<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:3mm">
+    <span class="lbl">02 &mdash; Itinerary continued</span>
+    <h2>Your Journey</h2>
+
+    <div class="day"><div class="n">2</div><div class="c">
+      <div class="dt">Day Two &middot; Fri 26 Feb &middot; Delhi &rarr; Agra</div>
+      <div class="dh">Old Delhi, then down to Agra</div>
+      <div class="db">After breakfast: <b>Jama Masjid</b>, the <b>Red Fort</b>, the lanes of <b>Old Delhi</b> and <b>Raj Ghat</b>. Then the drive to Agra by the Yamuna Expressway &mdash; approximately 230 km, 3.5&ndash;4 hours.<br><br>On arrival, <b>Agra Fort</b>, <b>Itmad-ud-Daulah</b> (the Baby Taj) and <b>Mehtab Bagh</b> for the Taj Mahal viewpoint, subject to timing. Local sightseeing is roughly 20&ndash;30 km in total, with 15&ndash;30 minutes between sites depending on traffic.<br><br>Overnight in Agra.</div>
+    </div></div>
+
+    <div class="day"><div class="n">3</div><div class="c">
+      <div class="dt">Day Three &middot; Sat 27 Feb &middot; Agra &rarr; Jaipur</div>
+      <div class="dh">The Taj Mahal, Fatehpur Sikri and on to Jaipur</div>
+      <div class="db">Early morning at the <b>Taj Mahal</b> with your government-approved professional tourist guide. After breakfast and check-out, the drive towards Jaipur.<br><br><b>Fatehpur Sikri</b> en route &mdash; approximately 40 km, one hour from Agra &mdash; for the Buland Darwaza, the Jama Masjid and the royal palace complex. Then on to Jaipur, approximately 205 km and 4&ndash;4.5 hours.<br><br><i>Agra to Jaipur by way of Fatehpur Sikri is roughly 245 km in total, plus sightseeing.</i><br><br>Overnight in Jaipur.</div>
+    </div></div>
+
+    <div class="day"><div class="n">4</div><div class="c">
+      <div class="dt">Day Four &middot; Sun 28 Feb &middot; Jaipur</div>
+      <div class="dh">A full day in the royal city</div>
+      <div class="db"><b>Amber Fort</b> &mdash; approximately 11 km from the city, 30&ndash;45 minutes &mdash; with your <b>elephant ride included</b>. Then <b>Jal Mahal</b> (8 km, 20&ndash;30 minutes), the <b>City Palace</b> (6 km, 20&ndash;30 minutes), <b>Jantar Mantar</b> next door and <b>Hawa Mahal</b> a short transfer away. Later <b>Nahargarh Fort</b>, 12&ndash;15 km and 30&ndash;45 minutes depending on traffic and road conditions.<br><br>An authentic experience of <b>local art, handicrafts and live demonstrations</b> along the way. Shopping is entirely optional &mdash; there is no forced shopping on any of our tours.<br><br>Overnight in Jaipur.</div>
+    </div></div>
+
+    <div class="day"><div class="n">5</div><div class="c">
+      <div class="dt">Day Five &middot; Mon 1 Mar &middot; Departure</div>
+      <div class="dh">A relaxed morning, then your onward transfer</div>
+      <div class="db">After breakfast, a relaxed morning before your transfer. Two drop options:<br><br><b>Option 1 &mdash; Jaipur.</b> Your hotel to Jaipur Airport, approximately 10&ndash;15 km, 30&ndash;60 minutes depending on hotel location and traffic.<br><br><b>Option 2 &mdash; Delhi.</b> Jaipur to Delhi Airport, approximately 260&ndash;280 km, 5&ndash;6 hours depending on traffic and road conditions.<br><br>Your private chauffeur stays with you to the end of the journey. End of services.</div>
+    </div></div>
+
+  </div>
+</div>
+</div>
+
+<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:16mm">
+    <span class="lbl">03 &mdash; Services</span>
+    <h2>Services Provided</h2>
+    <div class="subttl">Quality &middot; Comfort &middot; Safety &middot; Personal Care</div>
+    <p class="lede" style="margin-bottom:5mm">With Guide India Tours, your journey is more than sightseeing. We take care of the details so you can relax, explore and enjoy India with complete peace of mind.</p>
+    <div class="svc2">
+      <div><div class="i">01</div><div><div class="t">Government-Approved Professional Tourist Guide</div><div class="d">Experienced, knowledgeable and dedicated to making every monument meaningful, interesting and enjoyable.</div></div></div>
+      <div><div class="i">02</div><div><div class="t">Private Sanitized AC Transportation</div><div class="d">Clean, comfortable and well-maintained private vehicle with a professional and courteous chauffeur.</div></div></div>
+      <div><div class="i">03</div><div><div class="t">Personal Assistance Throughout Your Journey</div><div class="d">From arrival to departure, our team is available to assist you with travel arrangements and practical needs.</div></div></div>
+      <div><div class="i">04</div><div><div class="t">Smooth &amp; Convenient Sightseeing</div><div class="d">Assistance with monument visits and skip-the-line options wherever officially available.</div></div></div>
+      <div><div class="i">05</div><div><div class="t">Complimentary Drinking Water</div><div class="d">Fresh bottled drinking water provided during sightseeing and travel.</div></div></div>
+      <div><div class="i">06</div><div><div class="t">Shoe Covers &amp; Battery Shuttle Assistance</div><div class="d">Provided where applicable for added comfort and convenience at selected monuments.</div></div></div>
+      <div><div class="i">07</div><div><div class="t">Photography Assistance</div><div class="d">We help you discover beautiful viewpoints and memorable photo locations and are happy to assist with taking your photographs.</div></div></div>
+      <div><div class="i">08</div><div><div class="t">Authentic Local Experiences</div><div class="d">Discover India&rsquo;s history, culture, local art, traditional handicrafts and live demonstrations where included in your itinerary.</div></div></div>
+      <div><div class="i">09</div><div><div class="t">Flexible &amp; Personalized Service</div><div class="d">We respect your interests, preferred pace and comfort, adapting the experience whenever practical.</div></div></div>
+      <div><div class="i">10</div><div><div class="t">Clear &amp; Transparent Service</div><div class="d">Straightforward pricing with no hidden charges and no unnecessary stops.</div></div></div>
+    </div>
+    <div class="promise2">
+      <div class="t">Your Comfort Is Our Priority</div>
+      <div class="w">Professional Service &middot; Local Knowledge &middot; Personal Attention &middot; Genuine Hospitality &middot; Peace of Mind</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:16mm">
+    <span class="lbl">04 &mdash; The Detail</span>
+    <h2>Inclusions &amp; Exclusions</h2>
+    <div class="ie">
+      <div class="box inc">
+        <div class="bh">Included</div>
+        <ul>
+          <li>Private air-conditioned vehicle for the full five days, yours alone</li>
+          <li>Professional chauffeur throughout &mdash; never shared</li>
+          <li>Government-approved professional tourist guide</li>
+          <li><b>All monument entrance tickets</b> listed in the itinerary</li>
+          <li><b>Elephant ride at Amber Fort</b></li>
+          <li>Delhi Airport arrival transfer</li>
+          <li>Final drop at Jaipur or Delhi, as you prefer</li>
+          <li>Fuel, tolls, parking, interstate taxes and permits</li>
+          <li>Bottled drinking water in the vehicle</li>
+          <li>Local art, handicraft and live demonstration experience</li>
+        </ul>
+      </div>
+      <div class="box exc">
+        <div class="bh">Not included</div>
+        <ul>
+          <li>Hotel accommodation</li>
+          <li>Meals and beverages</li>
+          <li>Flights, visa and travel insurance</li>
+          <li>Camera charges, tips and gratuities</li>
+          <li>Shopping and personal expenses</li>
+          <li>Anything not listed as included</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec">
+    <span class="lbl">05 &mdash; Investment</span>
+    <h2>Package Price</h2>
+    <p class="lede" style="margin-bottom:5mm">Quoted <b>per person</b> for four travellers sharing one vehicle. The
+    itinerary, the guide, the monument tickets and the Amber elephant ride are identical in both options &mdash; only
+    the vehicle differs.</p>
+    <table class="pr">
+      <thead><tr><th style="width:44%">Vehicle</th><th class="c" style="width:28%">Per Person</th><th>Suitability</th></tr></thead>
+      <tbody>
+        <tr><td class="v">Private SUV<i>Comfortable for four guests with luggage</i></td><td class="p">USD 260</td><td>Comfortable for four with luggage</td></tr>
+        <tr class="prem"><td class="v">Innova Crysta<span class="badge">Premium</span><i>The most spacious and comfortable choice</i></td><td class="p">USD 270</td><td>Recommended for the long highway days</td></tr>
+      </tbody>
+    </table>
+    <p class="fine">Per person, based on four travellers sharing the vehicle. Reference exchange rate approximately
+    95.5 INR = 1 USD; payment may also be made in Indian Rupees at the prevailing rate.</p>
+  </div>
+
+</div>
+</div>
+
+<div class="sheet">
+<div class="body">
+  <div class="note" style="margin-top:16mm">
+    <b>Important information.</b> The Taj Mahal is closed to visitors <b>every Friday</b>. Your Taj Mahal morning falls
+    on <b>Saturday 27 February</b>, so you are clear. Please note that <b>26 February is a Friday</b>: the Jama Masjid
+    closes to visitors during the midday Friday prayers, so we will take it early in the morning and adjust the Old
+    Delhi order around it. Monument entrance fees are set by the Archaeological Survey of India and the state
+    authorities and may be revised before travel; any change is passed on exactly, with no markup either way.
+  </div>
+
+  <div class="sec">
+    <span class="lbl">06 &mdash; Next Steps</span>
+    <h2>Booking Process &amp; Terms</h2>
+    <div class="confirm">
+      <div class="half">
+        <ol class="steps">
+          <li>Reply to confirm your dates, your chosen vehicle and your preferred final drop</li>
+          <li>Transfer the <b>40% confirmation payment</b> to the account shown</li>
+          <li>Send us the transfer confirmation</li>
+          <li>We issue your written booking confirmation</li>
+          <li>Pay the remaining instalments as set out below</li>
+        </ol>
+      </div>
+      <div class="half">
+        <ul class="know">
+          <li>The quoted price is fixed for the itinerary above; any additional service requested will be quoted separately.</li>
+          <li>Monument, elephant ride and government fees may be revised before travel; any change is passed on exactly, with no markup. The vehicle operates according to the confirmed itinerary and is not on unlimited disposal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="confirm" style="margin-top:7mm">
+      <div class="half">
+        <div class="polh">Payment policy</div>
+        <table class="pol">
+          <tr><td class="pc">40%</td><td>At the time of confirmation</td></tr>
+          <tr><td class="pc">40%</td><td>One month before the tour date</td></tr>
+          <tr><td class="pc">20%</td><td>15 days before the tour date</td></tr>
+        </table>
+      </div>
+      <div class="half">
+        <div class="polh">Cancellation policy</div>
+        <table class="pol">
+          <tr><td class="pc">15%</td><td>Cancellation charge, 60 days or more before the tour</td></tr>
+          <tr><td class="pc">50%</td><td>Of the travel cost, 59&ndash;40 days before the tour</td></tr>
+          <tr><td class="pc">65%</td><td>Of the travel cost, 39&ndash;20 days before the tour</td></tr>
+          <tr><td class="pc">No refund</td><td>Less than 10 days before the tour</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:16mm">
+    <span class="lbl">07 &mdash; Payment</span>
+    <h2>Payment Details</h2>
+    <div class="confirm">
+      <div class="half">
+        <div class="bank">
+          <div class="bh">Bank transfer details</div>
+          <table>
+            <tr><td class="k">Company name</td><td>GUIDE INDIA TOURS</td></tr>
+            <tr><td class="k">Account number</td><td>52801202547</td></tr>
+            <tr><td class="k">IFSC</td><td>IDFB0021293</td></tr>
+            <tr><td class="k">SWIFT code</td><td>IDFBINBBMUM</td></tr>
+            <tr><td class="k">Bank name</td><td>IDFC FIRST</td></tr>
+            <tr><td class="k">Branch</td><td>Agra&ndash;Fatehabad Road Branch</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="half">
+        <p class="lede">For international transfers please quote <b>both</b> the SWIFT code and the IFSC &mdash; Indian banks require both to route the payment.</p>
+        <p class="fine">Payment may be made in USD or INR. The balance is payable on arrival in India.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signoff">
+    We would be delighted to arrange this journey for you, Caro. Once your dates and vehicle are confirmed we will hold
+    the vehicle, confirm your guide and send you the driver and guide details before you arrive. Any question at all
+    before you decide, just write or message us on WhatsApp.
+    <div class="nm">Guide India Tours</div>
+    <div class="rl">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2007</div>
+  </div>
+
+  <div class="plat">
+    <div class="ph">Also find us on</div>
+    <ul>
+      <li style="color:#1a1a1a"><span class="ta">T</span>Tripadvisor</li>
+      <li style="color:#FF5533">GetYourGuide</li>
+      <li style="color:#FF5722">Klook</li>
+      <li style="color:#328E6E">Viator</li>
+    </ul>
+  </div>
+</div>
+<div class="foot">
+  <div><b>Guide India Tours</b> &middot; India Office<br>31/84A, Jangjeet Nagar, Shamshabad Road, Agra, Uttar Pradesh &ndash; 282001, India<br>GSTIN 09ABCFG5043N1Z4</div>
+  <div class="r">+91 8979810991 &middot; WhatsApp +91 8979810991 &middot; info@guideindiatours.com<br>
+  www.guideindiatours.com &middot; Quotation GIT-2027-0225-CA &middot; Quality &middot; Safety &middot; Peace of Mind</div>
+</div>
+</div>
+
+</body></html>

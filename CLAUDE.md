@@ -24,6 +24,17 @@ The existing quotation look is the design system. Keep it exactly:
 Never turn it into a generic corporate quote, a Word document, an invoice, or a
 colourful flyer.
 
+## The reference document
+
+`scripts/quote-generator/template/git-quotation-reference.html` is the current standard,
+committed so it survives a container reset. **Start every new Guide India Tours quotation
+from it** &mdash; swap the client content, keep the structure, the CSS and the standard
+sections. `measure.js` beside it prints sheet heights at print width (A4 = 1123px);
+`render.js` writes the PDF. Measure before rendering, and never let a page overflow or
+sit nearly empty.
+
+Sign the closing **"Guide India Tours"**, not an individual's name.
+
 ## Logo and platform badges
 
 - The **company logo mark** (`public/favicon.svg` — maroon rounded square, gold Mughal
@@ -42,18 +53,19 @@ colourful flyer.
 COVER / QUOTATION HEADER
 01  Client & Trip Overview
 02  Your Journey
-03  Highlights & Experiences
-04  Services Provided
-05  Inclusions & Exclusions
-06  Package Price
+03  Services Provided
+04  Inclusions & Exclusions
+05  Package Price
     Important Information      (only when relevant)
-07  Booking Process & Terms
-08  Payment Details
+06  Booking Process & Terms
+    Payment Policy + Cancellation Policy
+07  Payment Details
 FINAL PERSONALISED CLOSING
+    Also Find Us On  +  footer
 ```
 
 **Price must never appear before** the client has seen their trip details, the
-itinerary, the highlights, our services, and the inclusions/exclusions. The document
+itinerary, our services, and the inclusions/exclusions. The document
 reads as a prepared proposal, not a price sheet.
 
 ## Section rules
@@ -68,12 +80,7 @@ day title, detailed text. Only the itinerary supplied for this client. Never add
 attractions because they are popular locally. May run across pages; do not shrink type
 to force a fit.
 
-**03 Highlights & Experiences** — never call this "Monuments" (the template must suit
-wildlife, beach, Kerala, Andaman, cultural tours too). Pull the major highlights that
-are *actually in this client's itinerary*. Each: name, city, one short factual line.
-Concise, not an encyclopedia.
-
-**04 Services Provided** (section title on the page: "Services Provided") — this is
+**03 Services Provided** (section title on the page: "Services Provided") — this is
 standard company copy and is used **verbatim** on every quotation. Layout: heading, the
 subtitle line, the intro line, then a **numbered two-column list** &mdash; gold Playfair
 numeral (01, 02 &hellip;) in a narrow left column, bold maroon title, short line under it,
@@ -117,19 +124,21 @@ The emoji in the source copy are for WhatsApp only — the PDF uses the card sty
 instead. This section is company-wide service standard, not client-specific, so it does
 not count as carrying content over from another client's quotation.
 
-**05 Inclusions & Exclusions** — existing two-column Included / Not Included layout.
+**04 Inclusions & Exclusions** — existing two-column Included / Not Included layout.
 Concise, scannable. Invent nothing on either side.
 
-**06 Package Price** — existing premium pricing-table style. Vehicle option, per-person
-price, total, travellers, currency; original price / discount / final price where
-applicable. Multiple vehicle options clearly separated. Use the exact supplied figures;
-never alter commercial numbers or hide mandatory charges.
+**05 Package Price** — existing premium pricing-table style. Vehicle option, per-person
+price only &mdash; **no group totals** &mdash; in the client's own currency, rounded up to a
+clean figure so the margin never falls below target. Columns: Vehicle / Per Person /
+Suitability. Multiple vehicle options clearly separated, the top vehicle carrying the
+maroon PREMIUM badge. Use the exact supplied figures; never alter commercial numbers or
+hide mandatory charges.
 
 **Important Information** — small elegant callout, only when genuinely relevant:
 monument closure days, seasonal operating periods, wildlife sightings not guaranteed,
 government fee changes, timing constraints. No generic filler.
 
-**07 Booking Process & Terms** — Part A the numbered booking steps; Part B the company
+**06 Booking Process & Terms** — Part A the numbered booking steps; Part B the company
 terms actually supplied. Then the two standard policy tables, side by side, each under a
 gold-ruled small-caps heading, the percentage in bold maroon on the left:
 
@@ -149,7 +158,7 @@ gold-ruled small-caps heading, the percentage in bold maroon on the left:
 These are company policy and go on every quotation. Never invent any other policy to
 fill space.
 
-**08 Payment Details** — existing bank-transfer card. Only the banking information
+**07 Payment Details** — existing bank-transfer card. Only the banking information
 supplied, exactly as supplied. Never guess, complete or modify banking data.
 
 **Closing** — short, human, personalised. Keep the existing footer, which carries:
