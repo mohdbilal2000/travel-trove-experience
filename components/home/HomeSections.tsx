@@ -18,7 +18,7 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/place/Guide+India+Tours/
 const stats = [
     { term: "Operating since", detail: "2004" },
     { term: "Travelers guided", detail: "15,000+" },
-    { term: "Google rating", detail: "4.9/5 · 403+ reviews" },
+    { term: "Google rating", detail: "4.9/5 · 400+ reviews" },
     { term: "Tour packages", detail: `${allPlans.length}+` },
     { term: "Guides", detail: "Government-licensed" },
     { term: "Support", detail: "24/7 on WhatsApp" },
@@ -41,7 +41,7 @@ export function TrustStats() {
                 </dl>
                 <p className="text-center text-white/70 font-light mt-8 max-w-3xl mx-auto leading-relaxed">
                     Guide India Tours is a private tour operator based in Agra, India, working only with
-                    government-approved, licensed guides — operating since 2004 and rated 4.9/5 from 403+ Google reviews.{" "}
+                    government-approved, licensed guides — operating since 2004 and rated 4.9/5 from 400+ Google reviews.{" "}
                     <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-white underline underline-offset-2">
                         Verify our reviews on Google
                     </a>{" "}
@@ -436,7 +436,7 @@ export function EeatGuides() {
                         <address className="not-italic relative z-10 mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 text-sm text-white/80 leading-relaxed">
                             <span className="flex items-start gap-3 mb-2">
                                 <MapPin className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
-                                <span>Guide India Tours, 31/84A Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India</span>
+                                <span>Guide India Tours, 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh, India</span>
                             </span>
                             <span className="flex items-center gap-3 mb-2">
                                 <Phone className="w-4 h-4 text-gold-500 flex-shrink-0" />
@@ -468,7 +468,7 @@ export function ReviewsWall() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 id="reviews-heading" className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-4">
-                        Rated 4.9/5 by <span className="text-maroon-600">403+ Travelers</span> on Google
+                        Rated 4.9/5 by <span className="text-maroon-600">400+ Travelers</span> on Google
                     </h2>
                     <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
                         Recent reviews from verified guests — read them all on Google or on our reviews page.

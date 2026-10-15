@@ -236,7 +236,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                 <div className="text-center md:text-left">
                                     <h3 className="text-xl font-bold text-gray-900 mb-2">About Guide India Tours</h3>
                                     <p className="text-gray-600 font-light leading-relaxed">
-                                        Private Golden Triangle tours run from Agra since 2004 by government-approved guides. Rated 4.9/5 by 403+ travelers on Google. Every article is written from what we see on the ground with guests every week.
+                                        Private Golden Triangle tours run from Agra since 2004 by government-approved guides. Rated 4.9/5 by 400+ travelers on Google. Every article is written from what we see on the ground with guests every week.
                                     </p>
                                 </div>
                             </div>

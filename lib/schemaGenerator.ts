@@ -462,19 +462,28 @@ export const generateConnectedGraphSchema = () => {
         "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
+          "streetAddress": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
           "addressLocality": "Agra",
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282001",
           "addressCountry": "IN"
         },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+918979810991",
-          "contactType": "customer service",
-          "email": "info@guideindiatours.com",
-          "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
-        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+919410000991",
+            "contactType": "customer service",
+            "email": "info@guideindiatours.com",
+            "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+918979810991",
+            "contactType": "reservations",
+            "availableLanguage": ["English", "Hindi"]
+          }
+        ],
+        "hasMap": "https://www.google.com/maps/place/Guide+India+Tours/",
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": "27.1767",
@@ -491,7 +500,7 @@ export const generateConnectedGraphSchema = () => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "403",
+          "reviewCount": "432",
           "bestRating": "5"
         },
         "areaServed": [

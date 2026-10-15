@@ -97,13 +97,13 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-maroon-600" />
                 <span className="text-gray-600 text-sm">
-                  31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh
+                  31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0 text-maroon-600" />
-                <a href="tel:+918979810991" className="text-gray-600 hover:text-maroon-700 transition-colors">
-                  +91 8979810991
+                <a href="tel:+919410000991" className="text-gray-600 hover:text-maroon-700 transition-colors">
+                  +91 94100 00991
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -120,7 +120,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-maroon-700 transition-colors text-sm font-medium"
                 >
-                  4.9 ★ on Google (403+ reviews)
+                  4.9 ★ on Google (400+ reviews)
                 </a>
               </li>
             </ul>

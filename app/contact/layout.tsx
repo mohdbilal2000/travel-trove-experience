@@ -47,7 +47,7 @@ const contactSchema = {
             },
             {
                 "@type": "ContactPoint",
-                "telephone": "+91-8979810991",
+                "telephone": "+91-9410000991",
                 "contactType": "reservations",
                 "contactOption": "TollFree",
                 "availableLanguage": ["English", "Hindi"]
@@ -55,7 +55,7 @@ const contactSchema = {
         ],
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "31/84A, Jangjeet Nagar, Shamsabad Road",
+            "streetAddress": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
             "addressLocality": "Agra",
             "addressRegion": "Uttar Pradesh",
             "postalCode": "282001",

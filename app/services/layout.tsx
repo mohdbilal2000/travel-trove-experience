@@ -60,7 +60,7 @@ const servicesSchema = [
         'aggregateRating': {
             '@type': 'AggregateRating',
             'ratingValue': '4.9',
-            'reviewCount': '403',
+            'reviewCount': '432',
             'bestRating': '5',
             'worstRating': '1'
         }

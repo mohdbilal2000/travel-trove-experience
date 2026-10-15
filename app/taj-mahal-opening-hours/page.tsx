@@ -7,8 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal Opening Hours 2026: Days, Times & Friday Closure',
-    description: 'When the Taj Mahal opens, why it closes Fridays, the night-viewing schedule, and the best times to arrive. Updated 2026.',
+    title: 'Taj Mahal Opening Hours & Timings 2026 — Closed on Fridays',
+    description: 'The Taj Mahal is open sunrise to sunset every day except Friday, when it is closed all day. See exact 2026 seasonal timings, last entry, night-viewing dates and the best time to arrive.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-opening-hours',
         languages: {
@@ -19,7 +19,8 @@ export const metadata: Metadata = {
             'x-default': 'https://www.guideindiatours.com/taj-mahal-opening-hours',
         },
     },
-    openGraph: { title: 'Taj Mahal Opening Hours 2026', description: 'Daily hours, Friday closures, night viewing schedule.', url: 'https://www.guideindiatours.com/taj-mahal-opening-hours', type: 'article' },
+    openGraph: { title: 'Taj Mahal Opening Hours & Timings 2026 — Closed on Fridays', description: 'Open sunrise to sunset daily, closed every Friday. Seasonal timings, last entry, night viewing and the best time to arrive.', url: 'https://www.guideindiatours.com/taj-mahal-opening-hours', type: 'article' },
+    twitter: { card: 'summary_large_image', title: 'Taj Mahal Opening Hours & Timings 2026', description: 'Open sunrise to sunset daily, closed every Friday. Seasonal timings, last entry and night-viewing dates.' },
 };
 
 const faqs = [
@@ -59,7 +60,7 @@ export default function OpeningHours() {
                 breadcrumbs={[{ label: 'Taj Mahal Guide', href: '/taj-mahal-guide' }, { label: 'Opening Hours' }]}
                 badge="Updated 2026"
                 title="Taj Mahal Opening Hours"
-                subtitle="Daily hours, Friday closures, night viewing — exactly when you can and can't visit."
+                subtitle="Daily timings, Friday closure, night viewing and last entry — exactly when you can and can't visit."
             />
 
             <section className="py-12 bg-ivory-100">
@@ -105,8 +106,8 @@ export default function OpeningHours() {
                     </div>
 
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">Why Fridays are closed</h2>
-                        <p>The Taj Mahal complex contains a working mosque on the western side, and Friday is reserved for the noon congregational (Jumu&apos;ah) prayer. ASI closes the entire complex to tourists for the day so that prayers can take place without interruption. If you only have Friday in Agra, see <Link href="/agra-tours" className="text-maroon-600 underline">Agra Fort</Link>, Itimad-ud-Daulah and Mehtab Bagh instead, then return to the Taj the next morning.</p>
+                        <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">Is the Taj Mahal closed on Friday?</h2>
+                        <p><strong className="text-gray-900">Yes — the Taj Mahal is closed all day every Friday.</strong> The Taj Mahal complex contains a working mosque on the western side, and Friday is reserved for the noon congregational (Jumu&apos;ah) prayer. ASI closes the entire complex to tourists for the day so that prayers can take place without interruption. If you only have Friday in Agra, see <Link href="/agra-tours" className="text-maroon-600 underline">Agra Fort</Link>, Itimad-ud-Daulah and Mehtab Bagh instead, then return to the Taj the next morning.</p>
                     </div>
 
                     <div>

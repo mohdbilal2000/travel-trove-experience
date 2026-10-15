@@ -84,6 +84,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${BASE_URL}/agra-tour-guide`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
             url: `${BASE_URL}/jaipur-tours`,
             lastModified: now,
             changeFrequency: 'weekly',

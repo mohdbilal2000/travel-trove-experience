@@ -2,6 +2,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import PlannerSection from "@/components/home/PlannerSection";
+import GoogleTrustBlock from "@/components/shared/GoogleTrustBlock";
 import HowItWorks from "@/components/shared/HowItWorks";
 import NewsletterForm from "@/components/shared/NewsletterForm";
 import {
@@ -13,7 +14,7 @@ import { homeFaqs } from "@/data/homeFaqs";
 
 export const metadata: Metadata = {
     title: "Private Golden Triangle Tours India — Delhi, Agra & Jaipur",
-    description: "Private Golden Triangle tours with government-licensed guides since 2004. Delhi, Agra & Jaipur packages with Taj Mahal sunrise visits, AC cars and 24/7 support. Rated 4.9/5 by 403+ travelers on Google.",
+    description: "Private Golden Triangle tours with government-licensed guides since 2004. Delhi, Agra & Jaipur packages with Taj Mahal sunrise visits, AC cars and 24/7 support. Rated 4.9/5 by 400+ travelers on Google.",
     keywords: "Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, private tour India",
     alternates: {
         canonical: 'https://www.guideindiatours.com',
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "Private Golden Triangle Tours — Delhi, Agra & Jaipur | Guide India Tours",
-        description: "Government-licensed guides, private AC cars, 24/7 support. Operating from Agra since 2004 and rated 4.9/5 by 403+ travelers on Google.",
+        description: "Government-licensed guides, private AC cars, 24/7 support. Operating from Agra since 2004 and rated 4.9/5 by 400+ travelers on Google.",
         url: 'https://www.guideindiatours.com',
         siteName: 'Guide India Tours',
         images: [{ url: 'https://www.guideindiatours.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Taj Mahal at sunrise — Guide India Tours private Golden Triangle tours' }],
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Private Golden Triangle Tours | Guide India Tours',
-        description: 'Private Delhi, Agra & Jaipur tours with government-licensed guides. Rated 4.9/5 by 403+ travelers on Google.',
+        description: 'Private Delhi, Agra & Jaipur tours with government-licensed guides. Rated 4.9/5 by 400+ travelers on Google.',
         images: ['https://www.guideindiatours.com/images/og-default.jpg'],
     },
 };
@@ -118,6 +119,9 @@ export default function Home() {
 
             {/* Fresh, server-rendered Google reviews */}
             <ReviewsWall />
+
+            {/* Visible Google Business trust block (NAP + rating, matches GBP) */}
+            <GoogleTrustBlock />
 
             {/* Taj Mahal info pages + blog guides */}
             <ResourcesHub />

@@ -30,7 +30,7 @@ export async function GET() {
 
         address: {
             "@type": "PostalAddress",
-            streetAddress: "31/84A, Jangjeet Nagar, Shamsabad Road",
+            streetAddress: "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
             addressLocality: "Agra",
             addressRegion: "Uttar Pradesh",
             postalCode: "282001",
@@ -62,7 +62,7 @@ export async function GET() {
         aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "403",
+            reviewCount: "432",
             bestRating: "5",
             worstRating: "1",
         },
@@ -80,7 +80,7 @@ export async function GET() {
             },
             languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
             averageRating: 4.9,
-            totalReviews: 403,
+            totalReviews: 432,
         },
 
         // Tour catalog summary
