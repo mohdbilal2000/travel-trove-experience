@@ -164,7 +164,7 @@ export default function FAQPage() {
                                     </a>
                                 </Button>
                                 <Button variant="outline" size="lg" asChild className="h-14 px-8 rounded-2xl border-white/30 text-white hover:bg-white/10 text-base font-bold bg-transparent">
-                                    <a href="tel:+919410000991" className="flex items-center gap-3">
+                                    <a href="tel:+918979810991" className="flex items-center gap-3">
                                         <Phone className="w-5 h-5" /> +91 89798 10991
                                     </a>
                                 </Button>

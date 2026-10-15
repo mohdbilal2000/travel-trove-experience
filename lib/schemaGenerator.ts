@@ -468,21 +468,13 @@ export const generateConnectedGraphSchema = () => {
           "postalCode": "282001",
           "addressCountry": "IN"
         },
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "telephone": "+919410000991",
-            "contactType": "customer service",
-            "email": "info@guideindiatours.com",
-            "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
-          },
-          {
-            "@type": "ContactPoint",
-            "telephone": "+918979810991",
-            "contactType": "reservations",
-            "availableLanguage": ["English", "Hindi"]
-          }
-        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+918979810991",
+          "contactType": "customer service",
+          "email": "info@guideindiatours.com",
+          "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
+        },
         "hasMap": "https://www.google.com/maps/place/Guide+India+Tours/",
         "geo": {
           "@type": "GeoCoordinates",
