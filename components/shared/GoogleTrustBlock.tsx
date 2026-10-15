@@ -13,8 +13,7 @@ export default function GoogleTrustBlock() {
     const {
         rating,
         address,
-        phoneDisplay,
-        telHref,
+        whatsappE164,
         whatsappDisplay,
         whatsappHref,
         social,
@@ -82,11 +81,11 @@ export default function GoogleTrustBlock() {
                         </div>
                         <div className="flex flex-col gap-2 mt-auto">
                             <a
-                                href={telHref}
+                                href={`tel:${whatsappE164}`}
                                 className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-maroon-600 transition-colors"
                             >
                                 <Phone className="w-4 h-4 text-maroon-600" />
-                                <span>Call {phoneDisplay}</span>
+                                <span>Call {whatsappDisplay}</span>
                             </a>
                             <a
                                 href={whatsappHref}
