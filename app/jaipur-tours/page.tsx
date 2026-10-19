@@ -140,7 +140,7 @@ export default function JaipurToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. We offer {allJaipurPlans.length}+ Jaipur packages, all rated 4.9/5 by 400+ verified Google reviewers.
+                        <strong className="text-gray-900">Jaipur tours by Guide India Tours</strong> offer immersive private experiences through Rajasthan&apos;s royal capital. Our guided tours cover Amber Fort (with optional elephant/jeep ride), City Palace, Hawa Mahal (Palace of Winds), and Jantar Mantar astronomical observatory. We also offer Jaipur shopping tours for jewelry, textiles, and handicrafts with visits to trusted artisan workshops. We offer {allJaipurPlans.length}+ Jaipur packages, all rated 4.9/5 by 400+ verified Google reviewers. Prefer a private licensed guide? Meet our <Link href="/jaipur-tour-guide" className="text-maroon-600 font-semibold hover:underline">Jaipur tour guides</Link>.
                     </p>
                 </div>
             </section>
