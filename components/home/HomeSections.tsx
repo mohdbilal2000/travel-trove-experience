@@ -9,7 +9,7 @@ import { reviews } from "@/data/reviews";
 import { blogPosts, estimateReadTime } from "@/data/blogPosts";
 import { allPlans } from "@/data/travelPlans";
 
-const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/place/Guide+India+Tours/";
+const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra";
 
 /* ------------------------------------------------------------------ */
 /* Trust stats — quotable facts as a definition list                   */

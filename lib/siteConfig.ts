@@ -53,7 +53,7 @@ export const siteConfig = {
   // ── Social / sameAs ──────────────────────────────────────────────────────
   social: {
     youtube: "https://www.youtube.com/@guideindiatours",
-    googleMaps: "https://www.google.com/maps/place/Guide+India+Tours/",
+    googleMaps: "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
     tripadvisor: "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
     trustpilot: "https://www.trustpilot.com/review/guideindiatours.com",
   },

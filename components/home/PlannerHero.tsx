@@ -66,7 +66,7 @@ const PlannerHero = () => {
           {/* Brand pitch */}
           <div className="text-center text-white animate-fade-in">
             <a
-              href="https://www.google.com/maps/place/Guide+India+Tours/"
+              href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Read our reviews on Google"
