@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, User, ArrowLeft, Clock, Star, HelpCircle, ListChecks, MessageCircle, ArrowRight } from "lucide-react";
 import { getBlogPostBySlug, blogPosts, estimateReadTime } from "@/data/blogPosts";
+import { getTranslationsFor } from "@/data/blogTranslations";
+import { generateFAQSchema } from "@/lib/schemaGenerator";
 import { allPlans } from "@/data/travelPlans";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -48,6 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
                 'en-IN': url,
                 'en-AU': url,
                 'x-default': url,
+                ...Object.fromEntries(getTranslationsFor(slug).map((t) => [t.lang, `${BASE_URL}/blog/${t.lang}/${t.slug}`])),
             },
         },
         openGraph: {
@@ -80,6 +83,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
     const url = `${BASE_URL}/blog/${slug}`;
     const dateModified = post.updatedDate || post.publishedDate;
     const headings = extractHeadings(post.content);
+    const translations = getTranslationsFor(post.slug);
+    const faqSchema = post.faqs && post.faqs.length > 0 ? generateFAQSchema(post.faqs.map((f) => ({ question: f.q, answer: f.a }))) : null;
 
     const relatedPlans = allPlans.filter(plan => post.relatedPlans?.includes(plan.id)).slice(0, 3);
     const relatedPosts = blogPosts
@@ -129,6 +134,9 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
             />
+            {faqSchema && (
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            )}
 
             <section className="pt-28 md:pt-44 pb-16 md:pb-24">
                 <div className="container mx-auto px-4 max-w-4xl">
@@ -227,6 +235,33 @@ export default async function BlogDetailPage({ params }: PageProps) {
                         <article className="max-w-none">
                             {renderMarkdown(post.content)}
                         </article>
+
+                        {post.faqs && post.faqs.length > 0 && (
+                            <div className="mt-14 pt-10 border-t border-gray-100">
+                                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6">Frequently asked questions</h2>
+                                <div className="space-y-5">
+                                    {post.faqs.map((f, i) => (
+                                        <div key={i} className="bg-ivory-100 p-6 rounded-2xl">
+                                            <h3 className="text-lg font-bold text-gray-900 mb-2">{f.q}</h3>
+                                            <p className="text-gray-600 font-light leading-relaxed">{f.a}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {translations.length > 0 && (
+                            <div className="mt-10 pt-8 border-t border-gray-100 text-center">
+                                <p className="text-gray-500 text-xs font-black uppercase tracking-widest mb-4">Read this guide in your language</p>
+                                <div className="flex flex-wrap items-center justify-center gap-3">
+                                    {translations.map((t) => (
+                                        <Link key={t.lang} href={`/blog/${t.lang}/${t.slug}`} hrefLang={t.htmlLang} lang={t.htmlLang} className="px-4 py-2 rounded-full bg-ivory-100 border border-gray-200 hover:border-maroon-600/40 text-sm font-semibold text-gray-700">
+                                            {t.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         <div className="mt-14 pt-10 border-t border-gray-100 space-y-6">
                             <div className="flex flex-col md:flex-row gap-6 items-center bg-ivory-100 p-8 rounded-3xl">

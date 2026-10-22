@@ -3,6 +3,7 @@ import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { FAQ_LAST_UPDATED } from '@/data/faqs';
 import { guideLangs } from '@/data/multilingualGuide';
+import { blogTranslations, getTranslationsFor } from '@/data/blogTranslations';
 
 const BASE_URL = 'https://www.guideindiatours.com';
 
@@ -226,12 +227,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     // Blog post pages
-    const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-        url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: new Date(post.updatedDate || post.publishedDate).toISOString(),
-        changeFrequency: 'monthly' as const,
-        priority: post.quickAnswer ? 0.8 : 0.7,
-    }));
+    const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => {
+        const translated = getTranslationsFor(post.slug);
+        return {
+            url: `${BASE_URL}/blog/${post.slug}`,
+            lastModified: new Date(post.updatedDate || post.publishedDate).toISOString(),
+            changeFrequency: 'monthly' as const,
+            priority: post.quickAnswer ? 0.8 : 0.7,
+            ...(translated.length > 0 && {
+                alternates: {
+                    languages: {
+                        en: `${BASE_URL}/blog/${post.slug}`,
+                        ...Object.fromEntries(translated.map((s) => [s.lang, `${BASE_URL}/blog/${s.lang}/${s.slug}`])),
+                    },
+                },
+            }),
+        };
+    });
 
-    return [...staticPages, ...planPages, ...blogPages];
+    // Translated blog posts, each with reciprocal hreflang alternates.
+    const blogTranslationPages: MetadataRoute.Sitemap = blogTranslations.map((tr) => {
+        const original = blogPosts.find((p) => p.slug === tr.postSlug);
+        const languages: Record<string, string> = { en: `${BASE_URL}/blog/${tr.postSlug}` };
+        getTranslationsFor(tr.postSlug).forEach((s) => { languages[s.lang] = `${BASE_URL}/blog/${s.lang}/${s.slug}`; });
+        return {
+            url: `${BASE_URL}/blog/${tr.lang}/${tr.slug}`,
+            lastModified: new Date(original?.updatedDate || original?.publishedDate || Date.now()),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+            alternates: { languages },
+        };
+    });
+
+    return [...staticPages, ...planPages, ...blogPages, ...blogTranslationPages];
 }
