@@ -90,6 +90,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${BASE_URL}/golden-triangle-tour-cost`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/jaipur-tour-guide`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/delhi-tour-guide`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/private-vs-group-tour`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        // Multilingual guide landing pages
+        ...['fr', 'es', 'de', 'it', 'ja', 'zh'].map((lang) => ({
+            url: `${BASE_URL}/guide/${lang}`,
+            lastModified: now,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+        })),
+        {
             url: `${BASE_URL}/jaipur-tours`,
             lastModified: now,
             changeFrequency: 'weekly',

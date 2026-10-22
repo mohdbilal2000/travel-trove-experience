@@ -21,6 +21,12 @@ export const metadata: Metadata = {
             'en-US': 'https://www.guideindiatours.com/agra-tour-guide',
             'en-GB': 'https://www.guideindiatours.com/agra-tour-guide',
             'en-IN': 'https://www.guideindiatours.com/agra-tour-guide',
+            'fr': 'https://www.guideindiatours.com/guide/fr',
+            'es': 'https://www.guideindiatours.com/guide/es',
+            'de': 'https://www.guideindiatours.com/guide/de',
+            'it': 'https://www.guideindiatours.com/guide/it',
+            'ja': 'https://www.guideindiatours.com/guide/ja',
+            'zh': 'https://www.guideindiatours.com/guide/zh',
             'x-default': 'https://www.guideindiatours.com/agra-tour-guide',
         },
     },
@@ -231,6 +237,29 @@ export default function AgraTourGuidePage() {
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">{faq.question}</h3>
                                 <p className="text-gray-500 font-light leading-relaxed">{faq.answer}</p>
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Multilingual + cost links */}
+            <section className="py-12 bg-white border-t border-gray-100">
+                <div className="container mx-auto px-4 max-w-4xl text-center">
+                    <p className="text-gray-500 font-light mb-4">
+                        Prefer a guide in your language? We also offer <Link href="/golden-triangle-tour-cost" className="text-maroon-600 font-semibold hover:underline">transparent pricing</Link> and guides who speak:
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-3">
+                        {[
+                            { href: '/guide/fr', label: 'Français' },
+                            { href: '/guide/es', label: 'Español' },
+                            { href: '/guide/de', label: 'Deutsch' },
+                            { href: '/guide/it', label: 'Italiano' },
+                            { href: '/guide/ja', label: '日本語' },
+                            { href: '/guide/zh', label: '中文' },
+                        ].map((l) => (
+                            <Link key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-ivory-100 border border-gray-200 hover:border-maroon-600/40 hover:bg-maroon-50/30 transition-colors text-sm font-semibold text-gray-700">
+                                {l.label}
+                            </Link>
                         ))}
                     </div>
                 </div>

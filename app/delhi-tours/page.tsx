@@ -145,7 +145,7 @@ export default function DelhiToursPage() {
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="prose prose-lg max-w-none">
                         <p className="text-lg text-gray-600 font-light leading-relaxed">
-                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. All tours include private AC transportation and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 400+ Google reviews.
+                            <strong className="text-gray-900">Delhi tours by Guide India Tours</strong> offer private, guided experiences across India&apos;s capital city. Our licensed guides lead you through Old Delhi&apos;s Mughal heritage — including the Red Fort, Jama Masjid, and Chandni Chowk — and New Delhi&apos;s grand landmarks like India Gate, Qutub Minar, and Lotus Temple. All tours include private AC transportation and can be customized for half-day, full-day, or multi-day itineraries. We serve {allDelhiPlans.length}+ Delhi-focused packages with 4.9/5 average ratings from 400+ Google reviews. Prefer a private licensed guide? Meet our <Link href="/delhi-tour-guide" className="text-maroon-600 font-semibold hover:underline">Delhi tour guides</Link>.
                         </p>
                     </div>
                 </div>
