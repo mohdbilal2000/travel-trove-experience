@@ -31,3 +31,6 @@ hostinger-deploy/
 *.sln
 *.sw?
 .vercel
+
+# Client quote PDFs are private: never commit them
+/*.pdf
