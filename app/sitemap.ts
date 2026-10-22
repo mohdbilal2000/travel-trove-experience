@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { FAQ_LAST_UPDATED } from '@/data/faqs';
+import { guideLangs } from '@/data/multilingualGuide';
 
 const BASE_URL = 'https://www.guideindiatours.com';
 
@@ -114,7 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         // Multilingual guide landing pages
-        ...['fr', 'es', 'de', 'it', 'ja', 'zh'].map((lang) => ({
+        ...guideLangs.map(({ code: lang }) => ({
             url: `${BASE_URL}/guide/${lang}`,
             lastModified: now,
             changeFrequency: 'monthly' as const,

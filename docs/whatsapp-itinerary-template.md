@@ -73,7 +73,7 @@ _[Add or remove day blocks as needed]_
 
 ─────────────────────
 🕌 *GUIDE INDIA TOURS*
-📍 31/84A Jangjeet Nagar, Shamsabad Road, Agra 282001, India
+📍 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, India
 📞 Call: +91 94100 00991
 💬 WhatsApp: +91 89798 10991 (24/7)
 ✉️ info@guideindiatours.com

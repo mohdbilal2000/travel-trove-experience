@@ -59,9 +59,9 @@ BRAND = {
 COMPANY = {
     "name": "Guide India Tours",
     "tagline": "Government-Approved Tourist Guides · Professional Travel Services",
-    "established": "2007",
-    "address": "31/84A Jangjeet Nagar, Shamsabad Road, Agra 282001",
-    "address_full": "31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India",
+    "established": "2004",
+    "address": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001",
+    "address_full": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh, India",
     "phone": "+91 8979810991",
     "whatsapp": "+91 8979810991",
     "email": "info@guideindiatours.com",
@@ -320,7 +320,7 @@ def build_html(q: dict) -> str:
       <div class="item"><b>Government-approved guides only.</b> Every guide is licensed, English-speaking and briefed on your plan in advance.</div>
       <div class="item"><b>No forced shopping, ever.</b> No commission stops, no showroom detours &mdash; the day is yours.</div>
       <div class="item"><b>One point of contact throughout.</b> Direct WhatsApp access to us for the whole trip, not a call centre.</div>
-      <div class="item"><b>Serving guests since 2007.</b> Family-run, Agra-based, and it shows in the detail.</div>
+      <div class="item"><b>Serving guests since 2004.</b> Family-run, Agra-based, and it shows in the detail.</div>
     </div>
   </div>"""
 

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { guideLangs } from '@/data/multilingualGuide';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
@@ -21,12 +22,7 @@ export const metadata: Metadata = {
             'en-US': 'https://www.guideindiatours.com/agra-tour-guide',
             'en-GB': 'https://www.guideindiatours.com/agra-tour-guide',
             'en-IN': 'https://www.guideindiatours.com/agra-tour-guide',
-            'fr': 'https://www.guideindiatours.com/guide/fr',
-            'es': 'https://www.guideindiatours.com/guide/es',
-            'de': 'https://www.guideindiatours.com/guide/de',
-            'it': 'https://www.guideindiatours.com/guide/it',
-            'ja': 'https://www.guideindiatours.com/guide/ja',
-            'zh': 'https://www.guideindiatours.com/guide/zh',
+            ...Object.fromEntries(guideLangs.map((l) => [l.hreflang ?? l.code, `https://www.guideindiatours.com/guide/${l.code}`])),
             'x-default': 'https://www.guideindiatours.com/agra-tour-guide',
         },
     },
@@ -249,14 +245,7 @@ export default function AgraTourGuidePage() {
                         Prefer a guide in your language? We also offer <Link href="/golden-triangle-tour-cost" className="text-maroon-600 font-semibold hover:underline">transparent pricing</Link> and guides who speak:
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-3">
-                        {[
-                            { href: '/guide/fr', label: 'Français' },
-                            { href: '/guide/es', label: 'Español' },
-                            { href: '/guide/de', label: 'Deutsch' },
-                            { href: '/guide/it', label: 'Italiano' },
-                            { href: '/guide/ja', label: '日本語' },
-                            { href: '/guide/zh', label: '中文' },
-                        ].map((l) => (
+                        {guideLangs.map((l) => ({ href: `/guide/${l.code}`, label: l.label })).map((l) => (
                             <Link key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-ivory-100 border border-gray-200 hover:border-maroon-600/40 hover:bg-maroon-50/30 transition-colors text-sm font-semibold text-gray-700">
                                 {l.label}
                             </Link>

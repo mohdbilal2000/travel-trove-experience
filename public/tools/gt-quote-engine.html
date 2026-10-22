@@ -172,71 +172,143 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
 .gap .t span{color:var(--ink-2);font-size:12.5px}
 .hide{display:none}
 
+
+.big .qopt{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.big .qopt:last-child{border-bottom:0}
+.big .qopt small{color:rgba(255,255,255,.7)}
+/* ---- extra calculator UI ---- */
+.veh button[aria-pressed="true"]::after{content:'✓';float:right;color:var(--brand);font-weight:700}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:8px 15px;font-weight:600;font-size:13px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.sub{font-size:12px;color:var(--ink-3);margin-top:8px}
+textarea.it{min-height:130px;font:400 13px/1.55 Inter,system-ui,sans-serif}
+.optcols{width:100%;border-collapse:collapse;font-size:12.5px}
+.optcols th,.optcols td{padding:7px 8px;border-bottom:1px solid var(--line-soft);text-align:right;white-space:nowrap}
+.optcols th:first-child,.optcols td:first-child{text-align:left;white-space:normal}
+.optcols th{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-3)}
+.optcols tr.sum td{font-weight:700;background:var(--surface-2)}
+.optcols tr.profit td{background:var(--good-soft);color:var(--good);font-weight:700}
+.optcols tr.profit.neg td{background:var(--bad-soft);color:var(--bad)}
+.qopt{padding:11px 18px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.qopt b{font:700 20px/1.1 'Playfair Display',Georgia,serif}
+.qopt small{display:block;color:var(--ink-3);font-size:11.5px}
+
 /* ====================================================================
    Client-facing quote document — screen-hidden, print only.
    Colours are hard-coded (not var()) so a staff member on dark mode
    still gets a light, on-brand PDF. Contains NO cost/margin/profit.
+   Palette: website maroon / gold / ivory / navy + a warmer saffron and
+   leaf-green for a cheerful touch.
    ==================================================================== */
 #doc{display:none}
 @media print{
-  @page{size:A4;margin:0}
+  @page{size:A4;margin:12mm 0 10mm}
+  @page :first{margin:0 0 10mm}
   html,body{background:#fff !important;color:#2C3E50 !important}
   header,.wrap,#gate{display:none !important}
   #doc{display:block !important}
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
 }
-#doc{font:400 10pt/1.55 Inter,system-ui,sans-serif;color:#2C3E50}
-#doc .d-head{background:#800000;color:#fff;padding:11mm 14mm 9mm;border-bottom:2.5pt solid #D6B641;display:flex;justify-content:space-between;align-items:flex-start;gap:10mm}
-#doc .d-wm{font:600 21pt/1 'Cormorant Garamond',Georgia,serif}
+#doc{font:400 9.6pt/1.55 Inter,system-ui,sans-serif;color:#2C3E50;font-variant-numeric:lining-nums}
+#doc *{box-sizing:border-box;overflow-wrap:anywhere}
+#doc .d-head{background:#800000;color:#fff;padding:10mm 14mm 8mm;display:flex;justify-content:space-between;align-items:flex-start;gap:8mm;border-bottom:2.5mm solid #F2A93B}
+#doc .d-wm{font:600 22pt/1 'Cormorant Garamond',Georgia,serif}
 #doc .d-wm i{color:#F6EFD9;font-style:normal}
-#doc .d-tag{font-size:6.6pt;letter-spacing:1.6pt;text-transform:uppercase;color:#EEE1B3;margin-top:2.5mm}
-#doc .d-meta{text-align:right;font-size:6.8pt;letter-spacing:.5pt;color:#F6EFD9;line-height:1.7;white-space:nowrap}
-#doc .d-band{background:#FAF4E1;border-bottom:1pt solid #EBDBC3;padding:7mm 14mm}
-#doc .d-qt{font-size:6.8pt;letter-spacing:2pt;text-transform:uppercase;color:#A38454}
-#doc .d-band h1{font:600 19pt/1.15 'Playfair Display',Georgia,serif;color:#800000;margin:2.5mm 0 1.5mm}
-#doc .d-route{font:600 12.5pt/1.3 'Cormorant Garamond',Georgia,serif;color:#2C3E50;letter-spacing:.3pt}
-#doc .d-facts{display:flex;gap:3.5mm;margin-top:6mm;flex-wrap:wrap}
-#doc .d-facts>div{flex:1 1 0;min-width:28mm;background:#fff;border:1pt solid #EBDBC3;border-left:2.5pt solid #D6B641;padding:2.6mm 3.5mm}
-#doc .d-facts .k{font-size:6.2pt;letter-spacing:1pt;text-transform:uppercase;color:#A38454}
-#doc .d-facts .v{font-size:10pt;font-weight:600;margin-top:.8mm}
+#doc .d-tag{font-size:6.8pt;letter-spacing:1.5pt;text-transform:uppercase;color:#F3DFA4;margin-top:2.5mm}
+#doc .d-meta{text-align:right;font-size:7.4pt;letter-spacing:.4pt;color:#F6EFD9;line-height:1.7}
+#doc .d-hero{background:#FFF6E3;padding:8mm 14mm 7mm;border-bottom:1pt solid #F1DFB8}
+#doc .d-eyebrow{font-size:7.4pt;letter-spacing:1.8pt;text-transform:uppercase;color:#A38454;font-weight:600}
+#doc .d-tier{display:inline-block;background:#F2A93B;color:#4A2A00;border-radius:99px;padding:.8mm 3.2mm;letter-spacing:1pt;margin-left:2mm;font-weight:700}
+#doc .d-hero h1{font:600 21pt/1.15 'Playfair Display',Georgia,serif;color:#800000;margin:2.5mm 0 1.5mm}
+#doc .d-route{font:600 13pt/1.3 'Cormorant Garamond',Georgia,serif;color:#2C3E50}
+#doc .d-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:6mm}
+#doc .d-facts>div{background:#fff;border-radius:2.5mm;border:1pt solid #F1DFB8;border-top:2pt solid #D6B641;padding:2.6mm 3.2mm;min-height:15mm}
+#doc .d-facts>div:nth-child(4n+2){border-top-color:#F2A93B}
+#doc .d-facts>div:nth-child(4n+3){border-top-color:#800000}
+#doc .d-facts>div:nth-child(4n){border-top-color:#4D9A7B}
+#doc .d-facts .k{font-size:6.4pt;letter-spacing:1pt;text-transform:uppercase;color:#A38454;font-weight:600}
+#doc .d-facts .v{font-size:9.6pt;font-weight:600;margin-top:.8mm;line-height:1.35}
 #doc .d-body{padding:8mm 14mm 0}
-#doc .d-sec{margin-bottom:6.5mm}
-#doc .d-sec h2{font:600 11.5pt/1 'Playfair Display',Georgia,serif;color:#800000;margin:0 0 3.5mm;padding-bottom:1.8mm;border-bottom:1pt solid #EBDBC3;page-break-after:avoid}
-#doc .d-ie,#doc .d-bank,#doc .d-tix{page-break-inside:avoid}
-#doc .d-sec h2 span{font:700 7pt/1 Inter,sans-serif;color:#D6B641;letter-spacing:1pt;margin-right:2.5mm}
-#doc .d-sec p{font-size:9.4pt;line-height:1.7;color:#4a5761}
-#doc .d-price{background:#2C3E50;color:#fff;padding:6mm 8mm;display:flex;justify-content:space-between;align-items:center;gap:8mm;page-break-inside:avoid}
-#doc .d-price .l{font-size:7pt;letter-spacing:1.6pt;text-transform:uppercase;color:#D6B641}
-#doc .d-price .a{font:600 25pt/1.1 'Playfair Display',Georgia,serif;margin-top:1.5mm}
-#doc .d-price .s{font-size:8.4pt;color:#c7d1db;margin-top:1.5mm}
-#doc .d-price .r{text-align:right;font-size:8pt;color:#c7d1db;line-height:1.7;border-left:1pt solid #4a5f75;padding-left:7mm}
-#doc .d-price .r b{display:block;color:#fff;font-size:11pt;margin-bottom:1mm}
-#doc .d-ie{display:flex;gap:6mm}
-#doc .d-ie .box{flex:1;border:1pt solid #EBDBC3}
-#doc .d-ie .bh{padding:2.6mm 4mm;font-size:7pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
-#doc .d-ie .inc .bh{background:#F2F9F6;color:#4D7361;border-bottom:1pt solid #CCE6DA}
-#doc .d-ie .exc .bh{background:#f9e6e6;color:#800000;border-bottom:1pt solid #f3cccc}
-#doc .d-ie ul{list-style:none;padding:3.5mm 4mm}
-#doc .d-ie li{font-size:8.4pt;line-height:1.6;color:#4a5761;padding-left:4.5mm;position:relative;margin-bottom:1mm}
-#doc .d-ie .inc li:before{content:'✓';position:absolute;left:0;color:#669982;font-weight:700}
-#doc .d-ie .exc li:before{content:'✕';position:absolute;left:0;color:#d03333;font-weight:700}
-#doc .d-tix{width:100%;border-collapse:collapse;font-size:8.6pt}
-#doc .d-tix td{padding:1.8mm 0;border-bottom:1pt dotted #EBDBC3;color:#4a5761;vertical-align:top}
-#doc .d-tix td.c{width:26mm;font-weight:700;color:#800000;font-size:7.4pt;letter-spacing:.8pt;text-transform:uppercase;padding-top:2.2mm}
-#doc .d-confirm{display:flex;gap:6mm;page-break-inside:avoid}
-#doc .d-confirm .half{flex:1}
+#doc .d-sec{margin-bottom:5mm}
+#doc .d-sec>h2{font:600 13pt/1.2 'Playfair Display',Georgia,serif;color:#800000;margin:0 0 3.5mm;padding-bottom:2mm;border-bottom:1pt solid #F1DFB8;display:flex;align-items:center;gap:3mm;break-after:avoid;page-break-after:avoid}
+#doc .d-sec>h2 .n{flex:none;width:6.4mm;height:6.4mm;border-radius:50%;background:#F2A93B;color:#4A2A00;font:700 8pt/6.4mm Inter,sans-serif;text-align:center}
+#doc p{font-size:9.4pt;line-height:1.65;color:#4a5761}
+#doc .d-note{font-size:8.2pt;color:#7A633F;line-height:1.6;margin-top:3mm}
+#doc .d-note b{color:#800000}
+#doc .d-avoid,#doc table,#doc tr,#doc .d-day,#doc .box,#doc .d-adv,#doc .d-bank{break-inside:avoid;page-break-inside:avoid}
+
+/* itinerary */
+#doc .d-day{display:flex;gap:4mm;background:#FFFBF1;border:1pt solid #F1DFB8;border-left:2.5pt solid #F2A93B;border-radius:2mm;padding:3.4mm 4mm;margin-bottom:2.6mm}
+#doc .d-day .dn{flex:none;width:11mm;text-align:center}
+#doc .d-day .dn b{display:block;font:700 13pt/1 Inter,sans-serif;color:#800000}
+#doc .d-day .dn span{font-size:6.2pt;letter-spacing:1pt;text-transform:uppercase;color:#A38454}
+#doc .d-day .dt{font:600 10.4pt/1.35 'Playfair Display',Georgia,serif;color:#2C3E50}
+#doc .d-day .dd{font-size:8.8pt;line-height:1.6;color:#4a5761;margin-top:.8mm}
+
+/* covered / not covered */
+#doc .d-ie{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+#doc .d-ie .box{border-radius:2.5mm;overflow:hidden;border:1pt solid #E2ECE6}
+#doc .d-ie .exc{border-color:#F3D3CF}
+#doc .d-ie .bh{padding:2.6mm 4mm;font-size:7.6pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
+#doc .d-ie .inc .bh{background:#E4F3EC;color:#2F7457}
+#doc .d-ie .exc .bh{background:#FBE4E0;color:#A02A22}
+#doc .d-ie ul{list-style:none;padding:2.8mm 4mm 1.6mm}
+#doc .d-ie li{font-size:8.8pt;line-height:1.55;color:#4a5761;padding-left:5mm;position:relative;margin-bottom:1.1mm}
+#doc .d-ie .inc li:before{content:'✓';position:absolute;left:0;color:#2F7457;font-weight:700}
+#doc .d-ie .exc li:before{content:'✕';position:absolute;left:0;color:#B8332A;font-weight:700}
+
+/* tickets */
+#doc .d-tix{width:100%;border-collapse:collapse;font-size:8.8pt}
+#doc .d-tix td{padding:2mm 0;border-bottom:1pt dotted #E8D9B5;color:#4a5761;vertical-align:top}
+#doc .d-tix td.c{width:30mm;padding-right:4mm;font-weight:700;color:#800000;font-size:7.6pt;letter-spacing:.8pt;text-transform:uppercase}
+#doc .d-tix td.p{text-align:right;white-space:nowrap;width:24mm}
+#doc .d-tix tr.t td{font-weight:700;color:#2C3E50;border-bottom:0}
+#doc .d-chip{display:inline-block;background:#E4F3EC;color:#2F7457;font-size:7.6pt;font-weight:700;letter-spacing:.8pt;text-transform:uppercase;padding:.8mm 3mm;border-radius:99px;margin-bottom:2.5mm}
+#doc .d-chip.o{background:#FFF0D2;color:#8A5A00}
+#doc .d-chip.x{background:#FBE4E0;color:#A02A22}
+
+/* price table */
+#doc table.d-opt{width:100%;border-collapse:separate;border-spacing:0;font-size:9.2pt;border:1pt solid #F1DFB8;border-radius:2.5mm;overflow:hidden}
+#doc .d-opt th{background:#800000;color:#fff;font-size:7pt;letter-spacing:1.1pt;text-transform:uppercase;text-align:left;padding:2.8mm 3.5mm;font-weight:600}
+#doc .d-opt th.r,#doc .d-opt td.r{text-align:right;white-space:nowrap}
+#doc .d-opt td{padding:2.8mm 3.5mm;border-bottom:1pt solid #F4E8CC;vertical-align:middle;background:#fff}
+#doc .d-opt tr:nth-child(even) td{background:#FFFBF1}
+#doc .d-opt tr:last-child td{border-bottom:0}
+#doc .d-opt .vn{font:600 10.6pt/1.25 'Playfair Display',Georgia,serif;color:#2C3E50}
+#doc .d-opt .vs{font-size:7.8pt;color:#8A7A5C;margin-top:.6mm}
+#doc .d-opt .pp{font:700 12.4pt/1.1 Inter,sans-serif;color:#800000}
+#doc .d-opt .wp{font:600 11pt/1.1 Inter,sans-serif;color:#2C3E50}
+#doc .d-badge{display:inline-block;background:#800000;color:#fff;font-size:6.2pt;font-weight:700;letter-spacing:.9pt;padding:.7mm 2.2mm;border-radius:99px;margin-left:2mm;vertical-align:1pt}
+#doc .d-pill{display:inline-block;background:#E4F3EC;color:#2F7457;font-size:7.4pt;font-weight:700;padding:.8mm 2.8mm;border-radius:99px;margin:0 1.6mm 1.6mm 0}
+
+/* advance */
+#doc .d-adv{background:linear-gradient(135deg,#FFF3D6,#FFE9B8);border:1.2pt solid #F2A93B;border-radius:3mm;padding:5mm 6mm}
+#doc .d-adv .top{display:flex;align-items:center;gap:5mm;margin-bottom:3.5mm}
+#doc .d-adv .big{flex:none;background:#800000;color:#fff;border-radius:50%;width:21mm;height:21mm;display:flex;align-items:center;justify-content:center;font:700 13pt/1 Inter,sans-serif;text-align:center;white-space:nowrap}
+#doc .d-adv .tt{font:600 12pt/1.3 'Playfair Display',Georgia,serif;color:#800000}
+#doc .d-adv .ts{font-size:8.6pt;color:#6b4f12;margin-top:.8mm;line-height:1.5}
+#doc table.d-advt{width:100%;border-collapse:collapse;font-size:8.8pt;background:#fff;border-radius:2mm;overflow:hidden}
+#doc .d-advt th{background:#FBE0A8;color:#5a3a00;font-size:6.8pt;letter-spacing:1pt;text-transform:uppercase;text-align:left;padding:2.2mm 3mm}
+#doc .d-advt th.r,#doc .d-advt td.r{text-align:right;white-space:nowrap}
+#doc .d-advt td{padding:2.4mm 3mm;border-bottom:1pt solid #F4E8CC}
+#doc .d-advt td.r b{color:#800000}
+#doc .d-advt tr:last-child td{border-bottom:0}
+
+/* steps */
 #doc .d-steps{counter-reset:s;list-style:none}
-#doc .d-steps li{counter-increment:s;position:relative;padding-left:7mm;font-size:8.8pt;line-height:1.6;color:#4a5761;margin-bottom:2.6mm}
-#doc .d-steps li:before{content:counter(s);position:absolute;left:0;top:0;width:4.6mm;height:4.6mm;background:#800000;color:#fff;border-radius:50%;font-size:6.6pt;font-weight:700;display:flex;align-items:center;justify-content:center}
-#doc .d-bank{border:1pt solid #D6B641;background:#FBF8F0}
-#doc .d-bank .bh{background:#800000;color:#fff;padding:2.6mm 4mm;font-size:7pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
-#doc .d-bank table{width:100%;border-collapse:collapse;padding:0}
-#doc .d-bank td{padding:1.7mm 4mm;border-bottom:1pt dotted #EBDBC3;font-size:8.8pt;font-weight:600}
-#doc .d-bank td.k{width:30mm;font-size:6.8pt;letter-spacing:.8pt;text-transform:uppercase;color:#A38454;font-weight:400}
+#doc .d-steps li{counter-increment:s;position:relative;padding-left:8mm;font-size:9pt;line-height:1.6;color:#4a5761;margin-bottom:2.4mm;break-inside:avoid}
+#doc .d-steps li:before{content:counter(s);position:absolute;left:0;top:.2mm;width:5.2mm;height:5.2mm;background:#800000;color:#fff;border-radius:50%;font:700 7pt/5.2mm Inter,sans-serif;text-align:center}
+
+/* bank — always last */
+#doc .d-bank{border:1.2pt solid #D6B641;background:#FFFBF1;border-radius:2.5mm;overflow:hidden}
+#doc .d-bank .bh{background:#800000;color:#fff;padding:3mm 4.5mm;font-size:7.6pt;font-weight:700;letter-spacing:1.2pt;text-transform:uppercase}
+#doc .d-bank table{width:100%;border-collapse:collapse}
+#doc .d-bank td{padding:2.2mm 4.5mm;border-bottom:1pt dotted #E8D9B5;font-size:9.4pt;font-weight:600}
+#doc .d-bank td.k{width:36mm;font-size:7pt;letter-spacing:.8pt;text-transform:uppercase;color:#A38454;font-weight:600}
 #doc .d-bank tr:last-child td{border-bottom:0}
-#doc .d-note{font-size:7.6pt;color:#7A633F;line-height:1.6;margin-top:3mm}
-#doc .d-foot{margin-top:8mm;background:#FAF4E1;border-top:2pt solid #D6B641;padding:4mm 14mm;display:flex;justify-content:space-between;font-size:6.8pt;color:#7A633F;line-height:1.6}
-#doc .d-foot b{color:#800000}
+#doc .d-foot{margin-top:4mm;background:#800000;color:#F6EFD9;padding:5mm 14mm;display:flex;justify-content:space-between;gap:8mm;font-size:7.6pt;line-height:1.7;border-top:2mm solid #F2A93B;break-inside:avoid}
+#doc .d-foot b{color:#fff}
 #doc .d-foot .r{text-align:right}
 </style>
 
@@ -267,22 +339,39 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
           <label class="f"><span>Currency</span><select id="ccur"></select></label>
           <label class="f"><span>Adults</span><input type="number" id="cpax" value="7" min="1"></label>
           <label class="f"><span>Start date</span><input type="date" id="cdate" value="2026-11-29"></label>
-          <label class="f"><span>Days</span><input type="number" id="cdays" value="6" min="1" max="15"></label>
+          <label class="f"><span>Finish date</span><input type="date" id="cend"></label>
+          <label class="f"><span>Days</span><input type="number" id="cdays" value="6" min="1" max="30"></label>
         </div>
+        <div class="sub" id="cnights"></div>
       </div>
     </div>
 
     <div class="card">
-      <h2>Vehicle <span class="hint">rates from Avnish card + confirmed quotes</span></h2>
+      <h2>Package level <span class="hint">sets the default hotel category</span></h2>
+      <div class="pad">
+        <div class="seg" id="tierpick">
+          <button type="button" data-t="standard" aria-pressed="true">Standard</button>
+          <button type="button" data-t="premium" aria-pressed="false">Premium</button>
+          <button type="button" data-t="luxury" aria-pressed="false">Luxury</button>
+        </div>
+        <label class="f" style="margin-top:14px"><span>Day-by-day itinerary <em style="text-transform:none;letter-spacing:0;font-weight:400">(optional — one day per line, “Title | details”)</em></span>
+          <textarea class="it" id="itin" spellcheck="false" placeholder="Arrival in Delhi | Airport pickup and hotel check-in&#10;Old Delhi | Jama Masjid, Chandni Chowk rickshaw ride&#10;Delhi to Agra | Agra Fort and sunset at Mehtab Bagh"></textarea>
+        </label>
+        <div class="sub">Only what you type here goes into the PDF. Nothing is added automatically.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Vehicle options <span class="hint">pick 1, 2 or 3 — they are quoted side by side</span></h2>
       <div class="pad">
         <div class="veh" id="vehpick"></div>
         <div class="row" style="margin-top:14px">
-          <label class="f"><span>Transport cost (₹)</span><input type="number" id="vcost"></label>
-          <label class="f"><span>Override</span><select id="vmode">
+          <label class="f"><span>Transport cost</span><select id="vmode">
             <option value="auto">Auto from rate card</option>
             <option value="manual">Manual — I'll type it</option>
           </select></label>
         </div>
+        <div class="row" id="vmanual" style="margin-top:12px"></div>
         <div id="vwarn" style="margin-top:11px"></div>
       </div>
     </div>
@@ -297,17 +386,43 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
             <option value="0">English (₹3,000/day)</option>
             <option value="2000">Other language (₹5,000/day)</option>
           </select></label>
+          <label class="f" id="glwrap" style="display:none"><span>Which language?</span><input type="text" id="glname" placeholder="e.g. Japanese"></label>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h2>Monuments <span class="hint">per person · foreigner rates 2026</span></h2>
+      <h2>Hotels</h2>
       <div class="pad">
+        <div class="row">
+          <label class="f"><span>Category</span><select id="hcat">
+            <option value="none">Not included — guest books</option>
+            <option value="3">3-star · Comfort</option>
+            <option value="4">4-star · Superior</option>
+            <option value="5">5-star · Luxury</option>
+          </select></label>
+          <label class="f"><span>Rooms</span><input type="number" id="hrooms" min="1" placeholder="auto"></label>
+          <label class="f"><span>Hotel nights</span><input type="number" id="hnights" min="1" placeholder="auto"></label>
+        </div>
+        <div class="sub" id="hnote"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Monument tickets <span class="hint">per person · foreigner rates · edit in Rate Card tab notes</span></h2>
+      <div class="pad">
+        <div class="row" style="margin-bottom:16px">
+          <label class="f"><span>Tickets in the quote</span><select id="tmode">
+            <option value="inc">Included in the price</option>
+            <option value="opt">Optional add-on — priced separately</option>
+            <option value="exc">Not included — guest pays at the gate</option>
+          </select></label>
+        </div>
         <div class="mgrid" id="mons"></div>
         <div class="note" style="margin-top:16px">
           <b>Agra ADA toll ₹500 per person</b> is added automatically whenever any Agra monument is ticked. It is charged once per day and shared across all Agra sites — this is the line most operators forget.
         </div>
+        <div id="fridaywarn" style="margin-top:11px"></div>
       </div>
     </div>
 
@@ -319,14 +434,10 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
       <h2>Quote</h2>
       <div class="big">
         <div class="lbl">Quote the client</div>
-        <div class="fx num" id="rFx">—</div>
-        <div class="pp num" id="rPp">—</div>
-        <div class="inr num" id="rInr">—</div>
+        <div id="rOpts"></div>
       </div>
       <div class="chips" id="rChips"></div>
-      <table class="br">
-        <tbody id="rBody"></tbody>
-      </table>
+      <div class="wrapx"><table class="optcols"><thead id="rHead"></thead><tbody id="rBody"></tbody></table></div>
     </div>
 
     <div class="card">
@@ -335,13 +446,16 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
         <div class="row">
           <label class="f"><span>Margin %</span><input type="number" id="pmargin" value="30" min="0" max="200"></label>
           <label class="f"><span>FX buffer %</span><input type="number" id="pbuf" value="4" min="0" max="20"></label>
-          <label class="f"><span>Rate ₹ per unit</span><input type="number" id="pfx" step="0.01"></label>
-          <label class="f"><span>Round up to</span><select id="pround">
-            <option value="50">Nearest 50</option>
-            <option value="25">Nearest 25</option>
-            <option value="100">Nearest 100</option>
+          <label class="f"><span>Rate ₹ per unit</span><input type="number" id="pfx" step="0.0001"></label>
+          <label class="f"><span>Round per person up to</span><select id="pround">
+            <option value="5">Nearest 5</option>
             <option value="1">No rounding</option>
+            <option value="25">Nearest 25</option>
+            <option value="50">Nearest 50</option>
+            <option value="100">Nearest 100</option>
+            <option value="500">Nearest 500</option>
           </select></label>
+          <label class="f"><span>Advance %</span><input type="number" id="padv" value="25" min="1" max="100"></label>
         </div>
       </div>
     </div>
@@ -359,7 +473,7 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
       <button class="btn sec" id="preset2">Load Brazino (2 pax / 5 days)</button>
     </div>
     <div class="note" style="margin-top:12px">
-      <b>Download client PDF</b> opens your browser's print dialog — choose <b>Save as PDF</b>. The document is client-safe: it shows the selling price only, never your cost, margin or profit.
+      <b>Download client PDF</b> opens your browser's print dialog — choose <b>Save as PDF</b>, paper <b>A4</b>, margins <b>Default</b>, and tick <b>Background graphics</b>. The document is client-safe: it shows selling prices only, never your cost, margin or profit.
     </div>
   </div>
 </div>
@@ -373,8 +487,16 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
       <table class="rt" id="gtTable"></table>
       <div class="note" style="margin-top:16px">
         <b>Green = confirmed.</b> The 3-day column comes from Avnish's printed card; Sedan&nbsp;5-day (₹16,000) and Urbania&nbsp;6-day (₹45,000) are rates he quoted you directly.
-        <b>Red = my estimate</b>, interpolated between those points. Get the red cells confirmed before quoting them — that is the single biggest source of error in this tool.
+        <b>Red = my estimate</b>, interpolated between those points. <b>Tempo Traveller is not on Avnish's card</b> — its column is a midpoint between Crysta and Urbania. Get the red cells confirmed before quoting them — that is the single biggest source of error in this tool.
       </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Hotels <span class="hint">₹ per room per night · left blank = hotels stay out of the quote</span></h2>
+    <div class="pad wrapx">
+      <table class="rt" id="hotelTable"></table>
+      <div class="note" style="margin-top:16px"><b>No rates are pre-filled on purpose.</b> Enter what your hotel partners actually charge for each category. Until a rate is entered, that category is left out of the price and the PDF so a made-up number can never reach a client.</div>
     </div>
   </div>
 
@@ -392,6 +514,7 @@ textarea{width:100%;min-height:290px;background:var(--surface-2);border:1px soli
         <label class="f"><span>Half day</span><input type="text" value="Half of full-day rate" disabled></label>
       </div>
       <div class="wrapx" style="margin-top:18px"><table class="rt" id="monTable"></table></div>
+      <div class="note" style="margin-top:16px"><b>Web check, 22 Oct 2026.</b> The Taj Mahal matches: ₹1,100 entry + ₹200 main mausoleum for foreigners. Other monuments were <b>not</b> confirmed — travel sites disagree (Red Fort ₹600 vs ₹950; Humayun’s Tomb ₹550–600; Qutub Minar ₹550–600; Amber Fort ₹500–550; City Palace ₹200 vs ₹700). The figures above are kept as they were. Confirm against the ASI e-ticket portal before a quote goes out.</div>
     </div>
   </div>
 
@@ -431,18 +554,19 @@ const money=n=>'₹'+Math.round(n).toLocaleString('en-IN');
 
 /* ---------- data ---------- */
 const VEH=[
-  {k:'sedan',  n:'Sedan',   cap:'up to 3 guests', max:3},
-  {k:'suv',    n:'SUV',     cap:'up to 4 guests', max:4},
-  {k:'crysta', n:'Crysta',  cap:'up to 6 guests', max:6},
-  {k:'urbania',n:'Urbania', cap:'7–16 guests',    max:16},
+  {k:'sedan',  n:'Sedan',           cap:'taxi · up to 3 guests',  max:3,  fit:'Comfortable for up to 3 guests'},
+  {k:'suv',    n:'SUV',             cap:'taxi · up to 4 guests',  max:4,  fit:'More space and a higher ride, up to 4 guests'},
+  {k:'crysta', n:'Innova Crysta',   cap:'taxi · up to 6 guests',  max:6,  fit:'Roomy and comfortable, up to 6 guests'},
+  {k:'tt',     n:'Tempo Traveller', cap:'van · up to 12 guests',  max:12, fit:'Ideal for groups of up to 12 guests'},
+  {k:'urbania',n:'Urbania',         cap:'van · up to 16 guests',  max:16, fit:'Premium coach-style van, up to 16 guests'},
 ];
-// GT totals. v = confirmed, e = estimate
+// GT totals. v = confirmed, e = estimate. Tempo Traveller is not on Avnish's card yet — midpoint estimate, confirm before quoting.
 const GT={
-  3:{sedan:[12000,'v'],suv:[14000,'v'],crysta:[18000,'v'],urbania:[32000,'v']},
-  4:{sedan:[14000,'e'],suv:[16500,'e'],crysta:[21000,'e'],urbania:[37000,'e']},
-  5:{sedan:[16000,'v'],suv:[19000,'e'],crysta:[23000,'v'],urbania:[41000,'e']},
-  6:{sedan:[18500,'e'],suv:[21000,'v'],crysta:[26000,'e'],urbania:[50000,'v']},
-  7:{sedan:[21000,'e'],suv:[25000,'e'],crysta:[31000,'e'],urbania:[52000,'e']},
+  3:{sedan:[12000,'v'],suv:[14000,'v'],crysta:[18000,'v'],tt:[25000,'e'],urbania:[32000,'v']},
+  4:{sedan:[14000,'e'],suv:[16500,'e'],crysta:[21000,'e'],tt:[29000,'e'],urbania:[37000,'e']},
+  5:{sedan:[16000,'v'],suv:[19000,'e'],crysta:[23000,'v'],tt:[32000,'e'],urbania:[41000,'e']},
+  6:{sedan:[18500,'e'],suv:[21000,'v'],crysta:[26000,'e'],tt:[38000,'e'],urbania:[50000,'v']},
+  7:{sedan:[21000,'e'],suv:[25000,'e'],crysta:[31000,'e'],tt:[41500,'e'],urbania:[52000,'e']},
 };
 const PKG=[
   ['Agra local sightseeing',1500,2000,2500,5500],
@@ -470,294 +594,421 @@ const CUR={
   USD:{r:95.80,n:'US Dollar',greet:'Hi'},
   EUR:{r:111.70,n:'Euro',greet:'Hello'},
   GBP:{r:128.00,n:'British Pound',greet:'Hello'},
+  JPY:{r:0.60,n:'Japanese Yen',greet:'Hello'},
   INR:{r:1,n:'Indian Rupee',greet:'Namaste'},
 };
+// ₹ per room per night. Left at 0 until you enter a real rate — hotels are left out of the price while a rate is 0.
+const HOTEL={'3':{n:'3-star · Comfort',r:0},'4':{n:'4-star · Superior',r:0},'5':{n:'5-star · Luxury',r:0}};
+const TIER={
+  standard:{n:'Standard',hotel:'3',line:'Well-planned sightseeing at great value'},
+  premium: {n:'Premium', hotel:'4',line:'More comfort, more time, finer stays'},
+  luxury:  {n:'Luxury',  hotel:'5',line:'Our most indulgent, best-of-everything journey'},
+};
+const BANK=[['Account name','GUIDE INDIA TOURS'],['Account number','52801202547'],['Bank','IDFC FIRST Bank'],
+  ['Branch','Agra–Fatehabad Road Branch'],['IFSC','IDFB0021293'],['SWIFT code','IDFBINBBMUM']];
 
 /* ---------- persistence ---------- */
-const SK='git-quote-engine-v2';
-function save(){try{localStorage.setItem(SK,JSON.stringify({GT,CUR,g:{f:+$('#rgFull').value,l:+$('#rgLang').value}}))}catch(e){}}
-function load(){try{const d=JSON.parse(localStorage.getItem(SK)||'null');if(!d)return;
-  if(d.GT)for(const k in d.GT)if(GT[k])for(const v in d.GT[k])GT[k][v]=d.GT[k][v];
+const SK='git-quote-engine-v3';
+function save(){try{localStorage.setItem(SK,JSON.stringify({GT,CUR,HOTEL,g:{f:+$('#rgFull').value,l:+$('#rgLang').value}}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(SK)||localStorage.getItem('git-quote-engine-v2')||'null');if(!d)return;
+  if(d.GT)for(const k in d.GT)if(GT[k])for(const v in d.GT[k])if(GT[k][v])GT[k][v]=d.GT[k][v];
   if(d.CUR)for(const c in d.CUR)if(CUR[c])CUR[c].r=d.CUR[c].r;
+  if(d.HOTEL)for(const h in d.HOTEL)if(HOTEL[h])HOTEL[h].r=d.HOTEL[h].r;
   if(d.g){$('#rgFull').value=d.g.f;$('#rgLang').value=d.g.l;}
 }catch(e){}}
 
+/* ---------- state ---------- */
+let sel=['urbania'], tier='standard', LAST=null;
+const MAN={};
+const VORDER=VEH.map(v=>v.k);
+
+/* ---------- date helpers (local time, no UTC shifts) ---------- */
+const pad2=n=>String(n).padStart(2,'0');
+const isoOf=d=>`${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+const dOf=iso=>new Date(iso+'T00:00:00');
+const isoAdd=(iso,n)=>{const d=dOf(iso);d.setDate(d.getDate()+n);return isoOf(d);};
+const daysBetween=(a,b)=>Math.round((dOf(b)-dOf(a))/86400000);
+function longDate(iso){return iso?dOf(iso).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';}
+function shortDate(iso){return iso?dOf(iso).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}):'';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function syncDates(src){
+  const s=$('#cdate').value;
+  if(src==='end'){
+    const e=$('#cend').value;
+    if(s&&e){const n=daysBetween(s,e)+1; if(n>=1)$('#cdays').value=n;}
+  }else if(s){
+    $('#cend').value=isoAdd(s,Math.max(1,+$('#cdays').value||1)-1);
+  }
+}
+
 /* ---------- build UI ---------- */
-let veh='urbania';
-$('#vehpick').innerHTML=VEH.map(v=>
-  `<button type="button" data-v="${v.k}" aria-pressed="${v.k===veh}"><div class="vn">${v.n}</div><div class="vc">${v.cap}</div></button>`).join('');
+function drawVeh(){
+  $('#vehpick').innerHTML=VEH.map(v=>
+    `<button type="button" data-v="${v.k}" aria-pressed="${sel.includes(v.k)}"><div class="vn">${v.n}</div><div class="vc">${v.cap}</div></button>`).join('');
+}
+function renderManual(){
+  const man=$('#vmode').value==='manual';
+  $('#vmanual').innerHTML=man?sel.map(k=>{const v=VEH.find(x=>x.k===k);
+    return `<label class="f"><span>${v.n} cost (₹)</span><input type="number" data-mv="${k}" value="${MAN[k]==null?'':MAN[k]}"></label>`}).join(''):'';
+  $$('#vmanual input').forEach(i=>i.addEventListener('input',()=>{MAN[i.dataset.mv]=+i.value||0;calc();}));
+}
+drawVeh();
 $('#vehpick').onclick=e=>{const b=e.target.closest('button');if(!b)return;
-  veh=b.dataset.v;$$('#vehpick button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===veh));calc();};
+  const k=b.dataset.v;
+  if(sel.includes(k)){ if(sel.length>1) sel=sel.filter(x=>x!==k); }
+  else if(sel.length<3){ sel.push(k); sel.sort((a,b)=>VORDER.indexOf(a)-VORDER.indexOf(b)); }
+  else { $('#vwarn').innerHTML='<div class="note" style="border-left-color:var(--bad)"><b>Three options is the maximum.</b> Untick one first.</div>'; return; }
+  drawVeh();renderManual();calc();};
+$('#vmode').addEventListener('change',()=>{renderManual();calc();});
+
+$('#tierpick').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  tier=b.dataset.t;$$('#tierpick button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t===tier));
+  if($('#hcat').value!=='none')$('#hcat').value=TIER[tier].hotel;
+  calc();};
+$('#glang').addEventListener('change',()=>{$('#glwrap').style.display=+$('#glang').value>0?'':'none';});
 
 $('#ccur').innerHTML=Object.keys(CUR).map(c=>`<option value="${c}"${c==='AUD'?' selected':''}>${c} — ${CUR[c].n}</option>`).join('');
 
 $('#mons').innerHTML=Object.entries(MON).map(([city,list])=>
   `<div class="mcity"><h3>${city}</h3>`+list.map(([n,p],i)=>
-    `<label class="mon${p===0?' free':''}"><input type="checkbox" data-c="${city}" data-i="${i}"${p===0||[1,2].includes(1)&&list[i][2]?' checked':''}>
+    `<label class="mon${p===0?' free':''}"><input type="checkbox" data-c="${city}" data-i="${i}">
      <span class="mn">${n}</span><span class="mp">${p===0?'free':'₹'+p}</span></label>`).join('')+`</div>`).join('');
-// apply default checked flags properly
 $$('#mons input').forEach(cb=>{cb.checked=!!MON[cb.dataset.c][+cb.dataset.i][2];cb.onchange=calc;});
 
 /* ---------- calculation ---------- */
 function ticketsPP(){
-  let t=0,agra=false;
+  let t=0,agra=false,taj=false;
   $$('#mons input:checked').forEach(cb=>{
     const m=MON[cb.dataset.c][+cb.dataset.i];
-    t+=m[1]; if(cb.dataset.c==='Agra'&&m[1]>0)agra=true;
+    t+=m[1]; if(cb.dataset.c==='Agra'&&m[1]>0)agra=true; if(m[0]==='Taj Mahal')taj=true;
   });
   if(agra)t+=ADA;
-  return {t,agra};
+  return {t,agra,taj};
 }
 function gtCost(days,v){
   const d=Math.min(Math.max(days,3),7);
   const row=GT[d]; if(!row)return null;
-  return row[v];
-}
-function calc(){
-  const pax=Math.max(1,+$('#cpax').value||1), days=+$('#cdays').value||1;
-  const cur=$('#ccur').value, C=CUR[cur];
-  $('#pfx').value=C.r;
-
-  // transport
-  const auto=$('#vmode').value==='auto';
-  let tCost=0,tFlag='';
-  if(auto){
-    const g=gtCost(days,veh);
-    if(g){tCost=g[0];tFlag=g[1];}
-    $('#vcost').value=tCost; $('#vcost').disabled=true;
-  }else{$('#vcost').disabled=false;tCost=+$('#vcost').value||0;tFlag='';}
-
-  const vm=VEH.find(v=>v.k===veh);
-  let warn='';
-  if(pax>vm.max)warn+=`<div class="note" style="border-left-color:var(--bad)"><b>${vm.n} seats ${vm.max}.</b> You have ${pax} guests — pick a larger vehicle.</div>`;
-  else if(tFlag==='e'&&auto)warn+=`<div class="note"><b>This rate is my estimate, not Avnish's.</b> ${vm.n} for ${days} days is not on his card. Confirm before you send this quote.</div>`;
-  $('#vwarn').innerHTML=warn;
-
-  // guides
-  const gf=+$('#gfull').value||0, gh=+$('#ghalf').value||0;
-  const gBase=+$('#rgFull').value||3000, gLang=+$('#glang').value||0;
-  const gRate=gBase+gLang;
-  const gCost=gf*gRate+gh*gRate/2;
-
-  // tickets
-  const {t:tpp,agra}=ticketsPP();
-  const tkCost=tpp*pax;
-
-  const cost=tCost+gCost+tkCost;
-  const margin=(+$('#pmargin').value||0)/100;
-  const sellInr=cost*(1+margin);
-
-  const buf=(+$('#pbuf').value||0)/100;
-  const rate=C.r*(1-buf);
-  const step=+$('#pround').value;
-  let fxTot=cur==='INR'?sellInr:sellInr/rate;
-  fxTot=Math.ceil(fxTot/step)*step;
-  const realInr=cur==='INR'?fxTot:fxTot*C.r;
-  const profit=realInr-cost;
-  const net=profit-realInr*0.03;
-
-  const sym=cur==='INR'?'₹':cur+' ';
-  const fmt=n=>cur==='INR'?money(n):sym+Math.round(n).toLocaleString('en-US');
-  $('#rFx').textContent=fmt(fxTot);
-  $('#rPp').textContent=fmt(fxTot/pax)+' per person · '+pax+' guests';
-  $('#rInr').textContent=cur==='INR'?'':'you receive about '+money(realInr);
-
-  $('#rChips').innerHTML=
-    `<span class="chip ${profit>0?'ok':'warn'}">${Math.round(profit/cost*100)}% on cost</span>`+
-    `<span class="chip">${days} days</span>`+
-    (tFlag==='e'&&auto?`<span class="chip warn">estimated transport</span>`:'')+
-    (agra?`<span class="chip">ADA toll included</span>`:'');
-
-  $('#rBody').innerHTML=`
-    <tr><td>Transport — ${vm.n}<span class="sm">${days} days${auto?'':' · manual'}</span></td><td>${money(tCost)}</td></tr>
-    <tr><td>Guides<span class="sm">${gf} full${gh?' + '+gh+' half':''} × ${money(gRate)}</span></td><td>${money(gCost)}</td></tr>
-    <tr><td>Monument tickets<span class="sm">${money(tpp)} × ${pax} guests${agra?' (incl. ADA toll)':''}</span></td><td>${money(tkCost)}</td></tr>
-    <tr class="sum"><td>Your cost</td><td>${money(cost)}</td></tr>
-    <tr><td>Selling price<span class="sm">${Math.round(margin*100)}% margin · quoted at ₹${rate.toFixed(2)}</span></td><td>${money(realInr)}</td></tr>
-    <tr class="profit${profit<=0?' neg':''}"><td>Profit</td><td>${money(profit)}</td></tr>
-    <tr><td>After ~3% bank &amp; FX cost<span class="sm">realistic take-home</span></td><td>${money(net)}</td></tr>`;
-
-  const ctx={name:$('#cname').value||'there',cur,fxTot,pax,days,vm,fmt,agra,date:$('#cdate').value};
-  buildMsg(ctx);
-  LAST=Object.assign({},ctx,{gf,gh,gLang,tpp});
-  save();
-}
-
-function buildMsg({name,cur,fxTot,pax,days,vm,fmt,date}){
-  const C=CUR[cur];
-  const d=date?new Date(date+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
-  const dec=date&&[11,0].includes(new Date(date+'T00:00:00').getMonth());
-  const vehTxt=vm.k==='sedan'?'private AC sedan with your own driver'
-    :vm.k==='urbania'?'your own AC Urbania coach'
-    :`your own AC ${vm.n}`;
-  $('#msg').value=
-`${C.greet} ${name}!
-
-Sorry for the wait — wanted to check the 2026 monument
-rates and lock in a vehicle for your dates before giving
-you a real number.
-
-Quote attached 📎
-
-${days} Days Golden Triangle · Delhi–Agra–Jaipur–Delhi
-${pax} guests · ${d}
-
-💰 ${fmt(fxTot)} (${fmt(fxTot/pax)} each)
-
-That's everything on the ground sorted — ${vehTxt} for
-all ${days} days, fuel and tolls, every monument ticket for
-the group (Taj main mausoleum included), and our
-government-approved guides in all three cities.
-
-No hotels or meals in there, so you're free to sort
-your own stay.
-${dec?`\nHeads up — this is peak season here and vehicles go\nearly. Happy to hold your dates once you're set.\n`:''}
-25% to hold the dates, rest when you land. Bank details
-on page 2.
-
-Want the day-by-day plan?
-
-— Guide India Tours, Agra | Since 2007`;
-}
-
-/* ---------- client-facing PDF ----------
-   Everything here is safe to hand a client: selling price only.
-   Cost, margin and profit deliberately never reach this document. */
-let LAST=null;
-const BANK=[['Account name','MOHD BILAL'],['Account no.','922010008916354'],['Bank','Axis Bank Limited'],
-  ['Branch','Tajlink Road, Agra 282001'],['IFSC','UTIB0000643'],['SWIFT / BIC','AXISINBBXXX']];
-
-function longDate(iso){
-  if(!iso) return '';
-  return new Date(iso+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-}
-function shortDate(iso){
-  if(!iso) return '';
-  return new Date(iso+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
-}
-function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
-function docRef(name,iso){
-  const d=iso?new Date(iso+'T00:00:00'):new Date();
-  const mm=String(d.getMonth()+1).padStart(2,'0'), dd=String(d.getDate()).padStart(2,'0');
-  const parts=(name||'').trim().split(/\s+/).filter(Boolean);
-  const ini=(parts.length>1 ? parts.map(w=>w[0]).join('') : (parts[0]||'')).slice(0,2).toUpperCase()||'GT';
-  return `GIT-${d.getFullYear()}-${mm}${dd}-${ini}`;
+  return row[v]||null;
 }
 function selectedMons(){
   const out={};
   $$('#mons input:checked').forEach(cb=>{
     const m=MON[cb.dataset.c][+cb.dataset.i];
-    (out[cb.dataset.c]=out[cb.dataset.c]||[]).push(m[0]);
+    (out[cb.dataset.c]=out[cb.dataset.c]||[]).push({n:m[0],p:m[1]});
   });
   return out;
 }
+function calc(){
+  syncDatesIfEmpty();
+  const pax=Math.max(1,+$('#cpax').value||1), days=Math.max(1,+$('#cdays').value||1), nights=Math.max(0,days-1);
+  const cur=$('#ccur').value, C=CUR[cur];
+  $('#pfx').value=C.r;
+  const start=$('#cdate').value, end=$('#cend').value||(start?isoAdd(start,days-1):'');
+  $('#cnights').textContent=`${days} day${days===1?'':'s'} · ${nights} night${nights===1?'':'s'}`+(start?` · ${shortDate(start)} → ${shortDate(end)}`:'');
+
+  const auto=$('#vmode').value==='auto';
+  const margin=(+$('#pmargin').value||0)/100;
+  const buf=(+$('#pbuf').value||0)/100;
+  const rate=C.r*(1-buf);
+  const step=+$('#pround').value||1;
+  const advPct=Math.min(100,Math.max(1,+$('#padv').value||25));
+  const ppFx=inr=>{const per=inr/pax;const f=cur==='INR'?per:per/rate;return Math.ceil(f/step-1e-9)*step;};
+  const toInr=fx=>cur==='INR'?fx:fx*C.r;
+
+  // guides
+  const gf=+$('#gfull').value||0, gh=+$('#ghalf').value||0;
+  const gBase=+$('#rgFull').value||3000, gLang=+$('#glang').value||0;
+  const gRate=gBase+gLang, gCost=gf*gRate+gh*gRate/2;
+  const langName=gLang>0?($('#glname').value.trim()||'other-language'):'English';
+
+  // tickets
+  const {t:tpp,agra,taj}=ticketsPP();
+  const tmode=$('#tmode').value;
+  const tkCost=tpp*pax;
+  const hasTix=Object.keys(selectedMons()).length>0;
+
+  // hotels
+  const hcat=$('#hcat').value, hrate=hcat==='none'?0:HOTEL[hcat].r;
+  const rooms=Math.max(1,+$('#hrooms').value||Math.ceil(pax/2));
+  const hn=Math.max(1,+$('#hnights').value||nights||1);
+  const hOn=hcat!=='none'&&hrate>0;
+  const hCost=hOn?hrate*rooms*hn:0;
+  $('#hnote').innerHTML=hcat==='none'?'Hotels stay out of the quote — the guest books their own.'
+    :hOn?`${rooms} room${rooms===1?'':'s'} × ${hn} night${hn===1?'':'s'} × ${money(hrate)} = ${money(hCost)} cost`
+    :`<b style="color:var(--bad)">No ${HOTEL[hcat].n} rate set yet.</b> Add it in the Rate Card tab — until then hotels are left out of the price and the PDF.`;
+
+  const incTix=tmode==='inc'?tkCost:0;
+  const warnArr=[];
+  const opts=sel.map(k=>{
+    const vm=VEH.find(v=>v.k===k);
+    let tCost=0,tFlag='';
+    if(auto){const g=gtCost(days,k);if(g){tCost=g[0];tFlag=g[1];}}else tCost=+MAN[k]||0;
+    if(pax>vm.max)warnArr.push(`<div class="note" style="border-left-color:var(--bad);margin-bottom:8px"><b>${vm.n} seats ${vm.max}.</b> You have ${pax} guests — pick a larger vehicle.</div>`);
+    else if(auto&&tFlag==='e')warnArr.push(`<div class="note" style="margin-bottom:8px"><b>${vm.n} rate for ${days} days is my estimate, not Avnish's.</b> Confirm before you send this quote.</div>`);
+    const cost=tCost+gCost+incTix+hCost;
+    const sellInr=cost*(1+margin);
+    const pp=ppFx(sellInr), total=pp*pax, realInr=toInr(total);
+    const profit=realInr-cost, net=profit-realInr*0.03;
+    const advPp=Math.ceil(pp*advPct/100-1e-9), advTotal=advPp*pax;
+    return {k,vm,tCost,tFlag,cost,sellInr,pp,total,realInr,profit,net,advPp,advTotal,balance:total-advTotal};
+  });
+  $('#vwarn').innerHTML=warnArr.join('');
+
+  // optional tickets add-on, priced separately with the same margin
+  let tkOpt=null;
+  if(tmode==='opt'&&tkCost>0){const pp=ppFx(tkCost*(1+margin));tkOpt={pp,total:pp*pax,realInr:toInr(pp*pax),cost:tkCost};}
+
+  const sym=cur==='INR'?'₹':cur+' ';
+  const fmt=n=>cur==='INR'?money(n):sym+Math.round(n).toLocaleString('en-US');
+
+  $('#rOpts').innerHTML=opts.map(o=>`<div class="qopt"><div>${o.vm.n}<small>${o.tFlag==='e'&&auto?'estimated transport':o.vm.cap}</small></div>
+    <div style="text-align:right"><b class="num">${fmt(o.pp)}</b><small>per person · ${fmt(o.total)} for ${pax}</small></div></div>`).join('')
+    +(tkOpt?`<div class="qopt"><div>Tickets add-on<small>optional</small></div><div style="text-align:right"><b class="num">${fmt(tkOpt.pp)}</b><small>per person · ${fmt(tkOpt.total)} for ${pax}</small></div></div>`:'');
+
+  $('#rChips').innerHTML=
+    `<span class="chip">${days} days · ${nights} nights</span>`+
+    `<span class="chip">${TIER[tier].n}</span>`+
+    `<span class="chip ok">${advPct}% advance</span>`+
+    opts.map(o=>`<span class="chip ${o.profit>0?'ok':'warn'}">${o.vm.n}: ${Math.round(o.profit/o.cost*100)}% on cost</span>`).join('')+
+    (agra?`<span class="chip">ADA toll${tmode==='inc'?' included':''}</span>`:'');
+
+  const col=f=>opts.map(o=>`<td>${f(o)}</td>`).join('');
+  $('#rHead').innerHTML='<tr><th></th>'+opts.map(o=>`<th>${o.vm.n}</th>`).join('')+'</tr>';
+  $('#rBody').innerHTML=`
+    <tr><td>Transport<span class="sm"></span></td>${col(o=>money(o.tCost))}</tr>
+    <tr><td>Guides (${esc(langName)})</td>${col(()=>money(gCost))}</tr>
+    <tr><td>Hotels</td>${col(()=>hOn?money(hCost):'—')}</tr>
+    <tr><td>Tickets${tmode==='inc'?'':' (not in price)'}</td>${col(()=>tmode==='inc'?money(tkCost):'—')}</tr>
+    <tr class="sum"><td>Your cost</td>${col(o=>money(o.cost))}</tr>
+    <tr><td>Selling (${Math.round(margin*100)}%)</td>${col(o=>money(o.realInr))}</tr>
+    <tr class="profit"><td>Profit</td>${col(o=>money(o.profit))}</tr>
+    <tr><td>After ~3% bank/FX</td>${col(o=>money(o.net))}</tr>
+    <tr><td>Advance ${advPct}% / pp</td>${col(o=>fmt(o.advPp))}</tr>`;
+  $$('#rBody tr.profit').forEach(tr=>{if(opts.some(o=>o.profit<=0))tr.classList.add('neg');});
+
+  // Friday check for the Taj
+  const fris=[];
+  if(start&&end&&taj){for(let i=0;i<=daysBetween(start,end)&&i<40;i++){const d=isoAdd(start,i);if(dOf(d).getDay()===5)fris.push(shortDate(d));}}
+  $('#fridaywarn').innerHTML=fris.length?`<div class="note" style="border-left-color:var(--bad)"><b>The Taj Mahal is closed on Fridays.</b> Your dates include ${fris.join(', ')} — keep the Taj off ${fris.length>1?'those days':'that day'}.</div>`:'';
+
+  const ctx={name:$('#cname').value||'there',cur,pax,days,nights,fmt,start,end,opts,tkOpt,advPct,tier,tmode,hOn,hcat,rooms,hn,
+    gf,gh,gLang,langName,tpp,agra,hasTix,tkCost};
+  LAST=ctx;
+  buildMsg(ctx);
+  save();
+}
+function syncDatesIfEmpty(){ if($('#cdate').value&&!$('#cend').value)syncDates('start'); }
+
+function buildMsg(x){
+  const C=CUR[x.cur];
+  const d=x.start?`${shortDate(x.start)} → ${shortDate(x.end)}`:'';
+  const dec=x.start&&[11,0].includes(dOf(x.start).getMonth());
+  const list=x.opts.map((o,i)=>`${x.opts.length>1?`Option ${i+1} — `:''}${o.vm.n}: ${x.fmt(o.pp)} per person (${x.fmt(o.total)} for ${x.pax})`).join('\n');
+  $('#msg').value=
+`${C.greet} ${x.name}!
+
+Thank you for your enquiry — your quote is attached 📎
+
+${x.days} days / ${x.nights} nights · ${TIER[x.tier].n} package
+${x.pax} guests · ${d}
+
+💰 ${list}
+
+${x.tmode==='inc'?'Every monument ticket for the group is included.':x.tmode==='opt'?`Monument tickets are an optional add-on: ${x.fmt(x.tkOpt?x.tkOpt.pp:0)} per person.`:'Monument tickets are paid directly at the gate.'}
+${x.hOn?`Hotel stay (${HOTEL[x.hcat].n}) is included.`:'Hotels and meals are not included, so you are free to choose your own stay.'}
+${dec?`\nHeads up — this is peak season here and vehicles go\nearly. Happy to hold your dates once you're set.\n`:''}
+Just ${x.advPct}% advance confirms your booking, the rest on
+arrival. Our bank details are on the last page of the quote.
+
+— Guide India Tours, Agra | Since 2004`;
+}
+
+/* ---------- client-facing PDF ----------
+   Everything here is safe to hand a client: selling price only.
+   Cost, margin and profit deliberately never reach this document. */
+function docRef(name,iso){
+  const d=iso?dOf(iso):new Date();
+  const parts=(name||'').trim().split(/\s+/).filter(Boolean);
+  const ini=(parts.length>1 ? parts.map(w=>w[0]).join('') : (parts[0]||'')).slice(0,2).toUpperCase()||'GT';
+  return `GIT-${d.getFullYear()}-${pad2(d.getMonth()+1)}${pad2(d.getDate())}-${ini}`;
+}
+function itinDays(){
+  return $('#itin').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{
+    const i=l.indexOf('|');
+    return i<0?{t:l,d:''}:{t:l.slice(0,i).trim(),d:l.slice(i+1).trim()};
+  });
+}
 
 function buildDoc(){
-  if(!LAST) calc();
-  const L=LAST, mons=selectedMons(), cities=Object.keys(mons);
-  const hasTix=cities.length>0;
+  calc();
+  const L=LAST, mons=selectedMons(), cities=Object.keys(mons), hasTix=L.hasTix;
   const route=cities.length? cities.join(' → ') : 'Delhi → Agra → Jaipur';
-  const today=new Date();
-  const guideTxt=L.gf+(L.gh?` full and ${L.gh} half`:'')+` day${L.gf+L.gh===1?'':'s'}`;
-  const lang=L.gLang>0?'':'English-speaking ';
+  const todayIso=isoOf(new Date());
+  const days=L.days, nights=L.nights, pax=L.pax;
+  const plural=(n,w)=>`${n} ${w}${n===1?'':'s'}`;
+  const T=TIER[L.tier];
+  const itin=itinDays();
+  const guideTxt=plural(L.gf,'full day')+(L.gh?` + ${plural(L.gh,'half day')}`:'');
+  const lang=L.gLang>0?(esc(L.langName)+'-speaking '):'English-speaking ';
+  const multi=L.opts.length>1;
+  const vehNames=L.opts.map(o=>o.vm.n).join(' · ');
+  let secN=0; const sn=()=>++secN;
+  const topIdx=L.opts.reduce((b,o,i)=>o.pp>L.opts[b].pp?i:b,0);
 
   const inc=[
-    `Private ${L.vm.n} with a professional chauffeur for all ${L.days} days`,
+    multi?`Private air-conditioned vehicle with a professional chauffeur for all ${days} days — choose from the ${L.opts.length} options in the price section`
+         :`Private air-conditioned ${L.opts[0].vm.n} with a professional chauffeur for all ${days} days`,
     'Fuel, tolls, parking, interstate taxes and permits',
     "Driver's accommodation and allowance",
     `Government-approved licensed ${lang}guide — ${guideTxt} of guiding`,
-    hasTix?`Monument entrance tickets for ${L.pax} guest${L.pax===1?'':'s'}`:null,
-    L.agra?'Agra ADA toll':null,
+    (L.tmode==='inc'&&hasTix)?`Monument entrance tickets for ${plural(pax,'guest')}`:null,
+    (L.tmode==='inc'&&L.agra)?'Agra ADA toll':null,
+    L.hOn?`${HOTEL[L.hcat].n} hotel stay — ${plural(L.rooms,'room')} for ${plural(L.hn,'night')}`:null,
     'Airport pickup and drop-off',
     'Bottled drinking water in the vehicle',
     '24/7 WhatsApp support throughout your trip',
   ].filter(Boolean);
+  const exc=[
+    L.hOn?null:'Hotels',
+    'Meals and beverages',
+    'Flights, visa and travel insurance',
+    (hasTix&&L.tmode==='exc')?'Monument entrance tickets (paid directly at the counter)':null,
+    (hasTix&&L.tmode==='opt')?'Monument entrance tickets (available as the optional add-on below)':null,
+    'Shopping, tips and gratuities',
+    'Anything not listed as included',
+  ].filter(Boolean);
 
-  const exc=['Hotels and meals','Flights, visa and travel insurance',
-    hasTix?null:'Monument entrance tickets','Shopping, tips and gratuities',
-    'Anything not listed as included'].filter(Boolean);
+  const facts=[
+    ['Guest',esc(L.name)],
+    ['Travellers',plural(pax,'Adult')],
+    ['Start date',shortDate(L.start)||'To be confirmed'],
+    ['Finish date',shortDate(L.end)||'To be confirmed'],
+    ['Days & nights',`${days} days · ${nights} night${nights===1?'':'s'}`],
+    ['Guide',`${L.gLang>0?esc(L.langName):'English'}-speaking`],
+    ['Hotels',L.hOn?HOTEL[L.hcat].n:'Not included'],
+    ['Package',T.n],
+  ];
 
-  $('#doc').innerHTML=`
+  let html=`
   <div class="d-head">
     <div>
       <div class="d-wm"><i>Guide</i> India Tours</div>
       <div class="d-tag">Government-Approved Tourist Guides · Private Travel Services</div>
     </div>
-    <div class="d-meta">Quotation ${docRef(L.name,L.date)}<br>Issued ${longDate(today.toISOString().slice(0,10))}</div>
+    <div class="d-meta">Quotation ${docRef(L.name,L.start)}<br>Issued ${longDate(todayIso)}<br>Valid until ${longDate(isoAdd(todayIso,15))}</div>
   </div>
 
-  <div class="d-band">
-    <div class="d-qt">Quotation · Established 2007</div>
-    <h1>${L.days} Days Private Tour</h1>
+  <div class="d-hero">
+    <div class="d-eyebrow">Quotation · Since 2004 <span class="d-tier">${T.n}</span></div>
+    <h1>${days} Days / ${nights} Night${nights===1?'':'s'} Private Tour</h1>
     <div class="d-route">${route}</div>
-    <div class="d-facts">
-      <div><div class="k">Guest</div><div class="v">${esc(L.name)}</div></div>
-      <div><div class="k">Travellers</div><div class="v">${L.pax} Adult${L.pax===1?'':'s'}</div></div>
-      ${L.date?`<div><div class="k">Travel from</div><div class="v">${shortDate(L.date)}</div></div>`:''}
-      <div><div class="k">Duration</div><div class="v">${L.days} Days</div></div>
-      <div><div class="k">Vehicle</div><div class="v">${L.vm.n}</div></div>
-    </div>
+    <div class="d-facts">${facts.map(([k,v])=>`<div><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')}</div>
   </div>
 
   <div class="d-body">
     <div class="d-sec">
-      <h2><span>01</span>Your Trip</h2>
-      <p>A fully private tour for ${L.pax} guest${L.pax===1?'':'s'} covering ${route}${L.date?`, travelling from ${longDate(L.date)}`:''} over ${L.days} days. Your vehicle and chauffeur are yours alone throughout — never shared and never on a fixed departure — with government-approved licensed local guides at every monument.</p>
-    </div>
+      <h2><span class="n">${sn()}</span>Your Trip</h2>
+      <p>A fully private ${T.n.toLowerCase()} tour for ${plural(pax,'guest')} through ${route}${L.start?`, from ${longDate(L.start)} to ${longDate(L.end)}`:''} — ${days} days and ${plural(nights,'night')}. ${T.line}. Your vehicle and chauffeur are yours alone throughout, never shared and never on a fixed departure, with government-approved licensed guides at every monument.</p>
+    </div>`;
 
-    <div class="d-price">
-      <div>
-        <div class="l">Total price</div>
-        <div class="a">${L.fmt(L.fxTot)}</div>
-        <div class="s">${L.pax} guest${L.pax===1?'':'s'} · all inclusions listed below</div>
-      </div>
-      <div class="r"><b>${L.fmt(L.fxTot/L.pax)}</b>per person<br>${L.days} days</div>
-    </div>
-    <p class="d-note">A single fixed price for the complete arrangement — no per-kilometre charges, no daily-hour supplements and no fuel surcharge on arrival. The figure above is the figure you pay.</p>
-
-    <div class="d-sec" style="margin-top:6mm">
-      <h2><span>02</span>Inclusions &amp; Exclusions</h2>
-      <div class="d-ie">
-        <div class="box inc"><div class="bh">What is included</div><ul>${inc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
-        <div class="box exc"><div class="bh">Not included</div><ul>${exc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
-      </div>
-    </div>
-
-    ${hasTix?`<div class="d-sec">
-      <h2><span>03</span>Monument Tickets Included</h2>
-      <table class="d-tix">${cities.map(c=>`<tr><td class="c">${c}</td><td>${mons[c].join(' · ')}</td></tr>`).join('')}</table>
-      ${L.agra?`<p class="d-note">Includes the Agra ADA development toll, charged once per day across all Agra monuments.</p>`:''}
-    </div>`:''}
-
+  if(itin.length){
+    html+=`
     <div class="d-sec">
-      <h2><span>0${hasTix?4:3}</span>How to Confirm Your Booking</h2>
-      <div class="d-confirm">
-        <div class="half">
-          <ol class="d-steps">
-            <li>Reply to approve this itinerary and your travel dates</li>
-            <li>Transfer a <b>25% advance</b> to the account shown to secure your vehicle and guides</li>
-            <li>Send the transfer confirmation — we issue your written booking confirmation</li>
-            <li>Pay the balance on arrival in India</li>
-          </ol>
-          <p class="d-note">Quotation valid until <b>${longDate(addDays(today,15).toISOString().slice(0,10))}</b>. Monument fees are set by the ASI and may be revised before travel; any change is passed on transparently.</p>
-        </div>
-        <div class="half">
-          <div class="d-bank">
-            <div class="bh">Bank transfer details</div>
-            <table>${BANK.map(([k,v])=>`<tr><td class="k">${k}</td><td>${v}</td></tr>`).join('')}</table>
-          </div>
-          <p class="d-note">For international transfers please quote <b>both</b> the SWIFT code and the IFSC — Indian banks require both to route your payment.</p>
-        </div>
+      <h2><span class="n">${sn()}</span>Your Itinerary</h2>
+      ${itin.map((x,i)=>`<div class="d-day"><div class="dn"><b>${i+1}</b><span>Day</span></div><div><div class="dt">${esc(x.t)}</div>${x.d?`<div class="dd">${esc(x.d)}</div>`:''}</div></div>`).join('')}
+    </div>`;
+  }
+
+  html+=`
+    <div class="d-sec">
+      <h2><span class="n">${sn()}</span>What Is Covered &amp; What Is Not</h2>
+      <div class="d-ie">
+        <div class="box inc"><div class="bh">Covered — included</div><ul>${inc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+        <div class="box exc"><div class="bh">Not covered</div><ul>${exc.map(i=>`<li>${i}</li>`).join('')}</ul></div>
       </div>
+    </div>`;
+
+  if(hasTix){
+    const rows=cities.map(c=>`<tr><td class="c">${c}</td><td>${mons[c].map(m=>esc(m.n)).join(' · ')}</td></tr>`).join('');
+    html+=`
+    <div class="d-sec ${Object.values(mons).reduce((n,l)=>n+l.length,0)<=16?'d-avoid':''}">
+      <h2><span class="n">${sn()}</span>Monument Entry Tickets</h2>`;
+    if(L.tmode==='inc'){
+      html+=`<span class="d-chip">Included in your price</span>
+      <table class="d-tix">${rows}</table>
+      <p class="d-note">Tickets are covered for all ${plural(pax,'guest')}${L.agra?', including the Agra ADA development toll, charged once per day across all Agra monuments':''}. Fees are set by the ASI and the state authorities and may be revised before travel; any change is passed on transparently.</p>`;
+    }else if(L.tmode==='opt'){
+      html+=`<span class="d-chip o">Optional add-on</span>
+      <table class="d-tix">${rows}
+        <tr class="t"><td class="c">Add-on price</td><td>${L.fmt(L.tkOpt?L.tkOpt.pp:0)} per person</td><td class="p">${L.fmt(L.tkOpt?L.tkOpt.total:0)}<br><span style="font-weight:400;font-size:7.4pt">for ${plural(pax,'guest')}</span></td></tr></table>
+      <p class="d-note">Add this to any option below if you would like us to arrange and pay all tickets for you. If you prefer, you can also buy them yourself at the counter.</p>`;
+    }else{
+      const lines=cities.map(c=>mons[c].map(m=>`<tr><td class="c">${c}</td><td>${esc(m.n)}</td><td class="p">${m.p?'₹'+m.p:'Free'}</td></tr>`).join('')).join('');
+      html+=`<span class="d-chip x">Not included — paid at the counter</span>
+      <table class="d-tix">${lines}
+        <tr class="t"><td class="c">Per person</td><td>Approx. total at the counter${L.agra?' (incl. Agra ADA toll ₹'+ADA+')':''}</td><td class="p">₹${Math.round(L.tpp).toLocaleString('en-IN')}</td></tr>
+        <tr class="t"><td class="c">${plural(pax,'guest')}</td><td>Whole plan</td><td class="p">₹${Math.round(L.tkCost).toLocaleString('en-IN')}</td></tr></table>
+      <p class="d-note">Indicative foreigner rates in Indian rupees. Fees are set by the authorities and can change — we will guide you at each ticket counter.</p>`;
+    }
+    html+=`</div>`;
+  }
+
+  html+=`
+    <div class="d-sec d-avoid">
+      <h2><span class="n">${sn()}</span>Your Price</h2>
+      <p style="margin-bottom:3.5mm">${multi?'Choose the vehicle that suits you best — every option includes everything listed above.':'One fixed price for the complete arrangement.'} Prices are shown <b>per person</b> and for the <b>whole plan</b> (${plural(pax,'guest')}) in ${L.cur}.</p>
+      <table class="d-opt">
+        <thead><tr><th>${multi?'Option':'Vehicle'}</th><th class="r">Per person</th><th class="r">Whole plan · ${plural(pax,'guest')}</th></tr></thead>
+        <tbody>${L.opts.map((o,i)=>`<tr>
+          <td><div class="vn">${multi?`Option ${i+1} · `:''}${o.vm.n}${(multi&&i===topIdx)?'<span class="d-badge">PREMIUM</span>':''}</div><div class="vs">${o.vm.fit}</div></td>
+          <td class="r"><div class="pp">${L.fmt(o.pp)}</div></td>
+          <td class="r"><div class="wp">${L.fmt(o.total)}</div></td></tr>`).join('')}
+        ${L.tkOpt?`<tr><td><div class="vn">Optional add-on · Monument tickets</div><div class="vs">Add to any option</div></td><td class="r"><div class="pp">+ ${L.fmt(L.tkOpt.pp)}</div></td><td class="r"><div class="wp">+ ${L.fmt(L.tkOpt.total)}</div></td></tr>`:''}
+        </tbody>
+      </table>
+      <p class="d-note">A single fixed price — no per-kilometre charges, no daily-hour supplements and no fuel surcharge. The figure above is the figure you pay${L.tmode==='inc'&&hasTix?', with monument tickets included':''}.</p>
+    </div>
+
+    <div class="d-sec d-avoid">
+      <h2><span class="n">${sn()}</span>Advance Payment</h2>
+      <div class="d-adv">
+        <div class="top"><div class="big">${L.advPct}%</div>
+          <div><div class="tt">Only ${L.advPct}% advance confirms your booking</div>
+          <div class="ts">Transfer the advance below to secure your vehicle, guide and dates. The remaining balance is paid on arrival in India.</div></div></div>
+        <table class="d-advt">
+          <thead><tr><th>${multi?'Option':'Vehicle'}</th><th class="r">Advance · per person</th><th class="r">Advance · whole plan</th><th class="r">Balance on arrival</th></tr></thead>
+          <tbody>${L.opts.map((o,i)=>`<tr><td>${multi?`Option ${i+1} · `:''}${o.vm.n}</td><td class="r"><b>${L.fmt(o.advPp)}</b></td><td class="r"><b>${L.fmt(o.advTotal)}</b></td><td class="r">${L.fmt(o.balance)}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-sec d-avoid">
+      <h2><span class="n">${sn()}</span>How to Confirm Your Booking</h2>
+      <ol class="d-steps">
+        <li>Reply to approve this quotation${multi?', and tell us which option you choose':''}, together with your travel dates</li>
+        <li>Transfer the <b>${L.advPct}% advance</b> to the account on the last page</li>
+        <li>Send us the transfer confirmation — we then issue your written booking confirmation</li>
+        <li>Pay the balance on arrival in India</li>
+      </ol>
+      <p class="d-note">This quotation is valid until <b>${longDate(isoAdd(todayIso,15))}</b>. Vehicle availability is confirmed only once the advance is received.</p>
+    </div>
+
+    <div class="d-sec d-avoid">
+      <h2><span class="n">${sn()}</span>Bank Transfer Details</h2>
+      <div class="d-bank">
+        <div class="bh">Pay your ${L.advPct}% advance to</div>
+        <table>${BANK.map(([k,v])=>`<tr><td class="k">${k}</td><td>${v}</td></tr>`).join('')}</table>
+      </div>
+      <p class="d-note">For international transfers please quote <b>both</b> the SWIFT code and the IFSC — Indian banks require both to route your payment. Please send us the transfer confirmation once done.</p>
     </div>
   </div>
 
   <div class="d-foot">
-    <div><b>Guide India Tours</b><br>31/84A, Jangjeet Nagar, Shamsabad Road, Agra 282001, Uttar Pradesh, India</div>
-    <div class="r">+91 8979810991 · WhatsApp +91 8979810991 · info@guideindiatours.com<br>www.guideindiatours.com · Serving guests since 2007</div>
+    <div><b>Guide India Tours</b> · India Office<br>31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra, Uttar Pradesh – 282001, India<br>GSTIN 09ABCFG5043N1Z4</div>
+    <div class="r">WhatsApp +91 8979810991<br>info@guideindiatours.com<br>www.guideindiatours.com · Since 2004</div>
   </div>`;
+  $('#doc').innerHTML=html;
 }
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 /* ---------- rate card tab ---------- */
 function buildRates(){
@@ -772,8 +1023,13 @@ function buildRates(){
   $('#gtTable').oninput=e=>{const i=e.target;if(i.dataset.d){GT[i.dataset.d][i.dataset.v]=[+i.value,'v'];
     i.nextElementSibling.className='badge v';i.nextElementSibling.textContent='OK';save();calc();}};
 
-  $('#pkgTable').innerHTML='<tr><th>Programme</th>'+VEH.map(v=>`<th>${v.n}</th>`).join('')+'</tr>'+
+  const PV=VEH.filter(v=>v.k!=='tt');
+  $('#pkgTable').innerHTML='<tr><th>Programme</th>'+PV.map(v=>`<th>${v.n}</th>`).join('')+'</tr>'+
     PKG.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td class="num">${x==null?'<span style="color:var(--ink-3)">ask</span>':money(x)}</td>`).join('')}</tr>`).join('');
+
+  $('#hotelTable').innerHTML='<tr><th>Category</th><th>₹ per room per night</th></tr>'+
+    Object.entries(HOTEL).map(([k,o])=>`<tr><td>${o.n}</td><td><input type="number" data-h="${k}" value="${o.r||''}" placeholder="enter rate"></td></tr>`).join('');
+  $('#hotelTable').oninput=e=>{if(e.target.dataset.h){HOTEL[e.target.dataset.h].r=+e.target.value||0;save();calc();}};
 
   $('#monTable').innerHTML='<tr><th>Monument</th><th>City</th><th>Per person</th></tr>'+
     Object.entries(MON).flatMap(([c,l])=>l.map(m=>
@@ -782,18 +1038,20 @@ function buildRates(){
 
   $('#fxTable').innerHTML='<tr><th>Currency</th><th>₹ per unit</th></tr>'+
     Object.entries(CUR).filter(([c])=>c!=='INR').map(([c,o])=>
-      `<tr><td>${c} — ${o.n}</td><td><input type="number" step="0.01" data-c="${c}" value="${o.r}"></td></tr>`).join('');
+      `<tr><td>${c} — ${o.n}</td><td><input type="number" step="0.0001" data-c="${c}" value="${o.r}"></td></tr>`).join('');
   $('#fxTable').oninput=e=>{if(e.target.dataset.c){CUR[e.target.dataset.c].r=+e.target.value;save();calc();}};
 }
 
 /* ---------- gaps ---------- */
 const GAPS=[
-  ['4, 5, 6 and 7-day Golden Triangle rates','For all four vehicles. His card stops at 3 days, so every longer tour you quote is currently my interpolation.'],
+  ['4, 5, 6 and 7-day Golden Triangle rates','For all five vehicles. His card stops at 3 days, so every longer tour you quote is currently my interpolation.'],
+  ['Tempo Traveller rates','Not on his card at all. The Tempo Traveller column is a midpoint between Crysta and Urbania — a guess until he confirms.'],
+  ['Hotel rates per category','3-, 4- and 5-star rates per room per night. The Hotels card stays out of the price until you enter them in the Rate Card tab.'],
   ['Extra-day rate per vehicle','A flat "each additional day costs ₹X" makes any duration calculable without a new table.'],
   ['Delhi airport transfer, one way','Arrival and departure pickups get quoted constantly and are not on the card.'],
   ['Is Rajasthan state tax included?','Crossing into Rajasthan carries a permit charge. If it is extra, it must be a separate line or it silently eats margin on every Jaipur tour.'],
   ['Driver night allowance','Included in these totals, or extra per night?'],
-  ['Peak season surcharge','Do December–January rates differ? Brazino travels 20 December.'],
+  ['Peak season surcharge','Do December–January rates differ?'],
   ['Confirm his Delhi ticket figure','He said ₹4,200 per person. Red Fort, Humayun and Qutub total ₹1,650. Ask which monuments the rest covers.'],
   ['Confirm his Jaipur ticket figure','He said ₹5,300 per person. That only works with the ₹3,500 City Palace Royal Grandeur ticket. Ask if that is what he meant.'],
   ['Amber Fort jeep or elephant ride','Guests ask for this constantly and it is not costed anywhere.'],
@@ -803,22 +1061,23 @@ $('#gapList').innerHTML=GAPS.map((g,i)=>
 
 $('#avmsg').value=`Avnish bhai, rate card mil gaya — thank you 🙏
 
-Ab ek baar ye 9 cheezein confirm kar do, phir mujhe
+Ab ek baar ye cheezein confirm kar do, phir mujhe
 baar baar poochna nahi padega:
 
 1. Golden Triangle 4, 5, 6 aur 7 din ka rate — Sedan,
-   SUV, Crysta aur Urbania sab ka
-2. Har vehicle ka "extra day" rate kya hai
-3. Delhi airport transfer one-way rate
-4. Rajasthan state tax rate mein included hai ya extra
-5. Driver ka night allowance included hai ya alag
-6. December–January mein rate badhta hai kya
-7. Delhi tickets ₹4,200 per person aapne bola tha —
+   SUV, Crysta, Tempo Traveller aur Urbania sab ka
+2. Tempo Traveller ka rate (3 din ka bhi)
+3. Har vehicle ka "extra day" rate kya hai
+4. Delhi airport transfer one-way rate
+5. Rajasthan state tax rate mein included hai ya extra
+6. Driver ka night allowance included hai ya alag
+7. December–January mein rate badhta hai kya
+8. Delhi tickets ₹4,200 per person aapne bola tha —
    Red Fort, Humayun, Qutub to ₹1,650 hai. Baaki
    ₹2,550 kis monument ka hai
-8. Jaipur ₹5,300 per person — isme City Palace ka
+9. Jaipur ₹5,300 per person — isme City Palace ka
    Royal Grandeur ticket (₹3,500) count kiya hai kya
-9. Amber Fort jeep aur elephant ride ka rate
+10. Amber Fort jeep aur elephant ride ka rate
 
 Ek hi message mein likh ke bhej dena, photo mat
 bhejna — mujhe system mein daalna hai.`;
@@ -844,17 +1103,26 @@ $('#pdf').onclick=()=>{ buildDoc(); window.print(); };
 function preset(o){
   $('#cname').value=o.n;$('#ccur').value=o.c;$('#cpax').value=o.p;
   $('#cdate').value=o.d;$('#cdays').value=o.y;$('#gfull').value=o.g;
-  veh=o.v;$$('#vehpick button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===veh));
+  sel=o.v.slice();drawVeh();renderManual();syncDates('start');
   calc();
 }
-$('#preset1').onclick=()=>preset({n:'Dani',c:'AUD',p:7,d:'2026-11-29',y:6,g:4,v:'urbania'});
-$('#preset2').onclick=()=>preset({n:'Brazino',c:'CAD',p:2,d:'2026-12-20',y:5,g:3,v:'sedan'});
+$('#preset1').onclick=()=>preset({n:'Dani',c:'AUD',p:7,d:'2026-11-29',y:6,g:4,v:['urbania']});
+$('#preset2').onclick=()=>preset({n:'Brazino',c:'CAD',p:2,d:'2026-12-20',y:5,g:3,v:['sedan','suv','crysta']});
 
 /* ---------- init ---------- */
 load();
 buildRates();
-$$('input,select').forEach(el=>{if(!el.dataset.d&&!el.dataset.c&&el.type!=='checkbox')el.addEventListener('input',calc);});
+syncDates('start');
+$$('input,select,textarea').forEach(el=>{
+  if(el.dataset.d||el.dataset.c||el.dataset.h||el.dataset.mv||el.type==='checkbox'||el.id==='msg'||el.id==='avmsg')return;
+  el.addEventListener('input',()=>{
+    if(el.id==='cdate'||el.id==='cdays')syncDates('start');
+    else if(el.id==='cend')syncDates('end');
+    calc();
+  });
+});
 calc();
+
 </script>
 
 </body>
