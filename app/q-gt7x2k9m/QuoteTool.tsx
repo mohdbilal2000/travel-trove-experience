@@ -61,8 +61,15 @@ type Settings = {
     profit: number; gst: number; gateway: number;
     fx: Record<Exclude<Cur, "INR">, number>; // Rs. per 1 unit of currency
 };
-type Bank = {
-    holder: string; bank: string; branch: string; account: string; ifsc: string; swift: string; address: string;
+// Fixed bank details: the same on every PDF.
+const BANK = {
+    holder: "Guide India Tours",
+    bank: "IDFC FIRST Bank",
+    branch: "Agra - Fatehabad Road",
+    account: "52801202547",
+    ifsc: "IDFB0021293",
+    swift: "IDFBINBBMUM",
+    customerId: "6604884399",
 };
 
 // Known rates come from the owner's rate sheet. Anything unknown is 0 and must be filled in.
@@ -77,7 +84,6 @@ const DEFAULT_SETTINGS: Settings = {
     profit: 25, gst: 5, gateway: 3,
     fx: { USD: 83, EUR: 90, GBP: 105, AUD: 54 }, // approximate: update to today's rate
 };
-const EMPTY_BANK: Bank = { holder: "", bank: "", branch: "", account: "", ifsc: "", swift: "", address: "" };
 
 const MAROON: [number, number, number] = [107, 16, 32];
 const GOLD: [number, number, number] = [224, 182, 74];
@@ -124,7 +130,6 @@ export default function QuoteTool() {
     const [itinTouched, setItinTouched] = useState(false);
     // saved in this browser only
     const [s, setS] = useState<Settings>(DEFAULT_SETTINGS);
-    const [bank, setBank] = useState<Bank>(EMPTY_BANK);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
@@ -135,15 +140,13 @@ export default function QuoteTool() {
                 setS({ ...DEFAULT_SETTINGS, ...p, veh: { ...DEFAULT_SETTINGS.veh, ...p.veh }, hotel: { ...DEFAULT_SETTINGS.hotel, ...p.hotel },
                     act: { ...DEFAULT_SETTINGS.act, ...p.act }, fx: { ...DEFAULT_SETTINGS.fx, ...p.fx }, tierUplift: { ...DEFAULT_SETTINGS.tierUplift, ...p.tierUplift } });
             }
-            const b = localStorage.getItem("git-quote-bank");
-            if (b) setBank({ ...EMPTY_BANK, ...JSON.parse(b) });
         } catch { /* storage unavailable: defaults are used */ }
         setLoaded(true);
     }, []);
     useEffect(() => {
         if (!loaded) return;
-        try { localStorage.setItem("git-quote-settings", JSON.stringify(s)); localStorage.setItem("git-quote-bank", JSON.stringify(bank)); } catch { /* ignore */ }
-    }, [s, bank, loaded]);
+        try { localStorage.setItem("git-quote-settings", JSON.stringify(s)); } catch { /* ignore */ }
+    }, [s, loaded]);
 
     const dateSpan = start && end ? Math.round((new Date(end).getTime() - new Date(start).getTime()) / 86400000) + 1 : 0;
     const days = dateSpan > 0 ? dateSpan : daysManual;
@@ -321,11 +324,11 @@ export default function QuoteTool() {
         heading("Taxes & payment");
         para("All applicable taxes (GST) are included in the price shown. A secure payment link is shared on confirmation, or you may pay by bank transfer using the details below. A deposit confirms your booking and the balance is due before the tour, as per our terms.", 9.5); y += 2;
 
-        const bankRows: [string, string][] = ([
-            ["Account holder", bank.holder], ["Bank", bank.bank], ["Branch", bank.branch], ["Account number", bank.account],
-            ["IFSC code", bank.ifsc], ["SWIFT / BIC code", bank.swift], ["Bank address", bank.address],
-        ] as [string, string][]).filter(([, v]) => v.trim());
-        if (showBank && bankRows.length) {
+        const bankRows: [string, string][] = [
+            ["Account holder", BANK.holder], ["Bank", BANK.bank], ["Branch", BANK.branch], ["Account number", BANK.account],
+            ["IFSC code", BANK.ifsc], ["SWIFT / BIC code", BANK.swift], ["Customer ID", BANK.customerId],
+        ];
+        if (showBank) {
             need(10 + bankRows.length * 6.2 + 8); heading("Bank details");
             const bh = bankRows.length * 6.2 + 6;
             pdf.setFillColor(250, 246, 239); pdf.setDrawColor(236, 227, 210); pdf.setLineWidth(0.3); pdf.roundedRect(M, y, textW, bh, 2.5, 2.5, "FD");
@@ -334,7 +337,8 @@ export default function QuoteTool() {
                 pdf.setFont("helvetica", "bold"); pdf.setFontSize(9.5); pdf.setTextColor(...MAROON); pdf.text(`${k}:`, M + 5, yy);
                 pdf.setFont("helvetica", "normal"); pdf.setTextColor(...INK); pdf.text((pdf.splitTextToSize(v, textW - 52) as string[])[0], M + 45, yy); yy += 6.2;
             }
-            y += bh + 5;
+            y += bh + 3;
+            para("For international transfers please quote both the SWIFT code and the IFSC; Indian banks require both to route the payment.", 8.5, GREY); y += 2;
         }
         para("We look forward to welcoming you and providing a comfortable, informative and memorable experience.", 9.8, GREY);
         footer();
@@ -442,16 +446,7 @@ export default function QuoteTool() {
                     <button onClick={makePdf} disabled={!canDownload} className="mt-5 w-full sm:w-auto rounded-full bg-[#e0b64a] px-8 py-3 font-bold text-black hover:bg-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Download PDF</button>
                 </section>
 
-                <details className={card}>
-                    <summary className="cursor-pointer text-sm font-semibold text-gray-700">Bank details (shown on the PDF, saved only in this browser)</summary>
-                    <label className="flex items-center gap-2 mt-4 text-sm text-gray-700"><input type="checkbox" checked={showBank} onChange={(e) => setShowBank(e.target.checked)} /> Show bank details on the PDF</label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-                        {([["holder", "Account holder name"], ["bank", "Bank name"], ["branch", "Branch"], ["account", "Account number"], ["ifsc", "IFSC code"], ["swift", "SWIFT / BIC code"]] as [keyof Bank, string][]).map(([k, l]) => (
-                            <label key={k}><span className={lab}>{l}</span><input className={inp} value={bank[k]} onChange={(e) => setBank({ ...bank, [k]: e.target.value })} /></label>
-                        ))}
-                        <label className="sm:col-span-2"><span className={lab}>Bank address</span><input className={inp} value={bank.address} onChange={(e) => setBank({ ...bank, address: e.target.value })} /></label>
-                    </div>
-                </details>
+                <label className={card + " flex items-center gap-2 text-sm text-gray-700"}><input type="checkbox" checked={showBank} onChange={(e) => setShowBank(e.target.checked)} /> Show bank transfer details on the PDF (IDFC FIRST Bank, fixed)</label>
 
                 <details className={card}>
                     <summary className="cursor-pointer text-sm font-semibold text-gray-700">Rates - internal costs in Rs. (never shown to the client, saved only in this browser)</summary>
