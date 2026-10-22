@@ -1,6 +1,7 @@
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { faqCategories, FAQ_LAST_UPDATED } from '@/data/faqs';
+import { blogTranslations } from '@/data/blogTranslations';
 import { NextResponse } from 'next/server';
 
 const BASE_URL = 'https://www.guideindiatours.com';
@@ -79,6 +80,7 @@ ${faqSection}
 ## Travel Guides (Blog)
 Index: ${BASE_URL}/blog
 ${posts.map(p => `- ${p.title} → ${BASE_URL}/blog/${p.slug}\n  ${p.quickAnswer || p.excerpt}`).join('\n')}
+${blogTranslations.map(t => `- [${t.label}] ${t.title} → ${BASE_URL}/blog/${t.lang}/${t.slug}`).join('\n')}
 
 ## Content & Resources
 - Reviews: ${BASE_URL}/reviews

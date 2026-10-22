@@ -18,6 +18,8 @@ export interface BlogPost {
   /** 2–3 sentence direct answer shown in a speakable box at the top. */
   quickAnswer?: string;
   keyTakeaways?: string[];
+  /** Visible FAQ block shown after the article; also emitted as FAQPage JSON-LD. */
+  faqs?: { q: string; a: string }[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -1468,6 +1470,130 @@ Free cloakrooms exist at the gates, but the lighter you travel the faster you ar
     image: "/images/jaipur/getty-images-b5yYo61ALvk-unsplash.jpg",
     category: "Travel FAQs",
     tags: ["Packing", "What to Wear", "Planning", "Seasons", "Golden Triangle"],
+    relatedPlans: [1, 2, 4],
+    relatedDestinations: ["Delhi", "Agra", "Jaipur"]
+  },
+  {
+    id: 17,
+    slug: "underrated-monuments-in-north-india",
+    title: "Underrated Monuments in North India: 14 Hidden Gems Beyond the Taj Mahal",
+    excerpt: "Skip the queues at the famous names. Here are 14 underrated monuments in Agra, Delhi, Jaipur and Lucknow — tombs, stepwells and ruined forts most visitors never see — with practical tips from our government-approved guides.",
+    faqQuestion: "What are the most underrated monuments in North India?",
+    quickAnswer: "The most underrated monuments in North India are Itimad-ud-Daulah, Chini Ka Rauza and Akbar's Tomb at Sikandra in Agra; Mehrauli Archaeological Park, Hauz Khas, Agrasen ki Baoli, Sultan Ghari and Tughlaqabad Fort in Delhi; and Chand Baori, Panna Meena ka Kund and Galta Ji on the Jaipur side. Most can be added to a private Golden Triangle tour with a licensed guide.",
+    keyTakeaways: [
+      "Most of these sites see a fraction of the visitors at the Taj Mahal or Red Fort, so photography and conversation with your guide are far easier.",
+      "Agra, Delhi and the Jaipur road each hide a different kind of heritage: Mughal tombs, Sultanate ruins and medieval stepwells.",
+      "Several slot into the gaps of a normal Golden Triangle plan: a free morning, the drive between Jaipur and Agra, or the Taj Mahal's Friday closure.",
+      "Opening hours, weekly closing days and entry fees differ by monument and change over time; your guide confirms them before your date."
+    ],
+    content: `The Taj Mahal, the Red Fort and Amber Fort deserve their fame. But North India's heritage runs much deeper than its postcards. Near almost every headline monument there is a tomb, stepwell or ruined fortress that is just as remarkable and far quieter.
+
+This guide covers 14 of them, in Agra, Delhi, along the road to Jaipur and in Lucknow. They are the places our government-approved guides add to private tours when guests ask, "What else is there?" Most take 30 to 90 minutes and slot easily into a normal [Golden Triangle plan](/golden-triangle-tours).
+
+## How we chose these monuments
+
+- **Real significance**, not just a good photograph: each has a story that changes how you see the better-known sights
+- **Easy to reach** from the usual Delhi–Agra–Jaipur route
+- **Genuinely overlooked** compared with the headline monuments
+- **Practical for ordinary travellers**, with no special permits or difficult hikes
+
+## Agra: tombs and gardens most visitors skip
+
+### 1. Itimad-ud-Daulah (the "Baby Taj")
+
+Built between 1622 and 1628 by Empress Nur Jahan for her father, Mirza Ghiyas Beg, this is one of the earliest Mughal tombs faced in white marble rather than red sandstone. Its walls are covered in delicate pietra dura inlay of flowers, cypress trees and wine vessels. Many architectural historians see it as a rehearsal for the Taj Mahal. It is small, calm and ideal for close-up photography.
+
+### 2. Chini Ka Rauza
+
+This is the tomb of Afzal Khan Shirazi, a Persian-born poet and minister of Emperor Shah Jahan, who died in 1639. The name comes from *chini*, the glazed tilework that once covered the building in Persian-style patterns. Much of the glaze has faded, but the tall dome and the surviving tilework show a completely different Mughal aesthetic from the Taj Mahal. It sits on the bank of the Yamuna and is rarely crowded.
+
+### 3. Akbar's Tomb, Sikandra
+
+On the Delhi road about 10 km from Agra Fort, Sikandra is the tomb of Emperor Akbar. It was begun in his lifetime and completed by his son Jahangir around 1613. The red sandstone and marble complex stands in a large walled garden, and its monumental southern gateway has four marble minarets. Deer and langurs are often seen on the lawns. Unlike the Taj Mahal, you can often have the great gateway almost to yourself.
+
+### 4. Mehtab Bagh
+
+The "Moonlight Garden" is a Mughal garden on the opposite bank of the Yamuna from the Taj Mahal, aligned with the monument. It gives one of the best views of the Taj across the river, especially around sunset when the marble changes colour. It is a good plan B when the Taj Mahal is closed on Fridays, because you still see the monument without joining a single queue. See our [Taj Mahal opening hours guide](/taj-mahal-opening-hours) for the weekly closure.
+
+## Delhi: Sultanate ruins, stepwells and quiet tombs
+
+### 5. Mehrauli Archaeological Park
+
+Right beside Qutub Minar, this park holds dozens of monuments spanning nearly a thousand years, from Sultanate tombs to Mughal and colonial-era structures. Highlights include the Jamali Kamali mosque and tomb (c. 1528–29), whose walls are covered in carved and coloured plaster, Balban's Tomb (late 13th century) and Rajon ki Baoli, a stepwell of about 1516. Wear sturdy shoes: the paths are uneven, and a guide who knows where everything is saves a lot of wandering.
+
+### 6. Hauz Khas Fort and reservoir
+
+Hauz Khas is named after the royal water tank built by Alauddin Khalji in the early 14th century. In the mid-14th century Firoz Shah Tughlaq added a madrasa on its banks, and he is buried in the tomb there. The arched halls and domed pavilions still overlook the lake. The surrounding area is also one of Delhi's liveliest neighbourhoods, so you can combine the ruins with a café stop afterwards.
+
+### 7. Agrasen ki Baoli
+
+A short walk from Connaught Place, this stepwell drops through three levels of arched niches down roughly a hundred steps. Its exact origins are uncertain, but the present structure dates to the 14th century. It is one of the most photogenic spots in central Delhi, especially mid-morning when light reaches the lower steps.
+
+### 8. Sultan Ghari
+
+Built in 1231, Sultan Ghari is the tomb of Nasiruddin Mahmud, eldest son of Sultan Iltutmish, and is widely described as the first Islamic mausoleum in India. From outside it looks like a small fortress, with high walls and bastions. Inside, a doorway leads down to an octagonal burial chamber supported by pillars that appear to be reused from older temples. It lies in south-west Delhi, not far from the airport.
+
+### 9. Tughlaqabad Fort
+
+Built in 1321–23 by Ghiyath al-Din Tughlaq, Tughlaqabad was one of the early cities of Delhi. Its massive sloping stone walls, bastions and underground passages now stand largely empty, which gives a remarkable sense of scale. Across a causeway lies the tomb of Ghiyath al-Din himself. You walk more here than at most Delhi monuments, so go early or late in the day: the stone holds the heat.
+
+### 10. Safdarjung's Tomb
+
+Completed in 1754, this is often called the last garden tomb of the Mughal era, built for Safdarjung, a nawab of Awadh. The marble-domed mausoleum rises from a formal *charbagh* garden and shows Mughal architecture in its final, ornate phase. It stands near Lodhi Road and is easy to fit between other central Delhi stops. Our [Delhi travel guide](/blog/delhi-travel-guide-complete-itinerary) shows how it fits into a full itinerary.
+
+## On the road to Jaipur: stepwells and temples
+
+### 11. Chand Baori, Abhaneri
+
+About 90 km from Jaipur on the road towards Agra, Chand Baori is a ninth-century stepwell and one of the deepest in India. Around 3,500 narrow steps, commonly quoted across 13 levels, form geometric flights on three sides. Access to the lowest steps is restricted, but the view from the edge is the point. Because it lies close to the Jaipur–Agra highway, it works well as a stop on our [Jaipur to Agra tour](/jaipur-to-agra-tour), often combined with Fatehpur Sikri.
+
+### 12. Panna Meena ka Kund
+
+Close to Amber Fort, this 16th-century stepwell has matching staircases on all sides that form a perfect geometric pattern, and it is a favourite with photographers. It shows how Rajput rulers stored water in dry country. It adds only about 20 minutes to an Amber Fort visit, so it is easy to fit in. Our [Jaipur tour guides](/jaipur-tour-guide) usually include it.
+
+### 13. Galta Ji
+
+Often called the Monkey Temple, Galta Ji is a pilgrimage complex of temples, pavilions and sacred water tanks set in a gap in the Aravalli hills east of Jaipur. Most of the buildings date to the 18th century and are built in the local pink sandstone. Large troops of macaques and langurs live here, and a temple on the ridge above gives a view back over the city. Dress modestly and keep food and sunglasses out of sight.
+
+## For extra days: Lucknow
+
+### 14. Bara Imambara, Lucknow
+
+If you extend beyond the Golden Triangle, the Bara Imambara is a highlight. Nawab Asaf-ud-Daula built it in 1784–94, partly as a famine-relief project that gave work to thousands. Its central hall is one of the largest vaulted halls built without internal pillars, and the maze of passages above is known as the Bhool Bhulaiya. The Rumi Darwaza gateway stands nearby. Lucknow is a long drive from Agra or a shorter train or flight hop, so it needs extra days rather than a detour.
+
+## How to fit them into your trip
+
+- **Agra day:** Taj Mahal at sunrise, Agra Fort, then Itimad-ud-Daulah and Chini Ka Rauza in the afternoon, and Mehtab Bagh for sunset
+- **Taj Mahal Friday:** swap in Sikandra, Itimad-ud-Daulah and Chini Ka Rauza, and view the Taj from Mehtab Bagh
+- **Delhi, day one:** pair Mehrauli Archaeological Park with Qutub Minar, then Hauz Khas in the late afternoon
+- **Delhi, quiet morning:** Agrasen ki Baoli, then Safdarjung's Tomb
+- **Jaipur to Agra drive:** Chand Baori at Abhaneri first, then Fatehpur Sikri
+- **Jaipur sightseeing:** Panna Meena ka Kund with Amber Fort, and Galta Ji at the end of the day
+
+Our guide for each city can build any of these into your route. See the [Agra tour guide](/agra-tour-guide), [Delhi tour guide](/delhi-tour-guide) and [Jaipur tour guide](/jaipur-tour-guide) pages, or read [Agra beyond the Taj Mahal](/blog/agra-beyond-taj-mahal) for more Agra ideas. If you are deciding how long to stay, see [how many days you need for the Golden Triangle](/blog/how-many-days-for-the-golden-triangle).
+
+## Practical tips
+
+- **Check hours and closing days.** The Taj Mahal is closed every Friday, and other monuments close on different weekdays. Timings and entry fees change, so we confirm them before your date.
+- **Wear comfortable shoes.** Stepwells and ruins have uneven steps and loose stone.
+- **Carry water and sun protection.** Many of these sites have little shade.
+- **Dress modestly at religious sites** such as Galta Ji, and cover shoulders and knees.
+- **Respect photography rules.** Drones and tripods are restricted at many protected monuments.
+- **Hire a licensed guide.** Several of these sites have little signage, and the stories are the point. See our [guide booking page](/guide-booking).
+
+Want any of these added to your trip? Message us on WhatsApp with your dates and we will fit them into your route.`,
+    faqs: [
+      { q: "What are the most underrated monuments in North India?", a: "In Agra: Itimad-ud-Daulah, Chini Ka Rauza and Akbar's Tomb at Sikandra. In Delhi: Mehrauli Archaeological Park, Hauz Khas, Agrasen ki Baoli, Sultan Ghari and Tughlaqabad Fort. Near Jaipur: Chand Baori at Abhaneri, Panna Meena ka Kund and Galta Ji. Lucknow's Bara Imambara is worth extra days." },
+      { q: "Can I visit these monuments on a Golden Triangle tour?", a: "Yes. Most can be added to a private Golden Triangle tour on request, with the same vehicle and guide. Tell us your dates and interests and we will build them into your route." },
+      { q: "What can I see in Agra if the Taj Mahal is closed on Friday?", a: "The Taj Mahal is closed every Friday. Sikandra, Itimad-ud-Daulah and Chini Ka Rauza make a good Friday plan, and Mehtab Bagh gives a view of the Taj Mahal from across the river. Your guide confirms current opening days before you go." },
+      { q: "Do I need a guide for these monuments?", a: "A licensed guide is strongly recommended. Many of these sites have little signage, and a guide explains the history, points out details such as inlay and tilework, and knows the best time of day to visit." },
+      { q: "Which underrated monuments are best for photography?", a: "Chand Baori and Panna Meena ka Kund for geometry, the great gateway at Sikandra, the pietra dura inlay at Itimad-ud-Daulah, and Agrasen ki Baoli for symmetry. Early morning or late afternoon light works best at most of them." }
+    ],
+    author: "Avneesh Dixit",
+    publishedDate: "2026-10-22",
+    image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
+    category: "Destinations",
+    tags: ["Hidden Gems", "Underrated Monuments", "North India", "Agra", "Delhi", "Jaipur", "Stepwells", "Mughal Tombs"],
     relatedPlans: [1, 2, 4],
     relatedDestinations: ["Delhi", "Agra", "Jaipur"]
   }
