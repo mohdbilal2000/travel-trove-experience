@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 // hreflang map shared by every language page: all languages + English + x-default.
 const hreflangLanguages: Record<string, string> = {
-    ...Object.fromEntries(guideLangs.map((l) => [l.code, `${BASE}/guide/${l.code}`])),
+    ...Object.fromEntries(guideLangs.map((l) => [l.hreflang ?? l.code, `${BASE}/guide/${l.code}`])),
     en: EN_URL,
     'x-default': EN_URL,
 };

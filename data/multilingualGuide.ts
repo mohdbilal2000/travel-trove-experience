@@ -4,13 +4,16 @@
  * a real differentiator (our guides speak French, German, Italian & Spanish;
  * Japanese & Mandarin are arranged on request). Rendered by app/guide/[lang].
  *
- * Keep translations natural and truthful. fr/de/it/es = guides available;
- * ja/zh = arranged on request / interpreter.
+ * Keep translations natural and truthful. fr/de/it/es/ru = guides available;
+ * ja/zh/pt/ko/ms = arranged on request / interpreter. Have a native speaker
+ * check headings and CTAs before relying on a language for paid traffic.
  */
 
 export type GuideLang = {
     code: string;          // url + hreflang code
     htmlLang: string;      // <html lang> value
+    hreflang?: string;     // hreflang value if it differs from `code` (e.g. zh -> zh-CN)
+    guides: 'available' | 'on-request'; // truthful availability of a native-speaking guide
     label: string;         // native language name
     title: string;         // <title>
     description: string;   // meta description
@@ -34,6 +37,7 @@ export const guideLangs: GuideLang[] = [
     {
         code: 'fr',
         htmlLang: 'fr',
+        guides: 'available',
         label: 'Français',
         title: "Guide francophone à Agra & Triangle d'Or | Guide India Tours",
         description: "Guide touristique francophone agréé à Agra et pour le Triangle d'Or (Delhi, Agra, Jaipur). Taj Mahal, Fort d'Agra, visites privées. Noté 4,9/5 par plus de 400 voyageurs.",
@@ -63,6 +67,7 @@ export const guideLangs: GuideLang[] = [
     {
         code: 'es',
         htmlLang: 'es',
+        guides: 'available',
         label: 'Español',
         title: 'Guía en español en Agra y el Triángulo de Oro | Guide India Tours',
         description: 'Guía turístico privado en español en Agra y el Triángulo de Oro (Delhi, Agra, Jaipur). Taj Mahal, Fuerte de Agra, visitas privadas. Valorado 4,9/5 por más de 400 viajeros.',
@@ -92,6 +97,7 @@ export const guideLangs: GuideLang[] = [
     {
         code: 'de',
         htmlLang: 'de',
+        guides: 'available',
         label: 'Deutsch',
         title: 'Deutschsprachiger Reiseführer in Agra & Goldenes Dreieck | Guide India Tours',
         description: 'Privater, lizenzierter deutschsprachiger Reiseführer in Agra und für das Goldene Dreieck (Delhi, Agra, Jaipur). Taj Mahal, Agra Fort, private Touren. 4,9/5 von über 400 Reisenden.',
@@ -121,6 +127,7 @@ export const guideLangs: GuideLang[] = [
     {
         code: 'it',
         htmlLang: 'it',
+        guides: 'available',
         label: 'Italiano',
         title: "Guida in italiano ad Agra e Triangolo d'Oro | Guide India Tours",
         description: "Guida turistica privata in italiano ad Agra e per il Triangolo d'Oro (Delhi, Agra, Jaipur). Taj Mahal, Forte di Agra, tour privati. Valutata 4,9/5 da oltre 400 viaggiatori.",
@@ -150,6 +157,7 @@ export const guideLangs: GuideLang[] = [
     {
         code: 'ja',
         htmlLang: 'ja',
+        guides: 'on-request',
         label: '日本語',
         title: 'アグラ・ゴールデントライアングルの日本語ガイド | Guide India Tours',
         description: 'アグラとゴールデントライアングル（デリー・アグラ・ジャイプル）の日本語対応プライベートガイド。タージ・マハル、アグラ城。4.9/5、400人以上の口コミ。',
@@ -178,7 +186,9 @@ export const guideLangs: GuideLang[] = [
     },
     {
         code: 'zh',
-        htmlLang: 'zh',
+        htmlLang: 'zh-CN',
+        hreflang: 'zh-CN',
+        guides: 'on-request',
         label: '中文',
         title: '阿格拉及金三角中文导游 | Guide India Tours',
         description: '阿格拉及金三角（德里、阿格拉、斋浦尔）中文私人导游。泰姬陵、阿格拉堡、私人游览。谷歌4.9/5，400多名旅客好评。',
@@ -204,6 +214,127 @@ export const guideLangs: GuideLang[] = [
         ctaBtn: '获取报价',
         altBtn: '查看行程',
         ratingLabel: '4.9/5 · 超过 {count} 条谷歌评价',
+    },
+    {
+        code: 'ru',
+        htmlLang: 'ru',
+        guides: 'available',
+        label: 'Русский',
+        title: 'Русскоязычный гид в Агре и Золотом треугольнике | Guide India Tours',
+        description: 'Лицензированный русскоязычный частный гид в Агре и по Золотому треугольнику (Дели, Агра, Джайпур). Тадж-Махал, форт Агра, частные туры. Рейтинг 4,9/5, более 400 путешественников.',
+        badge: 'Агра, Индия',
+        heroTitle: 'Гид в Агре на',
+        heroHighlight: 'русском языке',
+        heroSub: 'Частный гид с государственной лицензией, говорящий по-русски, для Тадж-Махала, форта Агра и всего Золотого треугольника.',
+        directAnswer: 'Guide India Tours предоставляет частных русскоязычных гидов с лицензией Министерства туризма в Агре и по всему Золотому треугольнику (Дели, Агра, Джайпур). Вы осмотрите Тадж-Махал, форт Агра и Фатехпур-Сикри с понятными объяснениями на русском языке, на частном автомобиле с кондиционером и с водителем. Рейтинг 4,9/5 по отзывам более {count} путешественников в Google. Частные туры — от 49 $ на человека. Тадж-Махал закрыт по пятницам.',
+        includedHeading: 'Что включено',
+        included: [
+            'Частный лицензированный гид, говорящий по-русски',
+            'Частный автомобиль с кондиционером и водитель',
+            'Встреча и возвращение в отель',
+            'Поддержка 24/7 в WhatsApp',
+        ],
+        faqHeading: 'Часто задаваемые вопросы',
+        faq: [
+            { q: 'Есть ли у вас русскоговорящий гид в Агре?', a: 'Да. Мы предоставляем частных лицензированных гидов, говорящих по-русски, для Тадж-Махала, форта Агра и Золотого треугольника. Укажите даты при запросе.' },
+            { q: 'Сколько стоит частная экскурсия?', a: 'Частная однодневная экскурсия по Агре стоит от 49 $ на человека. Напишите нам в WhatsApp для индивидуального расчёта.' },
+        ],
+        ctaHeading: 'Закажите гида на русском языке',
+        ctaText: 'Сообщите нам даты и интересы — мы составим индивидуальный частный маршрут.',
+        ctaBtn: 'Запросить расчёт',
+        altBtn: 'Смотреть туры',
+        ratingLabel: '4,9/5 · более {count} отзывов в Google',
+    },
+    {
+        code: 'pt',
+        htmlLang: 'pt-BR',
+        hreflang: 'pt',
+        guides: 'on-request',
+        label: 'Português',
+        title: 'Guia em português em Agra e no Triângulo Dourado | Guide India Tours',
+        description: 'Guia turístico privado licenciado em Agra e no Triângulo Dourado (Délhi, Agra, Jaipur). Taj Mahal, Forte de Agra, passeios privados. Nota 4,9/5 de mais de 400 viajantes. Guia em português sob solicitação.',
+        badge: 'Agra, Índia',
+        heroTitle: 'Guia turístico em',
+        heroHighlight: 'português',
+        heroSub: 'Um guia privado licenciado pelo governo para o Taj Mahal, o Forte de Agra e todo o Triângulo Dourado (guia ou intérprete em português organizado sob solicitação).',
+        directAnswer: 'A Guide India Tours oferece guias privados licenciados pelo Ministério do Turismo em Agra e em todo o Triângulo Dourado (Délhi, Agra, Jaipur). Um guia ou intérprete em português é organizado sob solicitação. Você visita o Taj Mahal, o Forte de Agra e Fatehpur Sikri com carro privado com ar-condicionado e motorista. Nota 4,9/5 de mais de {count} viajantes no Google. Os passeios privados começam em US$ 49 por pessoa. O Taj Mahal fecha às sextas-feiras.',
+        includedHeading: 'O que está incluído',
+        included: [
+            'Guia privado licenciado (português sob solicitação)',
+            'Carro privado com ar-condicionado e motorista',
+            'Busca e retorno ao hotel',
+            'Suporte 24 horas por WhatsApp',
+        ],
+        faqHeading: 'Perguntas frequentes',
+        faq: [
+            { q: 'Vocês têm guia que fala português em Agra?', a: 'Organizamos um guia ou intérprete em português sob solicitação. Informe suas datas ao fazer o pedido.' },
+            { q: 'Quanto custa um passeio privado?', a: 'Um passeio privado de um dia em Agra começa em US$ 49 por pessoa. Fale conosco pelo WhatsApp para um orçamento personalizado.' },
+        ],
+        ctaHeading: 'Reserve um guia em português',
+        ctaText: 'Diga-nos suas datas e seus interesses — criaremos um roteiro privado sob medida.',
+        ctaBtn: 'Pedir orçamento',
+        altBtn: 'Ver passeios',
+        ratingLabel: '4,9/5 · mais de {count} avaliações no Google',
+    },
+    {
+        code: 'ko',
+        htmlLang: 'ko',
+        guides: 'on-request',
+        label: '한국어',
+        title: '아그라 및 골든 트라이앵글 한국어 가이드 | Guide India Tours',
+        description: '아그라와 골든 트라이앵글(델리·아그라·자이푸르) 한국어 프라이빗 가이드. 타지마할, 아그라 성, 프라이빗 투어. 구글 4.9/5, 400명 이상의 후기. 한국어 가이드·통역은 요청 시 준비해 드립니다.',
+        badge: '인도·아그라',
+        heroTitle: '아그라',
+        heroHighlight: '한국어 가이드',
+        heroSub: '타지마할, 아그라 성, 골든 트라이앵글을 함께하는 정부 공인 프라이빗 가이드 (한국어 가이드 또는 통역은 요청 시 준비).',
+        directAnswer: 'Guide India Tours는 아그라와 골든 트라이앵글(델리·아그라·자이푸르)에서 정부 공인 프라이빗 가이드를 제공합니다. 한국어 가이드 또는 통역은 요청 시 준비해 드립니다. 전용 에어컨 차량과 기사와 함께 타지마할, 아그라 성, 파테푸르 시크리를 둘러보실 수 있습니다. 구글에서 {count}명 이상의 여행자로부터 4.9/5 평점을 받았습니다. 프라이빗 투어는 1인당 49달러부터입니다. 타지마할은 금요일에 휴관합니다.',
+        includedHeading: '포함 사항',
+        included: [
+            '정부 공인 프라이빗 가이드 (한국어는 요청 시 준비)',
+            '전용 에어컨 차량 및 기사',
+            '호텔 픽업 및 드롭',
+            'WhatsApp 24시간 지원',
+        ],
+        faqHeading: '자주 묻는 질문',
+        faq: [
+            { q: '아그라에서 한국어 가이드를 이용할 수 있나요?', a: '네. 요청 시 한국어 가이드 또는 통역을 준비해 드립니다. 예약 시 일정을 알려 주세요.' },
+            { q: '프라이빗 투어 요금은 얼마인가요?', a: '아그라 1일 프라이빗 투어는 1인당 49달러부터입니다. WhatsApp으로 맞춤 견적을 문의해 주세요.' },
+        ],
+        ctaHeading: '한국어 가이드 예약',
+        ctaText: '원하는 일정과 관심사를 알려 주세요. 맞춤 프라이빗 일정을 만들어 드립니다.',
+        ctaBtn: '견적 요청',
+        altBtn: '투어 보기',
+        ratingLabel: '4.9/5 · 구글 후기 {count}개 이상',
+    },
+    {
+        code: 'ms',
+        htmlLang: 'ms',
+        guides: 'on-request',
+        label: 'Bahasa Melayu',
+        title: 'Pemandu pelancong Bahasa Melayu di Agra & Segi Tiga Emas | Guide India Tours',
+        description: 'Pemandu pelancong peribadi berlesen di Agra dan Segi Tiga Emas (Delhi, Agra, Jaipur). Taj Mahal, Kubu Agra, lawatan persendirian. Penilaian 4.9/5 daripada 400+ pelancong. Pemandu atau jurubahasa Bahasa Melayu diatur atas permintaan.',
+        badge: 'Agra, India',
+        heroTitle: 'Pemandu pelancong',
+        heroHighlight: 'Bahasa Melayu',
+        heroSub: 'Pemandu peribadi berlesen kerajaan untuk Taj Mahal, Kubu Agra dan seluruh Segi Tiga Emas (pemandu atau jurubahasa Bahasa Melayu diatur atas permintaan).',
+        directAnswer: 'Guide India Tours menyediakan pemandu peribadi berlesen Kementerian Pelancongan di Agra dan seluruh Segi Tiga Emas (Delhi, Agra, Jaipur). Pemandu atau jurubahasa Bahasa Melayu diatur atas permintaan. Anda akan melawat Taj Mahal, Kubu Agra dan Fatehpur Sikri dengan kenderaan persendirian berhawa dingin dan pemandu. Dinilai 4.9/5 oleh lebih {count} pelancong di Google. Lawatan persendirian bermula dari USD 49 seorang. Taj Mahal ditutup pada hari Jumaat.',
+        includedHeading: 'Apa yang termasuk',
+        included: [
+            'Pemandu peribadi berlesen (Bahasa Melayu atas permintaan)',
+            'Kenderaan persendirian berhawa dingin dengan pemandu',
+            'Ambil dan hantar di hotel',
+            'Sokongan WhatsApp 24 jam',
+        ],
+        faqHeading: 'Soalan lazim',
+        faq: [
+            { q: 'Adakah anda ada pemandu Bahasa Melayu di Agra?', a: 'Kami mengatur pemandu atau jurubahasa Bahasa Melayu atas permintaan. Sila nyatakan tarikh anda semasa membuat permintaan.' },
+            { q: 'Berapakah kos lawatan persendirian?', a: 'Lawatan persendirian sehari di Agra bermula dari USD 49 seorang. Hubungi kami melalui WhatsApp untuk sebut harga yang disesuaikan.' },
+        ],
+        ctaHeading: 'Tempah pemandu Bahasa Melayu',
+        ctaText: 'Beritahu kami tarikh dan minat anda — kami akan sediakan itinerari persendirian mengikut citarasa anda.',
+        ctaBtn: 'Minta sebut harga',
+        altBtn: 'Lihat lawatan',
+        ratingLabel: '4.9/5 · lebih {count} ulasan Google',
     },
 ];
 
