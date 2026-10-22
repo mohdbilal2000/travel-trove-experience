@@ -452,7 +452,7 @@ export const generateConnectedGraphSchema = () => {
           "maxValue": 25
         },
         "sameAs": [
-          "https://www.google.com/maps/place/Guide+India+Tours/",
+          "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
           "https://www.asiabylocals.com/india/agra",
           "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
           "https://www.trustpilot.com/review/guideindiatours.com"
@@ -475,7 +475,7 @@ export const generateConnectedGraphSchema = () => {
           "email": "info@guideindiatours.com",
           "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
         },
-        "hasMap": "https://www.google.com/maps/place/Guide+India+Tours/",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": "27.1767",

@@ -145,551 +145,311 @@ const requiresDurationSelection = (id: number) => {
     return id === 2 || id === 3;
 };
 
-export default function GuideBookingPage() {
-    const [selectedCity, setSelectedCity] = useState<string>("agra");
-    const [selectedMonuments, setSelectedMonuments] = useState<string[]>([]);
-    const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
-    const [selectedDate, setSelectedDate] = useState<string>("");
-    const [selectedLanguage, setSelectedLanguage] = useState<string>("english");
-    const [selectedDuration, setSelectedDuration] = useState<{ [packageId: number]: 'halfDay' | 'fullDay' | null }>({});
+const LANGS = [
+    { value: "english", label: "English" },
+    { value: "french", label: "Français" },
+    { value: "german", label: "Deutsch" },
+    { value: "spanish", label: "Español" },
+    { value: "italian", label: "Italiano" },
+    { value: "russian", label: "Русский" },
+    { value: "japanese", label: "日本語" },
+];
 
-    const currentCityData = guideServices[selectedCity];
+const todayIso = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+const prettyDate = (iso: string) =>
+    iso ? new Date(`${iso}T00:00:00`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "";
 
-    const availableLanguages = [
-        { value: "english", label: "English", flag: "🇬🇧" },
-        { value: "french", label: "French", flag: "🇫🇷" },
-        { value: "german", label: "German", flag: "🇩🇪" },
-        { value: "spanish", label: "Spanish", flag: "🇪🇸" },
-        { value: "japanese", label: "Japanese", flag: "🇯🇵" },
-        { value: "russian", label: "Russian", flag: "🇷🇺" },
-        { value: "italian", label: "Italian", flag: "🇮🇹" },
-    ];
-
-    // Derived states
-    const isFriday = useMemo(() => selectedDate ? new Date(selectedDate).getDay() === 5 : false, [selectedDate]);
-    const showFridayWarning = isFriday && selectedCity === 'agra';
-
-    const progress = useMemo(() => {
-        let p = 0;
-        if (selectedDate) p += 25;
-        if (selectedLanguage) p += 25;
-        if (selectedPackage) p += 25;
-        if (selectedMonuments.length > 0) p += 25;
-        return Math.min(p, 100);
-    }, [selectedDate, selectedLanguage, selectedPackage, selectedMonuments]);
-
-    const toggleMonument = (monument: string) => {
-        setSelectedMonuments(prev =>
-            prev.includes(monument) ? prev.filter(m => m !== monument) : [...prev, monument]
-        );
-    };
-
-    const currentPackageData = useMemo(() =>
-        tourPackages.find(p => p.id === selectedPackage), [selectedPackage]
+function StepHeader({ n, title, hint, done }: { n: number; title: string; hint: string; done: boolean }) {
+    return (
+        <div className="flex items-start gap-4 mb-5">
+            <div className={cn(
+                "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 transition-colors",
+                done ? "bg-green-600 text-white" : "bg-maroon-600 text-white"
+            )}>
+                {done ? <Check className="w-4 h-4" /> : n}
+            </div>
+            <div>
+                <h2 className="text-xl md:text-2xl font-display font-bold text-gray-900 leading-tight">{title}</h2>
+                <p className="text-sm text-gray-500 mt-0.5">{hint}</p>
+            </div>
+        </div>
     );
+}
 
-    const getPriceDisplay = (pkg: any) => {
-        const duration = selectedDuration[pkg.id];
-        if (pkg.id === 2) {
-            if (duration === 'halfDay') return '$28.99';
-            if (duration === 'fullDay') return '$38.99';
-            return '$28.99 - $38.99';
-        }
-        if (pkg.id === 3) {
-            if (duration === 'halfDay') return '$55.99';
-            if (duration === 'fullDay') return '$111.99';
-            return '$55.99 - $111.99';
-        }
+export default function GuideBookingPage() {
+    const [city, setCity] = useState<string>("agra");
+    const [date, setDate] = useState<string>("");
+    const [guests, setGuests] = useState<number>(2);
+    const [language, setLanguage] = useState<string>("english");
+    const [pkgId, setPkgId] = useState<number | null>(null);
+    const [duration, setDuration] = useState<"halfDay" | "fullDay" | null>(null);
+    const [monuments, setMonuments] = useState<string[]>([]);
+
+    const cityData = guideServices[city];
+    const pkg = useMemo(() => tourPackages.find((p) => p.id === pkgId), [pkgId]);
+    const needsDuration = pkgId !== null && requiresDurationSelection(pkgId);
+    const isFriday = date ? new Date(`${date}T00:00:00`).getDay() === 5 : false;
+    const tajPicked = monuments.includes("Taj Mahal");
+
+    const changeCity = (c: string) => { setCity(c); setMonuments([]); };
+    const toggle = (m: string) => setMonuments((prev) => (prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]));
+
+    const price = (() => {
+        if (!pkg) return "";
+        if (pkg.id === 2) return duration === "halfDay" ? "$28.99" : duration === "fullDay" ? "$38.99" : pkg.price;
+        if (pkg.id === 3) return duration === "halfDay" ? "$55.99" : duration === "fullDay" ? "$111.99" : pkg.price;
         return pkg.price;
+    })();
+
+    const missing: string[] = [];
+    if (!date) missing.push("date");
+    if (!pkg) missing.push("service level");
+    if (needsDuration && !duration) missing.push("half or full day");
+    if (monuments.length === 0) missing.push("at least one monument");
+    const ready = missing.length === 0;
+
+    const send = () => {
+        if (!ready || !pkg) return;
+        const langLabel = LANGS.find((l) => l.value === language)?.label || "English";
+        const msg = [
+            "Hi Guide India Tours! I'd like to book a guide.",
+            `City: ${cityData.city}`,
+            `Date: ${prettyDate(date)}`,
+            `Guests: ${guests}`,
+            `Language: ${langLabel}`,
+            `Service: ${pkg.name}${duration ? ` (${duration === "halfDay" ? "half day" : "full day"})` : ""}`,
+            `Monuments: ${monuments.join(", ")}`,
+            "Please confirm availability and the final price.",
+        ].join("\n");
+        window.open(`https://wa.me/918979810991?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
-    const handleBookNow = () => {
-        const pkgName = currentPackageData?.name;
-        const durationText = selectedDuration[selectedPackage!] ? ` (${selectedDuration[selectedPackage!]})` : '';
-        const langLabel = availableLanguages.find(l => l.value === selectedLanguage)?.label || 'English';
-        const message = `Hi GuideIndia Tours! I'd like to book a ${pkgName} tour in ${currentCityData.city}${durationText}.
-Date: ${selectedDate}
-Language: ${langLabel}
-Monuments: ${selectedMonuments.join(', ')}
-Please provide availability and pricing details.`;
-
-        const whatsappUrl = `https://wa.me/918979810991?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-    };
+    const card = "bg-white rounded-2xl border border-gray-100 shadow-sm p-5 md:p-8";
+    const chip = (on: boolean) => cn(
+        "px-4 py-2.5 rounded-xl border text-sm font-semibold transition-colors text-left",
+        on ? "border-maroon-600 bg-maroon-600 text-white" : "border-gray-200 bg-white text-gray-700 hover:border-maroon-600/50"
+    );
 
     return (
         <main className="min-h-screen bg-ivory-100">
-            {/* Premium Hero */}
-            <section className="relative min-h-[75vh] md:h-[60vh] flex flex-col justify-center overflow-hidden pt-28 md:pt-0 pb-10 md:pb-0">
+            {/* Hero */}
+            <section className="relative pt-28 md:pt-36 pb-10 md:pb-14 overflow-hidden">
                 <div className="absolute inset-0">
-                    <OptimizedImage
-                        src={currentCityData.image}
-                        alt={selectedCity}
-                        className="w-full h-full object-cover grayscale-[20%]"
-                        priority
-                    />
-                    {/* Gradient overlay — lighter on mobile so the image stays visible */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-maroon-600/70 via-black/45 to-black/60 md:from-maroon-600/85 md:via-maroon-600/30 md:to-black/40" />
+                    <OptimizedImage src={cityData.image} alt={`${cityData.city} monuments`} className="w-full h-full object-cover" priority />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
                 </div>
-
-                <div className="container mx-auto px-4 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 mb-4 md:mb-6 px-3 md:px-4 py-1 md:py-1.5 uppercase tracking-widest text-[10px] md:text-xs">
-                            Personalized Guiding Services
-                        </Badge>
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-[1.05] md:leading-tight tracking-tight">
-                            Book India&apos;s Best <br /><span className="text-gold-500">Local Experts</span>
-                        </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 mb-6 md:mb-10 leading-relaxed font-light max-w-2xl">
-                            Explore {currentCityData.city} with government-authorized storytellers who bring history to life. Same-day bookings available.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2 md:gap-3">
-                            {Object.keys(guideServices).map((city) => (
-                                <button
-                                    key={city}
-                                    onClick={() => setSelectedCity(city)}
-                                    className={cn(
-                                        "px-5 md:px-8 py-2.5 md:py-3 rounded-full text-sm font-bold transition-all duration-300 border-2",
-                                        selectedCity === city
-                                            ? "bg-white text-maroon-600 border-white shadow-xl scale-105"
-                                            : "bg-transparent text-white border-white/30 hover:bg-white/10"
-                                    )}
-                                >
-                                    {guideServices[city].city}
-                                </button>
-                            ))}
-                        </div>
-                    </motion.div>
+                <div className="container mx-auto px-4 relative z-10 max-w-6xl">
+                    <p className="text-gold-500 text-xs font-bold uppercase tracking-[0.25em] mb-3">Licensed tour guides · Agra · Delhi · Jaipur</p>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white leading-tight max-w-2xl">
+                        Book a government-licensed guide in {cityData.city}
+                    </h1>
+                    <p className="text-white/80 mt-4 max-w-xl text-base md:text-lg">
+                        Pick your date, language and monuments. We confirm availability and the final price on WhatsApp — no payment on this page.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm text-white/85">
+                        <span className="flex items-center gap-2"><Star className="w-4 h-4 text-gold-500 fill-current" /> 4.9/5 on Google</span>
+                        <span className="flex items-center gap-2"><Shield className="w-4 h-4 text-gold-500" /> Ministry of Tourism licensed</span>
+                        <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-gold-500" /> Reply within 2 hours</span>
+                    </div>
                 </div>
+            </section>
 
-                {/* Floating Inclusions — desktop only; mobile gets its own strip below */}
-                <div className="hidden md:block absolute bottom-0 right-0 left-0 bg-white/5 backdrop-blur-xl border-t border-white/10">
-                    <div className="container mx-auto px-4 py-6">
-                        <div className="flex justify-between items-center text-white/90">
-                            <span className="text-sm font-bold uppercase tracking-widest opacity-60">All Bookings Include:</span>
-                            <div className="flex gap-12">
-                                {freeInclusions.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="text-gold-500">{item.icon}</div>
-                                        <div>
-                                            <div className="text-xs font-bold leading-none">{item.title}</div>
-                                            <div className="text-xs opacity-60">{item.desc}</div>
-                                        </div>
+            {/* Included strip */}
+            <div className="bg-white border-b border-gray-100">
+                <div className="container mx-auto px-4 max-w-6xl py-4 flex flex-wrap items-center gap-x-8 gap-y-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-maroon-600">Every booking includes</span>
+                    {freeInclusions.map((item, i) => (
+                        <span key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                            <span className="text-maroon-600 [&_svg]:w-4 [&_svg]:h-4">{item.icon}</span>
+                            {item.title}
+                            <span className="text-gray-400 hidden sm:inline">· {item.desc}</span>
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            <section className="py-8 md:py-14">
+                <div className="container mx-auto px-4 max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
+                    <div className="lg:col-span-8 space-y-5">
+
+                        {/* 1 City + date + guests */}
+                        <div className={card}>
+                            <StepHeader n={1} title="Where and when" hint="Choose the city, your date and how many of you are travelling" done={!!date} />
+                            <div className="flex flex-wrap gap-2 mb-5">
+                                {Object.keys(guideServices).map((c) => (
+                                    <button key={c} type="button" onClick={() => changeCity(c)} className={chip(city === c)}>
+                                        {guideServices[c].city}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <label className="block">
+                                    <span className="text-xs font-bold uppercase tracking-wider text-gray-500">Tour date</span>
+                                    <div className="relative mt-1.5">
+                                        <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-maroon-600 pointer-events-none" />
+                                        <input type="date" value={date} min={todayIso()} onChange={(e) => setDate(e.target.value)}
+                                            className="w-full pl-11 pr-3 py-3 bg-white border border-gray-200 rounded-xl focus:border-maroon-600 focus:ring-2 focus:ring-maroon-600/15 outline-none text-base" />
                                     </div>
+                                </label>
+                                <div>
+                                    <span className="text-xs font-bold uppercase tracking-wider text-gray-500">Guests</span>
+                                    <div className="mt-1.5 flex items-center border border-gray-200 rounded-xl overflow-hidden bg-white">
+                                        <button type="button" aria-label="Fewer guests" onClick={() => setGuests((g) => Math.max(1, g - 1))} className="w-12 h-12 text-xl text-gray-600 hover:bg-gray-50">−</button>
+                                        <span className="flex-1 text-center font-semibold tabular-nums">{guests} {guests === 1 ? "guest" : "guests"}</span>
+                                        <button type="button" aria-label="More guests" onClick={() => setGuests((g) => Math.min(20, g + 1))} className="w-12 h-12 text-xl text-gray-600 hover:bg-gray-50">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {isFriday && city === "agra" && (
+                                <div className="mt-4 flex gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-900">
+                                    <Info className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                                    <p><b>The Taj Mahal is closed on Fridays.</b> Agra Fort, Itimad-ud-Daulah, Mehtab Bagh and Fatehpur Sikri are good alternatives{tajPicked ? " — please remove the Taj Mahal or pick another date" : ""}.</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* 2 Language */}
+                        <div className={card}>
+                            <StepHeader n={2} title="Guide language" hint="Licensed guides in several languages; some are arranged on request" done={true} />
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                {LANGS.map((l) => (
+                                    <button key={l.value} type="button" onClick={() => setLanguage(l.value)} className={chip(language === l.value)}>{l.label}</button>
                                 ))}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Mobile inclusions strip — separate so it never collides with the hero content */}
-            <div className="md:hidden bg-ivory-300 border-b border-gray-200 py-3">
-                <div className="container mx-auto px-4">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-maroon-600 mb-2">Every booking includes</p>
-                    <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-gray-700 text-xs font-medium">
-                        {freeInclusions.map((item, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                                <span className="text-maroon-600 [&_svg]:w-4 [&_svg]:h-4">{item.icon}</span>
-                                <span>{item.title}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Progress Sticky */}
-            <div className="sticky top-14 md:top-[72px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 shadow-sm">
-                <div className="container mx-auto px-4">
-                    <div className="flex items-center gap-3 md:gap-4">
-                        <span className="text-[10px] sm:text-xs font-black uppercase tracking-tighter text-maroon-600 whitespace-nowrap">
-                            <span className="hidden sm:inline">Reservation </span>Progress
-                        </span>
-                        <div className="flex items-center gap-3 flex-1 min-w-0">
-                            <div className="h-1 bg-gray-100 flex-1 rounded-full overflow-hidden">
-                                <motion.div
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${progress}%` }}
-                                    className="h-full bg-maroon-600"
-                                />
-                            </div>
-                            <span className="text-xs font-bold text-gray-500 tabular-nums whitespace-nowrap">{Math.round(progress)}%</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 group cursor-help border-l border-gray-200 pl-3" title="Your details are encrypted — no payment is taken on this page">
-                            <Shield className="w-4 h-4 text-green-500 flex-shrink-0" />
-                            <span className="hidden md:inline text-xs font-bold text-gray-500 uppercase">SSL Secure</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <section className="py-12 md:py-20">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-
-                        {/* Left: Form Steps */}
-                        <div className="lg:col-span-8 space-y-8 md:space-y-16 lg:space-y-24">
-
-                            {/* Step 1: Date */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                className="relative"
-                            >
-                                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
-                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-maroon-600 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-maroon-600/30 transform -rotate-3">1</div>
-                                    <div>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Select Date</h2>
-                                        <p className="text-gray-500">Choose your preferred tour date</p>
-                                    </div>
-                                </div>
-
-                                <div className="max-w-md">
-                                    <div className="relative">
-                                        <Calendar className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-maroon-600" />
-                                        <input
-                                            type="date"
-                                            value={selectedDate}
-                                            onChange={(e) => setSelectedDate(e.target.value)}
-                                            min={new Date().toISOString().split('T')[0]}
-                                            className="w-full pl-14 pr-6 py-5 bg-white border-2 border-gray-100 rounded-2xl focus:border-maroon-600 outline-none text-lg font-medium shadow-sm transition-all focus:shadow-xl hover:border-gray-200"
-                                        />
-                                    </div>
-                                    {showFridayWarning && (
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            className="mt-4 p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl"
-                                        >
-                                            <div className="flex gap-4">
-                                                <Info className="w-6 h-6 text-amber-500 shrink-0" />
+                        {/* 3 Service level */}
+                        <div className={card}>
+                            <StepHeader n={3} title="Service level" hint="Prices are starting rates; we confirm the final price before you book" done={!!pkg && (!needsDuration || !!duration)} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                {tourPackages.map((p) => {
+                                    const on = pkgId === p.id;
+                                    return (
+                                        <button key={p.id} type="button"
+                                            onClick={() => { setPkgId(on ? null : p.id); setDuration(null); }}
+                                            className={cn("relative text-left rounded-xl border p-5 transition-colors",
+                                                on ? "border-maroon-600 ring-2 ring-maroon-600/20 bg-maroon-600/[0.03]" : "border-gray-200 bg-white hover:border-maroon-600/50")}>
+                                            {p.popular && <span className="absolute -top-2.5 left-5 bg-maroon-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Most popular</span>}
+                                            <div className="flex items-start justify-between gap-3">
                                                 <div>
-                                                    <p className="font-bold text-amber-900 text-sm">Friday Notice</p>
-                                                    <p className="text-amber-700 text-xs leading-relaxed">The Taj Mahal is closed for prayers on Fridays. However, other monuments in Agra like the Fort and Fatehpur Sikri are open.</p>
+                                                    <div className="font-bold text-gray-900 text-lg">{p.name}</div>
+                                                    <div className="text-xs text-gray-500">{p.subtitle}</div>
+                                                </div>
+                                                <div className="text-right flex-shrink-0">
+                                                    <div className="text-[10px] uppercase tracking-wider text-gray-400">From</div>
+                                                    <div className="text-lg font-bold text-maroon-600 whitespace-nowrap">{p.price.split(" – ")[0]}</div>
                                                 </div>
                                             </div>
-                                        </motion.div>
-                                    )}
-                                </div>
-                            </motion.div>
-
-                            {/* Step 2: Language */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
-                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gold-500 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-gold-500/30 transform rotate-3">2</div>
-                                    <div>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Guide Language</h2>
-                                        <p className="text-gray-500">Choose your preferred language for the guided tour</p>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                    {availableLanguages.map((lang) => (
-                                        <button
-                                            key={lang.value}
-                                            onClick={() => setSelectedLanguage(lang.value)}
-                                            className={cn(
-                                                "flex items-center gap-3 p-4 rounded-2xl border-2 transition-all duration-300 cursor-pointer text-left",
-                                                selectedLanguage === lang.value
-                                                    ? "border-maroon-600 bg-maroon-600 text-white shadow-lg scale-[1.02]"
-                                                    : "border-gray-100 bg-white hover:border-gray-300 hover:shadow-md"
-                                            )}
-                                        >
-                                            <span className="text-2xl">{lang.flag}</span>
-                                            <span className="text-sm font-bold">{lang.label}</span>
+                                            <ul className="mt-3 space-y-1.5">
+                                                {p.features.slice(0, 4).map((f, i) => (
+                                                    <li key={i} className="flex gap-2 text-sm text-gray-600"><Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />{f}</li>
+                                                ))}
+                                            </ul>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            {needsDuration && (
+                                <div className="mt-4 flex gap-2 p-1 bg-gray-100 rounded-xl max-w-sm">
+                                    {(["halfDay", "fullDay"] as const).map((d) => (
+                                        <button key={d} type="button" onClick={() => setDuration(d)}
+                                            className={cn("flex-1 py-2.5 rounded-lg text-sm font-semibold", duration === d ? "bg-white text-maroon-600 shadow" : "text-gray-500")}>
+                                            {d === "halfDay" ? "Half day" : "Full day"}
                                         </button>
                                     ))}
                                 </div>
-                            </motion.div>
-
-                            {/* Step 3: Package */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
-                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-black text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-black/30 transform -rotate-3">3</div>
-                                    <div>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Choose Package</h2>
-                                        <p className="text-gray-500">Pick a service level that fits your needs</p>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    {tourPackages.map((pkg) => (
-                                        <div
-                                            key={pkg.id}
-                                            onClick={() => setSelectedPackage(prev => prev === pkg.id ? null : pkg.id)}
-                                            className={cn(
-                                                "group relative bg-white border-2 rounded-3xl p-8 transition-all duration-500 cursor-pointer overflow-hidden",
-                                                selectedPackage === pkg.id
-                                                    ? "border-maroon-600 shadow-2xl scale-[1.02]"
-                                                    : "border-gray-100 hover:border-gray-300 hover:shadow-xl"
-                                            )}
-                                        >
-                                            {pkg.popular && (
-                                                <div className="absolute top-0 right-10 bg-maroon-600 text-white px-6 py-2 rounded-b-2xl font-black text-xs uppercase tracking-tighter shadow-lg">
-                                                    Best Choice
-                                                </div>
-                                            )}
-
-                                            <div className="flex justify-between items-start mb-8">
-                                                <div className={cn(
-                                                    "w-14 h-14 rounded-2xl flex items-center justify-center transition-colors",
-                                                    selectedPackage === pkg.id ? "bg-maroon-600 text-white" : "bg-gray-50 text-gray-400 group-hover:bg-maroon-600/5 group-hover:text-maroon-600"
-                                                )}>
-                                                    {pkg.icon}
-                                                </div>
-                                                <div className="text-right">
-                                                    <div className="text-gray-400 text-xs font-bold uppercase tracking-widest leading-none mb-1">Starting At</div>
-                                                    <div className="text-3xl font-black text-maroon-600">{pkg.price}</div>
-                                                </div>
-                                            </div>
-
-                                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                                            <p className="text-sm text-gray-500 leading-relaxed mb-8">{pkg.description}</p>
-
-                                            <div className="space-y-4 mb-8">
-                                                {pkg.features.map((f, i) => (
-                                                    <div key={i} className="flex items-start gap-4">
-                                                        <div className="mt-1 w-5 h-5 rounded-full bg-green-50 flex items-center justify-center">
-                                                            <Check className="w-3 h-3 text-green-600" />
-                                                        </div>
-                                                        <span className="text-sm font-medium text-gray-600">{f}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            {requiresDurationSelection(pkg.id) && (
-                                                <div className="flex gap-2 p-1 bg-gray-50 rounded-2xl">
-                                                    <button
-                                                        onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'halfDay' })); }}
-                                                        className={cn(
-                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
-                                                            selectedDuration[pkg.id] === 'halfDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
-                                                        )}
-                                                    >Half Day</button>
-                                                    <button
-                                                        onClick={(e) => { e.stopPropagation(); setSelectedDuration(prev => ({ ...prev, [pkg.id]: 'fullDay' })); }}
-                                                        className={cn(
-                                                            "flex-1 min-h-[44px] py-3 rounded-xl text-xs font-bold transition-all",
-                                                            selectedDuration[pkg.id] === 'fullDay' ? "bg-white text-maroon-600 shadow-md" : "text-gray-400 hover:text-gray-600"
-                                                        )}
-                                                    >Full Day</button>
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
-
-                            {/* Step 4: Monuments */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
-                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-maroon-600/80 text-white flex items-center justify-center text-xl md:text-3xl font-display shadow-2xl shadow-maroon-600/20 transform rotate-2">4</div>
-                                    <div>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Select Monuments</h2>
-                                        <p className="text-gray-500">Tell us where you want to go</p>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                    {currentCityData.monuments.map((m: string) => (
-                                        <div
-                                            key={m}
-                                            onClick={() => toggleMonument(m)}
-                                            className={cn(
-                                                "group relative p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer",
-                                                selectedMonuments.includes(m)
-                                                    ? "bg-maroon-600 border-maroon-600 text-white shadow-2xl scale-105"
-                                                    : "bg-white border-gray-100 hover:border-maroon-600/30 hover:shadow-lg"
-                                            )}
-                                        >
-                                            <div className="flex items-center justify-between mb-4">
-                                                <MapPin className={cn(
-                                                    "w-5 h-5",
-                                                    selectedMonuments.includes(m) ? "text-white" : "text-gray-300 group-hover:text-maroon-600"
-                                                )} />
-                                                {selectedMonuments.includes(m) && <CheckCircle className="w-5 h-5" />}
-                                            </div>
-                                            <span className="text-sm font-black uppercase tracking-tight">{m}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
-
+                            )}
                         </div>
 
-                        {/* Right: Summary Sidebar */}
-                        <div className="lg:col-span-4">
-                            <div className="sticky top-32">
-                                <Card className="bg-white border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-3xl overflow-hidden">
-                                    <div className="p-6 md:p-10">
-                                        <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6 md:mb-8 border-b border-gray-100 pb-4 md:pb-6">Reservation Summary</h3>
-
-                                        <div className="space-y-8 mb-10">
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Base Destination</span>
-                                                <span className="text-lg font-bold text-maroon-600">{currentCityData.city}</span>
-                                            </div>
-
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Planned Date</span>
-                                                <div className="flex items-center gap-3">
-                                                    <span className={cn("text-lg font-bold", selectedDate ? "text-gray-900" : "text-gray-200")}>
-                                                        {selectedDate || "Not Selected"}
-                                                    </span>
-                                                    {selectedDate && <CheckCircle className="w-5 h-5 text-green-500" />}
-                                                </div>
-                                            </div>
-
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Guide Language</span>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-lg">{availableLanguages.find(l => l.value === selectedLanguage)?.flag}</span>
-                                                    <span className="text-lg font-bold text-gray-900">{availableLanguages.find(l => l.value === selectedLanguage)?.label}</span>
-                                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                                </div>
-                                            </div>
-
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Service Level</span>
-                                                <div className="flex items-center justify-between">
-                                                    <span className={cn("text-lg font-bold", selectedPackage ? "text-gray-900" : "text-gray-200")}>
-                                                        {currentPackageData?.name || "Not Selected"}
-                                                        <span className="text-xs font-light block opacity-60">
-                                                            {selectedDuration[selectedPackage!] ? `(${selectedDuration[selectedPackage!]})` : ""}
-                                                        </span>
-                                                    </span>
-                                                    <span className="text-maroon-600 font-black">
-                                                        {selectedPackage ? getPriceDisplay(currentPackageData) : ""}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-black uppercase text-gray-500 tracking-widest">Monuments ({selectedMonuments.length})</span>
-                                                <div className="flex flex-wrap gap-2 mt-2">
-                                                    {selectedMonuments.map(m => (
-                                                        <Badge key={m} className="bg-gray-100 text-gray-600 hover:bg-gray-200 border-none px-3 py-1 font-bold text-[9px] uppercase">
-                                                            {m}
-                                                        </Badge>
-                                                    ))}
-                                                    {selectedMonuments.length === 0 && <span className="text-gray-200 text-lg font-bold">None Selected</span>}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <Button
-                                            onClick={handleBookNow}
-                                            disabled={!selectedDate || !selectedPackage || selectedMonuments.length === 0}
-                                            className="w-full py-6 md:py-10 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500 group overflow-hidden relative"
-                                        >
-                                            <span className="relative z-10 flex items-center justify-center gap-3">
-                                                Proceed with Request
-                                                <ChevronRight className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" />
-                                            </span>
-                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                        </Button>
-
-                                        <p className="mt-4 text-xs text-gray-500 text-center leading-relaxed">
-                                            No payment is taken now — this sends your request via WhatsApp. We confirm guide availability and final pricing within 2 hours, and your booking is only confirmed once you approve the quote.
-                                        </p>
-
-                                        <div className="mt-8 flex flex-col items-center gap-4 text-center">
-                                            <div className="flex -space-x-4 mb-2">
-                                                {[1, 2, 3, 4].map(i => <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-gray-200" />)}
-                                                <div className="w-10 h-10 rounded-full border-4 border-white bg-gold-500 flex items-center justify-center text-xs font-bold text-white">+500</div>
-                                            </div>
-                                            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Rest easy. 15,000+ Travelers Guided Since 2004.</p>
-                                        </div>
-                                    </div>
-                                </Card>
-
-                                {/* Support Sticky */}
-                                <div className="mt-8 p-8 bg-[#F5F1EE] rounded-3xl flex items-center justify-between border border-white">
-                                    <div>
-                                        <h4 className="font-bold text-gray-900 text-sm">Need immediate help?</h4>
-                                        <p className="text-xs text-gray-500">Live support via WhatsApp</p>
-                                    </div>
-                                    <a href="https://wa.me/918979810991" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#25D366] shadow-sm hover:scale-110 transition-transform">
-                                        <Phone className="w-6 h-6 fill-current" />
-                                    </a>
-                                </div>
+                        {/* 4 Monuments */}
+                        <div className={card}>
+                            <StepHeader n={4} title={`Monuments in ${cityData.city}`} hint="Tap everything you would like to see" done={monuments.length > 0} />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                                {cityData.monuments.map((m: string) => {
+                                    const on = monuments.includes(m);
+                                    return (
+                                        <button key={m} type="button" onClick={() => toggle(m)} className={cn(chip(on), "flex items-center justify-between gap-2")}>
+                                            <span>{m}</span>
+                                            {on ? <CheckCircle className="w-4 h-4 flex-shrink-0" /> : <Plus className="w-4 h-4 text-gray-400 flex-shrink-0" />}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
-
                     </div>
+
+                    {/* Summary */}
+                    <aside className="lg:col-span-4">
+                        <div className="lg:sticky lg:top-28 space-y-4">
+                            <div className={card}>
+                                <h3 className="text-lg font-display font-bold text-gray-900 mb-4">Your request</h3>
+                                <dl className="space-y-3 text-sm">
+                                    {[
+                                        ["City", cityData.city],
+                                        ["Date", date ? prettyDate(date) : "—"],
+                                        ["Guests", String(guests)],
+                                        ["Language", LANGS.find((l) => l.value === language)?.label],
+                                        ["Service", pkg ? `${pkg.name}${duration ? ` · ${duration === "halfDay" ? "half day" : "full day"}` : ""}` : "—"],
+                                        ["Monuments", monuments.length ? monuments.join(", ") : "—"],
+                                    ].map(([k, v]) => (
+                                        <div key={k} className="flex justify-between gap-4 border-b border-gray-100 pb-2.5">
+                                            <dt className="text-gray-500">{k}</dt>
+                                            <dd className="font-semibold text-gray-900 text-right">{v}</dd>
+                                        </div>
+                                    ))}
+                                </dl>
+                                {pkg && (
+                                    <div className="mt-4 flex items-baseline justify-between">
+                                        <span className="text-sm text-gray-500">Starting price</span>
+                                        <span className="text-2xl font-bold text-maroon-600">{price}</span>
+                                    </div>
+                                )}
+                                <Button onClick={send} disabled={!ready} className="w-full mt-5 h-12 rounded-xl bg-maroon-600 hover:bg-maroon-700 text-white font-semibold text-base">
+                                    Send request on WhatsApp <ArrowRight className="w-4 h-4 ml-2" />
+                                </Button>
+                                {!ready && <p className="mt-2 text-xs text-gray-500 text-center">Still needed: {missing.join(", ")}</p>}
+                                <p className="mt-3 text-xs text-gray-500 text-center leading-relaxed">No payment now. We confirm availability and the final price within 2 hours; your booking is confirmed only after you approve.</p>
+                            </div>
+                            <a href="https://wa.me/918979810991" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white rounded-2xl border border-gray-100 p-5 hover:border-green-500/50">
+                                <div>
+                                    <p className="font-semibold text-gray-900 text-sm">Questions first?</p>
+                                    <p className="text-xs text-gray-500">Chat with us on WhatsApp</p>
+                                </div>
+                                <Phone className="w-5 h-5 text-green-600" />
+                            </a>
+                        </div>
+                    </aside>
                 </div>
             </section>
 
-            {/* Safety & Trust */}
-            <section className="py-16 md:py-32 bg-white border-t border-gray-100">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center mb-20">
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">Expertise You Can Trust</h2>
-                        <p className="text-lg text-gray-500">We prioritize your experience through rigorous guide selection and continuous service improvement.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 text-maroon-600">
-                                <Shield className="w-10 h-10" />
+            {/* Trust */}
+            <section className="py-14 md:py-20 bg-white border-t border-gray-100">
+                <div className="container mx-auto px-4 max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { icon: <Shield className="w-6 h-6" />, t: "Verified credentials", d: "Every guide holds a government licence from the Ministry of Tourism." },
+                        { icon: <Languages className="w-6 h-6" />, t: "Your language", d: "English, French, German, Spanish, Italian and Russian guides; other languages arranged on request." },
+                        { icon: <Award className="w-6 h-6" />, t: "Since 2004", d: "Rated 4.9/5 on Google by travellers from around the world." },
+                    ].map((x) => (
+                        <div key={x.t} className="flex gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-maroon-600/10 text-maroon-600 flex items-center justify-center flex-shrink-0">{x.icon}</div>
+                            <div>
+                                <h3 className="font-bold text-gray-900">{x.t}</h3>
+                                <p className="text-sm text-gray-500 mt-1 leading-relaxed">{x.d}</p>
                             </div>
-                            <h3 className="text-xl font-bold mb-4">Verified Credentials</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed">Every single guide is government-authorized with a verified heritage license from the Ministry of Tourism.</p>
                         </div>
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 text-maroon-600">
-                                <Languages className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-4">Multilingual Fluency</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed">Beyond English, we provide specialists in French, German, Spanish, Japanese, and Russian for a native experience.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 text-maroon-600">
-                                <Star className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-4">5-Star Standards</h3>
-                            <p className="text-sm text-gray-500 leading-relaxed">Consistently recognized on Google and TripAdvisor for our commitment to historical accuracy and hospitality.</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
 
             <RelatedPages
                 title="Explore More"
                 pages={[
-                    {
-                        href: "/plans",
-                        title: "View Tour Packages",
-                        description: "Discover our range of curated tour packages from basic guides to luxury multi-city experiences.",
-                    },
-                    {
-                        href: "/services",
-                        title: "Our Services",
-                        description: "Learn about our full suite of travel services including transport, stays, and custom itineraries.",
-                    },
-                    {
-                        href: "/reviews",
-                        title: "Guest Reviews",
-                        description: "See what thousands of travelers say about their experience with our expert guides.",
-                    },
+                    { href: "/plans", title: "View Tour Packages", description: "Curated tours from single-monument guides to multi-city journeys." },
+                    { href: "/services", title: "Our Services", description: "Transport, stays and custom itineraries." },
+                    { href: "/reviews", title: "Guest Reviews", description: "What travellers say about our guides." },
                 ]}
             />
         </main>

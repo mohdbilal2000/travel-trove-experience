@@ -184,7 +184,7 @@ export default function ReviewsPage() {
                             <p className="text-4xl font-display font-bold text-gray-900">400+</p>
                             <p className="text-sm text-gray-500 mt-1">verified reviews</p>
                             <a
-                                href="https://www.google.com/maps/place/Guide+India+Tours/"
+                                href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-block text-xs font-bold text-maroon-600 hover:text-black mt-2 underline underline-offset-2"

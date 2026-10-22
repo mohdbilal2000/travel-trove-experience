@@ -22,7 +22,7 @@ export async function GET() {
         priceRange: "$$$",
         slogan: "Experience India's Golden Triangle with Expert Guides",
         sameAs: [
-            "https://www.google.com/maps/place/Guide+India+Tours/",
+            "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
             "https://www.asiabylocals.com/india/agra",
             "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
             "https://www.trustpilot.com/review/guideindiatours.com",
