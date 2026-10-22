@@ -162,8 +162,8 @@ fill space.
 supplied, exactly as supplied. Never guess, complete or modify banking data.
 
 **Closing** — short, human, personalised. Keep the existing footer, which carries:
-Guide India Tours · India Office; 31/84A, Jangjeet Nagar, Shamshabad Road, Agra, Uttar
-Pradesh – 282001, India; **GSTIN 09ABCFG5043N1Z4**; WhatsApp +91 8979810991;
+Guide India Tours · India Office; 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra,
+Uttar Pradesh – 282001, India; **GSTIN 09ABCFG5043N1Z4**; WhatsApp +91 8979810991;
 info@guideindiatours.com; guideindiatours.com.
 
 ## Content rules

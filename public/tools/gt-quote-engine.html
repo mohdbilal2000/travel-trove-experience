@@ -820,7 +820,7 @@ ${dec?`\nHeads up — this is peak season here and vehicles go\nearly. Happy to 
 Just ${x.advPct}% advance confirms your booking, the rest on
 arrival. Our bank details are on the last page of the quote.
 
-— Guide India Tours, Agra | Since 2007`;
+— Guide India Tours, Agra | Since 2004`;
 }
 
 /* ---------- client-facing PDF ----------
@@ -899,7 +899,7 @@ function buildDoc(){
   </div>
 
   <div class="d-hero">
-    <div class="d-eyebrow">Quotation · Since 2007 <span class="d-tier">${T.n}</span></div>
+    <div class="d-eyebrow">Quotation · Since 2004 <span class="d-tier">${T.n}</span></div>
     <h1>${days} Days / ${nights} Night${nights===1?'':'s'} Private Tour</h1>
     <div class="d-route">${route}</div>
     <div class="d-facts">${facts.map(([k,v])=>`<div><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')}</div>
@@ -1004,8 +1004,8 @@ function buildDoc(){
   </div>
 
   <div class="d-foot">
-    <div><b>Guide India Tours</b> · India Office<br>31/84A, Jangjeet Nagar, Shamshabad Road, Agra, Uttar Pradesh – 282001, India<br>GSTIN 09ABCFG5043N1Z4</div>
-    <div class="r">WhatsApp +91 8979810991<br>info@guideindiatours.com<br>www.guideindiatours.com · Since 2007</div>
+    <div><b>Guide India Tours</b> · India Office<br>31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra, Uttar Pradesh – 282001, India<br>GSTIN 09ABCFG5043N1Z4</div>
+    <div class="r">WhatsApp +91 8979810991<br>info@guideindiatours.com<br>www.guideindiatours.com · Since 2004</div>
   </div>`;
   $('#doc').innerHTML=html;
 }
