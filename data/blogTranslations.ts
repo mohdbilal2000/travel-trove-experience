@@ -80,7 +80,7 @@ Construit entre 1622 et 1628 par l’impératrice Nur Jahan pour son père, Mirz
 
 ### 2. Chini Ka Rauza
 
-C’est le tombeau d’Afzal Khan Shirazi, poète d’origine persane et ministre de l’empereur Shah Jahan, mort en 1639. Son nom vient de *chini*, les carreaux émaillés qui couvraient autrefois l’édifice de motifs de style persan. Une grande partie de l’émail a pâli, mais le haut dôme et les carreaux conservés montrent une esthétique moghole très différente de celle du Taj Mahal. Il se dresse au bord de la Yamuna et est rarement fréquenté.
+C’est le tombeau d’Afzal Khan Shirazi, poète d’origine persane et ministre de l’empereur Shah Jahan, qui le fit bâtir vers 1635 et y fut inhumé après sa mort en 1639. Son nom vient de *chini*, les carreaux émaillés qui couvraient autrefois l’édifice de motifs de style persan. Une grande partie de l’émail a pâli, mais le haut dôme et les carreaux conservés montrent une esthétique moghole très différente de celle du Taj Mahal. Il se dresse au bord de la Yamuna et est rarement fréquenté.
 
 ### 3. Le tombeau d’Akbar à Sikandra
 
@@ -102,7 +102,7 @@ Hauz Khas doit son nom au bassin royal construit par Alauddin Khalji au début d
 
 ### 7. Agrasen ki Baoli
 
-À quelques minutes à pied de Connaught Place, ce puits à degrés descend sur trois niveaux de niches à arcades, avec une centaine de marches environ. Ses origines exactes sont incertaines, mais la structure actuelle date du XIVe siècle. C’est l’un des lieux les plus photogéniques du centre de Delhi, surtout en milieu de matinée, quand la lumière atteint les marches du bas.
+À quelques minutes à pied de Connaught Place, ce puits à degrés descend sur trois niveaux de niches à arcades, avec 103 marches. Ses origines exactes sont incertaines, mais la structure actuelle date du XIVe siècle. C’est l’un des lieux les plus photogéniques du centre de Delhi, surtout en milieu de matinée, quand la lumière atteint les marches du bas.
 
 ### 8. Sultan Ghari
 
@@ -120,11 +120,11 @@ Achevé en 1754, il est souvent présenté comme le dernier tombeau à jardin de
 
 ### 11. Chand Baori, à Abhaneri
 
-À environ 90 km de Jaipur, sur la route d’Agra, Chand Baori est un puits à degrés du IXe siècle, l’un des plus profonds d’Inde. Environ 3 500 marches étroites, souvent citées sur 13 niveaux, forment des volées géométriques sur trois côtés. L’accès aux marches les plus basses est limité, mais c’est la vue depuis le bord qui compte. Comme il se trouve près de la route Jaipur–Agra, il s’intègre bien à notre [trajet de Jaipur à Agra](/jaipur-to-agra-tour), souvent avec Fatehpur Sikri.
+À environ 90 km de Jaipur, sur la route d’Agra, Chand Baori est un puits à degrés des VIIIe-IXe siècles, l’un des plus profonds d’Inde. Environ 3 500 marches étroites, souvent citées sur 13 niveaux, forment des volées géométriques sur trois côtés. L’accès aux marches les plus basses est limité, mais c’est la vue depuis le bord qui compte. Comme il se trouve près de la route Jaipur–Agra, il s’intègre bien à notre [trajet de Jaipur à Agra](/jaipur-to-agra-tour), souvent avec Fatehpur Sikri.
 
 ### 12. Panna Meena ka Kund
 
-Près du fort d’Amber, ce puits à degrés du XVIe siècle présente des escaliers symétriques sur tous les côtés, qui forment un motif géométrique parfait ; c’est un favori des photographes. Il montre comment les souverains rajputs stockaient l’eau en pays sec. Il n’ajoute qu’une vingtaine de minutes à la visite d’Amber.
+Près du fort d’Amber, ce puits à degrés, généralement daté du XVIe siècle, présente des escaliers symétriques sur tous les côtés, qui forment un motif géométrique parfait ; c’est un favori des photographes. Il montre comment les souverains rajputs stockaient l’eau en pays sec. Il n’ajoute qu’une vingtaine de minutes à la visite d’Amber.
 
 ### 13. Galta Ji
 
@@ -134,7 +134,7 @@ Souvent appelé le « temple des singes », Galta Ji est un complexe de pèlerin
 
 ### 14. Le Bara Imambara, à Lucknow
 
-Si vous prolongez votre voyage au-delà du Triangle d’Or, le Bara Imambara est un temps fort. Le nawab Asaf-ud-Daula l’a fait construire en 1784-1794, en partie comme projet de secours contre la famine qui a donné du travail à des milliers de personnes. Sa salle centrale est l’une des plus grandes salles voûtées construites sans piliers intérieurs, et le labyrinthe de couloirs à l’étage s’appelle la Bhool Bhulaiya. La porte Rumi Darwaza se dresse tout près. Lucknow est loin d’Agra par la route, ou plus proche en train ou en avion : prévoyez des jours supplémentaires plutôt qu’un détour.
+Si vous prolongez votre voyage au-delà du Triangle d’Or, le Bara Imambara est un temps fort. Le nawab Asaf-ud-Daula en a lancé la construction en 1784, en partie comme projet de secours contre la famine qui a donné du travail à des milliers de personnes. Sa salle centrale est l’une des plus grandes salles voûtées construites sans piliers intérieurs, et le labyrinthe de couloirs à l’étage s’appelle la Bhool Bhulaiya. La porte Rumi Darwaza se dresse tout près. Lucknow est loin d’Agra par la route, ou plus proche en train ou en avion : prévoyez des jours supplémentaires plutôt qu’un détour.
 
 ## Comment les intégrer à votre voyage
 
@@ -219,7 +219,7 @@ Dieses zwischen 1622 und 1628 von Kaiserin Nur Jahan für ihren Vater Mirza Ghiy
 
 ### 2. Chini Ka Rauza
 
-Dies ist das Grabmal von Afzal Khan Shirazi, einem aus Persien stammenden Dichter und Minister von Kaiser Shah Jahan, der 1639 starb. Der Name kommt von *chini*, den glasierten Kacheln, die das Gebäude einst mit Mustern im persischen Stil überzogen. Ein Großteil der Glasur ist verblasst, doch die hohe Kuppel und die erhaltenen Kacheln zeigen eine ganz andere Mogul-Ästhetik als das Taj Mahal. Es liegt am Ufer des Yamuna und ist selten überlaufen.
+Dies ist das Grabmal von Afzal Khan Shirazi, einem aus Persien stammenden Dichter und Minister von Kaiser Shah Jahan, der es um 1635 errichten ließ und nach seinem Tod 1639 hier beigesetzt wurde. Der Name kommt von *chini*, den glasierten Kacheln, die das Gebäude einst mit Mustern im persischen Stil überzogen. Ein Großteil der Glasur ist verblasst, doch die hohe Kuppel und die erhaltenen Kacheln zeigen eine ganz andere Mogul-Ästhetik als das Taj Mahal. Es liegt am Ufer des Yamuna und ist selten überlaufen.
 
 ### 3. Akbars Grabmal in Sikandra
 
@@ -241,7 +241,7 @@ Hauz Khas ist nach dem königlichen Wasserbecken benannt, das Alauddin Khalji im
 
 ### 7. Agrasen ki Baoli
 
-Nur wenige Gehminuten von Connaught Place entfernt führt dieser Stufenbrunnen über drei Ebenen mit Bogennischen etwa hundert Stufen hinab. Seine genauen Ursprünge sind ungewiss, doch die heutige Anlage stammt aus dem 14. Jahrhundert. Er gehört zu den fotogensten Orten im Zentrum Delhis, besonders am späten Vormittag, wenn das Licht die unteren Stufen erreicht.
+Nur wenige Gehminuten von Connaught Place entfernt führt dieser Stufenbrunnen über drei Ebenen mit Bogennischen 103 Stufen hinab. Seine genauen Ursprünge sind ungewiss, doch die heutige Anlage stammt aus dem 14. Jahrhundert. Er gehört zu den fotogensten Orten im Zentrum Delhis, besonders am späten Vormittag, wenn das Licht die unteren Stufen erreicht.
 
 ### 8. Sultan Ghari
 
@@ -259,11 +259,11 @@ Das 1754 fertiggestellte Grabmal gilt oft als das letzte Gartengrabmal der Mogul
 
 ### 11. Chand Baori, Abhaneri
 
-Etwa 90 km von Jaipur entfernt an der Straße nach Agra liegt Chand Baori, ein Stufenbrunnen aus dem 9. Jahrhundert und einer der tiefsten Indiens. Rund 3.500 schmale Stufen, häufig auf 13 Ebenen angegeben, bilden geometrische Treppenläufe auf drei Seiten. Der Zugang zu den untersten Stufen ist eingeschränkt, aber der Blick vom Rand ist der Punkt. Da er nahe der Autobahn Jaipur–Agra liegt, passt er gut als Stopp auf unserer [Fahrt von Jaipur nach Agra](/jaipur-to-agra-tour), oft zusammen mit Fatehpur Sikri.
+Etwa 90 km von Jaipur entfernt an der Straße nach Agra liegt Chand Baori, ein Stufenbrunnen aus dem 8.–9. Jahrhundert und einer der tiefsten Indiens. Rund 3.500 schmale Stufen, häufig auf 13 Ebenen angegeben, bilden geometrische Treppenläufe auf drei Seiten. Der Zugang zu den untersten Stufen ist eingeschränkt, aber der Blick vom Rand ist der Punkt. Da er nahe der Autobahn Jaipur–Agra liegt, passt er gut als Stopp auf unserer [Fahrt von Jaipur nach Agra](/jaipur-to-agra-tour), oft zusammen mit Fatehpur Sikri.
 
 ### 12. Panna Meena ka Kund
 
-Nahe dem Fort Amber hat dieser Stufenbrunnen aus dem 16. Jahrhundert auf allen Seiten gleichförmige Treppen, die ein perfektes geometrisches Muster bilden – ein Liebling der Fotografen. Er zeigt, wie Rajputen-Herrscher in trockenem Land Wasser speicherten. Er verlängert einen Besuch von Amber nur um etwa 20 Minuten.
+Nahe dem Fort Amber hat dieser meist ins 16. Jahrhundert datierte Stufenbrunnen auf allen Seiten gleichförmige Treppen, die ein perfektes geometrisches Muster bilden – ein Liebling der Fotografen. Er zeigt, wie Rajputen-Herrscher in trockenem Land Wasser speicherten. Er verlängert einen Besuch von Amber nur um etwa 20 Minuten.
 
 ### 13. Galta Ji
 
@@ -273,7 +273,7 @@ Galta Ji, oft „Affentempel“ genannt, ist eine Pilgeranlage aus Tempeln, Pavi
 
 ### 14. Bara Imambara, Lucknow
 
-Wenn Sie über das Goldene Dreieck hinaus verlängern, ist der Bara Imambara ein Höhepunkt. Nawab Asaf-ud-Daula ließ ihn 1784–94 bauen, teils als Hungerhilfe-Projekt, das Tausenden Arbeit gab. Seine zentrale Halle gehört zu den größten gewölbten Hallen ohne innere Stützen, und das Labyrinth aus Gängen darüber heißt Bhool Bhulaiya. Das Tor Rumi Darwaza steht ganz in der Nähe. Lucknow ist von Agra per Auto weit entfernt, mit Zug oder Flug näher – planen Sie zusätzliche Tage ein statt eines Abstechers.
+Wenn Sie über das Goldene Dreieck hinaus verlängern, ist der Bara Imambara ein Höhepunkt. Nawab Asaf-ud-Daula ließ ihn ab 1784 bauen, teils als Hungerhilfe-Projekt, das Tausenden Arbeit gab. Seine zentrale Halle gehört zu den größten gewölbten Hallen ohne innere Stützen, und das Labyrinth aus Gängen darüber heißt Bhool Bhulaiya. Das Tor Rumi Darwaza steht ganz in der Nähe. Lucknow ist von Agra per Auto weit entfernt, mit Zug oder Flug näher – planen Sie zusätzliche Tage ein statt eines Abstechers.
 
 ## So passen sie in Ihre Reise
 
@@ -358,7 +358,7 @@ Construida entre 1622 y 1628 por la emperatriz Nur Jahan para su padre, Mirza Gh
 
 ### 2. Chini Ka Rauza
 
-Es la tumba de Afzal Khan Shirazi, poeta de origen persa y ministro del emperador Shah Jahan, fallecido en 1639. El nombre viene de *chini*, los azulejos vidriados que antaño cubrían el edificio con motivos de estilo persa. Gran parte del vidriado se ha desvanecido, pero la alta cúpula y los azulejos conservados muestran una estética mogola muy distinta de la del Taj Mahal. Se alza a orillas del Yamuna y rara vez tiene mucha gente.
+Es la tumba de Afzal Khan Shirazi, poeta de origen persa y ministro del emperador Shah Jahan, que la mandó construir hacia 1635 y fue enterrado aquí tras su muerte en 1639. El nombre viene de *chini*, los azulejos vidriados que antaño cubrían el edificio con motivos de estilo persa. Gran parte del vidriado se ha desvanecido, pero la alta cúpula y los azulejos conservados muestran una estética mogola muy distinta de la del Taj Mahal. Se alza a orillas del Yamuna y rara vez tiene mucha gente.
 
 ### 3. La tumba de Akbar en Sikandra
 
@@ -380,7 +380,7 @@ Hauz Khas debe su nombre al estanque real que construyó Alauddin Khalji a princ
 
 ### 7. Agrasen ki Baoli
 
-A pocos minutos a pie de Connaught Place, este pozo escalonado desciende por tres niveles de hornacinas con arcos, con unos cien escalones. Sus orígenes exactos son inciertos, pero la estructura actual data del siglo XIV. Es uno de los lugares más fotogénicos del centro de Delhi, sobre todo a media mañana, cuando la luz llega a los escalones inferiores.
+A pocos minutos a pie de Connaught Place, este pozo escalonado desciende por tres niveles de hornacinas con arcos, con 103 escalones. Sus orígenes exactos son inciertos, pero la estructura actual data del siglo XIV. Es uno de los lugares más fotogénicos del centro de Delhi, sobre todo a media mañana, cuando la luz llega a los escalones inferiores.
 
 ### 8. Sultan Ghari
 
@@ -398,11 +398,11 @@ Terminada en 1754, suele llamarse la última tumba con jardín de la época mogo
 
 ### 11. Chand Baori, en Abhaneri
 
-A unos 90 km de Jaipur, en la carretera hacia Agra, Chand Baori es un pozo escalonado del siglo IX y uno de los más profundos de la India. Unos 3.500 escalones estrechos, que se citan a menudo en 13 niveles, forman tramos geométricos en tres lados. El acceso a los escalones más bajos está restringido, pero lo importante es la vista desde el borde. Como queda cerca de la autopista Jaipur–Agra, encaja bien como parada en nuestro [trayecto de Jaipur a Agra](/jaipur-to-agra-tour), a menudo junto con Fatehpur Sikri.
+A unos 90 km de Jaipur, en la carretera hacia Agra, Chand Baori es un pozo escalonado de los siglos VIII-IX y uno de los más profundos de la India. Unos 3.500 escalones estrechos, que se citan a menudo en 13 niveles, forman tramos geométricos en tres lados. El acceso a los escalones más bajos está restringido, pero lo importante es la vista desde el borde. Como queda cerca de la autopista Jaipur–Agra, encaja bien como parada en nuestro [trayecto de Jaipur a Agra](/jaipur-to-agra-tour), a menudo junto con Fatehpur Sikri.
 
 ### 12. Panna Meena ka Kund
 
-Cerca del fuerte de Amber, este pozo escalonado del siglo XVI tiene escaleras simétricas en todos sus lados que forman un patrón geométrico perfecto; es un favorito de los fotógrafos. Muestra cómo los gobernantes rajputas almacenaban agua en tierras secas. Solo añade unos 20 minutos a una visita a Amber.
+Cerca del fuerte de Amber, este pozo escalonado, datado por lo general en el siglo XVI, tiene escaleras simétricas en todos sus lados que forman un patrón geométrico perfecto; es un favorito de los fotógrafos. Muestra cómo los gobernantes rajputas almacenaban agua en tierras secas. Solo añade unos 20 minutos a una visita a Amber.
 
 ### 13. Galta Ji
 
@@ -412,7 +412,7 @@ Conocido a menudo como el «Templo de los Monos», Galta Ji es un complejo de pe
 
 ### 14. Bara Imambara, en Lucknow
 
-Si amplía su viaje más allá del Triángulo de Oro, el Bara Imambara es un punto destacado. El nawab Asaf-ud-Daula lo construyó en 1784-94, en parte como proyecto de ayuda contra la hambruna que dio trabajo a miles de personas. Su sala central es una de las mayores salas abovedadas construidas sin pilares interiores, y el laberinto de pasillos de arriba se llama Bhool Bhulaiya. La puerta Rumi Darwaza se alza muy cerca. Lucknow queda lejos de Agra por carretera, o más cerca en tren o avión: conviene reservar días extra en lugar de un desvío.
+Si amplía su viaje más allá del Triángulo de Oro, el Bara Imambara es un punto destacado. El nawab Asaf-ud-Daula comenzó a construirlo en 1784, en parte como proyecto de ayuda contra la hambruna que dio trabajo a miles de personas. Su sala central es una de las mayores salas abovedadas construidas sin pilares interiores, y el laberinto de pasillos de arriba se llama Bhool Bhulaiya. La puerta Rumi Darwaza se alza muy cerca. Lucknow queda lejos de Agra por carretera, o más cerca en tren o avión: conviene reservar días extra en lugar de un desvío.
 
 ## Cómo encajarlos en su viaje
 
@@ -497,7 +497,7 @@ Costruita tra il 1622 e il 1628 dall’imperatrice Nur Jahan per suo padre, Mirz
 
 ### 2. Chini Ka Rauza
 
-È la tomba di Afzal Khan Shirazi, poeta di origine persiana e ministro dell’imperatore Shah Jahan, morto nel 1639. Il nome deriva da *chini*, le piastrelle smaltate che un tempo ricoprivano l’edificio con motivi di stile persiano. Gran parte dello smalto si è sbiadita, ma l’alta cupola e le piastrelle rimaste mostrano un’estetica moghul molto diversa da quella del Taj Mahal. Sorge sulla riva dello Yamuna ed è raramente affollata.
+È la tomba di Afzal Khan Shirazi, poeta di origine persiana e ministro dell’imperatore Shah Jahan, che la fece costruire intorno al 1635 e vi fu sepolto dopo la morte nel 1639. Il nome deriva da *chini*, le piastrelle smaltate che un tempo ricoprivano l’edificio con motivi di stile persiano. Gran parte dello smalto si è sbiadita, ma l’alta cupola e le piastrelle rimaste mostrano un’estetica moghul molto diversa da quella del Taj Mahal. Sorge sulla riva dello Yamuna ed è raramente affollata.
 
 ### 3. La tomba di Akbar a Sikandra
 
@@ -519,7 +519,7 @@ Hauz Khas prende il nome dalla vasca reale costruita da Alauddin Khalji all’in
 
 ### 7. Agrasen ki Baoli
 
-A pochi minuti a piedi da Connaught Place, questo pozzo a gradini scende attraverso tre livelli di nicchie ad arco con circa cento gradini. Le sue origini esatte sono incerte, ma la struttura attuale risale al XIV secolo. È uno dei luoghi più fotogenici del centro di Delhi, soprattutto a metà mattina, quando la luce raggiunge i gradini più bassi.
+A pochi minuti a piedi da Connaught Place, questo pozzo a gradini scende attraverso tre livelli di nicchie ad arco con 103 gradini. Le sue origini esatte sono incerte, ma la struttura attuale risale al XIV secolo. È uno dei luoghi più fotogenici del centro di Delhi, soprattutto a metà mattina, quando la luce raggiunge i gradini più bassi.
 
 ### 8. Sultan Ghari
 
@@ -537,11 +537,11 @@ Completata nel 1754, è spesso chiamata l’ultima tomba con giardino dell’epo
 
 ### 11. Chand Baori, ad Abhaneri
 
-A circa 90 km da Jaipur, sulla strada per Agra, Chand Baori è un pozzo a gradini del IX secolo e uno dei più profondi dell’India. Circa 3.500 gradini stretti, spesso citati su 13 livelli, formano rampe geometriche su tre lati. L’accesso ai gradini più bassi è limitato, ma è la vista dal bordo a contare. Poiché si trova vicino alla superstrada Jaipur–Agra, funziona bene come tappa del nostro [viaggio da Jaipur ad Agra](/jaipur-to-agra-tour), spesso insieme a Fatehpur Sikri.
+A circa 90 km da Jaipur, sulla strada per Agra, Chand Baori è un pozzo a gradini dell’VIII-IX secolo e uno dei più profondi dell’India. Circa 3.500 gradini stretti, spesso citati su 13 livelli, formano rampe geometriche su tre lati. L’accesso ai gradini più bassi è limitato, ma è la vista dal bordo a contare. Poiché si trova vicino alla superstrada Jaipur–Agra, funziona bene come tappa del nostro [viaggio da Jaipur ad Agra](/jaipur-to-agra-tour), spesso insieme a Fatehpur Sikri.
 
 ### 12. Panna Meena ka Kund
 
-Vicino al forte di Amber, questo pozzo a gradini del XVI secolo ha scalinate simmetriche su tutti i lati che formano un perfetto disegno geometrico; è un favorito dei fotografi. Mostra come i sovrani rajput conservavano l’acqua in terre aride. Aggiunge solo circa 20 minuti a una visita ad Amber.
+Vicino al forte di Amber, questo pozzo a gradini, di solito datato al XVI secolo, ha scalinate simmetriche su tutti i lati che formano un perfetto disegno geometrico; è un favorito dei fotografi. Mostra come i sovrani rajput conservavano l’acqua in terre aride. Aggiunge solo circa 20 minuti a una visita ad Amber.
 
 ### 13. Galta Ji
 
@@ -551,7 +551,7 @@ Spesso chiamato il «Tempio delle scimmie», Galta Ji è un complesso di pellegr
 
 ### 14. Bara Imambara, a Lucknow
 
-Se prolungate il viaggio oltre il Triangolo d’Oro, il Bara Imambara è un punto forte. Il nawab Asaf-ud-Daula lo fece costruire nel 1784-94, in parte come progetto di soccorso durante una carestia che diede lavoro a migliaia di persone. La sua sala centrale è una delle più grandi sale a volta costruite senza pilastri interni, e il labirinto di corridoi sopra si chiama Bhool Bhulaiya. La porta Rumi Darwaza si trova poco distante. Lucknow è lontana da Agra in auto, più vicina in treno o in aereo: servono giorni in più, non una deviazione.
+Se prolungate il viaggio oltre il Triangolo d’Oro, il Bara Imambara è un punto forte. Il nawab Asaf-ud-Daula ne avviò la costruzione nel 1784, in parte come progetto di soccorso durante una carestia che diede lavoro a migliaia di persone. La sua sala centrale è una delle più grandi sale a volta costruite senza pilastri interni, e il labirinto di corridoi sopra si chiama Bhool Bhulaiya. La porta Rumi Darwaza si trova poco distante. Lucknow è lontana da Agra in auto, più vicina in treno o in aereo: servono giorni in più, non una deviazione.
 
 ## Come inserirli nel vostro viaggio
 

@@ -1505,7 +1505,7 @@ Built between 1622 and 1628 by Empress Nur Jahan for her father, Mirza Ghiyas Be
 
 ### 2. Chini Ka Rauza
 
-This is the tomb of Afzal Khan Shirazi, a Persian-born poet and minister of Emperor Shah Jahan, who died in 1639. The name comes from *chini*, the glazed tilework that once covered the building in Persian-style patterns. Much of the glaze has faded, but the tall dome and the surviving tilework show a completely different Mughal aesthetic from the Taj Mahal. It sits on the bank of the Yamuna and is rarely crowded.
+This is the tomb of Afzal Khan Shirazi, a Persian-born poet and minister of Emperor Shah Jahan. He built it around 1635 and was buried here after his death in 1639. The name comes from *chini*, the glazed tilework that once covered the building in Persian-style patterns. Much of the glaze has faded, but the tall dome and the surviving tilework show a completely different Mughal aesthetic from the Taj Mahal. It sits on the bank of the Yamuna and is rarely crowded.
 
 ### 3. Akbar's Tomb, Sikandra
 
@@ -1527,7 +1527,7 @@ Hauz Khas is named after the royal water tank built by Alauddin Khalji in the ea
 
 ### 7. Agrasen ki Baoli
 
-A short walk from Connaught Place, this stepwell drops through three levels of arched niches down roughly a hundred steps. Its exact origins are uncertain, but the present structure dates to the 14th century. It is one of the most photogenic spots in central Delhi, especially mid-morning when light reaches the lower steps.
+A short walk from Connaught Place, this stepwell drops through three levels of arched niches down 103 steps. Its exact origins are uncertain, but the present structure dates to the 14th century. It is one of the most photogenic spots in central Delhi, especially mid-morning when light reaches the lower steps.
 
 ### 8. Sultan Ghari
 
@@ -1545,11 +1545,11 @@ Completed in 1754, this is often called the last garden tomb of the Mughal era, 
 
 ### 11. Chand Baori, Abhaneri
 
-About 90 km from Jaipur on the road towards Agra, Chand Baori is a ninth-century stepwell and one of the deepest in India. Around 3,500 narrow steps, commonly quoted across 13 levels, form geometric flights on three sides. Access to the lowest steps is restricted, but the view from the edge is the point. Because it lies close to the Jaipur–Agra highway, it works well as a stop on our [Jaipur to Agra tour](/jaipur-to-agra-tour), often combined with Fatehpur Sikri.
+About 90 km from Jaipur on the road towards Agra, Chand Baori is an 8th–9th-century stepwell and one of the deepest in India. Around 3,500 narrow steps, commonly quoted across 13 levels, form geometric flights on three sides. Access to the lowest steps is restricted, but the view from the edge is the point. Because it lies close to the Jaipur–Agra highway, it works well as a stop on our [Jaipur to Agra tour](/jaipur-to-agra-tour), often combined with Fatehpur Sikri.
 
 ### 12. Panna Meena ka Kund
 
-Close to Amber Fort, this 16th-century stepwell has matching staircases on all sides that form a perfect geometric pattern, and it is a favourite with photographers. It shows how Rajput rulers stored water in dry country. It adds only about 20 minutes to an Amber Fort visit, so it is easy to fit in. Our [Jaipur tour guides](/jaipur-tour-guide) usually include it.
+Close to Amber Fort, this stepwell, usually dated to the 16th century, has matching staircases on all sides that form a perfect geometric pattern, and it is a favourite with photographers. It shows how Rajput rulers stored water in dry country. It adds only about 20 minutes to an Amber Fort visit, so it is easy to fit in. Our [Jaipur tour guides](/jaipur-tour-guide) usually include it.
 
 ### 13. Galta Ji
 
@@ -1559,7 +1559,7 @@ Often called the Monkey Temple, Galta Ji is a pilgrimage complex of temples, pav
 
 ### 14. Bara Imambara, Lucknow
 
-If you extend beyond the Golden Triangle, the Bara Imambara is a highlight. Nawab Asaf-ud-Daula built it in 1784–94, partly as a famine-relief project that gave work to thousands. Its central hall is one of the largest vaulted halls built without internal pillars, and the maze of passages above is known as the Bhool Bhulaiya. The Rumi Darwaza gateway stands nearby. Lucknow is a long drive from Agra or a shorter train or flight hop, so it needs extra days rather than a detour.
+If you extend beyond the Golden Triangle, the Bara Imambara is a highlight. Nawab Asaf-ud-Daula began it in 1784, partly as a famine-relief project that gave work to thousands. Its central hall is one of the largest vaulted halls built without internal pillars, and the maze of passages above is known as the Bhool Bhulaiya. The Rumi Darwaza gateway stands nearby. Lucknow is a long drive from Agra or a shorter train or flight hop, so it needs extra days rather than a detour.
 
 ## How to fit them into your trip
 
@@ -1591,6 +1591,7 @@ Want any of these added to your trip? Message us on WhatsApp with your dates and
     ],
     author: "Avneesh Dixit",
     publishedDate: "2026-10-22",
+    updatedDate: "2026-10-23",
     image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
     category: "Destinations",
     tags: ["Hidden Gems", "Underrated Monuments", "North India", "Agra", "Delhi", "Jaipur", "Stepwells", "Mughal Tombs"],
