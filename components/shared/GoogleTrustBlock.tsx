@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Star, MapPin, Phone, ShieldCheck, ExternalLink, Clock } from "lucide-react";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 /**
@@ -48,7 +48,7 @@ export default function GoogleTrustBlock() {
                             <span className="text-lg text-gray-400 font-bold">/5</span>
                         </div>
                         <p className="text-sm font-bold text-gray-600 mt-1">
-                            on Google · {rating.count}+ reviews
+                            on Google · {ratingCountDisplay} reviews
                         </p>
                         <span className="mt-4 inline-flex items-center gap-1 text-maroon-600 text-xs font-black uppercase tracking-widest group-hover:gap-2 transition-all">
                             Read reviews <ExternalLink className="w-3 h-3" />

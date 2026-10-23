@@ -5,7 +5,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3002,
     title: "Jaipur Royal Heritage - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $249 per adult",
+    price: "$249 per adult",
     description: "Immerse yourself in Jaipur's royal heritage with a one-night stay, exploring the Pink City's magnificent palaces and forts.",
     highlights: [
       "Amber Fort & City Palace",
@@ -26,8 +26,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-b5yYo61ALvk-unsplash.jpg",
-    rating: 4.7,
-    reviews: 143,
     popular: false,
     destinations: ["Jaipur"],
     itinerary: [
@@ -51,7 +49,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3003,
     title: "Jaipur Cultural Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $399 per adult",
+    price: "$399 per adult",
     description: "A comprehensive 2-night Jaipur tour allowing you to explore all major attractions at a relaxed pace with deeper cultural immersion.",
     highlights: [
       "Complete palace & fort tour",
@@ -74,8 +72,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-JPbNZotqrgo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 178,
     popular: true,
     destinations: ["Jaipur"],
     itinerary: [
@@ -107,7 +103,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3005,
     title: "Jaipur Luxury Heritage - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $499 per adult",
+    price: "$499 per adult",
     description: "Indulge in Jaipur's royal heritage with luxury accommodations, exclusive experiences, and personalized service.",
     highlights: [
       "5-star palace hotel stay",
@@ -128,8 +124,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-pVe2AtxXc8A-unsplash.jpg",
-    rating: 4.9,
-    reviews: 125,
     popular: false,
     destinations: ["Jaipur"],
     itinerary: [
@@ -153,7 +147,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3006,
     title: "Jaipur Royal Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $799 per adult",
+    price: "$799 per adult",
     description: "The ultimate Jaipur luxury experience with royal treatment, exclusive access, and world-class hospitality.",
     highlights: [
       "5-star palace hotel stay",
@@ -176,8 +170,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-QRHY4d6wJAs-unsplash.jpg",
-    rating: 5.0,
-    reviews: 78,
     popular: true,
     destinations: ["Jaipur"],
     itinerary: [
@@ -209,7 +201,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3008,
     title: "Jaipur Extended Heritage Tour - 4 Days",
     duration: "4 Days / 3 Nights",
-    price: "From $549 per adult",
+    price: "$549 per adult",
     description: "An immersive 4-day Jaipur experience covering all major attractions with cultural activities and off-the-beaten-path exploration.",
     highlights: [
       "Complete palace & fort exploration",
@@ -234,8 +226,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 4.9,
-    reviews: 89,
     popular: true,
     destinations: ["Jaipur"],
     itinerary: [
@@ -274,7 +264,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3009,
     title: "Jaipur Complete Experience - 5 Days",
     duration: "5 Days / 4 Nights",
-    price: "From $699 per adult",
+    price: "$699 per adult",
     description: "A comprehensive 5-day Jaipur journey covering all royal heritage sites, cultural activities, wildlife encounters, and authentic local experiences.",
     highlights: [
       "All major forts & palaces",
@@ -300,8 +290,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-QRHY4d6wJAs-unsplash.jpg",
-    rating: 4.9,
-    reviews: 67,
     popular: true,
     destinations: ["Jaipur"],
     itinerary: [
@@ -347,7 +335,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3010,
     title: "Jaipur Ultimate Royal Experience - 6 Days",
     duration: "6 Days / 5 Nights",
-    price: "From $899 per adult",
+    price: "$899 per adult",
     description: "The ultimate 6-day Jaipur immersion featuring royal heritage, wildlife, spiritual sites, artisan villages, and exclusive experiences for the complete Pink City adventure.",
     highlights: [
       "Complete fort & palace circuit",
@@ -374,8 +362,6 @@ export const jaipurPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/jaipur/getty-images-pVe2AtxXc8A-unsplash.jpg",
-    rating: 5.0,
-    reviews: 45,
     popular: false,
     destinations: ["Jaipur"],
     itinerary: [
@@ -428,7 +414,7 @@ export const jaipurPlans: TravelPlan[] = [
     id: 3007,
     title: "Customized Jaipur Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Jaipur experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -447,8 +433,6 @@ export const jaipurPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/jaipur/dexter-fernandes-y97sM41-g9k-unsplash.jpg",
-    rating: 4.9,
-    reviews: 134,
     popular: false,
     destinations: ["Jaipur"],
     itinerary: [

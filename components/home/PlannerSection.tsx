@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import Link from "next/link";
-import { Clock, Star } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PlannerHero from "@/components/home/PlannerHero";
 import TripPlanner from "@/components/home/TripPlanner";
@@ -118,11 +118,7 @@ export default function PlannerSection() {
                                                     </div>
 
                                                     <div className="flex items-center justify-between mb-4">
-                                                        <div className="flex items-center gap-1">
-                                                            <Star size={16} className="text-amber-500" fill="currentColor" />
-                                                            <span className="text-sm font-medium text-gray-900">{plan.rating}</span>
-                                                            <span className="text-sm text-gray-500">({plan.reviews})</span>
-                                                        </div>
+                                                        <span className="text-sm font-medium text-gray-700">{plan.duration}</span>
                                                         <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                                     </div>
 

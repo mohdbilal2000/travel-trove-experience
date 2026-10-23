@@ -51,6 +51,10 @@ const nextConfig = {
                 destination: 'https://www.guideindiatours.com/:path*',
                 permanent: true, // 308
             },
+            // Legacy header link → canonical booking page.
+            { source: '/book-guide', destination: '/guide-booking', permanent: true },
+            // "Same Day Agra Tour" existed twice; id 23 was merged into id 2001.
+            { source: '/plans/23', destination: '/plans/2001', permanent: true },
         ];
     },
     // Vercel handles deployment automatically — no standalone needed.

@@ -6,7 +6,7 @@ export const specializedPlans: TravelPlan[] = [
     id: 4,
     title: "Family Golden Triangle Adventure",
     duration: "6 Days / 5 Nights",
-    price: "From $748 per adult",
+    price: "$748 per adult",
     description: "A family-friendly exploration of the Golden Triangle with activities and experiences designed to engage travelers of all ages.",
     highlights: [
       "Interactive historical tours",
@@ -26,8 +26,6 @@ export const specializedPlans: TravelPlan[] = [
       "Welcome gifts for children"
     ],
     image: "/images/delhi/ashim-d-silva-KF7pv-8OiyY-unsplash.jpg",
-    rating: 4.9,
-    reviews: 68,
     popular: false,
     itinerary: [
       {
@@ -98,8 +96,6 @@ export const specializedPlans: TravelPlan[] = [
       "24/7 concierge support"
     ],
     image: "/images/delhi/sagar-dwivedi-iR9xWm1JK20-unsplash.jpg",
-    rating: 5.0,
-    reviews: 42,
     popular: false,
     itinerary: [
       {
@@ -115,7 +111,7 @@ export const specializedPlans: TravelPlan[] = [
     id: 26,
     title: "VIP Luxury Golden Triangle Experience",
     duration: "Flexible (5-15 Days)",
-    price: "From $3,499 per adult",
+    price: "$3,499 per adult",
     description: "The ultimate luxury experience combining the Golden Triangle with any destination of your choice. Enjoy exclusive VIP services, heritage palace hotels, private jet transfers, and bespoke experiences crafted just for you.",
     highlights: [
       "Private jet or helicopter transfers available",
@@ -141,8 +137,6 @@ export const specializedPlans: TravelPlan[] = [
       "Luxury shopping assistance"
     ],
     image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
-    rating: 5.0,
-    reviews: 28,
     popular: true,
     itinerary: [
       {
@@ -158,7 +152,7 @@ export const specializedPlans: TravelPlan[] = [
     id: 27,
     title: "Premium Luxury Tour, Travel & Guide Services",
     duration: "Flexible (3-21 Days)",
-    price: "From $2,499 per adult",
+    price: "$2,499 per adult",
     description: "Experience the ultimate in luxury travel with our exclusive tour, transport, and guide services. Designed for discerning travelers who demand nothing but the finest experiences in the Golden Triangle and beyond.",
     highlights: [
       "Luxury vehicles: Mercedes, BMW, Audi sedans & SUVs",
@@ -184,8 +178,6 @@ export const specializedPlans: TravelPlan[] = [
       "Airport transfers in luxury vehicles"
     ],
     image: "/images/jaipur/dexter-fernandes-y97sM41-g9k-unsplash.jpg",
-    rating: 5.0,
-    reviews: 35,
     popular: true,
     itinerary: [
       {

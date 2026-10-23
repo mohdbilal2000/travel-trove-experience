@@ -33,10 +33,10 @@ export const isFriday = (iso: string): boolean => {
 const WHATSAPP_NUMBER = "918979810991";
 const CONTACT_EMAIL = "info@guideindiatours.com";
 
-const byPopularityThenRating = (a: TravelPlan, b: TravelPlan): number => {
+const byPopularity = (a: TravelPlan, b: TravelPlan): number => {
   if (a.popular && !b.popular) return -1;
   if (!a.popular && b.popular) return 1;
-  return b.rating - a.rating;
+  return 0;
 };
 
 /** True when exactly the three Golden Triangle cities are selected. */
@@ -52,7 +52,7 @@ export const isGoldenTriangle = (cities: string[]): boolean =>
  */
 export const getFilteredPlans = (cities: string[]): TravelPlan[] => {
   if (cities.length === 0) {
-    return [...allPlans].sort(byPopularityThenRating).slice(0, 6);
+    return [...allPlans].sort(byPopularity).slice(0, 6);
   }
 
   if (isGoldenTriangle(cities)) {
@@ -65,7 +65,7 @@ export const getFilteredPlans = (cities: string[]): TravelPlan[] => {
         const planHasJaipur = destinations.includes("Jaipur") || title.includes("jaipur");
         return (planHasDelhi && planHasAgra && planHasJaipur) || title.includes("golden triangle");
       })
-      .sort(byPopularityThenRating)
+      .sort(byPopularity)
       .slice(0, 6);
   }
 
@@ -79,7 +79,7 @@ export const getFilteredPlans = (cities: string[]): TravelPlan[] => {
         return destinations.includes(city) || title.includes(cityLower) || description.includes(cityLower);
       });
     })
-    .sort(byPopularityThenRating)
+    .sort(byPopularity)
     .slice(0, 6);
 };
 

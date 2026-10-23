@@ -6,7 +6,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4001,
     title: "Golden Triangle + Bikaner Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Bikaner, the desert city known for its magnificent forts, camel safaris, and traditional Rajasthani culture. This tour combines Delhi, Agra, Jaipur with Bikaner.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -26,8 +26,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 4.7,
-    reviews: 89,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Bikaner"],
     itinerary: [
@@ -79,7 +77,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4002,
     title: "Golden Triangle + Bikaner Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Bikaner extension in ultimate luxury with VIP access, premium dining, and exclusive experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -100,8 +98,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash(1).jpg",
-    rating: 5.0,
-    reviews: 45,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Bikaner"],
     itinerary: [
@@ -153,7 +149,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4004,
     title: "Customized Bikaner Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Bikaner experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -172,8 +168,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/getty-images-AaZSrGeC6Fg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 56,
     popular: false,
     destinations: ["Bikaner"],
     itinerary: [
@@ -192,7 +186,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4005,
     title: "Golden Triangle + Jodhpur Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Jodhpur, the Blue City known for its magnificent Mehrangarh Fort and vibrant blue-painted houses. This tour combines Delhi, Agra, Jaipur with Jodhpur.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -211,8 +205,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-JdFQZLcfXRg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 134,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Jodhpur"],
     itinerary: [
@@ -264,7 +256,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4006,
     title: "Golden Triangle + Jodhpur Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Jodhpur extension in ultimate luxury with VIP access, premium dining, and exclusive experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -285,8 +277,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/ibrahim-rifath-X_6lI192qgs-unsplash.jpg",
-    rating: 5.0,
-    reviews: 78,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Jodhpur"],
     itinerary: [
@@ -338,7 +328,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4008,
     title: "Customized Jodhpur Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Jodhpur experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -357,8 +347,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/jaipur/ravi-shekhar-P0a6TT0CvKg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 89,
     popular: false,
     destinations: ["Jodhpur"],
     itinerary: [
@@ -377,7 +365,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4009,
     title: "Golden Triangle + Udaipur Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Udaipur, the City of Lakes known for its beautiful palaces, lakes, and romantic ambiance. This tour combines Delhi, Agra, Jaipur with Udaipur.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -397,8 +385,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/udaipur/getty-images-Cjohb1N1Ikw-unsplash.jpg",
-    rating: 4.9,
-    reviews: 198,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Udaipur"],
     itinerary: [
@@ -450,7 +436,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4010,
     title: "Golden Triangle + Udaipur Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Udaipur extension in ultimate luxury with VIP access, premium dining, and exclusive experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -471,8 +457,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/udaipur/getty-images-l5Xx6XtgaYw-unsplash.jpg",
-    rating: 5.0,
-    reviews: 112,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Udaipur"],
     itinerary: [
@@ -524,7 +508,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4012,
     title: "Customized Udaipur Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Udaipur experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -543,8 +527,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/udaipur/getty-images-j1AQt3Amwi4-unsplash.jpg",
-    rating: 4.9,
-    reviews: 134,
     popular: false,
     destinations: ["Udaipur"],
     itinerary: [
@@ -563,7 +545,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4013,
     title: "Golden Triangle + Jaisalmer Tour",
     duration: "7 Days / 6 Nights",
-    price: "From $899 per adult",
+    price: "$899 per adult",
     description: "Extend your Golden Triangle tour to include Jaisalmer, the Golden City rising from the Thar Desert with its magnificent fort and havelis. This tour combines Delhi, Agra, Jaipur with Jaisalmer.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -583,8 +565,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/satyam-bhardwaj-qnO1zuuRN7Q-unsplash.jpg",
-    rating: 4.9,
-    reviews: 145,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Jaisalmer"],
     itinerary: [
@@ -643,7 +623,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4014,
     title: "Golden Triangle + Jaisalmer Luxury Tour",
     duration: "7 Days / 6 Nights",
-    price: "From $1,499 per adult",
+    price: "$1,499 per adult",
     description: "Experience the Golden Triangle with Jaisalmer extension in ultimate luxury with VIP access, premium dining, and exclusive desert experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -664,8 +644,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/ved-SRAUI9X4Ep8-unsplash.jpg",
-    rating: 5.0,
-    reviews: 89,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Jaisalmer"],
     itinerary: [
@@ -724,7 +702,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4016,
     title: "Customized Jaisalmer Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Jaisalmer experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -743,8 +721,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/getty-images-KGqkTIKxd48-unsplash.jpg",
-    rating: 4.9,
-    reviews: 98,
     popular: false,
     destinations: ["Jaisalmer"],
     itinerary: [
@@ -763,7 +739,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4017,
     title: "Golden Triangle + Ranthambore Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $899 per adult",
+    price: "$899 per adult",
     description: "Extend your Golden Triangle tour to include Ranthambore National Park, one of India's premier tiger reserves. This tour combines Delhi, Agra, Jaipur with wildlife safari experience.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -783,8 +759,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/ranthambore/kartik-iyer-VzErgGzTkPU-unsplash.jpg",
-    rating: 4.9,
-    reviews: 167,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Ranthambore"],
     itinerary: [
@@ -846,7 +820,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4018,
     title: "Golden Triangle + Ranthambore Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,499 per adult",
+    price: "$1,499 per adult",
     description: "Experience the Golden Triangle with Ranthambore extension in ultimate luxury with VIP safari access, premium dining, and exclusive wildlife experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -867,8 +841,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/ranthambore/kartik-iyer-VzErgGzTkPU-unsplash.jpg",
-    rating: 5.0,
-    reviews: 94,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Ranthambore"],
     itinerary: [
@@ -920,7 +892,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4020,
     title: "Customized Ranthambore Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Ranthambore experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -939,8 +911,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 4.9,
-    reviews: 112,
     popular: false,
     destinations: ["Ranthambore"],
     itinerary: [
@@ -959,7 +929,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4021,
     title: "Golden Triangle + Pushkar & Ajmer Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Pushkar and Ajmer, two of India's most sacred cities located close to each other. Pushkar is known for its holy lake and camel fair, while Ajmer is home to the famous Ajmer Sharif Dargah. This tour combines Delhi, Agra, Jaipur with Pushkar and Ajmer.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -979,8 +949,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 4.7,
-    reviews: 123,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Pushkar", "Ajmer"],
     itinerary: [
@@ -1042,7 +1010,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4022,
     title: "Golden Triangle + Pushkar & Ajmer Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Pushkar and Ajmer extension in ultimate luxury with VIP access, premium dining, and exclusive spiritual experiences at both sacred destinations.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1064,8 +1032,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 5.0,
-    reviews: 67,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Pushkar", "Ajmer"],
     itinerary: [
@@ -1117,7 +1083,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4024,
     title: "Customized Pushkar Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Pushkar experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -1136,8 +1102,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/agra/naveen-kumar-dusi-tsvjaIFFo1A-unsplash.jpg",
-    rating: 4.9,
-    reviews: 78,
     popular: false,
     destinations: ["Pushkar"],
     itinerary: [
@@ -1156,7 +1120,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4025,
     title: "Golden Triangle + Chittorgarh Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Chittorgarh Fort, the largest fort in India and a symbol of Rajput valor. This tour combines Delhi, Agra, Jaipur with Chittorgarh.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1175,8 +1139,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/agra/ritu-dahiya-9Ni10c7a428-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Chittorgarh"],
     itinerary: [
@@ -1238,7 +1200,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4026,
     title: "Golden Triangle + Chittorgarh Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Chittorgarh extension in ultimate luxury with VIP access, premium dining, and exclusive experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1259,8 +1221,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/ibrahim-rifath-X_6lI192qgs-unsplash.jpg",
-    rating: 5.0,
-    reviews: 89,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Chittorgarh"],
     itinerary: [
@@ -1312,7 +1272,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4028,
     title: "Customized Chittorgarh Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Chittorgarh experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -1331,8 +1291,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/jaipur/ravi-shekhar-P0a6TT0CvKg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 98,
     popular: false,
     destinations: ["Chittorgarh"],
     itinerary: [
@@ -1351,7 +1309,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4029,
     title: "Golden Triangle + Mount Abu Tour",
     duration: "7 Days / 6 Nights",
-    price: "From $899 per adult",
+    price: "$899 per adult",
     description: "Extend your Golden Triangle tour to include Mount Abu, Rajasthan's only hill station, known for its cool climate, Dilwara Jain Temples, and scenic beauty. This tour combines Delhi, Agra, Jaipur with Mount Abu.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1370,8 +1328,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/satyam-bhardwaj-qnO1zuuRN7Q-unsplash.jpg",
-    rating: 4.9,
-    reviews: 112,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Mount Abu"],
     itinerary: [
@@ -1430,7 +1386,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4030,
     title: "Golden Triangle + Mount Abu Luxury Tour",
     duration: "7 Days / 6 Nights",
-    price: "From $1,499 per adult",
+    price: "$1,499 per adult",
     description: "Experience the Golden Triangle with Mount Abu extension in ultimate luxury with VIP access, premium dining, and exclusive hill station experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1450,8 +1406,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/ved-SRAUI9X4Ep8-unsplash.jpg",
-    rating: 5.0,
-    reviews: 78,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Mount Abu"],
     itinerary: [
@@ -1510,7 +1464,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4031,
     title: "Customized Mount Abu Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Mount Abu experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -1529,8 +1483,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/agra/pankaj-singh-3okI5js2yIc-unsplash.jpg",
-    rating: 4.9,
-    reviews: 67,
     popular: false,
     destinations: ["Mount Abu"],
     itinerary: [
@@ -1549,7 +1501,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4032,
     title: "Golden Triangle + Mandawa Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $749 per adult",
+    price: "$749 per adult",
     description: "Extend your Golden Triangle tour to include Mandawa, a charming town in the Shekhawati region known for its beautifully painted havelis (mansions) with fresco art. This tour combines Delhi, Agra, Jaipur with Mandawa.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1568,8 +1520,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 4.7,
-    reviews: 95,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Mandawa"],
     itinerary: [
@@ -1621,7 +1571,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4033,
     title: "Golden Triangle + Mandawa Luxury Tour",
     duration: "6 Days / 5 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the Golden Triangle with Mandawa extension in ultimate luxury with VIP access, premium dining, and exclusive heritage experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1641,8 +1591,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/agra/getty-images-mPrsFrM3Teg-unsplash.jpg",
-    rating: 5.0,
-    reviews: 62,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Mandawa"],
     itinerary: [
@@ -1694,7 +1642,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4034,
     title: "Customized Mandawa Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Mandawa experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -1713,8 +1661,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/getty-images-DVSUA1uZ6Mo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 54,
     popular: false,
     destinations: ["Mandawa"],
     itinerary: [
@@ -1733,7 +1679,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4035,
     title: "Golden Triangle with All Rajasthan Cities Tour",
     duration: "17 Days / 16 Nights",
-    price: "From $1,999 per adult",
+    price: "$1,999 per adult",
     description: "Experience the ultimate India journey combining the Golden Triangle with all major Rajasthan destinations. This comprehensive tour covers Delhi, Agra, Jaipur, Bikaner, Jodhpur, Udaipur, Jaisalmer, Ranthambore, Pushkar, Ajmer, Chittorgarh, Mount Abu, and Mandawa - the complete royal and cultural heritage of North India.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1759,8 +1705,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-7sJAG2dJVJo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Bikaner", "Jodhpur", "Udaipur", "Jaisalmer", "Ranthambore", "Pushkar", "Ajmer", "Chittorgarh", "Mount Abu", "Mandawa"],
     itinerary: [
@@ -1889,7 +1833,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4036,
     title: "Golden Triangle with All Rajasthan Cities Luxury Tour",
     duration: "17 Days / 16 Nights",
-    price: "From $3,499 per adult",
+    price: "$3,499 per adult",
     description: "Experience the ultimate luxury journey combining the Golden Triangle with all major Rajasthan destinations. This comprehensive luxury tour covers Delhi, Agra, Jaipur, and all Rajasthan cities with VIP access, premium accommodations, fine dining, and exclusive experiences.",
     highlights: [
       "Complete Golden Triangle (Delhi, Agra, Jaipur)",
@@ -1918,8 +1862,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "Airport transfers with meet & greet"
     ],
     image: "/images/jaipur/getty-images-zlqHXvaEIiI-unsplash.jpg",
-    rating: 5.0,
-    reviews: 89,
     popular: true,
     destinations: ["Delhi", "Agra", "Jaipur", "Bikaner", "Jodhpur", "Udaipur", "Jaisalmer", "Ranthambore", "Pushkar", "Ajmer", "Chittorgarh", "Mount Abu", "Mandawa"],
     itinerary: [
@@ -2048,7 +1990,7 @@ export const rajasthanPlans: TravelPlan[] = [
     id: 4037,
     title: "Customized Golden Triangle with All Rajasthan Cities Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect comprehensive India journey combining the Golden Triangle with all Rajasthan cities. Tailored to your interests, budget, and timeframe. We'll create a personalized itinerary covering Delhi, Agra, Jaipur, and all major Rajasthan destinations just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -2069,8 +2011,6 @@ export const rajasthanPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/axp-photography--hwq4OHDJWI-unsplash.jpg",
-    rating: 4.9,
-    reviews: 134,
     popular: false,
     destinations: ["Delhi", "Agra", "Jaipur", "Bikaner", "Jodhpur", "Udaipur", "Jaisalmer", "Ranthambore", "Pushkar", "Ajmer", "Chittorgarh", "Mount Abu", "Mandawa"],
     itinerary: [

@@ -6,7 +6,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2000,
     title: "Same Day Agra Sunrise Tour",
     duration: "Same Day",
-    price: "From $169 per adult",
+    price: "$169 per adult",
     description: "Witness the magical Taj Mahal at sunrise with our exclusive same-day tour. Midnight pickup from Delhi by taxi driver ensures you reach Agra in time for the golden hour. Pickup available from anywhere in Delhi NCR for your convenience. Note: Some itinerary elements may vary due to bad weather or unforeseen circumstances.",
     highlights: [
       "Midnight pickup from Delhi by taxi driver",
@@ -28,8 +28,6 @@ export const agraPlans: TravelPlan[] = [
       "Early morning departure for sunrise"
     ],
     image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
-    rating: 4.9,
-    reviews: 287,
     popular: true,
     destinations: ["Agra"],
     itinerary: [
@@ -64,7 +62,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2016,
     title: "Same Day Agra Sunrise Tour - Essential",
     duration: "Same Day",
-    price: "From $159 per adult",
+    price: "$159 per adult",
     description: "Experience the iconic Taj Mahal at sunrise and explore Agra Fort in this essential same-day tour. Midnight pickup from Delhi by taxi driver ensures timely arrival. Pickup available from anywhere in Delhi NCR with traditional meals included. Note: Some itinerary elements may vary due to bad weather or unforeseen circumstances.",
     highlights: [
       "Midnight pickup from Delhi by taxi driver",
@@ -86,8 +84,6 @@ export const agraPlans: TravelPlan[] = [
       "Early morning departure for sunrise"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 4.9,
-    reviews: 198,
     popular: false,
     destinations: ["Agra"],
     itinerary: [
@@ -122,7 +118,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2017,
     title: "Same Day Agra Complete Heritage Tour",
     duration: "Same Day",
-    price: "From $189 per adult",
+    price: "$189 per adult",
     description: "Explore Agra's complete heritage in one day with visits to Taj Mahal, Agra Fort, Baby Taj, Mehtab Bagh, and Akbar's Tomb. Midnight pickup from Delhi by taxi driver ensures timely arrival. A comprehensive tour covering all major monuments. Note: Some itinerary elements may vary due to bad weather or unforeseen circumstances.",
     highlights: [
       "Midnight pickup from Delhi by taxi driver",
@@ -144,8 +140,6 @@ export const agraPlans: TravelPlan[] = [
       "Early morning departure"
     ],
     image: "/images/agra/getty-images-mPrsFrM3Teg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: true,
     destinations: ["Agra"],
     itinerary: [
@@ -180,7 +174,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2001,
     title: "Same Day Agra Tour",
     duration: "Same Day",
-    price: "From $149 per adult",
+    price: "$149 per adult",
     description: "Experience the magic of the Taj Mahal and Agra's rich heritage in a single day with our comprehensive same-day tour.",
     highlights: [
       "Taj Mahal at sunrise",
@@ -198,9 +192,7 @@ export const agraPlans: TravelPlan[] = [
       "Breakfast and lunch",
       "Bottled water"
     ],
-    image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 234,
+    image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     popular: true,
     destinations: ["Agra"],
     itinerary: [
@@ -227,7 +219,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2002,
     title: "Agra Heritage Tour - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $249 per adult",
+    price: "$249 per adult",
     description: "Immerse yourself in Agra's Mughal heritage with a one-night stay, allowing you to experience the Taj Mahal at different times of day.",
     highlights: [
       "Taj Mahal at sunrise & sunset",
@@ -247,8 +239,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 4.9,
-    reviews: 167,
     popular: false,
     destinations: ["Agra"],
     itinerary: [
@@ -272,7 +262,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2003,
     title: "Agra Cultural Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $399 per adult",
+    price: "$399 per adult",
     description: "A comprehensive 2-night Agra tour allowing you to explore all major monuments at a relaxed pace with deeper cultural immersion.",
     highlights: [
       "Taj Mahal multiple visits",
@@ -293,8 +283,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 189,
     popular: true,
     destinations: ["Agra"],
     itinerary: [
@@ -326,7 +314,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2004,
     title: "Same Day Agra Luxury Tour",
     duration: "Same Day",
-    price: "From $299 per adult",
+    price: "$299 per adult",
     description: "Experience Agra in ultimate luxury with VIP access, premium dining, and exclusive experiences in a single day.",
     highlights: [
       "VIP access to Taj Mahal",
@@ -347,8 +335,6 @@ export const agraPlans: TravelPlan[] = [
       "All entrance fees"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 5.0,
-    reviews: 89,
     popular: false,
     destinations: ["Agra"],
     itinerary: [
@@ -365,7 +351,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2005,
     title: "Agra Luxury Heritage - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $499 per adult",
+    price: "$499 per adult",
     description: "Indulge in Agra's heritage with luxury accommodations, exclusive experiences, and personalized service.",
     highlights: [
       "5-star luxury hotel stay",
@@ -386,8 +372,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 4.9,
-    reviews: 112,
     popular: false,
     destinations: ["Agra"],
     itinerary: [
@@ -411,7 +395,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2006,
     title: "Agra Royal Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $799 per adult",
+    price: "$799 per adult",
     description: "The ultimate Agra luxury experience with royal treatment, exclusive access, and world-class hospitality.",
     highlights: [
       "5-star palace hotel stay",
@@ -433,8 +417,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/getty-images-mPrsFrM3Teg-unsplash.jpg",
-    rating: 5.0,
-    reviews: 67,
     popular: true,
     destinations: ["Agra"],
     itinerary: [
@@ -466,7 +448,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2008,
     title: "Agra with Mathura & Vrindavan",
     duration: "1 Night / 2 Days",
-    price: "From $299 per adult",
+    price: "$299 per adult",
     description: "Combine the architectural marvels of Agra with the spiritual heritage of Mathura and Vrindavan, the birthplace of Lord Krishna.",
     highlights: [
       "Taj Mahal at sunrise",
@@ -486,8 +468,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/akshat-jhingran-_YRfF6YOhx0-unsplash.jpg",
-    rating: 4.9,
-    reviews: 145,
     popular: false,
     destinations: ["Agra", "Mathura", "Vrindavan"],
     itinerary: [
@@ -512,7 +492,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2009,
     title: "Agra with Elephant & Bear Sanctuary",
     duration: "1 Night / 2 Days",
-    price: "From $349 per adult",
+    price: "$349 per adult",
     description: "Experience Agra's monuments combined with wildlife conservation at the Elephant Sanctuary and Bear Sanctuary, supporting ethical animal tourism.",
     highlights: [
       "Taj Mahal at sunrise",
@@ -533,8 +513,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/pankaj-singh-3okI5js2yIc-unsplash.jpg",
-    rating: 4.9,
-    reviews: 98,
     popular: false,
     destinations: ["Agra"],
     itinerary: [
@@ -569,7 +547,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2010,
     title: "Agra Fatehpur Sikri with Bharatpur",
     duration: "1 Night / 2 Days",
-    price: "From $329 per adult",
+    price: "$329 per adult",
     description: "Explore Agra's monuments, the abandoned Mughal capital Fatehpur Sikri, and Bharatpur Bird Sanctuary, a UNESCO World Heritage site.",
     highlights: [
       "Taj Mahal at sunrise",
@@ -590,8 +568,6 @@ export const agraPlans: TravelPlan[] = [
       "Airport/railway station transfers"
     ],
     image: "/images/agra/ritu-dahiya-9Ni10c7a428-unsplash.jpg",
-    rating: 4.9,
-    reviews: 167,
     popular: false,
     destinations: ["Agra", "Fatehpur Sikri", "Bharatpur"],
     itinerary: [
@@ -626,7 +602,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2013,
     title: "Agra to Jaipur - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $449 per adult",
+    price: "$449 per adult",
     description: "Extended Agra and Jaipur tour with two nights stay, allowing deeper exploration of both cities with cultural experiences.",
     highlights: [
       "Complete Agra & Jaipur tour",
@@ -648,8 +624,6 @@ export const agraPlans: TravelPlan[] = [
       "Agra-Jaipur transfers"
     ],
     image: "/images/agra/naveen-kumar-dusi-tsvjaIFFo1A-unsplash.jpg",
-    rating: 4.9,
-    reviews: 145,
     popular: false,
     destinations: ["Agra", "Jaipur"],
     itinerary: [
@@ -681,7 +655,7 @@ export const agraPlans: TravelPlan[] = [
     id: 2007,
     title: "Customized Agra Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Agra experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -700,8 +674,6 @@ export const agraPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: false,
     destinations: ["Agra"],
     itinerary: [

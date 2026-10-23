@@ -21,8 +21,6 @@ export interface TravelPlan {
   highlights: string[];
   inclusions: string[];
   image: string;
-  rating: number;
-  reviews: number;
   popular: boolean;
   itinerary: ItineraryDay[];
   destinations?: string[];

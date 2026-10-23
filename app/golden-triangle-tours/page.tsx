@@ -172,7 +172,7 @@ export default function GoldenTriangleToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 400+ verified Google reviewers.
+                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal), with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 400+ verified Google reviewers.
                     </p>
                 </div>
             </section>
@@ -266,12 +266,8 @@ export default function GoldenTriangleToursPage() {
                                         </div>
                                     </div>
                                     <div className="p-6 space-y-3">
-                                        <div className="flex items-center gap-2">
-                                            <Star className="w-3.5 h-3.5 text-gold-500 fill-current" />
-                                            <span className="text-xs font-bold text-gray-600">{plan.rating} ({plan.reviews})</span>
-                                        </div>
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
-                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
+                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description}</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
                                             <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>

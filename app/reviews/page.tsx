@@ -9,6 +9,7 @@ import {
     generateReviewSchema,
     generateBreadcrumbSchema,
 } from '@/lib/schemaGenerator';
+import { siteConfig, ratingCountDisplay } from '@/lib/siteConfig';
 
 const webPageSchema = {
     '@context': 'https://schema.org',
@@ -16,7 +17,7 @@ const webPageSchema = {
     '@id': 'https://www.guideindiatours.com/reviews#webpage',
     'url': 'https://www.guideindiatours.com/reviews',
     'name': 'Guest Reviews | Guide India Tours',
-    'description': 'Read 400+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google.',
+    'description': `Read ${ratingCountDisplay} verified guest reviews from travelers worldwide. Rated ${siteConfig.rating.value}/5 on Google.`,
     'inLanguage': 'en',
     'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
     'about': { '@id': 'https://www.guideindiatours.com/#organization' },
@@ -34,7 +35,7 @@ const webPageSchema = {
 
 export const metadata: Metadata = {
     title: 'Guest Reviews | What Travelers Say About Guide India Tours',
-    description: 'Read 400+ verified guest reviews from travelers worldwide. Rated 4.9/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.',
+    description: `Read ${ratingCountDisplay} verified guest reviews from travelers worldwide. Rated ${siteConfig.rating.value}/5 on Google. Discover why 98% of guests recommend our Golden Triangle tours.`,
     alternates: {
         canonical: 'https://www.guideindiatours.com/reviews',
         languages: {
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.9/5 by 400+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: `Rated ${siteConfig.rating.value}/5 by ${ratingCountDisplay} verified travelers. Read real reviews from guests who explored India with us.`,
         url: 'https://www.guideindiatours.com/reviews',
         siteName: 'Guide India Tours',
         type: 'website',
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Guest Reviews | Guide India Tours',
-        description: 'Rated 4.9/5 by 400+ verified travelers. Read real reviews from guests who explored India with us.',
+        description: `Rated ${siteConfig.rating.value}/5 by ${ratingCountDisplay} verified travelers. Read real reviews from guests who explored India with us.`,
     },
 };
 
@@ -112,8 +113,8 @@ export default function ReviewsPage() {
         url: 'https://www.guideindiatours.com',
         aggregateRating: {
             '@type': 'AggregateRating',
-            ratingValue: '4.9',
-            reviewCount: '432',
+            ratingValue: siteConfig.rating.value,
+            reviewCount: siteConfig.rating.count,
             bestRating: '5',
             worstRating: '1',
         },
@@ -174,17 +175,17 @@ export default function ReviewsPage() {
                                     <Star key={i} className="w-5 h-5 text-gold-500 fill-gold-500" />
                                 ))}
                             </div>
-                            <p className="text-4xl font-display font-bold text-gray-900">4.9</p>
+                            <p className="text-4xl font-display font-bold text-gray-900">{siteConfig.rating.value}</p>
                             <p className="text-sm text-gray-500 mt-1">out of 5 stars</p>
                         </div>
                         <div className="bg-ivory-100 rounded-3xl p-8 text-center">
                             <div className="flex items-center justify-center mb-3">
                                 <Users className="w-6 h-6 text-maroon-600" />
                             </div>
-                            <p className="text-4xl font-display font-bold text-gray-900">400+</p>
+                            <p className="text-4xl font-display font-bold text-gray-900">{ratingCountDisplay}</p>
                             <p className="text-sm text-gray-500 mt-1">verified reviews</p>
                             <a
-                                href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
+                                href={siteConfig.social.googleMaps}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-block text-xs font-bold text-maroon-600 hover:text-black mt-2 underline underline-offset-2"
@@ -275,7 +276,8 @@ export default function ReviewsPage() {
                             What Our Guests Say
                         </h2>
                         <p className="text-gray-500 font-light max-w-2xl mx-auto">
-                            Authentic reviews from verified travelers across the globe
+                            A selection of {reviews.length} reviews from verified guests. All {ratingCountDisplay} are on{' '}
+                            <a href={siteConfig.social.googleMaps} target="_blank" rel="noopener noreferrer" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">Google</a>.
                         </p>
                     </div>
 
@@ -348,7 +350,7 @@ export default function ReviewsPage() {
                         Ready to Create Your Own Story?
                     </h2>
                     <p className="text-white/70 text-lg mb-12 font-light leading-relaxed">
-                        Join over 150 satisfied travelers who chose Guide India Tours for their Golden Triangle adventure. Your unforgettable India experience awaits.
+                        Join the {ratingCountDisplay} travelers who rated Guide India Tours {siteConfig.rating.value}/5 on Google for their Golden Triangle adventure. Your unforgettable India experience awaits.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button

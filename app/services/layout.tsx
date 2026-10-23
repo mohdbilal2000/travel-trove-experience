@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
     title: 'Our Services | Private Tours, Hotel Booking & Transport | Guide India Tours',
@@ -59,8 +60,8 @@ const servicesSchema = [
         },
         'aggregateRating': {
             '@type': 'AggregateRating',
-            'ratingValue': '4.9',
-            'reviewCount': '432',
+            'ratingValue': siteConfig.rating.value,
+            'reviewCount': siteConfig.rating.count,
             'bestRating': '5',
             'worstRating': '1'
         }

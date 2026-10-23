@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button";
 import { reviews } from "@/data/reviews";
 import { blogPosts, estimateReadTime } from "@/data/blogPosts";
 import { allPlans } from "@/data/travelPlans";
+import { siteConfig, addressOneLine, ratingCountDisplay } from "@/lib/siteConfig";
 
-const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra";
+const GOOGLE_REVIEWS_URL = siteConfig.social.googleMaps;
 
 /* ------------------------------------------------------------------ */
 /* Trust stats — quotable facts as a definition list                   */
@@ -17,8 +18,8 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/search/?api=1&query=Guid
 
 const stats = [
     { term: "Operating since", detail: "2004" },
-    { term: "Travelers guided", detail: "15,000+" },
-    { term: "Google rating", detail: "4.9/5 · 400+ reviews" },
+    { term: "Travelers guided", detail: siteConfig.stats.travellersGuided },
+    { term: "Google rating", detail: `${siteConfig.rating.value}/5 · ${ratingCountDisplay} reviews` },
     { term: "Tour packages", detail: `${allPlans.length}+` },
     { term: "Guides", detail: "Government-licensed" },
     { term: "Support", detail: "24/7 on WhatsApp" },
@@ -29,7 +30,7 @@ export function TrustStats() {
         <section className="bg-black text-white py-10 md:py-14" aria-labelledby="trust-stats-heading">
             <div className="container mx-auto px-4">
                 <h2 id="trust-stats-heading" className="text-center text-xs font-black uppercase tracking-[0.3em] text-gold-500 mb-8">
-                    India Tour Operator Since 2004 — Trusted by 15,000+ Travelers
+                    India Tour Operator Since {siteConfig.foundingDate} — Trusted by {siteConfig.stats.travellersGuided} Travelers
                 </h2>
                 <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
                     {stats.map((s) => (
@@ -41,7 +42,7 @@ export function TrustStats() {
                 </dl>
                 <p className="text-center text-white/70 font-light mt-8 max-w-3xl mx-auto leading-relaxed">
                     Guide India Tours is a private tour operator based in Agra, India, working only with
-                    government-approved, licensed guides — operating since 2004 and rated 4.9/5 from 400+ Google reviews.{" "}
+                    government-approved, licensed guides — operating since {siteConfig.foundingDate} and rated {siteConfig.rating.value}/5 from {ratingCountDisplay} Google reviews.{" "}
                     <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-white underline underline-offset-2">
                         Verify our reviews on Google
                     </a>{" "}
@@ -380,7 +381,7 @@ export function EeatGuides() {
                             Meet Your Government-Licensed Guides
                         </h2>
                         <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                            Guide India Tours has operated from Agra since 2004, guiding more than 15,000 travelers
+                            Guide India Tours has operated from Agra since {siteConfig.foundingDate}, guiding {siteConfig.stats.travellersGuided} travelers
                             through Delhi, Agra and Jaipur. Our team is led by{" "}
                             <Link href="/about/avneesh-dixit" className="text-gold-500 font-semibold underline underline-offset-2 hover:text-white">
                                 government-approved lead guide Avneesh Dixit
@@ -436,7 +437,7 @@ export function EeatGuides() {
                         <address className="not-italic relative z-10 mt-6 bg-white/5 border border-white/10 rounded-2xl p-6 text-sm text-white/80 leading-relaxed">
                             <span className="flex items-start gap-3 mb-2">
                                 <MapPin className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
-                                <span>Guide India Tours, 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh, India</span>
+                                <span>Guide India Tours, {addressOneLine}</span>
                             </span>
                             <span className="flex items-center gap-3 mb-2">
                                 <Phone className="w-4 h-4 text-gold-500 flex-shrink-0" />

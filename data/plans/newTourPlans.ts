@@ -3,43 +3,10 @@ import { TravelPlan } from "../types/travelPlanTypes";
 // New tour plans data - renamed the export to avoid conflict with the main export
 export const tourPlans: TravelPlan[] = [
   {
-    id: 23,
-    title: "Same Day Agra Tour",
-    duration: "1 Day",
-    price: "Starting from $129 per adult",
-    description: "Perfect for travelers with limited time who want to experience the magic of the Taj Mahal in a single day.",
-    highlights: [
-      "Early morning pick-up from Delhi",
-      "Taj Mahal visit with expert guide",
-      "Agra Fort exploration",
-      "Local cuisine experience",
-      "Evening return to Delhi"
-    ],
-    inclusions: [
-      "Round-trip transportation from Delhi",
-      "Professional guide (male/female as per preference)",
-      "Monument entrance fees",
-      "Breakfast and lunch"
-    ],
-    image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
-    rating: 4.7,
-    reviews: 92,
-    popular: true,
-    itinerary: [
-      {
-        day: 1,
-        title: "Delhi - Agra - Delhi",
-        description: "Early morning departure from Delhi, Taj Mahal visit at sunrise, Agra Fort tour, local shopping, and evening return to Delhi.",
-        accommodation: "None",
-        meals: "Breakfast, Lunch"
-      }
-    ]
-  },
-  {
     id: 25,
     title: "Same Day Agra Tour by Flight",
     duration: "1 Day",
-    price: "Starting from $299 per adult",
+    price: "$299 per adult",
     description: "Premium same-day Agra tour by flight for maximum comfort and time efficiency. Experience the Taj Mahal in luxury with minimal travel time.",
     highlights: [
       "Domestic flight Delhi-Agra-Delhi",
@@ -59,8 +26,6 @@ export const tourPlans: TravelPlan[] = [
       "Priority monument access"
     ],
     image: "/images/agra/getty-images-Mfck6jSVcbY-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: true,
     itinerary: [
       {
@@ -76,7 +41,7 @@ export const tourPlans: TravelPlan[] = [
     id: 126,
     title: "Same Day Agra Tour by Train",
     duration: "1 Day",
-    price: "Starting from $149 per adult",
+    price: "$149 per adult",
     description: "Authentic Indian railway experience with same-day Agra tour. Travel like locals while visiting the magnificent Taj Mahal and other attractions.",
     highlights: [
       "Fast train journey (train tickets included)",
@@ -96,8 +61,6 @@ export const tourPlans: TravelPlan[] = [
       "Traditional handicraft shopping"
     ],
     image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
-    rating: 4.5,
-    reviews: 64,
     popular: false,
     itinerary: [
       {
@@ -113,7 +76,7 @@ export const tourPlans: TravelPlan[] = [
     id: 11,
     title: "Express Golden Triangle Tour",
     duration: "3 Days",
-    price: "Starting from $349 per adult",
+    price: "$349 per adult",
     description: "A fast-paced itinerary for travelers with limited time, covering essentials efficiently.",
     highlights: [
       "Delhi: India Gate, Qutub Minar, Lotus Temple",
@@ -126,8 +89,6 @@ export const tourPlans: TravelPlan[] = [
       "Daily breakfast"
     ],
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    rating: 4.3,
-    reviews: 78,
     popular: false,
     itinerary: [
       {
@@ -157,7 +118,7 @@ export const tourPlans: TravelPlan[] = [
     id: 12,
     title: "Classic Golden Triangle Tour",
     duration: "4 Days",
-    price: "Starting from $699 per adult",
+    price: "$699 per adult",
     description: "A balanced tour offering comfort and value with a well-paced exploration.",
     highlights: [
       "Delhi: Red Fort, Jama Masjid, Humayun's Tomb, India Gate",
@@ -171,8 +132,6 @@ export const tourPlans: TravelPlan[] = [
       "Select dinners"
     ],
     image: "/images/delhi/getty-images-KGqkTIKxd48-unsplash.jpg",
-    rating: 4.6,
-    reviews: 145,
     popular: true,
     itinerary: [
       {
@@ -209,7 +168,7 @@ export const tourPlans: TravelPlan[] = [
     id: 13,
     title: "Deluxe Golden Triangle Tour",
     duration: "5 Days",
-    price: "Starting from $1,199 per adult",
+    price: "$1,199 per adult",
     description: "A luxurious experience with premium services and personalized attention.",
     highlights: [
       "Delhi: Red Fort, Qutub Minar, India Gate",
@@ -223,8 +182,6 @@ export const tourPlans: TravelPlan[] = [
       "Private local guides"
     ],
     image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 112,
     popular: true,
     itinerary: [
       {
@@ -268,7 +225,7 @@ export const tourPlans: TravelPlan[] = [
     id: 14,
     title: "Cultural Immersion Golden Triangle Tour",
     duration: "6 Days",
-    price: "Starting from $899 per adult",
+    price: "$899 per adult",
     description: "Deep cultural engagement with hands-on local experiences.",
     highlights: [
       "Delhi: Cooking class, local market visits",
@@ -282,8 +239,6 @@ export const tourPlans: TravelPlan[] = [
       "Cultural activities and workshops"
     ],
     image: "/images/agra/akshat-jhingran-_YRfF6YOhx0-unsplash.jpg",
-    rating: 4.9,
-    reviews: 94,
     popular: false,
     itinerary: [
       {
@@ -334,7 +289,7 @@ export const tourPlans: TravelPlan[] = [
     id: 15,
     title: "Leisurely Golden Triangle Tour",
     duration: "7 Days",
-    price: "Starting from $999 per adult",
+    price: "$999 per adult",
     description: "A relaxed pace with extra time for personal exploration or relaxation.",
     highlights: [
       "Delhi: Red Fort, Lodhi Gardens, museums",
@@ -347,8 +302,6 @@ export const tourPlans: TravelPlan[] = [
       "Daily breakfast"
     ],
     image: "/images/delhi/getty-images-AaZSrGeC6Fg-unsplash.jpg",
-    rating: 4.7,
-    reviews: 87,
     popular: false,
     itinerary: [
       {
@@ -406,7 +359,7 @@ export const tourPlans: TravelPlan[] = [
     id: 16,
     title: "Adventure Golden Triangle Tour",
     duration: "5 Days",
-    price: "Starting from $1,099 per adult",
+    price: "$1,099 per adult",
     description: "A thrilling mix of cultural sightseeing and adventure.",
     highlights: [
       "Delhi: Cycle tour through Old Delhi",
@@ -421,8 +374,6 @@ export const tourPlans: TravelPlan[] = [
       "Daily breakfast"
     ],
     image: "/images/delhi/getty-images-7sJAG2dJVJo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 103,
     popular: true,
     itinerary: [
       {
@@ -466,7 +417,7 @@ export const tourPlans: TravelPlan[] = [
     id: 17,
     title: "Budget Backpacker Golden Triangle Tour",
     duration: "4 Days",
-    price: "Starting from $199 per adult",
+    price: "$199 per adult",
     description: "An ultra-affordable option for backpackers seeking authentic local experiences.",
     highlights: [
       "Delhi: Street food tour in Chandni Chowk, India Gate",
@@ -480,8 +431,6 @@ export const tourPlans: TravelPlan[] = [
       "Self-guided tour maps"
     ],
     image: "/images/agra/pankaj-singh-3okI5js2yIc-unsplash.jpg",
-    rating: 4.2,
-    reviews: 156,
     popular: true,
     itinerary: [
       {
@@ -518,7 +467,7 @@ export const tourPlans: TravelPlan[] = [
     id: 18,
     title: "Golden Triangle Foodie Adventure",
     duration: "5 Days",
-    price: "Starting from $849 per adult",
+    price: "$849 per adult",
     description: "A culinary journey blending sightseeing with food-focused experiences.",
     highlights: [
       "Delhi: Paratha tasting in Paranthe Wali Gali, kebab crawl",
@@ -532,8 +481,6 @@ export const tourPlans: TravelPlan[] = [
       "Food tours and cooking classes"
     ],
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
-    rating: 4.9,
-    reviews: 74,
     popular: false,
     itinerary: [
       {
@@ -577,7 +524,7 @@ export const tourPlans: TravelPlan[] = [
     id: 19,
     title: "Golden Triangle Monsoon Magic",
     duration: "6 Days",
-    price: "Starting from $949 per adult",
+    price: "$949 per adult",
     description: "A seasonal tour showcasing the Golden Triangle's beauty during the monsoon.",
     highlights: [
       "Delhi: Rain-soaked Lodhi Gardens, Humayun's Tomb",
@@ -591,8 +538,6 @@ export const tourPlans: TravelPlan[] = [
       "Rain gear (umbrellas, ponchos)"
     ],
     image: "/images/delhi/getty-images-DVSUA1uZ6Mo-unsplash.jpg",
-    rating: 4.6,
-    reviews: 42,
     popular: false,
     itinerary: [
       {
@@ -643,7 +588,7 @@ export const tourPlans: TravelPlan[] = [
     id: 20,
     title: "Family-Friendly Golden Triangle Tour",
     duration: "5 Days",
-    price: "Starting from $799 per adult (discounts for kids under 12)",
+    price: "$799 per adult (discounts for kids under 12)",
     description: "Designed for families with engaging activities for all ages.",
     highlights: [
       "Delhi: National Rail Museum, Delhi Zoo",
@@ -657,8 +602,6 @@ export const tourPlans: TravelPlan[] = [
       "Kid-tailored activities"
     ],
     image: "/images/delhi/getty-images-KGqkTIKxd48-unsplash.jpg",
-    rating: 4.7,
-    reviews: 89,
     popular: true,
     itinerary: [
       {
@@ -702,7 +645,7 @@ export const tourPlans: TravelPlan[] = [
     id: 21,
     title: "Golden Triangle Photography Expedition",
     duration: "6 Days",
-    price: "Starting from $1,049 per adult",
+    price: "$1,049 per adult",
     description: "A guided tour for photography enthusiasts focusing on iconic backdrops.",
     highlights: [
       "Delhi: Sunrise at Jama Masjid, twilight at India Gate",
@@ -716,8 +659,6 @@ export const tourPlans: TravelPlan[] = [
       "Photography guide and workshops"
     ],
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
-    rating: 4.9,
-    reviews: 56,
     popular: false,
     itinerary: [
       {
@@ -768,7 +709,7 @@ export const tourPlans: TravelPlan[] = [
     id: 22,
     title: "Golden Triangle Heritage and Handicrafts",
     duration: "7 Days",
-    price: "Starting from $1,149 per adult",
+    price: "$1,149 per adult",
     description: "A deep dive into the region's artisanal heritage with historic stays.",
     highlights: [
       "Delhi: Crafts Museum, Dilli Haat",
@@ -782,8 +723,6 @@ export const tourPlans: TravelPlan[] = [
       "Handicraft workshops and shopping assistance"
     ],
     image: "/images/agra/getty-images-mPrsFrM3Teg-unsplash.jpg",
-    rating: 4.9,
-    reviews: 47,
     popular: false,
     itinerary: [
       {

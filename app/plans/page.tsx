@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    Car, Bed, Users, Coffee, ArrowRight, Star, Clock
+    Car, Bed, Users, Coffee, ArrowRight, Clock
 } from "lucide-react";
 import { allPlans } from "@/data/travelPlans";
 import { Badge } from "@/components/ui/badge";
@@ -79,10 +79,9 @@ export default async function PlansPage({ searchParams }: PageProps) {
         switch (sort) {
             case 'duration':
                 return parseDurationDays(a.duration) - parseDurationDays(b.duration);
-            case 'reviews':
-                return b.reviews - a.reviews;
             default:
-                return (Number(b.popular) - Number(a.popular)) || (b.reviews - a.reviews);
+                // Popular picks first; the curated data order (city → duration) is kept otherwise.
+                return Number(b.popular) - Number(a.popular);
         }
     });
 
@@ -104,13 +103,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                 "name": plan.title,
                 "description": plan.description.substring(0, 200),
                 "url": `https://www.guideindiatours.com/plans/${plan.id}`,
-                "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": plan.rating.toString(),
-                    "reviewCount": plan.reviews.toString(),
-                    "bestRating": "5"
-                }
+                "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`
             }
         }))
     };
@@ -193,12 +186,6 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                     )}
 
                                     <div className="absolute bottom-6 left-8 right-8 z-10">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <div className="flex gap-0.5">
-                                                {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-gold-500 fill-current" />)}
-                                            </div>
-                                            <span className="text-white/80 text-[11px] sm:text-[9px] font-black uppercase tracking-widest">{plan.reviews} Reviews</span>
-                                        </div>
                                         <p className="text-white text-xs font-bold flex items-center gap-2">
                                             <Clock className="w-3 h-3 text-gold-500" /> {plan.duration}
                                         </p>

@@ -13,6 +13,7 @@ import TripPlanner from "@/components/home/TripPlanner";
 import Link from "next/link";
 import { homeFaqs } from "@/data/homeFaqs";
 import { type PlannerState } from "@/lib/planner";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function ContactPage() {
     const router = useRouter();
@@ -114,11 +115,11 @@ export default function ContactPage() {
                                         </div>
                                     </div>
                                     <address className="not-italic text-base text-white/75 leading-relaxed font-light mb-5">
-                                        31A/110, Shamsabad Road,<br />
-                                        Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh, India
+                                        {siteConfig.address.street},<br />
+                                        {siteConfig.address.locality} {siteConfig.address.postalCode}, {siteConfig.address.region}, India
                                     </address>
                                     <a
-                                        href="https://maps.google.com/?q=Guide+India+Tours+Agra"
+                                        href={siteConfig.social.googleMaps}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 text-sm font-bold text-gold-500 hover:text-white transition-colors uppercase tracking-widest"

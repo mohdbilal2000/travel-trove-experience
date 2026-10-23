@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
 
 // Pre-resized 1920px WebP variants keep the LCP request small (~200-500KB vs 2-8MB source JPGs).
 export const heroSlides = [
@@ -85,7 +86,7 @@ const HeroFallback = () => {
         <div className="max-w-5xl animate-fade-in">
           {/* Social proof badge */}
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
+            href={siteConfig.social.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Read our reviews on Google"
@@ -96,7 +97,7 @@ const HeroFallback = () => {
                 <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
               ))}
             </div>
-            <span className="text-white/90 text-sm font-medium">4.9/5 from 400+ travelers on Google</span>
+            <span className="text-white/90 text-sm font-medium">{siteConfig.rating.value}/5 from {ratingCountDisplay} travelers on Google</span>
           </a>
 
           {/* Heading — h2 because the real h1 is in page.tsx sr-only */}

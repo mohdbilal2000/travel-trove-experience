@@ -64,8 +64,6 @@ for (const plan of allPlans) {
             itinerary: plan.itinerary,
             destinations: plan.destinations,
             url: `https://www.guideindiatours.com/plans/${plan.id}`,
-            rating: plan.rating,
-            reviewCount: plan.reviews,
             reviews: reviews.map((r) => ({
                 author: r.name,
                 rating: r.rating,

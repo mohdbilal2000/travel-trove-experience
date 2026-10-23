@@ -1,6 +1,7 @@
 import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { NextResponse } from 'next/server';
+import { siteConfig, postalAddressSchema } from '@/lib/siteConfig';
 
 export async function GET() {
     const destinations = Array.from(new Set(allPlans.flatMap(p => p.destinations || [])));
@@ -22,20 +23,13 @@ export async function GET() {
         priceRange: "$$$",
         slogan: "Experience India's Golden Triangle with Expert Guides",
         sameAs: [
-            "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
+            siteConfig.social.googleMaps,
             "https://www.asiabylocals.com/india/agra",
             "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
             "https://www.trustpilot.com/review/guideindiatours.com",
         ],
 
-        address: {
-            "@type": "PostalAddress",
-            streetAddress: "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
-            addressLocality: "Agra",
-            addressRegion: "Uttar Pradesh",
-            postalCode: "282001",
-            addressCountry: "IN",
-        },
+        address: postalAddressSchema(),
 
         contactPoint: {
             "@type": "ContactPoint",
@@ -61,8 +55,8 @@ export async function GET() {
 
         aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "432",
+            ratingValue: siteConfig.rating.value,
+            reviewCount: siteConfig.rating.count,
             bestRating: "5",
             worstRating: "1",
         },
@@ -79,8 +73,8 @@ export async function GET() {
                 currency: "USD",
             },
             languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
-            averageRating: 4.9,
-            totalReviews: 432,
+            averageRating: Number(siteConfig.rating.value),
+            totalReviews: Number(siteConfig.rating.count),
         },
 
         // Tour catalog summary
@@ -89,8 +83,6 @@ export async function GET() {
             name: plan.title,
             duration: plan.duration,
             price: plan.price,
-            rating: plan.rating,
-            reviews: plan.reviews,
             destinations: plan.destinations,
             url: `https://www.guideindiatours.com/plans/${plan.id}`,
         })),

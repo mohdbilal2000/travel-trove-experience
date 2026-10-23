@@ -19,6 +19,7 @@ import AtAGlance from "./_components/AtAGlance";
 import BookingButton from "./_components/BookingButton";
 import StickyBookingBar from "./_components/StickyBookingBar";
 import { generateTourPackageSchema, generateFAQSchema } from "@/lib/schemaGenerator";
+import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -108,8 +109,6 @@ export default async function PlanDetailPage({ params }: PageProps) {
         itinerary: plan.itinerary,
         destinations: plan.destinations,
         url: `https://www.guideindiatours.com/plans/${plan.id}`,
-        rating: plan.rating,
-        reviewCount: plan.reviews,
         reviews: tourReviews.map((r) => ({
             author: r.name,
             rating: r.rating,
@@ -158,7 +157,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             />
                             <div className="flex flex-wrap items-center gap-4 mb-6 mt-8">
                                 <Badge className="bg-gold-500 text-black border-none px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
-                                    <Star className="w-3 h-3 mr-1.5 fill-black" /> {plan.rating} ({plan.reviews} Reviews)
+                                    <Star className="w-3 h-3 mr-1.5 fill-black" /> {siteConfig.rating.value}/5 on Google · {ratingCountDisplay} reviews
                                 </Badge>
                                 <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
                                     <Clock className="w-3 h-3 mr-1.5" /> {plan.duration}
@@ -317,13 +316,16 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                         <h2 className="text-4xl font-display font-bold text-gray-900">Traveler <span className="text-maroon-600">Reviews</span></h2>
                                     </div>
                                     <div className="flex items-center gap-3 mb-8">
-                                        <span className="text-3xl font-black text-gray-900">{plan.rating.toFixed(1)}</span>
+                                        <span className="text-3xl font-black text-gray-900">{siteConfig.rating.value}</span>
                                         <span className="flex text-gold-500">
                                             {Array.from({ length: 5 }).map((_, i) => (
                                                 <Star key={i} className="w-5 h-5 fill-gold-500" />
                                             ))}
                                         </span>
-                                        <span className="text-gray-500 font-light">Based on {plan.reviews}+ verified reviews</span>
+                                        <span className="text-gray-500 font-light">
+                                            Guide India Tours is rated {siteConfig.rating.value}/5 from {ratingCountDisplay} Google reviews —{' '}
+                                            <a href={siteConfig.social.googleMaps} target="_blank" rel="noopener noreferrer" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">read them on Google</a>
+                                        </span>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {tourReviews.map((review) => (

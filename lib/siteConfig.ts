@@ -16,6 +16,7 @@ export const siteConfig = {
   description:
     "India's specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Government-approved licensed guides, luxury hotels, and 24/7 support.",
   foundingDate: "2004",
+  foundingYear: 2004,
 
   // Canonical production origin (www is canonical; apex 308-redirects to www).
   url: "https://www.guideindiatours.com",
@@ -47,6 +48,8 @@ export const siteConfig = {
 
   // ── Reputation (keep in sync with the Google Business Profile) ────────────
   rating: { value: "4.9", count: "432", best: "5" },
+  // Company-supplied marketing figure (not independently verifiable from the GBP).
+  stats: { travellersGuided: "15,000+" },
 
   languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
 
@@ -62,5 +65,26 @@ export const siteConfig = {
 /** Absolute URL helper. */
 export const absoluteUrl = (path = "/"): string =>
   `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+
+/** Whole years in business, derived from the founding year so badges never go stale. */
+export const yearsInBusiness = (now: Date = new Date()): number =>
+  now.getFullYear() - siteConfig.foundingYear;
+
+/** The GBP review count rounded down to the nearest hundred ("400+") for display copy. */
+export const ratingCountDisplay = `${Math.floor(Number(siteConfig.rating.count) / 100) * 100}+`;
+
+/** One-line NAP address for footers and contact blocks. */
+export const addressOneLine =
+  `${siteConfig.address.street}, ${siteConfig.address.locality} ${siteConfig.address.postalCode}, ${siteConfig.address.region}, India`;
+
+/** The schema.org PostalAddress node — every TravelAgency JSON-LD block uses this. */
+export const postalAddressSchema = () => ({
+  "@type": "PostalAddress",
+  streetAddress: siteConfig.address.street,
+  addressLocality: siteConfig.address.locality,
+  addressRegion: siteConfig.address.region,
+  postalCode: siteConfig.address.postalCode,
+  addressCountry: siteConfig.address.country,
+});
 
 export type SiteConfig = typeof siteConfig;

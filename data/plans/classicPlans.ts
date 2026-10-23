@@ -6,7 +6,7 @@ export const classicPlans: TravelPlan[] = [
     id: 1,
     title: "Golden Triangle Essential",
     duration: "4 Days / 3 Nights",
-    price: "From $598 per adult",
+    price: "$598 per adult",
     description: "A perfect introduction to India's classic circuit, visiting Delhi, Agra, and Jaipur with comfortable accommodations and guided sightseeing.",
     highlights: [
       "Old & New Delhi city tour",
@@ -24,8 +24,6 @@ export const classicPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    rating: 4.7,
-    reviews: 124,
     popular: true,
     itinerary: [
       {
@@ -62,7 +60,7 @@ export const classicPlans: TravelPlan[] = [
     id: 2,
     title: "Golden Triangle Luxury",
     duration: "5 Days / 4 Nights",
-    price: "From $998 per adult",
+    price: "$998 per adult",
     description: "Experience the Golden Triangle in style with luxury accommodations, personalized service, and exclusive experiences in Delhi, Agra, and Jaipur.",
     highlights: [
       "Comprehensive Delhi heritage tour",
@@ -82,8 +80,6 @@ export const classicPlans: TravelPlan[] = [
       "Complimentary spa treatment"
     ],
     image: "/images/agra/getty-images-Mfck6jSVcbY-unsplash.jpg",
-    rating: 4.9,
-    reviews: 86,
     popular: false,
     itinerary: [
       {
