@@ -29,8 +29,8 @@ colourful flyer.
 `scripts/quote-generator/template/git-quotation-reference.html` is the current standard,
 committed so it survives a container reset. **Start every new Guide India Tours quotation
 from it** &mdash; swap the client content, keep the structure, the CSS and the standard
-sections. `measure.js` beside it prints sheet heights at print width (A4 = 1123px);
-`render.js` writes the PDF. Measure before rendering, and never let a page overflow or
+sections. `measure.cjs` beside it prints sheet heights at print width (A4 = 1123px);
+`render.cjs` writes the PDF. Measure before rendering, and never let a page overflow or
 sit nearly empty.
 
 Sign the closing **"Guide India Tours"**, not an individual's name.
