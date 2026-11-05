@@ -6,7 +6,7 @@ export const extensionDestinations: TravelPlan[] = [
     id: 7,
     title: "Golden Triangle with Kerala Backwaters",
     duration: "10 Days / 9 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the contrasts of India with the historical Golden Triangle and the serene Kerala backwaters in one magnificent journey.",
     highlights: [
       "Complete Golden Triangle tour",
@@ -27,8 +27,6 @@ export const extensionDestinations: TravelPlan[] = [
       "Houseboat cruise with meals"
     ],
     image: "/images/kerela/sourabh-shrikant-nilakhe-ek0Fdu9CXRI-unsplash.jpg",
-    rating: 4.9,
-    reviews: 47,
     popular: true,
     itinerary: [
       {
@@ -107,7 +105,7 @@ export const extensionDestinations: TravelPlan[] = [
     id: 9,
     title: "Rajasthan Royal Heritage",
     duration: "10 Days / 9 Nights",
-    price: "From $1,449 per adult",
+    price: "$1,449 per adult",
     description: "Experience the royal heritage of Rajasthan with stays in palace hotels and visits to magnificent forts, colorful markets, and traditional villages.",
     highlights: [
       "Golden Triangle highlights",
@@ -127,8 +125,6 @@ export const extensionDestinations: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2066&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 75,
     popular: true,
     itinerary: [
       {
@@ -207,7 +203,7 @@ export const extensionDestinations: TravelPlan[] = [
     id: 10,
     title: "Himalayan Expedition",
     duration: "9 Days / 8 Nights",
-    price: "From $1,299 per adult",
+    price: "$1,299 per adult",
     description: "Experience the majesty of the Himalayas with visits to Shimla, Dharamshala, and other mountain destinations with stunning views and cultural experiences.",
     highlights: [
       "Delhi to Shimla hill train journey",
@@ -227,8 +223,6 @@ export const extensionDestinations: TravelPlan[] = [
       "Guided meditation session"
     ],
     image: "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?q=80&w=2034&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 56,
     popular: false,
     itinerary: [
       {

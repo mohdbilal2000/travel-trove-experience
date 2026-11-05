@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { postalAddressSchema } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
     title: 'Contact Guide India Tours | Get a Free Quote for Your India Tour',
@@ -6,8 +7,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/contact',
         languages: {
-            'en-US': 'https://www.guideindiatours.com/contact',
-            'en-GB': 'https://www.guideindiatours.com/contact',
+            'en': 'https://www.guideindiatours.com/contact',
             'x-default': 'https://www.guideindiatours.com/contact',
         },
     },
@@ -53,14 +53,7 @@ const contactSchema = {
                 "availableLanguage": ["English", "Hindi"]
             }
         ],
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
-            "addressLocality": "Agra",
-            "addressRegion": "Uttar Pradesh",
-            "postalCode": "282001",
-            "addressCountry": "IN"
-        }
+        "address": postalAddressSchema()
     }
 };
 

@@ -20,10 +20,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com',
         languages: {
             'en': 'https://www.guideindiatours.com',
-            'en-US': 'https://www.guideindiatours.com',
-            'en-GB': 'https://www.guideindiatours.com',
-            'en-IN': 'https://www.guideindiatours.com',
-            'en-AU': 'https://www.guideindiatours.com',
             'x-default': 'https://www.guideindiatours.com',
         },
     },

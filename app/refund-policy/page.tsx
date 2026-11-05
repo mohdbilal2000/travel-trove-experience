@@ -8,9 +8,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/refund-policy',
         languages: {
-            'en-US': 'https://www.guideindiatours.com/refund-policy',
-            'en-GB': 'https://www.guideindiatours.com/refund-policy',
-            'en-AU': 'https://www.guideindiatours.com/refund-policy',
+            'en': 'https://www.guideindiatours.com/refund-policy',
             'x-default': 'https://www.guideindiatours.com/refund-policy',
         },
     },

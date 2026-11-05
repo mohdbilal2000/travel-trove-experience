@@ -11,6 +11,7 @@ import {
     MapPin, Clock, Star, ArrowRight, Calendar,
     Shield, Users, Check, ChevronRight, Sparkles
 } from 'lucide-react';
+import { fromPrice } from '@/lib/planPrice';
 
 export const metadata: Metadata = {
     title: 'Delhi Tours | Private Guided Sightseeing & Day Trips | Guide India Tours',
@@ -19,9 +20,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/delhi-tours',
         languages: {
             'en': 'https://www.guideindiatours.com/delhi-tours',
-            'en-US': 'https://www.guideindiatours.com/delhi-tours',
-            'en-GB': 'https://www.guideindiatours.com/delhi-tours',
-            'en-IN': 'https://www.guideindiatours.com/delhi-tours',
             'x-default': 'https://www.guideindiatours.com/delhi-tours',
         },
     },
@@ -204,16 +202,12 @@ export default function DelhiToursPage() {
                                         </div>
                                     </div>
                                     <div className="p-6 space-y-3">
-                                        <div className="flex items-center gap-2">
-                                            <Star className="w-3.5 h-3.5 text-gold-500 fill-current" />
-                                            <span className="text-xs font-bold text-gray-600">{plan.rating} ({plan.reviews})</span>
-                                        </div>
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">
                                             {plan.title}
                                         </h3>
-                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
+                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description}</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">{fromPrice(plan.price)}</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">
                                                 View <ChevronRight className="w-3 h-3" />
                                             </span>

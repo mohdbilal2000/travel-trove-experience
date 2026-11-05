@@ -3,6 +3,7 @@ import { blogPosts } from '@/data/blogPosts';
 import { faqCategories, FAQ_LAST_UPDATED } from '@/data/faqs';
 import { blogTranslations } from '@/data/blogTranslations';
 import { NextResponse } from 'next/server';
+import { siteConfig, addressOneLine, ratingCountDisplay } from '@/lib/siteConfig';
 
 const BASE_URL = 'https://www.guideindiatours.com';
 
@@ -34,9 +35,9 @@ export async function GET() {
 - Phone: +91 9410000991
 - Email: info@guideindiatours.com
 - WhatsApp: +91 8979810991
-- Location: 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra, Uttar Pradesh 282001, India
+- Location: ${addressOneLine}
 - Hours: Open 24 hours, 7 days a week
-- Google Rating: 4.9/5 from 400+ verified reviews
+- Google Rating: ${siteConfig.rating.value}/5 from ${ratingCountDisplay} verified reviews
 
 ## What We Offer
 - ${totalPlans} curated private tour packages
@@ -47,7 +48,7 @@ export async function GET() {
 
 ## Key Differentiators
 - Licensed & Government-approved guides
-- 4.9/5 average rating from 400+ verified Google reviews
+- ${siteConfig.rating.value}/5 average rating from ${ratingCountDisplay} verified Google reviews
 - 100% customizable itineraries
 - No hidden fees — transparent pricing
 - 24/7 on-trip WhatsApp support

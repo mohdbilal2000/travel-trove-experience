@@ -13,9 +13,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/taj-mahal-guide',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-guide',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-guide',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-guide',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-guide',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-guide',
         },
     },

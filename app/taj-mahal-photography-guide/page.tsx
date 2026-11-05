@@ -7,15 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal Photography Guide 2026: Best Spots, Times & Rules',
-    description: 'Where to shoot the Taj Mahal — best spots, sunrise vs golden hour, allowed and banned gear, camera settings and Mehtab Bagh from across the river.',
+    title: 'Taj Mahal Photography: Best Spots, Sunrise Light & Camera Rules',
+    description: 'The classic shot is from the main gate at sunrise; the quietest is from Mehtab Bagh across the river. Allowed and banned gear, tripod rules, and the spots our guides use every week.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-photography-guide',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-photography-guide',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-photography-guide',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-photography-guide',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-photography-guide',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-photography-guide',
         },
     },

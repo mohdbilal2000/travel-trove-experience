@@ -7,15 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal Sunrise Guide 2026: When to Arrive, Which Gate, What to Bring',
-    description: 'Why sunrise is the best time at the Taj Mahal — month-by-month sunrise times, which gate to use, how to get there from Delhi, and what to bring.',
+    title: 'Taj Mahal at Sunrise: Arrive 30 Minutes Before, Use the East Gate',
+    description: 'The gate opens 30 minutes before sunrise, so arrive at about 5:45 AM in winter. Month-by-month sunrise times, which gate, the Delhi same-day option and what to bring.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
         },
     },

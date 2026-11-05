@@ -8,9 +8,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/privacy-policy',
         languages: {
-            'en-US': 'https://www.guideindiatours.com/privacy-policy',
-            'en-GB': 'https://www.guideindiatours.com/privacy-policy',
-            'en-AU': 'https://www.guideindiatours.com/privacy-policy',
+            'en': 'https://www.guideindiatours.com/privacy-policy',
             'x-default': 'https://www.guideindiatours.com/privacy-policy',
         },
     },

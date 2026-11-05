@@ -7,15 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal Tickets 2026: Prices, Categories & Where to Buy | Guide India Tours',
-    description: 'Current Taj Mahal ticket prices for foreign, SAARC and Indian visitors, mausoleum entry, combo tickets and night viewing — explained by licensed Agra guides.',
+    title: 'Taj Mahal Ticket Price 2026: ₹1,100 Foreigners + ₹200 Mausoleum',
+    description: 'Foreign visitors pay ₹1,100 plus ₹200 for the main mausoleum; Indians ₹50 plus ₹200; children under 15 free. Where to buy online, which gate is fastest and how a licensed guide handles tickets for you.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-tickets',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-tickets',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-tickets',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-tickets',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-tickets',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-tickets',
         },
     },

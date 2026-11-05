@@ -7,15 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal Dress Code & Rules 2026: What to Wear, What to Avoid',
-    description: 'There is no strict dress code at the Taj Mahal, but modest dress is recommended out of respect. Here is what to wear, what to leave behind, and what security will confiscate.',
+    title: 'Can You Wear Shorts to the Taj Mahal? Dress Code & Rules 2026',
+    description: 'Yes, shorts are allowed; there is no enforced dress code, but modest clothing is respectful and you must remove or cover shoes at the mausoleum. What to wear, what security confiscates, and what works in the heat.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-dress-code',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-dress-code',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-dress-code',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-dress-code',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-dress-code',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-dress-code',
         },
     },

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { heroSlides } from "@/components/home/HeroFallback";
+import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
 
 const PlannerHero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,7 +67,7 @@ const PlannerHero = () => {
           {/* Brand pitch */}
           <div className="text-center text-white animate-fade-in">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
+              href={siteConfig.social.googleMaps}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Read our reviews on Google"
@@ -77,7 +78,7 @@ const PlannerHero = () => {
                   <Star key={i} className="w-3.5 h-3.5 text-gold-500 fill-current" />
                 ))}
               </div>
-              <span className="text-white/90 text-xs sm:text-sm font-medium">4.9/5 from 400+ travelers on Google</span>
+              <span className="text-white/90 text-xs sm:text-sm font-medium">{siteConfig.rating.value}/5 from {ratingCountDisplay} travelers on Google</span>
             </a>
 
             <h1 id="home-hero-title" className="font-display font-light leading-[1.05] tracking-wide text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-5">

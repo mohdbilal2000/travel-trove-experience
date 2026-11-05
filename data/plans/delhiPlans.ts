@@ -6,7 +6,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1001,
     title: "Same Day Delhi Tour",
     duration: "Same Day",
-    price: "From $89 per adult",
+    price: "$89 per adult",
     description: "Explore the best of Delhi in a single day with our comprehensive same-day tour covering major historical and cultural landmarks.",
     highlights: [
       "Red Fort & Jama Masjid",
@@ -24,8 +24,6 @@ export const delhiPlans: TravelPlan[] = [
       "Hotel pickup and drop-off"
     ],
     image: "/images/delhi/getty-images-C4Yf3Wbymg8-unsplash.jpg",
-    rating: 4.9,
-    reviews: 156,
     popular: true,
     destinations: ["Delhi"],
     itinerary: [
@@ -52,7 +50,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1002,
     title: "Delhi Heritage Walk - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $149 per adult",
+    price: "$149 per adult",
     description: "Immerse yourself in Delhi's rich heritage with a one-night stay, exploring both Old and New Delhi's historical treasures.",
     highlights: [
       "Old Delhi heritage walk",
@@ -71,8 +69,6 @@ export const delhiPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-AaZSrGeC6Fg-unsplash.jpg",
-    rating: 4.7,
-    reviews: 98,
     popular: false,
     destinations: ["Delhi"],
     itinerary: [
@@ -96,7 +92,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1003,
     title: "Delhi Cultural Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $249 per adult",
+    price: "$249 per adult",
     description: "A comprehensive 2-night Delhi tour allowing you to explore the city at a relaxed pace with deeper cultural immersion.",
     highlights: [
       "Complete Old & New Delhi tour",
@@ -116,8 +112,6 @@ export const delhiPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-7sJAG2dJVJo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 142,
     popular: true,
     destinations: ["Delhi"],
     itinerary: [
@@ -149,7 +143,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1004,
     title: "Same Day Delhi Luxury Tour",
     duration: "Same Day",
-    price: "From $199 per adult",
+    price: "$199 per adult",
     description: "Experience Delhi in ultimate luxury with VIP access, premium dining, and exclusive experiences in a single day.",
     highlights: [
       "VIP access to monuments",
@@ -169,8 +163,6 @@ export const delhiPlans: TravelPlan[] = [
       "All entrance fees"
     ],
     image: "/images/delhi/getty-images-DVSUA1uZ6Mo-unsplash.jpg",
-    rating: 5.0,
-    reviews: 67,
     popular: false,
     destinations: ["Delhi"],
     itinerary: [
@@ -187,7 +179,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1005,
     title: "Delhi Luxury Heritage - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $349 per adult",
+    price: "$349 per adult",
     description: "Indulge in Delhi's heritage with luxury accommodations, exclusive experiences, and personalized service.",
     highlights: [
       "5-star luxury hotel stay",
@@ -208,8 +200,6 @@ export const delhiPlans: TravelPlan[] = [
       "Airport transfers"
     ],
     image: "/images/delhi/getty-images-7sJAG2dJVJo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 89,
     popular: false,
     destinations: ["Delhi"],
     itinerary: [
@@ -233,7 +223,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1006,
     title: "Delhi Royal Experience - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $599 per adult",
+    price: "$599 per adult",
     description: "The ultimate Delhi luxury experience with royal treatment, exclusive access, and world-class hospitality.",
     highlights: [
       "5-star palace hotel stay",
@@ -254,8 +244,6 @@ export const delhiPlans: TravelPlan[] = [
       "Airport transfers with meet & greet"
     ],
     image: "/images/delhi/manoj-balotia-UO9vYZq2NNA-unsplash.jpg",
-    rating: 5.0,
-    reviews: 45,
     popular: true,
     destinations: ["Delhi"],
     itinerary: [
@@ -287,7 +275,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1008,
     title: "Delhi to Agra Same Day Tour",
     duration: "Same Day",
-    price: "From $199 per adult",
+    price: "$199 per adult",
     description: "Explore Delhi's heritage in the morning, then visit Agra to witness the Taj Mahal, returning to Delhi the same day.",
     highlights: [
       "Delhi morning tour (Red Fort, Qutub Minar)",
@@ -307,8 +295,6 @@ export const delhiPlans: TravelPlan[] = [
       "Bottled water"
     ],
     image: "/images/delhi/ashim-d-silva-KF7pv-8OiyY-unsplash.jpg",
-    rating: 4.9,
-    reviews: 178,
     popular: true,
     destinations: ["Delhi", "Agra"],
     itinerary: [
@@ -325,7 +311,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1009,
     title: "Delhi to Agra - 1 Night",
     duration: "1 Night / 2 Days",
-    price: "From $299 per adult",
+    price: "$299 per adult",
     description: "Comprehensive Delhi and Agra tour with one night stay, allowing you to explore both cities at a relaxed pace.",
     highlights: [
       "Complete Delhi tour",
@@ -345,8 +331,6 @@ export const delhiPlans: TravelPlan[] = [
       "Delhi-Agra-Delhi transfers"
     ],
     image: "/images/delhi/getty-images-KGqkTIKxd48-unsplash.jpg",
-    rating: 4.9,
-    reviews: 145,
     popular: true,
     destinations: ["Delhi", "Agra"],
     itinerary: [
@@ -370,7 +354,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1010,
     title: "Delhi to Agra - 2 Nights",
     duration: "2 Nights / 3 Days",
-    price: "From $449 per adult",
+    price: "$449 per adult",
     description: "Extended Delhi and Agra tour with two nights stay, allowing deeper exploration of both cities with cultural experiences.",
     highlights: [
       "Complete Delhi & Agra tour",
@@ -391,8 +375,6 @@ export const delhiPlans: TravelPlan[] = [
       "Delhi-Agra-Delhi transfers"
     ],
     image: "/images/delhi/axp-photography--hwq4OHDJWI-unsplash.jpg",
-    rating: 4.9,
-    reviews: 167,
     popular: false,
     destinations: ["Delhi", "Agra"],
     itinerary: [
@@ -423,7 +405,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1011,
     title: "Delhi to Agra Luxury Tour",
     duration: "1 Night / 2 Days",
-    price: "From $599 per adult",
+    price: "$599 per adult",
     description: "Luxury Delhi and Agra experience with premium accommodations, VIP access, and exclusive experiences.",
     highlights: [
       "5-star luxury hotels",
@@ -444,8 +426,6 @@ export const delhiPlans: TravelPlan[] = [
       "Delhi-Agra-Delhi transfers"
     ],
     image: "/images/delhi/getty-images-AaZSrGeC6Fg-unsplash.jpg",
-    rating: 5.0,
-    reviews: 98,
     popular: false,
     destinations: ["Delhi", "Agra"],
     itinerary: [
@@ -469,7 +449,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1012,
     title: "Customized Delhi to Agra Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Delhi to Agra experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -488,8 +468,6 @@ export const delhiPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/getty-images-DVSUA1uZ6Mo-unsplash.jpg",
-    rating: 4.9,
-    reviews: 134,
     popular: false,
     destinations: ["Delhi", "Agra"],
     itinerary: [
@@ -507,7 +485,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1007,
     title: "Customized Delhi Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect Delhi experience tailored to your interests, budget, and timeframe. We'll create a personalized itinerary just for you.",
     highlights: [
       "Fully customizable itinerary",
@@ -526,8 +504,6 @@ export const delhiPlans: TravelPlan[] = [
       "24/7 support"
     ],
     image: "/images/delhi/axp-photography-wHm3rnlMhdY-unsplash.jpg",
-    rating: 4.9,
-    reviews: 203,
     popular: false,
     destinations: ["Delhi"],
     itinerary: [
@@ -555,7 +531,7 @@ export const delhiPlans: TravelPlan[] = [
     id: 1013,
     title: "Luxury Customized Delhi Tour",
     duration: "Flexible",
-    price: "Custom Quote",
+    price: "Custom quote",
     description: "Design your perfect luxury Delhi experience with premium accommodations, VIP access, fine dining, and exclusive personalized experiences tailored to your interests and preferences.",
     highlights: [
       "Fully customizable luxury itinerary",
@@ -580,8 +556,6 @@ export const delhiPlans: TravelPlan[] = [
       "24/7 concierge support"
     ],
     image: "/images/delhi/sagar-dwivedi-iR9xWm1JK20-unsplash.jpg",
-    rating: 5.0,
-    reviews: 89,
     popular: false,
     destinations: ["Delhi"],
     itinerary: [

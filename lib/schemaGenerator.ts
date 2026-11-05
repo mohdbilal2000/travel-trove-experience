@@ -3,6 +3,7 @@
  * Schema.org JSON-LD generators for SEO
  * This utility helps create structured data for various entity types
  */
+import { siteConfig, postalAddressSchema } from "./siteConfig";
 
 export type Organization = {
   name: string;
@@ -37,8 +38,6 @@ export type TourPackage = {
   }>;
   destinations?: string[];
   url?: string;
-  rating?: number;
-  reviewCount?: number;
   reviews?: Array<{
     author: string;
     rating: number;
@@ -160,7 +159,8 @@ export const generateTourPackageSchema = (
   // ("Custom Quote") have no numeric price — emitting price:"" is INVALID
   // schema.org and trips Google's Rich Results, so we omit price entirely and
   // only advertise price/currency when a real number exists.
-  const numericPrice = tour.price.replace(/[^0-9.]/g, '');
+  // Take the first currency amount only ("$799 per adult (kids under 12)" → 799, not 79912).
+  const numericPrice = (tour.price.match(/\$\s?([\d,]+(?:\.\d+)?)/)?.[1] ?? '').replace(/,/g, '');
   const offer: any = {
     "@type": "Offer",
     "name": tour.name,
@@ -193,16 +193,6 @@ export const generateTourPackageSchema = (
 
   if (tour.image) {
     schema["image"] = tour.image;
-  }
-
-  if (tour.rating && tour.reviewCount) {
-    schema["aggregateRating"] = {
-      "@type": "AggregateRating",
-      "ratingValue": tour.rating.toString(),
-      "reviewCount": tour.reviewCount.toString(),
-      "bestRating": "5",
-      "worstRating": "1"
-    };
   }
 
   if (tour.reviews && tour.reviews.length > 0) {
@@ -452,7 +442,7 @@ export const generateConnectedGraphSchema = () => {
           "maxValue": 25
         },
         "sameAs": [
-          "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
+          siteConfig.social.googleMaps,
           "https://www.asiabylocals.com/india/agra",
           "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
           "https://www.trustpilot.com/review/guideindiatours.com"
@@ -460,14 +450,7 @@ export const generateConnectedGraphSchema = () => {
         "slogan": "Experience India's Golden Triangle with Expert Guides",
         "currenciesAccepted": "USD, EUR, GBP, INR",
         "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur",
-          "addressLocality": "Agra",
-          "addressRegion": "Uttar Pradesh",
-          "postalCode": "282001",
-          "addressCountry": "IN"
-        },
+        "address": postalAddressSchema(),
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+918979810991",
@@ -475,7 +458,7 @@ export const generateConnectedGraphSchema = () => {
           "email": "info@guideindiatours.com",
           "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"]
         },
-        "hasMap": "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
+        "hasMap": siteConfig.social.googleMaps,
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": "27.1767",
@@ -491,9 +474,9 @@ export const generateConnectedGraphSchema = () => {
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "432",
-          "bestRating": "5"
+          "ratingValue": siteConfig.rating.value,
+          "reviewCount": siteConfig.rating.count,
+          "bestRating": siteConfig.rating.best
         },
         "areaServed": [
           { "@type": "City", "name": "Agra", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },

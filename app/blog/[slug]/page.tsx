@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, User, ArrowLeft, Clock, Star, HelpCircle, ListChecks, MessageCircle, ArrowRight } from "lucide-react";
+import { Calendar, User, ArrowLeft, Clock, HelpCircle, ListChecks, MessageCircle, ArrowRight } from "lucide-react";
 import { getBlogPostBySlug, blogPosts, estimateReadTime } from "@/data/blogPosts";
 import { getTranslationsFor } from "@/data/blogTranslations";
 import { generateFAQSchema } from "@/lib/schemaGenerator";
@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import { renderMarkdown, extractHeadings } from "@/lib/markdown";
+import BlogMoneyCta from "@/components/shared/BlogMoneyCta";
 
 export const revalidate = 86400;
 
@@ -45,10 +46,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             canonical: url,
             languages: {
                 'en': url,
-                'en-US': url,
-                'en-GB': url,
-                'en-IN': url,
-                'en-AU': url,
                 'x-default': url,
                 ...Object.fromEntries(getTranslationsFor(slug).map((t) => [t.lang, `${BASE_URL}/blog/${t.lang}/${t.slug}`])),
             },
@@ -276,6 +273,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                 </div>
                             </div>
 
+                            <BlogMoneyCta slug={post.slug} title={post.title} />
+
                             <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between bg-gray-900 text-white p-6 md:p-8 rounded-3xl">
                                 <div className="flex items-start gap-3">
                                     <HelpCircle className="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5" />
@@ -325,10 +324,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                                 <Badge variant="outline" className="border-maroon-600/20 text-maroon-600 rounded-lg">
                                                     {plan.duration}
                                                 </Badge>
-                                                <div className="flex items-center gap-1">
-                                                    <Star className="w-3 h-3 text-gold-500 fill-current" />
-                                                    <span className="text-[10px] font-bold text-gray-500">{plan.rating}</span>
-                                                </div>
                                             </div>
                                             <h3 className="text-xl font-bold mb-6 group-hover:text-maroon-600 transition-colors line-clamp-2 min-h-[3.5rem] leading-tight">{plan.title}</h3>
                                             <div className="flex justify-between items-center pt-6 border-t border-gray-50">

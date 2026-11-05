@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
     title: 'Our Services | Private Tours, Hotel Booking & Transport | Guide India Tours',
@@ -7,10 +8,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/services',
         languages: {
             'en': 'https://www.guideindiatours.com/services',
-            'en-US': 'https://www.guideindiatours.com/services',
-            'en-GB': 'https://www.guideindiatours.com/services',
-            'en-IN': 'https://www.guideindiatours.com/services',
-            'en-AU': 'https://www.guideindiatours.com/services',
             'x-default': 'https://www.guideindiatours.com/services',
         },
     },
@@ -59,8 +56,8 @@ const servicesSchema = [
         },
         'aggregateRating': {
             '@type': 'AggregateRating',
-            'ratingValue': '4.9',
-            'reviewCount': '432',
+            'ratingValue': siteConfig.rating.value,
+            'reviewCount': siteConfig.rating.count,
             'bestRating': '5',
             'worstRating': '1'
         }

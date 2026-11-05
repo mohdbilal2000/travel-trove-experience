@@ -10,8 +10,18 @@ import {
     MapPin, Clock, Star, ArrowRight, Calendar,
     Users, Check, ChevronRight, Shield, Globe
 } from 'lucide-react';
+import { fromPrice } from '@/lib/planPrice';
+import PlanningFromAbroad from '@/components/shared/PlanningFromAbroad';
 
 const goldenTriangleFaqs = [
+    {
+        question: "How much does a private Golden Triangle tour cost from the US or UK?",
+        answer: "Our private 4 to 6 day Golden Triangle packages start from $299 per adult for two people sharing, covering private AC car, government-licensed guides in each city, airport pickup, fuel, tolls and parking. Hotels and monument tickets are quoted separately so you can choose your own hotel category. We quote in USD, EUR, GBP or AUD and send a written itemised price within 2 hours."
+    },
+    {
+        question: "Is Delhi, Agra and Jaipur safe for American and European travellers?",
+        answer: "Yes. The Golden Triangle is India's most visited tourist circuit and a private tour with a licensed guide and your own driver removes the usual friction: no haggling with taxis, no touts at the monuments, and a WhatsApp number that answers in your time zone. Solo women and families from the US, UK, Australia and Germany make up a large share of our guests."
+    },
     {
         question: "What is the Golden Triangle tour in India?",
         answer: "The Golden Triangle is India's most popular tourist circuit connecting three iconic cities: Delhi (India's capital), Agra (home of the Taj Mahal), and Jaipur (the Pink City of Rajasthan). The route forms a triangle on the map, with each side approximately 200-270 km. Our private Golden Triangle tours cover all three cities with expert guides, luxury hotels, and private AC transportation."
@@ -41,9 +51,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/golden-triangle-tours',
         languages: {
             'en': 'https://www.guideindiatours.com/golden-triangle-tours',
-            'en-US': 'https://www.guideindiatours.com/golden-triangle-tours',
-            'en-GB': 'https://www.guideindiatours.com/golden-triangle-tours',
-            'en-IN': 'https://www.guideindiatours.com/golden-triangle-tours',
             'x-default': 'https://www.guideindiatours.com/golden-triangle-tours',
         },
     },
@@ -172,7 +179,7 @@ export default function GoldenTriangleToursPage() {
             <section className="py-16 bg-white border-b border-gray-100">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <p className="text-lg text-gray-600 font-light leading-relaxed">
-                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal). with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 400+ verified Google reviewers.
+                        <strong className="text-gray-900">Golden Triangle tours by Guide India Tours</strong> cover India&apos;s three most famous cities — Delhi, Agra, and Jaipur — in 4 to 10 days with private transportation and licensed guides. The circuit starts in Delhi (Red Fort, India Gate, Qutub Minar), continues to Agra (Taj Mahal sunrise, Agra Fort, Fatehpur Sikri), and ends in Jaipur (Amber Fort, City Palace, Hawa Mahal), with luxury hotel stays and all-inclusive pricing. We serve {goldenTrianglePlans.length}+ Golden Triangle packages rated 4.9/5 by 400+ verified Google reviewers.
                     </p>
                 </div>
             </section>
@@ -266,14 +273,10 @@ export default function GoldenTriangleToursPage() {
                                         </div>
                                     </div>
                                     <div className="p-6 space-y-3">
-                                        <div className="flex items-center gap-2">
-                                            <Star className="w-3.5 h-3.5 text-gold-500 fill-current" />
-                                            <span className="text-xs font-bold text-gray-600">{plan.rating} ({plan.reviews})</span>
-                                        </div>
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
-                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description.substring(0, 120)}...</p>
+                                        <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description}</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">{fromPrice(plan.price)}</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>
@@ -291,6 +294,8 @@ export default function GoldenTriangleToursPage() {
                     </div>
                 </div>
             </section>
+
+            <PlanningFromAbroad />
 
             {/* FAQ */}
             <section className="py-20">

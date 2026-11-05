@@ -26,10 +26,6 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
             canonical: 'https://www.guideindiatours.com/blog',
             languages: {
                 'en': 'https://www.guideindiatours.com/blog',
-                'en-US': 'https://www.guideindiatours.com/blog',
-                'en-GB': 'https://www.guideindiatours.com/blog',
-                'en-IN': 'https://www.guideindiatours.com/blog',
-                'en-AU': 'https://www.guideindiatours.com/blog',
                 'x-default': 'https://www.guideindiatours.com/blog',
             },
         },

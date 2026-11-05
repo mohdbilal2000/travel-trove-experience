@@ -21,6 +21,7 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 import RelatedPages from "@/components/shared/RelatedPages";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { yearsInBusiness } from "@/lib/siteConfig";
 
 const guideNetworkStats = [
     {
@@ -71,13 +72,13 @@ export default function AboutPage() {
                         >
                             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl rotate-2">
                                 <OptimizedImage
-                                    src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071&auto=format&fit=crop"
-                                    alt="About Hero"
+                                    src="/images/agra/getty-images-x83xvTdlITo-unsplash.jpg"
+                                    alt="The Taj Mahal and its red sandstone mosque reflected in the Yamuna river, seen from a boat at dawn"
                                     className="w-full h-full object-cover"
                                 />
                             </div>
                             <div className="hidden sm:flex absolute -bottom-10 -left-10 w-40 h-40 lg:w-48 lg:h-48 bg-gold-500 rounded-3xl shadow-2xl flex-col items-center justify-center text-center p-6 text-white -rotate-6">
-                                <span className="text-4xl font-black mb-1">12+</span>
+                                <span className="text-4xl font-black mb-1">{yearsInBusiness()}+</span>
                                 <span className="text-xs font-bold uppercase tracking-widest leading-none">Years of <br />Guiding</span>
                             </div>
                         </motion.div>
@@ -157,8 +158,8 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[700px]">
                         <div className="md:col-span-8 rounded-3xl overflow-hidden shadow-2xl relative order-2 md:order-1">
                             <OptimizedImage
-                                src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=2070&auto=format&fit=crop"
-                                alt="Narrative Image"
+                                src="/images/jaipur/getty-images-JPbNZotqrgo-unsplash.jpg"
+                                alt="Jal Mahal, the water palace in Man Sagar Lake, Jaipur, with the Aravalli hills behind it"
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-black/30" />
@@ -173,14 +174,14 @@ export default function AboutPage() {
                             <div className="rounded-3xl overflow-hidden shadow-xl">
                                 <OptimizedImage
                                     src="/images/jaipur/ved-SRAUI9X4Ep8-unsplash.jpg"
-                                    alt="Accent 1"
+                                    alt="Albert Hall Museum in Jaipur with pigeons wheeling over its domes"
                                     className="w-full h-full object-cover"
                                 />
                             </div>
                             <div className="rounded-3xl overflow-hidden shadow-xl">
                                 <OptimizedImage
                                     src="/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg"
-                                    alt="Accent 2"
+                                    alt="The south gateway of Akbar's Tomb at Sikandra, Agra, with its four white marble minarets"
                                     className="w-full h-full object-cover"
                                 />
                             </div>

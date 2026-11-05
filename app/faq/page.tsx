@@ -15,10 +15,6 @@ export const metadata: Metadata = {
         canonical: PAGE_URL,
         languages: {
             'en': PAGE_URL,
-            'en-US': PAGE_URL,
-            'en-GB': PAGE_URL,
-            'en-IN': PAGE_URL,
-            'en-AU': PAGE_URL,
             'x-default': PAGE_URL,
         },
     },

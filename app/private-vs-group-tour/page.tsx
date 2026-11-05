@@ -15,9 +15,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/private-vs-group-tour',
         languages: {
             'en': 'https://www.guideindiatours.com/private-vs-group-tour',
-            'en-US': 'https://www.guideindiatours.com/private-vs-group-tour',
-            'en-GB': 'https://www.guideindiatours.com/private-vs-group-tour',
-            'en-IN': 'https://www.guideindiatours.com/private-vs-group-tour',
             'x-default': 'https://www.guideindiatours.com/private-vs-group-tour',
         },
     },

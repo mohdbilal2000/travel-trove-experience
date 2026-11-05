@@ -16,9 +16,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/golden-triangle-tour-cost',
         languages: {
             'en': 'https://www.guideindiatours.com/golden-triangle-tour-cost',
-            'en-US': 'https://www.guideindiatours.com/golden-triangle-tour-cost',
-            'en-GB': 'https://www.guideindiatours.com/golden-triangle-tour-cost',
-            'en-IN': 'https://www.guideindiatours.com/golden-triangle-tour-cost',
             'x-default': 'https://www.guideindiatours.com/golden-triangle-tour-cost',
         },
     },

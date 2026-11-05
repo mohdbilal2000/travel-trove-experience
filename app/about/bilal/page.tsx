@@ -13,9 +13,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/about/bilal',
         languages: {
             'en': 'https://www.guideindiatours.com/about/bilal',
-            'en-US': 'https://www.guideindiatours.com/about/bilal',
-            'en-GB': 'https://www.guideindiatours.com/about/bilal',
-            'en-IN': 'https://www.guideindiatours.com/about/bilal',
             'x-default': 'https://www.guideindiatours.com/about/bilal',
         },
     },

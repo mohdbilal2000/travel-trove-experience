@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, Phone, Mail, Star, MessageCircle } from "lucide-react";
+import { siteConfig, addressOneLine, ratingCountDisplay } from "@/lib/siteConfig";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -96,9 +97,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-maroon-600" />
-                <span className="text-gray-600 text-sm">
-                  31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra 282001, Uttar Pradesh
-                </span>
+                <span className="text-gray-600 text-sm">{addressOneLine}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="flex-shrink-0 text-maroon-600" />
@@ -115,12 +114,12 @@ const Footer = () => {
               <li className="flex items-center space-x-3 pt-2">
                 <Star size={18} className="flex-shrink-0 text-gold-500" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra"
+                  href={siteConfig.social.googleMaps}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-maroon-700 transition-colors text-sm font-medium"
                 >
-                  4.9 ★ on Google (403+ reviews)
+                  {siteConfig.rating.value} ★ on Google ({ratingCountDisplay} reviews)
                 </a>
               </li>
             </ul>
