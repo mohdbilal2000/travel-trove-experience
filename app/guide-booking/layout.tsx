@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/siteConfig';
+import { generateFAQSchema } from '@/lib/schemaGenerator';
+import { guideBookingFaqs } from '@/data/guideBookingFaqs';
 
 export const metadata: Metadata = {
     title: 'Book a Guide | Licensed Tour Guides for Delhi, Agra & Jaipur | Guide India Tours',
@@ -24,6 +27,18 @@ export const metadata: Metadata = {
         description: 'Book government-approved tour guides for Delhi, Agra & Jaipur monuments.',
     },
 };
+
+
+const webPageSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': 'https://www.guideindiatours.com/guide-booking#webpage',
+        'url': 'https://www.guideindiatours.com/guide-booking',
+        'dateModified': siteConfig.contentUpdated,
+        'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
+        'about': { '@id': 'https://www.guideindiatours.com/#organization' },
+        'speakable': { '@type': 'SpeakableSpecification', 'cssSelector': ['main h1', 'main h2', 'main h3 + p'] },
+    };
 
 const serviceSchema = {
     '@context': 'https://schema.org',
@@ -56,7 +71,7 @@ export default function GuideBookingLayout({ children }: { children: React.React
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceSchema, webPageSchema, generateFAQSchema(guideBookingFaqs)]) }}
             />
             {children}
         </>

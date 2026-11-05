@@ -25,7 +25,7 @@ export async function GET() {
         sameAs: [
             siteConfig.social.googleMaps,
             "https://www.asiabylocals.com/india/agra",
-            "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
+            siteConfig.social.tripadvisor,
             "https://www.trustpilot.com/review/guideindiatours.com",
         ],
 

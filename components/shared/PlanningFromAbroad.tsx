@@ -36,7 +36,8 @@ export default function PlanningFromAbroad({ destination = "the Golden Triangle"
                         </div>
                     ))}
                 </div>
-                <p className="text-center text-sm text-gray-500 mt-8">
+                <p className="text-center text-xs text-gray-400 mt-8">Prices and practical information last reviewed {new Date(siteConfig.contentUpdated).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}.</p>
+                <p className="text-center text-sm text-gray-500 mt-3">
                     Ready to plan? <Link href="/contact" className="font-bold text-maroon-600 underline underline-offset-2">Get a custom quote</Link> or{" "}
                     <a href={siteConfig.whatsappHref} target="_blank" rel="noopener noreferrer" className="font-bold text-maroon-600 underline underline-offset-2">message us on WhatsApp</a>.
                 </p>

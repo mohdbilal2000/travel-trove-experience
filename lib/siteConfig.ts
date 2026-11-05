@@ -47,9 +47,12 @@ export const siteConfig = {
   geo: { latitude: "27.1767", longitude: "78.0081" },
 
   // ── Reputation (keep in sync with the Google Business Profile) ────────────
-  rating: { value: "4.9", count: "432", best: "5" },
+  rating: { value: "4.9", count: "436", best: "5" },
   // Company-supplied marketing figure (not independently verifiable from the GBP).
   stats: { travellersGuided: "15,000+" },
+
+  /** Date the prices and practical information on the site were last reviewed (ISO). */
+  contentUpdated: "2026-11-06",
 
   languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
 
@@ -57,7 +60,7 @@ export const siteConfig = {
   social: {
     youtube: "https://www.youtube.com/@guideindiatours",
     googleMaps: "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
-    tripadvisor: "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
+    tripadvisor: "https://www.tripadvisor.com/Attraction_Review-g297683-d34039575-Reviews-Guide_India_Tours-Agra_Agra_District_Uttar_Pradesh.html",
     trustpilot: "https://www.trustpilot.com/review/guideindiatours.com",
   },
 } as const;

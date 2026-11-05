@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { fromPrice } from '@/lib/planPrice';
 import PlanningFromAbroad from '@/components/shared/PlanningFromAbroad';
+import { siteConfig } from '@/lib/siteConfig';
 
 const goldenTriangleFaqs = [
     {
@@ -140,6 +141,16 @@ export default function GoldenTriangleToursPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': 'https://www.guideindiatours.com/golden-triangle-tours#webpage',
+        'url': 'https://www.guideindiatours.com/golden-triangle-tours',
+        'dateModified': siteConfig.contentUpdated,
+        'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
+        'about': { '@id': 'https://www.guideindiatours.com/#organization' },
+        'speakable': { '@type': 'SpeakableSpecification', 'cssSelector': ['main h1', 'main h2', 'main h3 + p'] },
+    }) }} />
             {/* Hero */}
             <section className="relative h-[55vh] sm:h-[60vh] md:h-[80vh] overflow-hidden bg-black">
                 <Image
