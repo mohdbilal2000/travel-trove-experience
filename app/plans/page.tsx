@@ -13,6 +13,7 @@ import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import { fromPrice, numericPrice } from '@/lib/planPrice';
 import PlanningFromAbroad from '@/components/shared/PlanningFromAbroad';
 import { generateFAQSchema } from '@/lib/schemaGenerator';
+import { siteConfig } from '@/lib/siteConfig';
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
     const { city } = await searchParams;
@@ -129,7 +130,16 @@ export default async function PlansPage({ searchParams }: PageProps) {
         <main className="min-h-screen bg-ivory-100">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema, generateFAQSchema(plansFaqs)]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema, generateFAQSchema(plansFaqs), {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': 'https://www.guideindiatours.com/plans#webpage',
+        'url': 'https://www.guideindiatours.com/plans',
+        'dateModified': siteConfig.contentUpdated,
+        'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
+        'about': { '@id': 'https://www.guideindiatours.com/#organization' },
+        'speakable': { '@type': 'SpeakableSpecification', 'cssSelector': ['main h1', 'main h2', 'main h3 + p'] },
+    }]) }}
             />
             {/* Hero Section */}
             <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-black">

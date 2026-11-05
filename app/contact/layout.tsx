@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { postalAddressSchema } from '@/lib/siteConfig';
+import { generateFAQSchema } from '@/lib/schemaGenerator';
+import { homeFaqs } from '@/data/homeFaqs';
+import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
     title: 'Contact Guide India Tours | Get a Free Quote for Your India Tour',
@@ -62,7 +65,16 @@ export default function ContactLayout({ children }: { children: React.ReactNode 
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([contactSchema, generateFAQSchema(homeFaqs.slice(0, 4)), {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': 'https://www.guideindiatours.com/contact#webpage',
+        'url': 'https://www.guideindiatours.com/contact',
+        'dateModified': siteConfig.contentUpdated,
+        'isPartOf': { '@id': 'https://www.guideindiatours.com/#website' },
+        'about': { '@id': 'https://www.guideindiatours.com/#organization' },
+        'speakable': { '@type': 'SpeakableSpecification', 'cssSelector': ['main h1', 'main h2', 'main h3 + p'] },
+    }]) }}
             />
             {children}
         </>

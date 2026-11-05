@@ -51,7 +51,7 @@ const articleSchema = {
     publisher: { '@type': 'Organization', '@id': 'https://www.guideindiatours.com/#organization', name: 'Guide India Tours' },
     about: { '@id': 'https://www.guideindiatours.com/taj-mahal-guide#taj-mahal' },
     datePublished: '2026-06-01',
-    dateModified: '2026-06-01',
+    dateModified: '2026-11-06',
     inLanguage: 'en',
 };
 

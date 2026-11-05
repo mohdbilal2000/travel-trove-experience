@@ -444,7 +444,7 @@ export const generateConnectedGraphSchema = () => {
         "sameAs": [
           siteConfig.social.googleMaps,
           "https://www.asiabylocals.com/india/agra",
-          "https://www.tripadvisor.com/Search?q=Guide+India+Tours",
+          siteConfig.social.tripadvisor,
           "https://www.trustpilot.com/review/guideindiatours.com"
         ],
         "slogan": "Experience India's Golden Triangle with Expert Guides",

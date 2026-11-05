@@ -31,6 +31,7 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 import RelatedPages from "@/components/shared/RelatedPages";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { guideBookingFaqs } from "@/data/guideBookingFaqs";
 
 // Tour Packages Data
 const tourPackages = [
@@ -441,6 +442,21 @@ export default function GuideBookingPage() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className="py-14 md:py-20 bg-ivory-100 border-t border-gray-100" aria-labelledby="booking-faq">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <h2 id="booking-faq" className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-10 text-center">Guide Booking <span className="text-maroon-600">FAQ</span></h2>
+                    <div className="space-y-4">
+                        {guideBookingFaqs.map((f) => (
+                            <div key={f.question} className="bg-white rounded-2xl p-6 border border-gray-100">
+                                <h3 className="font-bold text-gray-900 mb-2">{f.question}</h3>
+                                <p className="text-sm text-gray-600 font-light leading-relaxed">{f.answer}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
