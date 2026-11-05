@@ -462,7 +462,7 @@ export const generateConnectedGraphSchema = () => {
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": siteConfig.geo.latitude,
-          "longitude": "78.0081"
+          "longitude": siteConfig.geo.longitude
         },
         "openingHoursSpecification": [
           {
