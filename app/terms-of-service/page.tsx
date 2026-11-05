@@ -8,9 +8,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/terms-of-service',
         languages: {
-            'en-US': 'https://www.guideindiatours.com/terms-of-service',
-            'en-GB': 'https://www.guideindiatours.com/terms-of-service',
-            'en-AU': 'https://www.guideindiatours.com/terms-of-service',
+            'en': 'https://www.guideindiatours.com/terms-of-service',
             'x-default': 'https://www.guideindiatours.com/terms-of-service',
         },
     },

@@ -8,10 +8,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/services',
         languages: {
             'en': 'https://www.guideindiatours.com/services',
-            'en-US': 'https://www.guideindiatours.com/services',
-            'en-GB': 'https://www.guideindiatours.com/services',
-            'en-IN': 'https://www.guideindiatours.com/services',
-            'en-AU': 'https://www.guideindiatours.com/services',
             'x-default': 'https://www.guideindiatours.com/services',
         },
     },

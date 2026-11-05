@@ -14,9 +14,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/about/avneesh-dixit',
         languages: {
             'en': 'https://www.guideindiatours.com/about/avneesh-dixit',
-            'en-US': 'https://www.guideindiatours.com/about/avneesh-dixit',
-            'en-GB': 'https://www.guideindiatours.com/about/avneesh-dixit',
-            'en-IN': 'https://www.guideindiatours.com/about/avneesh-dixit',
             'x-default': 'https://www.guideindiatours.com/about/avneesh-dixit',
         },
     },

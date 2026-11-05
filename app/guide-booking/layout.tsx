@@ -6,8 +6,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://www.guideindiatours.com/guide-booking',
         languages: {
-            'en-US': 'https://www.guideindiatours.com/guide-booking',
-            'en-GB': 'https://www.guideindiatours.com/guide-booking',
+            'en': 'https://www.guideindiatours.com/guide-booking',
             'x-default': 'https://www.guideindiatours.com/guide-booking',
         },
     },

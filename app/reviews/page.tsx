@@ -40,10 +40,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/reviews',
         languages: {
             'en': 'https://www.guideindiatours.com/reviews',
-            'en-US': 'https://www.guideindiatours.com/reviews',
-            'en-GB': 'https://www.guideindiatours.com/reviews',
-            'en-IN': 'https://www.guideindiatours.com/reviews',
-            'en-AU': 'https://www.guideindiatours.com/reviews',
             'x-default': 'https://www.guideindiatours.com/reviews',
         },
     },

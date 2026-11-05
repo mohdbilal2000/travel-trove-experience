@@ -28,10 +28,6 @@ export const metadata: Metadata = {
         canonical: '/',
         languages: {
             'en': '/',
-            'en-US': '/',
-            'en-GB': '/',
-            'en-IN': '/',
-            'en-AU': '/',
             'x-default': '/',
         },
     },

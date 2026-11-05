@@ -20,6 +20,7 @@ import BookingButton from "./_components/BookingButton";
 import StickyBookingBar from "./_components/StickyBookingBar";
 import { generateTourPackageSchema, generateFAQSchema } from "@/lib/schemaGenerator";
 import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
+import { fromPrice } from '@/lib/planPrice';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -57,10 +58,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             canonical: url,
             languages: {
                 'en': url,
-                'en-US': url,
-                'en-GB': url,
-                'en-IN': url,
-                'en-AU': url,
                 'x-default': url,
             },
         },
@@ -102,7 +99,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
     const tourSchema = generateTourPackageSchema({
         name: plan.title,
         description: plan.description,
-        price: "", // pricing is by custom quote — generator omits the Offer price
+        price: plan.price, // "$X per adult" or "Custom quote"; the generator omits the Offer price when there is no number
 
         image: plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
         duration: plan.duration,
@@ -169,8 +166,8 @@ export default async function PlanDetailPage({ params }: PageProps) {
                             <div className="flex items-center gap-8 text-white/90">
                                 <div>
                                     <span className="text-[11px] sm:text-[10px] font-black uppercase tracking-widest block mb-1 opacity-60">Pricing</span>
-                                    <span className="text-3xl font-black text-gold-500">Custom Quote</span>
-                                    <span className="opacity-60 text-sm ml-2">tailored to your trip</span>
+                                    <span className="text-3xl font-black text-gold-500">{fromPrice(plan.price)}</span>
+                                    <span className="opacity-60 text-sm ml-2">final quote tailored to your trip</span>
                                 </div>
                             </div>
                         </div>
@@ -360,7 +357,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                         <div className="mb-10 text-center">
                                             <p className="text-gray-400 text-[11px] font-black uppercase tracking-widest mb-1">Transparent Pricing</p>
                                             <div className="flex items-baseline justify-center gap-2">
-                                                <span className="text-3xl font-black text-gray-900">Custom Quote</span>
+                                                <span className="text-3xl font-black text-gray-900">{fromPrice(plan.price)}</span>
                                             </div>
                                             <p className="text-gray-400 text-sm font-light mt-2">Tailored to your dates, hotels &amp; group size — free quote within 2 hours.</p>
                                         </div>

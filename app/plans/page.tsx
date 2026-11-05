@@ -10,6 +10,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PlanFilters from "@/components/plans/PlanFilters";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { fromPrice, numericPrice } from '@/lib/planPrice';
+import PlanningFromAbroad from '@/components/shared/PlanningFromAbroad';
+import { generateFAQSchema } from '@/lib/schemaGenerator';
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
     const { city } = await searchParams;
@@ -27,10 +30,6 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
             canonical: city && city !== 'All' ? `https://www.guideindiatours.com/plans?city=${city}` : 'https://www.guideindiatours.com/plans',
             languages: {
                 'en': 'https://www.guideindiatours.com/plans',
-                'en-US': 'https://www.guideindiatours.com/plans',
-                'en-GB': 'https://www.guideindiatours.com/plans',
-                'en-IN': 'https://www.guideindiatours.com/plans',
-                'en-AU': 'https://www.guideindiatours.com/plans',
                 'x-default': 'https://www.guideindiatours.com/plans',
             },
         },
@@ -47,6 +46,14 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
         }
     };
 }
+
+const plansFaqs = [
+    { question: "What is included in a private tour package price?", answer: "Every package includes a private air-conditioned car with chauffeur for the whole route, a government-licensed English-speaking guide in each city, airport or hotel pickup, fuel, tolls, parking and bottled water. Monument tickets and hotels are listed per package; where they are not included we quote them separately so you can pick your own hotel category." },
+    { question: "Are the prices per person or per group?", answer: "Prices shown are per adult, based on two travellers sharing one vehicle. Per-person prices fall for groups of three or more because the car and guide costs are shared. Children under 15 enter all ASI monuments, including the Taj Mahal, free of charge." },
+    { question: "Can I change an itinerary?", answer: "Yes. Every tour is private, so you can add a day, swap a monument, change the hotel standard or start from Jaipur instead of Delhi. Tell us what you would like and we send a revised written quote, usually the same day." },
+    { question: "How far in advance should I book from abroad?", answer: "Three to eight weeks is typical for guests flying from the US, UK, Australia or Europe. October to March is peak season and the best guides and hotels fill early; same-day Agra tours from Delhi can often be arranged with 48 hours' notice." },
+    { question: "Is the Taj Mahal closed on any day?", answer: "Yes, the Taj Mahal is closed every Friday. All our Agra itineraries are planned around it, with Agra Fort, Fatehpur Sikri and Mehtab Bagh on a Friday and the Taj at sunrise the next morning." },
+];
 
 const planFeatures = [
     { icon: Car, title: "Private Transport", description: "Premium AC vehicles." },
@@ -103,7 +110,8 @@ export default async function PlansPage({ searchParams }: PageProps) {
                 "name": plan.title,
                 "description": plan.description.substring(0, 200),
                 "url": `https://www.guideindiatours.com/plans/${plan.id}`,
-                "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`
+                "image": plan.image.startsWith('http') ? plan.image : `https://www.guideindiatours.com${plan.image}`,
+                ...(numericPrice(plan.price) ? { "offers": { "@type": "Offer", "price": String(numericPrice(plan.price)), "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } : {})
             }
         }))
     };
@@ -121,7 +129,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
         <main className="min-h-screen bg-ivory-100">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema]) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify([itemListSchema, breadcrumbSchema, generateFAQSchema(plansFaqs)]) }}
             />
             {/* Hero Section */}
             <section className="relative pt-28 sm:pt-40 md:pt-44 pb-14 sm:pb-24 md:pb-32 overflow-hidden bg-black">
@@ -213,7 +221,7 @@ export default async function PlansPage({ searchParams }: PageProps) {
                                     <div className="flex items-center justify-between py-6 border-t border-gray-50">
                                         <div>
                                             <span className="text-xs font-black uppercase text-gray-500 tracking-widest block mb-1">Pricing</span>
-                                            <span className="text-xl font-black text-maroon-600">Custom Quote</span>
+                                            <span className="text-xl font-black text-maroon-600">{fromPrice(plan.price)}</span>
                                         </div>
                                         <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black w-14 h-14 p-0 shadow-xl shadow-maroon-600/20 transition-all duration-300">
                                             <Link href={`/plans/${plan.id}`}>
@@ -260,6 +268,22 @@ export default async function PlansPage({ searchParams }: PageProps) {
                         <p>
                             Whether you're visiting for a single day or a multi-week adventure, our commitment to quality remains the same. Explore the Golden Triangle with the authority of Guide India Tours.
                         </p>
+                    </div>
+                </div>
+            </section>
+
+            <PlanningFromAbroad />
+
+            <section className="py-20 bg-gray-50 border-t border-gray-100" aria-labelledby="plans-faq-heading">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <h2 id="plans-faq-heading" className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-12 text-center">Tour Package <span className="text-maroon-600">FAQ</span></h2>
+                    <div className="space-y-6">
+                        {plansFaqs.map((faq) => (
+                            <div key={faq.question} className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100">
+                                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">{faq.question}</h3>
+                                <p className="text-gray-600 font-light leading-relaxed">{faq.answer}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

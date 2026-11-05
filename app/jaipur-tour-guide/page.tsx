@@ -16,9 +16,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/jaipur-tour-guide',
         languages: {
             'en': 'https://www.guideindiatours.com/jaipur-tour-guide',
-            'en-US': 'https://www.guideindiatours.com/jaipur-tour-guide',
-            'en-GB': 'https://www.guideindiatours.com/jaipur-tour-guide',
-            'en-IN': 'https://www.guideindiatours.com/jaipur-tour-guide',
             'x-default': 'https://www.guideindiatours.com/jaipur-tour-guide',
         },
     },

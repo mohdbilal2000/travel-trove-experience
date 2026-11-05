@@ -7,15 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Best Time to Visit the Taj Mahal 2026: Month-by-Month Guide',
-    description: 'October to March is the prime season, sunrise is the prime hour. Here is the month-by-month breakdown of weather, crowds and fog warnings.',
+    title: 'Best Time to Visit the Taj Mahal: October to March, at Sunrise',
+    description: 'October to March has clear skies and cool mornings; sunrise beats every other hour for light and crowds. Month-by-month weather, fog warnings for December and January, and what summer is really like.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
-            'en-US': 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
-            'en-GB': 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
-            'en-IN': 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-best-time-to-visit',
         },
     },

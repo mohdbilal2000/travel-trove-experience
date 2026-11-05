@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import { renderMarkdown, extractHeadings } from "@/lib/markdown";
+import BlogMoneyCta from "@/components/shared/BlogMoneyCta";
 
 export const revalidate = 86400;
 
@@ -45,10 +46,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             canonical: url,
             languages: {
                 'en': url,
-                'en-US': url,
-                'en-GB': url,
-                'en-IN': url,
-                'en-AU': url,
                 'x-default': url,
                 ...Object.fromEntries(getTranslationsFor(slug).map((t) => [t.lang, `${BASE_URL}/blog/${t.lang}/${t.slug}`])),
             },
@@ -275,6 +272,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                                     </p>
                                 </div>
                             </div>
+
+                            <BlogMoneyCta slug={post.slug} title={post.title} />
 
                             <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between bg-gray-900 text-white p-6 md:p-8 rounded-3xl">
                                 <div className="flex items-start gap-3">

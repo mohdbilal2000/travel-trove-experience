@@ -11,6 +11,7 @@ import {
     MapPin, Clock, Star, ArrowRight, Calendar,
     Users, Check, ChevronRight
 } from 'lucide-react';
+import { fromPrice } from '@/lib/planPrice';
 
 export const metadata: Metadata = {
     title: 'Jaipur Tours | Pink City Private Guided Tours & Rajasthan Trips | Guide India Tours',
@@ -19,9 +20,6 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/jaipur-tours',
         languages: {
             'en': 'https://www.guideindiatours.com/jaipur-tours',
-            'en-US': 'https://www.guideindiatours.com/jaipur-tours',
-            'en-GB': 'https://www.guideindiatours.com/jaipur-tours',
-            'en-IN': 'https://www.guideindiatours.com/jaipur-tours',
             'x-default': 'https://www.guideindiatours.com/jaipur-tours',
         },
     },
@@ -195,7 +193,7 @@ export default function JaipurToursPage() {
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-maroon-600 transition-colors line-clamp-2">{plan.title}</h3>
                                         <p className="text-sm text-gray-500 font-light line-clamp-2">{plan.description}</p>
                                         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                            <span className="text-xs font-black text-maroon-600 uppercase tracking-widest">{fromPrice(plan.price)}</span>
                                             <span className="text-maroon-600 text-xs font-black uppercase tracking-widest flex items-center gap-1">View <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                     </div>
