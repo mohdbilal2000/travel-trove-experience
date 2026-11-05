@@ -461,8 +461,8 @@ export const generateConnectedGraphSchema = () => {
         "hasMap": siteConfig.social.googleMaps,
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "27.1767",
-          "longitude": "78.0081"
+          "latitude": siteConfig.geo.latitude,
+          "longitude": siteConfig.geo.longitude
         },
         "openingHoursSpecification": [
           {

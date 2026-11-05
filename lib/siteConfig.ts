@@ -44,7 +44,8 @@ export const siteConfig = {
     postalCode: "282001",
     country: "IN",
   },
-  geo: { latitude: "27.1767", longitude: "78.0081" },
+  // Office pin from the Google Business Profile listing (not the Taj Mahal).
+  geo: { latitude: "27.1495248", longitude: "78.0359601" },
 
   // ── Reputation (keep in sync with the Google Business Profile) ────────────
   rating: { value: "4.9", count: "436", best: "5" },
@@ -59,7 +60,8 @@ export const siteConfig = {
   // ── Social / sameAs ──────────────────────────────────────────────────────
   social: {
     youtube: "https://www.youtube.com/@guideindiatours",
-    googleMaps: "https://www.google.com/maps/search/?api=1&query=Guide+India+Tours+31A%2F110+Shamsabad+Road+Jangjeet+Nagar+Agra",
+    // Stable link to the Google Business Profile place (cid from the Maps listing).
+    googleMaps: "https://maps.google.com/?cid=15062716171727990652",
     tripadvisor: "https://www.tripadvisor.com/Attraction_Review-g297683-d34039575-Reviews-Guide_India_Tours-Agra_Agra_District_Uttar_Pradesh.html",
     trustpilot: "https://www.trustpilot.com/review/guideindiatours.com",
   },
