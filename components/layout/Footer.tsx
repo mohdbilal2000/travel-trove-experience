@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Star, MessageCircle } from "lucide-react";
 import { siteConfig, addressOneLine, ratingCountDisplay } from "@/lib/siteConfig";
+import { countries } from "@/data/countries";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -80,6 +81,15 @@ const Footer = () => {
                 <Link href="/golden-triangle-tours" className="text-gray-600 hover:text-maroon-700 transition-colors">Golden Triangle Package</Link>
               </li>
               <li>
+                <Link href="/same-day-agra-tour-from-delhi" className="text-gray-600 hover:text-maroon-700 transition-colors">Same Day Agra Tour</Link>
+              </li>
+              <li>
+                <Link href="/taj-mahal-sunrise-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Taj Mahal Sunrise Tour</Link>
+              </li>
+              <li>
+                <Link href="/rajasthan-golden-triangle-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Rajasthan Tour, 10 Days</Link>
+              </li>
+              <li>
                 <Link href="/plans" className="text-gray-600 hover:text-maroon-700 transition-colors">Customized Tours</Link>
               </li>
               <li>
@@ -125,6 +135,17 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
+        <nav aria-label="Plan your trip by country" className="border-t border-gray-300 pt-6 pb-6">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">Plan your trip from</p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {countries.map((c) => (
+              <li key={c.slug}>
+                <Link href={`/plan-your-trip/${c.slug}`} className="text-gray-600 hover:text-maroon-700 transition-colors">{c.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="border-t border-gray-300 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">

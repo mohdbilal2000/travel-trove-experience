@@ -9,7 +9,8 @@ import {
     TrustStats, GoldenTriangleExplainer, PackageTiers, DestinationsGrid,
     BookDirect, EeatGuides, ReviewsWall, ResourcesHub, FinalCta,
 } from "@/components/home/HomeSections";
-import { getFilteredPlans } from "@/lib/planner";
+import { getFilteredPlans, toPlannerPlan } from "@/lib/planner";
+import { allPlans } from "@/data/travelPlans";
 import { homeFaqs } from "@/data/homeFaqs";
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-    const featuredPlans = getFilteredPlans([]);
+    const featuredPlans = getFilteredPlans(allPlans, []);
 
     // The global Organization (#organization) and WebSite (#website) nodes are
     // emitted once in app/layout.tsx — this page only references them by @id.
@@ -90,7 +91,7 @@ export default function Home() {
             />
 
             {/* Hero with trip planner (client island) + planner-driven tour grid */}
-            <PlannerSection />
+            <PlannerSection plans={allPlans.map(toPlannerPlan)} />
 
             {/* Quotable trust facts */}
             <TrustStats />

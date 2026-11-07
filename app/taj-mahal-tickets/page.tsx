@@ -13,6 +13,8 @@ export const metadata: Metadata = {
         canonical: 'https://www.guideindiatours.com/taj-mahal-tickets',
         languages: {
             'en': 'https://www.guideindiatours.com/taj-mahal-tickets',
+            'de': 'https://www.guideindiatours.com/de/taj-mahal-eintritt',
+            'es': 'https://www.guideindiatours.com/es/entradas-taj-mahal',
             'x-default': 'https://www.guideindiatours.com/taj-mahal-tickets',
         },
     },

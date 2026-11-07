@@ -8,14 +8,15 @@ import PlannerHero from "@/components/home/PlannerHero";
 import TripPlanner from "@/components/home/TripPlanner";
 import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import OptimizedImage from "@/components/shared/OptimizedImage";
-import { type PlannerState, getFilteredPlans, buildWhatsAppMessage, isGoldenTriangle } from "@/lib/planner";
+import { type PlannerState, type PlannerPlan, getFilteredPlans, buildWhatsAppMessage, isGoldenTriangle } from "@/lib/planner";
+import { fromPrice } from "@/lib/planPrice";
 import { cityLabel } from "@/data/plannerOptions";
 
 /**
  * The only interactive island on the homepage: hero trip planner + the tour
  * grid it filters. Everything below this component is server-rendered.
  */
-export default function PlannerSection() {
+export default function PlannerSection({ plans }: { plans: PlannerPlan[] }) {
     const [planner, setPlanner] = useState<PlannerState>({
         adults: 1,
         children: 0,
@@ -33,7 +34,7 @@ export default function PlannerSection() {
         document.getElementById("matching-tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, []);
 
-    const filteredPlans = getFilteredPlans(planner.cities);
+    const filteredPlans = getFilteredPlans(plans, planner.cities);
     const hasCities = planner.cities.length > 0;
 
     const resultsHeading = !hasCities
@@ -119,7 +120,7 @@ export default function PlannerSection() {
 
                                                     <div className="flex items-center justify-between mb-4">
                                                         <span className="text-sm font-medium text-gray-700">{plan.duration}</span>
-                                                        <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">Custom Quote</span>
+                                                        <span className="text-xs font-bold text-maroon-600 uppercase tracking-widest">{fromPrice(plan.price)}</span>
                                                     </div>
 
                                                     <Button className="w-full bg-maroon-600 hover:bg-maroon-700 text-white font-medium py-2.5">

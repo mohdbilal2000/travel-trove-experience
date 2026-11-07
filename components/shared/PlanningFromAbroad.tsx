@@ -9,9 +9,9 @@ import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
  */
 export default function PlanningFromAbroad({ destination = "the Golden Triangle" }: { destination?: string }) {
     const items = [
-        { icon: CreditCard, t: "Prices in your currency", d: "Package prices are shown in US dollars. We quote and accept payment in USD, EUR, GBP and AUD by bank transfer, with no surprise charges on arrival." },
-        { icon: Clock, t: "Replies in your time zone", d: "Send your dates on WhatsApp or email and you will have a written quote within 2 hours, whether you are in New York, London, Sydney or Berlin." },
-        { icon: Plane, t: "Airport to monument, door to door", d: "Pickup at Delhi airport is included on every multi-day tour. Most guests from the US and Europe land in Delhi overnight and start the next morning." },
+        { icon: CreditCard, t: "Quotes in your currency", d: "Prices on this site are shown in US dollars. we issue your written quote in your own currency, and you can pay by bank transfer. Straightforward pricing with no hidden charges." },
+        { icon: Clock, t: "Replies in your time zone", d: "Send your dates on WhatsApp or email and we aim to reply with a written quote within 2 hours, wherever you are writing from." },
+        { icon: Plane, t: "Day one built around your flight", d: "Tell us when you land and we plan your first day around it. Airport transfers are listed in each package's inclusions, or we can add one to your quote." },
         { icon: Globe, t: "Guides in your language", d: `Government-licensed guides in ${siteConfig.languages.slice(0, 6).join(", ")} and more, rated ${siteConfig.rating.value}/5 by ${ratingCountDisplay} travellers on Google.` },
     ];
     return (
@@ -22,7 +22,7 @@ export default function PlanningFromAbroad({ destination = "the Golden Triangle"
                         Travelling to {destination} from the US, UK, Australia or Europe?
                     </h2>
                     <p className="text-gray-500 font-light max-w-2xl mx-auto">
-                        Most of our guests book from abroad three to eight weeks before they fly. Here is what that looks like in practice.
+                        Here is what planning a private tour from overseas looks like.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

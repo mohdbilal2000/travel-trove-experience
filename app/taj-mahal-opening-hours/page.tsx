@@ -8,7 +8,7 @@ import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'The Taj Mahal Is Closed on Fridays — 2026 Opening Hours & Timings',
-    description: 'Closed every Friday. Open sunrise to sunset (about 6 AM to 6:30 PM) the other six days, last entry 30 minutes before sunset. Exact 2026 timings, night viewing dates and the best hour to arrive.',
+    description: 'Closed every Friday. Open roughly from sunrise to sunset on the other six days, with last entry 30 minutes before sunset. Seasonal 2026 timings, night viewing rules and the best time to arrive.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-opening-hours',
         languages: {

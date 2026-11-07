@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
+import { countries } from '@/data/countries';
 import { blogPosts } from '@/data/blogPosts';
 import { FAQ_LAST_UPDATED } from '@/data/faqs';
 import { guideLangs } from '@/data/multilingualGuide';
@@ -72,6 +73,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.85,
         },
+        // Landing pages for buying searches, country pages and localised ticket pages
+        ...[
+            ['same-day-agra-tour-from-delhi', 0.9],
+            ['taj-mahal-sunrise-tour', 0.9],
+            ['rajasthan-golden-triangle-tour', 0.9],
+            ['plan-your-trip', 0.8],
+            ...countries.map((c) => [`plan-your-trip/${c.slug}`, 0.7] as [string, number]),
+            ['de/taj-mahal-eintritt', 0.7],
+            ['es/entradas-taj-mahal', 0.7],
+        ].map(([path, priority]) => ({
+            url: `${BASE_URL}/${path}`,
+            lastModified: now,
+            changeFrequency: 'monthly' as const,
+            priority: priority as number,
+        })),
         // City cluster pages
         {
             url: `${BASE_URL}/delhi-tours`,

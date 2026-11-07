@@ -8,7 +8,7 @@ import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Taj Mahal Photography: Best Spots, Sunrise Light & Camera Rules',
-    description: 'The classic shot is from the main gate at sunrise; the quietest is from Mehtab Bagh across the river. Allowed and banned gear, tripod rules, and the spots our guides use every week.',
+    description: 'The classic frame is the central reflection pool and the Diana bench; Mehtab Bagh gives the river view at sunset. Tripods and drones are banned and photography is only prohibited inside the main mausoleum chamber.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-photography-guide',
         languages: {

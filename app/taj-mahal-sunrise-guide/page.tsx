@@ -7,8 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
-    title: 'Taj Mahal at Sunrise: Arrive 30 Minutes Before, Use the East Gate',
-    description: 'The gate opens 30 minutes before sunrise, so arrive at about 5:45 AM in winter. Month-by-month sunrise times, which gate, the Delhi same-day option and what to bring.',
+    title: 'Taj Mahal at Sunrise: Best Gate, Arrival Time and What to Bring',
+    description: 'Gates admit visitors from about 30 minutes before sunrise, around 06:30 in winter. Which gate to use, month-by-month sunrise times, how to get there from Delhi and what to bring.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-sunrise-guide',
         languages: {
