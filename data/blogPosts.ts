@@ -1240,7 +1240,7 @@ Our guides and drivers are paid properly for the tour whether or not you tip; yo
 Planning your cash for the trip? Our guide to [cash, cards and ATMs in India](/blog/cash-cards-and-atms-in-india) explains how to keep enough small notes on hand.`,
     author: "Avneesh Dixit",
     publishedDate: "2026-09-11",
-    image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
+    image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     category: "Travel FAQs",
     tags: ["Tipping", "Etiquette", "Money", "Guides", "Drivers", "India Travel"],
     relatedPlans: [1, 2, 2000],

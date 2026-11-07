@@ -8,7 +8,7 @@ import PageHero from '@/components/shared/PageHero';
 
 export const metadata: Metadata = {
     title: 'Can You Wear Shorts to the Taj Mahal? Dress Code & Rules 2026',
-    description: 'Yes, shorts are allowed; there is no enforced dress code, but modest clothing is respectful and you must remove or cover shoes at the mausoleum. What to wear, what security confiscates, and what works in the heat.',
+    description: 'Yes, shorts are allowed: there is no enforced dress code, though shoulders and knees covered is a sensible rule of thumb. Shoes come off or get covers at the marble platform. What to wear and what to leave behind.',
     alternates: {
         canonical: 'https://www.guideindiatours.com/taj-mahal-dress-code',
         languages: {

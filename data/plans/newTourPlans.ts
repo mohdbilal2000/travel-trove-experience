@@ -60,7 +60,7 @@ export const tourPlans: TravelPlan[] = [
       "Railway station transfers",
       "Traditional handicraft shopping"
     ],
-    image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
+    image: "/images/agra/getty-images-ge82SKhuwCA-unsplash.jpg",
     popular: false,
     itinerary: [
       {
@@ -181,7 +181,7 @@ export const tourPlans: TravelPlan[] = [
       "All meals",
       "Private local guides"
     ],
-    image: "/images/agra/getty-images-T4Mak2qRXSg-unsplash.jpg",
+    image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
     popular: true,
     itinerary: [
       {

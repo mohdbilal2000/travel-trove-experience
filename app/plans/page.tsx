@@ -49,11 +49,11 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 }
 
 const plansFaqs = [
-    { question: "What is included in a private tour package price?", answer: "Every package includes a private air-conditioned car with chauffeur for the whole route, a government-licensed English-speaking guide in each city, airport or hotel pickup, fuel, tolls, parking and bottled water. Monument tickets and hotels are listed per package; where they are not included we quote them separately so you can pick your own hotel category." },
-    { question: "Are the prices per person or per group?", answer: "Prices shown are per adult, based on two travellers sharing one vehicle. Per-person prices fall for groups of three or more because the car and guide costs are shared. Children under 15 enter all ASI monuments, including the Taj Mahal, free of charge." },
-    { question: "Can I change an itinerary?", answer: "Yes. Every tour is private, so you can add a day, swap a monument, change the hotel standard or start from Jaipur instead of Delhi. Tell us what you would like and we send a revised written quote, usually the same day." },
-    { question: "How far in advance should I book from abroad?", answer: "Three to eight weeks is typical for guests flying from the US, UK, Australia or Europe. October to March is peak season and the best guides and hotels fill early; same-day Agra tours from Delhi can often be arranged with 48 hours' notice." },
-    { question: "Is the Taj Mahal closed on any day?", answer: "Yes, the Taj Mahal is closed every Friday. All our Agra itineraries are planned around it, with Agra Fort, Fatehpur Sikri and Mehtab Bagh on a Friday and the Taj at sunrise the next morning." },
+    { question: "What is included in a private tour package price?", answer: "Each package page lists exactly what is included, so check the Inclusions section of the tour you like. Our tours are private: your own air-conditioned vehicle with a professional chauffeur and a government-approved guide, with hotels, meals and flights listed separately wherever a package does not include them." },
+    { question: "Are the prices per person or per group?", answer: "Prices are shown per adult as a starting price. The 'from' price reflects a typical twin-share booking in the standard hotel tier, and the final price depends on hotel category, number of travellers, season and add-ons. We confirm it in a written quote before you pay. Children under 15 enter all ASI monuments, including the Taj Mahal, free of charge." },
+    { question: "Can I change an itinerary?", answer: "Yes. Every tour is private and customisable. Tell us what you would like to change, such as an extra day, a different monument or another hotel standard, and we send a revised written quote." },
+    { question: "When should I book?", answer: "October to March is the busiest season, so book as early as you can. For shorter notice, message us on WhatsApp with your dates and we will tell you what is available." },
+    { question: "Is the Taj Mahal closed on any day?", answer: "Yes, the Taj Mahal is closed every Friday. We plan Agra itineraries around it, using Friday for Agra Fort, Fatehpur Sikri or Mehtab Bagh and visiting the Taj at sunrise on another day." },
 ];
 
 const planFeatures = [

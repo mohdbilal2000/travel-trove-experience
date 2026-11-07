@@ -17,11 +17,11 @@ import { siteConfig } from '@/lib/siteConfig';
 const goldenTriangleFaqs = [
     {
         question: "How much does a private Golden Triangle tour cost from the US or UK?",
-        answer: "Our private 4 to 6 day Golden Triangle packages start from $299 per adult for two people sharing, covering private AC car, government-licensed guides in each city, airport pickup, fuel, tolls and parking. Hotels and monument tickets are quoted separately so you can choose your own hotel category. We quote in USD, EUR, GBP or AUD and send a written itemised price within 2 hours."
+        answer: "Golden Triangle packages on this site start from $199 per adult for the 4-day Budget Backpacker tour. The 3-day Express tour is $349, the 4-day Classic is $699 and the 5-day Deluxe is $1,199 per adult, with luxury and VIP options above that. These are 'from' prices for a typical twin-share booking in the standard hotel tier. We send a written quote in your own currency, listing what is and is not included, before you pay."
     },
     {
         question: "Is Delhi, Agra and Jaipur safe for American and European travellers?",
-        answer: "Yes. The Golden Triangle is India's most visited tourist circuit and a private tour with a licensed guide and your own driver removes the usual friction: no haggling with taxis, no touts at the monuments, and a WhatsApp number that answers in your time zone. Solo women and families from the US, UK, Australia and Germany make up a large share of our guests."
+        answer: "The Golden Triangle is India's most visited tourist circuit. On a private tour with a government-licensed guide and your own driver you are never navigating taxis, tickets or monument queues alone, and our team is on WhatsApp throughout your trip. Our travel safety guide covers the practical advice in more detail."
     },
     {
         question: "What is the Golden Triangle tour in India?",

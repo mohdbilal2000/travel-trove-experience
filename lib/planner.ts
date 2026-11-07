@@ -1,7 +1,6 @@
 // Pure helpers for the home Trip Planner: shared filtering logic plus the
 // WhatsApp / email handoff message builders. No React, no side effects.
 
-import { allPlans } from "@/data/travelPlans";
 import type { TravelPlan } from "@/data/types/travelPlanTypes";
 import { cityLabel, goldenTrianglePreset, transportOptions } from "@/data/plannerOptions";
 
@@ -33,7 +32,26 @@ export const isFriday = (iso: string): boolean => {
 const WHATSAPP_NUMBER = "918979810991";
 const CONTACT_EMAIL = "info@guideindiatours.com";
 
-const byPopularity = (a: TravelPlan, b: TravelPlan): number => {
+/**
+ * The slim shape of a plan that the client-side planner needs. Itineraries,
+ * inclusions and FAQs are deliberately left out: this type is what crosses the
+ * server/client boundary, so every field here is shipped to the browser.
+ */
+export type PlannerPlan = Pick<TravelPlan, "id" | "title" | "duration" | "description" | "image" | "popular" | "destinations" | "price" | "highlights">;
+
+export const toPlannerPlan = (plan: TravelPlan): PlannerPlan => ({
+  id: plan.id,
+  title: plan.title,
+  duration: plan.duration,
+  description: plan.description,
+  image: plan.image,
+  popular: plan.popular,
+  destinations: plan.destinations,
+  price: plan.price,
+  highlights: plan.highlights.slice(0, 2),
+});
+
+const byPopularity = (a: PlannerPlan, b: PlannerPlan): number => {
   if (a.popular && !b.popular) return -1;
   if (!a.popular && b.popular) return 1;
   return 0;
@@ -50,7 +68,7 @@ export const isGoldenTriangle = (cities: string[]): boolean =>
  * - Golden Triangle → plans covering all three cities.
  * - Otherwise → plans matching ANY selected city.
  */
-export const getFilteredPlans = (cities: string[]): TravelPlan[] => {
+export const getFilteredPlans = <T extends PlannerPlan>(allPlans: T[], cities: string[]): T[] => {
   if (cities.length === 0) {
     return [...allPlans].sort(byPopularity).slice(0, 6);
   }
