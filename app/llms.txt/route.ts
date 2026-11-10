@@ -25,7 +25,7 @@ export async function GET() {
         .join('\n\n');
 
     const content = `# Guide India Tours
-> India's #1 Specialist for Golden Triangle Private Tours
+> Private Golden Triangle tours (Delhi, Agra, Jaipur) with government-approved guides, run from Agra since 2004
 
 ## Business Identity
 - Name: Guide India Tours
@@ -62,6 +62,10 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) → ${BASE_URL}/p
 - Agra Tours: ${BASE_URL}/agra-tours
 - Jaipur Tours: ${BASE_URL}/jaipur-tours
 - Golden Triangle: ${BASE_URL}/golden-triangle-tours
+- Golden Triangle tour cost: ${BASE_URL}/golden-triangle-tour-cost
+- Private vs group tour: ${BASE_URL}/private-vs-group-tour
+- Tour guides: ${BASE_URL}/agra-tour-guide , ${BASE_URL}/delhi-tour-guide , ${BASE_URL}/jaipur-tour-guide
+- Travellers from the United States: ${BASE_URL}/plan-your-trip/usa
 - All Tour Plans: ${BASE_URL}/plans
 - Same Day Agra Tour from Delhi: ${BASE_URL}/same-day-agra-tour-from-delhi
 - Taj Mahal Sunrise Tour: ${BASE_URL}/taj-mahal-sunrise-tour

@@ -52,7 +52,6 @@ const contactSchema = {
                 "@type": "ContactPoint",
                 "telephone": "+91-8979810991",
                 "contactType": "reservations",
-                "contactOption": "TollFree",
                 "availableLanguage": ["English", "Hindi"]
             }
         ],

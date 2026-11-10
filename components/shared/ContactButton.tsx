@@ -4,10 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { Phone, Mail, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
+import { usePathname } from 'next/navigation';
+import { enquiryMessage, whatsappLink, emailLink } from '@/lib/contact';
+import { trackContact } from '@/components/shared/ContactClickTracker';
 
 const ContactButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasAutoOpened, setHasAutoOpened] = useState(false);
+  const pathname = usePathname();
 
   // Auto-popup after 45 seconds (only on desktop)
   useEffect(() => {
@@ -42,7 +46,7 @@ const ContactButton = () => {
       icon: WhatsAppIcon,
       title: 'WhatsApp',
       description: 'Quick chat support',
-      action: () => window.open('https://wa.me/918979810991?text=Hi, I am interested in your Golden Triangle tour packages', '_blank'),
+      action: () => { trackContact('whatsapp', 'Desktop contact menu'); window.open(whatsappLink(enquiryMessage(pathname)), '_blank'); },
       color: 'bg-[#25D366] hover:bg-[#128C7E]',
       iconColor: 'text-white'
     },
@@ -50,7 +54,7 @@ const ContactButton = () => {
       icon: Phone,
       title: 'Call Us',
       description: '+91 8979810991',
-      action: () => window.open('tel:+918979810991', '_self'),
+      action: () => { trackContact('phone', 'Desktop contact menu'); window.open('tel:+918979810991', '_self'); },
       color: 'bg-maroon-600 hover:bg-maroon-700',
       iconColor: 'text-white'
     },
@@ -58,7 +62,7 @@ const ContactButton = () => {
       icon: Mail,
       title: 'Email Us',
       description: 'info@guideindiatours.com',
-      action: () => window.open('mailto:info@guideindiatours.com', '_self'),
+      action: () => { trackContact('email', 'Desktop contact menu'); window.open(emailLink('Tour enquiry', enquiryMessage(pathname)), '_self'); },
       color: 'bg-royal-600 hover:bg-royal-700',
       iconColor: 'text-white'
     },

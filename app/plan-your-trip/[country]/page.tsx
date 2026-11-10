@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Clock, Languages, CreditCard, FileText, MessageCircle } from "lucide-react";
+import { ArrowRight, Clock, Languages, CreditCard, FileText, Mail, MessageCircle } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import { allPlans } from "@/data/travelPlans";
 import { countries, copy, getCountry, guideNames } from "@/data/countries";
@@ -9,6 +9,7 @@ import { getGuideLang } from "@/data/multilingualGuide";
 import { generateFAQSchema } from "@/lib/schemaGenerator";
 import { numericPrice } from "@/lib/planPrice";
 import { siteConfig } from "@/lib/siteConfig";
+import { whatsappLink, emailLink } from "@/lib/contact";
 
 type Props = { params: Promise<{ country: string }> };
 
@@ -53,7 +54,7 @@ export default async function CountryPage({ params }: Props) {
     });
     const guideA = [t.guideEn, ...guideLines.map((g) => g.text)].join(" ");
 
-    const faqs = t.faqs({ n, tz: c.tz, guideA }).map((f) => ({ question: fill(f.q, n), answer: f.a }));
+    const faqs = [...t.faqs({ n, tz: c.tz, guideA }), ...(c.faqs ?? [])].map((f) => ({ question: fill(f.q, n), answer: f.a }));
     const url = `${siteConfig.url}/plan-your-trip/${c.slug}`;
     const webPage = {
         "@context": "https://schema.org",
@@ -72,7 +73,8 @@ export default async function CountryPage({ params }: Props) {
         const v = p ? numericPrice(p.price) : null;
         return v ? t.price.replace("{p}", v.toLocaleString("en-US")) : null;
     };
-    const waHref = `${siteConfig.whatsappHref}?text=${encodeURIComponent(fill(t.wa, n))}`;
+    const waHref = whatsappLink(fill(t.wa, n));
+    const mailHref = emailLink(t.mailSub, fill(t.wa, n));
 
     return (
         <main className="bg-white min-h-screen" lang={c.lang}>
@@ -129,9 +131,12 @@ export default async function CountryPage({ params }: Props) {
                             </Link>
                         ))}
                     </div>
-                    <div className="mt-8">
+                    <div className="mt-8 flex flex-wrap gap-3">
                         <a href={waHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-maroon-600 hover:bg-black text-white font-bold px-6 py-3 transition-colors">
                             <MessageCircle className="w-4 h-4" /> {t.cta}
+                        </a>
+                        <a href={mailHref} className="inline-flex items-center gap-2 rounded-xl border border-maroon-600 text-maroon-600 hover:bg-maroon-600 hover:text-white font-bold px-6 py-3 transition-colors">
+                            <Mail className="w-4 h-4" /> {t.mail}
                         </a>
                     </div>
                 </div>

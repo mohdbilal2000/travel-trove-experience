@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Share2, Check, Mail, Link2, X, ChevronUp } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { usePathname } from "next/navigation";
+import { enquiryMessage, whatsappLink, emailLink } from "@/lib/contact";
 
 const COLLAPSE_KEY = "floating-contact-collapsed";
 
@@ -22,8 +23,10 @@ const FloatingContact = () => {
   // Hide on plan detail pages where StickyBookingBar is shown
   const isPlanDetail = /^\/plans\/\d+$/.test(pathname);
 
-  // WhatsApp with pre-filled message
-  const whatsappUrl = "https://wa.me/918979810991?text=" + encodeURIComponent("Hello, I am interested in a Golden Triangle tour.");
+  // WhatsApp with a pre-filled message that names the page being read
+  const whatsappUrl = whatsappLink(enquiryMessage(pathname));
+  // Email for visitors who do not use WhatsApp (most US travellers)
+  const emailUrl = emailLink("Tour enquiry", enquiryMessage(pathname));
 
   const collapse = useCallback(() => {
     setCollapsed(true);
@@ -130,6 +133,16 @@ const FloatingContact = () => {
                   <span className="text-[11px] font-semibold leading-none">Call</span>
                 </a>
 
+                {/* Email — for visitors without WhatsApp */}
+                <a
+                  href={emailUrl}
+                  className="flex-1 bg-white text-royal-600 px-3 py-2.5 flex flex-col items-center justify-center gap-0.5 border-l border-gray-100 active:scale-[0.97] transition-transform touch-manipulation"
+                  aria-label="Email us"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span className="text-[11px] font-semibold leading-none">Email</span>
+                </a>
+
                 {/* Share */}
                 <button
                   onClick={handleShare}
@@ -170,7 +183,7 @@ const FloatingContact = () => {
                       className="absolute bottom-full right-0 mb-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden min-w-[180px] z-50"
                     >
                       <a
-                        href="mailto:info@guideindiatours.com?subject=Golden Triangle Tour Inquiry"
+                        href={emailUrl}
                         onClick={() => setShareMenuOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm text-gray-700"
                       >

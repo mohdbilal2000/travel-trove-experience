@@ -516,9 +516,11 @@ export function ReviewsWall() {
                 <div className="mt-14 pt-10 border-t border-gray-200/70 text-center">
                     <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-400 mb-6">Also Find Us On</p>
                     <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-                        <li className="flex items-center gap-2 text-xl font-black tracking-tight text-gray-800">
-                            <span aria-hidden="true" className="w-6 h-6 rounded-full bg-[#34E0A1] flex items-center justify-center text-black text-xs font-black">T</span>
-                            Tripadvisor
+                        <li>
+                            <a href={siteConfig.social.tripadvisor} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xl font-black tracking-tight text-gray-800 hover:text-black transition-colors">
+                                <span aria-hidden="true" className="w-6 h-6 rounded-full bg-[#34E0A1] flex items-center justify-center text-black text-xs font-black">T</span>
+                                Tripadvisor
+                            </a>
                         </li>
                         <li className="text-xl font-black tracking-tight text-[#FF5533]">GetYourGuide</li>
                         <li className="text-xl font-black tracking-tight text-[#FF5722]">Klook</li>

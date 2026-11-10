@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/siteConfig";
+
 /**
  * Source markets for the "Plan your trip from ..." pages, chosen from Search
  * Console impressions (US, UK, Germany, Australia, Canada, Singapore, France,
@@ -22,13 +24,23 @@ export type Country = {
   tz: string;
   /** Codes of /guide/[code] pages relevant to this market. */
   guides: string[];
+  /** Extra questions specific to this market, shown after the shared ones. */
+  faqs?: { q: string; a: string }[];
 };
 
 const eu = "India is 3.5 to 4.5 hours ahead of {n}, depending on daylight saving.";
 
 export const countries: Country[] = [
   { slug: "usa", label: "United States", name: "the United States", lang: "en", hreflang: "en-US", guides: [],
-    tz: "India is 9.5 to 10.5 hours ahead of US Eastern time and 12.5 to 13.5 hours ahead of US Pacific time, depending on daylight saving." },
+    tz: "India is 9.5 to 10.5 hours ahead of US Eastern time and 12.5 to 13.5 hours ahead of US Pacific time, depending on daylight saving.",
+    faqs: [
+      { q: "Can US citizens apply for an Indian e-Visa?", a: "US passport holders can apply online for an Indian e-Visa. Fees, validity and processing times change, so confirm the current rules on the official portal, indianvisaonline.gov.in, before you book flights. Apply only on that government site." },
+      { q: "I do not use WhatsApp. How do I contact you?", a: `Email ${siteConfig.email} with your dates and the number of travellers. We reply by email and send your itinerary and quote as a PDF, so you never need WhatsApp to book.` },
+      { q: "Will my quote be in US dollars?", a: "Yes. Prices on this site are in US dollars and your written quote is issued in US dollars, per person, with what is and is not included listed line by line. You can pay by bank transfer." },
+      { q: "How many days do I need for the Golden Triangle?", a: "Our Golden Triangle tours run from 3 to 7 days. The 4-day classic covers Delhi, Agra and Jaipur with a private car and driver. If you only have one free day in Delhi, the same-day Agra tour covers the Taj Mahal, Agra Fort and Fatehpur Sikri." },
+      { q: "When is the best time to travel from the US?", a: "October to March is the cooler, drier season in Delhi, Agra and Jaipur and the most comfortable for sightseeing. Whatever the month, the Taj Mahal is closed every Friday, so tell us your dates and we plan Agra around it." },
+      { q: "Where do I find the US travel advisory for India?", a: "The US Department of State publishes its current India advisory at travel.state.gov. Read it before you travel. On our tours you have a private vehicle, the same driver throughout and a government-approved guide at the monuments." },
+    ] },
   { slug: "uk", label: "United Kingdom", name: "the United Kingdom", lang: "en", hreflang: "en-GB", guides: [],
     tz: "India is 4.5 to 5.5 hours ahead of the UK, depending on daylight saving." },
   { slug: "canada", label: "Canada", name: "Canada", lang: "en", hreflang: "en-CA", guides: ["fr"],
@@ -79,6 +91,8 @@ export const copy = {
     ],
     price: "From ${p} per adult",
     cta: "Get a quote on WhatsApp",
+    mail: "No WhatsApp? Email us instead",
+    mailSub: "Tour quote request",
     wa: "Hi Guide India Tours! I'm travelling from {n} and would like a quote.",
     faqHead: "Questions from travellers in {n}",
     faqs: (c: { n: string; tz: string; guideA: string }) => [
@@ -110,6 +124,8 @@ export const copy = {
     ],
     price: "Desde ${p} por adulto",
     cta: "Pide un presupuesto por WhatsApp",
+    mail: "¿Sin WhatsApp? Escríbenos por email",
+    mailSub: "Solicitud de presupuesto",
     wa: "Hola Guide India Tours, viajo desde {n} y me gustaría recibir un presupuesto.",
     faqHead: "Preguntas de viajeros desde {n}",
     faqs: (c: { n: string; tz: string; guideA: string }) => [
@@ -141,6 +157,8 @@ export const copy = {
     ],
     price: "Ab ${p} pro Erwachsenem",
     cta: "Angebot per WhatsApp anfragen",
+    mail: "Kein WhatsApp? Schreiben Sie uns per E-Mail",
+    mailSub: "Angebotsanfrage",
     wa: "Guten Tag Guide India Tours, ich reise aus {n} und hätte gern ein Angebot.",
     faqHead: "Fragen von Reisenden aus {n}",
     faqs: (c: { n: string; tz: string; guideA: string }) => [

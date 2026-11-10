@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import QRCode from "react-qr-code";
 import jsPDF from "jspdf";
-import FloatingContact from "@/components/shared/FloatingContact";
 
 export default function DigitalCardPage() {
     const [isDownloading, setIsDownloading] = useState(false);
@@ -135,7 +134,6 @@ export default function DigitalCardPage() {
                     </div>
                 </motion.div>
             </div>
-            <FloatingContact />
         </div>
     );
 }

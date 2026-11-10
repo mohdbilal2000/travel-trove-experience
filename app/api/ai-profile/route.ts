@@ -2,13 +2,14 @@ import { allPlans } from '@/data/travelPlans';
 import { blogPosts } from '@/data/blogPosts';
 import { NextResponse } from 'next/server';
 import { siteConfig, postalAddressSchema } from '@/lib/siteConfig';
+import { numericPrice } from '@/lib/planPrice';
 
 export async function GET() {
     const destinations = Array.from(new Set(allPlans.flatMap(p => p.destinations || [])));
     const categories = Array.from(new Set(allPlans.map(p => (p as any).category).filter(Boolean)));
     const priceValues = allPlans
-        .map(p => parseInt(p.price.replace(/[^0-9]/g, '')))
-        .filter(p => !isNaN(p));
+        .map(p => numericPrice(p.price))
+        .filter((p): p is number => p !== null);
 
     const profile = {
         "@context": "https://schema.org",
@@ -18,7 +19,7 @@ export async function GET() {
         alternateName: "Golden Triangle Tours Specialist",
         url: "https://www.guideindiatours.com",
         logo: "https://www.guideindiatours.com/logo.png",
-        description: "India's #1 specialist for Golden Triangle private tours covering Delhi, Agra, and Jaipur. Premium private tours with licensed guides, luxury hotels, and fully customizable itineraries.",
+        description: siteConfig.description,
         foundingDate: "2004",
         priceRange: "$$$",
         slogan: "Experience India's Golden Triangle with Expert Guides",

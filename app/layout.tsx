@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer"
 import ContactButton from "@/components/shared/ContactButton"
 import FloatingContact from "@/components/shared/FloatingContact"
 import Analytics from "@/components/shared/Analytics"
+import ContactClickTracker from "@/components/shared/ContactClickTracker"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { generateConnectedGraphSchema } from "@/lib/schemaGenerator"
 
@@ -88,6 +89,7 @@ export default function RootLayout({
                 <Toaster />
                 <Sonner />
                 <Analytics />
+                <ContactClickTracker />
                 {/* Real-user Core Web Vitals (LCP/INP/CLS) — field data, not lab. */}
                 <SpeedInsights />
             </body>
