@@ -1,11 +1,11 @@
 """
 Guide India Tours quotation, theme v2 ("Taj Dawn").
-Run from this folder:  python3 build_v2.py out.html   then  node measure.cjs out.html && node render.cjs out.html out.pdf
+Run from this folder:  python3 build_v2.py quotes/<client>.json out.html   then  node measure.cjs out.html && node render.cjs out.html out.pdf
 Photos sit in ./photos and are shown at their natural aspect ratio (never cropped).
 Order: cover, Your Comfort, Your Journey, What is / is not included, Your Price (per person AND total),
 Services Provided (company copy), Booking terms + policies, Payment details, closing.
 """
-import re,sys
+import re,sys,json
 T='git-quotation-reference.html'
 t=open(T).read()
 head=t[:t.index('<body>')]
@@ -115,134 +115,96 @@ bank=t[a:b].rstrip().replace('padding-top:16mm','padding-top:0')
 plat=t[t.index('  <div class="plat">'):t.index('<div class="foot">')]
 foot=t[t.index('<div class="foot">'):t.index('</body>')]
 
-# ----------------------------- CONTENT (this quote) -----------------------------
-D=dict(
- ref='GIT-2026-1130-TH', issued='15 November 2026', valid='22 November 2026',
- name='Theo', pax='1 Traveller', dates='Mon 30 Nov &ndash; Tue 1 Dec 2026', duration='2 Days / 1 Night',
- route='Delhi &rarr; Agra &rarr; Delhi', pickup='Le M&eacute;ridien New Delhi', drop='ITC Mughal, Agra &middot; then Delhi / Gurgaon',
- guide='Licensed, English-speaking', vehicle='Private AC sedan',
- per_person_main='&#8377;27,000', total_main='&#8377;27,000',
-)
-foot=foot.replace('Quotation GIT-2027-0225-CA','Quotation '+D['ref'])
+# ----------------------------- CONTENT comes from a JSON file (see quotes/example-theo.json) -----------------------------
+Q=json.load(open(sys.argv[1])); OUT=sys.argv[2]
+M=Q['meta']
+head=head.replace('Guide India Tours &mdash; Theo &mdash; Delhi &amp; Agra','Guide India Tours &mdash; '+M['client']+' &mdash; '+M['title'])
+foot=foot.replace('Quotation GIT-2027-0225-CA','Quotation '+M['ref'])
 def tile(k,h,d): return f'<div><div class="k">{k}</div><div class="h">{h}</div><div class="d">{d}</div></div>'
 def row(tm,h,d): return f'<div class="r"><div class="tm">{tm}</div><div class="tx"><div class="h">{h}</div><div class="d">{d}</div></div></div>'
-
+def img(p,alt,cap=None,flex=None):
+    st=f' style="flex:{flex}"' if flex else ''
+    c=f'<div class="cap" style="text-align:left">{cap}</div>' if cap else ''
+    return f'<figure{st}><img class="photo" src="{p["file"]}" alt="{p["alt"]}">{c}</figure>'
+C=Q['cover']
+cards=''.join(f'<div><div class="k">{k}</div><div class="v">{v}</div></div>' for k,v in Q['cards'])
 s1=f'''<div class="sheet">
 <div class="head">
   <div class="brand brandrow">{logo}
     <div><div class="wm"><em>Guide</em> India Tours</div>
     <div class="tg">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2004</div></div></div>
-  <div class="meta">Quotation <b>{D['ref']}</b><br>Issued {D['issued']}<br>Valid until {D['valid']}</div>
+  <div class="meta">Quotation <b>{M['ref']}</b><br>Issued {M['issued']}<br>Valid until {M['valid']}</div>
 </div>
 <div class="stripe"></div>
 <div class="cover">
-  <span class="pill">Private Two-Day Tour &middot; Delhi &rarr; Agra &rarr; Delhi</span>
-  <h1>Two Relaxed Days in Agra</h1>
-  <div class="sub">Your time, your pace &middot; Private car &middot; Licensed guide &middot; Tickets included</div>
-  <img class="photo" src="photos/taj-reflecting-pool.jpg" alt="The Taj Mahal and its gardens">
-  <div class="cap">THE TAJ MAHAL, AGRA</div>
+  <span class="pill">{C['pill']}</span>
+  <h1>{C['title']}</h1>
+  <div class="sub">{C['sub']}</div>
+  <img class="photo" src="{C['photo']['file']}" alt="{C['photo']['alt']}">
+  <div class="cap">{C['photo']['cap']}</div>
 </div>
-<div class="cards">
-  <div><div class="k">Prepared for</div><div class="v">{D['name']}</div></div>
-  <div><div class="k">Travellers</div><div class="v">{D['pax']}</div></div>
-  <div><div class="k">Travel dates</div><div class="v">{D['dates']}</div></div>
-  <div><div class="k">Route</div><div class="v">{D['route']}</div></div>
-  <div><div class="k">Pickup</div><div class="v">{D['pickup']}</div></div>
-  <div><div class="k">Drop-off</div><div class="v">{D['drop']}</div></div>
-</div>
+<div class="cards">{cards}</div>
 </div>
 '''
+CM=Q['comfort']
+tiles=''.join(tile(*t) for t in CM['tiles'])
+prow=''.join(f'<figure style="flex:1"><img class="photo" src="{p["file"]}" alt="{p["alt"]}"></figure>' for p in CM['photos'])
 s2=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
     <span class="lbl">01 &mdash; Your Comfort</span>
-    <h2>Relax. We have taken care of it.</h2>
-    <div class="relax">
-      <div class="big">&ldquo;Tell us the time, and that is the time.&rdquo;</div>
-      <p>Say 8:00 in the morning and your driver is at your hotel at 8:00. Say 9:00 and it is 9:00. Nothing in this plan is
-      fixed against your wishes &mdash; this page tells you exactly how your two days will feel, so there is nothing to wonder about.</p>
-    </div>
-    <div class="tiles">
-      {tile('Your clock','You choose the time','Pickup is at the time <b>you</b> tell us, whether that is 8 or 9 AM. We confirm it with you the evening before, and your driver is there on the minute.')}
-      {tile('Your meals','Eat when you are hungry','There are no fixed meal stops. Tell your guide or driver what you like, and they suggest clean, comfortable places close to where you are, with mild-spice options. Meals are at your own cost.')}
-      {tile('Your pace','Slow down, swap or skip','Want longer at a monument, a rest, or to change the order? Just say so. The plan bends to you, within the opening hours of each place.')}
-      {tile('Your team','One driver, one clear plan','The same professional driver stays with you the whole time, and a licensed English-speaking guide joins you at the monuments. The driver takes you to your hotel at the end of each day.')}
-      {tile('No surprises','Nothing hidden, no shopping stops','There are no compulsory shopping stops. Every price is on page 4, and monument tickets are charged at the exact official price with nothing added.')}
-      {tile('Always reachable','A message away, day and night','Your WhatsApp line to our team stays open during your trip. Any change or question, just write.')}
-    </div>
-    <div class="photorow" style="margin-top:6mm"><figure style="flex:1"><img class="photo" src="photos/taj-through-arch.jpg" alt="The Taj Mahal framed by a Mughal arch"></figure><figure style="flex:1"><img class="photo" src="photos/taj-blue-pool.jpg" alt="The Taj Mahal gardens"></figure></div>
+    <h2>{CM['heading']}</h2>
+    <div class="relax"><div class="big">{CM['quote']}</div><p>{CM['intro']}</p></div>
+    <div class="tiles">{tiles}</div>
+    <div class="photorow" style="margin-top:6mm">{prow}</div>
   </div>
 </div>
 </div>
 '''
+days=''
+for dday in Q['days']:
+    days+=f'<div class="dayhead"><div><div class="no">{dday["no"]}</div><div class="tt">{dday["title"]}</div></div><div class="dd">{dday["date"]}</div></div>\n<div class="tl">'+''.join(row(*r) for r in dday['rows'])+'</div>\n'
 s3=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
     <span class="lbl">02 &mdash; Itinerary</span>
     <h2>Your Journey</h2>
-    <div class="dayhead"><div><div class="no">Day One</div><div class="tt">Delhi to Agra &middot; Baby Taj and sunset</div></div><div class="dd">Monday<br>30 November 2026</div></div>
-    <div class="tl">
-      {row('Your time<br>8 or 9 AM','Pickup from Le M&eacute;ridien New Delhi','Your driver meets you at the hotel at the time you choose &mdash; 8:00 or 9:00, exactly as you say. Then the private transfer to Agra, about 3.5&ndash;4 hours depending on traffic, with a comfort break on the way.')}
-      {row('Afternoon','Itimad-ud-Daulah &middot; the Baby Taj','Your licensed English-speaking guide takes you through this delicate marble tomb on the river, famous for its inlay work and often called the &ldquo;Baby Taj&rdquo;.')}
-      {row('Sunset','Mehtab Bagh','The garden across the Yamuna, with the best view of the Taj Mahal as the evening light changes.')}
-      {row('Evening','Drop at ITC Mughal, Agra','Your driver takes you to your hotel. Dinner and rest are at your own pace.')}
-    </div>
-    <div class="dayhead"><div><div class="no">Day Two</div><div class="tt">Taj Mahal at sunrise &middot; Agra Fort &middot; back to Delhi</div></div><div class="dd">Tuesday<br>1 December 2026</div></div>
-    <div class="tl">
-      {row('Sunrise','The Taj Mahal','Early start, with a pickup time agreed with you the evening before. Your guide shows you the Taj Mahal in the first light, <b>including the main mausoleum</b>, with its story, its inlay work and time for photographs.')}
-      {row('Morning','Breakfast at ITC Mughal','Back to the hotel for a relaxed breakfast and your check-out, at your pace.')}
-      {row('After check-out','Agra Fort','Your guide takes you through the red sandstone fort, the great Mughal palace by the river.')}
-      {row('Afternoon','Private transfer to Delhi / Gurgaon','The drive back, about 3.5&ndash;4 hours depending on traffic, to the address you give us. End of services.')}
-    </div>
+    {days}
   </div>
-  <div class="clarity"><b>Good to know.</b> The Taj Mahal is closed every Friday; your visit is on Tuesday 1 December, so you are clear.
-  Monument opening and closing times are set by the authorities, so we plan each visit inside them. Driving times depend on traffic.</div>
+  <div class="clarity">{Q['good_to_know']}</div>
 </div>
 </div>
 '''
+def li(x):
+    return f'<li>{x[0]}<small>{x[1]}</small></li>' if isinstance(x,list) else f'<li>{x}</li>'
+inc=''.join(li(x) for x in Q['included']); exc=''.join(li(x) for x in Q['not_included'])
+P=Q['price']
+prows=''.join(f'<tr><td class="v">{r[0]}' + (f'<i>{r[1]}</i>' if r[1] else '') + f'</td><td class="r2">{r[2]}</td></tr>' for r in P['rows'])
+boxes=''.join(f'<div class="{c}"><div class="k">{b[0]}</div><div class="amt">{b[1]}</div><div class="sm">{b[2]}</div></div>' for c,b in zip(('pp','tt'),P['boxes']))
 s4=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
     <span class="lbl">03 &mdash; Total Clarity</span>
     <h2>What You Get, and What You Do Not</h2>
     <div class="ie">
-      <div class="box inc"><div class="bh">Included in your price</div><ul>
-        <li><b>Private AC sedan with driver</b> for both days<small>Fuel, tolls, parking and taxes are all included.</small></li>
-        <li><b>Licensed English-speaking guide</b> for both days</li>
-        <li><b>All monument tickets</b><small>Itimad-ud-Daulah, Mehtab Bagh, the Taj Mahal including the main mausoleum, and Agra Fort, at the exact official price.</small></li>
-        <li>Pickup from Le M&eacute;ridien and your drop in Delhi / Gurgaon</li>
-        <li>Drop at ITC Mughal on Day 1</li>
-        <li>Bottled drinking water in the car</li></ul></div>
-      <div class="box exc"><div class="bh">Not included</div><ul>
-        <li><b>Hotels</b><small>You have already booked yours.</small></li>
-        <li>Meals and drinks<small>Breakfast at your hotel is part of your own booking.</small></li>
-        <li>Tips and personal expenses</li>
-        <li>Camera or video fees at monuments, where charged</li>
-        <li>Anything not listed under &ldquo;Included&rdquo;</li></ul></div>
+      <div class="box inc"><div class="bh">Included in your price</div><ul>{inc}</ul></div>
+      <div class="box exc"><div class="bh">Not included</div><ul>{exc}</ul></div>
     </div>
   </div>
   <div class="sec">
     <span class="lbl">04 &mdash; Your Price</span>
     <h2>Per Person and in Total</h2>
-    <table class="pr">
-      <thead><tr><th style="width:62%">What</th><th class="c">Amount</th></tr></thead>
-      <tbody>
-        <tr><td class="v">Private AC sedan and driver, 2 days<i>Fuel, tolls, parking and taxes included</i></td><td class="r2">&#8377;20,000</td></tr>
-        <tr><td class="v">Licensed English-speaking guide, 2 days</td><td class="r2">&#8377;7,000</td></tr>
-        <tr><td class="v">Monument tickets, at actual cost<i>The official price, with no markup</i></td><td class="r2">&#8377;_____</td></tr>
-        <tr class="tot"><td class="v">Total for 1 traveller</td><td class="r2">&#8377;27,000 + tickets</td></tr>
-      </tbody>
-    </table>
-    <div class="priceboxes">
-      <div class="pp"><div class="k">Per person</div><div class="amt">&#8377;27,000 + tickets</div><div class="sm">Shared by one traveller</div></div>
-      <div class="tt"><div class="k">Total &middot; 1 traveller</div><div class="amt">&#8377;27,000 + tickets</div><div class="sm">The whole amount, nothing more to add</div></div>
-    </div>
-    <div class="clarity"><b>No hidden charges.</b> The amounts above are the full price. Monument tickets are charged at exactly what the authorities charge. Reference exchange rate 94.95 INR = 1 USD; payment may also be made in USD, AED or INR.</div>
+    <table class="pr"><thead><tr><th style="width:62%">What</th><th class="c">Amount</th></tr></thead><tbody>
+      {prows}
+      <tr class="tot"><td class="v">{P['total_label']}</td><td class="r2">{P['total_value']}</td></tr>
+    </tbody></table>
+    <div class="priceboxes">{boxes}</div>
+    <div class="clarity">{P['note']}</div>
   </div>
 </div>
 </div>
 '''
-terms_x=terms.replace('Reply to confirm your dates, your chosen vehicle and your preferred final drop','Reply to confirm your dates and your pickup times').replace('Monument, elephant ride and government fees','Monument and government fees')
+terms_x=terms.replace('Reply to confirm your dates, your chosen vehicle and your preferred final drop',Q.get('step1','Reply to confirm your dates')).replace('Monument, elephant ride and government fees','Monument and government fees')
 s6=f'''<div class="sheet">
 <div class="body">
 {terms_x.replace('<div class="sec">','<div class="sec" style="padding-top:12mm">',1)}
@@ -250,15 +212,16 @@ s6=f'''<div class="sheet">
 </div>
 </div>
 '''
+G=Q['closing']
+gal=''.join(img(p,None,p.get('cap'),p.get('flex')) for p in G['photos'])
 s7=f'''<div class="sheet">
 <div class="body" style="padding-top:14mm">
-  <div class="photorow" style="margin:0 0 3mm"><figure style="flex:1.5"><img class="photo" src="photos/india-gate.jpg" alt="India Gate, Delhi"><div class="cap" style="text-align:left">DELHI</div></figure><figure style="flex:1.333"><img class="photo" src="photos/humayuns-tomb.jpg" alt="Humayun's Tomb, Delhi"><div class="cap" style="text-align:left">DELHI</div></figure><figure style="flex:1.5"><img class="photo" src="photos/taj-blue-pool.jpg" alt="The Taj Mahal, Agra"><div class="cap" style="text-align:left">AGRA</div></figure></div>
+  <div class="photorow" style="margin:0 0 3mm">{gal}</div>
   <div class="cap" style="text-align:center;margin:0 0 8mm">Photographs: Unsplash (free licence) &middot; illustrative</div>
   <div class="signoff" style="margin-top:0;border-top:0;padding-top:0">
-    Thank you, {D['name']}, for planning your two days with Guide India Tours. Once you confirm, we will reserve your vehicle and guide, and send you the driver and guide details before you arrive. If a time, a place or a plan changes at any moment, just tell us, and we will arrange it around you.
+    {G['text']}
     <div class="nm">Guide India Tours</div>
     <div class="rl">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2004</div>
   </div>
 {plat}{foot}'''
-sheets=[s1,s2,s3,s4,services,s6,s7]
-open(sys.argv[1],'w').write(head+'<body>\n'+'\n'.join(sheets)+'\n</body></html>\n')
+open(OUT,'w').write(head+'<body>\n'+'\n'.join([s1,s2,s3,s4,services,s6,s7])+'\n</body></html>\n')
