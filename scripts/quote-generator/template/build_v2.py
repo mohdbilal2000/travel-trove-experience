@@ -179,8 +179,13 @@ def li(x):
     return f'<li>{x[0]}<small>{x[1]}</small></li>' if isinstance(x,list) else f'<li>{x}</li>'
 inc=''.join(li(x) for x in Q['included']); exc=''.join(li(x) for x in Q['not_included'])
 P=Q['price']
+SINGLE=P.get('single')
 prows=''.join(f'<tr><td class="v">{r[0]}' + (f'<i>{r[1]}</i>' if r[1] else '') + f'</td><td class="r2">{r[2]}</td></tr>' for r in P['rows'])
 boxes=''.join(f'<div class="{c}"><div class="k">{b[0]}</div><div class="amt">{b[1]}</div><div class="sm">{b[2]}</div></div>' for c,b in zip(('pp','tt'),P['boxes']))
+if SINGLE:
+    price_block=f'<div class="priceboxes" style="margin-top:2mm"><div class="tt" style="flex:1;text-align:center;padding:9mm 6mm"><div class="k">{SINGLE["label"]}</div><div class="amt" style="font-size:34pt">{SINGLE["total"]}</div><div class="sm" style="font-size:8.6pt">{SINGLE["sub"]}</div></div></div>'
+else:
+    price_block=f'<table class="pr"><thead><tr><th style="width:62%">What</th><th class="c">Amount</th></tr></thead><tbody>{prows}<tr class="tot"><td class="v">{P["total_label"]}</td><td class="r2">{P["total_value"]}</td></tr></tbody></table><div class="priceboxes">{boxes}</div>'
 s4=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
@@ -193,22 +198,25 @@ s4=f'''<div class="sheet">
   </div>
   <div class="sec">
     <span class="lbl">04 &mdash; Your Price</span>
-    <h2>Per Person and in Total</h2>
-    <table class="pr"><thead><tr><th style="width:62%">What</th><th class="c">Amount</th></tr></thead><tbody>
-      {prows}
-      <tr class="tot"><td class="v">{P['total_label']}</td><td class="r2">{P['total_value']}</td></tr>
-    </tbody></table>
-    <div class="priceboxes">{boxes}</div>
+    <h2>{'Your Price, All in One Place' if SINGLE else 'Per Person and in Total'}</h2>
+    {price_block}
     <div class="clarity">{P['note']}</div>
   </div>
 </div>
 </div>
 '''
+terms=terms
 terms_x=terms.replace('Reply to confirm your dates, your chosen vehicle and your preferred final drop',Q.get('step1','Reply to confirm your dates')).replace('Monument, elephant ride and government fees','Monument and government fees')
+if Q.get('payment_policy'):
+    old=re.search(r'(<tr><td class="pc">40%</td><td>At the time of confirmation</td></tr>\s*<tr><td class="pc">40%</td><td>One month before the tour date</td></tr>\s*<tr><td class="pc">20%</td><td>15 days before the tour date</td></tr>)',terms_x)
+    assert old, 'policy rows not found'
+    terms_x=terms_x.replace(old.group(1),''.join(f'<tr><td class="pc">{p}</td><td>{t}</td></tr>' for p,t in Q['payment_policy']))
+    terms_x=terms_x.replace('Pay the remaining instalments as set out below',Q['step_last'])
+    terms_x=terms_x.replace('Transfer the <b>40% confirmation payment</b> to the account shown',Q['step_pay'])
 s6=f'''<div class="sheet">
 <div class="body">
 {terms_x.replace('<div class="sec">','<div class="sec" style="padding-top:12mm">',1)}
-{bank.replace('  <div class="sec" style="padding-top:0">','  <div class="sec" style="padding-top:6mm">',1)}
+{bank.replace('  <div class="sec" style="padding-top:0">','  <div class="sec" style="padding-top:6mm">',1).replace('Payment may be made in USD or INR. The balance is payable on arrival in India.',Q.get('bank_note','Payment may be made in USD or INR. The balance is payable on arrival in India.'))}
 </div>
 </div>
 '''

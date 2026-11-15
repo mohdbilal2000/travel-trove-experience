@@ -1,9 +1,9 @@
 {
  "meta": {
-  "ref": "GIT-2026-1130-TH",
+  "ref": "GIT-SAMPLE-0000",
   "issued": "15 November 2026",
   "valid": "22 November 2026",
-  "client": "Theo",
+  "client": "Sample Guest",
   "title": "Delhi &amp; Agra"
  },
  "cover": {
@@ -19,11 +19,7 @@
  "cards": [
   [
    "Prepared for",
-   "Theo"
-  ],
-  [
-   "Travellers",
-   "1 Traveller"
+   "Sample Guest"
   ],
   [
    "Travel dates",
@@ -35,11 +31,15 @@
   ],
   [
    "Pickup",
-   "Le M&eacute;ridien New Delhi"
+   "your Delhi hotel"
   ],
   [
    "Drop-off",
-   "ITC Mughal, Agra &middot; then Delhi / Gurgaon"
+   "your Agra hotel &middot; then Delhi / Gurgaon"
+  ],
+  [
+   "Guide",
+   "Licensed, English-speaking"
   ]
  ],
  "comfort": {
@@ -97,7 +97,7 @@
    "rows": [
     [
      "Your time<br>8 or 9 AM",
-     "Pickup from Le M&eacute;ridien New Delhi",
+     "Pickup from your Delhi hotel",
      "Your driver meets you at the hotel at the time you choose &mdash; 8:00 or 9:00, exactly as you say. Then the private transfer to Agra, about 3.5&ndash;4 hours depending on traffic, with a comfort break on the way."
     ],
     [
@@ -112,7 +112,7 @@
     ],
     [
      "Evening",
-     "Drop at ITC Mughal, Agra",
+     "Drop at your Agra hotel",
      "Your driver takes you to your hotel. Dinner and rest are at your own pace."
     ]
    ]
@@ -129,7 +129,7 @@
     ],
     [
      "Morning",
-     "Breakfast at ITC Mughal",
+     "Breakfast at your Agra hotel",
      "Back to the hotel for a relaxed breakfast and your check-out, at your pace."
     ],
     [
@@ -147,17 +147,14 @@
  ],
  "good_to_know": "<b>Good to know.</b> The Taj Mahal is closed every Friday; your visit is on Tuesday 1 December, so you are clear. Monument opening and closing times are set by the authorities, so we plan each visit inside them. Driving times depend on traffic.",
  "included": [
-  [
-   "<b>Private AC sedan with driver</b> for both days",
-   "Fuel, tolls, parking and taxes are all included."
-  ],
+  "<b>Private AC sedan with driver</b> for both days, with fuel, tolls, parking and taxes",
   "<b>Licensed English-speaking guide</b> for both days",
   [
    "<b>All monument tickets</b>",
-   "Itimad-ud-Daulah, Mehtab Bagh, the Taj Mahal including the main mausoleum, and Agra Fort, at the exact official price."
+   "Itimad-ud-Daulah, Mehtab Bagh, the Taj Mahal including the main mausoleum, and Agra Fort, at the official price."
   ],
-  "Pickup from Le M&eacute;ridien and your drop in Delhi / Gurgaon",
-  "Drop at ITC Mughal on Day 1",
+  "Pickup from your Delhi hotel and your drop in Delhi / Gurgaon",
+  "Drop at your Agra hotel on Day 1",
   "Bottled drinking water in the car"
  ],
  "not_included": [
@@ -174,38 +171,16 @@
   "Anything not listed under &ldquo;Included&rdquo;"
  ],
  "price": {
-  "rows": [
-   [
-    "Private AC sedan and driver, 2 days",
-    "Fuel, tolls, parking and taxes included",
-    "&#8377;20,000"
-   ],
-   [
-    "Licensed English-speaking guide, 2 days",
-    "",
-    "&#8377;7,000"
-   ],
-   [
-    "Monument tickets, at actual cost",
-    "The official price, with no markup",
-    "&#8377;_____"
-   ]
-  ],
-  "total_label": "Total for 1 traveller",
-  "total_value": "&#8377;27,000 + tickets",
-  "boxes": [
-   [
-    "Per person",
-    "&#8377;27,000 + tickets",
-    "Shared by one traveller"
-   ],
-   [
-    "Total &middot; 1 traveller",
-    "&#8377;27,000 + tickets",
-    "The whole amount, nothing more to add"
-   ]
-  ],
-  "note": "<b>No hidden charges.</b> The amounts above are the full price. Monument tickets are charged at exactly what the authorities charge. Reference exchange rate 94.95 INR = 1 USD; payment may also be made in USD, AED or INR."
+  "rows": [],
+  "total_label": "",
+  "total_value": "",
+  "boxes": [],
+  "single": {
+   "label": "Your price &middot; everything included",
+   "total": "&#8377;29,750",
+   "sub": "Private car and driver, licensed guide and all monument tickets for both days. Nothing more to pay for what is listed."
+  },
+  "note": "<b>No hidden charges.</b> The amount above is the full price for everything listed under &ldquo;Included&rdquo;. It is in Indian Rupees (INR)."
  },
  "step1": "Reply to confirm your dates and your pickup times",
  "closing": {
@@ -229,6 +204,19 @@
     "flex": 1.5
    }
   ],
-  "text": "Thank you, Theo, for planning your two days with Guide India Tours. Once you confirm, we will reserve your vehicle and guide, and send you the driver and guide details before you arrive. If a time, a place or a plan changes at any moment, just tell us, and we will arrange it around you."
- }
+  "text": "Thank you, Sample Guest, for planning your two days with Guide India Tours. Once you confirm, we will reserve your vehicle and guide, and send you the driver and guide details before you arrive. If a time, a place or a plan changes at any moment, just tell us, and we will arrange it around you."
+ },
+ "payment_policy": [
+  [
+   "40%",
+   "Advance, at the time of booking: <b>&#8377;11,900</b>"
+  ],
+  [
+   "60%",
+   "Balance, in cash on arrival: <b>&#8377;17,850</b>"
+  ]
+ ],
+ "step_pay": "Transfer the <b>40% advance (&#8377;11,900)</b> to the account shown",
+ "step_last": "Pay the remaining 60% (&#8377;17,850) in cash on arrival",
+ "bank_note": "The 40% advance may be paid by bank transfer; the balance is paid in cash on arrival."
 }

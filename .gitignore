@@ -34,3 +34,6 @@ hostinger-deploy/
 
 # Client quote PDFs are private: never commit them
 /*.pdf
+# client quotes hold real customer details: never commit them
+/scripts/quote-generator/template/quotes/*.json
+!/scripts/quote-generator/template/quotes/example-sample.json

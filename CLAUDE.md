@@ -15,7 +15,7 @@ framework below is the company standard and applies to every quotation.
 Every new quotation is built with `scripts/quote-generator/template/build_v2.py` (theme "Taj Dawn": calm teal,
 sunrise saffron, warm cream; logo, fonts and the verbatim Services copy are unchanged). Run from the template folder:
 `python3 build_v2.py quotes/<client>.json out.html && node measure.cjs out.html && node render.cjs out.html out.pdf`, then delete `out.html`.
-All client content lives in a JSON file; copy `quotes/example-theo.json` and edit it (never reuse another client's details).
+All client content lives in a JSON file; copy `quotes/example-sample.json` and edit it (never reuse another client's details).
 
 - **Order:** cover, **01 Your Comfort** (relaxed, no brain fog: the client's chosen times are the times, meals at their pace,
   swap/skip freely, one driver, no shopping stops, WhatsApp support), **02 Itinerary** (timed, with dates and weekdays),
