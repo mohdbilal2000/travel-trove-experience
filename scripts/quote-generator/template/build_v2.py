@@ -118,6 +118,9 @@ foot=t[t.index('<div class="foot">'):t.index('</body>')]
 # ----------------------------- CONTENT comes from a JSON file (see quotes/example-theo.json) -----------------------------
 Q=json.load(open(sys.argv[1])); OUT=sys.argv[2]
 M=Q['meta']
+if Q.get('itinerary_only'):
+    Q.setdefault('included',[]); Q.setdefault('not_included',[])
+    Q.setdefault('price',{'rows':[],'total_label':'','total_value':'','boxes':[('','',''),('','','')],'note':''})
 head=head.replace('Guide India Tours &mdash; Theo &mdash; Delhi &amp; Agra','Guide India Tours &mdash; '+M['client']+' &mdash; '+M['title'])
 foot=foot.replace('Quotation GIT-2027-0225-CA','Quotation '+M['ref'])
 def tile(k,h,d): return f'<div><div class="k">{k}</div><div class="h">{h}</div><div class="d">{d}</div></div>'
@@ -133,7 +136,7 @@ s1=f'''<div class="sheet">
   <div class="brand brandrow">{logo}
     <div><div class="wm"><em>Guide</em> India Tours</div>
     <div class="tg">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2004</div></div></div>
-  <div class="meta">Quotation <b>{M['ref']}</b><br>Issued {M['issued']}<br>Valid until {M['valid']}</div>
+  <div class="meta">{M.get('meta_html') or ("Quotation <b>"+M['ref']+"</b><br>Issued "+M['issued']+"<br>Valid until "+M['valid'])}</div>
 </div>
 <div class="stripe"></div>
 <div class="cover">
@@ -161,10 +164,31 @@ s2=f'''<div class="sheet">
 </div>
 </div>
 '''
-days=''
-for dday in Q['days']:
-    days+=f'<div class="dayhead"><div><div class="no">{dday["no"]}</div><div class="tt">{dday["title"]}</div></div><div class="dd">{dday["date"]}</div></div>\n<div class="tl">'+''.join(row(*r) for r in dday['rows'])+'</div>\n'
-s3=f'''<div class="sheet">
+def day_html(dday):
+    h=f'<div class="dayhead"><div><div class="no">{dday["no"]}</div><div class="tt">{dday["title"]}</div></div><div class="dd">{dday["date"]}</div></div>\n<div class="tl">'+''.join(row(*r) for r in dday['rows'])+'</div>\n'
+    if dday.get('photos'):
+        h+='<div class="photorow" style="width:54%;margin-bottom:4mm">'+''.join(f'<figure style="flex:{p.get("flex",1.5)}"><img class="photo" src="{p["file"]}" alt="{p["alt"]}"><div class="cap" style="text-align:left">{p.get("cap","")}</div></figure>' for p in dday['photos'])+'</div>\n'
+    return h
+if Q.get('pages'):
+    s3=''
+    for i,pg in enumerate(Q['pages']):
+        lbl='02 &mdash; Itinerary' if i==0 else '02 &mdash; Itinerary continued'
+        body=''.join(day_html(Q['days'][k]) for k in pg)
+        gk=f'<div class="clarity">{Q["good_to_know"]}</div>' if i==len(Q['pages'])-1 and Q.get('good_to_know') else ''
+        s3+=f'''<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:12mm">
+    <span class="lbl">{lbl}</span>
+    <h2>Your Journey</h2>
+    {body}
+  </div>
+  {gk}
+</div>
+</div>
+'''
+else:
+    days=''.join(day_html(d) for d in Q['days'])
+    s3=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
     <span class="lbl">02 &mdash; Itinerary</span>
@@ -232,4 +256,22 @@ s7=f'''<div class="sheet">
     <div class="rl">Government-Approved Tourist Guides &middot; Private Travel Services &middot; Since 2004</div>
   </div>
 {plat}{foot}'''
-open(OUT,'w').write(head+'<body>\n'+'\n'.join([s1,s2,s3,s4,services,s6,s7])+'\n</body></html>\n')
+if Q.get('itinerary_only'):
+    VP=Q['vehicle_page']
+    vt=''.join(tile(*t) for t in VP['tiles'])
+    s_v=f'''<div class="sheet">
+<div class="body">
+  <div class="sec" style="padding-top:12mm">
+    <span class="lbl">03 &mdash; How We Travel</span>
+    <h2>{VP['heading']}</h2>
+    <div class="relax"><div class="big">{VP['quote']}</div><p>{VP['intro']}</p></div>
+    <div class="tiles">{vt}</div>
+  </div>
+  <div class="clarity">{VP['note']}</div>
+</div>
+</div>
+'''
+    sheets=[s1,s2,s3,s_v,s7]
+else:
+    sheets=[s1,s2,s3,s4,services,s6,s7]
+open(OUT,'w').write(head+'<body>\n'+'\n'.join(sheets)+'\n</body></html>\n')

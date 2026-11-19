@@ -28,6 +28,7 @@ All client content lives in a JSON file; copy `quotes/example-sample.json` and e
   cropped (`height:auto`, no `object-fit:cover`). Do not use the website's `getty-images-*` files: they are Unsplash+.
   Only caption a photo with what it really shows. Photos are decoration, not itinerary: never add attractions to a plan.
 - Promises on the Comfort page must be things the company really does; do not invent services.
+- **Itinerary-only PDFs** (no price yet): set `"itinerary_only": true` in the JSON, with `pages` (which days go on which sheet), `vehicle_page` and `meta_html`. No price, terms or bank page is produced. Keep every day to 3 places at most unless the owner says otherwise.
 
 ## Design system — preserve, do not redesign
 
