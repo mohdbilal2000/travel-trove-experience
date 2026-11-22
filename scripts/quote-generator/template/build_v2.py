@@ -118,6 +118,8 @@ foot=t[t.index('<div class="foot">'):t.index('</body>')]
 # ----------------------------- CONTENT comes from a JSON file (see quotes/example-theo.json) -----------------------------
 Q=json.load(open(sys.argv[1])); OUT=sys.argv[2]
 M=Q['meta']
+LB=Q.get('labels',{})
+def L(k,d): return LB.get(k,d)
 if Q.get('itinerary_only'):
     Q.setdefault('included',[]); Q.setdefault('not_included',[])
     Q.setdefault('price',{'rows':[],'total_label':'','total_value':'','boxes':[('','',''),('','','')],'note':''})
@@ -155,7 +157,7 @@ prow=''.join(f'<figure style="flex:1"><img class="photo" src="{p["file"]}" alt="
 s2=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
-    <span class="lbl">01 &mdash; Your Comfort</span>
+    <span class="lbl">{L('comfort_lbl','01 &mdash; Your Comfort')}</span>
     <h2>{CM['heading']}</h2>
     <div class="relax"><div class="big">{CM['quote']}</div><p>{CM['intro']}</p></div>
     <div class="tiles">{tiles}</div>
@@ -172,14 +174,14 @@ def day_html(dday):
 if Q.get('pages'):
     s3=''
     for i,pg in enumerate(Q['pages']):
-        lbl='02 &mdash; Itinerary' if i==0 else '02 &mdash; Itinerary continued'
+        lbl=L('itin_lbl','02 &mdash; Itinerary') if i==0 else L('itin_lbl2','02 &mdash; Itinerary continued')
         body=''.join(day_html(Q['days'][k]) for k in pg)
         gk=f'<div class="clarity">{Q["good_to_know"]}</div>' if i==len(Q['pages'])-1 and Q.get('good_to_know') else ''
         s3+=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
     <span class="lbl">{lbl}</span>
-    <h2>Your Journey</h2>
+    <h2>{L('journey','Your Journey')}</h2>
     {body}
   </div>
   {gk}
@@ -191,8 +193,8 @@ else:
     s3=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
-    <span class="lbl">02 &mdash; Itinerary</span>
-    <h2>Your Journey</h2>
+    <span class="lbl">{L('itin_lbl','02 &mdash; Itinerary')}</span>
+    <h2>{L('journey','Your Journey')}</h2>
     {days}
   </div>
   <div class="clarity">{Q['good_to_know']}</div>
@@ -213,16 +215,16 @@ else:
 s4=f'''<div class="sheet">
 <div class="body">
   <div class="sec" style="padding-top:12mm">
-    <span class="lbl">03 &mdash; Total Clarity</span>
-    <h2>What You Get, and What You Do Not</h2>
+    <span class="lbl">{L('clarity_lbl','03 &mdash; Total Clarity')}</span>
+    <h2>{L('clarity_h','What You Get, and What You Do Not')}</h2>
     <div class="ie">
-      <div class="box inc"><div class="bh">Included in your price</div><ul>{inc}</ul></div>
-      <div class="box exc"><div class="bh">Not included</div><ul>{exc}</ul></div>
+      <div class="box inc"><div class="bh">{L('inc_h','Included in your price')}</div><ul>{inc}</ul></div>
+      <div class="box exc"><div class="bh">{L('exc_h','Not included')}</div><ul>{exc}</ul></div>
     </div>
   </div>
   <div class="sec">
-    <span class="lbl">04 &mdash; Your Price</span>
-    <h2>{'Your Price, All in One Place' if SINGLE else 'Per Person and in Total'}</h2>
+    <span class="lbl">{L('price_lbl','04 &mdash; Your Price')}</span>
+    <h2>{L('price_h','Your Price, All in One Place') if SINGLE else 'Per Person and in Total'}</h2>
     {price_block}
     <div class="clarity">{P['note']}</div>
   </div>
@@ -249,7 +251,7 @@ gal=''.join(img(p,None,p.get('cap'),p.get('flex')) for p in G['photos'])
 s7=f'''<div class="sheet">
 <div class="body" style="padding-top:14mm">
   <div class="photorow" style="margin:0 0 3mm">{gal}</div>
-  <div class="cap" style="text-align:center;margin:0 0 8mm">Photographs: Unsplash (free licence) &middot; illustrative</div>
+  <div class="cap" style="text-align:center;margin:0 0 8mm">{L('photo_credit','Photographs: Unsplash (free licence) &middot; illustrative')}</div>
   <div class="signoff" style="margin-top:0;border-top:0;padding-top:0">
     {G['text']}
     <div class="nm">Guide India Tours</div>
