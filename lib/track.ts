@@ -16,6 +16,7 @@ declare global {
 export type TrackedEvent =
     | "whatsapp_click"
     | "call_click"
+    | "email_click"
     | "enquiry_start"
     | "generate_lead"
     | "enquiry_error";

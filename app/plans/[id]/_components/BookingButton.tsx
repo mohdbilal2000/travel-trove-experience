@@ -46,6 +46,13 @@ export default function BookingButton({ planTitle, planId, planDuration, luxury 
                 <WhatsAppIcon className="w-5 h-5" />
                 Chat on WhatsApp
             </a>
+            <a
+                href={`${siteConfig.mailtoHref}?subject=${encodeURIComponent(`Tour enquiry — ${planTitle} (#${planId})`)}`}
+                onClick={() => trackEvent("email_click", { source: "plan_sidebar", plan_id: planId })}
+                className="block text-center text-sm font-medium text-gray-500 underline underline-offset-4 hover:text-maroon-600"
+            >
+                Prefer email? Write to {siteConfig.email}
+            </a>
         </div>
     );
 }
