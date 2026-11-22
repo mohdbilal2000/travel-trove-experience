@@ -5,11 +5,14 @@ import { blogPosts } from '@/data/blogPosts';
 import { FAQ_LAST_UPDATED } from '@/data/faqs';
 import { guideLangs } from '@/data/multilingualGuide';
 import { blogTranslations, getTranslationsFor } from '@/data/blogTranslations';
+import { siteConfig } from '@/lib/siteConfig';
 
 const BASE_URL = 'https://www.guideindiatours.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const now = new Date().toISOString();
+    // Real last-reviewed date (bump siteConfig.contentUpdated when prices/content change).
+    // A fresh timestamp on every request makes Google ignore <lastmod> for the whole site.
+    const now = new Date(siteConfig.contentUpdated).toISOString();
 
     // Static pages
     const staticPages: MetadataRoute.Sitemap = [
@@ -77,6 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...[
             ['same-day-agra-tour-from-delhi', 0.9],
             ['taj-mahal-sunrise-tour', 0.9],
+            ['luxury-india-tours', 0.9],
             ['rajasthan-golden-triangle-tour', 0.9],
             ['plan-your-trip', 0.8],
             ...countries.map((c) => [`plan-your-trip/${c.slug}`, 0.7] as [string, number]),

@@ -21,18 +21,14 @@ import StickyBookingBar from "./_components/StickyBookingBar";
 import { generateTourPackageSchema, generateFAQSchema } from "@/lib/schemaGenerator";
 import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
 import { fromPrice } from '@/lib/planPrice';
+import EnquiryForm from '@/components/enquiry/EnquiryForm';
+import { isLuxuryPlan, getRelatedPlans, planMetaTitle, planMetaDescription } from '@/lib/planSeo';
 
 export const revalidate = 3600; // Revalidate every hour
 
 interface PageProps {
     params: Promise<{ id: string }>;
 }
-
-const truncateAtWord = (text: string, max: number) => {
-    if (text.length <= max) return text;
-    const cut = text.slice(0, max);
-    return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:]$/, '')}…`;
-};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { id } = await params;
@@ -45,11 +41,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     const url = `https://www.guideindiatours.com/plans/${id}`;
-    const title = `${plan.title} — Private ${plan.duration} Tour | Guide India Tours`;
-    const description = truncateAtWord(
-        `${plan.description} Private AC car, government-licensed guide, ${plan.destinations?.join(', ') || 'India'}. Custom quote within 2 hours.`,
-        158
-    );
+    const title = planMetaTitle(plan);
+    const description = planMetaDescription(plan);
 
     return {
         title,
@@ -73,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
                     alt: plan.title,
                 },
             ],
-            type: 'article',
+            type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
@@ -91,6 +84,9 @@ export default async function PlanDetailPage({ params }: PageProps) {
     if (!plan) {
         notFound();
     }
+
+    const luxury = isLuxuryPlan(plan);
+    const { counterpart, similar } = getRelatedPlans(plan);
 
     // Per-tour reviews (relevant subset of the global review pool)
     const tourReviews = getReviewsForTour(plan.title, plan.destinations || []);
@@ -159,6 +155,11 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                 <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
                                     <Clock className="w-3 h-3 mr-1.5" /> {plan.duration}
                                 </Badge>
+                                {luxury && (
+                                    <Badge className="bg-maroon-600 text-white border-none px-4 py-1.5 font-black uppercase tracking-widest text-[11px] sm:text-[10px]">
+                                        <Award className="w-3 h-3 mr-1.5" /> Luxury Collection
+                                    </Badge>
+                                )}
                             </div>
                             <h1 className="text-4xl sm:text-5xl md:text-8xl font-display font-bold text-white mb-6 md:mb-8 leading-[1.0] md:leading-[0.85] tracking-tight md:tracking-tighter">
                                 {plan.title}
@@ -281,6 +282,20 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                 </section>
                             </div>
 
+                            {/* Enquiry form — the main conversion point on the page */}
+                            <section id="enquire" className="scroll-mt-28">
+                                <div className="flex items-center gap-4 mb-8">
+                                    <div className="w-12 h-1 bg-maroon-600"></div>
+                                    <h2 className="text-4xl font-display font-bold text-gray-900">
+                                        {luxury ? <>Request Your <span className="text-maroon-600">Private Proposal</span></> : <>Get Your <span className="text-maroon-600">Free Quote</span></>}
+                                    </h2>
+                                </div>
+                                <p className="mb-8 text-lg text-gray-600 font-light leading-relaxed">
+                                    Tell us your dates and group size and we&apos;ll send a written quote for the {plan.title} within 2 hours — no payment needed to enquire.
+                                </p>
+                                <EnquiryForm planId={plan.id} planTitle={plan.title} luxury={luxury} source="plan" id="enquiry-plan" />
+                            </section>
+
                             {/* FAQ Section - AI Search Optimization */}
                             {tourFaqs.length > 0 && (
                                 <section id="faqs">
@@ -301,6 +316,39 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                         <Link href="/faq" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">
                                             Read the full India travel FAQ
                                         </Link>.
+                                    </p>
+                                </section>
+                            )}
+
+                            {/* Related tours — internal links between tiers and similar trips */}
+                            {(counterpart || similar.length > 0) && (
+                                <section id="related-tours">
+                                    <div className="flex items-center gap-4 mb-12">
+                                        <div className="w-12 h-1 bg-maroon-600"></div>
+                                        <h2 className="text-4xl font-display font-bold text-gray-900">
+                                            {counterpart ? <>Compare <span className="text-maroon-600">Similar Tours</span></> : <>Related <span className="text-maroon-600">Tours</span></>}
+                                        </h2>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {[...(counterpart ? [counterpart] : []), ...similar].slice(0, 4).map((p) => (
+                                            <Link key={p.id} href={`/plans/${p.id}`} className="group block bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl transition-shadow">
+                                                {counterpart && p.id === counterpart.id && (
+                                                    <span className="mb-3 inline-block rounded-full bg-gold-500/20 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-maroon-600">
+                                                        {luxury ? 'Standard version' : 'Luxury upgrade'}
+                                                    </span>
+                                                )}
+                                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-maroon-600 transition-colors mb-2">{p.title}</h3>
+                                                <p className="text-sm text-gray-500 mb-3">{p.duration}</p>
+                                                <p className="font-black text-maroon-600">{fromPrice(p.price)}</p>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    <p className="mt-8 text-gray-600 font-light">
+                                        {luxury ? (
+                                            <>See every private luxury package in our <Link href="/luxury-india-tours" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">luxury India tours collection</Link>.</>
+                                        ) : (
+                                            <>Looking for 5-star hotels and a more premium pace? Browse our <Link href="/luxury-india-tours" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">luxury India tours</Link>, or <Link href="/plans" className="font-bold text-maroon-600 hover:text-black underline underline-offset-2">see all tour plans</Link>.</>
+                                        )}
                                     </p>
                                 </section>
                             )}
@@ -366,7 +414,8 @@ export default async function PlanDetailPage({ params }: PageProps) {
                                             planTitle={plan.title}
                                             planId={plan.id}
                                             planDuration={plan.duration}
-                                            className="w-full py-5 md:py-10 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500"
+                                            luxury={luxury}
+                                            className="w-full py-5 md:py-8 h-auto rounded-2xl bg-maroon-600 hover:bg-black text-white text-lg md:text-xl font-display font-bold shadow-2xl transition-all duration-500"
                                         />
 
                                         <div className="mt-8 space-y-4">
@@ -389,7 +438,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
             </section>
 
             {/* Mobile Sticky Booking Bar */}
-            <StickyBookingBar planTitle={plan.title} />
+            <StickyBookingBar planId={plan.id} planTitle={plan.title} priceLabel={fromPrice(plan.price)} luxury={luxury} />
         </main>
     );
 }

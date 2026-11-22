@@ -11,6 +11,7 @@ const navItems = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Plans", path: "/plans" },
+  { label: "Luxury", path: "/luxury-india-tours" },
   { label: "Blog", path: "/blog" },
   { label: "FAQ", path: "/faq" },
   { label: "Book Guide", path: "/guide-booking" },

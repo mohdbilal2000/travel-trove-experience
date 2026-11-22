@@ -44,6 +44,9 @@ const Footer = () => {
                 <Link href="/plans" className="text-gray-600 hover:text-maroon-700 transition-colors">Travel Plans</Link>
               </li>
               <li>
+                <Link href="/luxury-india-tours" className="text-gray-600 hover:text-maroon-700 transition-colors">Luxury India Tours</Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-gray-600 hover:text-maroon-700 transition-colors">About Us</Link>
               </li>
               <li>

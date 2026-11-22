@@ -63,6 +63,7 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) → ${BASE_URL}/p
 - Jaipur Tours: ${BASE_URL}/jaipur-tours
 - Golden Triangle: ${BASE_URL}/golden-triangle-tours
 - All Tour Plans: ${BASE_URL}/plans
+- Luxury India Tours (private 5-star packages, request a proposal): ${BASE_URL}/luxury-india-tours
 - Same Day Agra Tour from Delhi: ${BASE_URL}/same-day-agra-tour-from-delhi
 - Taj Mahal Sunrise Tour: ${BASE_URL}/taj-mahal-sunrise-tour
 - 10-Day Rajasthan and Golden Triangle Tour: ${BASE_URL}/rajasthan-golden-triangle-tour

@@ -4,26 +4,47 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { siteConfig } from "@/lib/siteConfig";
+import { trackEvent } from "@/lib/track";
 
 interface StickyBookingBarProps {
+    planId: number;
     planTitle: string;
+    /** Same label the page shows, e.g. "From $499 per adult" or "Custom quote". */
+    priceLabel: string;
+    luxury?: boolean;
 }
 
-export default function StickyBookingBar({ planTitle }: StickyBookingBarProps) {
-    const [isVisible, setIsVisible] = useState(false);
+export default function StickyBookingBar({ planId, planTitle, priceLabel, luxury = false }: StickyBookingBarProps) {
+    const [pastHero, setPastHero] = useState(false);
+    const [formInView, setFormInView] = useState(false);
+    const isVisible = pastHero && !formInView;
 
     useEffect(() => {
         const handleScroll = () => {
             // Show after scrolling past 600px (roughly past the hero)
-            setIsVisible(window.scrollY > 600);
+            setPastHero(window.scrollY > 600);
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Hide the bar while the enquiry form is on screen so it never covers the submit button.
+    useEffect(() => {
+        const form = document.getElementById("enquire");
+        if (!form || typeof IntersectionObserver === "undefined") return;
+        const observer = new IntersectionObserver(([entry]) => setFormInView(entry.isIntersecting), { threshold: 0.05 });
+        observer.observe(form);
+        return () => observer.disconnect();
+    }, []);
+
+    // "From $499 per adult" is too wide for a phone bar: show "From $499" and put "per adult" below.
+    const shortPrice = priceLabel.replace(/\s+per adult$/i, "");
+    const perAdult = shortPrice !== priceLabel;
+
     const whatsappMessage = encodeURIComponent(
-        `Hi, I'm interested in booking the "${planTitle}" tour. Could you share more details?`
+        `Hi, I'm interested in the "${planTitle}" tour. Could you share more details?`
     );
 
     return (
@@ -37,27 +58,35 @@ export default function StickyBookingBar({ planTitle }: StickyBookingBarProps) {
                     className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] px-4 py-3"
                 >
                     <div className="flex items-center justify-between gap-3">
-                        <div className="flex-shrink-0">
-                            <p className="text-xs font-black uppercase tracking-widest text-gray-500">Pricing</p>
-                            <p className="text-lg font-black text-gray-900">Custom Quote</p>
-                            <p className="text-xs text-gray-500">reply within 2 hours</p>
+                        <div className="min-w-0 flex-1">
+                            <p className="text-lg font-black leading-tight text-gray-900 truncate">{shortPrice}</p>
+                            <p className="text-xs text-gray-500">{perAdult ? "per adult · " : ""}quote in 2 hrs</p>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-shrink-0 gap-2">
                             <a
-                                href="tel:+918979810991"
-                                className="flex items-center gap-2 min-h-[48px] bg-gray-100 hover:bg-gray-200 active:scale-95 text-gray-700 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200"
+                                href={siteConfig.telHref}
+                                aria-label="Call Guide India Tours"
+                                onClick={() => trackEvent("call_click", { source: "plan_sticky", plan_id: planId })}
+                                className="flex h-12 w-12 items-center justify-center bg-gray-100 hover:bg-gray-200 active:scale-95 text-gray-700 rounded-xl transition-all duration-200"
                             >
-                                <Phone className="w-4 h-4" />
-                                Call
+                                <Phone className="w-5 h-5" />
                             </a>
                             <a
-                                href={`https://wa.me/918979810991?text=${whatsappMessage}`}
+                                href={`${siteConfig.whatsappHref}?text=${whatsappMessage}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 min-h-[48px] bg-[#25D366] hover:bg-[#128C7E] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-sm shadow-lg transition-all duration-200"
+                                aria-label="Chat on WhatsApp"
+                                onClick={() => trackEvent("whatsapp_click", { source: "plan_sticky", plan_id: planId })}
+                                className="flex h-12 w-12 items-center justify-center bg-[#25D366] hover:bg-[#128C7E] active:scale-95 text-white rounded-xl shadow-lg transition-all duration-200"
                             >
-                                <WhatsAppIcon className="w-4 h-4" />
-                                Book Now
+                                <WhatsAppIcon className="w-5 h-5" />
+                            </a>
+                            <a
+                                href="#enquire"
+                                onClick={() => trackEvent("enquiry_start", { source: "plan_sticky", plan_id: planId })}
+                                className="flex min-h-[48px] items-center bg-maroon-600 hover:bg-black active:scale-95 text-white px-4 py-3 rounded-xl font-bold text-sm shadow-lg transition-all duration-200"
+                            >
+                                {luxury ? "Get Proposal" : "Get Quote"}
                             </a>
                         </div>
                     </div>

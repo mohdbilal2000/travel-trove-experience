@@ -184,6 +184,16 @@ export default async function PlansPage({ searchParams }: PageProps) {
                         <PlanFilters />
                     </div>
 
+                    <div className="mb-12 flex flex-col items-start justify-between gap-4 rounded-3xl border border-gold-500/40 bg-white p-6 md:flex-row md:items-center md:p-8">
+                        <div>
+                            <p className="text-lg font-display font-bold text-gray-900">Looking for 5-star hotels and a premium private car?</p>
+                            <p className="text-gray-500 font-light">Browse our luxury collection and request a private proposal.</p>
+                        </div>
+                        <Button asChild className="rounded-2xl bg-maroon-600 hover:bg-black">
+                            <Link href="/luxury-india-tours">Luxury India tours <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                        </Button>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                         {filteredPlans.map((plan) => (
                             <div key={plan.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
