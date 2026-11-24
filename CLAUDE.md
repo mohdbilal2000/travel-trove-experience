@@ -37,9 +37,9 @@ Sign the closing **"Guide India Tours"**, not an individual's name.
 
 ## Logo and platform badges
 
-- The **company logo mark** (`public/favicon.svg` — maroon rounded square, gold Mughal
-  motif) sits in the masthead to the left of the wordmark, on an ivory plate so it reads
-  against the maroon band.
+- The **company logo** (`public/logo.png` — the maroon circular badge with the compass and map of
+  India, "Premium Tours in India" ribbon) sits in the masthead to the left of the wordmark, on an
+  ivory plate so it reads against the maroon band. It replaces the earlier Mughal-motif mark.
 - The **last page**, between the closing and the footer, carries an "Also find us on"
   strip: Tripadvisor (with the green `#34E0A1` circle), GetYourGuide `#FF5533`,
   Klook `#FF5722`, Viator `#328E6E` — set as wordmarks in the platforms' own colours,

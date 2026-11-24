@@ -189,7 +189,11 @@ export default function QuoteTool() {
     const money = (n: number) => `${CUR_PREFIX[currency]}${n.toLocaleString(currency === "INR" ? "en-IN" : "en-US")}`;
     const canDownload = calc.warnings.length === 0;
 
-    const makePdf = () => {
+    const makePdf = async () => {
+        const logoData = await fetch("/logo.png")
+            .then((r) => r.blob())
+            .then((b) => new Promise<string>((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result as string); fr.onerror = rej; fr.readAsDataURL(b); }))
+            .catch(() => null);
         const pdf = new jsPDF({ unit: "mm", format: "a4" });
         const W = 210, H = 297, M = 16, textW = W - M * 2;
         let y = 0;
@@ -202,10 +206,12 @@ export default function QuoteTool() {
         };
         const header = () => {
             pdf.setFillColor(...MAROON); pdf.rect(0, 0, W, 28, "F");
-            pdf.setFont("times", "bold"); pdf.setFontSize(20); pdf.setTextColor(255, 255, 255); pdf.text("GUIDE INDIA ", M, 14);
-            const w = pdf.getTextWidth("GUIDE INDIA "); pdf.setTextColor(...GOLD); pdf.text("TOURS", M + w, 14);
+            const tx = logoData ? M + 24 : M;
+            if (logoData) pdf.addImage(logoData, "PNG", M, 3, 22, 22);
+            pdf.setFont("times", "bold"); pdf.setFontSize(20); pdf.setTextColor(255, 255, 255); pdf.text("GUIDE INDIA ", tx, 14);
+            const w = pdf.getTextWidth("GUIDE INDIA "); pdf.setTextColor(...GOLD); pdf.text("TOURS", tx + w, 14);
             pdf.setFont("helvetica", "normal"); pdf.setFontSize(8); pdf.setTextColor(243, 217, 222);
-            pdf.text("Government-Approved Tour Guide & Private Travel Services  |  Since 2004", M, 21);
+            pdf.text("Government-Approved Tour Guide & Private Travel Services  |  Since 2004", tx, 21);
         };
         const newPage = () => { footer(); pdf.addPage(); header(); y = 38; };
         const need = (h: number) => { if (y + h > H - 28) newPage(); };

@@ -24,6 +24,15 @@ export const metadata: Metadata = {
     description: 'Experience India\'s Golden Triangle with expert guides. Customized Delhi, Agra & Jaipur tours with luxury hotels, private transportation & 24/7 support. Book your dream India tour today!',
     keywords: 'Golden Triangle Tours, Delhi tours, Agra tours, Jaipur tours, Taj Mahal visit, India travel packages, luxury India tours, same day Agra tour, Jaipur sightseeing, Ranthambore tiger safari, Udaipur lake palace, Varanasi Ganges, Shimla hill station, honeymoon tours India, corporate tours India',
     metadataBase: new URL('https://www.guideindiatours.com'),
+    manifest: '/manifest.json',
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+            { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+        ],
+        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    },
     alternates: {
         canonical: '/',
         languages: {
@@ -73,7 +82,6 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable} ${cormorant.variable}`}>
             <head>
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(generateConnectedGraphSchema()) }}
