@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Star, MessageCircle } from "lucide-react";
 import { siteConfig, addressOneLine, ratingCountDisplay } from "@/lib/siteConfig";
 import { countries } from "@/data/countries";
@@ -14,6 +15,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
+            <Image src="/logo.png" alt="Guide India Tours logo" width={84} height={84} className="h-20 w-20" />
             <h3 className="text-xl font-display font-medium mb-6 text-maroon-700">
               Guide India Tours
             </h3>

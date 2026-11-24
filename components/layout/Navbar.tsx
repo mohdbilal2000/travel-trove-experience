@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
@@ -79,7 +80,8 @@ const Navbar = () => {
     <>
       <header className={headerClass}>
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link href="/" className="relative z-10" aria-label="Guide India Tours - Home">
+          <Link href="/" className="relative z-10 flex items-center gap-2.5" aria-label="Guide India Tours - Home">
+            <Image src="/logo.png" alt="" width={44} height={44} priority className="h-10 w-10 shrink-0" />
             <span className="text-2xl font-display font-semibold">
               <span className="text-maroon-600 mr-2">Guide</span>
               <span className={wordmarkSecondaryClass}>India Tours</span>
