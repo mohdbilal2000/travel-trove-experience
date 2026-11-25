@@ -48,12 +48,12 @@ export const siteConfig = {
   geo: { latitude: "27.1495248", longitude: "78.0359601" },
 
   // ── Reputation (keep in sync with the Google Business Profile) ────────────
-  rating: { value: "4.9", count: "436", best: "5" },
+  rating: { value: "4.9", count: "440", best: "5" },
   // Company-supplied marketing figure (not independently verifiable from the GBP).
   stats: { travellersGuided: "15,000+" },
 
   /** Date the prices and practical information on the site were last reviewed (ISO). */
-  contentUpdated: "2026-11-06",
+  contentUpdated: "2026-11-25",
 
   languages: ["English", "Hindi", "French", "Spanish", "German", "Japanese", "Russian", "Italian"],
 

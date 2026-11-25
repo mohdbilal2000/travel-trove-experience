@@ -47,7 +47,8 @@ export async function GET() {
 - All tours include: Private AC car, expert licensed guide, luxury hotel stays
 
 ## Key Differentiators
-- Licensed & Government-approved guides
+- Licensed & Government-approved guides, professional drivers, and a professional photographer on request (subject to availability)
+- Last-minute bookings: we take guide and transport bookings, and can arrange hotels, even one or two days before the start date, as per availability and with nothing guaranteed until confirmed in writing
 - ${siteConfig.rating.value}/5 average rating from ${ratingCountDisplay} verified Google reviews
 - 100% customizable itineraries
 - No hidden fees — transparent pricing
@@ -64,6 +65,7 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) → ${BASE_URL}/p
 - Golden Triangle: ${BASE_URL}/golden-triangle-tours
 - All Tour Plans: ${BASE_URL}/plans
 - Same Day Agra Tour from Delhi: ${BASE_URL}/same-day-agra-tour-from-delhi
+- Last Minute Golden Triangle Tour: ${BASE_URL}/last-minute-golden-triangle-tour
 - Taj Mahal Sunrise Tour: ${BASE_URL}/taj-mahal-sunrise-tour
 - 10-Day Rajasthan and Golden Triangle Tour: ${BASE_URL}/rajasthan-golden-triangle-tour
 - Plan your trip by country (US, UK, Canada, Australia, Germany, France, Spain, Mexico and more): ${BASE_URL}/plan-your-trip

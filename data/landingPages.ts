@@ -266,4 +266,74 @@ export const rajasthan10: LandingConfig = {
   whatsappText: "Hi Guide India Tours! I'd like a quote for the 10-day Rajasthan and Golden Triangle tour.",
 };
 
-export const landingPages = [sameDayAgra, taj_sunrise, rajasthan10];
+export const lastMinute: LandingConfig = {
+  slug: "last-minute-golden-triangle-tour",
+  metaTitle: "Last Minute Golden Triangle Tour, Book 1 to 2 Days Ahead | Guide India Tours",
+  metaDescription:
+    "Book a private Golden Triangle tour at short notice: we take guide and vehicle bookings even one or two days before you start and can arrange hotels too, subject to availability.",
+  badge: "Updated 2026",
+  h1: "Last Minute Golden Triangle Tour",
+  subtitle: "Decided late? We take bookings for a licensed guide and private transport even one or two days before you start, and we can arrange hotels too.",
+  quick: [
+    { lead: "Short notice:", text: "we take bookings even two days or one day before your start date, for a licensed guide and private transport." },
+    { lead: "Hotels:", text: "we can arrange hotels as part of your quote, in the category you choose." },
+    { lead: "Availability:", text: "everything is arranged as per availability, and nothing is guaranteed until we confirm it in writing. In our experience we usually have guides, vehicles and hotels available, which is why we can say yes at short notice." },
+    { lead: "How to start:", text: "message us on WhatsApp with your dates, number of travellers and hotel category. We check availability and send a written quote." },
+    { lead: "Not on Fridays:", text: "the Taj Mahal is closed every Friday, so we plan your Agra day around it." },
+  ],
+  optionsHeading: "Golden Triangle tours to ask about at short notice",
+  optionsIntro: "Prices are per adult and a starting price for a typical twin-share booking in the standard hotel tier. We confirm the exact figure, and availability for your dates, in a written quote.",
+  planIds: [11, 12, 1, 17, 13, 2, 6],
+  sections: [
+    {
+      heading: "How a last minute booking works",
+      bullets: [
+        "Send your dates, number of travellers and preferred hotel category on WhatsApp.",
+        "We check availability of a licensed guide, a vehicle with a professional driver and, if you want them, hotels for your dates.",
+        "We send a written quote in your own currency, listing what is included and what is not.",
+        "Once you confirm, we confirm your guide and driver and send you their details.",
+      ],
+    },
+    {
+      heading: "What we arrange",
+      bullets: [
+        "A government-approved licensed guide in each city.",
+        "A private air-conditioned vehicle with a professional driver.",
+        "Hotels in the category you choose, if you want us to book them.",
+        "A professional photographer, on request. A photographer is not included unless it is agreed in your quote.",
+      ],
+    },
+    {
+      heading: "What availability means",
+      paragraphs: [
+        "Short-notice bookings depend on what is free on your dates: guides, vehicles, hotels and a photographer. We cannot promise any of them in advance, and we tell you straight away if something is not available and what the alternatives are. In practice we usually have what guests need.",
+      ],
+    },
+    {
+      heading: "Friday and the Taj Mahal",
+      paragraphs: [
+        "The Taj Mahal is closed to visitors every Friday. If your dates include a Friday in Agra, we use it for Agra Fort, Fatehpur Sikri or Mehtab Bagh and plan the Taj Mahal, ideally at sunrise, for another day.",
+      ],
+    },
+  ],
+  faqs: [
+    { question: "Can I book a Golden Triangle tour one or two days before I start?", answer: "Yes. We take bookings even two days or one day before your start date for a licensed guide and private transport, and we can arrange hotels too. Everything is subject to availability and is confirmed in writing, and we usually have what guests need." },
+    { question: "Do you arrange hotels at short notice?", answer: "Yes, hotels can be included in your quote in the category you choose. Availability depends on your dates, so we check before we confirm." },
+    { question: "Is anything guaranteed?", answer: "No booking is guaranteed until we confirm it in writing, because guides, vehicles and hotels depend on availability for your dates. If something is not available we tell you straight away and suggest alternatives." },
+    { question: "Will I get a licensed guide and a professional driver?", answer: "Yes. Our tours use government-approved licensed guides and professional drivers in private air-conditioned vehicles." },
+    { question: "Can I have a professional photographer?", answer: "A professional photographer can be added on request, subject to availability. A photographer is not included unless it is agreed in your quote." },
+    { question: "What does a last minute tour cost?", answer: "The starting prices in the options above apply to a typical twin-share booking in the standard hotel tier. We confirm the exact price for your dates and hotel category in a written quote before you pay." },
+    { question: "Is the Taj Mahal open on Fridays?", answer: "No. The Taj Mahal is closed every Friday. We plan your Agra days around it." },
+  ],
+  related: [
+    { href: "/golden-triangle-tours", label: "All Golden Triangle tours" },
+    { href: "/same-day-agra-tour-from-delhi", label: "Same day Agra tour from Delhi" },
+    { href: "/taj-mahal-sunrise-tour", label: "Taj Mahal sunrise tour" },
+    { href: "/plan-your-trip", label: "Plan your trip from your country" },
+    { href: "/blog/how-many-days-for-the-golden-triangle", label: "How many days for the Golden Triangle" },
+    { href: "/contact", label: "Send an enquiry" },
+  ],
+  whatsappText: "Hi Guide India Tours! I'd like to book a Golden Triangle tour at short notice. Dates: ... Travellers: ... Hotel category: ...",
+};
+
+export const landingPages = [sameDayAgra, taj_sunrise, rajasthan10, lastMinute];
