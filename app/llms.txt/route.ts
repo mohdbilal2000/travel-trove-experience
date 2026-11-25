@@ -47,7 +47,7 @@ export async function GET() {
 - All tours include: Private AC car, expert licensed guide, luxury hotel stays
 
 ## Key Differentiators
-- Licensed & Government-approved guides, professional drivers, and a professional photographer on request (subject to availability)
+- Licensed & Government-approved guides and professional drivers
 - Last-minute bookings: we take guide and transport bookings, and can arrange hotels, even one or two days before the start date, as per availability and with nothing guaranteed until confirmed in writing
 - ${siteConfig.rating.value}/5 average rating from ${ratingCountDisplay} verified Google reviews
 - 100% customizable itineraries

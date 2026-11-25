@@ -21,7 +21,6 @@ const servicesData = [
         description: "Experience effortless travel with our private chauffeur-driven fleet. From executive sedans to luxury multi-purpose vans, we ensure your journey between iconic monuments is as comfortable as the destinations themselves.",
         features: [
             "Professional, multi-lingual chauffeurs",
-            "Professional photographer on request",
             "Latest model premium AC vehicles",
             "Complimentary WiFi & refreshments",
             "Flexible door-to-door transfers",

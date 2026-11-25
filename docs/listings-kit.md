@@ -22,7 +22,7 @@ Private Golden Triangle, Rajasthan and Taj Mahal tours from Agra with government
 
 ## Long description (under 750 characters)
 
-Guide India Tours is a private tour operator based in Agra, run since 2004. We organise private Golden Triangle tours (Delhi, Agra, Jaipur), Rajasthan itineraries, same-day Agra trips from Delhi and Taj Mahal sunrise tours with government-approved licensed guides, professional drivers and your own air-conditioned vehicle. A professional photographer can be added on request, subject to availability. We also take last-minute bookings, even one or two days before you start, as per availability. We send a written quote in your own currency and our team is on WhatsApp throughout your trip. Open 24 hours. The Taj Mahal is closed every Friday.
+Guide India Tours is a private tour operator based in Agra, run since 2004. We organise private Golden Triangle tours (Delhi, Agra, Jaipur), Rajasthan itineraries, same-day Agra trips from Delhi and Taj Mahal sunrise tours with government-approved licensed guides, professional drivers and your own air-conditioned vehicle. We also take last-minute bookings, even one or two days before you start, as per availability. We send a written quote in your own currency and our team is on WhatsApp throughout your trip. Open 24 hours. The Taj Mahal is closed every Friday.
 
 ## Categories
 
