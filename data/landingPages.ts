@@ -300,13 +300,12 @@ export const lastMinute: LandingConfig = {
         "A government-approved licensed guide in each city.",
         "A private air-conditioned vehicle with a professional driver.",
         "Hotels in the category you choose, if you want us to book them.",
-        "A professional photographer, on request. A photographer is not included unless it is agreed in your quote.",
       ],
     },
     {
       heading: "What availability means",
       paragraphs: [
-        "Short-notice bookings depend on what is free on your dates: guides, vehicles, hotels and a photographer. We cannot promise any of them in advance, and we tell you straight away if something is not available and what the alternatives are. In practice we usually have what guests need.",
+        "Short-notice bookings depend on what is free on your dates: guides, vehicles and hotels. We cannot promise any of them in advance, and we tell you straight away if something is not available and what the alternatives are. In practice we usually have what guests need.",
       ],
     },
     {
@@ -321,7 +320,6 @@ export const lastMinute: LandingConfig = {
     { question: "Do you arrange hotels at short notice?", answer: "Yes, hotels can be included in your quote in the category you choose. Availability depends on your dates, so we check before we confirm." },
     { question: "Is anything guaranteed?", answer: "No booking is guaranteed until we confirm it in writing, because guides, vehicles and hotels depend on availability for your dates. If something is not available we tell you straight away and suggest alternatives." },
     { question: "Will I get a licensed guide and a professional driver?", answer: "Yes. Our tours use government-approved licensed guides and professional drivers in private air-conditioned vehicles." },
-    { question: "Can I have a professional photographer?", answer: "A professional photographer can be added on request, subject to availability. A photographer is not included unless it is agreed in your quote." },
     { question: "What does a last minute tour cost?", answer: "The starting prices in the options above apply to a typical twin-share booking in the standard hotel tier. We confirm the exact price for your dates and hotel category in a written quote before you pay." },
     { question: "Is the Taj Mahal open on Fridays?", answer: "No. The Taj Mahal is closed every Friday. We plan your Agra days around it." },
   ],
