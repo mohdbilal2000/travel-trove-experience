@@ -263,6 +263,14 @@ export default function GoldenTriangleToursPage() {
             </section>
 
             {/* Tour Plans */}
+            <section className="py-10 bg-ivory-100 border-t border-gray-100">
+                <div className="container mx-auto px-4 max-w-4xl text-center">
+                    <h2 className="text-2xl font-display font-bold text-gray-900 mb-2">Booking at short notice?</h2>
+                    <p className="text-gray-600 font-light mb-4">We take guide and transport bookings even one or two days before you start, and can arrange hotels too, as per availability.</p>
+                    <Link href="/last-minute-golden-triangle-tour" className="font-bold text-maroon-600 underline underline-offset-2">See how last minute bookings work</Link>
+                </div>
+            </section>
+
             <section className="py-20 bg-gray-50 border-t border-gray-100">
                 <div className="container mx-auto px-4">
                     <div className="flex items-center gap-4 mb-4">

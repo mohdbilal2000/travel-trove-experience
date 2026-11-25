@@ -78,6 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ['same-day-agra-tour-from-delhi', 0.9],
             ['taj-mahal-sunrise-tour', 0.9],
             ['rajasthan-golden-triangle-tour', 0.9],
+            ['last-minute-golden-triangle-tour', 0.9],
             ['plan-your-trip', 0.8],
             ...countries.map((c) => [`plan-your-trip/${c.slug}`, 0.7] as [string, number]),
             ['de/taj-mahal-eintritt', 0.7],

@@ -20,7 +20,7 @@ const Footer = () => {
               Guide India Tours
             </h3>
             <p className="text-gray-600 max-w-sm leading-relaxed">
-              Private Golden Triangle tours run from Agra since 2004 — government-licensed guides, your own air-conditioned car, and a team on WhatsApp around the clock.
+              Private Golden Triangle tours run from Agra since 2004 — government-licensed guides, professional drivers, a professional photographer on request, your own air-conditioned car, and a team on WhatsApp around the clock.
             </p>
             <a
               href="https://wa.me/918979810991?text=Hi%20Guide%20India%20Tours!%20I%27d%20like%20help%20planning%20my%20trip."
@@ -90,6 +90,9 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/rajasthan-golden-triangle-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Rajasthan Tour, 10 Days</Link>
+              </li>
+              <li>
+                <Link href="/last-minute-golden-triangle-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Last Minute Golden Triangle</Link>
               </li>
               <li>
                 <Link href="/plans" className="text-gray-600 hover:text-maroon-700 transition-colors">Customized Tours</Link>

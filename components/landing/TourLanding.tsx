@@ -95,6 +95,17 @@ export default function TourLanding({ config: c }: { config: LandingConfig }) {
                 </div>
             </section>
 
+            <section className="py-10 border-b border-gray-100" aria-labelledby="team-heading">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <h2 id="team-heading" className="text-xs font-black uppercase tracking-[0.3em] text-maroon-600 mb-5">Who looks after you</h2>
+                    <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <li className="rounded-2xl border border-gray-100 bg-white p-5"><strong className="block text-gray-900 mb-1">Licensed guide</strong><span className="text-sm text-gray-600 font-light">A government-approved professional tourist guide.</span></li>
+                        <li className="rounded-2xl border border-gray-100 bg-white p-5"><strong className="block text-gray-900 mb-1">Professional driver</strong><span className="text-sm text-gray-600 font-light">A courteous chauffeur in a private air-conditioned vehicle.</span></li>
+                        <li className="rounded-2xl border border-gray-100 bg-white p-5"><strong className="block text-gray-900 mb-1">Professional photographer</strong><span className="text-sm text-gray-600 font-light">Available on request, subject to availability. Not included unless agreed in your quote.</span></li>
+                    </ul>
+                </div>
+            </section>
+
             <section className="py-16 md:py-20" aria-labelledby="options-heading">
                 <div className="container mx-auto px-4 max-w-6xl">
                     <h2 id="options-heading" className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">{c.optionsHeading}</h2>
