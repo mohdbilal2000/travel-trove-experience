@@ -971,7 +971,9 @@ Agra's airport has very limited commercial service and no useful Delhi connectio
 - **Prefer to skip the drive?** Take the Gatimaan Express and let us meet you at the station with a car and guide.
 - **Continuing to Jaipur?** Go by car — Agra to Jaipur is another 240 km (4–5 hours) via Fatehpur Sikri, and there is no fast direct train.
 
-Remember that the Taj Mahal is [closed every Friday](/taj-mahal-opening-hours), so plan your Agra day around it whichever way you travel.`,
+Remember that the Taj Mahal is [closed every Friday](/taj-mahal-opening-hours), so plan your Agra day around it whichever way you travel.
+
+If you would rather leave the driving to us, our [same day Agra tour from Delhi](/same-day-agra-tour-from-delhi) is a private car, an English-speaking guide and the monument entrance fees, and the [Taj Mahal sunrise tour](/taj-mahal-sunrise-tour) starts in the middle of the night so you reach the gates as they open.`,
     author: "Avneesh Dixit",
     publishedDate: "2026-09-11",
     image: "/images/agra/getty-images-WQ6WY27_uhQ-unsplash.jpg",
@@ -1237,7 +1239,9 @@ Look at the bill first. Many mid-range and upscale restaurants add a **service c
 
 Our guides and drivers are paid properly for the tour whether or not you tip; your quote is not built on the assumption of gratuities. Tip if you were happy, in whatever amount feels right, and if something was not right, tell us instead — we would rather fix it than have you tip out of politeness.
 
-Planning your cash for the trip? Our guide to [cash, cards and ATMs in India](/blog/cash-cards-and-atms-in-india) explains how to keep enough small notes on hand.`,
+Planning your cash for the trip? Our guide to [cash, cards and ATMs in India](/blog/cash-cards-and-atms-in-india) explains how to keep enough small notes on hand.
+
+Planning a multi-day trip? See our private [Golden Triangle tours](/golden-triangle-tours) with a licensed guide and a professional driver. If your dates are close, we also take [last minute bookings](/last-minute-golden-triangle-tour) as per availability.`,
     author: "Avneesh Dixit",
     publishedDate: "2026-09-11",
     image: "/images/agra/getty-images-x83xvTdlITo-unsplash.jpg",
@@ -1374,7 +1378,9 @@ Agra opened the first short stretch of its metro in 2024, linking the Taj East G
 
 ## What we recommend
 
-For a single day in Agra with three or four sights, a **private car with driver** is still the most efficient option: no waiting for rides, luggage stays in the boot, and the driver knows exactly which parking area suits which gate. Independent travelers spending a night in Taj Ganj can happily manage with Uber and autos. Either way, arrive at the Taj early — the [sunrise guide](/taj-mahal-sunrise-guide) explains why — and remember it is [closed on Fridays](/taj-mahal-opening-hours).`,
+For a single day in Agra with three or four sights, a **private car with driver** is still the most efficient option: no waiting for rides, luggage stays in the boot, and the driver knows exactly which parking area suits which gate. Independent travelers spending a night in Taj Ganj can happily manage with Uber and autos. Either way, arrive at the Taj early — the [sunrise guide](/taj-mahal-sunrise-guide) explains why — and remember it is [closed on Fridays](/taj-mahal-opening-hours).
+
+If you would rather not arrange rides between sights, our [Agra tours](/agra-tours) include a private car with a professional driver and a licensed guide, and the [same day Agra tour from Delhi](/same-day-agra-tour-from-delhi) covers the Taj Mahal, Agra Fort and Fatehpur Sikri in one day.`,
     author: "Avneesh Dixit",
     publishedDate: "2026-09-11",
     image: "/images/agra/getty-images-geMKuY-Oqco-unsplash.jpg",
@@ -1464,7 +1470,9 @@ Security at the Taj Mahal is airport-style. Leave these at the hotel or in the c
 - **Food** (a sealed water bottle is fine), tobacco, lighters
 - Knives, tools, chargers and other electronics beyond phone and camera
 
-Free cloakrooms exist at the gates, but the lighter you travel the faster you are inside — which matters at sunrise. If you are unsure about a specific item, ask your guide the evening before.`,
+Free cloakrooms exist at the gates, but the lighter you travel the faster you are inside — which matters at sunrise. If you are unsure about a specific item, ask your guide the evening before.
+
+Still choosing your route? Our private [Golden Triangle tours](/golden-triangle-tours) cover Delhi, Agra and Jaipur with a licensed guide and a professional driver, and the [Taj Mahal dress code guide](/taj-mahal-dress-code) covers what to wear at the monument.`,
     author: "Avneesh Dixit",
     publishedDate: "2026-09-11",
     image: "/images/jaipur/getty-images-b5yYo61ALvk-unsplash.jpg",

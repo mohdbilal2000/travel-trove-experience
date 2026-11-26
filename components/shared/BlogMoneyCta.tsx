@@ -6,8 +6,10 @@ type Target = { href: string; label: string; blurb: string };
 /** Pick the one money page a blog post should hand its reader to, by topic. */
 export function moneyPageFor(slug: string, title: string): Target {
     const s = `${slug} ${title}`.toLowerCase();
+    if (/sunrise/.test(s))
+        return { href: "/taj-mahal-sunrise-tour", label: "Taj Mahal Sunrise Tour", blurb: "Be at the gates as they open, with a government-approved guide, from Delhi or from your Agra hotel." };
     if (/delhi.*agra|same.day|distance|yamuna/.test(s))
-        return { href: "/plans/2001", label: "Same Day Agra Tour from Delhi", blurb: "Private car, licensed guide and Taj Mahal tickets, door to door from your Delhi hotel." };
+        return { href: "/same-day-agra-tour-from-delhi", label: "Same Day Agra Tour from Delhi", blurb: "A private car, an English-speaking guide and the monument entrance fees: Delhi to the Taj Mahal and back in one day." };
     if (/taj|agra/.test(s))
         return { href: "/agra-tours", label: "Private Agra & Taj Mahal tours", blurb: "Sunrise Taj Mahal visits with a government-licensed Agra guide, from $149 per adult." };
     if (/jaipur|pink city/.test(s))

@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'Can You Wear Shorts to the Taj Mahal? Dress Code & Rules 2026',
@@ -108,10 +109,11 @@ export default function DressCode() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Travel with a guide who knows the rules.</h2>
                     <p className="text-white/70 font-light mb-8">A private tour means we tell you exactly what to wear and bring before you leave the hotel.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/plans" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/same-day-agra-tour-from-delhi" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
+            <TajTourLinks exclude="/same-day-agra-tour-from-delhi" />
         </main>
     );
 }

@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'Best Time to Visit the Taj Mahal: October to March, at Sunrise',
@@ -108,10 +109,11 @@ export default function BestTime() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Pick your dates. We&apos;ll handle the rest.</h2>
                     <p className="text-white/70 font-light mb-8">Tell us when you can travel and we&apos;ll match it to the right plan and the right weather window.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/plans" className="flex items-center gap-3">View Tour Plans <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/golden-triangle-tours" className="flex items-center gap-3">View Golden Triangle Tours <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
+            <TajTourLinks exclude="/golden-triangle-tours" />
         </main>
     );
 }

@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'The Taj Mahal Is Closed on Fridays — 2026 Opening Hours & Timings',
@@ -143,10 +144,11 @@ export default function OpeningHours() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Plan around the right hours.</h2>
                     <p className="text-white/70 font-light mb-8">A private guided tour books the gate time, the route and the right photography window for you.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/plans" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/taj-mahal-sunrise-tour" className="flex items-center gap-3">Taj Mahal Sunrise Tour <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
+            <TajTourLinks exclude="/taj-mahal-sunrise-tour" />
         </main>
     );
 }
