@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'Taj Mahal at Sunrise: Best Gate, Arrival Time and What to Bring',
@@ -142,10 +143,11 @@ export default function SunriseGuide() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Skip the logistics. Book a private sunrise tour.</h2>
                     <p className="text-white/70 font-light mb-8">We pick you up before dawn, handle tickets and the East-gate entry, and put a government-approved guide beside you.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/plans" className="flex items-center gap-3">Book a Sunrise Tour <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/taj-mahal-sunrise-tour" className="flex items-center gap-3">Book a Sunrise Tour <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
+            <TajTourLinks exclude="/taj-mahal-sunrise-tour" />
         </main>
     );
 }

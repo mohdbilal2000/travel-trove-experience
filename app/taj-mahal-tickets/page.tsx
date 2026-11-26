@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'Taj Mahal Ticket Price 2026: ₹1,100 Foreigners + ₹200 Mausoleum',
@@ -133,10 +134,11 @@ export default function TajMahalTickets() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Skip the queue entirely.</h2>
                     <p className="text-white/70 font-light mb-8">Book a private Taj Mahal tour and we handle tickets, the best gate, and a government-approved guide.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/plans" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/same-day-agra-tour-from-delhi" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
+            <TajTourLinks exclude="/same-day-agra-tour-from-delhi" />
         </main>
     );
 }

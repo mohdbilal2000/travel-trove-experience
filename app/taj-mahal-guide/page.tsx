@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PageHero from '@/components/shared/PageHero';
+import TajTourLinks from '@/components/shared/TajTourLinks';
 
 export const metadata: Metadata = {
     title: 'The Complete Taj Mahal Guide (2026) | Guide India Tours',
@@ -202,7 +203,7 @@ export default function TajMahalGuide() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <Button asChild className="bg-gold-500 hover:bg-white text-black py-7 px-10 rounded-2xl text-lg font-bold h-auto">
-                            <Link href="/plans" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
+                            <Link href="/same-day-agra-tour-from-delhi" className="flex items-center gap-3">View Taj Mahal Tours <ArrowRight className="w-5 h-5" /></Link>
                         </Button>
                         <Button asChild variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white hover:text-black py-7 px-10 rounded-2xl text-lg font-bold h-auto">
                             <Link href="/about/avneesh-dixit" className="flex items-center gap-3"><Award className="w-5 h-5" /> Meet your guide</Link>
@@ -210,6 +211,7 @@ export default function TajMahalGuide() {
                     </div>
                 </div>
             </section>
+            <TajTourLinks exclude="/same-day-agra-tour-from-delhi" />
         </main>
     );
 }
