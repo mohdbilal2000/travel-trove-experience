@@ -232,7 +232,7 @@ s4=f'''<div class="sheet">
   </div>
   <div class="sec">
     <span class="lbl">{L('price_lbl','04 &mdash; Your Price')}</span>
-    <h2>{L('price_h','Your Price, All in One Place') if SINGLE else 'Per Person and in Total'}</h2>
+    <h2>{L('price_h','Your Price, All in One Place' if SINGLE else 'Per Person and in Total')}</h2>
     {price_block}
     <div class="clarity">{P['note']}</div>
   </div>
