@@ -8,7 +8,7 @@ across sites is the most common reason a listing is ignored. Source of truth in 
 
 - **Name:** Guide India Tours
 - **Address:** 31A/110, Shamsabad Road, Jangjeet Nagar, Rajpur, Agra, Uttar Pradesh 282001, India
-- **Call:** +91 94100 00991 (voice). **WhatsApp:** +91 89798 10991 (chat and bookings).
+- **Call:** +91 94100 00991 (voice). **WhatsApp:** +91 89798 10991 (chat and bookings). Keep phone numbers out of the description; the profile already shows them.
 - **Email:** info@guideindiatours.com
 - **Website:** https://www.guideindiatours.com
 - **Google Business Profile:** https://maps.google.com/?cid=15062716171727990652
@@ -22,7 +22,7 @@ Private Golden Triangle, Rajasthan and Taj Mahal tours from Agra with government
 
 ## Long description (under 750 characters)
 
-Guide India Tours is a private tour operator based in Agra, run since 2004. We organise private Golden Triangle tours (Delhi, Agra, Jaipur), Rajasthan itineraries, same-day Agra trips from Delhi, Taj Mahal sunrise tours and a 6-day photography tour with government-approved licensed guides, professional drivers and your own air-conditioned vehicle. We also take last-minute bookings, even one or two days before you start, as per availability. We send a written quote in your own currency and our team is on WhatsApp throughout your trip. Open 24 hours. The Taj Mahal is closed every Friday.
+Government-approved licensed tourist guides in Agra, specialising in private Taj Mahal tours and Golden Triangle packages since 2004. We offer Taj Mahal sunrise and sunset visits, same-day Agra tours from Delhi, Agra Fort and Fatehpur Sikri tours, Mehtab Bagh sunset visits, a 6-day photography tour and last-minute bookings, as per availability. Male and female guides in English, Hindi, French, German, Spanish, Italian and Russian, Japanese and Chinese on request. Services: private guide booking, air-conditioned transport with professional drivers, hotel arrangements, skip-the-line help where officially available, and custom itineraries for Delhi, Agra, Jaipur, Udaipur and Rajasthan. Licensed by the Ministry of Tourism. Pickup from Delhi airport and NCR railway stations.
 
 ## Categories
 
