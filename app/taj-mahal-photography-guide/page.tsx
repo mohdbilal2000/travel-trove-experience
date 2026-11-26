@@ -134,13 +134,13 @@ export default function PhotographyGuide() {
             <section className="py-16 bg-black text-white text-center">
                 <div className="container mx-auto px-4 max-w-3xl">
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Want a guide who knows the light?</h2>
-                    <p className="text-white/70 font-light mb-8">Avneesh has shot the Taj at every hour. A private sunrise tour gets you in early, through the right gate, with a government-approved guide beside you.</p>
+                    <p className="text-white/70 font-light mb-8">Avneesh has shot the Taj at every hour. Our 6-day Golden Triangle Photography Expedition gets you in early, to the right spot, in the right gate.</p>
                     <Button asChild className="bg-gold-500 hover:bg-white text-black py-6 px-10 rounded-2xl text-lg font-bold h-auto">
-                        <Link href="/taj-mahal-sunrise-tour" className="flex items-center gap-3">Book a Taj Mahal Sunrise Tour <ArrowRight className="w-5 h-5" /></Link>
+                        <Link href="/golden-triangle-photography-tour" className="flex items-center gap-3">Book a Taj Photography Tour <ArrowRight className="w-5 h-5" /></Link>
                     </Button>
                 </div>
             </section>
-            <TajTourLinks exclude="/taj-mahal-sunrise-tour" />
+            <TajTourLinks exclude="/golden-triangle-photography-tour" />
         </main>
     );
 }

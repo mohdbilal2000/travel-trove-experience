@@ -334,4 +334,89 @@ export const lastMinute: LandingConfig = {
   whatsappText: "Hi Guide India Tours! I'd like to book a Golden Triangle tour at short notice. Dates: ... Travellers: ... Hotel category: ...",
 };
 
-export const landingPages = [sameDayAgra, taj_sunrise, rajasthan10, lastMinute];
+export const photographyTour: LandingConfig = {
+  slug: "golden-triangle-photography-tour",
+  metaTitle: "India Photography Tour: 6-Day Golden Triangle Photography Expedition | Guide India Tours",
+  metaDescription:
+    "A 6-day private photography tour of Delhi, Agra and Jaipur with a photography guide and workshops: Taj Mahal at dawn, Mehtab Bagh at sunset, Amber Fort at golden hour.",
+  badge: "Updated 2026",
+  h1: "Golden Triangle Photography Tour",
+  subtitle: "A guided tour for photography enthusiasts, built around the light and the iconic backdrops of Delhi, Agra and Jaipur.",
+  quick: [
+    { lead: "The tour:", text: "the Golden Triangle Photography Expedition is a 6-day private tour of Delhi, Agra and Jaipur for photography enthusiasts." },
+    { lead: "Included:", text: "4-star hotels, a private car with driver, daily breakfast, and a photography guide with workshops." },
+    { lead: "Light and places:", text: "sunrise at Jama Masjid, twilight at India Gate, the Taj Mahal at dawn, Mehtab Bagh at sunset, and Amber Fort at golden hour." },
+    { lead: "Rules at the Taj Mahal:", text: "tripods, monopods, gimbals and drones are not allowed, and photography is banned only inside the central mausoleum chamber." },
+    { lead: "Not on Fridays:", text: "the Taj Mahal is closed every Friday, so the Agra days are planned around it." },
+  ],
+  optionsHeading: "Photography tours, and tours with a photography session",
+  optionsIntro: "The Photography Expedition comes first. The others are luxury packages that list a photography session. Prices are per adult and a starting price; we confirm the exact figure in a written quote.",
+  planIds: [21, 2004, 4006, 4018, 4017],
+  daysHeading: "Day by day: the 6-day photography expedition",
+  days: [
+    { title: "Day 1: Delhi photography", text: "Sunrise shoot at Jama Masjid, daytime at Humayun's Tomb and sunset at India Gate." },
+    { title: "Day 2: Delhi photography", text: "Early morning shoot at Lotus Temple, an afternoon photography workshop and an evening shoot at Lodhi Art District." },
+    { title: "Day 3: Delhi to Agra", text: "Drive to Agra, then a sunset photography session at Mehtab Bagh with views of the Taj Mahal." },
+    { title: "Day 4: Agra to Jaipur", text: "Sunrise shoot at the Taj Mahal, then the drive to Jaipur with photography stops on the way." },
+    { title: "Day 5: Jaipur photography", text: "Golden hour shoot at Amber Fort, midday at the City Palace and sunset at Nahargarh Fort." },
+    { title: "Day 6: Jaipur and departure", text: "A morning photo walk through the Pink City and a photo editing workshop before the return to Delhi." },
+  ],
+  sections: [
+    {
+      heading: "Who it is for",
+      paragraphs: [
+        "The expedition is a guided tour for photography enthusiasts, focused on the iconic backdrops of the Golden Triangle. Each day is arranged around the best light, with a photography guide and workshops on the way.",
+      ],
+    },
+    {
+      heading: "Light and locations",
+      bullets: [
+        "Sunrise is the prime window at the Taj Mahal: the first 30 minutes of light turn the marble pink, then gold, then cool white.",
+        "The most iconic frame is from the central reflection pool, with the Taj Mahal mirrored in the water.",
+        "Mehtab Bagh, the garden on the opposite bank of the Yamuna, gives the river-facing view of the Taj Mahal, with exceptional light at sunset.",
+      ],
+    },
+    {
+      heading: "Rules to plan around",
+      bullets: [
+        "Photography is allowed in the Taj Mahal gardens, on the platform and around the mosque, and banned only inside the central mausoleum chamber.",
+        "Tripods, monopods and gimbals are not permitted inside the Taj Mahal complex for general visitors. Commercial photography permits issued by the ASI need an advance application.",
+        "Drones are prohibited near the Taj Mahal, which sits inside a no-fly zone.",
+        "Our Taj Mahal photography guide covers the spots and the rules in detail.",
+      ],
+    },
+    {
+      heading: "Other tours with a photography session",
+      paragraphs: [
+        "Several of our luxury packages list a photography session, for example the Same Day Agra Luxury Tour, the Golden Triangle with Jodhpur luxury tour and the Golden Triangle with Ranthambore luxury tour, which includes wildlife photography. Our Golden Triangle with Ranthambore tour also lists nature photography among its highlights.",
+        "If you want something different, our customised tours are designed around your interests, and photography is one of them.",
+      ],
+    },
+    {
+      heading: "Friday and the Taj Mahal",
+      paragraphs: [
+        "The Taj Mahal is closed to visitors every Friday. We plan the Agra days so that your Taj Mahal sunrise falls on another day of the week.",
+      ],
+    },
+  ],
+  faqs: [
+    { question: "What is the Golden Triangle Photography Expedition?", answer: "It is a 6-day private tour of Delhi, Agra and Jaipur for photography enthusiasts, focused on iconic backdrops: Jama Masjid at sunrise, India Gate at twilight, the Taj Mahal at dawn, Mehtab Bagh at sunset, and Amber Fort and Patrika Gate in Jaipur." },
+    { question: "What is included?", answer: "4-star hotels, a private car with driver, daily breakfast, and a photography guide with workshops." },
+    { question: "Can I photograph inside the Taj Mahal?", answer: "Yes. Photography is allowed in the gardens, on the platform and around the mosque. The only place it is banned is inside the central mausoleum chamber." },
+    { question: "Can I use a tripod at the Taj Mahal?", answer: "No. Tripods, monopods and gimbals are not permitted inside the complex for general visitors, and drones are prohibited. Commercial photography permits issued by the ASI need an advance application." },
+    { question: "When is the best light at the Taj Mahal?", answer: "Sunrise is the prime window. The first 30 minutes of light turn the marble pink, then gold, then cool white." },
+    { question: "Can I add a photography session to a luxury tour or build a custom photography itinerary?", answer: "Several of our luxury packages list a photography session, and our customised tours are designed around your interests, including photography. Tell us what you would like and we send a written quote." },
+    { question: "Is the Taj Mahal open on Fridays?", answer: "No. The Taj Mahal is closed every Friday. We plan the Agra days around it." },
+  ],
+  related: [
+    { href: "/taj-mahal-photography-guide", label: "Taj Mahal photography guide" },
+    { href: "/plans/21", label: "Golden Triangle Photography Expedition: full itinerary" },
+    { href: "/taj-mahal-sunrise-tour", label: "Taj Mahal sunrise tour" },
+    { href: "/taj-mahal-sunrise-guide", label: "Taj Mahal sunrise guide" },
+    { href: "/golden-triangle-tours", label: "All Golden Triangle tours" },
+    { href: "/last-minute-golden-triangle-tour", label: "Last minute Golden Triangle tour" },
+  ],
+  whatsappText: "Hi Guide India Tours! I'd like a quote for the Golden Triangle Photography Tour.",
+};
+
+export const landingPages = [sameDayAgra, taj_sunrise, rajasthan10, lastMinute, photographyTour];

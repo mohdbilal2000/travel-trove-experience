@@ -79,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ['taj-mahal-sunrise-tour', 0.9],
             ['rajasthan-golden-triangle-tour', 0.9],
             ['last-minute-golden-triangle-tour', 0.9],
+            ['golden-triangle-photography-tour', 0.9],
             ['plan-your-trip', 0.8],
             ...countries.map((c) => [`plan-your-trip/${c.slug}`, 0.7] as [string, number]),
             ['de/taj-mahal-eintritt', 0.7],
