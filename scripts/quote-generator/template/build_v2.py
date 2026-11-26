@@ -211,10 +211,11 @@ boxes=''.join(f'<div class="{c}"><div class="k">{b[0]}</div><div class="amt">{b[
 OPT=P.get('options')
 if OPT:
     _cards=''
-    for _c,_o in zip(('pp','tt'),OPT):
-        _rows=''.join(f'<tr><td style="padding:1.6mm 0;border-bottom:.6pt solid rgba(255,255,255,.35)">{r[0]}<br><span style="opacity:.85;font-size:6.8pt">{r[1]}</span></td><td style="padding:1.6mm 0;border-bottom:.6pt solid rgba(255,255,255,.35);text-align:right;white-space:nowrap;font-weight:600">{r[2]}</td></tr>' for r in _o['rows'])
-        _cards+=f'<div class="{_c}"><div class="k">{_o["label"]}</div><div style="font:600 11pt/1.3 Playfair,Georgia,serif;margin-top:2mm">{_o["name"]}</div><table style="width:100%;margin-top:3mm;font-size:7.8pt;color:#fff;border-collapse:collapse">{_rows}</table><div class="sm" style="margin-top:3.5mm">{_o["total_label"]}</div><div class="amt" style="font-size:21pt;margin-top:1mm">{_o["total"]}</div><div class="sm">{_o["pp"]}</div></div>'
-    price_block=f'<div class="priceboxes" style="margin-top:2mm;align-items:stretch">{_cards}</div>'
+    for _i,(_c,_o) in enumerate(zip(('pp','tt','pp'),OPT)):
+        _rows=''.join(f'<tr><td style="padding:1mm 0;border-bottom:.6pt solid rgba(255,255,255,.35)">{r[0]}<br><span style="opacity:.85;font-size:6.8pt">{r[1]}</span></td><td style="padding:1mm 0;border-bottom:.6pt solid rgba(255,255,255,.35);text-align:right;white-space:nowrap;font-weight:600">{r[2]}</td></tr>' for r in _o['rows'])
+        _x=' style="padding:3.6mm 5mm;'+('flex:0 0 100%;background:linear-gradient(120deg,#1F7A5E,#2E9E7B)' if _i==2 else '')+'"'
+        _cards+=f'<div class="{_c}"{_x}><div class="k">{_o["label"]}</div><div style="font:600 11pt/1.3 Playfair,Georgia,serif;margin-top:2mm">{_o["name"]}</div><table style="width:100%;margin-top:3mm;font-size:7.8pt;color:#fff;border-collapse:collapse">{_rows}</table><div class="sm" style="margin-top:3.5mm">{_o["total_label"]}</div><div class="amt" style="font-size:19pt;margin-top:.5mm">{_o["total"]}</div><div class="sm">{_o["pp"]}</div></div>'
+    price_block=f'<div class="priceboxes" style="margin-top:2mm;align-items:stretch;flex-wrap:wrap">{_cards}</div>'
 elif SINGLE:
     price_block=f'<div class="priceboxes" style="margin-top:2mm"><div class="tt" style="flex:1;text-align:center;padding:9mm 6mm"><div class="k">{SINGLE["label"]}</div><div class="amt" style="font-size:34pt">{SINGLE["total"]}</div><div class="sm" style="font-size:8.6pt">{SINGLE["sub"]}</div></div></div>'
 else:
