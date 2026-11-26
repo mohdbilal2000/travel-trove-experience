@@ -22,7 +22,7 @@ Private Golden Triangle, Rajasthan and Taj Mahal tours from Agra with government
 
 ## Long description (under 750 characters)
 
-Government-approved licensed tourist guides in Agra, specialising in private Taj Mahal tours and Golden Triangle packages since 2004. We offer Taj Mahal sunrise and sunset visits, same-day Agra tours from Delhi, Agra Fort and Fatehpur Sikri tours, Mehtab Bagh sunset visits, a 6-day photography tour and last-minute bookings, as per availability. Male and female guides in English, Hindi, French, German, Spanish, Italian and Russian, Japanese and Chinese on request. Services: private guide booking, air-conditioned transport with professional drivers, hotel arrangements, skip-the-line help where officially available, and custom itineraries for Delhi, Agra, Jaipur, Udaipur and Rajasthan. Licensed by the Ministry of Tourism. Pickup from Delhi airport and NCR railway stations.
+Government-approved licensed tourist guides in Agra for private Taj Mahal tours and Golden Triangle packages since 2004. Taj Mahal sunrise and sunset visits, same-day Agra tours from Delhi, Agra Fort and Fatehpur Sikri tours, Mehtab Bagh sunset visits, a 6-day photography tour and last-minute bookings, as per availability. Male and female guides in English, Hindi, French, German, Spanish, Italian and Russian, Japanese and Chinese on request. Services: private guide booking, AC transport with professional drivers, hotel arrangements, skip-the-line help where officially available, and custom itineraries for Delhi, Agra, Jaipur, Udaipur and Rajasthan. Licensed by the Ministry of Tourism. Pickup from Delhi airport and NCR railway stations.
 
 ## Categories
 
