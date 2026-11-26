@@ -66,6 +66,7 @@ ${allPlans.slice(0, 10).map(p => `- ${p.title} (${p.duration}) → ${BASE_URL}/p
 - All Tour Plans: ${BASE_URL}/plans
 - Same Day Agra Tour from Delhi: ${BASE_URL}/same-day-agra-tour-from-delhi
 - Last Minute Golden Triangle Tour: ${BASE_URL}/last-minute-golden-triangle-tour
+- Golden Triangle Photography Tour (6 days, photography guide and workshops): ${BASE_URL}/golden-triangle-photography-tour
 - Taj Mahal Sunrise Tour: ${BASE_URL}/taj-mahal-sunrise-tour
 - 10-Day Rajasthan and Golden Triangle Tour: ${BASE_URL}/rajasthan-golden-triangle-tour
 - Plan your trip by country (US, UK, Canada, Australia, Germany, France, Spain, Mexico and more): ${BASE_URL}/plan-your-trip

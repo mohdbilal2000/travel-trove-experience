@@ -95,6 +95,9 @@ const Footer = () => {
                 <Link href="/last-minute-golden-triangle-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Last Minute Golden Triangle</Link>
               </li>
               <li>
+                <Link href="/golden-triangle-photography-tour" className="text-gray-600 hover:text-maroon-700 transition-colors">Photography Tour</Link>
+              </li>
+              <li>
                 <Link href="/plans" className="text-gray-600 hover:text-maroon-700 transition-colors">Customized Tours</Link>
               </li>
               <li>
