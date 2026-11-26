@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { allPlans } from '@/data/travelPlans';
 import { countries } from '@/data/countries';
+import { numericPrice } from '@/lib/planPrice';
 import { blogPosts } from '@/data/blogPosts';
 import { FAQ_LAST_UPDATED } from '@/data/faqs';
 import { guideLangs } from '@/data/multilingualGuide';
@@ -237,7 +238,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
 
     // Tour plan pages
-    const planPages: MetadataRoute.Sitemap = allPlans.map((plan) => ({
+    // Plans without a fixed price are noindexed on their own pages, so they stay out of the sitemap too.
+    const planPages: MetadataRoute.Sitemap = allPlans.filter((plan) => numericPrice(plan.price) !== null).map((plan) => ({
         url: `${BASE_URL}/plans/${plan.id}`,
         lastModified: now,
         changeFrequency: 'weekly' as const,

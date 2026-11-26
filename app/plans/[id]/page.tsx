@@ -20,7 +20,7 @@ import BookingButton from "./_components/BookingButton";
 import StickyBookingBar from "./_components/StickyBookingBar";
 import { generateTourPackageSchema, generateFAQSchema } from "@/lib/schemaGenerator";
 import { siteConfig, ratingCountDisplay } from "@/lib/siteConfig";
-import { fromPrice } from '@/lib/planPrice';
+import { fromPrice, numericPrice } from '@/lib/planPrice';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -51,9 +51,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         158
     );
 
+    // "Customized ..." plans have no fixed itinerary or price, so they are thin pages.
+    // Keep them reachable for visitors but out of Google's index.
+    const thin = numericPrice(plan.price) === null;
+
     return {
         title,
         description,
+        ...(thin ? { robots: { index: false, follow: true } } : {}),
         alternates: {
             canonical: url,
             languages: {
