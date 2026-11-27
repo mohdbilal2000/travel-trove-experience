@@ -68,7 +68,7 @@ const sections = [
             },
             {
                 subtitle: "Deposit & Balance",
-                text: "A non-refundable deposit of 25% of the total tour cost is required at the time of booking to secure your reservation. The remaining balance must be paid at least 30 days prior to the tour start date. For bookings made within 30 days of the tour start date, full payment is required at the time of booking."
+                text: "A non-refundable deposit of 25% of the total tour cost is required at the time of booking to secure your reservation. The remaining balance is paid on arrival, on the first day of your tour."
             },
             {
                 subtitle: "Payment Methods",

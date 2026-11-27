@@ -116,7 +116,7 @@ export const faqCategories: FaqCategory[] = [
             {
                 id: "deposit",
                 question: "How much deposit is required to confirm a booking?",
-                answer: "A 25% deposit confirms your booking, with the balance due 30 days before your tour starts. For bookings made within 30 days of travel, full payment is taken at the time of booking.",
+                answer: "A 25% advance confirms your booking. The balance is paid on arrival, on the first day of your tour.",
             },
             {
                 id: "direct-vs-marketplace",

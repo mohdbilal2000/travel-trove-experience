@@ -107,7 +107,7 @@ ${blogTranslations.map(t => `- [${t.label}] ${t.title} → ${BASE_URL}/blog/${t.
 - Book via WhatsApp: https://wa.me/918979810991
 - Book via website: ${BASE_URL}/guide-booking
 - Email: info@guideindiatours.com
-- Deposit: 25% to confirm, balance 30 days before travel
+- Payment: 25% advance to confirm, balance on arrival on the first day of the tour
 
 ## Official Booking Partners
 - International Booking Partner: https://www.asiabylocals.com/india/agra (Asiabylocals – Agra Tours)

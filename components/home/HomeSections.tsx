@@ -317,7 +317,7 @@ const comparisons = [
     { aspect: "Pricing", direct: "Direct local rates with no third-party markup", ota: "Platform commission is typically built into the price" },
     { aspect: "Who you talk to", direct: "The Agra-based team that runs your tour, on WhatsApp", ota: "Marketplace support staff" },
     { aspect: "Customization", direct: "Fully private and customizable itineraries", ota: "Mostly fixed, pre-packaged products" },
-    { aspect: "Payment", direct: "25% deposit; balance due 30 days before travel", ota: "Usually full payment upfront" },
+    { aspect: "Payment", direct: "25% advance; balance on arrival, first day of the tour", ota: "Usually full payment upfront" },
     { aspect: "Refunds", direct: "Tiered refunds up to 85% — see our refund policy", ota: "Varies by platform policy" },
 ];
 
@@ -356,7 +356,7 @@ export function BookDirect() {
                 </div>
 
                 <p className="text-center mt-8 text-gray-600 font-light">
-                    A 25% deposit confirms your booking, the balance is due 30 days before your tour begins, and
+                    A 25% advance confirms your booking, the balance is paid on arrival on the first day of your tour, and
                     cancellations are refunded on a tiered scale of up to 85%. Full details in our{" "}
                     <Link href="/refund-policy" className="text-maroon-600 font-bold underline underline-offset-2 hover:text-black">refund policy</Link>{" "}
                     and <Link href="/faq" className="text-maroon-600 font-bold underline underline-offset-2 hover:text-black">booking FAQs</Link>.
@@ -649,7 +649,7 @@ export function FinalCta() {
                         Message us on WhatsApp for a custom quote within 2 hours — or start from a ready-made package.
                     </p>
                     <p className="text-sm text-white/60 mb-10 font-light">
-                        25% deposit to confirm · balance 30 days before travel · tiered refunds up to 85% · 24/7 on-trip support
+                        25% advance to confirm · balance on arrival, first day · tiered refunds up to 85% · 24/7 on-trip support
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <Button size="lg" className="bg-maroon-600 hover:bg-maroon-700 text-white px-10 py-6 text-xl rounded-xl border-none shadow-xl hover:shadow-2xl transition-all duration-300" asChild>

@@ -144,9 +144,8 @@ gold-ruled small-caps heading, the percentage in bold maroon on the left:
 
 | Payment policy | |
 |---|---|
-| 40% | At the time of confirmation |
-| 40% | One month before the tour date |
-| 20% | 15 days before the tour date |
+| 25% | Advance, at the time of confirmation |
+| 75% | Balance, on arrival on the first day of the tour |
 
 | Cancellation policy | |
 |---|---|

@@ -14,7 +14,7 @@ const steps = [
     {
         icon: CreditCard,
         title: "3. Confirm with a Deposit",
-        description: "A 25% deposit secures your guide, vehicle, and hotels. The balance is due 30 days before your tour begins.",
+        description: "A 25% advance secures your guide, vehicle, and hotels. The balance is paid on arrival, on the first day of your tour.",
     },
     {
         icon: MapPin,
