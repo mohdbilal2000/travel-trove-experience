@@ -22,7 +22,7 @@ Last reviewed: 2026-11-27
 - Last-minute bookings: we take guide and transport bookings, and can arrange hotels, even one or two days before the start date. Everything is as per availability, nothing is guaranteed until confirmed in writing, and in practice we usually have what guests need. (Owner statement, 25 Nov 2026.)
 - Quotes are written, in the guest's own currency, listing what is and is not included. Website prices are shown in US dollars as "from" prices per adult, for a typical twin-share booking in the standard hotel tier.
 - Customised tours are built around the guest's interests, including photography.
-- Payment policy (company policy): 40% at confirmation, 40% one month before, 20% 15 days before. Cancellation: 15% charge 60 days or more before, 50% for 59 to 40 days, 65% for 39 to 20 days, no refund under 10 days.
+- Payment policy (owner decision, 27 Nov 2026): 25% advance to confirm, balance on arrival on the first day of the tour. Cancellation terms: do not state figures until the owner settles them; link to `/refund-policy` instead.
 
 ## Guides and languages (source: `data/multilingualGuide.ts`)
 

@@ -328,7 +328,7 @@ export default function QuoteTool() {
         para("*Priority or skip-the-line access depends on monument rules and the ticket type; security checks and queues may still apply. Photography assistance is included but professional photographers are not, unless agreed separately.", 8.2, GREY); y += 4;
 
         heading("Taxes & payment");
-        para("All applicable taxes (GST) are included in the price shown. A secure payment link is shared on confirmation, or you may pay by bank transfer using the details below. A deposit confirms your booking and the balance is due before the tour, as per our terms.", 9.5); y += 2;
+        para("All applicable taxes (GST) are included in the price shown. A secure payment link is shared on confirmation, or you may pay by bank transfer using the details below. A 25% advance confirms your booking and the balance is paid on arrival, on the first day of the tour.", 9.5); y += 2;
 
         const bankRows: [string, string][] = [
             ["Account holder", BANK.holder], ["Bank", BANK.bank], ["Branch", BANK.branch], ["Account number", BANK.account],
