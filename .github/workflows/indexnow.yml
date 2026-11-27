@@ -1,0 +1,52 @@
+name: IndexNow
+
+# Tells Bing and other IndexNow engines when content changed. Google ignores IndexNow:
+# for Google use the sitemap and Search Console. No secrets needed; the key is a public file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: Space-separated URLs to submit (empty means the whole sitemap)
+        required: false
+        type: string
+      dry_run:
+        description: Print what would be sent, send nothing
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "data/**"
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the deployment
+        if: ${{ github.event_name == 'push' }}
+        run: sleep 300
+
+      - name: Submit
+        env:
+          URLS: ${{ inputs.urls }}
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          args=()
+          if [ -n "$URLS" ]; then args+=(--urls "$URLS"); fi
+          if [ "$DRY" = "true" ]; then args+=(--dry-run); fi
+          node marketing/scripts/indexnow.mjs "${args[@]}"
