@@ -196,3 +196,13 @@ Page count follows the content — 4, 5, 6 or more is all fine. But:
 - Check the arithmetic: cost → margin → per-person → currency conversion, both ways.
 - Quote in the client's own currency.
 - Sanity-check supplier notes; handwritten totals do not always match their line items.
+
+---
+
+# Marketing agents
+
+`marketing/` holds a draft-only marketing team (agents in `.claude/agents/`, task prompts in
+`marketing/tasks/`, workflows in `.github/workflows/`). Read `marketing/POLICY.md` and
+`marketing/facts.md` before writing any marketing copy: a claim not in the fact base or a data file
+is not allowed, and prices come from `data/plans/*.ts`, never from memory. Agent output goes only
+under `marketing/drafts/`, must pass `node marketing/scripts/guard.mjs`, and is released by a human.

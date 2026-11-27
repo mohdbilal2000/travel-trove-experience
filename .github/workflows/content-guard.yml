@@ -1,0 +1,26 @@
+name: Content guard
+
+# Deterministic claim check on marketing drafts. No secrets, no LLM.
+# Note: pull requests opened with GITHUB_TOKEN do not trigger other workflows, so the
+# marketing-agent workflow runs this same guard itself before it opens its pull request.
+
+on:
+  pull_request:
+    paths:
+      - "marketing/drafts/**"
+      - "marketing/scripts/**"
+      - "marketing/facts.md"
+      - "data/plans/**"
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node marketing/scripts/guard.mjs
