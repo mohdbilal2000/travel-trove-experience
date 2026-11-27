@@ -90,6 +90,15 @@ const PlannerHero = () => {
               Fully customizable private tours with government-licensed guides, air-conditioned cars and 24/7 support — run from Agra since 2004. Plan your trip below and get a quote on WhatsApp within 2 hours.
             </p>
 
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="#trip-planner" className="inline-flex items-center justify-center rounded-xl bg-gold-500 px-8 py-3.5 text-base font-bold text-maroon-900 shadow-lg transition hover:bg-gold-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                Plan my trip
+              </a>
+              <a href={`https://wa.me/${siteConfig.whatsapp}?text=Hi%20Guide%20India%20Tours!%20I%27d%20like%20help%20planning%20my%20trip.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-white/60 bg-white/10 px-8 py-3.5 text-base font-semibold text-white backdrop-blur transition hover:bg-white hover:text-maroon-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                Chat on WhatsApp
+              </a>
+            </div>
+
             <div className="hidden lg:flex items-center justify-center gap-6 mt-8 text-white/80 text-sm">
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-gold-500" /> Government-licensed guides</span>
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-gold-500" /> 24/7 support</span>
