@@ -18,7 +18,6 @@ const GOOGLE_REVIEWS_URL = siteConfig.social.googleMaps;
 
 const stats = [
     { term: "Operating since", detail: "2004" },
-    { term: "Travelers guided", detail: siteConfig.stats.travellersGuided },
     { term: "Google rating", detail: `${siteConfig.rating.value}/5 · ${ratingCountDisplay} reviews` },
     { term: "Tour packages", detail: `${allPlans.length}+` },
     { term: "Guides", detail: "Government-licensed" },
@@ -27,15 +26,15 @@ const stats = [
 
 export function TrustStats() {
     return (
-        <section className="bg-black text-white py-10 md:py-14" aria-labelledby="trust-stats-heading">
+        <section className="bg-gradient-to-b from-maroon-700 to-maroon-800 text-white py-12 md:py-16 border-y-4 border-gold-500/70" aria-labelledby="trust-stats-heading">
             <div className="container mx-auto px-4">
                 <h2 id="trust-stats-heading" className="text-center text-xs font-black uppercase tracking-[0.3em] text-gold-500 mb-8">
-                    India Tour Operator Since {siteConfig.foundingDate} — Trusted by {siteConfig.stats.travellersGuided} Travelers
+                    Private India tours from Agra since {siteConfig.foundingDate}
                 </h2>
-                <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
                     {stats.map((s) => (
                         <div key={s.term} className="flex flex-col-reverse">
-                            <dt className="text-[11px] uppercase tracking-widest text-white/50 font-bold">{s.term}</dt>
+                            <dt className="text-[11px] uppercase tracking-widest text-gold-200/80 font-bold">{s.term}</dt>
                             <dd className="text-xl md:text-2xl font-display font-bold text-white mb-1">{s.detail}</dd>
                         </div>
                     ))}
@@ -631,7 +630,7 @@ export function ResourcesHub() {
 
 export function FinalCta() {
     return (
-        <section className="py-16 md:py-24 relative overflow-hidden bg-black text-white" aria-labelledby="final-cta-heading">
+        <section className="py-16 md:py-24 relative overflow-hidden bg-maroon-800 text-white" aria-labelledby="final-cta-heading">
             <Image
                 src="/images/optimized/agra/getty-images-ge82SKhuwCA-unsplash-1920.webp"
                 alt=""
@@ -640,7 +639,7 @@ export function FinalCta() {
                 className="object-cover opacity-40"
                 sizes="100vw"
             />
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-maroon-900/80 via-maroon-800/70 to-maroon-900/90" />
             <div className="container mx-auto px-4 relative z-10 text-center">
                 <div className="max-w-3xl mx-auto">
                     <h2 id="final-cta-heading" className="text-4xl md:text-5xl lg:text-6xl font-display font-medium mb-6">
