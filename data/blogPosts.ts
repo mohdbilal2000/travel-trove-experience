@@ -1,3 +1,5 @@
+import { generatedBlogPosts } from "./generatedBlogPosts";
+
 export interface BlogPost {
   id: number;
   slug: string;
@@ -22,7 +24,7 @@ export interface BlogPost {
   faqs?: { q: string; a: string }[];
 }
 
-export const blogPosts: BlogPost[] = [
+const handWrittenPosts: BlogPost[] = [
   {
     id: 1,
     slug: "best-time-to-visit-golden-triangle",
@@ -1607,6 +1609,9 @@ Want any of these added to your trip? Message us on WhatsApp with your dates and
     relatedDestinations: ["Delhi", "Agra", "Jaipur"]
   }
 ];
+
+/** Hand-written posts above, plus posts generated from content/blog/*.md (see scripts/build-blog.mjs). */
+export const blogPosts: BlogPost[] = [...handWrittenPosts, ...generatedBlogPosts];
 
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
   return blogPosts.find(post => post.slug === slug);

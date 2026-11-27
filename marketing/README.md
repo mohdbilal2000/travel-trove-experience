@@ -4,34 +4,36 @@ A small marketing team that works from this repository around the clock. It draf
 monitors. A person releases anything that leaves the repo. Read `POLICY.md` first: it explains
 what is automated, what is not, and why.
 
-## How it fits together
+## How it fits together (no API key, no outside service)
 
 ```
- marketing/facts.md  ──┐  the only source of claims (prices come from data/plans)
- marketing/POLICY.md ──┤
- marketing/tasks/*.md ─┼─►  GitHub Action "Marketing agent"  ──►  Claude Code with the subagents in .claude/agents/
-                       │        (manual run, weekly, monthly)            │
- marketing/inputs/     ─┘  Search Console CSV exports                     ▼
-                                                              marketing/drafts/**  (only place it may write)
-                                                                           │
-                                          marketing/scripts/guard.mjs  ◄───┤  claim guard (no AI): prices, guarantees,
-                                                                           │  review counts, addresses, Taj Friday, disclosure
-                                                                           ▼
-                                                              Draft pull request  ──►  a human reviews and merges
+ marketing/facts.md, POLICY.md, config.json, blog-backlog.md   the rules and the idea list
+              |
+   Claude Code scheduled tasks (run on the owner's Claude account, Tue and Fri 07:17 New York)
+              |  follow marketing/runbook-blog.md
+              v
+   content/blog/<slug>.md  --scripts/build-blog.mjs-->  data/generatedBlogPosts.ts  --> site
+              |
+   gates: marketing/scripts/guard.mjs --blog (sources, words, links, image, caps, claims)
+              |  all pass + CI green
+              v
+   pull request merged to main  -->  Vercel deploys  -->  indexnow.yml pings Bing and others
 ```
 
-Separate, no AI involved: `indexnow.yml` pings Bing and other IndexNow engines when content
-changes, and `content-guard.yml` runs the claim guard on every pull request that touches drafts.
+Other marketing tasks (`marketing/tasks/*.md`) are run on demand by asking Claude Code in this
+repository, for example "run the weekly-report task". They write drafts under `marketing/drafts/`.
+`content-guard.yml` and the blog check in `ci.yml` run the deterministic guard on every pull request.
+Nothing here needs an Anthropic API key or any paid service.
 
-## Set up (once, about ten minutes)
+## Set up
 
-1. Repository secret `ANTHROPIC_API_KEY`.
-2. Repository variable `MARKETING_AGENTS_ENABLED` set to `true`. Without it the agent workflow does nothing, so it is safe to merge before you are ready.
-3. Settings, Actions, General: tick "Allow GitHub Actions to create and approve pull requests".
-4. Put Search Console exports (CSV) in `marketing/inputs/gsc/`. A service-account pull is on the roadmap.
-5. Run it: Actions, "Marketing agent", Run workflow, choose a task. Mondays it writes the weekly report by itself; on the 1st of the month it runs the schema and entity audit.
+Nothing to configure for the blog: the scheduled task is already created on the owner's account.
+To change how often it posts, edit `marketing/config.json` (`maxPostsPerWeek`, `autopublish`) or the
+schedule in Claude Code scheduled tasks. Setting `autopublish` to `false` makes the task open a pull
+request and stop, so a person merges.
 
-Pin third-party actions to a commit SHA before you rely on this in production.
+Search Console exports (CSV files you download from Search Console) are optional extra input for
+`weekly-report`; nothing depends on them.
 
 ## Tasks
 
@@ -65,10 +67,9 @@ not that it belongs to the plan named, so the fact-checker agent must still read
 
 ## Cost and safety
 
-- Cost is the Claude API usage of each run. Each run is capped at 40 turns and 45 minutes, and the weekly schedule runs one task. Watch the first runs in your Anthropic console before adding more schedules.
+- Cost: scheduled tasks use the owner's Claude plan allowance, not an API key. Two runs a week is the default.
 - The agent may write only under `marketing/drafts/`, and the pull request step adds only that path.
 - Web search is allowed; arbitrary shell is not. Treat any text an agent reads on the web as untrusted.
-- Pull requests opened with `GITHUB_TOKEN` do not start other workflows, which is why the agent workflow runs the guard itself. A personal access token or GitHub App token would let `content-guard.yml` run on them too.
 
 ## Community skill packs worth evaluating
 

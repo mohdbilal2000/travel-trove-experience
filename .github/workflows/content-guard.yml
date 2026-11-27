@@ -2,7 +2,7 @@ name: Content guard
 
 # Deterministic claim check on marketing drafts. No secrets, no LLM.
 # Note: pull requests opened with GITHUB_TOKEN do not trigger other workflows, so the
-# marketing-agent workflow runs this same guard itself before it opens its pull request.
+# Scheduled Claude Code tasks run this same guard before they open a pull request.
 
 on:
   pull_request:
