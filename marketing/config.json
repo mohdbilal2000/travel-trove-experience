@@ -1,0 +1,21 @@
+{
+  "audience_priority": [
+    "United States",
+    "Canada",
+    "Mexico",
+    "United Kingdom",
+    "Germany",
+    "France",
+    "Spain",
+    "Italy",
+    "Australia",
+    "India"
+  ],
+  "blog": {
+    "autopublish": true,
+    "maxPostsPerWeek": 2,
+    "minWords": 900,
+    "minSources": 2,
+    "author": "Guide India Tours"
+  }
+}

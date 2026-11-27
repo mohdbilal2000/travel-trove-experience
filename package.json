@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/build-blog.mjs",
     "build": "next build",
+    "blog:build": "node scripts/build-blog.mjs",
+    "blog:check": "node scripts/build-blog.mjs --check && node marketing/scripts/guard.mjs --blog",
     "start": "next start",
     "lint": "next lint",
     "check-images": "node scripts/check-optimized-images.js",

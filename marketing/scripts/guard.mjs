@@ -36,7 +36,48 @@ const walk = (dir) => {
   });
 };
 const args = process.argv.slice(2).filter((a) => !a.startsWith("--"));
-const files = args.length ? args : walk("marketing/drafts");
+const blogMode = process.argv.includes("--blog");
+const files = args.length ? args : walk(blogMode ? "content/blog" : "marketing/drafts");
+const config = JSON.parse(read("marketing/config.json") || "{}").blog || {};
+
+
+// ---- blog-specific gates (content/blog/*.md auto-publish when these pass) ----------------------
+const slugsIn = (f) => new Set([...read(f).matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+const knownBlogSlugs = new Set([...slugsIn("data/blogPosts.ts"), ...walk("content/blog").map((f) => basename(f, ".md"))]);
+const planIds = new Set(readdirSync("data/plans").flatMap((f) => [...read(join("data/plans", f)).matchAll(/^\s*id:\s*(\d+)/gm)].map((m) => m[1])));
+const landing = read("data/landingPages.ts") + read("data/countries.ts");
+const routeOk = (path) => {
+  const [seg, rest] = path.split("/").filter(Boolean);
+  if (!seg) return true;
+  if (seg === "blog" && rest) return knownBlogSlugs.has(rest);
+  if (seg === "plans" && rest) return planIds.has(rest);
+  return existsSync(join("app", seg)) || landing.includes(`"${seg}"`) || landing.includes(`'${seg}'`);
+};
+const weekly = [];
+function checkBlog(file, fmText, body) {
+  const meta = {};
+  for (const l of fmText.split("\n")) { const m = l.match(/^([A-Za-z]\w*):\s*(.*)$/); if (m) meta[m[1]] = m[2].trim(); }
+  for (const k of ["title", "excerpt", "publishedDate", "image", "category", "quickAnswer", "audience"]) if (!meta[k]) report(file, "ERROR", `front matter lacks "${k}:"`);
+  if (meta.title && meta.title.length > 70) report(file, "WARN", `title is ${meta.title.length} characters; keep it under about 65`);
+  if (meta.excerpt && (meta.excerpt.length < 80 || meta.excerpt.length > 200)) report(file, "WARN", `excerpt is ${meta.excerpt.length} characters; aim for 100 to 160`);
+  if (meta.publishedDate) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.publishedDate)) report(file, "ERROR", `publishedDate must be YYYY-MM-DD`);
+    else if (meta.publishedDate > new Date().toISOString().slice(0, 10)) report(file, "ERROR", `publishedDate ${meta.publishedDate} is in the future`);
+    else weekly.push({ file, d: Date.parse(meta.publishedDate) });
+  }
+  if (meta.image && !existsSync(join("public", meta.image))) report(file, "ERROR", `image ${meta.image} does not exist in public/`);
+  const srcs = (fmText.match(/https:\/\/[^\s|]+/g) || []);
+  if (new Set(srcs).size < (config.minSources || 2)) report(file, "ERROR", `needs at least ${config.minSources || 2} distinct https sources (official or primary), found ${new Set(srcs).size}`);
+  const words = body.split(/\s+/).filter(Boolean).length;
+  if (words < (config.minWords || 900)) report(file, "ERROR", `only ${words} words; minimum ${config.minWords || 900}`);
+  const links = [...body.matchAll(/\]\((\/[^)\s#]*)/g)].map((m) => m[1]);
+  if (links.length < 2) report(file, "ERROR", `needs at least 2 internal links (found ${links.length})`);
+  for (const l of links) if (!routeOk(l)) report(file, "ERROR", `internal link ${l} does not resolve to a page`);
+  if (!/^##\s+FAQ\s*$/m.test(body)) report(file, "ERROR", `needs a "## FAQ" section with ### questions`);
+  if (/[\u{1F300}-\u{1FAFF}\u2705\u274C]/u.test(body)) report(file, "WARN", `contains emoji; keep articles plain`);
+  if (/\b(in conclusion|in today's fast-paced|unlock the|delve|tapestry|bustling)\b/i.test(body)) report(file, "WARN", `contains stock AI phrasing; rewrite in a concrete voice`);
+  if (/^author:/m.test(fmText) && !/^author:\s*Guide India Tours\s*$/m.test(fmText)) report(file, "ERROR", `author must be "Guide India Tours" (generated posts are not signed with a person's name)`);
+}
 
 let errors = 0;
 let warnings = 0;
@@ -51,8 +92,10 @@ for (const file of files) {
   const body = text.replace(/^---[\s\S]*?---/, "");
 
   // front matter
+  const isBlog = file.replace(/\\/g, "/").startsWith("content/blog/");
   const fm = text.match(/^---\n([\s\S]*?)\n---/);
-  if (!fm) report(file, "ERROR", "missing front matter (status, sources, human_review)");
+  if (!fm) report(file, "ERROR", "missing front matter");
+  else if (isBlog) checkBlog(file, fm[1], body);
   else {
     for (const k of ["status", "sources", "human_review"]) if (!new RegExp(`^${k}:`, "m").test(fm[1])) report(file, "ERROR", `front matter lacks "${k}:"`);
     const hr = (fm[1].match(/^human_review:\s*(\S+)/m) || [])[1];
@@ -87,5 +130,12 @@ for (const file of files) {
   if (/(^|\/)community(\/|-)/.test(file) && !/^Disclosure:/m.test(body)) report(file, "ERROR", `community draft without a "Disclosure:" line`);
 }
 
+if (blogMode) {
+  const cap = config.maxPostsPerWeek || 2;
+  for (const { file, d } of weekly) {
+    const inWindow = weekly.filter((o) => o.d <= d && d - o.d < 7 * 86400000).length;
+    if (inWindow > cap) report(file, "ERROR", `${inWindow} posts in the 7 days ending on its date; cap is ${cap} per week`);
+  }
+}
 console.log(`\nChecked ${files.length} file(s): ${errors} error(s), ${warnings} warning(s). Allowed price points: ${allowedPrices.size}.`);
 process.exit(errors ? 1 : 0);

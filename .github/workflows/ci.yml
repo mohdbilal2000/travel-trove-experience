@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Blog data is current and passes the publish gate
+        run: node scripts/build-blog.mjs --check && node marketing/scripts/guard.mjs --blog
+
       - name: Typecheck
         run: bun run typecheck
 
